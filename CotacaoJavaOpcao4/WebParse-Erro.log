@@ -1,0 +1,19 @@
+(2016-3-18 12:48:22) - java.lang.NullPointerException
+	at java.io.Reader.<init>(Unknown Source)
+	at java.io.InputStreamReader.<init>(Unknown Source)
+	at br.com.digicom.parse.ParserHtmlTh.run(ParserHtmlTh.java:36)
+(2016-3-18 12:56:40) - java.lang.NullPointerException
+	at br.com.digicom.cotacao.callback.CallbackPregaoOnlineAjax.finalizacaoOk(CallbackPregaoOnlineAjax.java:46)
+	at br.com.digicom.parse.ParserHtmlTh.run(ParserHtmlTh.java:47)
+(2016-3-18 13:05:04) - java.lang.NullPointerException
+	at br.com.digicom.cotacao.callback.CallbackPregaoOnlineAjax.finalizacaoOk(CallbackPregaoOnlineAjax.java:56)
+	at br.com.digicom.parse.ParserHtmlTh.run(ParserHtmlTh.java:47)
+(2016-3-18 13:05:48) - java.lang.NullPointerException
+	at br.com.digicom.cotacao.callback.CallbackPregaoOnlineAjax.finalizacaoOk(CallbackPregaoOnlineAjax.java:56)
+	at br.com.digicom.parse.ParserHtmlTh.run(ParserHtmlTh.java:47)
+(2016-3-18 13:06:44) - java.lang.NullPointerException
+	at br.com.digicom.cotacao.callback.CallbackPregaoOnlineAjax.finalizacaoOk(CallbackPregaoOnlineAjax.java:56)
+	at br.com.digicom.parse.ParserHtmlTh.run(ParserHtmlTh.java:47)
+(2016-3-18 13:11:17) - java.lang.NullPointerException
+	at br.com.digicom.cotacao.callback.CallbackPregaoOnlineAjax.finalizacaoOk(CallbackPregaoOnlineAjax.java:56)
+	at br.com.digicom.parse.ParserHtmlTh.run(ParserHtmlTh.java:47)

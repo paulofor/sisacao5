@@ -1,0 +1,9 @@
+package coletorjava.parse.callback;
+
+import coletorjava.parse.callback.basico.ExperimentoOpcaoCurtoPrazoDetalheCallbackHtmlBase;
+
+public class ExperimentoOpcaoCurtoPrazoDetalheCallbackHtml extends ExperimentoOpcaoCurtoPrazoDetalheCallbackHtmlBase{
+
+
+
+}

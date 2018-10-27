@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Rsrc-Class-Path: ./ coletorcotacao.jar commons-discovery-0.2.jar org.a
+ pache.commons.logging_1.0.4.v200706111724.jar saaj.jar wsdl4j-1.5.1.j
+ ar webparse.jar axis.jar mysql-connector-java-3.0.17-ga-bin_2.jar mys
+ ql-connector-java-3.0.17-ga-bin.jar jaxrpc.jar
+Class-Path: .
+Rsrc-Main-Class: cotacaojava2.app.ColetorJava2App
+Main-Class: org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader
+
