@@ -3,7 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/DaoLib-Rec"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/WebParseLib-Rec"/>
 	<classpathentry kind="lib" path="/home/usuario/sisacao5/AplicacoesAtivas/Java-Terceiros/org.json-20120521.jar"/>
+	<classpathentry kind="lib" path="lib/jsoup-1.10.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
