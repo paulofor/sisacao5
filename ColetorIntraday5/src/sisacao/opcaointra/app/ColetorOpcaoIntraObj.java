@@ -2,16 +2,16 @@ package sisacao.opcaointra.app;
 
 import java.util.Timer;
 
-import br.com.digicom.cotacao.handle.DaoThread;
-import br.com.digicom.lib.dao.DaoConexao;
-import br.com.digicom.lib.dao.DaoException;
-import coletorjava.cotacao.handle.FabricaRegraI;
-import coletorjava.dao.CotacaoDao;
-import coletorjava.dao.DBB;
-import coletorjava.regracolecao.FabricaRegra;
 import sisacao.opcaointra.thread.ThreadPaiBase;
 import sisacao.opcaointra.thread.ThreadPrincipal;
 import timer.AgregadorThreadColeta;
+import br.com.digicom.cotacao.handle.DaoThread;
+import br.com.digicom.cotacao.handle.FabricaRegraI;
+import br.com.digicom.lib.dao.DaoConexao;
+import br.com.digicom.lib.dao.DaoException;
+import coletorjava.dao.CotacaoDao;
+import coletorjava.dao.DBB;
+import coletorjava.regracolecao.FabricaRegra;
 
 public class ColetorOpcaoIntraObj {
 

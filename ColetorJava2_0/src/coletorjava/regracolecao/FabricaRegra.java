@@ -1,10 +1,33 @@
 package coletorjava.regracolecao;
 
-import  coletorjava.regracolecao.impl.*;
+import coletorjava.regracolecao.impl.CotacaoDiarioRegraColecaoImpl;
+import coletorjava.regracolecao.impl.CotacaoProcessadaOpcaoResultadoRegraColecaoImpl;
+import coletorjava.regracolecao.impl.CotacaoProcessadaRegraColecaoImpl;
+import coletorjava.regracolecao.impl.CotacaoRegraColecaoImpl;
+import coletorjava.regracolecao.impl.DadoThetaRegraColecaoImpl;
+import coletorjava.regracolecao.impl.DadoTreinoRegraColecaoImpl;
+import coletorjava.regracolecao.impl.DiaPregaoRegraColecaoImpl;
+import coletorjava.regracolecao.impl.DispositivoUsuarioRegraColecaoImpl;
+import coletorjava.regracolecao.impl.EscolhaOpcaoRegraColecaoImpl;
+import coletorjava.regracolecao.impl.ExperimentoOpcaoCurtoPrazoRegraColecaoImpl;
+import coletorjava.regracolecao.impl.MesAnoRegraColecaoImpl;
+import coletorjava.regracolecao.impl.OpcaoReferenciaRegraColecaoImpl;
+import coletorjava.regracolecao.impl.OpcaoSisacaoGeralRegraColecaoImpl;
+import coletorjava.regracolecao.impl.OpcaoSisacaoRegraColecaoImpl;
+import coletorjava.regracolecao.impl.OpcaoSisacaoSerieRegraColecaoImpl;
+import coletorjava.regracolecao.impl.PeriodoPregaoRegraColecaoImpl;
+import coletorjava.regracolecao.impl.ProjetoDadoTreinoRegraColecaoImpl;
+import coletorjava.regracolecao.impl.RedeRegraColecaoImpl;
+import coletorjava.regracolecao.impl.RegraEntradaRegraColecaoImpl;
+import coletorjava.regracolecao.impl.ResultadoMesRegraColecaoImpl;
+import coletorjava.regracolecao.impl.ResultadoPrevisaoRegraColecaoImpl;
+import coletorjava.regracolecao.impl.TickerRegraColecaoImpl;
+import coletorjava.regracolecao.impl.TreinoRedeRegraColecaoImpl;
+import coletorjava.regracolecao.impl.UsuarioRegraColecaoImpl;
 
 // versao templates
 
-public  class FabricaRegra   {
+public  class FabricaRegra  implements FabricaRegraI{
 
 	private static FabricaRegra _instancia =  null;
 	public static FabricaRegra getInstancia() {
