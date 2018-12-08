@@ -38,6 +38,7 @@ public class ColetorOpcaoIntraObj {
 		}
 	}
 	
+	/*
 	private static void InicializaRegraColecaoDaoThread() {
 		try {
 			FabricaRegraI fabrica = FabricaRegra.getInstancia();
@@ -47,6 +48,7 @@ public class ColetorOpcaoIntraObj {
 			System.out.println("Erro em InicializaRegraColecaoDaoThread");
 		}
 	}
+	*/
 	
 	
 	

@@ -18,7 +18,3 @@ public abstract class PesquisadorTicker extends PesquisadorTimer {
 	protected abstract ICallbackCotacao getCallbackParse();
 }
 
-/*
- * Location: D:\Java-Recuperacao\coletorcotacao.jar Qualified Name:
- * br.com.digicom.cotacao.threads.PesquisadorTicker JD-Core Version: 0.6.0
- */
