@@ -21,9 +21,9 @@ public class ColetorOpcaoIntraObj {
 
 	public void executa() throws DaoException {
 		System.out.println("Ola Mundo ! ");
-		//criaThreadPrincipal();
-		InicializaConexaoDaoThread();
-		mudouDia();
+		criaThreadPrincipal();
+		//InicializaConexaoDaoThread();
+		//odouDia();
 		
 	}
 	

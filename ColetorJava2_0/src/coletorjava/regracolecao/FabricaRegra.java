@@ -1,5 +1,6 @@
 package coletorjava.regracolecao;
 
+
 import coletorjava.regracolecao.impl.CotacaoDiarioRegraColecaoImpl;
 import coletorjava.regracolecao.impl.CotacaoProcessadaOpcaoResultadoRegraColecaoImpl;
 import coletorjava.regracolecao.impl.CotacaoProcessadaRegraColecaoImpl;

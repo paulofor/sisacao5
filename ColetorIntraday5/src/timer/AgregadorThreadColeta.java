@@ -4,14 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 
-import br.com.digicom.cotacao.dao.CotacaoDaoBaseI;
-import br.com.digicom.cotacao.handle.DaoThread;
+import sisacao.opcaointra.app.PesquisadorCotacaoOpcao;
 import br.com.digicom.cotacao.threads.PesquisadorTicker;
 import br.com.digicom.cotacao.threads.Tempo;
-import br.com.digicom.lib.dao.DaoConexao;
-import br.com.digicom.lib.dao.DaoException;
 import br.com.digicom.parse.RestricaoTempo;
-import coletorjava.dao.DBB;
 import coletorjava.modelo.FabricaVo;
 import coletorjava.modelo.OpcaoSisacao;
 import coletorjava.regracolecao.FabricaRegra;

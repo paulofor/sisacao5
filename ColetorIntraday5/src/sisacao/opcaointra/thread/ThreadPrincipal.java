@@ -29,15 +29,15 @@ public class ThreadPrincipal extends ThreadPaiBase{
 			//obj2.main(dataAnterior);
 			//ImportadorDiarioHistoricoOpcaoObj obj3 = new ImportadorDiarioHistoricoOpcaoObj();
 			//obj3.main(dataAnterior);
-			// Escolhedor de opções automático
+			// Escolhedor de opï¿½ï¿½es automï¿½tico
 			//EscolhaOpcaoColetaObj obj = new EscolhaOpcaoColetaObj();
 			//obj.processaOpcoes();
 	   		
 	   		FuncoesObj funcObj = new FuncoesObj();
 	   		funcObj.pesquisOpcoesComVolume();
 	   		
-	   		agregador.limpaColetoresAtual();
-	   		agregador.disparaColetoresDia(mesDia);
+	   		//agregador.limpaColetoresAtual();
+	   		//agregador.disparaColetoresDia(mesDia);
 	   		
 		}
 		//EscolhedorOpcaoSextaObj obj2 = new EscolhedorOpcaoSextaObj();

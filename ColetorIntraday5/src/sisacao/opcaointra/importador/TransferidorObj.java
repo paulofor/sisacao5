@@ -20,13 +20,15 @@ public class TransferidorObj {
 	private final String URL_PATH = "http://www.bmfbovespa.com.br/bdi/";
 
 	public boolean main(String data, String ano) {
-		String diretorioDownload = "D:/CotacaoJava/download/" + ano;
+		String diretorioDownload = "E:/CotacaoJava/download/" + ano;
 		String diretorioTrabalho = "download";
 		String nomeArquivo = "bdi" + data + ".zip";
+		nomeArquivo = ano + data + ".pdf";
 		File localFile = new File(diretorioDownload + File.separator + nomeArquivo);
 		try {
 			//URL url = new URL("http://www.bmfbovespa.com.br/bdi/" + nomeArquivo);
-			URL url = new URL("http://bvmf.bmfbovespa.com.br/fechamento-pregao/bdi/" + nomeArquivo);
+			//URL url = new URL("http://bvmf.bmfbovespa.com.br/fechamento-pregao/bdi/" + nomeArquivo);
+			URL url = new URL("http://bvmf.bmfbovespa.com.br/download/BOLETINSDIARIOS/boletimdiario_" + nomeArquivo);
 			InputStream in = url.openStream();
 			FileOutputStream out = new FileOutputStream(localFile);
 			copyStream(in, out);
@@ -43,7 +45,7 @@ public class TransferidorObj {
 		String mes = data.substring(3, 5);
 		String ano = data.substring(6);
 		
-		String diretorioDownload = "//DIGICOM-COLETOR/CotacaoSisacao/download/" + ano + "/";
+		String diretorioDownload = "E:/CotacaoJava/CotacaoSisacao/download/" + ano + "/";
 		String nomeArquivo = "bdi" + mes + dia + ".zip";
 		File localFile = new File(diretorioDownload + File.separator
 				+ nomeArquivo);
@@ -70,18 +72,18 @@ public class TransferidorObj {
 			File destinationDirectory = new File(destDirectory);
 
 			if (!sourceDirectory.exists()) {
-				System.out.println("Diretório:" + srcDirectory
-						+ " não existe");
+				System.out.println("Diretorio:" + srcDirectory
+						+ " nao existe");
 				return false;
 			}
 			if (!sourceFile.exists()) {
 				System.out.println("Arquivo:" + srcDirectory + File.separator
-						+ srcFile + " não existe");
+						+ srcFile + " nao existe");
 				return false;
 			}
 			if (!destinationDirectory.exists()) {
-				System.out.println("Diretório:" + destDirectory
-						+ " não existe");
+				System.out.println("Diretorio:" + destDirectory
+						+ " nao existe");
 				return false;
 			}
 
