@@ -20,15 +20,19 @@ public class TransferidorObj {
 	private final String URL_PATH = "http://www.bmfbovespa.com.br/bdi/";
 
 	public boolean main(String data, String ano) {
-		String diretorioDownload = "E:/CotacaoJava/download/" + ano;
+		String diretorioDownload = "/home/usuario/sisacao5/ArquivosDiarios";
+		//String diretorioDownload = "E:/CotacaoJava/download/" + ano;
+		
 		String diretorioTrabalho = "download";
-		String nomeArquivo = "bdi" + data + ".zip";
-		nomeArquivo = ano + data + ".pdf";
+		//String nomeArquivo = "bdi" + data + ".zip";
+		//nomeArquivo = ano + data + ".pdf";
+		String nomeArquivo = "PR" + ano + data + ".zip";
 		File localFile = new File(diretorioDownload + File.separator + nomeArquivo);
 		try {
 			//URL url = new URL("http://www.bmfbovespa.com.br/bdi/" + nomeArquivo);
 			//URL url = new URL("http://bvmf.bmfbovespa.com.br/fechamento-pregao/bdi/" + nomeArquivo);
-			URL url = new URL("http://bvmf.bmfbovespa.com.br/download/BOLETINSDIARIOS/boletimdiario_" + nomeArquivo);
+			//URL url = new URL("http://bvmf.bmfbovespa.com.br/download/BOLETINSDIARIOS/boletimdiario_" + nomeArquivo);
+			URL url = new URL("http://www.bmf.com.br/Ftp/IPN/TRS/BVBG.086.01/" + nomeArquivo);
 			InputStream in = url.openStream();
 			FileOutputStream out = new FileOutputStream(localFile);
 			copyStream(in, out);

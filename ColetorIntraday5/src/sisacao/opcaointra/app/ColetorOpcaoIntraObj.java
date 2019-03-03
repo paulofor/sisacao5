@@ -32,6 +32,7 @@ public class ColetorOpcaoIntraObj {
 			CotacaoDao dao = DBB.getInstancia().getCotacaoDao();
 			DaoConexao conexao = dao.criaConexao();
 			DaoThread.setConexao(conexao);
+			
 		} catch (DaoException e) {
 			e.printStackTrace();
 			System.out.println("Erro em InicializaConexaoDaoThread");

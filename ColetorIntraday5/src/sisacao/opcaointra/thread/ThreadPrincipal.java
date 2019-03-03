@@ -20,7 +20,7 @@ public class ThreadPrincipal extends ThreadPaiBase{
 		// 0123456789
 		if (existePregaoDiaAnterior) {
 			String mesDia = dataAnterior.substring(3, 5) + dataAnterior.substring(0, 2);
-			String ano = dataAnterior.substring(6);
+			String ano = dataAnterior.substring(8);
 			TransferidorObj obj = new TransferidorObj();
 	   		obj.main(mesDia,ano);
 			//TransferidorObj transferidor = new TransferidorObj();
