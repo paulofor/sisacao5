@@ -65,5 +65,8 @@ public class CotacaoDiario {
 		this.ticker = ticker;
 	}
 	
+	public String toString() {
+		return this.ticker + ": " + this.fechamento + " ( " + this.negocios + " )";
+	}
 	
 }

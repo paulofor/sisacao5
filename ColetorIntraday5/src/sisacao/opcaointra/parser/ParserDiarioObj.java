@@ -3,7 +3,10 @@ package sisacao.opcaointra.parser;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -20,7 +23,14 @@ public class ParserDiarioObj {
 	static String diretorioArquivos = "download";
 	
 	static List<CotacaoDiario> listaCotacao = null;
-
+	
+	
+	static List<CotacaoDiario> listaAcao = new ArrayList<CotacaoDiario>();
+	static List<CotacaoDiario> listaOpcao = new ArrayList<CotacaoDiario>();
+	
+	static Map<String,CotacaoDiario> mapaAcao = new HashMap<String,CotacaoDiario>();
+	
+ 
 	public void inicio(String dataAAAAMMDD) {
 		File[] arquivos = arquivosDia(dataAAAAMMDD);
 		listaCotacao = new ArrayList<CotacaoDiario>();
@@ -46,6 +56,25 @@ public class ParserDiarioObj {
 		File folder = new File(diretorioArquivos);
 		return folder.listFiles(fileNameFilter);
 	}
+	
+	private static boolean ehOpcao(String ticker) {
+		return (Character.isLetter(ticker.charAt(0)) && 
+				Character.isLetter(ticker.charAt(1)) && 
+				Character.isLetter(ticker.charAt(2)) && 
+				Character.isLetter(ticker.charAt(3)) && 
+				Character.isLetter(ticker.charAt(4)) && 
+				Character.isDigit(ticker.charAt(5)) );
+		
+	}
+	private static boolean ehAcao(String ticker) {
+		return (Character.isLetter(ticker.charAt(0)) && 
+				Character.isLetter(ticker.charAt(1)) && 
+				Character.isLetter(ticker.charAt(2)) && 
+				Character.isLetter(ticker.charAt(3)) && 
+				Character.isDigit(ticker.charAt(4)) &&
+				ticker.charAt(ticker.length()-1) != 'F' &&
+				ticker.length() <= 7);
+	}
 
 	private static void executaParse(File inputFile) {
 		try {
@@ -58,6 +87,10 @@ public class ParserDiarioObj {
 			System.out.println("----------------------------");
 			System.out.println("nList.getLength(): " + nList.getLength());
 
+			int contaItem = 0;
+			listaAcao = new ArrayList<CotacaoDiario>();
+			listaOpcao = new ArrayList<CotacaoDiario>();
+			
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 				Node nNode = nList.item(temp);
 				
@@ -69,19 +102,40 @@ public class ParserDiarioObj {
 
 						String tipo = eElement.getElementsByTagName("MktDataStrmId").item(0).getTextContent();
 						if ("E".equals(tipo)) {
+							contaItem++;
 							CotacaoDiario novo = new CotacaoDiario(ticker);
-							System.out.println("Ticker: " + ticker);
+							
 							String fec = eElement.getElementsByTagName("LastPric").item(0).getTextContent();
 							String min = eElement.getElementsByTagName("MinPric").item(0).getTextContent();
 							String max = eElement.getElementsByTagName("MaxPric").item(0).getTextContent();
 							String abe = eElement.getElementsByTagName("FrstPric").item(0).getTextContent();
 							String neg = eElement.getElementsByTagName("RglrTxsQty").item(0).getTextContent();
 							String vol = eElement.getElementsByTagName("RglrTraddCtrcts").item(0).getTextContent();
+							
+							novo.setFechamento(Float.parseFloat(fec));
+							novo.setNegocios(Integer.parseInt(neg));;
+							novo.setTicker(ticker);
+							
+							if (ehAcao(ticker) && novo.getNegocios()>100) {
+								listaAcao.add(novo);
+							}
+							if (ehOpcao(ticker)) {
+								listaOpcao.add(novo);
+							}
+							
+							//System.out.println(temp + "- " + ticker + "(" + fec + " , " + neg + ")");
 						}
 					}
 
 				}
 			}
+			System.out.println("Ações: " + listaAcao.size());
+			System.out.println("Opções: " + listaOpcao.size());
+			System.out.println("Itens: " + contaItem);
+			
+			//for (CotacaoDiario cotacao : listaAcao) {
+			//	System.out.println(cotacao);
+			//}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
