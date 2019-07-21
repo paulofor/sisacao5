@@ -5,7 +5,7 @@
    public static void main(String[] args)
    {
 	   		TransferidorObj obj = new TransferidorObj();
-	   		obj.main("0712","19");
+	   		obj.main("0719","19");
 	   		//obj2.main("02-03-2011");
    }
  }

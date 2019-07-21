@@ -3,6 +3,7 @@ package sisacao.opcaointra.parser;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -33,11 +34,13 @@ public class ParserDiarioObj {
  
 	public void inicio(String dataAAAAMMDD) {
 		File[] arquivos = arquivosDia(dataAAAAMMDD);
+		Arrays.sort(arquivos);
 		listaCotacao = new ArrayList<CotacaoDiario>();
-		for (File file : arquivos) {
-			System.out.println("Arquivo: " + file.getAbsolutePath());
-			executaParse(file);
-		}
+		File file = arquivos[arquivos.length-1];
+		//for (File file : arquivos) {
+		System.out.println("Arquivo: " + file.getAbsolutePath());
+		executaParse(file,dataAAAAMMDD);
+		//}
 	}
 
 	private static File[] arquivosDia(String dataAAAAMMDD) {
@@ -76,7 +79,7 @@ public class ParserDiarioObj {
 				ticker.length() <= 7);
 	}
 
-	private static void executaParse(File inputFile) {
+	private static void executaParse(File inputFile, String data) {
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -113,8 +116,13 @@ public class ParserDiarioObj {
 							String vol = eElement.getElementsByTagName("RglrTraddCtrcts").item(0).getTextContent();
 							
 							novo.setFechamento(Float.parseFloat(fec));
-							novo.setNegocios(Integer.parseInt(neg));;
+							novo.setNegocios(Integer.parseInt(neg));
 							novo.setTicker(ticker);
+							novo.setMaximo(Float.parseFloat(max));
+							novo.setMinimo(Float.parseFloat(min));
+							novo.setVolume(Float.parseFloat(vol));
+							novo.setData(data);
+							
 							
 							if (ehAcao(ticker) && novo.getNegocios()>100) {
 								listaAcao.add(novo);

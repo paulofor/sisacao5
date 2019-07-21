@@ -10,5 +10,11 @@ public class ParserDiarioApp {
 		ParserDiarioObj obj = new ParserDiarioObj();
 		obj.inicio("20190514");
 	}
+	
+	
+	private void executaJan() {
+		ParserDiarioObj obj = new ParserDiarioObj();
+		obj.inicio("20190102");
+	}
 
 }
