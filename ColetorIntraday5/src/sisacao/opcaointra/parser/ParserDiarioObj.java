@@ -5,7 +5,6 @@ import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -17,13 +16,15 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import sisacao.opcaointra.cotacao.CotacaoDiario;
+import coletorjava.modelo.CotacaoDiario;
+import coletorjava.modelo.FabricaVo;
+import sisacao.opcaointra.cotacao.CotacaoDiarioOld;
 
 public class ParserDiarioObj {
 
 	static String diretorioArquivos = "download";
 	
-	static List<CotacaoDiario> listaCotacao = null;
+	static List<CotacaoDiarioOld> listaCotacao = null;
 	
 	
 	static List<CotacaoDiario> listaAcao = new ArrayList<CotacaoDiario>();
@@ -35,7 +36,7 @@ public class ParserDiarioObj {
 	public void inicio(String dataAAAAMMDD) {
 		File[] arquivos = arquivosDia(dataAAAAMMDD);
 		Arrays.sort(arquivos);
-		listaCotacao = new ArrayList<CotacaoDiario>();
+		listaCotacao = new ArrayList<CotacaoDiarioOld>();
 		File file = arquivos[arquivos.length-1];
 		//for (File file : arquivos) {
 		System.out.println("Arquivo: " + file.getAbsolutePath());
@@ -106,7 +107,7 @@ public class ParserDiarioObj {
 						String tipo = eElement.getElementsByTagName("MktDataStrmId").item(0).getTextContent();
 						if ("E".equals(tipo)) {
 							contaItem++;
-							CotacaoDiario novo = new CotacaoDiario(ticker);
+							CotacaoDiario novo = FabricaVo.criaCotacaoDiario();
 							
 							String fec = eElement.getElementsByTagName("LastPric").item(0).getTextContent();
 							String min = eElement.getElementsByTagName("MinPric").item(0).getTextContent();
@@ -115,11 +116,11 @@ public class ParserDiarioObj {
 							String neg = eElement.getElementsByTagName("RglrTxsQty").item(0).getTextContent();
 							String vol = eElement.getElementsByTagName("RglrTraddCtrcts").item(0).getTextContent();
 							
-							novo.setFechamento(Float.parseFloat(fec));
+							novo.setFechamentoOriginal(Float.parseFloat(fec));
 							novo.setNegocios(Integer.parseInt(neg));
-							novo.setTicker(ticker);
-							novo.setMaximo(Float.parseFloat(max));
-							novo.setMinimo(Float.parseFloat(min));
+							novo.setNomeTicker(ticker);
+							novo.setMaximoOriginal(Float.parseFloat(max));
+							novo.setMinimoOriginal(Float.parseFloat(min));
 							novo.setVolume(Float.parseFloat(vol));
 							novo.setData(data);
 							

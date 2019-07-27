@@ -1,6 +1,6 @@
 package sisacao.opcaointra.cotacao;
 
-public class CotacaoDiario {
+public class CotacaoDiarioOld {
 
 	private float abertura;
 	private float fechamento;
@@ -12,7 +12,7 @@ public class CotacaoDiario {
 	private String data;
 	private String ticker;
 	
-	public CotacaoDiario(String ticker) {
+	public CotacaoDiarioOld(String ticker) {
 		this.ticker = ticker;
 	}
 	
