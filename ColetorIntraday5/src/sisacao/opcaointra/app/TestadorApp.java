@@ -10,10 +10,8 @@ public class TestadorApp {
 
 	public static void main(String[] args) {
 		//testaColetaDiaria();
-		
 		try {
 			obtendoDiaPregao();
-			
 		} catch (DaoException e) {
 			System.out.println("Erro:" + e.getMessage());
 			e.printStackTrace();

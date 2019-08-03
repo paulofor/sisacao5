@@ -18,6 +18,8 @@ import org.w3c.dom.NodeList;
 
 import coletorjava.modelo.CotacaoDiario;
 import coletorjava.modelo.FabricaVo;
+import coletorjava.regracolecao.CotacaoDiarioRegraColecao;
+import coletorjava.regracolecao.FabricaRegra;
 import sisacao.opcaointra.cotacao.CotacaoDiarioOld;
 
 public class ParserDiarioObj {
@@ -32,7 +34,13 @@ public class ParserDiarioObj {
 	
 	static Map<String,CotacaoDiario> mapaAcao = new HashMap<String,CotacaoDiario>();
 	
- 
+	static CotacaoDiarioRegraColecao cotacaoDiarioRegra;
+	
+	public void ParserDiarioObj() {
+		cotacaoDiarioRegra = FabricaRegra.getInstancia().getCotacaoDiarioRegraColecao();
+	}
+	
+	
 	public void inicio(String dataAAAAMMDD) {
 		File[] arquivos = arquivosDia(dataAAAAMMDD);
 		Arrays.sort(arquivos);
@@ -44,7 +52,7 @@ public class ParserDiarioObj {
 		//}
 	}
 
-	private static File[] arquivosDia(String dataAAAAMMDD) {
+	private File[] arquivosDia(String dataAAAAMMDD) {
 		// create new filename filter
 		final String inicioArquivo = "BVBG.086.01_BV000328" + dataAAAAMMDD;
 		FilenameFilter fileNameFilter = new FilenameFilter() {
@@ -61,7 +69,7 @@ public class ParserDiarioObj {
 		return folder.listFiles(fileNameFilter);
 	}
 	
-	private static boolean ehOpcao(String ticker) {
+	private boolean ehOpcao(String ticker) {
 		return (Character.isLetter(ticker.charAt(0)) && 
 				Character.isLetter(ticker.charAt(1)) && 
 				Character.isLetter(ticker.charAt(2)) && 
@@ -70,7 +78,7 @@ public class ParserDiarioObj {
 				Character.isDigit(ticker.charAt(5)) );
 		
 	}
-	private static boolean ehAcao(String ticker) {
+	private boolean ehAcao(String ticker) {
 		return (Character.isLetter(ticker.charAt(0)) && 
 				Character.isLetter(ticker.charAt(1)) && 
 				Character.isLetter(ticker.charAt(2)) && 
@@ -79,8 +87,16 @@ public class ParserDiarioObj {
 				ticker.charAt(ticker.length()-1) != 'F' &&
 				ticker.length() <= 7);
 	}
+	
+	private void persisteCotacaoAcao() {
+		cotacaoDiarioRegra.setListaEntradaItem(listaAcao);
+		cotacaoDiarioRegra.
+	}
+	private void persisteCotacaoOpcao() {
+		cotacaoDiarioRegra.setListaEntradaItem(listaOpcao);
+	}
 
-	private static void executaParse(File inputFile, String data) {
+	private void executaParse(File inputFile, String data) {
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();

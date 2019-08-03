@@ -362,7 +362,9 @@ public abstract class CotacaoDiarioRegraColecao {
 		return item;
 	}
 	
-	
+	public void insereLista() throws DaoException {
+		
+	}
 	
 	
 	
