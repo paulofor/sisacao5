@@ -1,5 +1,7 @@
 package coletorjava.dao;
 
-public class CotacaoDiarioTabelaUnicaDao {
+import coletorjava.dao.basica.CotacaoDiarioTabelaUnicaDaoBaseI;
+
+public interface CotacaoDiarioTabelaUnicaDao extends CotacaoDiarioTabelaUnicaDaoBaseI {
 
 }

@@ -13,6 +13,7 @@ import br.com.digicom.lib.dao.DaoConexao;
 import br.com.digicom.lib.dao.DaoException;
 import br.com.digicom.parse.log.DatasUtils;
 import coletorjava.dao.CotacaoDiarioDao;
+import coletorjava.dao.DBB;
 import coletorjava.modelo.CotacaoDiario;
 import coletorjava.modelo.DiaPregao;
 import coletorjava.modelo.FabricaVo;
@@ -34,7 +35,7 @@ public  class CotacaoDiarioRegraColecaoImpl  extends CotacaoDiarioRegraColecao {
 		dao.setConexao(conexao);
 		Ticker ticker = this.getFiltro().getTicker();
 		if (ticker==null || ticker.getNome()==null) {
-			throw new RuntimeException("Ticker(ou nome_ticker) está nulo");
+			throw new RuntimeException("Ticker(ou nome_ticker) estï¿½ nulo");
 		}
 		CotacaoDiario cotacao = dao.ObtemMaisRecentePorTicker(ticker.getNome());
 		return cotacao;
@@ -58,10 +59,10 @@ public  class CotacaoDiarioRegraColecaoImpl  extends CotacaoDiarioRegraColecao {
 		String data = this.getFiltro().getData();
 		Ticker ticker = this.getFiltro().getTicker();
 		if (data==null) {
-			throw new RuntimeException("Data está null");
+			throw new RuntimeException("Data estï¿½ null");
 		}
 		if (ticker==null || ticker.getNome()==null) {
-			throw new RuntimeException("Ticker(ou nome_ticker) está nulo");
+			throw new RuntimeException("Ticker(ou nome_ticker) estï¿½ nulo");
 		}
 		try {
 			List<CotacaoDiario> listaCotacao = leArquivoHistorico(this.nomeArquivoHistorico(data),ticker);
@@ -297,6 +298,12 @@ public  class CotacaoDiarioRegraColecaoImpl  extends CotacaoDiarioRegraColecao {
 		CotacaoDiario cotacao = FabricaVo.criaCotacaoDiario();
 		cotacao.setLinhaArquivoDiario(getFiltro().getLinhaArquivoDiario());
 		return cotacao;
+	}
+
+	@Override
+	public void InsereListaAcao() throws DaoException {
+		// ToDo: Fazer loop mantendo conexao.
+		return DBB.getInstancia().getCotacaoDiarioDao();
 	}
 
 	

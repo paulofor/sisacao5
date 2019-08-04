@@ -1,7 +1,5 @@
 package coletorjava.dao;
 
-import  coletorjava.dao.*;
-
 // versao templates
 
 public  class DBB   {
@@ -61,6 +59,8 @@ public  class DBB   {
 		_ResultadoPrevisaoDao = null;
 	
 		_OpcaoReferenciaDao = null;
+		
+		_CotacaoDiarioTabelaUnicaDao = null;
 	
 	}
 
@@ -207,6 +207,12 @@ public  class DBB   {
 	public  OpcaoReferenciaDao getOpcaoReferenciaDao() {
 		if (_OpcaoReferenciaDao==null) _OpcaoReferenciaDao = new OpcaoReferenciaDaoExtendida();
 		return _OpcaoReferenciaDao;
+	}
+
+	private  CotacaoDiarioTabelaUnicaDao _CotacaoDiarioTabelaUnicaDao;
+	public  CotacaoDiarioTabelaUnicaDao getCotacaoDiarioTabelaUnicaDao() {
+		if (_CotacaoDiarioTabelaUnicaDao==null) _CotacaoDiarioTabelaUnicaDao = new CotacaoDiarioTabelaUnicaDaoExtendida();
+		return _CotacaoDiarioTabelaUnicaDao;
 	}
 
 }

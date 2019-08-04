@@ -16,6 +16,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import br.com.digicom.lib.dao.DaoException;
 import coletorjava.modelo.CotacaoDiario;
 import coletorjava.modelo.FabricaVo;
 import coletorjava.regracolecao.CotacaoDiarioRegraColecao;
@@ -88,9 +89,9 @@ public class ParserDiarioObj {
 				ticker.length() <= 7);
 	}
 	
-	private void persisteCotacaoAcao() {
+	private void persisteCotacaoAcao() throws DaoException {
 		cotacaoDiarioRegra.setListaEntradaItem(listaAcao);
-		cotacaoDiarioRegra.
+		cotacaoDiarioRegra.InsereListaAcao();
 	}
 	private void persisteCotacaoOpcao() {
 		cotacaoDiarioRegra.setListaEntradaItem(listaOpcao);

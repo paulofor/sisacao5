@@ -365,6 +365,8 @@ public abstract class CotacaoDiarioRegraColecao {
 	public void insereLista() throws DaoException {
 		
 	}
+
+	public abstract void InsereListaAcao() throws DaoException;
 	
 	
 	
