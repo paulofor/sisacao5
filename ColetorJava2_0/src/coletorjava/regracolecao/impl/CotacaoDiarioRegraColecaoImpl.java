@@ -13,6 +13,7 @@ import br.com.digicom.lib.dao.DaoConexao;
 import br.com.digicom.lib.dao.DaoException;
 import br.com.digicom.parse.log.DatasUtils;
 import coletorjava.dao.CotacaoDiarioDao;
+import coletorjava.dao.CotacaoDiarioTabelaUnicaDao;
 import coletorjava.dao.DBB;
 import coletorjava.modelo.CotacaoDiario;
 import coletorjava.modelo.DiaPregao;
@@ -26,7 +27,6 @@ import coletorjava.regracolecao.DiaPregaoRegraColecao;
 import coletorjava.regracolecao.FabricaRegra;
 import coletorjava.regracolecao.OpcaoSisacaoGeralRegraColecao;
 import coletorjava.regracolecao.OpcaoSisacaoRegraColecao;
-import coletorjava.regracolecao.extraicotacao.ExtraiCotacaoDiarioOpcao;
 
 
 public  class CotacaoDiarioRegraColecaoImpl  extends CotacaoDiarioRegraColecao { 
@@ -294,7 +294,6 @@ public  class CotacaoDiarioRegraColecaoImpl  extends CotacaoDiarioRegraColecao {
 
 	@Override
 	public CotacaoDiario ExtraiLinhaArquivoDiario(DaoConexao conexao) throws DaoException {
-		//ExtraiCotacaoDiarioOpcao extrator = new ExtraiCotacaoDiarioOpcao();
 		CotacaoDiario cotacao = FabricaVo.criaCotacaoDiario();
 		cotacao.setLinhaArquivoDiario(getFiltro().getLinhaArquivoDiario());
 		return cotacao;
@@ -302,8 +301,11 @@ public  class CotacaoDiarioRegraColecaoImpl  extends CotacaoDiarioRegraColecao {
 
 	@Override
 	public void InsereListaAcao() throws DaoException {
-		// ToDo: Fazer loop mantendo conexao.
-		return DBB.getInstancia().getCotacaoDiarioDao();
+		CotacaoDiarioTabelaUnicaDao dao = DBB.getInstancia().getCotacaoDiarioTabelaUnicaDao();
+		List<CotacaoDiario> listaCotacao = this.getListaEntradaItem();
+		for (CotacaoDiario cotacao : listaCotacao) {
+			dao.insereDiarioAcao(cotacao);
+		}
 	}
 
 	

@@ -8,7 +8,7 @@ public class ParserDiarioApp {
 	public static void main(String[] args) {
 		System.out.println("Ola Parser");
 		ParserDiarioObj obj = new ParserDiarioObj();
-		obj.inicio("20190514");
+		obj.inicio("20190808");
 	}
 	
 	

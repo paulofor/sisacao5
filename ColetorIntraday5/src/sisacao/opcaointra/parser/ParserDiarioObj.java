@@ -37,7 +37,7 @@ public class ParserDiarioObj {
 	
 	static CotacaoDiarioRegraColecao cotacaoDiarioRegra;
 	
-	public void ParserDiarioObj() {
+	public ParserDiarioObj() {
 		cotacaoDiarioRegra = FabricaRegra.getInstancia().getCotacaoDiarioRegraColecao();
 	}
 	
@@ -159,6 +159,7 @@ public class ParserDiarioObj {
 			System.out.println("Opções: " + listaOpcao.size());
 			System.out.println("Itens: " + contaItem);
 			
+			this.persisteCotacaoAcao();
 			//for (CotacaoDiario cotacao : listaAcao) {
 			//	System.out.println(cotacao);
 			//}

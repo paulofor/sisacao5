@@ -113,7 +113,7 @@ public abstract class DaoBase implements DaoI {
 	}
 
 	protected void executaSql(String sql) throws DaoException {
-		if (this._conexao==null) throw new DaoException("Conexão nula");
+		if (this._conexao==null) throw new DaoException("Conexao nula");
 		executaSql(sql, this._conexao);
 	}
 
