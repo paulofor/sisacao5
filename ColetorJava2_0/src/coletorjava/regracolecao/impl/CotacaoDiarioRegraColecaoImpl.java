@@ -301,11 +301,15 @@ public  class CotacaoDiarioRegraColecaoImpl  extends CotacaoDiarioRegraColecao {
 
 	@Override
 	public void InsereListaAcao() throws DaoException {
+		
 		CotacaoDiarioTabelaUnicaDao dao = DBB.getInstancia().getCotacaoDiarioTabelaUnicaDao();
+		DaoConexao conexao = dao.criaConexao();
+		dao.setConexao(conexao);
 		List<CotacaoDiario> listaCotacao = this.getListaEntradaItem();
 		for (CotacaoDiario cotacao : listaCotacao) {
 			dao.insereDiarioAcao(cotacao);
 		}
+		conexao.fechaConexao();
 	}
 
 	

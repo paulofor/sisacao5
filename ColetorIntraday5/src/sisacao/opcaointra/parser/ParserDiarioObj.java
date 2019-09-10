@@ -134,6 +134,7 @@ public class ParserDiarioObj {
 							String vol = eElement.getElementsByTagName("RglrTraddCtrcts").item(0).getTextContent();
 							
 							novo.setFechamentoOriginal(Float.parseFloat(fec));
+							novo.setAberturaOriginal(Float.parseFloat(abe));
 							novo.setNegocios(Integer.parseInt(neg));
 							novo.setNomeTicker(ticker);
 							novo.setMaximoOriginal(Float.parseFloat(max));
