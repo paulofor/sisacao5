@@ -20,7 +20,7 @@ public class TransferidorObj {
 	private final String URL_PATH = "http://www.bmfbovespa.com.br/bdi/";
 
 	public boolean main(String data, String ano) {
-		String diretorioDownload = "/home/usuario/sisacao5/AplicacoesAtivas/Diarios2019";
+		String diretorioDownload = "/home/usuario/sisacao5/AplicacoesAtivas/Diarios";
 		//String diretorioDownload = "E:/CotacaoJava/download/" + ano;
 		
 		String diretorioTrabalho = "download";
