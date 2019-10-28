@@ -44,6 +44,10 @@ public class ParserDiarioObj {
 	
 	public void inicio(String dataAAAAMMDD) {
 		File[] arquivos = arquivosDia(dataAAAAMMDD);
+		if (arquivos.length==0) {
+			System.out.println("Não tem arquivos de " + dataAAAAMMDD);
+			return;
+		}
 		Arrays.sort(arquivos);
 		listaCotacao = new ArrayList<CotacaoDiarioOld>();
 		File file = arquivos[arquivos.length-1];
@@ -71,22 +75,24 @@ public class ParserDiarioObj {
 	}
 	
 	private boolean ehOpcao(String ticker) {
-		return (Character.isLetter(ticker.charAt(0)) && 
+		boolean saida = (Character.isLetter(ticker.charAt(0)) && 
 				Character.isLetter(ticker.charAt(1)) && 
 				Character.isLetter(ticker.charAt(2)) && 
 				Character.isLetter(ticker.charAt(3)) && 
 				Character.isLetter(ticker.charAt(4)) && 
 				Character.isDigit(ticker.charAt(5)) );
+		return saida;
 		
 	}
 	private boolean ehAcao(String ticker) {
-		return (Character.isLetter(ticker.charAt(0)) && 
+		boolean saida = (Character.isLetter(ticker.charAt(0)) && 
 				Character.isLetter(ticker.charAt(1)) && 
 				Character.isLetter(ticker.charAt(2)) && 
 				Character.isLetter(ticker.charAt(3)) && 
 				Character.isDigit(ticker.charAt(4)) &&
 				ticker.charAt(ticker.length()-1) != 'F' &&
 				ticker.length() <= 7);
+		return saida;
 	}
 	
 	private void persisteCotacaoAcao() throws DaoException {
@@ -143,14 +149,15 @@ public class ParserDiarioObj {
 							novo.setData(data);
 							
 							
-							if (ehAcao(ticker) && novo.getNegocios()>100) {
+							if (ehAcao(ticker) && novo.getNegocios()>0) {
+								System.out.println(temp + "- " + ticker + "[" + data + "] (" + fec + " , " + neg + ")");
 								listaAcao.add(novo);
 							}
 							if (ehOpcao(ticker)) {
 								listaOpcao.add(novo);
 							}
 							
-							//System.out.println(temp + "- " + ticker + "(" + fec + " , " + neg + ")");
+							
 						}
 					}
 

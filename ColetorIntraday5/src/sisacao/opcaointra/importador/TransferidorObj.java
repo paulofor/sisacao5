@@ -67,8 +67,7 @@ public class TransferidorObj {
 		return false;
 	}
 
-	public boolean unzipFiles(String srcDirectory, String srcFile,
-			String destDirectory) {
+	public  boolean unzipFiles(String srcDirectory, String srcFile, String destDirectory) {
 		int BUFFER_SIZE = 4096;
 		try {
 			File sourceDirectory = new File(srcDirectory);
