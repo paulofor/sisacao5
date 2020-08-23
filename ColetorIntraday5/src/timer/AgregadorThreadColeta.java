@@ -45,16 +45,18 @@ public class AgregadorThreadColeta {
 	}
 
 
-	public void disparaColetoresDia(String mesDia) {
+	public void disparaColetoresDia(String diaAtual) {
 		// TODO Auto-generated method stub
 		int ms = 60000 * 2;
 		RestricaoTempo restricao = getRestricaoTempo();
+		restricao.comFinalSemana();
 		listaColetor = new ArrayList<ColetorIndividualTh>();
-		List<OpcaoSisacao> listaOpcao = listaOpcaoDia(mesDia, 2017);
+		List<OpcaoSisacao> listaOpcao = listaOpcaoDia(diaAtual);
+		
 		for (OpcaoSisacao opcaoDia : listaOpcao) {
 			//ColetorIndividualTh th = new ColetorIndividualTh(opcaoDia.getCodigoMercado());
 			PesquisadorTicker timerThread = getPesquisador();
-			timerThread.inicializa(opcaoDia.getCodigoMercado(), restricao);
+			timerThread.inicializa(opcaoDia.getCodigoMercado(), diaAtual, restricao);
 			this.timer.schedule(timerThread, 0L, ms);
 			this.listaThreads.add(timerThread);
 		}
@@ -63,10 +65,16 @@ public class AgregadorThreadColeta {
 		
 	}
 	
-	private List<OpcaoSisacao> listaOpcaoDia(String mesDia, int ano) {
+	private List<OpcaoSisacao> listaOpcaoDia(String diaAtual) {
 		List<OpcaoSisacao> listaOpcao = new ArrayList<OpcaoSisacao>();
 		OpcaoSisacao opcao = FabricaVo.criaOpcaoSisacao();
 		opcao.setCodigoMercado("PETR4");
+		listaOpcao.add(opcao);
+		opcao = FabricaVo.criaOpcaoSisacao();
+		opcao.setCodigoMercado("PETRU216");
+		listaOpcao.add(opcao);
+		opcao = FabricaVo.criaOpcaoSisacao();
+		opcao.setCodigoMercado("HGLG11");
 		listaOpcao.add(opcao);
 		return listaOpcao;
 	}

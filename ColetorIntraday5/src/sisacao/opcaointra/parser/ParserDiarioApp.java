@@ -4,43 +4,68 @@ import sisacao.opcaointra.importador.TransferidorObj;
 
 public class ParserDiarioApp {
 
+	
+	static ParserDiarioObj obj = new ParserDiarioObj();
+	static TransferidorObj transf = new TransferidorObj();
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		System.out.println("Ola Parser");
-		executaJan18();
-		//ParserDiarioObj obj = new ParserDiarioObj();
-		//obj.inicio("20190808");
+
+		executaMes("201801");
+		executaMes("201802");
+		executaMes("201803");
+		executaMes("201804");
+		executaMes("201805");
+		executaMes("201806");
+		executaMes("201807");
+		executaMes("201808");
+		executaMes("201809");
+		executaMes("201810");
+		executaMes("201811");
+		executaMes("201812");
+
 	}
 	
 	
-	private static void executaJan18() {
-		ParserDiarioObj obj = new ParserDiarioObj();
-		TransferidorObj transf = new TransferidorObj();
-		transf.unzipFiles("/home/usuario/sisacao5/AplicacoesAtivas/Diarios", "PR180101.zip", "/home/usuario/sisacao5/AplicacoesAtivas/ColetorIntraday5/download");
-		obj.inicio("20180101");
-		
-		transf.unzipFiles("/home/usuario/sisacao5/AplicacoesAtivas/Diarios", "PR180102.zip", "/home/usuario/sisacao5/AplicacoesAtivas/ColetorIntraday5/download");
-		obj.inicio("20180102");
-		/*
-		transf.unzipFiles("/home/usuario/sisacao5/AplicacoesAtivas/Diarios", "PR180103.zip", "/home/usuario/sisacao5/AplicacoesAtivas/ColetorIntraday5/download");
-		obj.inicio("20180103");
-		transf.unzipFiles("/home/usuario/sisacao5/AplicacoesAtivas/Diarios", "PR180104.zip", "/home/usuario/sisacao5/AplicacoesAtivas/ColetorIntraday5/download");
-		obj.inicio("20180104");
-		transf.unzipFiles("/home/usuario/sisacao5/AplicacoesAtivas/Diarios", "PR180105.zip", "/home/usuario/sisacao5/AplicacoesAtivas/ColetorIntraday5/download");
-		obj.inicio("20180105");
-		transf.unzipFiles("/home/usuario/sisacao5/AplicacoesAtivas/Diarios", "PR180106.zip", "/home/usuario/sisacao5/AplicacoesAtivas/ColetorIntraday5/download");
-		obj.inicio("20180106");
-		transf.unzipFiles("/home/usuario/sisacao5/AplicacoesAtivas/Diarios", "PR180107.zip", "/home/usuario/sisacao5/AplicacoesAtivas/ColetorIntraday5/download");
-		obj.inicio("20180107");
-		transf.unzipFiles("/home/usuario/sisacao5/AplicacoesAtivas/Diarios", "PR180108.zip", "/home/usuario/sisacao5/AplicacoesAtivas/ColetorIntraday5/download");
-		obj.inicio("20180108");
-		transf.unzipFiles("/home/usuario/sisacao5/AplicacoesAtivas/Diarios", "PR180109.zip", "/home/usuario/sisacao5/AplicacoesAtivas/ColetorIntraday5/download");
-		obj.inicio("20180109");
-		transf.unzipFiles("/home/usuario/sisacao5/AplicacoesAtivas/Diarios", "PR180110.zip", "/home/usuario/sisacao5/AplicacoesAtivas/ColetorIntraday5/download");
-		obj.inicio("20180110");
-		*/
+	private static void executaMes(String anoMes) {
+		processaDia(anoMes + "01");
+		processaDia(anoMes + "02");
+		processaDia(anoMes + "03");
+		processaDia(anoMes + "04");
+		processaDia(anoMes + "05");
+		processaDia(anoMes + "06");
+		processaDia(anoMes + "07");
+		processaDia(anoMes + "08");
+		processaDia(anoMes + "09");
+		processaDia(anoMes + "10");
+		processaDia(anoMes + "11");
+		processaDia(anoMes + "12");
+		processaDia(anoMes + "13");
+		processaDia(anoMes + "14");
+		processaDia(anoMes + "15");
+		processaDia(anoMes + "16");
+		processaDia(anoMes + "17");
+		processaDia(anoMes + "18");
+		processaDia(anoMes + "19");
+		processaDia(anoMes + "20");
+		processaDia(anoMes + "21");
+		processaDia(anoMes + "22");
+		processaDia(anoMes + "23");
+		processaDia(anoMes + "24");
+		processaDia(anoMes + "25");
+		processaDia(anoMes + "26");
+		processaDia(anoMes + "27");
+		processaDia(anoMes + "28");
+		processaDia(anoMes + "29");
+		processaDia(anoMes + "30");
+		processaDia(anoMes + "31");
 	}
 
+	private static void processaDia(String dia) {
+		transf.unzipFiles("/home/usuario/sisacao5/AplicacoesAtivas/Diarios", "PR" + dia.substring(2)+ ".zip", "/home/usuario/sisacao5/AplicacoesAtivas/ColetorIntraday5/download");
+		obj.inicio(dia);
+	}
+	
 }

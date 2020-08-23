@@ -5,7 +5,10 @@ import java.util.Calendar;
 public class DCConvert {
 	
 	public static String AAAAMMDD2AAAA_MM_DD(String data) {
-		
+		// AAAAMMDD
+		// 01234567
+		if (data.length() < 8) return "";
+		return data.substring(0, 4) + "-" + data.substring(4, 6) + "-" + data.substring(6);
 	}
 	
 	public static String ToDataAAAA_MM_DD(String data_dd_mm_aaaaa) {

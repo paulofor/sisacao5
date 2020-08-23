@@ -9,56 +9,44 @@ import coletorjava.modelo.DiaPregao;
 import coletorjava.regracolecao.DiaPregaoRegraColecao;
 import coletorjava.regracolecao.FabricaRegra;
 
-
-
 public abstract class ThreadPaiBase extends TimerTask {
 
-	
 	private String diaAtual = null;
 	private String diaAnterior = null;
 	private boolean existePregao;
-	
+
 	private DiaPregaoRegraColecao diaSrv = FabricaRegra.getInstancia().getDiaPregaoRegraColecao();
-	
+
 	public ThreadPaiBase() {
-		//this.locatorPeriodoPregao = new PeriodoPregaoWSLocator();
-		//this.locatorDiaPregao = new DiaPregaoWSLocator();
+		// this.locatorPeriodoPregao = new PeriodoPregaoWSLocator();
+		// this.locatorDiaPregao = new DiaPregaoWSLocator();
 		this.diaAtual = "";
 	}
-	
-	
+
 	@Override
 	public void run() {
-		//System.out.println("Verifica dia");
 		boolean mudouDia = verificaMudancaDia();
+		System.out.println("Novo dia ?:" + mudouDia + ", diaAtual: " + this.diaAtual);
 		if (mudouDia) {
-			//this.dadosParaCarregar = true;
-			if (this.diaAnterior.length() > 0) {
-				try {
+			try {
+				this.mudouDiaColetores(diaAtual);
+				if (this.diaAnterior.length() > 0) {
 					mudouDia(this.diaAtual, this.diaAnterior, existePregao(diaAnterior));
-				} catch (DaoException e) {
-					ArquivoLog.getInstancia().salvaLog("Erro ThreadPaiBase" + e);
-					e.printStackTrace();
 				}
-				//verificaMudancaMes();
-				//verificaMudancaAno();
+			} catch (DaoException e) {
+				ArquivoLog.getInstancia().salvaLog("Erro ThreadPaiBase" + e);
+				e.printStackTrace();
 			}
+			// verificaMudancaMes();
+			// verificaMudancaAno();
 		}
-//		try {
-//			if ((mudouDia) || (this.dadosParaCarregar)) {
-//				boolean carregou = trataVariaveisNovoDia();
-//				this.dadosParaCarregar = (!carregou);
-//				if (carregou)
-//					trataThreadsNovoDia();
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			//ArquivoLog.getInstancia().salvaLog("Erro ThreadPaiBase" + e);
-//		}
-		
 	}
-	
-	protected abstract void mudouDia(String paramString1, String paramString2, boolean paramBoolean) throws DaoException;
+
+
+
+	protected abstract void mudouDiaColetores(String novoDia) throws DaoException;
+	protected abstract void mudouDia(String paramString1, String paramString2, boolean paramBoolean)
+			throws DaoException;
 
 	private boolean verificaMudancaDia() {
 		String dataAgora = DatasUtils.getDataDD_MM_AAAA();
@@ -69,7 +57,7 @@ public abstract class ThreadPaiBase extends TimerTask {
 		}
 		return novaData;
 	}
-	
+
 	private boolean existePregao(String data) {
 		diaSrv.getFiltro().setDataPesquisa(data);
 		DiaPregao dia = null;
@@ -78,7 +66,7 @@ public abstract class ThreadPaiBase extends TimerTask {
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}
-		return (dia!=null && !dia.getFeriado());
+		return (dia != null && !dia.getFeriado());
 	}
 
 }

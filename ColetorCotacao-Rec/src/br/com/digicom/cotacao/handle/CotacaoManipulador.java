@@ -7,7 +7,31 @@ import br.com.digicom.parse.callback.IDadosParse;
 import br.com.digicom.util.DatasUtils;
 
 public class CotacaoManipulador implements IDadosParse {
+	
+	private String data;
+	private String ticker;
+	
 	private Cotacao cotacao;
+	
+	public CotacaoManipulador(String ticker, String data) {
+		this.data = data;
+		this.ticker = ticker;
+	}
+	
+	public String getTicker() {
+		return ticker;
+	}
+	
+	// dd-mm-aaaa
+	// 0123456789
+	
+	public String getAAAA_MM_DD() {
+		return "2020-08-21";
+		//return this.data.substring(6) + "-" + 
+		//		this.data.substring(3, 5) + "-" +
+		//		this.data.substring(0,2);
+	}
+	
 
 	public Cotacao getCotacao() {
 		return this.cotacao;
@@ -28,7 +52,7 @@ public class CotacaoManipulador implements IDadosParse {
 	}
 
 	public static String qtde(String numero) {
-		// Melhorar para testar se é numerico, senao retorna 0
+		// Melhorar para testar se ï¿½ numerico, senao retorna 0
 		if (numero==null) return  "0";
 		if ("-".equals(numero)) return "0";
 		StringBuffer saida = new StringBuffer("");

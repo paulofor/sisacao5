@@ -41,7 +41,3 @@ public abstract interface ICallbackParse {
 	public abstract URL getJsonUrl() throws MalformedURLException;
 }
 
-/*
- * Location: D:\Java-Recuperacao\webparse.jar Qualified Name:
- * br.com.digicom.parse.callback.ICallbackParse JD-Core Version: 0.6.0
- */

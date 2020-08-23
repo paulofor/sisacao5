@@ -17,6 +17,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import br.com.digicom.lib.dao.DaoException;
+import br.com.digicom.lib.util.DCConvert;
 import coletorjava.modelo.CotacaoDiario;
 import coletorjava.modelo.FabricaVo;
 import coletorjava.regracolecao.CotacaoDiarioRegraColecao;
@@ -92,6 +93,10 @@ public class ParserDiarioObj {
 				Character.isDigit(ticker.charAt(4)) &&
 				ticker.charAt(ticker.length()-1) != 'F' &&
 				ticker.length() <= 7);
+		if (saida)
+			saida = !"18".equals(ticker.substring(ticker.length()-2));
+		if (saida)
+			saida = !"19".equals(ticker.substring(ticker.length()-2));
 		return saida;
 	}
 	
@@ -104,15 +109,19 @@ public class ParserDiarioObj {
 	}
 
 	private void executaParse(File inputFile, String data) {
+		Element eElement = null;
+		String ticker = null;
+		String tipo = null;
+		
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(inputFile);
 			doc.getDocumentElement().normalize();
-			System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+			//System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
 			NodeList nList = doc.getElementsByTagName("PricRpt");
-			System.out.println("----------------------------");
-			System.out.println("nList.getLength(): " + nList.getLength());
+			//System.out.println("----------------------------");
+			//System.out.println("nList.getLength(): " + nList.getLength());
 
 			int contaItem = 0;
 			listaAcao = new ArrayList<CotacaoDiario>();
@@ -122,13 +131,13 @@ public class ParserDiarioObj {
 				Node nNode = nList.item(temp);
 				
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-					Element eElement = (Element) nNode;
-					String ticker = eElement.getElementsByTagName("TckrSymb").item(0).getTextContent();
+					eElement = (Element) nNode;
+					ticker = eElement.getElementsByTagName("TckrSymb").item(0).getTextContent();
 					NodeList lista = eElement.getElementsByTagName("MktDataStrmId");
 					if (lista.getLength() > 0) {
 
-						String tipo = eElement.getElementsByTagName("MktDataStrmId").item(0).getTextContent();
-						if ("E".equals(tipo)) {
+						tipo = eElement.getElementsByTagName("MktDataStrmId").item(0).getTextContent();
+						if ("E".equals(tipo) && eElement.getElementsByTagName("LastPric").item(0)!=null) {
 							contaItem++;
 							CotacaoDiario novo = FabricaVo.criaCotacaoDiario();
 							
@@ -149,8 +158,8 @@ public class ParserDiarioObj {
 							novo.setData(data);
 							
 							
-							if (ehAcao(ticker) && novo.getNegocios()>0) {
-								System.out.println(temp + "- " + ticker + "[" + data + "] (" + fec + " , " + neg + ")");
+							if (ehAcao(ticker)) {
+								//System.out.println(temp + "- " + ticker + "[" + data + "] (" + fec + " , " + neg + ")");
 								listaAcao.add(novo);
 							}
 							if (ehOpcao(ticker)) {
@@ -163,9 +172,9 @@ public class ParserDiarioObj {
 
 				}
 			}
-			System.out.println("Ações: " + listaAcao.size());
-			System.out.println("Opções: " + listaOpcao.size());
-			System.out.println("Itens: " + contaItem);
+			//System.out.println("Ações: " + listaAcao.size());
+			//System.out.println("Opções: " + listaOpcao.size());
+			//System.out.println("Itens: " + contaItem);
 			
 			this.persisteCotacaoAcao();
 			//for (CotacaoDiario cotacao : listaAcao) {

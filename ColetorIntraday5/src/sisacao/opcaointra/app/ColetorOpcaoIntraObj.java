@@ -23,7 +23,7 @@ public class ColetorOpcaoIntraObj {
 		System.out.println("Ola Mundo ! ");
 		criaThreadPrincipal();
 		//InicializaConexaoDaoThread();
-		//odouDia();
+		//mudouDia();
 		
 	}
 	
@@ -54,16 +54,13 @@ public class ColetorOpcaoIntraObj {
 	
 	
 	public void criaThreadPrincipal() {
-		int ms = 1000 * 60 * 15; // 15 minutos
+		int ms = 1000 * 60 * 20; // 20 minutos
 		this.timer = new Timer();
 		ThreadPaiBase principal = new ThreadPrincipal();
+		System.out.println("Criou a thread principal (" + (ms/1000) + "segs)");
 		this.timer.schedule(principal, 0L, ms);
 	}
 	
-	public void mudouDia() {
-		AgregadorThreadColeta agregador = new AgregadorThreadColeta();
-		//agregador.limpaColetoresAtual();
-   		agregador.disparaColetoresDia("0123");
-	}
+	
 	
 }

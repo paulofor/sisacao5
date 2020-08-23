@@ -13,6 +13,11 @@ public class ThreadPrincipal extends ThreadPaiBase{
 
 	private AgregadorThreadColeta agregador = new AgregadorThreadColeta();
 	
+	public void mudouDiaColetores() {
+		
+	}
+	
+	
 	@Override
 	protected void mudouDia(String diaAtual, String dataAnterior, boolean existePregaoDiaAnterior) throws DaoException {
 		System.out.println("Data anterior: " + dataAnterior);
@@ -42,6 +47,13 @@ public class ThreadPrincipal extends ThreadPaiBase{
 		}
 		//EscolhedorOpcaoSextaObj obj2 = new EscolhedorOpcaoSextaObj();
 		//obj2.processaDia(dataAnterior);
+	}
+
+
+	@Override
+	protected void mudouDiaColetores(String novoDia) throws DaoException {
+		//agregador.limpaColetoresAtual();
+   		agregador.disparaColetoresDia(novoDia);
 	}
 
 	
