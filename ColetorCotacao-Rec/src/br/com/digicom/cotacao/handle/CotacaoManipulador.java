@@ -26,10 +26,10 @@ public class CotacaoManipulador implements IDadosParse {
 	// 0123456789
 	
 	public String getAAAA_MM_DD() {
-		return "2020-08-21";
-		//return this.data.substring(6) + "-" + 
-		//		this.data.substring(3, 5) + "-" +
-		//		this.data.substring(0,2);
+		//return "2020-08-21";
+		return this.data.substring(6) + "-" + 
+				this.data.substring(3, 5) + "-" +
+				this.data.substring(0,2);
 	}
 	
 

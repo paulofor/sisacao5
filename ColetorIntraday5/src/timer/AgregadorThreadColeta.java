@@ -76,6 +76,9 @@ public class AgregadorThreadColeta {
 		opcao = FabricaVo.criaOpcaoSisacao();
 		opcao.setCodigoMercado("HGLG11");
 		listaOpcao.add(opcao);
+		opcao = FabricaVo.criaOpcaoSisacao();
+		opcao.setCodigoMercado("OZ1D");
+		listaOpcao.add(opcao);
 		return listaOpcao;
 	}
 
