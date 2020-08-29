@@ -1,0 +1,23 @@
+{
+  "name": "CotacaoIntradayOpcao",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ult": {
+      "type": "number"
+    },
+    "data": {
+      "type": "string"
+    },
+    "hora": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

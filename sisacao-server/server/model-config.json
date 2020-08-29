@@ -34,5 +34,33 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "ativo": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "AtivoOpcao": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "AtivoAcao": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "AtivoMercadoria": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "AtivoImobiliario": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "CotacaoIntradayOpcao": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "CotacaoIntradayAcao": {
+    "dataSource": "mysqlDS",
+    "public": true
   }
 }

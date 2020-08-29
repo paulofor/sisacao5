@@ -1,0 +1,23 @@
+{
+  "name": "CotacaoIntradayAcao",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "valor": {
+      "type": "number"
+    },
+    "data": {
+      "type": "string"
+    },
+    "hora": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
