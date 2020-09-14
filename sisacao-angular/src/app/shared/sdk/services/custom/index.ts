@@ -7,5 +7,7 @@ export * from './AtivoMercadoria';
 export * from './AtivoImobiliario';
 export * from './CotacaoIntradayOpcao';
 export * from './CotacaoIntradayAcao';
+export * from './CotacaoIntradayImobiliario';
+export * from './CotacaoIntradayMercadoria';
 export * from './SDKModels';
 export * from './logger.service';

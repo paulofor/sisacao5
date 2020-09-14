@@ -62,5 +62,13 @@
   "CotacaoIntradayAcao": {
     "dataSource": "mysqlDS",
     "public": true
+  },
+  "CotacaoIntradayImobiliario": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "CotacaoIntradayMercadoria": {
+    "dataSource": "mysqlDS",
+    "public": true
   }
 }

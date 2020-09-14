@@ -2,7 +2,7 @@ package br.com.digicom.sisacao.modelo;
 
 import com.strongloop.android.loopback.Model;
 
-public class AtivoAcao extends Model{
+public class AtivoAcao extends Model implements Ativo{
 
 	
 	private String ticker;

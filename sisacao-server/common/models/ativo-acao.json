@@ -8,23 +8,42 @@
   "properties": {
     "ticker": {
       "type": "string",
-      "id" : true
+      "id": true
     },
-    "nome" : {
+    "nome": {
       "type": "string"
     },
-    "intraday5" : {
-      "type" : "number"
+    "intraday5": {
+      "type": "number"
     },
-    "intraday15" : {
-      "type" : "number"
+    "intraday15": {
+      "type": "number"
     },
-    "intraday30" : {
-      "type" : "number"
+    "intraday30": {
+      "type": "number"
     }
   },
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {}
+  "methods": {
+    "ListaColetaIntraday": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaColetaIntraday",
+          "verb": "get"
+        }
+      ]
+    }
+  }
 }

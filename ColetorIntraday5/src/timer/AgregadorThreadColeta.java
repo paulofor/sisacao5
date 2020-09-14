@@ -4,28 +4,35 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 
-import sisacao.opcaointra.app.PesquisadorCotacaoOpcao;
-import br.com.digicom.cotacao.threads.PesquisadorTicker;
+import com.strongloop.android.loopback.RestAdapter;
+import com.strongloop.android.loopback.callbacks.ListCallback;
+
 import br.com.digicom.cotacao.threads.Tempo;
 import br.com.digicom.parse.RestricaoTempo;
+import br.com.digicom.sisacao.app.Loopback;
+import br.com.digicom.sisacao.modelo.AtivoAcao;
+import br.com.digicom.sisacao.repositorio.RepositorioAcaoBase;
 import coletorjava.modelo.FabricaVo;
 import coletorjava.modelo.OpcaoSisacao;
-import coletorjava.regracolecao.FabricaRegra;
-import coletorjava.regracolecao.OpcaoSisacaoRegraColecao;
+import sisacao.opcaointra.cotacao.PesquisadorIntradayAtivo;
 
 public class AgregadorThreadColeta {
 
-	private List<PesquisadorTicker> listaThreads = null;
+	private List<PesquisadorIntradayAtivo> listaThreads = null;
 	
 	private List<ColetorIndividualTh> listaColetor = null;
-	private OpcaoSisacaoRegraColecao opcaoBdSrv = FabricaRegra.getInstancia().getOpcaoSisacaoRegraColecao();
 	
-	Timer timer = new Timer();
+	RestAdapter adapter = new RestAdapter(Loopback.URL_SISACAO);
+	RepositorioAcaoBase.AtivoAcaoRepository repAcao = adapter.createRepository(RepositorioAcaoBase.AtivoAcaoRepository.class);
+
+	
+	
+	final Timer timer = new Timer();
 	
 
 	
 	public AgregadorThreadColeta() {
-		listaThreads = new ArrayList<PesquisadorTicker>();
+		listaThreads = new ArrayList<PesquisadorIntradayAtivo>();
 		listaColetor = new ArrayList<ColetorIndividualTh>();
 	}
 
@@ -40,30 +47,48 @@ public class AgregadorThreadColeta {
 	
 
 
-	private PesquisadorTicker getPesquisador() {
-		return new PesquisadorCotacaoOpcao();
-	}
-
+	
 
 	public void disparaColetoresDia(String diaAtual) {
-		// TODO Auto-generated method stub
-		int ms = 60000 * 2;
-		RestricaoTempo restricao = getRestricaoTempo();
-		restricao.comFinalSemana();
-		listaColetor = new ArrayList<ColetorIndividualTh>();
-		List<OpcaoSisacao> listaOpcao = listaOpcaoDia(diaAtual);
-		
-		for (OpcaoSisacao opcaoDia : listaOpcao) {
-			//ColetorIndividualTh th = new ColetorIndividualTh(opcaoDia.getCodigoMercado());
-			PesquisadorTicker timerThread = getPesquisador();
-			timerThread.inicializa(opcaoDia.getCodigoMercado(), diaAtual, restricao);
-			this.timer.schedule(timerThread, 0L, ms);
-			this.listaThreads.add(timerThread);
-		}
-		
-		
+		this.disparaColetoresDiaAcao(diaAtual);
+		this.disparaColetoresDiaImobiliario(diaAtual);
+		this.disparaColetoresDiaMercadoria(diaAtual);
+		this.disparaColetoresDiaOpcao(diaAtual);
+	}
+	
+	
+	private void disparaColetoresDiaAcao(final String diaAtual) {
+		final int ms = 60000 * 2;
+		final RestricaoTempo restricao = getRestricaoTempo();
+		repAcao.findAll(new ListCallback<AtivoAcao>() { 
+			@Override
+			public void onError(Throwable t) {
+				t.printStackTrace();
+			}
+			@Override
+			public void onSuccess(List<AtivoAcao> objects) {
+				System.out.println("Total Acao: " + objects.size());
+				for (AtivoAcao item : objects) {
+					System.out.println("Token:" + item.getTicker());
+					PesquisadorIntradayAtivo timerThread = new PesquisadorIntradayAtivo();
+					timerThread.inicializa(item, diaAtual, restricao);
+					timer.schedule(timerThread, 0L, ms);
+					listaThreads.add(timerThread);
+				}
+			} 
+        });
 		
 	}
+	private void disparaColetoresDiaOpcao(final String diaAtual) {
+		
+	}
+	private void disparaColetoresDiaImobiliario(final String diaAtual) {
+		
+	}
+	private void disparaColetoresDiaMercadoria(final String diaAtual) {
+		
+	}
+	
 	
 	private List<OpcaoSisacao> listaOpcaoDia(String diaAtual) {
 		List<OpcaoSisacao> listaOpcao = new ArrayList<OpcaoSisacao>();
@@ -85,8 +110,8 @@ public class AgregadorThreadColeta {
 	
 	private RestricaoTempo getRestricaoTempo() {
 		Tempo restricao = new Tempo();
-		restricao.inicializaHorarios(10, 23); // Parra testes
-		//restricao.inicializaHorarios(10, 18);
+		//restricao.inicializaHorarios(10, 23); // Parra testes
+		restricao.inicializaHorarios(10, 18);
 		return restricao;
 	}
 }

@@ -13,6 +13,8 @@ public class CotacaoManipulador implements IDadosParse {
 	
 	private Cotacao cotacao;
 	
+	
+	
 	public CotacaoManipulador(String ticker, String data) {
 		this.data = data;
 		this.ticker = ticker;
@@ -78,6 +80,10 @@ public class CotacaoManipulador implements IDadosParse {
 	@Override
 	public void setJson(JSONObject json) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	public void gravaIntraday(String horario, Double valor) {
 		
 	}
 }

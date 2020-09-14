@@ -8,6 +8,8 @@ import { AtivoMercadoria } from '../../models/AtivoMercadoria';
 import { AtivoImobiliario } from '../../models/AtivoImobiliario';
 import { CotacaoIntradayOpcao } from '../../models/CotacaoIntradayOpcao';
 import { CotacaoIntradayAcao } from '../../models/CotacaoIntradayAcao';
+import { CotacaoIntradayImobiliario } from '../../models/CotacaoIntradayImobiliario';
+import { CotacaoIntradayMercadoria } from '../../models/CotacaoIntradayMercadoria';
 
 export interface Models { [name: string]: any }
 
@@ -23,6 +25,8 @@ export class SDKModels {
     AtivoImobiliario: AtivoImobiliario,
     CotacaoIntradayOpcao: CotacaoIntradayOpcao,
     CotacaoIntradayAcao: CotacaoIntradayAcao,
+    CotacaoIntradayImobiliario: CotacaoIntradayImobiliario,
+    CotacaoIntradayMercadoria: CotacaoIntradayMercadoria,
     
   };
 

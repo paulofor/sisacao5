@@ -10,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import br.com.digicom.cotacao.handle.CotacaoManipulador;
+import br.com.digicom.cotacao.vo.Cotacao;
 import br.com.digicom.lib.dao.DaoException;
 import br.com.digicom.parse.callback.CallbackParseJson;
 import br.com.digicom.parse.callback.IDadosParse;
@@ -51,6 +52,10 @@ public class CallbackCotacaoB3Json extends CallbackParseJson implements ICallbac
 				valor = maisRecente.getDouble(2);
 				this.horario = maisRecente.getString(5);
 				System.out.println("Valor: " + valor + "(" + horario + ")");
+				//Cotacao cotacao = new Cotacao();
+				//cotacao.setHoraNegocio(this.horario);;
+				//cotacao.setValor(valor);
+				dados.gravaIntraday(this.horario, valor);
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();

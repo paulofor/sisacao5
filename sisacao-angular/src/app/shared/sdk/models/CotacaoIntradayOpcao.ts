@@ -2,17 +2,23 @@
 
 declare var Object: any;
 export interface CotacaoIntradayOpcaoInterface {
-  "ult"?: number;
-  "data"?: string;
-  "hora"?: string;
-  "id"?: number;
+  "ticker"?: string;
+  "valor"?: number;
+  "dataHoraNegStr"?: string;
+  "dataHora"?: Date;
+  "dia"?: Date;
+  "posicaoDia"?: number;
+  "intervalo"?: number;
 }
 
 export class CotacaoIntradayOpcao implements CotacaoIntradayOpcaoInterface {
-  "ult": number;
-  "data": string;
-  "hora": string;
-  "id": number;
+  "ticker": string;
+  "valor": number;
+  "dataHoraNegStr": string;
+  "dataHora": Date;
+  "dia": Date;
+  "posicaoDia": number;
+  "intervalo": number;
   constructor(data?: CotacaoIntradayOpcaoInterface) {
     Object.assign(this, data);
   }
@@ -44,22 +50,34 @@ export class CotacaoIntradayOpcao implements CotacaoIntradayOpcaoInterface {
       name: 'CotacaoIntradayOpcao',
       plural: 'CotacaoIntradayOpcaos',
       path: 'CotacaoIntradayOpcaos',
-      idName: 'id',
+      idName: 'ticker',
       properties: {
-        "ult": {
-          name: 'ult',
+        "ticker": {
+          name: 'ticker',
+          type: 'string'
+        },
+        "valor": {
+          name: 'valor',
           type: 'number'
         },
-        "data": {
-          name: 'data',
+        "dataHoraNegStr": {
+          name: 'dataHoraNegStr',
           type: 'string'
         },
-        "hora": {
-          name: 'hora',
-          type: 'string'
+        "dataHora": {
+          name: 'dataHora',
+          type: 'Date'
         },
-        "id": {
-          name: 'id',
+        "dia": {
+          name: 'dia',
+          type: 'Date'
+        },
+        "posicaoDia": {
+          name: 'posicaoDia',
+          type: 'number'
+        },
+        "intervalo": {
+          name: 'intervalo',
           type: 'number'
         },
       },

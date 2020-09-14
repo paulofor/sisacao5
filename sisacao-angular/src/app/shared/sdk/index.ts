@@ -56,6 +56,8 @@ import { AtivoMercadoriaApi } from './services/custom/AtivoMercadoria';
 import { AtivoImobiliarioApi } from './services/custom/AtivoImobiliario';
 import { CotacaoIntradayOpcaoApi } from './services/custom/CotacaoIntradayOpcao';
 import { CotacaoIntradayAcaoApi } from './services/custom/CotacaoIntradayAcao';
+import { CotacaoIntradayImobiliarioApi } from './services/custom/CotacaoIntradayImobiliario';
+import { CotacaoIntradayMercadoriaApi } from './services/custom/CotacaoIntradayMercadoria';
 /**
 * @module SDKBrowserModule
 * @description
@@ -94,8 +96,11 @@ export class SDKBrowserModule {
         AtivoImobiliarioApi,
         CotacaoIntradayOpcaoApi,
         CotacaoIntradayAcaoApi,
+        CotacaoIntradayImobiliarioApi,
+        CotacaoIntradayMercadoriaApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
+
       ]
     };
   }

@@ -6,18 +6,70 @@
     "validateUpsert": true
   },
   "properties": {
+    "ticker": {
+      "type": "string",
+      "id": true
+    },
     "valor": {
       "type": "number"
     },
-    "data": {
+    "dataHoraNegStr": {
       "type": "string"
     },
-    "hora": {
-      "type": "string"
+    "dataHora": {
+      "type": "date",
+      "id": true
+    },
+    "dia": {
+      "type": "date"
+    },
+    "posicaoDia": {
+      "type": "number"
+    },
+    "intervalo": {
+      "type": "number"
     }
   },
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {}
+  "methods": {
+    "InsereValorHorario": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "valor",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "horario",
+          "type": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/insereValorHorario",
+          "verb": "post"
+        }
+      ]
+    }
+  }
 }

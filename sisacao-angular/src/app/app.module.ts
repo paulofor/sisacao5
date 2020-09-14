@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -14,6 +14,30 @@ import { AtivoAcaoEditaComponent } from './ativo-acao-edita/ativo-acao-edita.com
 import { AtivoImobiliarioEditaComponent } from './ativo-imobiliario-edita/ativo-imobiliario-edita.component';
 import { AtivoMercadoriaEditaComponent } from './ativo-mercadoria-edita/ativo-mercadoria-edita.component';
 import { AtivoOpcaoEditaComponent } from './ativo-opcao-edita/ativo-opcao-edita.component';
+import { AtivoAcaoApi, AtivoOpcaoApi, AtivoMercadoriaApi, AtivoImobiliarioApi, SDKBrowserModule, SDKModels, LoopBackAuth, InternalStorage } from './shared/sdk';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { SocketConnection } from './shared/sdk/sockets/socket.connections';
+import { SocketDriver } from './shared/sdk/sockets/socket.driver';
+
+import {MatDialogModule} from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatListModule} from '@angular/material/list';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatTableModule} from '@angular/material/table';
+import { MatFormFieldModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatCheckbox, MatCheckboxModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
+//import { NgxImgModule } from 'ngx-img';
+import { FileDropModule } from 'ngx-file-drop';
+//import { UploadModule } from './upload/upload.module';
+import { ImageUploadModule } from "angular2-image-upload";
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgDragDropModule } from 'ng-drag-drop';
+
 
 @NgModule({
   declarations: [
@@ -27,13 +51,58 @@ import { AtivoOpcaoEditaComponent } from './ativo-opcao-edita/ativo-opcao-edita.
     AtivoAcaoEditaComponent,
     AtivoImobiliarioEditaComponent,
     AtivoMercadoriaEditaComponent,
-    AtivoOpcaoEditaComponent
+    AtivoOpcaoEditaComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule ,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    //NgxImgModule.forRoot(),
+    FileDropModule,
+    //UploadModule,
+    ImageUploadModule.forRoot(),
+    NgDragDropModule.forRoot(),
+    SDKBrowserModule.forRoot(),
+    MatExpansionModule,
+    MatListModule,
+    MatTabsModule,
+    MatCardModule,
+    MatIconModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatTableModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    FormsModule,
+    MatButtonModule
   ],
-  providers: [],
+  providers: [
+    AtivoAcaoApi,
+    AtivoOpcaoApi,
+    AtivoMercadoriaApi,
+    AtivoImobiliarioApi,
+    HttpClient, 
+    SocketConnection  , 
+    SocketDriver,
+    SDKModels,
+    LoopBackAuth,
+    InternalStorage,
+    { provide: LOCALE_ID, useValue: 'pt-BR' } 
+
+  ],
+  entryComponents : [
+    AtivoAcaoEditaComponent,
+    AtivoOpcaoEditaComponent,
+    AtivoMercadoriaEditaComponent,
+    AtivoImobiliarioEditaComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
