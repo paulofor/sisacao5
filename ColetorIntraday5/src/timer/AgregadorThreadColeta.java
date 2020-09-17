@@ -10,8 +10,15 @@ import com.strongloop.android.loopback.callbacks.ListCallback;
 import br.com.digicom.cotacao.threads.Tempo;
 import br.com.digicom.parse.RestricaoTempo;
 import br.com.digicom.sisacao.app.Loopback;
+import br.com.digicom.sisacao.modelo.Ativo;
 import br.com.digicom.sisacao.modelo.AtivoAcao;
+import br.com.digicom.sisacao.modelo.AtivoImobiliario;
+import br.com.digicom.sisacao.modelo.AtivoMercadoria;
+import br.com.digicom.sisacao.modelo.AtivoOpcao;
 import br.com.digicom.sisacao.repositorio.RepositorioAcaoBase;
+import br.com.digicom.sisacao.repositorio.RepositorioImobiliarioBase;
+import br.com.digicom.sisacao.repositorio.RepositorioMercadoriaBase;
+import br.com.digicom.sisacao.repositorio.RepositorioOpcaoBase;
 import coletorjava.modelo.FabricaVo;
 import coletorjava.modelo.OpcaoSisacao;
 import sisacao.opcaointra.cotacao.PesquisadorIntradayAtivo;
@@ -24,7 +31,9 @@ public class AgregadorThreadColeta {
 	
 	RestAdapter adapter = new RestAdapter(Loopback.URL_SISACAO);
 	RepositorioAcaoBase.AtivoAcaoRepository repAcao = adapter.createRepository(RepositorioAcaoBase.AtivoAcaoRepository.class);
-
+	RepositorioOpcaoBase.AtivoOpcaoRepository repOpcao = adapter.createRepository(RepositorioOpcaoBase.AtivoOpcaoRepository.class);
+	RepositorioMercadoriaBase.AtivoMercadoriaRepository repMercadoria = adapter.createRepository(RepositorioMercadoriaBase.AtivoMercadoriaRepository.class);
+	RepositorioImobiliarioBase.AtivoImobiliarioRepository repImobiliario = adapter.createRepository(RepositorioImobiliarioBase.AtivoImobiliarioRepository.class);
 	
 	
 	final Timer timer = new Timer();
@@ -58,7 +67,6 @@ public class AgregadorThreadColeta {
 	
 	
 	private void disparaColetoresDiaAcao(final String diaAtual) {
-		final int ms = 60000 * 2;
 		final RestricaoTempo restricao = getRestricaoTempo();
 		repAcao.findAll(new ListCallback<AtivoAcao>() { 
 			@Override
@@ -69,43 +77,71 @@ public class AgregadorThreadColeta {
 			public void onSuccess(List<AtivoAcao> objects) {
 				System.out.println("Total Acao: " + objects.size());
 				for (AtivoAcao item : objects) {
-					System.out.println("Token:" + item.getTicker());
-					PesquisadorIntradayAtivo timerThread = new PesquisadorIntradayAtivo();
-					timerThread.inicializa(item, diaAtual, restricao);
-					timer.schedule(timerThread, 0L, ms);
-					listaThreads.add(timerThread);
+					inicializaAtivo((Ativo)item, diaAtual, restricao);
 				}
 			} 
         });
 		
 	}
+
+	
 	private void disparaColetoresDiaOpcao(final String diaAtual) {
-		
+		final RestricaoTempo restricao = getRestricaoTempo();
+		repOpcao.findAll(new ListCallback<AtivoOpcao>() { 
+			@Override
+			public void onError(Throwable t) {
+				t.printStackTrace();
+			}
+			@Override
+			public void onSuccess(List<AtivoOpcao> objects) {
+				System.out.println("Total Acao: " + objects.size());
+				for (AtivoOpcao item : objects) {
+					inicializaAtivo((Ativo)item, diaAtual, restricao);
+				}
+			} 
+        });
 	}
 	private void disparaColetoresDiaImobiliario(final String diaAtual) {
-		
+		final RestricaoTempo restricao = getRestricaoTempo();
+		repImobiliario.findAll(new ListCallback<AtivoImobiliario>() { 
+			@Override
+			public void onError(Throwable t) {
+				t.printStackTrace();
+			}
+			@Override
+			public void onSuccess(List<AtivoImobiliario> objects) {
+				System.out.println("Total Acao: " + objects.size());
+				for (AtivoImobiliario item : objects) {
+					inicializaAtivo((Ativo)item, diaAtual, restricao);
+				}
+			} 
+        });
 	}
 	private void disparaColetoresDiaMercadoria(final String diaAtual) {
-		
+		final RestricaoTempo restricao = getRestricaoTempo();
+		repMercadoria.findAll(new ListCallback<AtivoMercadoria>() { 
+			@Override
+			public void onError(Throwable t) {
+				t.printStackTrace();
+			}
+			@Override
+			public void onSuccess(List<AtivoMercadoria> objects) {
+				for (AtivoMercadoria item : objects) {
+					inicializaAtivo((Ativo)item, diaAtual, restricao);
+				}
+			} 
+        });
+	}
+
+	
+	private final void inicializaAtivo(Ativo ativo, String diaAtual, RestricaoTempo restricao) {
+		System.out.println("Inicializando: " + ativo.getTicker() + "(" + ativo.minutos() + ")");
+		PesquisadorIntradayAtivo timerThread = new PesquisadorIntradayAtivo();
+		timerThread.inicializa(ativo, diaAtual, restricao);
+		timer.schedule(timerThread, 0L, ativo.milisegundos());
+		listaThreads.add(timerThread);
 	}
 	
-	
-	private List<OpcaoSisacao> listaOpcaoDia(String diaAtual) {
-		List<OpcaoSisacao> listaOpcao = new ArrayList<OpcaoSisacao>();
-		OpcaoSisacao opcao = FabricaVo.criaOpcaoSisacao();
-		opcao.setCodigoMercado("PETR4");
-		listaOpcao.add(opcao);
-		opcao = FabricaVo.criaOpcaoSisacao();
-		opcao.setCodigoMercado("PETRU216");
-		listaOpcao.add(opcao);
-		opcao = FabricaVo.criaOpcaoSisacao();
-		opcao.setCodigoMercado("HGLG11");
-		listaOpcao.add(opcao);
-		opcao = FabricaVo.criaOpcaoSisacao();
-		opcao.setCodigoMercado("OZ1D");
-		listaOpcao.add(opcao);
-		return listaOpcao;
-	}
 
 	
 	private RestricaoTempo getRestricaoTempo() {

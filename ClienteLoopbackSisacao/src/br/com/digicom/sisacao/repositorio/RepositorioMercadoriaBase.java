@@ -1,5 +1,55 @@
 package br.com.digicom.sisacao.repositorio;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import com.strongloop.android.loopback.ModelRepository;
+import com.strongloop.android.loopback.callbacks.EmptyResponseParser;
+import com.strongloop.android.loopback.callbacks.JsonArrayParser;
+import com.strongloop.android.loopback.callbacks.ListCallback;
+import com.strongloop.android.loopback.callbacks.VoidCallback;
+import com.strongloop.android.remoting.adapters.RestContractItem;
+
+import br.com.digicom.sisacao.modelo.AtivoMercadoria;
+import br.com.digicom.sisacao.modelo.CotacaoIntradayMercadoria;
+
 public class RepositorioMercadoriaBase {
+
+	
+	public static class AtivoMercadoriaRepository extends ModelRepository<AtivoMercadoria> {
+		public AtivoMercadoriaRepository() {
+			super("AtivoMercadoria", AtivoMercadoria.class);
+		}
+		@Override
+		protected String verificaNomeUrl(String nome) {
+			return "AtivoMercadoria";
+		}
+		public void listaColetaIntraday(final ListCallback<AtivoMercadoria> callback) {
+			RestContractItem contrato = new RestContractItem("AtivoMercadoria/listaColetaIntraday","POST");
+			this.getRestAdapter().getContract().addItem(contrato, "AtivoMercadoria.listaColetaIntraday");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        invokeStaticMethod("listaColetaIntraday", params,   new JsonArrayParser<AtivoMercadoria>(this, callback));
+			
+		}
+	}
+	
+	public static class CotacaoIntradayMercadoriaRepository extends ModelRepository<CotacaoIntradayMercadoria> {
+		public CotacaoIntradayMercadoriaRepository() {
+			super("CotacaoIntradayMercadoria", CotacaoIntradayMercadoria.class);
+		}
+		@Override
+		protected String verificaNomeUrl(String nome) {
+			return "CotacaoIntradayMercadorias";
+		}
+		public void insereValorHorario(String ticker, String horaNegocio, Double valor, final VoidCallback voidCallback) {
+			RestContractItem contrato = new RestContractItem("CotacaoIntradayMercadoria/insereValorHorario","POST");
+			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayMercadoria.insereValorHorario");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        params.put("ticker", ticker);
+	        params.put("valor", valor);
+	        params.put("horario", horaNegocio);
+	        invokeStaticMethod("insereValorHorario", params, new EmptyResponseParser(voidCallback));
+		}
+	}
 
 }

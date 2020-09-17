@@ -12,7 +12,7 @@ module.exports = function (Cotacaointradayacao) {
 
     Cotacaointradayacao.InsereValorHorario = function (ticker, valor, horario, callback) {
         let sql = "insert into CotacaoIntradayAcao (ticker,dataHora,valor,dataHoraNegStr, dia, posicaoDia, intervalo) " +
-            "values ('" + ticker + "' , now(), " + valor + ", '" + horario + "' , null, 0, 0 )"
+        "values ('" + ticker + "' , now(), " + valor + ", '" + horario + "' , now(), 0, 0 )"
         let ds = Cotacaointradayacao.dataSource;
         ds.connector.query(sql, callback);
     };

@@ -2,14 +2,14 @@ package br.com.digicom.sisacao.modelo;
 
 import com.strongloop.android.loopback.Model;
 
-public class AtivoAcao extends Model implements Ativo{
+public class AtivoAcao extends Ativo{
 
 	
 	private String ticker;
 	private String nome;
-	private Long intraday5;
-	private Long intraday15;
-	private Long intraday30;
+	private Integer intraday5;
+	private Integer intraday15;
+	private Integer intraday30;
 	
 	public String getTicker() {
 		return ticker;
@@ -23,22 +23,22 @@ public class AtivoAcao extends Model implements Ativo{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Long getIntraday5() {
+	public Integer getIntraday5() {
 		return intraday5;
 	}
-	public void setIntraday5(Long intraday5) {
+	public void setIntraday5(Integer intraday5) {
 		this.intraday5 = intraday5;
 	}
-	public Long getIntraday15() {
+	public Integer getIntraday15() {
 		return intraday15;
 	}
-	public void setIntraday15(Long intraday15) {
+	public void setIntraday15(Integer intraday15) {
 		this.intraday15 = intraday15;
 	}
-	public Long getIntraday30() {
+	public Integer getIntraday30() {
 		return intraday30;
 	}
-	public void setIntraday30(Long intraday30) {
+	public void setIntraday30(Integer intraday30) {
 		this.intraday30 = intraday30;
 	}
 	
