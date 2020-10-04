@@ -101,7 +101,7 @@ public class ParserDiarioObj {
 	}
 	
 	private void persisteCotacaoAcao() throws DaoException {
-		cotacaoDiarioRegra.setListaEntradaItem(listaAcao);
+		cotacaoDiarioRegra.setListaEntradaItem(mapaAcao.values());
 		cotacaoDiarioRegra.InsereListaAcao();
 	}
 	private void persisteCotacaoOpcao() {
@@ -126,6 +126,7 @@ public class ParserDiarioObj {
 			int contaItem = 0;
 			listaAcao = new ArrayList<CotacaoDiario>();
 			listaOpcao = new ArrayList<CotacaoDiario>();
+			mapaAcao = new HashMap<String,CotacaoDiario>(); 
 			
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 				Node nNode = nList.item(temp);
@@ -157,14 +158,22 @@ public class ParserDiarioObj {
 							novo.setVolume(Float.parseFloat(vol));
 							novo.setData(data);
 							
+							//listaAcao.add(novo);
+							if (!mapaAcao.containsKey(novo.getNomeTicker())) {
+								mapaAcao.put(novo.getNomeTicker(), novo);
+							} else {
+								System.out.println("Ticker: " + novo.getNomeTicker());
+							}
+								
 							
+							/*
 							if (ehAcao(ticker)) {
-								//System.out.println(temp + "- " + ticker + "[" + data + "] (" + fec + " , " + neg + ")");
 								listaAcao.add(novo);
 							}
 							if (ehOpcao(ticker)) {
 								listaOpcao.add(novo);
 							}
+							*/
 							
 							
 						}

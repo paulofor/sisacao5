@@ -19,6 +19,10 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { SocketConnection } from './shared/sdk/sockets/socket.connections';
 import { SocketDriver } from './shared/sdk/sockets/socket.driver';
 
+
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+
 import {MatDialogModule} from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -37,7 +41,13 @@ import { FileDropModule } from 'ngx-file-drop';
 import { ImageUploadModule } from "angular2-image-upload";
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgDragDropModule } from 'ng-drag-drop';
+import { CotacaoIntraAcaoComponent } from './cotacao-intra-acao/cotacao-intra-acao.component';
+import { CotacaoIntraOpcaoComponent } from './cotacao-intra-opcao/cotacao-intra-opcao.component';
+import { CotacaoIntraMercadoriaComponent } from './cotacao-intra-mercadoria/cotacao-intra-mercadoria.component';
+import { CotacaoIntraImobiliarioComponent } from './cotacao-intra-imobiliario/cotacao-intra-imobiliario.component';
 
+
+registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
   declarations: [
@@ -52,6 +62,10 @@ import { NgDragDropModule } from 'ng-drag-drop';
     AtivoImobiliarioEditaComponent,
     AtivoMercadoriaEditaComponent,
     AtivoOpcaoEditaComponent,
+    CotacaoIntraAcaoComponent,
+    CotacaoIntraOpcaoComponent,
+    CotacaoIntraMercadoriaComponent,
+    CotacaoIntraImobiliarioComponent,
   ],
   imports: [
     BrowserModule,

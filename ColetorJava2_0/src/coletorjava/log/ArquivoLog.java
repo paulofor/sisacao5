@@ -14,7 +14,7 @@ public class ArquivoLog {
 	// private String _arquivoErro = "Erros.log";
 	// private String _arquivoErroDao = "ErroDao.log";
 	// private String _arquivoMonitoracao = "Monitoramento.log";
-	private static String _raiz = "D:\\CotacaoJava\\Log";
+	private static String _raiz = "/home/usuario/sisacao5/AplicacoesAtivas/logs";
 
 	private static String getNomeArquivo() {
 		return _raiz + "\\" + DCConvert.getDataDD_MM_AAAA() + "_Dados.log";

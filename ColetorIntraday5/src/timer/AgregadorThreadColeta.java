@@ -49,7 +49,10 @@ public class AgregadorThreadColeta {
 	
 	public void limpaColetoresAtual() {
 		// TODO Auto-generated method stub
-		
+		for (PesquisadorIntradayAtivo item: listaThreads) {
+			item.cancel();
+		}
+		listaThreads.clear();
 	}
 
 
@@ -147,7 +150,7 @@ public class AgregadorThreadColeta {
 	private RestricaoTempo getRestricaoTempo() {
 		Tempo restricao = new Tempo();
 		//restricao.inicializaHorarios(10, 23); // Parra testes
-		restricao.inicializaHorarios(10, 18);
+		restricao.inicializaHorarios(9, 45, 18,30);
 		return restricao;
 	}
 }

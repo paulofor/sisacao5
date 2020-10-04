@@ -6,6 +6,10 @@ import { AtivoAcaoComponent } from '../ativo-acao/ativo-acao.component';
 import { AtivoOpcaoComponent } from '../ativo-opcao/ativo-opcao.component';
 import { AtivoMercadoriaComponent } from '../ativo-mercadoria/ativo-mercadoria.component';
 import { AtivoImobiliarioComponent } from '../ativo-imobiliario/ativo-imobiliario.component';
+import { CotacaoIntraAcaoComponent } from '../cotacao-intra-acao/cotacao-intra-acao.component';
+import { CotacaoIntraOpcaoComponent } from '../cotacao-intra-opcao/cotacao-intra-opcao.component';
+import { CotacaoIntraMercadoriaComponent } from '../cotacao-intra-mercadoria/cotacao-intra-mercadoria.component';
+import { CotacaoIntraImobiliarioComponent } from '../cotacao-intra-imobiliario/cotacao-intra-imobiliario.component';
 
 export const routes : Routes = [
     { path: 'home' , component: HomeComponent },
@@ -14,6 +18,12 @@ export const routes : Routes = [
     { path: 'ativoOpcao' , component: AtivoOpcaoComponent},
     { path: 'ativoMercadoria' , component: AtivoMercadoriaComponent},
     { path: 'ativoImobiliario' , component: AtivoImobiliarioComponent},
+
+    { path: 'cotacaoIntraAcao/:id' , component: CotacaoIntraAcaoComponent},
+    { path: 'cotacaoIntraOpcao/:id' , component: CotacaoIntraOpcaoComponent},
+    { path: 'cotacaoIntraMercadoria/:id' , component: CotacaoIntraMercadoriaComponent},
+    { path: 'cotacaoIntraImobiliario/:id' , component: CotacaoIntraImobiliarioComponent},
+
 
     { path: '',          redirectTo: 'home', pathMatch: 'full' }
 ]

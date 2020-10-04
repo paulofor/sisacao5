@@ -8,10 +8,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintStream;
 import java.net.URL;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+
+import coletorjava.log.ArquivoLog;
 
 
 
@@ -38,7 +39,7 @@ public class TransferidorObj {
 			copyStream(in, out);
 			return unzipFiles(diretorioDownload, nomeArquivo, diretorioTrabalho);
 		} catch (Exception e) {
-			//ArquivoLog.getInstancia().salvaErro(e);
+			ArquivoLog.getInstancia().salvaErro(e);
 			e.printStackTrace();
 		}
 		return false;

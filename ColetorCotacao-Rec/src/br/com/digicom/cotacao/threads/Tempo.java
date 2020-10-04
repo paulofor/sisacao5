@@ -5,24 +5,30 @@
  
  public class Tempo extends RestricaoTempo
  {
-/* 12 */   Date inicioLeilao = null;
-/* 13 */   Date finalLeilao = null;
+   Date inicioLeilao = null;
+   Date finalLeilao = null;
+   
+   public void inicializaHorarios(int horaIni, int minIni, int horaFinal, int minFinal) {
+	   setHorarioDia(RestricaoTempo.ConverteHoraMinuto(horaIni, minIni), RestricaoTempo.ConverteHoraMinuto(horaFinal, minFinal));
+	   setHorarioLeilao(RestricaoTempo.ConverteHoraMinuto(horaFinal, 16), RestricaoTempo.ConverteHoraMinuto(horaFinal, 17));
+
+   }
  
    public void inicializaHorarios(int horaInicial, int horaFinal) {
-/* 16 */     setHorarioDia(RestricaoTempo.ConverteHoraMinuto(horaInicial, 25), RestricaoTempo.ConverteHoraMinuto(horaFinal, 45));
-/* 17 */     setHorarioLeilao(RestricaoTempo.ConverteHoraMinuto(horaFinal, 16), RestricaoTempo.ConverteHoraMinuto(horaFinal, 39));
+     setHorarioDia(RestricaoTempo.ConverteHoraMinuto(horaInicial, 25), RestricaoTempo.ConverteHoraMinuto(horaFinal, 45));
+     setHorarioLeilao(RestricaoTempo.ConverteHoraMinuto(horaFinal, 16), RestricaoTempo.ConverteHoraMinuto(horaFinal, 39));
    }
  
    public void setHorarioLeilao(Date inicioLeilao, Date finalLeilao)
    {
-/* 22 */     this.finalLeilao = finalLeilao;
-/* 23 */     this.inicioLeilao = inicioLeilao;
+     this.finalLeilao = finalLeilao;
+     this.inicioLeilao = inicioLeilao;
    }
  
    protected boolean testaAcesso(Date horaCorrente)
    {
-/* 29 */     return (this.inicioLeilao == null) || (this.finalLeilao == null) || 
-/* 28 */       (!horaCorrente.after(atualizaDia(this.inicioLeilao))) || (!horaCorrente.before(atualizaDia(this.finalLeilao)));
+     return (this.inicioLeilao == null) || (this.finalLeilao == null) || 
+       (!horaCorrente.after(atualizaDia(this.inicioLeilao))) || (!horaCorrente.before(atualizaDia(this.finalLeilao)));
    }
  }
 

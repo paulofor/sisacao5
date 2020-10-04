@@ -1,3 +1,4 @@
+
 <div class="main-content" *ngIf="lista">
   <div class="container-fluid">
     <div class="row">
@@ -21,7 +22,7 @@
               </thead>
               <tbody>
                 <tr *ngFor="let item of lista">
-                  <td>{{item.ticker }}</td>
+                  <td><a routerLink='/cotacaoIntraImobiliario/{{item.ticker}}'>{{item.ticker }}</a></td>
                   <td>{{item.nome }}</td>
                   <td>{{item.intraday5}}</td>
                   <td>{{item.intraday15}}</td>
@@ -39,3 +40,4 @@
     </div>
   </div>
 </div>
+

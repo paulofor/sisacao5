@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -305,7 +306,7 @@ public  class CotacaoDiarioRegraColecaoImpl  extends CotacaoDiarioRegraColecao {
 		CotacaoDiarioTabelaUnicaDao dao = DBB.getInstancia().getCotacaoDiarioTabelaUnicaDao();
 		DaoConexao conexao = dao.criaConexao();
 		dao.setConexao(conexao);
-		List<CotacaoDiario> listaCotacao = this.getListaEntradaItem();
+		Collection<CotacaoDiario> listaCotacao = this.getListaEntradaItem();
 		for (CotacaoDiario cotacao : listaCotacao) {
 			dao.insereDiarioAcao(cotacao);
 		}

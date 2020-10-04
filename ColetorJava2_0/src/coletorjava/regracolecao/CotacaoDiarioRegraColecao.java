@@ -59,11 +59,11 @@ public abstract class CotacaoDiarioRegraColecao {
 	public void setListaEntrada(final CotacaoDiarioFiltro[] dado) {
 		_listaEntrada = dado;
 	}
-	private List<CotacaoDiario> _listaItem;
-	protected List<CotacaoDiario> getListaEntradaItem() {
+	private Collection<CotacaoDiario> _listaItem;
+	protected Collection<CotacaoDiario> getListaEntradaItem() {
 		return _listaItem;
 	}
-	public void setListaEntradaItem(final List<CotacaoDiario> dado) {
+	public void setListaEntradaItem(final Collection<CotacaoDiario> dado) {
 		_listaItem = dado;
 	}
 	private List _listaGenerica;
