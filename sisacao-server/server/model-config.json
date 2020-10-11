@@ -70,5 +70,13 @@
   "CotacaoIntradayMercadoria": {
     "dataSource": "mysqlDS",
     "public": true
+  },
+  "DataSource": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "AtributoDataSource": {
+    "dataSource": "mysqlDS",
+    "public": true
   }
 }

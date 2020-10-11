@@ -33,43 +33,5 @@
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {
-    "InsereValorHorario": {
-      "accepts": [
-        {
-          "arg": "ticker",
-          "type": "string",
-          "required": false,
-          "description": ""
-        },
-        {
-          "arg": "valor",
-          "type": "number",
-          "required": false,
-          "description": ""
-        },
-        {
-          "arg": "horario",
-          "type": "string",
-          "required": false,
-          "description": ""
-        }
-      ],
-      "returns": [
-        {
-          "arg": "saida",
-          "type": "object",
-          "root": true,
-          "description": ""
-        }
-      ],
-      "description": "",
-      "http": [
-        {
-          "path": "/insereValorHorario",
-          "verb": "post"
-        }
-      ]
-    }
-  }
+  "methods": {}
 }
