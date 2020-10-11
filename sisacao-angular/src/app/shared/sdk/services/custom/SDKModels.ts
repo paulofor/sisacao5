@@ -10,6 +10,8 @@ import { CotacaoIntradayOpcao } from '../../models/CotacaoIntradayOpcao';
 import { CotacaoIntradayAcao } from '../../models/CotacaoIntradayAcao';
 import { CotacaoIntradayImobiliario } from '../../models/CotacaoIntradayImobiliario';
 import { CotacaoIntradayMercadoria } from '../../models/CotacaoIntradayMercadoria';
+import { DataSource } from '../../models/DataSource';
+import { AtributoDataSource } from '../../models/AtributoDataSource';
 
 export interface Models { [name: string]: any }
 
@@ -27,6 +29,8 @@ export class SDKModels {
     CotacaoIntradayAcao: CotacaoIntradayAcao,
     CotacaoIntradayImobiliario: CotacaoIntradayImobiliario,
     CotacaoIntradayMercadoria: CotacaoIntradayMercadoria,
+    DataSource: DataSource,
+    AtributoDataSource: AtributoDataSource,
     
   };
 

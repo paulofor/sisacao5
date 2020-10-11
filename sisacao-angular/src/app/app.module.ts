@@ -45,6 +45,10 @@ import { CotacaoIntraAcaoComponent } from './cotacao-intra-acao/cotacao-intra-ac
 import { CotacaoIntraOpcaoComponent } from './cotacao-intra-opcao/cotacao-intra-opcao.component';
 import { CotacaoIntraMercadoriaComponent } from './cotacao-intra-mercadoria/cotacao-intra-mercadoria.component';
 import { CotacaoIntraImobiliarioComponent } from './cotacao-intra-imobiliario/cotacao-intra-imobiliario.component';
+import { DataSourceListComponent } from './data-source-list/data-source-list.component';
+import { DataSourceEditComponent } from './data-source-edit/data-source-edit.component';
+import { TransformacaoListComponent } from './transformacao-list/transformacao-list.component';
+import { TransformacaoEditComponent } from './transformacao-edit/transformacao-edit.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -66,6 +70,10 @@ registerLocaleData(localePt, 'pt-BR');
     CotacaoIntraOpcaoComponent,
     CotacaoIntraMercadoriaComponent,
     CotacaoIntraImobiliarioComponent,
+    DataSourceListComponent,
+    DataSourceEditComponent,
+    TransformacaoListComponent,
+    TransformacaoEditComponent,
   ],
   imports: [
     BrowserModule,

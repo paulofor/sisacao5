@@ -9,15 +9,15 @@ import { LoopBackFilter,  } from '../../models/BaseModels';
 import { ErrorHandler } from '../core/error.service';
 import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { CotacaoIntradayOpcao } from '../../models/CotacaoIntradayOpcao';
+import { AtributoDataSource } from '../../models/AtributoDataSource';
 import { SocketConnection } from '../../sockets/socket.connections';
 
 
 /**
- * Api services for the `CotacaoIntradayOpcao` model.
+ * Api services for the `AtributoDataSource` model.
  */
 @Injectable()
-export class CotacaoIntradayOpcaoApi extends BaseLoopBackApi {
+export class AtributoDataSourceApi extends BaseLoopBackApi {
 
   constructor(
     @Inject(HttpClient) protected http: HttpClient,
@@ -42,13 +42,13 @@ export class CotacaoIntradayOpcaoApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `CotacaoIntradayOpcao` object.)
+   * This usually means the response is a `AtributoDataSource` object.)
    * </em>
    */
   public patchOrCreate(data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/CotacaoIntradayOpcaos";
+    "/AtributoDataSources";
     let _routeParams: any = {};
     let _postBody: any = {
       data: data
@@ -61,7 +61,7 @@ export class CotacaoIntradayOpcaoApi extends BaseLoopBackApi {
   /**
    * Patch attributes for a model instance and persist it into the data source.
    *
-   * @param {any} id CotacaoIntradayOpcao id
+   * @param {any} id AtributoDataSource id
    *
    * @param {object} data Request data.
    *
@@ -73,13 +73,13 @@ export class CotacaoIntradayOpcaoApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `CotacaoIntradayOpcao` object.)
+   * This usually means the response is a `AtributoDataSource` object.)
    * </em>
    */
   public patchAttributes(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/CotacaoIntradayOpcaos/:id";
+    "/AtributoDataSources/:id";
     let _routeParams: any = {
       id: id
     };
@@ -92,46 +92,10 @@ export class CotacaoIntradayOpcaoApi extends BaseLoopBackApi {
   }
 
   /**
-   * <em>
-         * (The remote method definition does not provide any description.)
-         * </em>
-   *
-   * @param {object} data Request data.
-   *
-   *  - `ticker` – `{string}` - 
-   *
-   *  - `valor` – `{number}` - 
-   *
-   *  - `horario` – `{string}` - 
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `CotacaoIntradayOpcao` object.)
-   * </em>
-   */
-  public InsereValorHorario(ticker: any = {}, valor: any = {}, horario: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "POST";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/CotacaoIntradayOpcaos/insereValorHorario";
-    let _routeParams: any = {};
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    if (typeof ticker !== 'undefined' && ticker !== null) _urlParams.ticker = ticker;
-    if (typeof valor !== 'undefined' && valor !== null) _urlParams.valor = valor;
-    if (typeof horario !== 'undefined' && horario !== null) _urlParams.horario = horario;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
    * The name of the model represented by this $resource,
-   * i.e. `CotacaoIntradayOpcao`.
+   * i.e. `AtributoDataSource`.
    */
   public getModelName() {
-    return "CotacaoIntradayOpcao";
+    return "AtributoDataSource";
   }
 }

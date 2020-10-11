@@ -10,6 +10,7 @@ import { CotacaoIntraAcaoComponent } from '../cotacao-intra-acao/cotacao-intra-a
 import { CotacaoIntraOpcaoComponent } from '../cotacao-intra-opcao/cotacao-intra-opcao.component';
 import { CotacaoIntraMercadoriaComponent } from '../cotacao-intra-mercadoria/cotacao-intra-mercadoria.component';
 import { CotacaoIntraImobiliarioComponent } from '../cotacao-intra-imobiliario/cotacao-intra-imobiliario.component';
+import { DataSourceListComponent } from '../data-source-list/data-source-list.component';
 
 export const routes : Routes = [
     { path: 'home' , component: HomeComponent },
@@ -24,6 +25,7 @@ export const routes : Routes = [
     { path: 'cotacaoIntraMercadoria/:id' , component: CotacaoIntraMercadoriaComponent},
     { path: 'cotacaoIntraImobiliario/:id' , component: CotacaoIntraImobiliarioComponent},
 
+    { path: 'dataSource' , component: DataSourceListComponent},
 
     { path: '',          redirectTo: 'home', pathMatch: 'full' }
 ]
