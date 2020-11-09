@@ -1,0 +1,26 @@
+{
+  "name": "StartupInvestimento",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "valor": {
+      "type": "number"
+    },
+    "data": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "startupEmpresa": {
+      "type": "belongsTo",
+      "model": "StartupEmpresa",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

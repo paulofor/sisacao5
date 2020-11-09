@@ -44,6 +44,61 @@
           "verb": "get"
         }
       ]
+    },
+    "InsereAcaoIndice": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "nome",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "tipo",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "quantidadeTeorica",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "participacao",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "indice",
+          "type": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/insereAcaoIndice",
+          "verb": "post"
+        }
+      ]
     }
   }
 }

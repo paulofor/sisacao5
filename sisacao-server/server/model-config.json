@@ -78,5 +78,17 @@
   "AtributoDataSource": {
     "dataSource": "mysqlDS",
     "public": true
+  },
+  "StartupFundo": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "StartupEmpresa": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "StartupInvestimento": {
+    "dataSource": "mysqlDS",
+    "public": true
   }
 }
