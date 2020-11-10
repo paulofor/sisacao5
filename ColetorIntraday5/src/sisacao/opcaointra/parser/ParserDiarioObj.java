@@ -148,6 +148,8 @@ public class ParserDiarioObj {
 							String abe = eElement.getElementsByTagName("FrstPric").item(0).getTextContent();
 							String neg = eElement.getElementsByTagName("RglrTxsQty").item(0).getTextContent();
 							String vol = eElement.getElementsByTagName("RglrTraddCtrcts").item(0).getTextContent();
+							Node nodePerc = eElement.getElementsByTagName("OscnPctg").item(0);
+							String perc = (nodePerc!=null ? eElement.getElementsByTagName("OscnPctg").item(0).getTextContent() : "0");
 							
 							novo.setFechamentoOriginal(Float.parseFloat(fec));
 							novo.setAberturaOriginal(Float.parseFloat(abe));
@@ -157,6 +159,7 @@ public class ParserDiarioObj {
 							novo.setMinimoOriginal(Float.parseFloat(min));
 							novo.setVolume(Float.parseFloat(vol));
 							novo.setData(data);
+							novo.setPercentual(Float.parseFloat(perc));
 							
 							//listaAcao.add(novo);
 							if (!mapaAcao.containsKey(novo.getNomeTicker())) {

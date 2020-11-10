@@ -49,6 +49,8 @@ import { DataSourceListComponent } from './data-source-list/data-source-list.com
 import { DataSourceEditComponent } from './data-source-edit/data-source-edit.component';
 import { TransformacaoListComponent } from './transformacao-list/transformacao-list.component';
 import { TransformacaoEditComponent } from './transformacao-edit/transformacao-edit.component';
+import { StartupEmpresaListComponent } from './startup-empresa-list/startup-empresa-list.component';
+import { StartupFundoListComponent } from './startup-fundo-list/startup-fundo-list.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -74,6 +76,8 @@ registerLocaleData(localePt, 'pt-BR');
     DataSourceEditComponent,
     TransformacaoListComponent,
     TransformacaoEditComponent,
+    StartupEmpresaListComponent,
+    StartupFundoListComponent,
   ],
   imports: [
     BrowserModule,
@@ -123,7 +127,8 @@ registerLocaleData(localePt, 'pt-BR');
     AtivoAcaoEditaComponent,
     AtivoOpcaoEditaComponent,
     AtivoMercadoriaEditaComponent,
-    AtivoImobiliarioEditaComponent
+    AtivoImobiliarioEditaComponent,
+    DataSourceEditComponent
   ],
   bootstrap: [AppComponent]
 })

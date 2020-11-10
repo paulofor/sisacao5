@@ -117,6 +117,51 @@ export class AtivoAcaoApi extends BaseLoopBackApi {
   }
 
   /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {object} data Request data.
+   *
+   *  - `ticker` – `{string}` - 
+   *
+   *  - `nome` – `{string}` - 
+   *
+   *  - `tipo` – `{string}` - 
+   *
+   *  - `quantidadeTeorica` – `{number}` - 
+   *
+   *  - `participacao` – `{number}` - 
+   *
+   *  - `indice` – `{string}` - 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `AtivoAcao` object.)
+   * </em>
+   */
+  public InsereAcaoIndice(ticker: any = {}, nome: any = {}, tipo: any = {}, quantidadeTeorica: any = {}, participacao: any = {}, indice: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/AtivoAcaos/insereAcaoIndice";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof ticker !== 'undefined' && ticker !== null) _urlParams.ticker = ticker;
+    if (typeof nome !== 'undefined' && nome !== null) _urlParams.nome = nome;
+    if (typeof tipo !== 'undefined' && tipo !== null) _urlParams.tipo = tipo;
+    if (typeof quantidadeTeorica !== 'undefined' && quantidadeTeorica !== null) _urlParams.quantidadeTeorica = quantidadeTeorica;
+    if (typeof participacao !== 'undefined' && participacao !== null) _urlParams.participacao = participacao;
+    if (typeof indice !== 'undefined' && indice !== null) _urlParams.indice = indice;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
    * The name of the model represented by this $resource,
    * i.e. `AtivoAcao`.
    */

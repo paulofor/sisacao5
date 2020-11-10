@@ -9,6 +9,9 @@ public interface CotacaoDiario extends DCIObjetoDominio , CotacaoDiarioAgregadoI
 {
 
 	
+	public float getPercentual();
+	public void setPercentual(float valor);
+	
 	public long getIdCotacaoDiario();
 	public void setIdCotacaoDiario(long valor);
 	

@@ -11,5 +11,8 @@ export * from './CotacaoIntradayImobiliario';
 export * from './CotacaoIntradayMercadoria';
 export * from './DataSource';
 export * from './AtributoDataSource';
+export * from './StartupFundo';
+export * from './StartupEmpresa';
+export * from './StartupInvestimento';
 export * from './SDKModels';
 export * from './logger.service';

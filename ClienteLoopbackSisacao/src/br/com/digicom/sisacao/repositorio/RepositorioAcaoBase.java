@@ -31,6 +31,20 @@ public class RepositorioAcaoBase {
 	        invokeStaticMethod("listaColetaIntraday", params,   new JsonArrayParser<AtivoAcao>(this, callback));
 			
 		}
+		public void insereAcaoIndice(String ticker, String nome, String tipo, Long quantidade, Double percentual, String indice,
+				final VoidCallback voidCallback) {
+			RestContractItem contrato = new RestContractItem("AtivoAcaos/insereAcaoIndice","POST");
+			this.getRestAdapter().getContract().addItem(contrato, "AtivoAcao.insereAcaoIndice");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        params.put("ticker", ticker);
+	        params.put("nome", nome);
+	        params.put("tipo", tipo);
+	        params.put("quantidade", quantidade);
+	        params.put("percentual", percentual);
+	        params.put("indice", indice);
+	        invokeStaticMethod("insereAcaoIndice", params,   new EmptyResponseParser(voidCallback));
+			
+		}
 	}
 	
 	public static class CotacaoIntradayAcaoRepository extends ModelRepository<CotacaoIntradayAcao> {

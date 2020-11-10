@@ -10,7 +10,7 @@
    
    public void inicializaHorarios(int horaIni, int minIni, int horaFinal, int minFinal) {
 	   setHorarioDia(RestricaoTempo.ConverteHoraMinuto(horaIni, minIni), RestricaoTempo.ConverteHoraMinuto(horaFinal, minFinal));
-	   setHorarioLeilao(RestricaoTempo.ConverteHoraMinuto(horaFinal, 16), RestricaoTempo.ConverteHoraMinuto(horaFinal, 17));
+	   //setHorarioLeilao(RestricaoTempo.ConverteHoraMinuto(horaFinal, 16), RestricaoTempo.ConverteHoraMinuto(horaFinal, 17));
 
    }
  

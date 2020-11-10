@@ -60,6 +60,9 @@ import { CotacaoIntradayImobiliarioApi } from './services/custom/CotacaoIntraday
 import { CotacaoIntradayMercadoriaApi } from './services/custom/CotacaoIntradayMercadoria';
 import { DataSourceApi } from './services/custom/DataSource';
 import { AtributoDataSourceApi } from './services/custom/AtributoDataSource';
+import { StartupFundoApi } from './services/custom/StartupFundo';
+import { StartupEmpresaApi } from './services/custom/StartupEmpresa';
+import { StartupInvestimentoApi } from './services/custom/StartupInvestimento';
 /**
 * @module SDKBrowserModule
 * @description
@@ -102,6 +105,9 @@ export class SDKBrowserModule {
         CotacaoIntradayMercadoriaApi,
         DataSourceApi,
         AtributoDataSourceApi,
+        StartupFundoApi,
+        StartupEmpresaApi,
+        StartupInvestimentoApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
       ]

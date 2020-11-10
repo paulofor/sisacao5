@@ -28,10 +28,11 @@
 /*  28 */     return cal.getTime();
 /*     */   }
 /*     */   
-/*     */   private static Date horaAtual() {
-/*  32 */     Calendar cal = Calendar.getInstance();
-/*  33 */     return cal.getTime();
-/*     */   }
+   private static Date horaAtual() {
+     Calendar cal = Calendar.getInstance();
+     cal.add(Calendar.HOUR_OF_DAY, -1);
+     return cal.getTime();
+   }
 /*     */   
 /*     */   public static boolean fimSemana() {
 /*  37 */     Calendar cal = Calendar.getInstance();
@@ -80,7 +81,8 @@
 /*  80 */     return data;
 /*     */   }
 /*     */   
-/*  83 */   public static String getDataDD_MM_AAAA() { Calendar now = Calendar.getInstance();
+/*  83 */   public static String getDataDD_MM_AAAA() { 
+			Calendar now = Calendar.getInstance();
 /*  84 */     String data = colocaZeroEsquerda(now.get(5)) + "-" + 
 /*  85 */       colocaZeroEsquerda(now.get(2) + 1) + "-" + 
 /*  86 */       now.get(1);

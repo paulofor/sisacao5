@@ -51,6 +51,7 @@ public abstract class RestricaoTempo {
 
 	private Date horaAtual() {
 		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.HOUR, -1);
 		return cal.getTime();
 	}
 

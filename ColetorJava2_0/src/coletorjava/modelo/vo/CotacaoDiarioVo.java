@@ -395,6 +395,18 @@ public class CotacaoDiarioVo implements CotacaoDiario
 	{
 		fechamentoCorrigido = value; 
 	}
+
+	
+	private float percentual;
+	@Override
+	public float getPercentual() {
+		return percentual;
+	}
+
+	@Override
+	public void setPercentual(float valor) {
+		this.percentual = valor;
+	}
 	
 	
 	
