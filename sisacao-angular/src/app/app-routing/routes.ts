@@ -10,7 +10,7 @@ import { CotacaoIntraAcaoComponent } from '../cotacao-intra-acao/cotacao-intra-a
 import { CotacaoIntraOpcaoComponent } from '../cotacao-intra-opcao/cotacao-intra-opcao.component';
 import { CotacaoIntraMercadoriaComponent } from '../cotacao-intra-mercadoria/cotacao-intra-mercadoria.component';
 import { CotacaoIntraImobiliarioComponent } from '../cotacao-intra-imobiliario/cotacao-intra-imobiliario.component';
-import { DataSourceListComponent } from '../data-source-list/data-source-list.component';
+import { DataSetListComponent } from '../data-set-list/data-set-list.component';
 import { StartupEmpresaListComponent } from '../startup-empresa-list/startup-empresa-list.component';
 import { StartupFundoListComponent } from '../startup-fundo-list/startup-fundo-list.component';
 
@@ -27,7 +27,7 @@ export const routes : Routes = [
     { path: 'cotacaoIntraMercadoria/:id' , component: CotacaoIntraMercadoriaComponent},
     { path: 'cotacaoIntraImobiliario/:id' , component: CotacaoIntraImobiliarioComponent},
 
-    { path: 'dataSource' , component: DataSourceListComponent},
+    { path: 'dataSet' , component: DataSetListComponent},
 
     { path : 'startupEmpresa' , component: StartupEmpresaListComponent },
     { path : 'startupFundo' , component: StartupFundoListComponent },

@@ -10,11 +10,12 @@ import { CotacaoIntradayOpcao } from '../../models/CotacaoIntradayOpcao';
 import { CotacaoIntradayAcao } from '../../models/CotacaoIntradayAcao';
 import { CotacaoIntradayImobiliario } from '../../models/CotacaoIntradayImobiliario';
 import { CotacaoIntradayMercadoria } from '../../models/CotacaoIntradayMercadoria';
-import { DataSource } from '../../models/DataSource';
-import { AtributoDataSource } from '../../models/AtributoDataSource';
+import { DataSet } from '../../models/DataSet';
+import { AtributoDataSet } from '../../models/AtributoDataSet';
 import { StartupFundo } from '../../models/StartupFundo';
 import { StartupEmpresa } from '../../models/StartupEmpresa';
 import { StartupInvestimento } from '../../models/StartupInvestimento';
+import { IdeiaExperimento } from '../../models/IdeiaExperimento';
 
 export interface Models { [name: string]: any }
 
@@ -32,11 +33,12 @@ export class SDKModels {
     CotacaoIntradayAcao: CotacaoIntradayAcao,
     CotacaoIntradayImobiliario: CotacaoIntradayImobiliario,
     CotacaoIntradayMercadoria: CotacaoIntradayMercadoria,
-    DataSource: DataSource,
-    AtributoDataSource: AtributoDataSource,
+    DataSet: DataSet,
+    AtributoDataSet: AtributoDataSet,
     StartupFundo: StartupFundo,
     StartupEmpresa: StartupEmpresa,
     StartupInvestimento: StartupInvestimento,
+    IdeiaExperimento: IdeiaExperimento,
     
   };
 

@@ -45,12 +45,16 @@ import { CotacaoIntraAcaoComponent } from './cotacao-intra-acao/cotacao-intra-ac
 import { CotacaoIntraOpcaoComponent } from './cotacao-intra-opcao/cotacao-intra-opcao.component';
 import { CotacaoIntraMercadoriaComponent } from './cotacao-intra-mercadoria/cotacao-intra-mercadoria.component';
 import { CotacaoIntraImobiliarioComponent } from './cotacao-intra-imobiliario/cotacao-intra-imobiliario.component';
-import { DataSourceListComponent } from './data-source-list/data-source-list.component';
-import { DataSourceEditComponent } from './data-source-edit/data-source-edit.component';
 import { TransformacaoListComponent } from './transformacao-list/transformacao-list.component';
 import { TransformacaoEditComponent } from './transformacao-edit/transformacao-edit.component';
 import { StartupEmpresaListComponent } from './startup-empresa-list/startup-empresa-list.component';
 import { StartupFundoListComponent } from './startup-fundo-list/startup-fundo-list.component';
+import { DataSetEditComponent } from './data-set-edit/data-set-edit.component';
+import { DataSetListComponent } from './data-set-list/data-set-list.component';
+import { DataSetAtributoEditComponent } from './data-set-atributo-edit/data-set-atributo-edit.component';
+import { DataSetAtributoListComponent } from './data-set-atributo-list/data-set-atributo-list.component';
+import { IdeiaExperimentoListComponent } from './ideia-experimento-list/ideia-experimento-list.component';
+import { IdeiaExperimentoEditComponent } from './ideia-experimento-edit/ideia-experimento-edit.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -72,12 +76,16 @@ registerLocaleData(localePt, 'pt-BR');
     CotacaoIntraOpcaoComponent,
     CotacaoIntraMercadoriaComponent,
     CotacaoIntraImobiliarioComponent,
-    DataSourceListComponent,
-    DataSourceEditComponent,
     TransformacaoListComponent,
     TransformacaoEditComponent,
     StartupEmpresaListComponent,
     StartupFundoListComponent,
+    DataSetEditComponent,
+    DataSetListComponent,
+    DataSetAtributoEditComponent,
+    DataSetAtributoListComponent,
+    IdeiaExperimentoListComponent,
+    IdeiaExperimentoEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -128,7 +136,7 @@ registerLocaleData(localePt, 'pt-BR');
     AtivoOpcaoEditaComponent,
     AtivoMercadoriaEditaComponent,
     AtivoImobiliarioEditaComponent,
-    DataSourceEditComponent
+    DataSetEditComponent
   ],
   bootstrap: [AppComponent]
 })

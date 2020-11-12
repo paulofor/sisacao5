@@ -71,11 +71,11 @@
     "dataSource": "mysqlDS",
     "public": true
   },
-  "DataSource": {
+  "DataSet": {
     "dataSource": "mysqlDS",
     "public": true
   },
-  "AtributoDataSource": {
+  "AtributoDataSet": {
     "dataSource": "mysqlDS",
     "public": true
   },
@@ -88,6 +88,10 @@
     "public": true
   },
   "StartupInvestimento": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "IdeiaExperimento": {
     "dataSource": "mysqlDS",
     "public": true
   }
