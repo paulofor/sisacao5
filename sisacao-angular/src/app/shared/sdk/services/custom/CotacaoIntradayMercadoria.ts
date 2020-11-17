@@ -92,6 +92,42 @@ export class CotacaoIntradayMercadoriaApi extends BaseLoopBackApi {
   }
 
   /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {object} data Request data.
+   *
+   *  - `ticker` – `{string}` - 
+   *
+   *  - `valor` – `{number}` - 
+   *
+   *  - `horario` – `{string}` - 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `CotacaoIntradayMercadoria` object.)
+   * </em>
+   */
+  public InsereValorHorario(ticker: any = {}, valor: any = {}, horario: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/CotacaoIntradayMercadoria/insereValorHorario";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof ticker !== 'undefined' && ticker !== null) _urlParams.ticker = ticker;
+    if (typeof valor !== 'undefined' && valor !== null) _urlParams.valor = valor;
+    if (typeof horario !== 'undefined' && horario !== null) _urlParams.horario = horario;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
    * The name of the model represented by this $resource,
    * i.e. `CotacaoIntradayMercadoria`.
    */

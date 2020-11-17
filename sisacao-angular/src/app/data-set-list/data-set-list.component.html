@@ -1,3 +1,13 @@
-<p>
-  data-set-list works!
-</p>
+<section class="dgc-painel">
+  <header class="dgc-painel-header">
+    <span>Dataset</span>
+    <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita()">novo</button>
+  </header>
+  <div *ngIf="lista">
+    <div class="dgc-card" *ngFor="let item of listaBase">
+      <header class="dgc-card-header">
+        <span>{{item.nome}}</span>
+      </header>
+    </div>
+  </div>
+</section>

@@ -28,4 +28,68 @@
     color: #f95201;
  }
 
+/* FORMS */
+.example-form {
+   min-width: 150px;
+   max-width: 500px;
+   width: 100%;
+ }
+ 
+ .example-full-width {
+   width: 100%;
+ }
+
+
+
+/*   Digicom Estilo   */
+
+.dgc-painel {
+   background-color: #ffffff;
+   padding: 16px;
+   border-radius: 15px;
+   margin: 16px;
+}
+.dgc-painel-header {
+    border-bottom: solid 1px #CCC;
+    margin-bottom: 16px;
+    display: flex;
+
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    color: #000000;
+    text-transform: uppercase;
+}
+
+
+.dgc-card {
+   margin: 8px;
+   border: solid 1px #ccc;
+   padding: 8px;
+}
+.dgc-card-header {
+   font-size: 14px;
+   font-weight: normal;
+   line-height: 1.2;
+   letter-spacing: 1px;
+   color: #000000;
+   /*text-transform: uppercase;  quando o nome é um objeto ou classe ? */
+}
+.dgc-card-comandos {
+   margin-top: 20px;
+   text-align: end;
+}
+
+
+.dgc-botao-comando {
+    min-width: 60px;
+    margin: 4px;
+}
+.dgc-direita {
+   margin-left: auto;
+}
+
+
+
 

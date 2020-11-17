@@ -8,6 +8,12 @@
   "properties": {
     "nome": {
       "type": "string"
+    },
+    "objetivo" : {
+      "type" : "string"
+    },
+    "nomeTabela" : {
+      "type" : "string"
     }
   },
   "validations": [],

@@ -6,12 +6,16 @@ import {
 declare var Object: any;
 export interface DataSetInterface {
   "nome"?: string;
+  "objetivo"?: string;
+  "nomeTabela"?: string;
   "id"?: number;
   atributoDataSets?: AtributoDataSet[];
 }
 
 export class DataSet implements DataSetInterface {
   "nome": string;
+  "objetivo": string;
+  "nomeTabela": string;
   "id": number;
   atributoDataSets: AtributoDataSet[];
   constructor(data?: DataSetInterface) {
@@ -49,6 +53,14 @@ export class DataSet implements DataSetInterface {
       properties: {
         "nome": {
           name: 'nome',
+          type: 'string'
+        },
+        "objetivo": {
+          name: 'objetivo',
+          type: 'string'
+        },
+        "nomeTabela": {
+          name: 'nomeTabela',
           type: 'string'
         },
         "id": {

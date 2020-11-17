@@ -55,6 +55,8 @@ import { DataSetAtributoEditComponent } from './data-set-atributo-edit/data-set-
 import { DataSetAtributoListComponent } from './data-set-atributo-list/data-set-atributo-list.component';
 import { IdeiaExperimentoListComponent } from './ideia-experimento-list/ideia-experimento-list.component';
 import { IdeiaExperimentoEditComponent } from './ideia-experimento-edit/ideia-experimento-edit.component';
+import { StartupEmpresaEditComponent } from './startup-empresa-edit/startup-empresa-edit.component';
+import { StartupFundoEditComponent } from './startup-fundo-edit/startup-fundo-edit.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -86,6 +88,8 @@ registerLocaleData(localePt, 'pt-BR');
     DataSetAtributoListComponent,
     IdeiaExperimentoListComponent,
     IdeiaExperimentoEditComponent,
+    StartupEmpresaEditComponent,
+    StartupFundoEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -136,7 +140,9 @@ registerLocaleData(localePt, 'pt-BR');
     AtivoOpcaoEditaComponent,
     AtivoMercadoriaEditaComponent,
     AtivoImobiliarioEditaComponent,
-    DataSetEditComponent
+    DataSetEditComponent,
+    StartupEmpresaEditComponent,
+    StartupFundoEditComponent
   ],
   bootstrap: [AppComponent]
 })

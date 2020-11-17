@@ -10,23 +10,23 @@ public class ObtemDiarioBatch {
 
 	public static void main(String[] args) {
 		
-		atualizaDia("09","11","20");
+		//atualizaDia("09","11","20");
+		
+		
+		executaMes("17","01");
+		executaMes("17","02");
+		executaMes("17","03");
+		executaMes("17","04");
+		executaMes("17","05");
+		executaMes("17","06");
+		executaMes("17","07");
+		executaMes("17","08");
+		executaMes("17","09");
+		executaMes("17","10");
+		executaMes("17","11");
+		executaMes("17","12");
 		
 		/*
-		executaMes("19","01");
-		executaMes("19","02");
-		executaMes("19","03");
-		executaMes("19","04");
-		executaMes("19","05");
-		executaMes("19","06");
-		executaMes("19","07");
-		executaMes("19","08");
-		executaMes("19","09");
-		executaMes("19","10");
-		executaMes("19","11");
-		executaMes("19","12");
-		
-		
 		executaMes("20","01");
 		executaMes("20","02");
 		executaMes("20","03");

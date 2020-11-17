@@ -1,3 +1,27 @@
-<p>
-  data-set-edit works!
-</p>
+<h2 mat-dialog-title>Edita DataSet</h2>
+
+<form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
+
+  <mat-dialog-content>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #nome [(ngModel)]="item.nome" name="nome" placeholder="Nome" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <textarea matInput #objetivo [(ngModel)]="item.objetivo" name="Objetivo" placeholder="Objetivo"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="30" #nomeTabela [(ngModel)]="item.nomeTabela" name="nomeTabela" placeholder="Tabela" />
+    </mat-form-field>
+
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button>Salvar</button>
+    <button mat-raised-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+
+</form>
