@@ -3,11 +3,29 @@
     <span>Startups Empresas</span>
     <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita()">novo</button>
   </header>
-  <div *ngIf="lista">
-    <div class="dgc-card" *ngFor="let item of lista">
+  <div *ngIf="listaBase">
+    <div class="dgc-card" *ngFor="let item of listaBase">
       <header class="dgc-card-header">
         <span>{{item.nome}}</span>
+        <a class="dgc-direita" href={{item.url}} target="_blank">ver</a>
       </header>
+      <div class="dgc-texto-grande">
+          <p>{{item.descricao}}</p>
+          <!--<p class="leia-mais"><a href="#" class="button">Mais</a></p>-->
+      </div>
+      <div class="dgc-card-detalhe">
+        <table>
+          <tr *ngFor="let investimento of item.startupInvestimentos">
+            <td>{{investimento.startupFundo.nome}}</td>
+            <td>{{investimento.valor}}</td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="dgc-card-comandos">
+        <button class="btn-primary btn-sm btn" (click)="dialogo1({'origem' : item})">Investimento</button>
+        <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar</button>
+      </div> 
     </div>
   </div>
 </section>

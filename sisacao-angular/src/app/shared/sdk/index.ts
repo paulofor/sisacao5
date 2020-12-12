@@ -112,7 +112,6 @@ export class SDKBrowserModule {
         IdeiaExperimentoApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
-
       ]
     };
   }

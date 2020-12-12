@@ -8,6 +8,7 @@ export interface DataSetInterface {
   "nome"?: string;
   "objetivo"?: string;
   "nomeTabela"?: string;
+  "quantidadeInput"?: number;
   "id"?: number;
   atributoDataSets?: AtributoDataSet[];
 }
@@ -16,6 +17,7 @@ export class DataSet implements DataSetInterface {
   "nome": string;
   "objetivo": string;
   "nomeTabela": string;
+  "quantidadeInput": number;
   "id": number;
   atributoDataSets: AtributoDataSet[];
   constructor(data?: DataSetInterface) {
@@ -62,6 +64,10 @@ export class DataSet implements DataSetInterface {
         "nomeTabela": {
           name: 'nomeTabela',
           type: 'string'
+        },
+        "quantidadeInput": {
+          name: 'quantidadeInput',
+          type: 'number'
         },
         "id": {
           name: 'id',

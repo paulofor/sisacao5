@@ -1,13 +1,33 @@
 <section class="dgc-painel">
+
   <header class="dgc-painel-header">
     <span>Dataset</span>
     <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita()">novo</button>
   </header>
-  <div *ngIf="lista">
+
+  <div *ngIf="listaBase">
     <div class="dgc-card" *ngFor="let item of listaBase">
-      <header class="dgc-card-header">
+      <div class="dgc-card-header">
         <span>{{item.nome}}</span>
-      </header>
+        
+      </div>
+      <div class="dgc-card-subheader">
+        <span>{{item.objetivo}}</span><br>
+        <span>Inputs: {{item.quantidadeInput}}</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <table>
+          <tr *ngFor="let atributo of item.atributoDataSets" (click)="dialogo1({'item' : atributo})">
+            <td>{{atributo.nome}}</td><td> {{atributo.descricao}}</td>
+          </tr>
+      </table>
+      </div>
+     <div class="dgc-card-comandos">
+        <button class="btn btn-primary btn-sm dgc-botao-comando" (click)="dialogo2({'origem' : item})">Sql Create</button>
+        <button class="btn btn-primary btn-sm dgc-botao-comando" (click)="dialogo1({'origem' : item})">Cria Atributo</button>
+        <button class="btn btn-primary btn-sm dgc-botao-comando" (click)="edita(item)">Editar</button>
+      </div> 
     </div>
   </div>
+
 </section>

@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Edita Startup - Empresa</h2>
+<h2 mat-dialog-title>Edita Atributo DataSet</h2>
 
 <form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
 
@@ -9,10 +9,6 @@
 
     <mat-form-field class="example-full-width">
       <textarea matInput #descricao [(ngModel)]="item.descricao" name="descricao" placeholder="Descrição" ></textarea>
-    </mat-form-field>
-
-    <mat-form-field class="example-full-width">
-      <input matInput maxlength="30" #url [(ngModel)]="item.url" name="url" placeholder="Url" autocomplete="off" />
     </mat-form-field>
 
 

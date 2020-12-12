@@ -1,6 +1,7 @@
 /* tslint:disable */
 import {
-  StartupEmpresa
+  StartupEmpresa,
+  StartupFundo
 } from '../index';
 
 declare var Object: any;
@@ -11,6 +12,7 @@ export interface StartupInvestimentoInterface {
   "startupEmpresaId"?: number;
   "startupFundoId"?: number;
   startupEmpresa?: StartupEmpresa;
+  startupFundo?: StartupFundo;
 }
 
 export class StartupInvestimento implements StartupInvestimentoInterface {
@@ -20,6 +22,7 @@ export class StartupInvestimento implements StartupInvestimentoInterface {
   "startupEmpresaId": number;
   "startupFundoId": number;
   startupEmpresa: StartupEmpresa;
+  startupFundo: StartupFundo;
   constructor(data?: StartupInvestimentoInterface) {
     Object.assign(this, data);
   }
@@ -81,6 +84,14 @@ export class StartupInvestimento implements StartupInvestimentoInterface {
           model: 'StartupEmpresa',
           relationType: 'belongsTo',
                   keyFrom: 'startupEmpresaId',
+          keyTo: 'id'
+        },
+        startupFundo: {
+          name: 'startupFundo',
+          type: 'StartupFundo',
+          model: 'StartupFundo',
+          relationType: 'belongsTo',
+                  keyFrom: 'startupFundoId',
           keyTo: 'id'
         },
       }

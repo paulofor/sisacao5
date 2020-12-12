@@ -57,6 +57,9 @@ import { IdeiaExperimentoListComponent } from './ideia-experimento-list/ideia-ex
 import { IdeiaExperimentoEditComponent } from './ideia-experimento-edit/ideia-experimento-edit.component';
 import { StartupEmpresaEditComponent } from './startup-empresa-edit/startup-empresa-edit.component';
 import { StartupFundoEditComponent } from './startup-fundo-edit/startup-fundo-edit.component';
+import { StartupInvestimentoEditComponent } from './startup-investimento-edit/startup-investimento-edit.component';
+import { AtributoDataSetEditComponent } from './atributo-data-set-edit/atributo-data-set-edit.component';
+import { DataSetCreateSqlComponent } from './data-set-create-sql/data-set-create-sql.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -90,6 +93,9 @@ registerLocaleData(localePt, 'pt-BR');
     IdeiaExperimentoEditComponent,
     StartupEmpresaEditComponent,
     StartupFundoEditComponent,
+    StartupInvestimentoEditComponent,
+    AtributoDataSetEditComponent,
+    DataSetCreateSqlComponent,
   ],
   imports: [
     BrowserModule,
@@ -142,7 +148,9 @@ registerLocaleData(localePt, 'pt-BR');
     AtivoImobiliarioEditaComponent,
     DataSetEditComponent,
     StartupEmpresaEditComponent,
-    StartupFundoEditComponent
+    StartupFundoEditComponent,
+    AtributoDataSetEditComponent,
+    StartupInvestimentoEditComponent
   ],
   bootstrap: [AppComponent]
 })

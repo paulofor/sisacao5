@@ -1,4 +1,7 @@
 /* tslint:disable */
+import {
+  StartupInvestimento
+} from '../index';
 
 declare var Object: any;
 export interface StartupEmpresaInterface {
@@ -6,6 +9,7 @@ export interface StartupEmpresaInterface {
   "url"?: string;
   "descricao"?: string;
   "id"?: number;
+  startupInvestimentos?: StartupInvestimento[];
 }
 
 export class StartupEmpresa implements StartupEmpresaInterface {
@@ -13,6 +17,7 @@ export class StartupEmpresa implements StartupEmpresaInterface {
   "url": string;
   "descricao": string;
   "id": number;
+  startupInvestimentos: StartupInvestimento[];
   constructor(data?: StartupEmpresaInterface) {
     Object.assign(this, data);
   }
@@ -64,6 +69,14 @@ export class StartupEmpresa implements StartupEmpresaInterface {
         },
       },
       relations: {
+        startupInvestimentos: {
+          name: 'startupInvestimentos',
+          type: 'StartupInvestimento[]',
+          model: 'StartupInvestimento',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'startupEmpresaId'
+        },
       }
     }
   }

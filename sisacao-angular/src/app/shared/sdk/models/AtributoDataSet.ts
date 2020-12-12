@@ -5,6 +5,7 @@ export interface AtributoDataSetInterface {
   "nome"?: string;
   "query"?: string;
   "fonte"?: string;
+  "descricao"?: string;
   "id"?: number;
   "dataSetId"?: number;
 }
@@ -13,6 +14,7 @@ export class AtributoDataSet implements AtributoDataSetInterface {
   "nome": string;
   "query": string;
   "fonte": string;
+  "descricao": string;
   "id": number;
   "dataSetId": number;
   constructor(data?: AtributoDataSetInterface) {
@@ -58,6 +60,10 @@ export class AtributoDataSet implements AtributoDataSetInterface {
         },
         "fonte": {
           name: 'fonte',
+          type: 'string'
+        },
+        "descricao": {
+          name: 'descricao',
           type: 'string'
         },
         "id": {
