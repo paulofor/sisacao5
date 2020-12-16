@@ -22,7 +22,8 @@ export class StartupEmpresaListComponent extends BaseListComponent  {
  
   getFiltro() {
     let filtro = {'include' : 
-    { 'relation' : 'startupInvestimentos' , 'scope' : {'include' : 'startupFundo'}}
+    { 'relation' : 'startupInvestimentos' , 'scope' : {'include' : 'startupFundo'}},
+    'order' : 'id desc'
     };
     return filtro;
   }

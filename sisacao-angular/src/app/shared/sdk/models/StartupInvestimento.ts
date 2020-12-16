@@ -8,6 +8,8 @@ declare var Object: any;
 export interface StartupInvestimentoInterface {
   "valor"?: number;
   "data"?: string;
+  "valorReal"?: number;
+  "moeda"?: string;
   "id"?: number;
   "startupEmpresaId"?: number;
   "startupFundoId"?: number;
@@ -18,6 +20,8 @@ export interface StartupInvestimentoInterface {
 export class StartupInvestimento implements StartupInvestimentoInterface {
   "valor": number;
   "data": string;
+  "valorReal": number;
+  "moeda": string;
   "id": number;
   "startupEmpresaId": number;
   "startupFundoId": number;
@@ -62,6 +66,14 @@ export class StartupInvestimento implements StartupInvestimentoInterface {
         },
         "data": {
           name: 'data',
+          type: 'string'
+        },
+        "valorReal": {
+          name: 'valorReal',
+          type: 'number'
+        },
+        "moeda": {
+          name: 'moeda',
           type: 'string'
         },
         "id": {

@@ -34,31 +34,25 @@
   "relations": {},
   "acls": [],
   "methods": {
-    "InsereValorHorario": {
+    "ObtemPorDiaTicker": {
       "accepts": [
+        {
+          "arg": "dia",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
         {
           "arg": "ticker",
           "type": "string",
-          "required": false,
-          "description": ""
-        },
-        {
-          "arg": "valor",
-          "type": "number",
-          "required": false,
-          "description": ""
-        },
-        {
-          "arg": "horario",
-          "type": "string",
-          "required": false,
+          "required": true,
           "description": ""
         }
       ],
       "returns": [
         {
-          "arg": "saida",
-          "type": "object",
+          "arg": "cotacao",
+          "type": "array",
           "root": true,
           "description": ""
         }
@@ -66,8 +60,8 @@
       "description": "",
       "http": [
         {
-          "path": "/insereValorHorario",
-          "verb": "post"
+          "path": "/obtemPorDiaTicker",
+          "verb": "get"
         }
       ]
     }

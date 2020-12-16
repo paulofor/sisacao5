@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { AtributoDataSetEditComponent } from '../atributo-data-set-edit/atributo-data-set-edit.component';
 import { BaseListComponent } from '../base-component/base-list-component';
+import { DataSetCreateSqlComponent } from '../data-set-create-sql/data-set-create-sql.component';
 import { DataSetEditComponent } from '../data-set-edit/data-set-edit.component';
 import { DataSetApi } from '../shared/sdk';
 
@@ -22,6 +23,9 @@ export class DataSetListComponent extends BaseListComponent  {
 
   getDialogo1() {
     return AtributoDataSetEditComponent;
+  }
+  getDialogo2() {
+    return DataSetCreateSqlComponent;
   }
 
   getFiltro() {

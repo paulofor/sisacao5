@@ -17,4 +17,31 @@ module.exports = function (Cotacaointradayacao) {
         ds.connector.query(sql, callback);
     };
 
+
+    /**
+    * 
+    * @param {string} dia 
+    * @param {string} ticker 
+    * @param {Function(Error, array)} callback
+    */
+    Cotacaointradayacao.ObtemPorDiaTicker = function(dia, ticker, callback) {
+        var cotacao;
+
+        let ds = Cotacaointradayacao.dataSource;
+
+        var sql1 = " select dia from CotacaoIntradayAcao " +
+            " where ticker = '" + ticker + "' " +
+            " group by dia " +
+            " order by dia desc " +
+            " limit " + dia;
+
+        ds.connector.query(sql1, (err,result) => {
+            for (let i=0; i < result.length; i++) {
+                console.log('linha:' , JSON.stringify(result[i]));
+            }
+        })
+        
+        callback(null, cotacao);
+    };
+
 };

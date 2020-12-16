@@ -44,10 +44,24 @@ export class BaseListComponent implements OnInit {
             data: dados
         });
     }
-
     getDialogo1() : any {
 
     }
+
+    dialogo2(dados) {
+        console.log('dialogo1.dados:' , dados);
+        this.dialog.afterAllClosed.subscribe(result => {
+            this.carregaTela();
+        });
+        this.dialog.open(this.getDialogo2(), {
+            width: '800px',
+            data: dados
+        });
+    }
+    getDialogo2() : any {
+
+    }
+
 
     getComponente():any {}
 

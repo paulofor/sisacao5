@@ -9,11 +9,14 @@
     "nome": {
       "type": "string"
     },
-    "objetivo" : {
-      "type" : "string"
+    "objetivo": {
+      "type": "string"
     },
-    "nomeTabela" : {
-      "type" : "string"
+    "nomeTabela": {
+      "type": "string"
+    },
+    "quantidadeInput": {
+      "type": "number"
     }
   },
   "validations": [],

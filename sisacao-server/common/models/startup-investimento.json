@@ -11,6 +11,12 @@
     },
     "data": {
       "type": "string"
+    },
+    "valorReal": {
+      "type": "number"
+    },
+    "moeda": {
+      "type": "string"
     }
   },
   "validations": [],
@@ -18,6 +24,11 @@
     "startupEmpresa": {
       "type": "belongsTo",
       "model": "StartupEmpresa",
+      "foreignKey": ""
+    },
+    "startupFundo": {
+      "type": "belongsTo",
+      "model": "StartupFundo",
       "foreignKey": ""
     }
   },

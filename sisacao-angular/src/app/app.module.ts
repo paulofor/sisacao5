@@ -95,7 +95,7 @@ registerLocaleData(localePt, 'pt-BR');
     StartupFundoEditComponent,
     StartupInvestimentoEditComponent,
     AtributoDataSetEditComponent,
-    DataSetCreateSqlComponent,
+    DataSetCreateSqlComponent
   ],
   imports: [
     BrowserModule,
@@ -150,7 +150,8 @@ registerLocaleData(localePt, 'pt-BR');
     StartupEmpresaEditComponent,
     StartupFundoEditComponent,
     AtributoDataSetEditComponent,
-    StartupInvestimentoEditComponent
+    StartupInvestimentoEditComponent,
+    DataSetCreateSqlComponent
   ],
   bootstrap: [AppComponent]
 })
