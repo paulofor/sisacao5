@@ -17,6 +17,9 @@
     },
     "moeda": {
       "type": "string"
+    },
+    "tipo": {
+      "type": "string"
     }
   },
   "validations": [],

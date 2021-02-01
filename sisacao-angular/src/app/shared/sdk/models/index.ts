@@ -15,5 +15,6 @@ export * from './StartupFundo';
 export * from './StartupEmpresa';
 export * from './StartupInvestimento';
 export * from './IdeiaExperimento';
+export * from './DiaPregao';
 export * from './BaseModels';
 export * from './FireLoopRef';

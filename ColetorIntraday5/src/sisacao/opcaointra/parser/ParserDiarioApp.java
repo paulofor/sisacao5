@@ -11,6 +11,11 @@ public class ParserDiarioApp {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		
+		ParserDiarioObj objParse = new ParserDiarioObj();
+   		objParse.inicio("20210111");
+		
+   		/*
 		System.out.println("Ola Parser");
 
 		executaMes("201801");
@@ -25,7 +30,7 @@ public class ParserDiarioApp {
 		executaMes("201810");
 		executaMes("201811");
 		executaMes("201812");
-
+		*/
 	}
 	
 	

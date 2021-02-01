@@ -5,7 +5,7 @@
    public static void main(String[] args)
    {
 	   		TransferidorObj obj = new TransferidorObj();
-	   		//obj.main("0925", "20");
+	   		obj.main("0107", "21");
 	   		
 	   		
 	   		

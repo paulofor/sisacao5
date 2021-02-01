@@ -22,6 +22,12 @@ public class CotacaoIntradayAcao extends Model {
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
+	public void setValor(Long valor) {
+		this.valor = valor.doubleValue();
+	}
+	public void setValor(Integer valor) {
+		this.valor = valor.doubleValue();
+	}
 	public String getDataHoraStr() {
 		return dataHoraStr;
 	}
@@ -47,6 +53,8 @@ public class CotacaoIntradayAcao extends Model {
 		this.intervalo = intervalo;
 	}
 
-
+	public String toString() {
+		return "valor:" + this.valor + " - dataHora:" + this.dataHora;
+	}
 
 }

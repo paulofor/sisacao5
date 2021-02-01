@@ -23,7 +23,7 @@ public class ThreadPrincipal extends ThreadPaiBase{
 		
 		try {
 		
-			System.out.println("Data anterior: " + dataAnterior);
+			System.out.println("[debug] ThreadPrincipal.mudouDia: diaAtual:" + diaAtual + ", dataAnterior:" + dataAnterior + ", existePregaoDiaAnterior:" + existePregaoDiaAnterior);
 			// DD-MM-AAAA
 			// 0123456789
 			if (existePregaoDiaAnterior) {
@@ -33,8 +33,12 @@ public class ThreadPrincipal extends ThreadPaiBase{
 				TransferidorObj obj = new TransferidorObj();
 		   		obj.main(mesDia,ano);
 		   		
+		   		//Sem memoria pra isso
 		   		ParserDiarioObj objParse = new ParserDiarioObj();
 		   		objParse.inicio("20" + ano + mesDia);
+		   		
+		   		
+		   		
 				//TransferidorObj transferidor = new TransferidorObj();
 				//transferidor.main(data, ano);
 				//ImportadorDiarioHistoricoObj obj2 = new ImportadorDiarioHistoricoObj();

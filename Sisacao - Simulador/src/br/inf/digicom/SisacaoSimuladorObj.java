@@ -8,7 +8,7 @@ public class SisacaoSimuladorObj {
 		System.out.println("Ola Mundo");
 		SerieCotacaoIntradayFacade facade = new SerieCotacaoIntradayFacade();
 		
-		facade.obtemSerie("PTBL3", 25);
+		facade.obtemSerie("LWSA3", 25);
 	}
 	
 	

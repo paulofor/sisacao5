@@ -42,13 +42,13 @@ public class RepositorioMercadoriaBase {
 			return "CotacaoIntradayMercadorias";
 		}
 		public void insereValorHorario(String ticker, String horaNegocio, Double valor, final VoidCallback voidCallback) {
-			RestContractItem contrato = new RestContractItem("CotacaoIntradayMercadoria/insereValorHorario","POST");
-			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayMercadoria.insereValorHorario");
+			RestContractItem contrato = new RestContractItem("CotacaoIntradayMercadoria/insereValorHorarioMercadoria","POST");
+			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayMercadoria.insereValorHorarioMercadoria");
 	        Map<String, Object> params = new HashMap<String, Object>();
 	        params.put("ticker", ticker);
 	        params.put("valor", valor);
 	        params.put("horario", horaNegocio);
-	        invokeStaticMethod("insereValorHorario", params, new EmptyResponseParser(voidCallback));
+	        invokeStaticMethod("insereValorHorarioMercadoria", params, new EmptyResponseParser(voidCallback));
 		}
 	}
 

@@ -1,5 +1,6 @@
 package coletorjava.log;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,26 +15,26 @@ public class ArquivoLog {
 	// private String _arquivoErro = "Erros.log";
 	// private String _arquivoErroDao = "ErroDao.log";
 	// private String _arquivoMonitoracao = "Monitoramento.log";
-	private static String _raiz = "/home/usuario/sisacao5/AplicacoesAtivas/logs";
+	private static String _raiz = "logs";
 
 	private static String getNomeArquivo() {
-		return _raiz + "\\" + DCConvert.getDataDD_MM_AAAA() + "_Dados.log";
+		return _raiz + File.pathSeparator + DCConvert.getDataDD_MM_AAAA() + "_Dados.log";
 	}
 
 	private static String getNomeArquivoSalvaDao() {
-		return _raiz + "\\" + DCConvert.getDataDD_MM_AAAA() + "_SalvaDao.log";
+		return _raiz + File.pathSeparator + DCConvert.getDataDD_MM_AAAA() + "_SalvaDao.log";
 	}
 
 	private static String getNomeArquivoErro() {
-		return _raiz + "\\" + DCConvert.getDataDD_MM_AAAA() + "_Erros.log";
+		return _raiz + File.pathSeparator + DCConvert.getDataDD_MM_AAAA() + "_Erros.log";
 	}
 
 	private static String getNomeArquivoErroDao() {
-		return _raiz + "\\" + DCConvert.getDataDD_MM_AAAA() + "_ErrosDao.log";
+		return _raiz + File.pathSeparator + DCConvert.getDataDD_MM_AAAA() + "_ErrosDao.log";
 	}
 
 	private static String getNomeArquivoMonitoramento() {
-		return _raiz + "\\" + DCConvert.getDataDD_MM_AAAA() + "_Monitoramento.log";
+		return _raiz + File.pathSeparator + DCConvert.getDataDD_MM_AAAA() + "_Monitoramento.log";
 	}
 
 	public static ArquivoLog getInstancia() {

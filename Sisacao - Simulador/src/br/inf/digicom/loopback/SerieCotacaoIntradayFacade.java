@@ -1,32 +1,44 @@
 package br.inf.digicom.loopback;
 
+import java.util.List;
+
 import com.strongloop.android.loopback.RestAdapter;
-import com.strongloop.android.loopback.callbacks.VoidCallback;
+import com.strongloop.android.loopback.callbacks.ListCallback;
 
 import br.com.digicom.sisacao.app.Loopback;
-import br.com.digicom.sisacao.modelo.AtivoAcao;
-import br.com.digicom.sisacao.repositorio.RepositorioAcaoBase;
-import br.com.digicom.sisacao.repositorio.RepositorioOpcaoBase;
+import br.com.digicom.sisacao.modelo.DiaPregao;
+import br.com.digicom.sisacao.repositorio.RepositorioDiaPregao;
+import br.inf.digicom.simulacao.SimuladorPontoEntradaDia;
+import br.inf.digicom.simulacao.trade.ExecucaoPontoEntrada;
 
 public class SerieCotacaoIntradayFacade {
 	
-	RestAdapter adapter = new RestAdapter(Loopback.URL_SISACAO);
+	RestAdapter adapter = new RestAdapter(Loopback.URL_SISACAO); 
 	
-	RepositorioAcaoBase.CotacaoIntradayAcaoRepository repCotacaoAcao = adapter
-			.createRepository(RepositorioAcaoBase.CotacaoIntradayAcaoRepository.class);
+	RepositorioDiaPregao repDiaPregao = adapter.createRepository(RepositorioDiaPregao.class);
+	
+	SimuladorPontoEntradaDia simulacao = new SimuladorPontoEntradaDia();
 
 	public void obtemSerie(String ticker, int dias) {
-		if (ativo instanceof AtivoAcao) {
-			repCotacaoAcao.insereValorHorario(ativo.getTicker(), horario, valor, new VoidCallback() {
-				@Override
-				public void onSuccess() {
-					System.out.println("Inseriu dado (" + ativo.getTicker() + ")");
-				}
-				@Override
-				public void onError(Throwable t) {
-					t.printStackTrace();
-				}
-			});
-		}
+	
+		repDiaPregao.obtemPorDiaTicker(ticker, dias, new ListCallback<DiaPregao>() {
+
+			@Override
+			public void onSuccess(List<DiaPregao> objects) {
+				//System.out.println(objects.size());
+				//for (DiaPregao dia : objects) {
+				//	System.out.println("Dia: " + dia.getDiaNum() + " " + dia.getCotacaoIntradayAcaos().size());
+				//}
+				ExecucaoPontoEntrada execucao = new ExecucaoPontoEntrada();
+				simulacao.executa(objects,execucao);
+			}
+
+			@Override
+			public void onError(Throwable t) {
+				t.printStackTrace();
+			}
+			
+		}); 
+				
 	}
 }

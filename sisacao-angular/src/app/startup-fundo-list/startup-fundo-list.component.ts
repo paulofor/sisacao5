@@ -24,6 +24,9 @@ export class StartupFundoListComponent extends BaseListComponent {
     return StartupFundoEditComponent;
   }
   
+  getFiltro() {
+    return {'order' : 'nome'}
+  }
 
 
 }

@@ -9,6 +9,7 @@ export interface CotacaoIntradayAcaoInterface {
   "dia"?: Date;
   "posicaoDia"?: number;
   "intervalo"?: number;
+  "diaNum"?: number;
 }
 
 export class CotacaoIntradayAcao implements CotacaoIntradayAcaoInterface {
@@ -19,6 +20,7 @@ export class CotacaoIntradayAcao implements CotacaoIntradayAcaoInterface {
   "dia": Date;
   "posicaoDia": number;
   "intervalo": number;
+  "diaNum": number;
   constructor(data?: CotacaoIntradayAcaoInterface) {
     Object.assign(this, data);
   }
@@ -78,6 +80,10 @@ export class CotacaoIntradayAcao implements CotacaoIntradayAcaoInterface {
         },
         "intervalo": {
           name: 'intervalo',
+          type: 'number'
+        },
+        "diaNum": {
+          name: 'diaNum',
           type: 'number'
         },
       },

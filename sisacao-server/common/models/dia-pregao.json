@@ -1,0 +1,125 @@
+{
+  "name": "DiaPregao",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "diaNum": {
+      "type": "number",
+      "id": true
+    },
+    "mes": {
+      "type": "number"
+    },
+    "ano": {
+      "type": "number"
+    },
+    "dataStr": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "cotacaoIntradayAcaos": {
+      "type": "hasMany",
+      "model": "CotacaoIntradayAcao",
+      "foreignKey": "diaNum"
+    },
+    "cotacaoIntradayMercadorias": {
+      "type": "hasMany",
+      "model": "CotacaoIntradayMercadoria",
+      "foreignKey": "diaNum"
+    }
+  },
+  "acls": [],
+  "methods": {
+    "ObtemIntradayPorTicker": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "returns": [
+        {
+          "arg": "cotacao",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemIntradayPorTicker",
+          "verb": "get"
+        }
+      ]
+    },
+    "ObtemDiaTicker": {
+      "accepts": [
+        {
+          "arg": "diaNum",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "quantidadeDia",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "cotacao",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemDiaTicker",
+          "verb": "get"
+        }
+      ]
+    },
+    "CriaDatasAno": {
+      "accepts": [
+        {
+          "arg": "ano",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/criaDatasAno",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

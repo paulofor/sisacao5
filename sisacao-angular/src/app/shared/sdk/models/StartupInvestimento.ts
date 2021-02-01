@@ -10,6 +10,7 @@ export interface StartupInvestimentoInterface {
   "data"?: string;
   "valorReal"?: number;
   "moeda"?: string;
+  "tipo"?: string;
   "id"?: number;
   "startupEmpresaId"?: number;
   "startupFundoId"?: number;
@@ -22,6 +23,7 @@ export class StartupInvestimento implements StartupInvestimentoInterface {
   "data": string;
   "valorReal": number;
   "moeda": string;
+  "tipo": string;
   "id": number;
   "startupEmpresaId": number;
   "startupFundoId": number;
@@ -74,6 +76,10 @@ export class StartupInvestimento implements StartupInvestimentoInterface {
         },
         "moeda": {
           name: 'moeda',
+          type: 'string'
+        },
+        "tipo": {
+          name: 'tipo',
           type: 'string'
         },
         "id": {

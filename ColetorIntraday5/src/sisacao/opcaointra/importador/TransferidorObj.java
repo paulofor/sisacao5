@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -21,8 +22,9 @@ public class TransferidorObj {
 	private final String URL_PATH = "http://www.bmfbovespa.com.br/bdi/";
 
 	public boolean main(String data, String ano) {
-		String diretorioDownload = "/home/usuario/sisacao5/AplicacoesAtivas/Diarios";
+		//String diretorioDownload = "/home/usuario/sisacao5/AplicacoesAtivas/Diarios";
 		//String diretorioDownload = "E:/CotacaoJava/download/" + ano;
+		String diretorioDownload = "diarios";
 		
 		String diretorioTrabalho = "download";
 		//String nomeArquivo = "bdi" + data + ".zip";
@@ -37,6 +39,11 @@ public class TransferidorObj {
 			InputStream in = url.openStream();
 			FileOutputStream out = new FileOutputStream(localFile);
 			copyStream(in, out);
+			//Arrays.stream(new File(diretorioTrabalho).listFiles()).forEach(File::delete); JDK8
+			File dir = new File(diretorioTrabalho);
+			for (File item : dir.listFiles()) {
+				item.delete();
+			}
 			return unzipFiles(diretorioDownload, nomeArquivo, diretorioTrabalho);
 		} catch (Exception e) {
 			ArquivoLog.getInstancia().salvaErro(e);

@@ -41,13 +41,13 @@ public class RepositorioImobiliarioBase {
 			return "CotacaoIntradayImobiliarios";
 		}
 		public void insereValorHorario(String ticker, String horaNegocio, Double valor, final VoidCallback voidCallback) {
-			RestContractItem contrato = new RestContractItem("CotacaoIntradayImobiliarios/insereValorHorario","POST");
-			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayImobiliario.insereValorHorario");
+			RestContractItem contrato = new RestContractItem("CotacaoIntradayImobiliarios/insereValorHorarioImobiliario","POST");
+			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayImobiliario.insereValorHorarioImobiliario");
 	        Map<String, Object> params = new HashMap<String, Object>();
 	        params.put("ticker", ticker);
 	        params.put("valor", valor);
 	        params.put("horario", horaNegocio);
-	        invokeStaticMethod("insereValorHorario", params, new EmptyResponseParser(voidCallback));
+	        invokeStaticMethod("insereValorHorarioImobiliario", params, new EmptyResponseParser(voidCallback));
 		}
 	}
 

@@ -31,6 +31,7 @@ export class StartupEmpresaListComponent extends BaseListComponent  {
   getDialogo1() {
     return StartupInvestimentoEditComponent;
   }
+  
 
   getComponente() {
     return StartupEmpresaEditComponent;

@@ -64,6 +64,7 @@ import { StartupFundoApi } from './services/custom/StartupFundo';
 import { StartupEmpresaApi } from './services/custom/StartupEmpresa';
 import { StartupInvestimentoApi } from './services/custom/StartupInvestimento';
 import { IdeiaExperimentoApi } from './services/custom/IdeiaExperimento';
+import { DiaPregaoApi } from './services/custom/DiaPregao';
 /**
 * @module SDKBrowserModule
 * @description
@@ -110,9 +111,10 @@ export class SDKBrowserModule {
         StartupEmpresaApi,
         StartupInvestimentoApi,
         IdeiaExperimentoApi,
+        DiaPregaoApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
-       ]
+      ]
     };
   }
 }

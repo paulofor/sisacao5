@@ -1,0 +1,29 @@
+{
+  "name": "RegraSimulacao",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nome": {
+      "type": "string"
+    },
+    "nomeClasse": {
+      "type": "string"
+    },
+    "descricao": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "parametroRegras": {
+      "type": "hasMany",
+      "model": "ParametroRegra",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

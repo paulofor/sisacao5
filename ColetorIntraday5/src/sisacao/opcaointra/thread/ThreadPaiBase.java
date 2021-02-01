@@ -28,11 +28,19 @@ public abstract class ThreadPaiBase extends TimerTask {
 		boolean mudouDia = verificaMudancaDia();
 		System.out.println("Novo dia ?:" + mudouDia + ", diaAtual: " + this.diaAtual);
 		if (mudouDia) {
+			System.out.println("[debug] ThreadPaiBase.run: diaAtual:" + diaAtual + ", diaAnterior:" + diaAnterior);
 			try {
-				this.mudouDiaColetores(diaAtual);
+				//this.mudouDiaColetores(diaAtual);
 				if (this.diaAnterior.length() > 0) {
-					mudouDia(this.diaAtual, this.diaAnterior, existePregao(diaAnterior));
+					//mudouDia(this.diaAtual, this.diaAnterior, existePregao(diaAnterior));
+					mudouDia(this.diaAtual, this.diaAnterior, true);
+					System.out.println("[debug] ThreadPaiBase.run: existePregao(diaAnterior):" + existePregao(diaAnterior));
+					System.out.println("[debug] Exit");
+					System.exit(0);
+				} else {
+					this.mudouDiaColetores(diaAtual);
 				}
+				
 			} catch (DaoException e) {
 				ArquivoLog.getInstancia().salvaLog("Erro ThreadPaiBase" + e);
 				e.printStackTrace();

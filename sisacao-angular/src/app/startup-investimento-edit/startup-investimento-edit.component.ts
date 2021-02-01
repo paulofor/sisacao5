@@ -20,7 +20,7 @@ export class StartupInvestimentoEditComponent extends BaseEditComponent {
  
 
   montaCombos() {
-    this.srvFundo.find()
+    this.srvFundo.find({'order' : 'nome'})
       .subscribe((result:StartupFundo[]) => {
         this.listaFundo = result;
       })

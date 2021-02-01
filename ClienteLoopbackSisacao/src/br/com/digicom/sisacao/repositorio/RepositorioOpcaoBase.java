@@ -41,8 +41,8 @@ public class RepositorioOpcaoBase {
 			return "CotacaoIntradayOpcaos";
 		}
 		public void insereValorHorario(String ticker, String horaNegocio, Double valor, final VoidCallback voidCallback) {
-			RestContractItem contrato = new RestContractItem("CotacaoIntradayOpcaos/insereValorHorario","POST");
-			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayOpcao.insereValorHorario");
+			RestContractItem contrato = new RestContractItem("CotacaoIntradayOpcaos/insereValorHorarioOpcao","POST");
+			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayOpcao.insereValorHorarioOpcao");
 	        Map<String, Object> params = new HashMap<String, Object>();
 	        params.put("ticker", ticker);
 	        params.put("valor", valor);

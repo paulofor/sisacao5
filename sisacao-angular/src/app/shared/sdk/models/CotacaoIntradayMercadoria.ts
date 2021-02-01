@@ -9,6 +9,7 @@ export interface CotacaoIntradayMercadoriaInterface {
   "dia"?: Date;
   "posicaoDia"?: number;
   "intervalo"?: number;
+  "diaNum"?: number;
 }
 
 export class CotacaoIntradayMercadoria implements CotacaoIntradayMercadoriaInterface {
@@ -19,6 +20,7 @@ export class CotacaoIntradayMercadoria implements CotacaoIntradayMercadoriaInter
   "dia": Date;
   "posicaoDia": number;
   "intervalo": number;
+  "diaNum": number;
   constructor(data?: CotacaoIntradayMercadoriaInterface) {
     Object.assign(this, data);
   }
@@ -78,6 +80,10 @@ export class CotacaoIntradayMercadoria implements CotacaoIntradayMercadoriaInter
         },
         "intervalo": {
           name: 'intervalo',
+          type: 'number'
+        },
+        "diaNum": {
+          name: 'diaNum',
           type: 'number'
         },
       },

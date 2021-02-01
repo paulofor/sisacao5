@@ -6,7 +6,8 @@
   <div *ngIf="listaBase">
     <div class="dgc-card" *ngFor="let item of listaBase">
       <header class="dgc-card-header">
-        <span>{{item.nome}}</span>
+
+        <span>{{item.nome}}</span><span>({{item.tipo}})</span>
         <a class="dgc-direita" href={{item.url}} target="_blank">ver</a>
       </header>
       <div class="dgc-texto-grande">
@@ -16,8 +17,10 @@
       <div class="dgc-card-detalhe">
         <table>
           <tr *ngFor="let investimento of item.startupInvestimentos">
-            <td>{{investimento.startupFundo.nome}}</td>
-            <td>{{investimento.valor}}</td>
+            <td width="10%">{{investimento.data}}</td>
+            <td width="55%">{{investimento.startupFundo.nome}}</td>
+            <td width="20%">{{investimento.moeda}}&nbsp;&nbsp;{{investimento.valor | currency:'BRL':true}}</td>
+            <td width="15%"><a (click)="dialogo1({'item' : investimento})">alterar</a></td>
           </tr>
         </table>
 

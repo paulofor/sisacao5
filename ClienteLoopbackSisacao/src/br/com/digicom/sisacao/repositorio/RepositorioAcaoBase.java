@@ -12,6 +12,7 @@ import com.strongloop.android.remoting.adapters.RestContractItem;
 
 import br.com.digicom.sisacao.modelo.AtivoAcao;
 import br.com.digicom.sisacao.modelo.CotacaoIntradayAcao;
+import br.com.digicom.sisacao.modelo.CotacaoIntradayDia;
 
 public class RepositorioAcaoBase {
 
@@ -56,14 +57,17 @@ public class RepositorioAcaoBase {
 			return "CotacaoIntradayAcaos";
 		}
 		public void insereValorHorario(String ticker, String horaNegocio, Double valor, final VoidCallback voidCallback) {
-			RestContractItem contrato = new RestContractItem("CotacaoIntradayAcaos/insereValorHorario","POST");
-			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayAcao.insereValorHorario");
+			RestContractItem contrato = new RestContractItem("CotacaoIntradayAcaos/insereValorHorarioAcao","POST");
+			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayAcao.insereValorHorarioAcao");
 	        Map<String, Object> params = new HashMap<String, Object>();
 	        params.put("ticker", ticker);
 	        params.put("valor", valor);
 	        params.put("horario", horaNegocio);
-	        invokeStaticMethod("insereValorHorario", params, new EmptyResponseParser(voidCallback));
+	        invokeStaticMethod("insereValorHorarioAcao", params, new EmptyResponseParser(voidCallback));
 		}
+		/*
+		
+		*/
 	}
 
 

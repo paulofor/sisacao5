@@ -1,0 +1,26 @@
+{
+  "name": "ParametroRegra",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "tipo": {
+      "type": "string"
+    },
+    "nome": {
+      "type": "string"
+    },
+    "descricao": {
+      "type": "string"
+    },
+    "atributoClasse": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

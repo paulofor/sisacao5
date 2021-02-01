@@ -94,5 +94,17 @@
   "IdeiaExperimento": {
     "dataSource": "mysqlDS",
     "public": true
+  },
+  "DiaPregao": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "RegraSimulacao": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "ParametroRegra": {
+    "dataSource": "mysqlDS",
+    "public": true
   }
 }

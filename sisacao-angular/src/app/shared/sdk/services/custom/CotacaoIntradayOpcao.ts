@@ -113,10 +113,10 @@ export class CotacaoIntradayOpcaoApi extends BaseLoopBackApi {
    * This usually means the response is a `CotacaoIntradayOpcao` object.)
    * </em>
    */
-  public InsereValorHorario(ticker: any = {}, valor: any = {}, horario: any = {}, customHeaders?: Function): Observable<any> {
+  public InsereValorHorarioOpcao(ticker: any = {}, valor: any = {}, horario: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/CotacaoIntradayOpcaos/insereValorHorario";
+    "/CotacaoIntradayOpcaos/insereValorHorarioOpcao";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};

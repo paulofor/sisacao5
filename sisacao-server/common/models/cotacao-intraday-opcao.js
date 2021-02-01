@@ -9,7 +9,7 @@ module.exports = function (Cotacaointradayopcao) {
    * @param {Function(Error, object)} callback
    */
 
-    Cotacaointradayopcao.InsereValorHorario = function (ticker, valor, horario, callback) {
+    Cotacaointradayopcao.InsereValorHorarioOpcao = function (ticker, valor, horario, callback) {
         let sql = "insert into CotacaoIntradayOpcao (ticker,dataHora,valor,dataHoraNegStr, dia, posicaoDia, intervalo) " +
         "values ('" + ticker + "' , now(), " + valor + ", '" + horario + "' , now(), 0, 0 )"
         let ds = Cotacaointradayopcao.dataSource;
