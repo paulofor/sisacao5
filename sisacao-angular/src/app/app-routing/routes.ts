@@ -13,6 +13,7 @@ import { CotacaoIntraImobiliarioComponent } from '../cotacao-intra-imobiliario/c
 import { DataSetListComponent } from '../data-set-list/data-set-list.component';
 import { StartupEmpresaListComponent } from '../startup-empresa-list/startup-empresa-list.component';
 import { StartupFundoListComponent } from '../startup-fundo-list/startup-fundo-list.component';
+import { RegraSimulacaoListComponent } from '../regra-simulacao-list/regra-simulacao-list.component';
 
 export const routes : Routes = [
     { path: 'home' , component: HomeComponent },
@@ -31,6 +32,8 @@ export const routes : Routes = [
 
     { path : 'startupEmpresa' , component: StartupEmpresaListComponent },
     { path : 'startupFundo' , component: StartupFundoListComponent },
+
+    { path : 'regraSimulacao' , component: RegraSimulacaoListComponent },
 
     { path: '',          redirectTo: 'home', pathMatch: 'full' }
 ]

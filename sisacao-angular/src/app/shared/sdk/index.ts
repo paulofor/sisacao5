@@ -45,7 +45,6 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CookieBrowser } from './storage/cookie.browser';
 import { StorageBrowser } from './storage/storage.browser';
 import { SocketBrowser } from './sockets/socket.browser';
-
 import { SocketConnection } from './sockets/socket.connections';
 import { RealTime } from './services/core/real.time';
 import { UserApi } from './services/custom/User';
@@ -65,6 +64,8 @@ import { StartupEmpresaApi } from './services/custom/StartupEmpresa';
 import { StartupInvestimentoApi } from './services/custom/StartupInvestimento';
 import { IdeiaExperimentoApi } from './services/custom/IdeiaExperimento';
 import { DiaPregaoApi } from './services/custom/DiaPregao';
+import { RegraSimulacaoApi } from './services/custom/RegraSimulacao';
+import { ParametroRegraApi } from './services/custom/ParametroRegra';
 /**
 * @module SDKBrowserModule
 * @description
@@ -112,6 +113,8 @@ export class SDKBrowserModule {
         StartupInvestimentoApi,
         IdeiaExperimentoApi,
         DiaPregaoApi,
+        RegraSimulacaoApi,
+        ParametroRegraApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
       ]

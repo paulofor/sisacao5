@@ -17,6 +17,8 @@ import { StartupEmpresa } from '../../models/StartupEmpresa';
 import { StartupInvestimento } from '../../models/StartupInvestimento';
 import { IdeiaExperimento } from '../../models/IdeiaExperimento';
 import { DiaPregao } from '../../models/DiaPregao';
+import { RegraSimulacao } from '../../models/RegraSimulacao';
+import { ParametroRegra } from '../../models/ParametroRegra';
 
 export interface Models { [name: string]: any }
 
@@ -41,6 +43,8 @@ export class SDKModels {
     StartupInvestimento: StartupInvestimento,
     IdeiaExperimento: IdeiaExperimento,
     DiaPregao: DiaPregao,
+    RegraSimulacao: RegraSimulacao,
+    ParametroRegra: ParametroRegra,
     
   };
 

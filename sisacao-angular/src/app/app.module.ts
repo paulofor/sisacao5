@@ -60,6 +60,8 @@ import { StartupFundoEditComponent } from './startup-fundo-edit/startup-fundo-ed
 import { StartupInvestimentoEditComponent } from './startup-investimento-edit/startup-investimento-edit.component';
 import { AtributoDataSetEditComponent } from './atributo-data-set-edit/atributo-data-set-edit.component';
 import { DataSetCreateSqlComponent } from './data-set-create-sql/data-set-create-sql.component';
+import { RegraSimulacaoListComponent } from './regra-simulacao-list/regra-simulacao-list.component';
+import { RegraSimulacaoEditComponent } from './regra-simulacao-edit/regra-simulacao-edit.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -95,7 +97,9 @@ registerLocaleData(localePt, 'pt-BR');
     StartupFundoEditComponent,
     StartupInvestimentoEditComponent,
     AtributoDataSetEditComponent,
-    DataSetCreateSqlComponent
+    DataSetCreateSqlComponent,
+    RegraSimulacaoListComponent,
+    RegraSimulacaoEditComponent
   ],
   imports: [
     BrowserModule,
@@ -151,7 +155,8 @@ registerLocaleData(localePt, 'pt-BR');
     StartupFundoEditComponent,
     AtributoDataSetEditComponent,
     StartupInvestimentoEditComponent,
-    DataSetCreateSqlComponent
+    DataSetCreateSqlComponent,
+    RegraSimulacaoEditComponent
   ],
   bootstrap: [AppComponent]
 })

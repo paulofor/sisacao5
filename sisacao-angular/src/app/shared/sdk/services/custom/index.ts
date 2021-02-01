@@ -16,5 +16,7 @@ export * from './StartupEmpresa';
 export * from './StartupInvestimento';
 export * from './IdeiaExperimento';
 export * from './DiaPregao';
+export * from './RegraSimulacao';
+export * from './ParametroRegra';
 export * from './SDKModels';
 export * from './logger.service';
