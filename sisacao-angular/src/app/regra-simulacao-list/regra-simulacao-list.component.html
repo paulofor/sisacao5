@@ -1,16 +1,31 @@
 <div class="dgc-painel">
   <div class="dgc-painel-header">
       <span>Regra Simulação</span>
-      <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita()">novo</button>
+      <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita()">Nova Regra</button>
   </div>
   <div *ngIf="listaBase">
       <div class="dgc-card" *ngFor="let item of listaBase">
           <div class="dgc-card-header">
-              <span>{{item.nome}}</span>
+              <span>{{item.nome}} - {{item.nomeClasse}}</span>
           </div>
           <div>
               <span>{{item.descricao}}</span>
           </div>
+          <div class="dgc-card-detalhe">
+            <table>
+              <tr *ngFor="let parametro of item.parametroRegras">
+                <td width="20%">{{parametro.nome}}</td>
+                <td width="70%">{{parametro.descricao}}</td>
+                <td width="10%"><a (click)="dialogo1({'item' : parametro})">alterar</a></td>
+              </tr>
+            </table>
+    
+          </div>
+          <div class="dgc-card-comandos">
+            <button class="btn-primary btn-sm btn" (click)="dialogo1({'origem' : item})">Novo Parâmetro</button>
+            <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar Regra</button>
+          </div> 
       </div>
+     
   </div>
 </div>

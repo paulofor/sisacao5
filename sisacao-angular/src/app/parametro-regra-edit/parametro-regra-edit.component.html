@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Edita Regra</h2>
+<h2 mat-dialog-title>Edita Parâmetro</h2>
 
 <form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
 
@@ -8,7 +8,7 @@
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <input matInput maxlength="50" #nomeClasse [(ngModel)]="item.nomeClasse" name="nomeClasse" placeholder="Classe" autocomplete="off" />
+      <input matInput maxlength="50" #atributoClasse [(ngModel)]="item.atributoClasse" name="atributoClasse" placeholder="Método" autocomplete="off" />
     </mat-form-field>
 
     <mat-form-field class="example-full-width">

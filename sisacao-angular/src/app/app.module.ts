@@ -62,6 +62,7 @@ import { AtributoDataSetEditComponent } from './atributo-data-set-edit/atributo-
 import { DataSetCreateSqlComponent } from './data-set-create-sql/data-set-create-sql.component';
 import { RegraSimulacaoListComponent } from './regra-simulacao-list/regra-simulacao-list.component';
 import { RegraSimulacaoEditComponent } from './regra-simulacao-edit/regra-simulacao-edit.component';
+import { ParametroRegraEditComponent } from './parametro-regra-edit/parametro-regra-edit.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -99,7 +100,8 @@ registerLocaleData(localePt, 'pt-BR');
     AtributoDataSetEditComponent,
     DataSetCreateSqlComponent,
     RegraSimulacaoListComponent,
-    RegraSimulacaoEditComponent
+    RegraSimulacaoEditComponent,
+    ParametroRegraEditComponent
   ],
   imports: [
     BrowserModule,
@@ -156,7 +158,8 @@ registerLocaleData(localePt, 'pt-BR');
     AtributoDataSetEditComponent,
     StartupInvestimentoEditComponent,
     DataSetCreateSqlComponent,
-    RegraSimulacaoEditComponent
+    RegraSimulacaoEditComponent,
+    ParametroRegraEditComponent
   ],
   bootstrap: [AppComponent]
 })

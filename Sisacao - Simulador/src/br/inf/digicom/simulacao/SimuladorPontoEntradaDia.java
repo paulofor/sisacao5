@@ -28,7 +28,7 @@ public class SimuladorPontoEntradaDia {
 		}
 		regra.setDiaInicial(indDia);
 		indHora = 0;
-		while (dias.get(indDia).getDiaNum() < 20210129) {
+		while (dias.get(indDia).getDiaNum() < 20210201) {
 			indHora = 0;
 			pontoEntrada = regra.getPontoEntrada(indDia, dias);
 			while (dias.get(indDia).getCotacaoIntradayAcaos().size()>indHora) {
