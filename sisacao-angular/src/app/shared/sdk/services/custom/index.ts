@@ -18,5 +18,8 @@ export * from './IdeiaExperimento';
 export * from './DiaPregao';
 export * from './RegraSimulacao';
 export * from './ParametroRegra';
+export * from './ExperimentoSimulacao';
+export * from './ExperimentoParametro';
+export * from './ExperimentoAcao';
 export * from './SDKModels';
 export * from './logger.service';

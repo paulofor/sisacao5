@@ -1,0 +1,45 @@
+{
+  "name": "ExperimentoSimulacao",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "codigo": {
+      "type": "string"
+    },
+    "dataInicial": {
+      "type": "string"
+    },
+    "dataFinal": {
+      "type": "string"
+    },
+    "dataCriacao": {
+      "type": "string"
+    },
+    "dataExecucao": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "regraSimulacao": {
+      "type": "belongsTo",
+      "model": "RegraSimulacao",
+      "foreignKey": ""
+    },
+    "experimentoParametros": {
+      "type": "hasMany",
+      "model": "ExperimentoParametro",
+      "foreignKey": ""
+    },
+    "experimentoAcaos": {
+      "type": "hasMany",
+      "model": "ExperimentoAcao",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

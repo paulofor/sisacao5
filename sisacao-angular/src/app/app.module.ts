@@ -63,6 +63,9 @@ import { DataSetCreateSqlComponent } from './data-set-create-sql/data-set-create
 import { RegraSimulacaoListComponent } from './regra-simulacao-list/regra-simulacao-list.component';
 import { RegraSimulacaoEditComponent } from './regra-simulacao-edit/regra-simulacao-edit.component';
 import { ParametroRegraEditComponent } from './parametro-regra-edit/parametro-regra-edit.component';
+import { ExperimentoSimulacaoListComponent } from './experimento-simulacao-list/experimento-simulacao-list.component';
+import { ExperimentoSimulacaoEditComponent } from './experimento-simulacao-edit/experimento-simulacao-edit.component';
+import { ExperimentoParametroEditComponent } from './experimento-parametro-edit/experimento-parametro-edit.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -101,7 +104,10 @@ registerLocaleData(localePt, 'pt-BR');
     DataSetCreateSqlComponent,
     RegraSimulacaoListComponent,
     RegraSimulacaoEditComponent,
-    ParametroRegraEditComponent
+    ParametroRegraEditComponent,
+    ExperimentoSimulacaoListComponent,
+    ExperimentoSimulacaoEditComponent,
+    ExperimentoParametroEditComponent
   ],
   imports: [
     BrowserModule,
@@ -159,7 +165,9 @@ registerLocaleData(localePt, 'pt-BR');
     StartupInvestimentoEditComponent,
     DataSetCreateSqlComponent,
     RegraSimulacaoEditComponent,
-    ParametroRegraEditComponent
+    ParametroRegraEditComponent,
+    ExperimentoSimulacaoEditComponent,
+    ExperimentoParametroEditComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -19,6 +19,9 @@ import { IdeiaExperimento } from '../../models/IdeiaExperimento';
 import { DiaPregao } from '../../models/DiaPregao';
 import { RegraSimulacao } from '../../models/RegraSimulacao';
 import { ParametroRegra } from '../../models/ParametroRegra';
+import { ExperimentoSimulacao } from '../../models/ExperimentoSimulacao';
+import { ExperimentoParametro } from '../../models/ExperimentoParametro';
+import { ExperimentoAcao } from '../../models/ExperimentoAcao';
 
 export interface Models { [name: string]: any }
 
@@ -45,6 +48,9 @@ export class SDKModels {
     DiaPregao: DiaPregao,
     RegraSimulacao: RegraSimulacao,
     ParametroRegra: ParametroRegra,
+    ExperimentoSimulacao: ExperimentoSimulacao,
+    ExperimentoParametro: ExperimentoParametro,
+    ExperimentoAcao: ExperimentoAcao,
     
   };
 

@@ -106,5 +106,17 @@
   "ParametroRegra": {
     "dataSource": "mysqlDS",
     "public": true
+  },
+  "ExperimentoSimulacao": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "ExperimentoParametro": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "ExperimentoAcao": {
+    "dataSource": "mysqlDS",
+    "public": true
   }
 }
