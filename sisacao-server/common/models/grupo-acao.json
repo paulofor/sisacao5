@@ -1,0 +1,26 @@
+{
+  "name": "GrupoAcao",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nome": {
+      "type": "string"
+    },
+    "descricao": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "relGrupoAcaos": {
+      "type": "hasMany",
+      "model": "RelGrupoAcao",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

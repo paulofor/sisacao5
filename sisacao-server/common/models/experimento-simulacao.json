@@ -38,6 +38,11 @@
       "type": "hasMany",
       "model": "ExperimentoAcao",
       "foreignKey": ""
+    },
+    "grupoAcao": {
+      "type": "belongsTo",
+      "model": "GrupoAcao",
+      "foreignKey": ""
     }
   },
   "acls": [],

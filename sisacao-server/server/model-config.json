@@ -118,5 +118,13 @@
   "ExperimentoAcao": {
     "dataSource": "mysqlDS",
     "public": true
+  },
+  "GrupoAcao": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "RelGrupoAcao": {
+    "dataSource": "mysqlDS",
+    "public": true
   }
 }

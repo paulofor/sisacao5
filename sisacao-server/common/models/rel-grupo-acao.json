@@ -1,5 +1,5 @@
 {
-  "name": "ExperimentoAcao",
+  "name": "RelGrupoAcao",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -10,7 +10,7 @@
       "type": "string",
       "id": true
     },
-    "experimentoSimulacaoId": {
+    "grupoAcaoId": {
       "type": "number",
       "id": true
     }
