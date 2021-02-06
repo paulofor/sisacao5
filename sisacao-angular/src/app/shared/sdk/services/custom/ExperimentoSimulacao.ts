@@ -14,6 +14,7 @@ import { SocketConnection } from '../../sockets/socket.connections';
 import { RegraSimulacao } from '../../models/RegraSimulacao';
 import { ExperimentoParametro } from '../../models/ExperimentoParametro';
 import { ExperimentoAcao } from '../../models/ExperimentoAcao';
+import { GrupoAcao } from '../../models/GrupoAcao';
 
 
 /**
@@ -244,6 +245,36 @@ export class ExperimentoSimulacaoApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * Busca relação grupoAcao de belongsTo.
+   *
+   * @param {any} id ExperimentoSimulacao id
+   *
+   * @param {boolean} refresh 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExperimentoSimulacao` object.)
+   * </em>
+   */
+  public getGrupoAcao(id: any, refresh: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExperimentoSimulacaos/:id/grupoAcao";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof refresh !== 'undefined' && refresh !== null) _urlParams.refresh = refresh;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }

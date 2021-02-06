@@ -2,7 +2,8 @@
 import {
   RegraSimulacao,
   ExperimentoParametro,
-  ExperimentoAcao
+  ExperimentoAcao,
+  GrupoAcao
 } from '../index';
 
 declare var Object: any;
@@ -14,9 +15,11 @@ export interface ExperimentoSimulacaoInterface {
   "dataExecucao"?: string;
   "id"?: number;
   "regraSimulacaoId"?: number;
+  "grupoAcaoId"?: number;
   regraSimulacao?: RegraSimulacao;
   experimentoParametros?: ExperimentoParametro[];
   experimentoAcaos?: ExperimentoAcao[];
+  grupoAcao?: GrupoAcao;
 }
 
 export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
@@ -27,9 +30,11 @@ export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
   "dataExecucao": string;
   "id": number;
   "regraSimulacaoId": number;
+  "grupoAcaoId": number;
   regraSimulacao: RegraSimulacao;
   experimentoParametros: ExperimentoParametro[];
   experimentoAcaos: ExperimentoAcao[];
+  grupoAcao: GrupoAcao;
   constructor(data?: ExperimentoSimulacaoInterface) {
     Object.assign(this, data);
   }
@@ -91,6 +96,10 @@ export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
           name: 'regraSimulacaoId',
           type: 'number'
         },
+        "grupoAcaoId": {
+          name: 'grupoAcaoId',
+          type: 'number'
+        },
       },
       relations: {
         regraSimulacao: {
@@ -116,6 +125,14 @@ export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
           relationType: 'hasMany',
                   keyFrom: 'id',
           keyTo: 'experimentoSimulacaoId'
+        },
+        grupoAcao: {
+          name: 'grupoAcao',
+          type: 'GrupoAcao',
+          model: 'GrupoAcao',
+          relationType: 'belongsTo',
+                  keyFrom: 'grupoAcaoId',
+          keyTo: 'id'
         },
       }
     }

@@ -66,6 +66,7 @@ import { ParametroRegraEditComponent } from './parametro-regra-edit/parametro-re
 import { ExperimentoSimulacaoListComponent } from './experimento-simulacao-list/experimento-simulacao-list.component';
 import { ExperimentoSimulacaoEditComponent } from './experimento-simulacao-edit/experimento-simulacao-edit.component';
 import { ExperimentoParametroEditComponent } from './experimento-parametro-edit/experimento-parametro-edit.component';
+import { GrupoAcaoListComponent } from './grupo-acao-list/grupo-acao-list.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -107,7 +108,8 @@ registerLocaleData(localePt, 'pt-BR');
     ParametroRegraEditComponent,
     ExperimentoSimulacaoListComponent,
     ExperimentoSimulacaoEditComponent,
-    ExperimentoParametroEditComponent
+    ExperimentoParametroEditComponent,
+    GrupoAcaoListComponent
   ],
   imports: [
     BrowserModule,

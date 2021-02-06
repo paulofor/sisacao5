@@ -24,8 +24,9 @@ export class ExperimentoSimulacaoListComponent  extends BaseListComponent {
     return {
       'include' : [
         { 'relation' : 'regraSimulacao' } ,
-        { 'relation' : 'experimentoParametros' , 'scope' : {'include' : 'parametroRegra'}}
-      ]
+        { 'relation' : 'experimentoParametros' , 'scope' : {'include' : 'parametroRegra'}},
+        { 'relation' : 'grupoAcao'}
+      ] 
     }
   }
 

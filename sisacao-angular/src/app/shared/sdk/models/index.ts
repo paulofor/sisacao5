@@ -21,5 +21,7 @@ export * from './ParametroRegra';
 export * from './ExperimentoSimulacao';
 export * from './ExperimentoParametro';
 export * from './ExperimentoAcao';
+export * from './GrupoAcao';
+export * from './RelGrupoAcao';
 export * from './BaseModels';
 export * from './FireLoopRef';

@@ -70,6 +70,8 @@ import { ParametroRegraApi } from './services/custom/ParametroRegra';
 import { ExperimentoSimulacaoApi } from './services/custom/ExperimentoSimulacao';
 import { ExperimentoParametroApi } from './services/custom/ExperimentoParametro';
 import { ExperimentoAcaoApi } from './services/custom/ExperimentoAcao';
+import { GrupoAcaoApi } from './services/custom/GrupoAcao';
+import { RelGrupoAcaoApi } from './services/custom/RelGrupoAcao';
 /**
 * @module SDKBrowserModule
 * @description
@@ -122,6 +124,8 @@ export class SDKBrowserModule {
         ExperimentoSimulacaoApi,
         ExperimentoParametroApi,
         ExperimentoAcaoApi,
+        GrupoAcaoApi,
+        RelGrupoAcaoApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
 
