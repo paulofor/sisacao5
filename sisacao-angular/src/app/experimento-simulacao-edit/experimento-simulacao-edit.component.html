@@ -9,13 +9,20 @@
 
 
     <mat-form-field class="example-full-width">
-      <mat-select placeholder="Regra" #startupFundoId [(ngModel)]="item.regraSimulacaoId" name="regraSimulacaoId">
+      <mat-select placeholder="Regra" #regraSimulacaoId [(ngModel)]="item.regraSimulacaoId" name="regraSimulacaoId">
         <mat-option *ngFor="let regra of listaRegra" [value]="regra.id">
           {{ regra.nome }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Grupo Ação" #grupoAcaoId [(ngModel)]="item.grupoAcaoId" name="grupoAcaoId">
+        <mat-option *ngFor="let grupoAcao of listaGrupoAcao" [value]="grupoAcao.id">
+          {{ grupoAcao.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
   </mat-dialog-content>
 

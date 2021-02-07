@@ -28,9 +28,6 @@
     color: #f95201;
  }
 
-
-
- 
 /*   Digicom Estilo   */
 /*****************************************************************************/
 /* quadro geral */
@@ -207,28 +204,19 @@ body {
   /* background-image: linear-gradient(to bottom, transparent, #ccc); */
 }
   
-.dgc-direita {
+ .dgc-direita {
   margin-left: auto;
  }
   
-  
- .example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
+
+.example-form {
+ min-width: 150px;
+ max-width: 500px;
+ width: 100%;
+}
+ 
+.example-full-width {
+ width: 100%;
 }
 
-.example-full-width {
-  width: 100%;
-}
   
-  
-  
-  
-  
-  
-  
-  
- 
- 
- 

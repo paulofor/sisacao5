@@ -15,6 +15,7 @@ import { StartupEmpresaListComponent } from '../startup-empresa-list/startup-emp
 import { StartupFundoListComponent } from '../startup-fundo-list/startup-fundo-list.component';
 import { RegraSimulacaoListComponent } from '../regra-simulacao-list/regra-simulacao-list.component';
 import { ExperimentoSimulacaoListComponent } from '../experimento-simulacao-list/experimento-simulacao-list.component';
+import { GrupoAcaoListComponent } from '../grupo-acao-list/grupo-acao-list.component';
 
 export const routes : Routes = [
     { path: 'home' , component: HomeComponent },
@@ -36,6 +37,7 @@ export const routes : Routes = [
 
     { path : 'regraSimulacao' , component: RegraSimulacaoListComponent },
     { path : 'experimentoSimulacao' , component: ExperimentoSimulacaoListComponent },
+    { path : 'grupoAcao' , component: GrupoAcaoListComponent },
 
     { path: '',          redirectTo: 'home', pathMatch: 'full' }
 ]

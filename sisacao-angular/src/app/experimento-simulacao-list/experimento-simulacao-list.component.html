@@ -8,8 +8,13 @@
           <div class="dgc-card-header">
               <span>{{item.codigo}}</span>
           </div>
- 
-         
+          <div class="dgc-card-detalhe"> 
+            <span>Grupo Ação: {{item.grupoAcao.nome}}</span>
+          </div>
+          <div class="dgc-card-detalhe">
+            <span>Regra: {{item.regraSimulacao.nome}}</span>
+          </div>
+
           <div class="dgc-card-detalhe">
             <table>
               <tr *ngFor="let parametro of item.experimentoParametros">

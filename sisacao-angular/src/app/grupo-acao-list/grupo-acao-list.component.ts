@@ -1,15 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { BaseListComponent } from '../base-component/base-list-component';
+import { ExperimentoSimulacaoEditComponent } from '../experimento-simulacao-edit/experimento-simulacao-edit.component';
+import { GrupoAcaoEditComponent } from '../grupo-acao-edit/grupo-acao-edit.component';
+import { GrupoAcaoApi } from '../shared/sdk';
 
 @Component({
   selector: 'app-grupo-acao-list',
   templateUrl: './grupo-acao-list.component.html',
   styleUrls: ['./grupo-acao-list.component.css']
 })
-export class GrupoAcaoListComponent implements OnInit {
+export class GrupoAcaoListComponent extends BaseListComponent {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(protected dialog: MatDialog, protected srv:GrupoAcaoApi) { 
+    super(dialog,srv);
   }
+
+
+  getComponente() {
+    return GrupoAcaoEditComponent;
+  }
+
+  getFiltro() {
+    return {
+       
+    }
+  }
+
 
 }

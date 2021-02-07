@@ -67,6 +67,8 @@ import { ExperimentoSimulacaoListComponent } from './experimento-simulacao-list/
 import { ExperimentoSimulacaoEditComponent } from './experimento-simulacao-edit/experimento-simulacao-edit.component';
 import { ExperimentoParametroEditComponent } from './experimento-parametro-edit/experimento-parametro-edit.component';
 import { GrupoAcaoListComponent } from './grupo-acao-list/grupo-acao-list.component';
+import { GrupoAcaoEditComponent } from './grupo-acao-edit/grupo-acao-edit.component';
+import { EscolheAcaoGrupoEditComponent } from './escolhe-acao-grupo-edit/escolhe-acao-grupo-edit.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -109,7 +111,9 @@ registerLocaleData(localePt, 'pt-BR');
     ExperimentoSimulacaoListComponent,
     ExperimentoSimulacaoEditComponent,
     ExperimentoParametroEditComponent,
-    GrupoAcaoListComponent
+    GrupoAcaoListComponent,
+    GrupoAcaoEditComponent,
+    EscolheAcaoGrupoEditComponent
   ],
   imports: [
     BrowserModule,
@@ -169,7 +173,9 @@ registerLocaleData(localePt, 'pt-BR');
     RegraSimulacaoEditComponent,
     ParametroRegraEditComponent,
     ExperimentoSimulacaoEditComponent,
-    ExperimentoParametroEditComponent
+    ExperimentoParametroEditComponent,
+    GrupoAcaoEditComponent,
+    EscolheAcaoGrupoEditComponent
   ],
   bootstrap: [AppComponent]
 })

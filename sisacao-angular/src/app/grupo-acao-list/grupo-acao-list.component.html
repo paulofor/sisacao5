@@ -1,3 +1,35 @@
-<p>
-  grupo-acao-list works!
-</p>
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+      <span>Grupo Ação</span>
+      <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita()">Novo Grupo</button>
+  </div>
+  <div *ngIf="listaBase">
+      <div class="dgc-card" *ngFor="let item of listaBase">
+          <div class="dgc-card-header">
+              <span>{{item.nome}}</span>
+          </div>
+ 
+         
+          <!--
+          <div class="dgc-card-detalhe">
+            <table>
+              <tr *ngFor="let parametro of item.experimentoParametros">
+                <td width="20%">{{parametro.parametroRegra.nome}}</td>
+                <td width="15%">{{parametro.inicial}}</td>
+                <td width="15%">{{parametro.final}}</td>
+                <td width="15%">{{parametro.passo}}</td>
+                <td width="10%"><a (click)="dialogo1({'item' : parametro})">alterar</a></td>
+              </tr>
+            </table>
+          </div>
+          -->
+          
+ 
+          <div class="dgc-card-comandos">
+            <button class="btn-primary btn-sm btn" (click)="dialogo1({'origem' : item})">Escolhe Ação</button>
+            <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar Grupo</button>
+          </div> 
+      </div>
+     
+  </div>
+</div>
