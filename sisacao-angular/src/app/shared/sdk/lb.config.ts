@@ -1,4 +1,5 @@
 /* tslint:disable */
+
 import { BASE_URL } from "../../constantes/base.url";
 
 /**

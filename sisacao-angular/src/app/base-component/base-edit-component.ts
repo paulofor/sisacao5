@@ -27,6 +27,7 @@ export class BaseEditComponent implements OnInit{
       this.item = this.data.item;
       console.log('Item:', JSON.stringify(this.item));
     }
+    this.posItem();
   }
   
   onSubmit() {
@@ -49,6 +50,9 @@ export class BaseEditComponent implements OnInit{
   }
 
   montaCombos() {
+    
+  }
+  posItem() {
     
   }
 }

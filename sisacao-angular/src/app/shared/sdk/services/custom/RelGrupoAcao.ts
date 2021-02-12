@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
 import { RelGrupoAcao } from '../../models/RelGrupoAcao';
 import { SocketConnection } from '../../sockets/socket.connections';
 import { AtivoAcao } from '../../models/AtivoAcao';
+import { GrupoAcao } from '../../models/GrupoAcao';
 
 
 /**
@@ -50,6 +51,36 @@ export class RelGrupoAcaoApi extends BaseLoopBackApi {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/RelGrupoAcaos/:id/ativoAcao";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof refresh !== 'undefined' && refresh !== null) _urlParams.refresh = refresh;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * Busca relação grupoAcao de belongsTo.
+   *
+   * @param {any} id RelGrupoAcao id
+   *
+   * @param {boolean} refresh 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `RelGrupoAcao` object.)
+   * </em>
+   */
+  public getGrupoAcao(id: any, refresh: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/RelGrupoAcaos/:id/grupoAcao";
     let _routeParams: any = {
       id: id
     };

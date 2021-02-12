@@ -1,6 +1,7 @@
 /* tslint:disable */
 import {
-  AtivoAcao
+  AtivoAcao,
+  GrupoAcao
 } from '../index';
 
 declare var Object: any;
@@ -8,12 +9,14 @@ export interface RelGrupoAcaoInterface {
   "ticker"?: string;
   "grupoAcaoId"?: number;
   ativoAcao?: AtivoAcao;
+  grupoAcao?: GrupoAcao;
 }
 
 export class RelGrupoAcao implements RelGrupoAcaoInterface {
   "ticker": string;
   "grupoAcaoId": number;
   ativoAcao: AtivoAcao;
+  grupoAcao: GrupoAcao;
   constructor(data?: RelGrupoAcaoInterface) {
     Object.assign(this, data);
   }
@@ -64,6 +67,14 @@ export class RelGrupoAcao implements RelGrupoAcaoInterface {
           relationType: 'belongsTo',
                   keyFrom: 'ticker',
           keyTo: 'ticker'
+        },
+        grupoAcao: {
+          name: 'grupoAcao',
+          type: 'GrupoAcao',
+          model: 'GrupoAcao',
+          relationType: 'belongsTo',
+                  keyFrom: 'grupoAcaoId',
+          keyTo: 'id'
         },
       }
     }

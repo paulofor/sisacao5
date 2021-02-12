@@ -24,8 +24,6 @@ export class GrupoAcaoEditComponent  extends BaseEditComponent {
     return new GrupoAcao();
   }
 
-  getDialogo1() : any {
-    return EscolheAcaoGrupoEditComponent;
-  }
+  
 
 }

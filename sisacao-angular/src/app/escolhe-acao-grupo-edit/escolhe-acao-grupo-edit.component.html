@@ -1,3 +1,21 @@
-<p>
-  escolhe-acao-grupo-edit works!
-</p>
+<h2 *ngIf="item" mat-dialog-title>Ações para Grupo</h2>
+
+<form *ngIf="listaAcao" class="example-full-width" (ngSubmit)="onSubmit()">
+
+  <mat-dialog-content>
+
+    <div *ngFor="let item of listaAcao; let i = index;">
+      <mat-checkbox  [checked]="getCheck(item)"  (change)="onChange($event, i, item)">
+        {{item.ticker}}
+      </mat-checkbox>
+    </div>
+
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button>Salvar</button>
+    <button mat-raised-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+
+</form>

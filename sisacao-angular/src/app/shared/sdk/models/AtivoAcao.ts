@@ -1,4 +1,7 @@
 /* tslint:disable */
+import {
+  RelGrupoAcao
+} from '../index';
 
 declare var Object: any;
 export interface AtivoAcaoInterface {
@@ -7,6 +10,7 @@ export interface AtivoAcaoInterface {
   "intraday5"?: number;
   "intraday15"?: number;
   "intraday30"?: number;
+  relGrupoAcaos?: RelGrupoAcao[];
 }
 
 export class AtivoAcao implements AtivoAcaoInterface {
@@ -15,6 +19,7 @@ export class AtivoAcao implements AtivoAcaoInterface {
   "intraday5": number;
   "intraday15": number;
   "intraday30": number;
+  relGrupoAcaos: RelGrupoAcao[];
   constructor(data?: AtivoAcaoInterface) {
     Object.assign(this, data);
   }
@@ -70,6 +75,14 @@ export class AtivoAcao implements AtivoAcaoInterface {
         },
       },
       relations: {
+        relGrupoAcaos: {
+          name: 'relGrupoAcaos',
+          type: 'RelGrupoAcao[]',
+          model: 'RelGrupoAcao',
+          relationType: 'hasMany',
+                  keyFrom: 'ticker',
+          keyTo: 'ticker'
+        },
       }
     }
   }

@@ -21,8 +21,45 @@
       "type": "belongsTo",
       "model": "AtivoAcao",
       "foreignKey": "ticker"
+    },
+    "grupoAcao": {
+      "type": "belongsTo",
+      "model": "GrupoAcao",
+      "foreignKey": ""
     }
   },
   "acls": [],
-  "methods": {}
+  "methods": {
+    "AtualizaPorGrupoAcao": {
+      "accepts": [
+        {
+          "arg": "idGrupo",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "listaAtivo",
+          "type": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaPorGrupoAcao",
+          "verb": "post"
+        }
+      ]
+    }
+  }
 }
