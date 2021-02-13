@@ -15,6 +15,27 @@ module.exports = function (Ativoacao) {
     };
 
 
+
+
+    /**
+     * 
+     * @param {Function(Error, object)} callback
+     */
+
+    Ativoacao.AtualizaPosDiario = function (callback) {
+        let sqlFechameentoAtual = " update AtivoAcao " +
+                    " set fechamentoAtual = ( " +
+                    " select fechamento from CotacaoDiarioAcao " +
+                    " where ticker = AtivoAcao.ticker " +
+                    " and data = (select max(data) from CotacaoDiarioAcao where ticker = AtivoAcao.ticker ) " +
+                    " ) ";
+        var ds = Ativoacao.dataSource;
+        ds.connector.query(sqlFechameentoAtual, (err1, result1) => {
+            callback(err1,result1);
+        });
+    };
+
+
     /**
     * 
     * @param {string} ticker 

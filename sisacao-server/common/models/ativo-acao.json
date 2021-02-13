@@ -21,6 +21,9 @@
     },
     "intraday30": {
       "type": "number"
+    },
+    "fechamentoAtual": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -102,6 +105,24 @@
       "http": [
         {
           "path": "/insereAcaoIndice",
+          "verb": "post"
+        }
+      ]
+    },
+    "AtualizaPosDiario": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaPosDiario",
           "verb": "post"
         }
       ]

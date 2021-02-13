@@ -21,19 +21,26 @@ export class EscolheAcaoGrupoEditComponent extends BaseEditComponent{
   }
 
   onSubmit() {
+    let listaAcaoEnvio:AtivoAcao[] = [];
+    
     for(let i=0;i<this.listaAcao.length;i++) {
       if (this.listaAcao[i].relGrupoAcaos.length>0) {
-        console.log(this.listaAcao[i].ticker)
+        console.log(this.listaAcao[i].ticker);
+        listaAcaoEnvio.push(this.listaAcao[i]);
       }
     }
+    this.servico.AtualizaPorGrupoAcao(this.origem.id, listaAcaoEnvio)
+      .subscribe((resultado) => {
+        console.log('resultado: ' , resultado);
+        this.closeDialog();
+      })
   }
   
   getCheck(acao:AtivoAcao) : boolean {
     return (acao.relGrupoAcaos.length>0);
   }
   onChange(event, index, acao : AtivoAcao) {
-    console.log('event', event);
-    console.log('acao:' , acao);
+
     if (event.checked) {
       let relNovo:RelGrupoAcao = new RelGrupoAcao();
       relNovo.grupoAcaoId = this.origem.id;
