@@ -21,7 +21,7 @@ public class CotacaoDiarioTabelaUnicaDaoExtendida  extends CotacaoDiarioTabelaUn
 	
 	public void insereDiarioAcao(CotacaoDiario cotacao) throws DaoException {
 		String sql = "insert into CotacaoDiarioAcao " +
-				"( ticker, data, volume, negocios, fechamento, maximo, minimo, abertura, percentual ) " +
+				"( ticker, data, volume, negocios, fechamento, maximo, minimo, abertura, percentual, diaNum ) " +
 				" values " + valoresInsert(cotacao);
 		this.executaSql(sql);
 
@@ -37,6 +37,7 @@ public class CotacaoDiarioTabelaUnicaDaoExtendida  extends CotacaoDiarioTabelaUn
 		+ " ,'" +  DCConvert.ToDataBase(item.getMinimoOriginal()) + "'  "
 		+ " ,'" +  DCConvert.ToDataBase(item.getAberturaOriginal()) + "'  "
 		+ " ,'" +  DCConvert.ToDataBase(item.getPercentual()) + "'  "
+		+ " , " +  (item.getData()) + "  "
 		+ " ) ";
 	}
 

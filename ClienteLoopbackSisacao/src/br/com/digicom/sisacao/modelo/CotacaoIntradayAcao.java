@@ -6,7 +6,7 @@ public class CotacaoIntradayAcao extends Model {
 
 	private String ticker;
 	private Double valor;
-	private String dataHoraStr;
+	private String dataHoraNegStr;
 	private String dataHora;
 	private Long posicaoDia;
 	private Long intervalo;
@@ -28,11 +28,11 @@ public class CotacaoIntradayAcao extends Model {
 	public void setValor(Integer valor) {
 		this.valor = valor.doubleValue();
 	}
-	public String getDataHoraStr() {
-		return dataHoraStr;
+	public String getDataHoraNegStr() {
+		return dataHoraNegStr;
 	}
-	public void setDataHoraStr(String dataHoraStr) {
-		this.dataHoraStr = dataHoraStr;
+	public void setDataHoraNegStr(String dataHoraNegStr) {
+		this.dataHoraNegStr = dataHoraNegStr;
 	}
 	public String getDataHora() {
 		return dataHora;
@@ -54,7 +54,7 @@ public class CotacaoIntradayAcao extends Model {
 	}
 
 	public String toString() {
-		return "valor:" + this.valor + " - dataHora:" + this.dataHora;
+		return this.dataHoraNegStr + ": " + this.valor;
 	}
 
 }

@@ -10,6 +10,15 @@ export interface AtivoAcaoInterface {
   "intraday5"?: number;
   "intraday15"?: number;
   "intraday30"?: number;
+  "fechamentoAtual"?: number;
+  "max1Mes"?: number;
+  "min1Mes"?: number;
+  "spread1Mes"?: number;
+  "mediaNegocio1Mes"?: number;
+  "max3Mes"?: number;
+  "min3Mes"?: number;
+  "spread3Mes"?: number;
+  "mediaNegocio3Mes"?: number;
   relGrupoAcaos?: RelGrupoAcao[];
 }
 
@@ -19,6 +28,15 @@ export class AtivoAcao implements AtivoAcaoInterface {
   "intraday5": number;
   "intraday15": number;
   "intraday30": number;
+  "fechamentoAtual": number;
+  "max1Mes": number;
+  "min1Mes": number;
+  "spread1Mes": number;
+  "mediaNegocio1Mes": number;
+  "max3Mes": number;
+  "min3Mes": number;
+  "spread3Mes": number;
+  "mediaNegocio3Mes": number;
   relGrupoAcaos: RelGrupoAcao[];
   constructor(data?: AtivoAcaoInterface) {
     Object.assign(this, data);
@@ -71,6 +89,42 @@ export class AtivoAcao implements AtivoAcaoInterface {
         },
         "intraday30": {
           name: 'intraday30',
+          type: 'number'
+        },
+        "fechamentoAtual": {
+          name: 'fechamentoAtual',
+          type: 'number'
+        },
+        "max1Mes": {
+          name: 'max1Mes',
+          type: 'number'
+        },
+        "min1Mes": {
+          name: 'min1Mes',
+          type: 'number'
+        },
+        "spread1Mes": {
+          name: 'spread1Mes',
+          type: 'number'
+        },
+        "mediaNegocio1Mes": {
+          name: 'mediaNegocio1Mes',
+          type: 'number'
+        },
+        "max3Mes": {
+          name: 'max3Mes',
+          type: 'number'
+        },
+        "min3Mes": {
+          name: 'min3Mes',
+          type: 'number'
+        },
+        "spread3Mes": {
+          name: 'spread3Mes',
+          type: 'number'
+        },
+        "mediaNegocio3Mes": {
+          name: 'mediaNegocio3Mes',
           type: 'number'
         },
       },

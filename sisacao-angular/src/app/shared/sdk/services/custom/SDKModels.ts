@@ -24,6 +24,9 @@ import { ExperimentoParametro } from '../../models/ExperimentoParametro';
 import { ExperimentoAcao } from '../../models/ExperimentoAcao';
 import { GrupoAcao } from '../../models/GrupoAcao';
 import { RelGrupoAcao } from '../../models/RelGrupoAcao';
+import { CotacaoDiarioAcao } from '../../models/CotacaoDiarioAcao';
+import { CombinacaoParametro } from '../../models/CombinacaoParametro';
+import { ValorParametro } from '../../models/ValorParametro';
 
 export interface Models { [name: string]: any }
 
@@ -55,6 +58,9 @@ export class SDKModels {
     ExperimentoAcao: ExperimentoAcao,
     GrupoAcao: GrupoAcao,
     RelGrupoAcao: RelGrupoAcao,
+    CotacaoDiarioAcao: CotacaoDiarioAcao,
+    CombinacaoParametro: CombinacaoParametro,
+    ValorParametro: ValorParametro,
     
   };
 

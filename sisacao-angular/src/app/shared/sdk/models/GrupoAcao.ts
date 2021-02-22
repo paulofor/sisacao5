@@ -7,6 +7,7 @@ declare var Object: any;
 export interface GrupoAcaoInterface {
   "nome"?: string;
   "descricao"?: string;
+  "quantidade"?: number;
   "id"?: number;
   relGrupoAcaos?: RelGrupoAcao[];
 }
@@ -14,6 +15,7 @@ export interface GrupoAcaoInterface {
 export class GrupoAcao implements GrupoAcaoInterface {
   "nome": string;
   "descricao": string;
+  "quantidade": number;
   "id": number;
   relGrupoAcaos: RelGrupoAcao[];
   constructor(data?: GrupoAcaoInterface) {
@@ -56,6 +58,10 @@ export class GrupoAcao implements GrupoAcaoInterface {
         "descricao": {
           name: 'descricao',
           type: 'string'
+        },
+        "quantidade": {
+          name: 'quantidade',
+          type: 'number'
         },
         "id": {
           name: 'id',

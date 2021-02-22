@@ -34,4 +34,10 @@ export class ExperimentoSimulacaoListComponent  extends BaseListComponent {
     return ExperimentoParametroEditComponent;
   }
 
+  gerarCombinacao(item) {
+    this.srv.GerarCombinacoes(item.id)
+      .subscribe(result => {
+        item.quantidadeCombinacao = result.quantidade;
+      })
+  }
 }

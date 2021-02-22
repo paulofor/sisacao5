@@ -23,5 +23,8 @@ export * from './ExperimentoParametro';
 export * from './ExperimentoAcao';
 export * from './GrupoAcao';
 export * from './RelGrupoAcao';
+export * from './CotacaoDiarioAcao';
+export * from './CombinacaoParametro';
+export * from './ValorParametro';
 export * from './SDKModels';
 export * from './logger.service';

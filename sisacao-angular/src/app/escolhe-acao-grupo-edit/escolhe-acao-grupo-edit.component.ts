@@ -21,12 +21,12 @@ export class EscolheAcaoGrupoEditComponent extends BaseEditComponent{
   }
 
   onSubmit() {
-    let listaAcaoEnvio:AtivoAcao[] = [];
+    let listaAcaoEnvio:RelGrupoAcao[] = [];
     
     for(let i=0;i<this.listaAcao.length;i++) {
       if (this.listaAcao[i].relGrupoAcaos.length>0) {
         console.log(this.listaAcao[i].ticker);
-        listaAcaoEnvio.push(this.listaAcao[i]);
+        listaAcaoEnvio.push(this.listaAcao[i].relGrupoAcaos[0]);
       }
     }
     this.servico.AtualizaPorGrupoAcao(this.origem.id, listaAcaoEnvio)
@@ -66,7 +66,7 @@ export class EscolheAcaoGrupoEditComponent extends BaseEditComponent{
     }
     */
     let filtro = {
-      "order" : "ticker ASC",
+      "order" : "mediaNegocio3Mes DESC",
       "include" : {
         "relation" : "relGrupoAcaos",
         "scope" : {

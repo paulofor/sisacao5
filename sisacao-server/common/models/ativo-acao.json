@@ -24,6 +24,30 @@
     },
     "fechamentoAtual": {
       "type": "number"
+    },
+    "max1Mes": {
+      "type": "number"
+    },
+    "min1Mes": {
+      "type": "number"
+    },
+    "spread1Mes": {
+      "type": "number"
+    },
+    "mediaNegocio1Mes": {
+      "type": "number"
+    },
+    "max3Mes": {
+      "type": "number"
+    },
+    "min3Mes": {
+      "type": "number"
+    },
+    "spread3Mes": {
+      "type": "number"
+    },
+    "mediaNegocio3Mes": {
+      "type": "number"
     }
   },
   "validations": [],

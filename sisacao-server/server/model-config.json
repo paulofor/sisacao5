@@ -126,5 +126,17 @@
   "RelGrupoAcao": {
     "dataSource": "mysqlDS",
     "public": true
+  },
+  "CotacaoDiarioAcao": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "CombinacaoParametro": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "ValorParametro": {
+    "dataSource": "mysqlDS",
+    "public": true
   }
 }

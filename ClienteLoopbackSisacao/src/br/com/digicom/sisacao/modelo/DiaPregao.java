@@ -10,8 +10,11 @@ import com.strongloop.android.remoting.BeanUtil;
 public class DiaPregao extends Model{
 	
 	private List<CotacaoIntradayAcao> cotacaoIntradayAcaos;
+	private List<CotacaoDiarioAcao> cotacaoDiarioAcaos;
 	
 	private Integer diaNum;
+	
+	
 	
 	
 
@@ -34,6 +37,19 @@ public class DiaPregao extends Model{
 
 	public void setDiaNum(Integer diaNum) {
 		this.diaNum = diaNum;
+	}
+
+	public List<CotacaoDiarioAcao> getCotacaoDiarioAcaos() {
+		return cotacaoDiarioAcaos;
+	}
+
+	public void setCotacaoDiarioAcaos(List<CotacaoDiarioAcao> cotacaoDiarioAcaos) {
+		this.cotacaoDiarioAcaos = new ArrayList<CotacaoDiarioAcao>();
+		for (int i = 0; i < cotacaoDiarioAcaos.size(); i++) {
+			Object objeto = new CotacaoDiarioAcao();
+			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) cotacaoDiarioAcaos.get(i), true);
+			this.cotacaoDiarioAcaos.add((CotacaoDiarioAcao) objeto);
+		}
 	}
 	
 	

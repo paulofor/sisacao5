@@ -1,0 +1,26 @@
+{
+  "name": "CombinacaoParametro",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "posicaoCombinacao": {
+      "type": "number"
+    },
+    "dataExecucao": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "valorParametros": {
+      "type": "hasMany",
+      "model": "ValorParametro",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

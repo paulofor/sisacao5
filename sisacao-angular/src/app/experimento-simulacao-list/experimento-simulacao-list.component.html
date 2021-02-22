@@ -7,6 +7,7 @@
       <div class="dgc-card" *ngFor="let item of listaBase">
           <div class="dgc-card-header">
               <span>{{item.codigo}}</span>
+              <span>{{item.quantidadeCombinacao}} combinações</span>
           </div>
           <div class="dgc-card-detalhe"> 
             <span>Grupo Ação: {{item.grupoAcao.nome}}</span>
@@ -30,6 +31,7 @@
  
           <div class="dgc-card-comandos">
             <!--<button class="btn-primary btn-sm btn" (click)="dialogo1({'origem' : item})">Novo Parâmetro</button>-->
+            <button class="btn-primary btn-sm btn" (click)="gerarCombinacao(item)">Gerar Combinações</button>
             <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar Experimento</button>
           </div> 
       </div>

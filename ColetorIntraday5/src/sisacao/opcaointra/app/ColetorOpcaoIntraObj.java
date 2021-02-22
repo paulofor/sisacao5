@@ -20,7 +20,7 @@ public class ColetorOpcaoIntraObj {
 	
 
 	public void executa() throws DaoException {
-		System.out.println("Ola Mundo ! (07-01-2021) ");
+		System.out.println("Ola Mundo ! (16-02-2021) ");
 		criaThreadPrincipal();
 		//InicializaConexaoDaoThread();
 		//mudouDia();

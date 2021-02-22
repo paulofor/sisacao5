@@ -20,6 +20,9 @@
     },
     "dataExecucao": {
       "type": "string"
+    },
+    "quantidadeCombinacao" : {
+      "type": "number"
     }
   },
   "validations": [],
@@ -43,8 +46,39 @@
       "type": "belongsTo",
       "model": "GrupoAcao",
       "foreignKey": ""
+    },
+    "combinacaoParametros": {
+      "type": "hasMany",
+      "model": "CombinacaoParametro",
+      "foreignKey": ""
     }
   },
   "acls": [],
-  "methods": {}
+  "methods": {
+    "GerarCombinacoes": {
+      "accepts": [
+        {
+          "arg": "idExperimento",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/gerarCombinacoes",
+          "verb": "post"
+        }
+      ]
+    }
+  }
 }

@@ -6,7 +6,7 @@
 
     <div *ngFor="let item of listaAcao; let i = index;">
       <mat-checkbox  [checked]="getCheck(item)"  (change)="onChange($event, i, item)">
-        {{item.ticker}}
+        {{item.ticker}} - R$ {{item.fechamentoAtual}} ({{item.spread1Mes}})
       </mat-checkbox>
     </div>
 

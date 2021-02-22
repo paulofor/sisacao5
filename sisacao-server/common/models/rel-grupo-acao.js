@@ -7,13 +7,15 @@ module.exports = function(Relgrupoacao) {
     /**
      * 
      * @param {number} idGrupo 
-     * @param {array} listaAtivo 
+     * @param {array} listaAtivo  Na verdade é lista dee relacionamento
      * @param {Function(Error, object)} callback
      */
 
     Relgrupoacao.AtualizaPorGrupoAcao = function (idGrupo, listaAtivo, callback) {
+        var sqlQuantidade = "update GrupoAcao " +
+                        " set quantidade = (select count(*) from RelGrupoAcao where GrupoAcao.id = RelGrupoAcao.grupoAcaoId) ";
         var sqlDelete = "delete from RelGrupoAcao where grupoAcaoId = " + idGrupo;
-        //console.log('sql: ', sqlDelete);
+        console.log('sql: ', sqlDelete);
         var ds = Relgrupoacao.dataSource;
         ds.connector.query(sqlDelete, (err1, result1) => {
             //console.log('Retorno 1: ', result1, " - Erro: ",)
@@ -21,14 +23,19 @@ module.exports = function(Relgrupoacao) {
                 callback(err1, null);
                 return;
             }
-            listaAtivo.forEach((ativo) => {
-                if (ativo.relGrupoAcaos.length > 0) {
-                    //delete etapa.processoNegocioEtapaProjetos.id;
-                    //console.log('create: ', ativo.relGrupoAcaos[0]);
-                    Relgrupoacao.create(ativo.relGrupoAcaos[0]);
+            let conta = 0;
+            listaAtivo.forEach((rel) => {
+                //delete etapa.processoNegocioEtapaProjetos.id;
+                //console.log('create: ', ativo.relGrupoAcaos[0]);
+                Relgrupoacao.create(rel);
+                conta++;
+                //console.log('Conta:' , conta , ' - Tamanho:' , listaAtivo.length);
+                if (conta==listaAtivo.length) {
+                    ds.connector.query(sqlQuantidade, (err2,result2) => {
+                        callback(null, { 'result': 'ok' });
+                    })
                 }
             });
-            callback(null, { 'result': 'ok' });
         });
     };
 

@@ -11,7 +11,7 @@ public class InsereDiarioApp {
 	public static void main(String[] args) {
 		
 		
-		String dataAnterior = "01-10-2020";
+		String dataAnterior = "08-01-2021";
 		if (args.length == 1) {
 			dataAnterior = args[0];
 		}

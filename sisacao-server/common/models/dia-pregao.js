@@ -38,11 +38,19 @@ module.exports = function(Diapregao) {
     Diapregao.ObtemIntradayPorTicker = function(ticker, callback) {
         //console.log('entrou na funcao', ticker);
         let filtro = {'include' : 
-            { 
+            [
+                { 
                 'relation' : 'cotacaoIntradayAcaos',
                 'scope' : 
-                    {'where' : {'ticker' : ticker } , "order" : "dataHora" , "fields" : { valor:true, ticker: true, dataHora: true }} 
-            }, 'order' : 'diaNum'
+                    {'where' : {'ticker' : ticker } , "order" : "dataHora" , "fields" : { valor:true, ticker: true, dataHora: true, dataHoraNegStr: true }} 
+                },
+                { 
+                'relation' : 'cotacaoDiarioAcaos',
+                'scope' : 
+                    {'where' : {'ticker' : ticker }} 
+                }
+            ], 
+            'order' : 'diaNum'
         }
         Diapregao.find(filtro,callback);
     }

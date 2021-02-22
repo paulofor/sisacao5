@@ -11,6 +11,9 @@
     },
     "descricao": {
       "type": "string"
+    },
+    "quantidade": {
+      "type": "number"
     }
   },
   "validations": [],

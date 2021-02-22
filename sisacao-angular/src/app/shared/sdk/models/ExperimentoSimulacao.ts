@@ -3,7 +3,8 @@ import {
   RegraSimulacao,
   ExperimentoParametro,
   ExperimentoAcao,
-  GrupoAcao
+  GrupoAcao,
+  CombinacaoParametro
 } from '../index';
 
 declare var Object: any;
@@ -13,6 +14,7 @@ export interface ExperimentoSimulacaoInterface {
   "dataFinal"?: string;
   "dataCriacao"?: string;
   "dataExecucao"?: string;
+  "quantidadeCombinacao"?: number;
   "id"?: number;
   "regraSimulacaoId"?: number;
   "grupoAcaoId"?: number;
@@ -20,6 +22,7 @@ export interface ExperimentoSimulacaoInterface {
   experimentoParametros?: ExperimentoParametro[];
   experimentoAcaos?: ExperimentoAcao[];
   grupoAcao?: GrupoAcao;
+  combinacaoParametros?: CombinacaoParametro[];
 }
 
 export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
@@ -28,6 +31,7 @@ export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
   "dataFinal": string;
   "dataCriacao": string;
   "dataExecucao": string;
+  "quantidadeCombinacao": number;
   "id": number;
   "regraSimulacaoId": number;
   "grupoAcaoId": number;
@@ -35,6 +39,7 @@ export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
   experimentoParametros: ExperimentoParametro[];
   experimentoAcaos: ExperimentoAcao[];
   grupoAcao: GrupoAcao;
+  combinacaoParametros: CombinacaoParametro[];
   constructor(data?: ExperimentoSimulacaoInterface) {
     Object.assign(this, data);
   }
@@ -88,6 +93,10 @@ export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
           name: 'dataExecucao',
           type: 'string'
         },
+        "quantidadeCombinacao": {
+          name: 'quantidadeCombinacao',
+          type: 'number'
+        },
         "id": {
           name: 'id',
           type: 'number'
@@ -133,6 +142,14 @@ export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
           relationType: 'belongsTo',
                   keyFrom: 'grupoAcaoId',
           keyTo: 'id'
+        },
+        combinacaoParametros: {
+          name: 'combinacaoParametros',
+          type: 'CombinacaoParametro[]',
+          model: 'CombinacaoParametro',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'experimentoSimulacaoId'
         },
       }
     }

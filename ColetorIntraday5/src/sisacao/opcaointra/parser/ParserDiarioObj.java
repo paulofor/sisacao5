@@ -141,7 +141,7 @@ public class ParserDiarioObj {
 						if ("E".equals(tipo) && eElement.getElementsByTagName("LastPric").item(0)!=null) {
 							contaItem++;
 							CotacaoDiario novo = FabricaVo.criaCotacaoDiario();
-							
+							System.out.println(ticker);
 							String fec = eElement.getElementsByTagName("LastPric").item(0).getTextContent();
 							String min = eElement.getElementsByTagName("MinPric").item(0).getTextContent();
 							String max = eElement.getElementsByTagName("MaxPric").item(0).getTextContent();

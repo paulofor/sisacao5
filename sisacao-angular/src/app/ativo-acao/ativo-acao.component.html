@@ -16,6 +16,8 @@
                   <th width="10%">Intraday 05</th>
                   <th width="10%">Intraday 15</th>
                   <th width="10%">Intraday 30</th>
+                  <th width="10%">Spread 1</th>
+                  <th width="10%">Spread 3</th>
                   <th width="10%"></th>
                 </tr>
               </thead>
@@ -26,6 +28,8 @@
                   <td>{{item.intraday5}}</td>
                   <td>{{item.intraday15}}</td>
                   <td>{{item.intraday30}}</td>
+                  <td>{{item.spread1Mes | number: '1.1-1'}}</td>
+                  <td>{{item.spread3Mes | number: '1.1-1'}}</td>
                   <td align="right">
                     <button class="btn btn-primary btn-sm " (click)="novo(item)">Alterar</button>
                   </td>
