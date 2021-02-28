@@ -126,4 +126,20 @@ module.exports = function(Experimentosimulacao) {
     });
 
 
+
+
+    /**
+    * 
+    * @param {number} idExperimento 
+    * @param {Function(Error, object)} callback
+    */
+
+    Experimentosimulacao.CarregaParaSimulacao = function(idExperimento, callback) {
+        let filtro = { 
+            'where' : {'id' : idExperimento},
+            'include' : 'regraSimulacao' 
+        }
+        Experimentosimulacao.findOne(filtro, callback);
+    };
+
 };

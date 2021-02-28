@@ -21,7 +21,10 @@
     "dataExecucao": {
       "type": "string"
     },
-    "quantidadeCombinacao" : {
+    "quantidadeCombinacao": {
+      "type": "number"
+    },
+    "posicaoExecucao": {
       "type": "number"
     }
   },
@@ -77,6 +80,31 @@
         {
           "path": "/gerarCombinacoes",
           "verb": "post"
+        }
+      ]
+    },
+    "CarregaParaSimulacao": {
+      "accepts": [
+        {
+          "arg": "idExperimento",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "experimento",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/carregaParaSimulacao",
+          "verb": "get"
         }
       ]
     }

@@ -30,8 +30,16 @@ public class RepositorioAcaoBase {
 			this.getRestAdapter().getContract().addItem(contrato, "AtivoAcao.listaColetaIntraday");
 	        Map<String, Object> params = new HashMap<String, Object>();
 	        invokeStaticMethod("listaColetaIntraday", params,   new JsonArrayParser<AtivoAcao>(this, callback));
-			
 		}
+		
+		public void listaPorGrupo(final Integer idGrupo, final ListCallback<AtivoAcao> callback) {
+			RestContractItem contrato = new RestContractItem("AtivoAcaos/listaPorGrupo","GET");
+			this.getRestAdapter().getContract().addItem(contrato, "AtivoAcao.listaPorGrupo");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        params.put("idGrupo", idGrupo);
+	        invokeStaticMethod("listaPorGrupo", params,   new JsonArrayParser<AtivoAcao>(this, callback));
+		}
+		
 		public void insereAcaoIndice(String ticker, String nome, String tipo, Long quantidade, Double percentual, String indice,
 				final VoidCallback voidCallback) {
 			RestContractItem contrato = new RestContractItem("AtivoAcaos/insereAcaoIndice","POST");

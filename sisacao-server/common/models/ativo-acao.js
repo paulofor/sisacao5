@@ -14,7 +14,20 @@ module.exports = function (Ativoacao) {
         callback(null, lista);
     };
 
-
+    /**
+    * 
+    * @param {number} idGrupo 
+    * @param {Function(Error, array)} callback
+    */
+    Ativoacao.ListaPorGrupo = function(idGrupo, callback) {
+        let sql = "select AtivoAcao.* from AtivoAcao " +
+                " inner join RelGrupoAcao on AtivoAcao.ticker = RelGrupoAcao.ticker " +
+                " where RelGrupoAcao.grupoAcaoId =  " + idGrupo + 
+                " order by AtivoAcao.ticker";
+        let ds = Ativoacao.dataSource;
+        ds.connector.query(sql,callback);
+    };
+  
 
 
     /**

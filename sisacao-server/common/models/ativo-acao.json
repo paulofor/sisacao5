@@ -150,6 +150,31 @@
           "verb": "post"
         }
       ]
+    },
+    "ListaPorGrupo": {
+      "accepts": [
+        {
+          "arg": "idGrupo",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "listaAcao",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaPorGrupo",
+          "verb": "get"
+        }
+      ]
     }
   }
 }

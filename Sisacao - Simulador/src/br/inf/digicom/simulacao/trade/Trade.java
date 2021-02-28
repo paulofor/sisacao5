@@ -9,14 +9,17 @@ public class Trade {
 	private int indDiaEntrada = 0;
 	private int indDiaSaida = 0;
 	private int difDias = 0;
+	
+	private double precoEntrada;
 
-	public Trade(CotacaoIntradayAcao cotacao, int indDiaEntrada) {
+	public Trade(double precoEntrada, CotacaoIntradayAcao cotacao, int indDiaEntrada) {
 		this.entrada = cotacao;
 		this.indDiaEntrada = indDiaEntrada;
+		this.precoEntrada = precoEntrada;
 	}
 
 	public double getValorEntrada() {
-		return this.entrada.getValor();
+		return this.precoEntrada;
 	}
 
 	public void setSaida(CotacaoIntradayAcao cotacao, int indDiaSaida) {
@@ -34,8 +37,8 @@ public class Trade {
 
 	public void printTrade() {
 		
-		System.out.println("Ent: " + entrada.getValor());
-		System.out.println("Sai: " + saida.getValor() + " (" + this.difDias + " dias )");
+		System.out.println("Ent: " + this.precoEntrada + " (" + entrada.getValor() + ")");
+		System.out.println("Sai: " + saida.getValor() + " (" + this.difDias + " dias)");
 	}
 
 }

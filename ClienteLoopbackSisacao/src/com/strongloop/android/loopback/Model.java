@@ -137,4 +137,8 @@ public class Model extends VirtualObject {
             }
         });
     }
+    
+    public void setError(HashMap erro) {
+    	System.out.println(erro.get("stack"));
+    }
 }

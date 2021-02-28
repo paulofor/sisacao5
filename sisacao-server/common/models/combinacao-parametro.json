@@ -22,5 +22,31 @@
     }
   },
   "acls": [],
-  "methods": {}
+  "methods": {
+    "GetProximoExecucao": {
+      "accepts": [
+        {
+          "arg": "idExperimento",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "combinacao",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/getProximoExecucao",
+          "verb": "get"
+        }
+      ]
+    }
+  }
 }
