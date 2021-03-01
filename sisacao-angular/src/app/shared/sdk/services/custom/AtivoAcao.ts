@@ -401,6 +401,34 @@ export class AtivoAcaoApi extends BaseLoopBackApi {
   }
 
   /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {number} idGrupo 
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `AtivoAcao` object.)
+   * </em>
+   */
+  public ListaPorGrupo(idGrupo: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/AtivoAcaos/listaPorGrupo";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof idGrupo !== 'undefined' && idGrupo !== null) _urlParams.idGrupo = idGrupo;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
    * Cria uma nova instância no relGrupoAcaos deste modelo.
    *
    * @param {any} id AtivoAcao id

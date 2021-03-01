@@ -138,5 +138,13 @@
   "ValorParametro": {
     "dataSource": "mysqlDS",
     "public": true
+  },
+  "ExecucaoSimulacao": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "Trade": {
+    "dataSource": "mysqlDS",
+    "public": true
   }
 }

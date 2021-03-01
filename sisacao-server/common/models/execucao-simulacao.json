@@ -1,45 +1,43 @@
 {
-  "name": "CombinacaoParametro",
+  "name": "ExecucaoSimulacao",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "posicaoCombinacao": {
+    "ticker": {
+      "type": "string"
+    },
+    "quantidadeLucro": {
       "type": "number"
     },
-    "dataExecucao": {
-      "type": "string"
+    "quantidadePrejuizo": {
+      "type": "number"
     }
   },
   "validations": [],
   "relations": {
-    "valorParametros": {
+    "trades": {
       "type": "hasMany",
-      "model": "ValorParametro",
-      "foreignKey": ""
-    },
-    "execucaoSimulacaos": {
-      "type": "hasMany",
-      "model": "ExecucaoSimulacao",
+      "model": "Trade",
       "foreignKey": ""
     }
   },
   "acls": [],
   "methods": {
-    "GetProximoExecucao": {
+    "InsereExecucaoSimulacao": {
       "accepts": [
         {
-          "arg": "idExperimento",
-          "type": "number",
+          "arg": "execucao",
+          "type": "object",
           "required": false,
           "description": ""
         }
       ],
       "returns": [
         {
-          "arg": "combinacao",
+          "arg": "saida",
           "type": "object",
           "root": true,
           "description": ""
@@ -48,8 +46,8 @@
       "description": "",
       "http": [
         {
-          "path": "/getProximoExecucao",
-          "verb": "get"
+          "path": "/insereExecucaoSimulacao",
+          "verb": "post"
         }
       ]
     }

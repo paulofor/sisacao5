@@ -15,6 +15,7 @@ export interface ExperimentoSimulacaoInterface {
   "dataCriacao"?: string;
   "dataExecucao"?: string;
   "quantidadeCombinacao"?: number;
+  "posicaoExecucao"?: number;
   "id"?: number;
   "regraSimulacaoId"?: number;
   "grupoAcaoId"?: number;
@@ -32,6 +33,7 @@ export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
   "dataCriacao": string;
   "dataExecucao": string;
   "quantidadeCombinacao": number;
+  "posicaoExecucao": number;
   "id": number;
   "regraSimulacaoId": number;
   "grupoAcaoId": number;
@@ -95,6 +97,10 @@ export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
         },
         "quantidadeCombinacao": {
           name: 'quantidadeCombinacao',
+          type: 'number'
+        },
+        "posicaoExecucao": {
+          name: 'posicaoExecucao',
           type: 'number'
         },
         "id": {

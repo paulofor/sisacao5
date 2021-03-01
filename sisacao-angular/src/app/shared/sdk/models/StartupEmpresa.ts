@@ -9,6 +9,8 @@ export interface StartupEmpresaInterface {
   "url"?: string;
   "descricao"?: string;
   "tipo"?: string;
+  "tamanho"?: string;
+  "fundacao"?: number;
   "id"?: number;
   startupInvestimentos?: StartupInvestimento[];
 }
@@ -18,6 +20,8 @@ export class StartupEmpresa implements StartupEmpresaInterface {
   "url": string;
   "descricao": string;
   "tipo": string;
+  "tamanho": string;
+  "fundacao": number;
   "id": number;
   startupInvestimentos: StartupInvestimento[];
   constructor(data?: StartupEmpresaInterface) {
@@ -68,6 +72,14 @@ export class StartupEmpresa implements StartupEmpresaInterface {
         "tipo": {
           name: 'tipo',
           type: 'string'
+        },
+        "tamanho": {
+          name: 'tamanho',
+          type: 'string'
+        },
+        "fundacao": {
+          name: 'fundacao',
+          type: 'number'
         },
         "id": {
           name: 'id',

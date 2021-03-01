@@ -12,9 +12,16 @@
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <input matInput maxlength="30" #url [(ngModel)]="item.url" name="url" placeholder="Url" autocomplete="off" />
+      <input matInput maxlength="100" #url [(ngModel)]="item.url" name="url" placeholder="Url" autocomplete="off" />
     </mat-form-field>
 
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="50" #tamanho [(ngModel)]="item.tamanho" name="tamanho" placeholder="Tamanho" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="50" #fundacao [(ngModel)]="item.fundacao" name="fundacao" placeholder="Fundação" autocomplete="off" />
+    </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-select #tipo [(ngModel)]="item.tipo" name="tipo" placeholder="Tipo">

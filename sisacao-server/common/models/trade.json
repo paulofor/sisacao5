@@ -1,38 +1,38 @@
 {
-  "name": "StartupEmpresa",
+  "name": "Trade",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "nome": {
+    "precoEntrada": {
+      "type": "number"
+    },
+    "dataEntrada": {
       "type": "string"
     },
-    "url": {
+    "dataHoraEntrada": {
       "type": "string"
     },
-    "descricao": {
+    "precoSaida": {
+      "type": "number"
+    },
+    "dataSaida": {
       "type": "string"
     },
-    "tipo": {
+    "dataHoraSaida": {
       "type": "string"
     },
-    "tamanho": {
+    "lucroPrejuizo": {
       "type": "string"
     },
-    "fundacao": {
+    "percentual": {
       "type": "number"
     }
   },
   "validations": [],
-  "relations": {
-    "startupInvestimentos": {
-      "type": "hasMany",
-      "model": "StartupInvestimento",
-      "foreignKey": ""
-    }
-  },
+  "relations": {},
   "acls": [],
   "methods": {}
 }
