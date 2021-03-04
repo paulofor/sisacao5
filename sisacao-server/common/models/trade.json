@@ -29,6 +29,9 @@
     },
     "percentual": {
       "type": "number"
+    },
+    "quantidadeDia" : {
+      "type" : "number"
     }
   },
   "validations": [],

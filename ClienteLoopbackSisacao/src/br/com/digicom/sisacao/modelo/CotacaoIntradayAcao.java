@@ -10,6 +10,25 @@ public class CotacaoIntradayAcao extends Model {
 	private String dataHora;
 	private Long posicaoDia;
 	private Long intervalo;
+	
+	private String dataExtraida;
+	private String horaExtraida;
+	
+	
+	
+	
+	public String getDataExtraida() {
+		return dataExtraida;
+	}
+	public void setDataExtraida(String dataExtraida) {
+		this.dataExtraida = dataExtraida;
+	}
+	public String getHoraExtraida() {
+		return horaExtraida;
+	}
+	public void setHoraExtraida(String horaExtraida) {
+		this.horaExtraida = horaExtraida;
+	}
 	public String getTicker() {
 		return ticker;
 	}
@@ -39,6 +58,8 @@ public class CotacaoIntradayAcao extends Model {
 	}
 	public void setDataHora(String dataHora) {
 		this.dataHora = dataHora;
+		this.dataExtraida = dataHora.substring(0, 10);
+		this.horaExtraida = dataHora.substring(11, 19);
 	}
 	public Long getPosicaoDia() {
 		return posicaoDia;

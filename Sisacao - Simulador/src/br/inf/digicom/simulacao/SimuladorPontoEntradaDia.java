@@ -40,7 +40,7 @@ public class SimuladorPontoEntradaDia {
 					if (trade==null) {
 						//System.out.println("Valor: " + cotacao.getValor() + " Entrada: " + pontoEntrada);
 						if (pontoEntrada>=cotacao.getValor()) {
-							trade = new Trade(pontoEntrada,cotacao, indDia);
+							trade = new Trade((indHora==0?cotacao.getValor():pontoEntrada),cotacao, indDia);
 						}
 					} else {
 						double saidaAlta = trade.getValorEntrada() * (1+regra.getTarget());;
@@ -48,7 +48,7 @@ public class SimuladorPontoEntradaDia {
 						//System.out.println("Valor: " + cotacao.getValor() + " Target: " + saidaAlta + "Stop: " + saidaBaixa);
 						if (cotacao.getValor()>=saidaAlta) {
 							this.somaLucro++;
-							trade.setSaida(cotacao, indDia);
+							trade.setSaida((indHora==0?cotacao.getValor():saidaAlta), cotacao, indDia);
 							indDia++;
 							indHora=0;
 							execucao.addTrade(trade);
@@ -57,7 +57,7 @@ public class SimuladorPontoEntradaDia {
 						}
 						if (cotacao.getValor()<=saidaBaixa) {
 							this.somaPrejuizo++;
-							trade.setSaida(cotacao, indDia);
+							trade.setSaida((indHora==0?cotacao.getValor():saidaBaixa),cotacao, indDia);
 							indDia++;
 							indHora=0;
 							execucao.addTrade(trade);

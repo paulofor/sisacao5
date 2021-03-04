@@ -293,7 +293,7 @@ public class RestAdapter extends Adapter {
 	// The drawback is it doesn't support HEAD or OPTION.
 	//
 
-	enum ParameterEncoding {
+	public enum ParameterEncoding {
 		FORM_URL, JSON, FORM_MULTIPART
 	}
 
@@ -436,7 +436,7 @@ public class RestAdapter extends Adapter {
 				// delete(context, url, headers, httpCallback);
 			} else if ("POST".equalsIgnoreCase(method)) {
 				request.addHeader("Content-Type", contentType);
-				request.execute(httpCallback);
+ 				request.execute(httpCallback);
 			} else if ("PUT".equalsIgnoreCase(method)) {
 				request.addHeader("Content-Type", contentType);
 				request.execute(httpCallback);

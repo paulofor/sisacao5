@@ -45,7 +45,7 @@ public class RestContractItem {
                 RestAdapter.ParameterEncoding.FORM_MULTIPART);
     }
 
-    private RestContractItem(String pattern,
+    public RestContractItem(String pattern,
                              String verb,
                              RestAdapter.ParameterEncoding parameterEncoding) {
         this.pattern = pattern;

@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.strongloop.android.loopback.Model;
 import com.strongloop.android.remoting.BeanUtil;
 
@@ -12,9 +16,34 @@ public class ExecucaoSimulacao extends Model{
 	Integer quantidadeLucro;
 	Integer quantidadePrejuizo;
 	String ticker;
-	Integer combinacaoParametroId;
+	Long combinacaoParametroId;
 	
-	List<Trade> trades;
+	List<Trade> trades = new ArrayList<Trade>();
+	
+	
+	
+	public JSONObject getJSON() {
+		JSONObject obj = new JSONObject();
+		try {
+			obj.put("quantidadeLucro", this.quantidadeLucro);
+			obj.put("quantidadePrejuizo", this.quantidadePrejuizo);
+			obj.put("ticker", this.ticker);
+			obj.put("combinacaoParametroId", this.combinacaoParametroId);
+			JSONArray trades = new JSONArray();
+			for (Trade trade : this.trades) {
+				trades.put(trade.getJSON());
+			}
+			obj.put("trades", trades);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return obj;
+	}
+	
+	
+	public void addTrade(Trade trade) {
+		trades.add(trade);
+	}
 
 	public Integer getQuantidadeLucro() {
 		return quantidadeLucro;
@@ -40,12 +69,15 @@ public class ExecucaoSimulacao extends Model{
 		this.ticker = ticker;
 	}
 
-	public Integer getCombinacaoParametroId() {
+	public Long getCombinacaoParametroId() {
 		return combinacaoParametroId;
 	}
 
-	public void setCombinacaoParametroId(Integer combinacaoParametroId) {
+	public void setCombinacaoParametroId(Long combinacaoParametroId) {
 		this.combinacaoParametroId = combinacaoParametroId;
+	}
+	public void setCombinacaoParametroId(Integer combinacaoParametroId) {
+		this.combinacaoParametroId = combinacaoParametroId.longValue();
 	}
 
 	public List<Trade> getTrades() {
@@ -60,6 +92,8 @@ public class ExecucaoSimulacao extends Model{
 			this.trades.add((Trade) objeto);
 		}
 	}
+
+	
 	
 	
 
