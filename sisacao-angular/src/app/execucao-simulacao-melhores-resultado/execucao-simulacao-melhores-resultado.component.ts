@@ -1,0 +1,42 @@
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { ExecucaoSimulacao, ExecucaoSimulacaoApi } from '../shared/sdk';
+import { TradeExecucaoSimulacaoComponent } from '../trade-execucao-simulacao/trade-execucao-simulacao.component';
+
+@Component({
+  selector: 'app-execucao-simulacao-melhores-resultado',
+  templateUrl: './execucao-simulacao-melhores-resultado.component.html',
+  styleUrls: ['./execucao-simulacao-melhores-resultado.component.css']
+})
+export class ExecucaoSimulacaoMelhoresResultadoComponent implements OnInit {
+
+  listaMelhores: ExecucaoSimulacao[];
+
+  constructor(private dialog: MatDialog, private srv:ExecucaoSimulacaoApi) { }
+
+  ngOnInit() {
+    this.carregaMelhores();
+  }
+
+  carregaMelhores() {
+    let filtro = {
+      'order' : 'resultado desc',
+      'limit' : 140
+    }
+    this.srv.find(filtro)
+      .subscribe((result:ExecucaoSimulacao[]) => {
+        this.listaMelhores = result;
+      })
+  }
+
+  trades(item) {
+    console.log('Clicou trades');
+    this.dialog.open(TradeExecucaoSimulacaoComponent, {
+      width: '800px',
+      data: {
+          item: item
+      }
+  });
+  }
+
+}

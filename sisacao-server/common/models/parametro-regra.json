@@ -20,7 +20,39 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "valorParametros": {
+      "type": "hasMany",
+      "model": "ValorParametro",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
-  "methods": {}
+  "methods": {
+    "ObtemPorExperimentoComValor": {
+      "accepts": [
+        {
+          "arg": "idExperimento",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "listaSaida",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemPorExperimentoComValor",
+          "verb": "get"
+        }
+      ]
+    }
+  }
 }

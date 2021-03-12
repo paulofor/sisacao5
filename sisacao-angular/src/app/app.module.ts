@@ -69,6 +69,10 @@ import { ExperimentoParametroEditComponent } from './experimento-parametro-edit/
 import { GrupoAcaoListComponent } from './grupo-acao-list/grupo-acao-list.component';
 import { GrupoAcaoEditComponent } from './grupo-acao-edit/grupo-acao-edit.component';
 import { EscolheAcaoGrupoEditComponent } from './escolhe-acao-grupo-edit/escolhe-acao-grupo-edit.component';
+import { CombinacaoListComponent } from './combinacao-list/combinacao-list.component';
+import { CotacaoIntradayAcaoMaisRecenteComponent } from './cotacao-intraday-acao-mais-recente/cotacao-intraday-acao-mais-recente.component';
+import { ExecucaoSimulacaoMelhoresResultadoComponent } from './execucao-simulacao-melhores-resultado/execucao-simulacao-melhores-resultado.component';
+import { TradeExecucaoSimulacaoComponent } from './trade-execucao-simulacao/trade-execucao-simulacao.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -113,7 +117,11 @@ registerLocaleData(localePt, 'pt-BR');
     ExperimentoParametroEditComponent,
     GrupoAcaoListComponent,
     GrupoAcaoEditComponent,
-    EscolheAcaoGrupoEditComponent
+    EscolheAcaoGrupoEditComponent,
+    CombinacaoListComponent,
+    CotacaoIntradayAcaoMaisRecenteComponent,
+    ExecucaoSimulacaoMelhoresResultadoComponent,
+    TradeExecucaoSimulacaoComponent
   ],
   imports: [
     BrowserModule,

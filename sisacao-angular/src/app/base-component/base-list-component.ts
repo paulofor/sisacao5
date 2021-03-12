@@ -11,8 +11,11 @@ export class BaseListComponent implements OnInit {
 
 
     ngOnInit() {
-       this.carregaTela();
+        this.preCarregaTela();
+        this.carregaTela();
     }
+
+    preCarregaTela() {}
 
     carregaTela() {
         this.srv.find(this.getFiltro())

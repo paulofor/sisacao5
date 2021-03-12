@@ -1,4 +1,7 @@
 /* tslint:disable */
+import {
+  ValorParametro
+} from '../index';
 
 declare var Object: any;
 export interface ParametroRegraInterface {
@@ -8,6 +11,7 @@ export interface ParametroRegraInterface {
   "atributoClasse"?: string;
   "id"?: number;
   "regraSimulacaoId"?: number;
+  valorParametros?: ValorParametro[];
 }
 
 export class ParametroRegra implements ParametroRegraInterface {
@@ -17,6 +21,7 @@ export class ParametroRegra implements ParametroRegraInterface {
   "atributoClasse": string;
   "id": number;
   "regraSimulacaoId": number;
+  valorParametros: ValorParametro[];
   constructor(data?: ParametroRegraInterface) {
     Object.assign(this, data);
   }
@@ -76,6 +81,14 @@ export class ParametroRegra implements ParametroRegraInterface {
         },
       },
       relations: {
+        valorParametros: {
+          name: 'valorParametros',
+          type: 'ValorParametro[]',
+          model: 'ValorParametro',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'parametroRegraId'
+        },
       }
     }
   }

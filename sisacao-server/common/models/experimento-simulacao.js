@@ -12,10 +12,38 @@ module.exports = function(Experimentosimulacao) {
     * @param {number} idExperimento 
     * @param {Function(Error, object)} callback
     */
+   Experimentosimulacao.FechaExperimento = function(idExperimento, callback) {
+        let sql1 = "update ExperimentoSimulacao set dataExecucao = now() where id = " + idExperimento;
+        let sql2 = "update CombinacaoParametro " +
+            " set regraSimulacaoId = " +
+            " (select regraSimulacaoId from ExperimentoSimulacao where ExperimentoSimulacao.id = CombinacaoParametro.experimentoSimulacaoId) " +
+            " where experimentoSimulacaoId = " + idExperimento;
+        let sql3 = " update ExecucaoSimulacao " +
+                   " set resultado = (target*quantidadeLucro) - (stop*quantidadePrejuizo) ";
+        let ds = Experimentosimulacao.dataSource;
+        ds.connector.query(sql1, (err1,result1)=> {
+            ds.connector.query(sql3, (err3,result3)=> {
+            
+            });
+        });
+        
+        ds.connector.query(sql2, callback);
+        //callback(null,"{ 'resultado' : 'executando'}");
+    };
+
+
+
+
+    /**
+    * 
+    * @param {number} idExperimento 
+    * @param {Function(Error, object)} callback
+    */
     Experimentosimulacao.GerarCombinacoes = function(idExperimento, callback) {
         let ds = Experimentosimulacao.dataSource;
         let filtro = {
             'where' : { 'experimentoSimulacaoId' : idExperimento }
+
         }
         app.models.ExperimentoParametro.find(filtro, (err1, parametros) => {
             //console.log('parametros' , parametros);
@@ -45,6 +73,9 @@ module.exports = function(Experimentosimulacao) {
         
        
     };
+
+
+
   
     function trataItem(valor,parametros,ids,idExperimento, ind) {
         while (valor[ind] <= parametros[ind].final) {
@@ -56,7 +87,7 @@ module.exports = function(Experimentosimulacao) {
                 //salvaCombinacao(idExperimento, posicao, ids, valor);
                 let combinacao = {'posicaoCombinacao' : posicao, 'experimentoSimulacaoId' : idExperimento, 'valorParametros' : []};
                 for (let i=0; i<ids.length; i++) {
-                    let valorParametro = {'parametroRegraId' : ids[i], 'valorParametro' : valor[i]}
+                    let valorParametro = {'parametroRegraId' : ids[i], 'valorParametro' : valor[i] , 'experimentoSimulacaoId' : idExperimento}
                     combinacao.valorParametros.push(valorParametro);
                 }
                 listaComb.push(combinacao);
@@ -137,7 +168,7 @@ module.exports = function(Experimentosimulacao) {
     Experimentosimulacao.CarregaParaSimulacao = function(idExperimento, callback) {
         let filtro = { 
             'where' : {'id' : idExperimento},
-            'include' : 'regraSimulacao' 
+            'include' : { 'relation' : 'regraSimulacao' , 'scope' : {'include' : 'parametroRegras'} }
         }
         Experimentosimulacao.findOne(filtro, callback);
     };

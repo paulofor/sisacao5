@@ -209,7 +209,12 @@ body {
  .dgc-direita {
   margin-left: auto;
  }
-  
+ .dgc-link {
+   cursor: pointer;
+ }
+ .dgc-link:hover {
+  font-weight: lighter;
+ }
 
 .example-form {
  min-width: 150px;

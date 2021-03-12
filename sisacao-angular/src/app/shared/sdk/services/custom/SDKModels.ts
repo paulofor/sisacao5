@@ -27,6 +27,8 @@ import { RelGrupoAcao } from '../../models/RelGrupoAcao';
 import { CotacaoDiarioAcao } from '../../models/CotacaoDiarioAcao';
 import { CombinacaoParametro } from '../../models/CombinacaoParametro';
 import { ValorParametro } from '../../models/ValorParametro';
+import { ExecucaoSimulacao } from '../../models/ExecucaoSimulacao';
+import { Trade } from '../../models/Trade';
 
 export interface Models { [name: string]: any }
 
@@ -61,6 +63,8 @@ export class SDKModels {
     CotacaoDiarioAcao: CotacaoDiarioAcao,
     CombinacaoParametro: CombinacaoParametro,
     ValorParametro: ValorParametro,
+    ExecucaoSimulacao: ExecucaoSimulacao,
+    Trade: Trade,
     
   };
 

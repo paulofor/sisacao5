@@ -1,0 +1,23 @@
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+    <span>Melhores Execuções</span>  
+  </div>
+  <div class="dgc-painel-principal" *ngIf="listaMelhores">
+    <div class="dgc-card" *ngFor="let item of listaMelhores" width="60">
+      <div class="dgc-card-header">
+        <span class="dgc-link" (click)=trades(item)>{{item.ticker}}</span>
+        <span class="dgc-direita">{{item.quantidadeLucro}} x {{item.quantidadePrejuizo}}</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <span>t: {{item.target}}  s: {{item.stop}}</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <span>Result: {{item.resultado}}</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <img *ngIf="item.monitorando==1" src="assets/img/monitorando.png" width="25" height="25">
+        <img *ngIf="item.monitorando!=1" src="assets/img/monitorando-off.png" width="25" height="25">
+      </div>
+    </div>
+  </div>
+</div>

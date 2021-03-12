@@ -18,7 +18,7 @@
         <table>
           <tr *ngFor="let investimento of item.startupInvestimentos">
             <td width="10%">{{investimento.data}}</td>
-            <td width="55%">{{investimento.startupFundo.nome}}</td>
+            <td width="55%">{{(investimento.startupFundo?investimento.startupFundo.nome:'-')}}</td>
             <td width="20%">{{investimento.moeda}}&nbsp;&nbsp;{{investimento.valor | currency:'BRL':true}}</td>
             <td width="15%"><a (click)="dialogo1({'item' : investimento})">alterar</a></td>
           </tr>

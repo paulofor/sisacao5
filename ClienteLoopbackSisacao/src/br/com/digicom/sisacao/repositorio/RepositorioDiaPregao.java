@@ -21,7 +21,7 @@ public class RepositorioDiaPregao extends ModelRepository<DiaPregao>{
 		protected String verificaNomeUrl(String nome) {
 			return "DiaPregao";
 		}
-		public void obtemPorDiaTicker(String ticker, int dias, final ListCallback<DiaPregao> callback ) {
+		public synchronized void obtemPorDiaTicker(String ticker, int dias, final ListCallback<DiaPregao> callback ) {
 			RestContractItem contrato = new RestContractItem("DiaPregaos/obtemIntradayPorTicker","GET");
 			this.getRestAdapter().getContract().addItem(contrato, "DiaPregao.obtemIntradayPorTicker");
 	        Map<String, Object> params = new HashMap<String, Object>();

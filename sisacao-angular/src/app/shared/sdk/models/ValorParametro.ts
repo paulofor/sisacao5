@@ -8,6 +8,7 @@ export interface ValorParametroInterface {
   "parametroRegraId"?: number;
   "valorParametro"?: number;
   "combinacaoParametroId"?: number;
+  "experimentoSimulacaoId"?: number;
   parametroRegra?: ParametroRegra;
 }
 
@@ -15,6 +16,7 @@ export class ValorParametro implements ValorParametroInterface {
   "parametroRegraId": number;
   "valorParametro": number;
   "combinacaoParametroId": number;
+  "experimentoSimulacaoId": number;
   parametroRegra: ParametroRegra;
   constructor(data?: ValorParametroInterface) {
     Object.assign(this, data);
@@ -59,6 +61,10 @@ export class ValorParametro implements ValorParametroInterface {
         },
         "combinacaoParametroId": {
           name: 'combinacaoParametroId',
+          type: 'number'
+        },
+        "experimentoSimulacaoId": {
+          name: 'experimentoSimulacaoId',
           type: 'number'
         },
       },

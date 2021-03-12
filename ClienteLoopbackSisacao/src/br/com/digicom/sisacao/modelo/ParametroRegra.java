@@ -8,8 +8,19 @@ public class ParametroRegra extends Model{
 	private String nome;
 	//private String descricao;
 	private String atributoClasse;
+	private Integer id;
+	
+	
 
 	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public String getAtributoClasse() {
 		return atributoClasse;
 	}

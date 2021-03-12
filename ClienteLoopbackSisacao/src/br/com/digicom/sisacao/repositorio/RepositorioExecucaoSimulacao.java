@@ -29,6 +29,7 @@ public class RepositorioExecucaoSimulacao extends ModelRepository<ExecucaoSimula
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("execucao", execucao.getJSON());
         invokeStaticMethod("insereExecucaoSimulacao", params,   new EmptyResponseParser(voidCallback));
+        execucao = null;
 	}
 	
 }

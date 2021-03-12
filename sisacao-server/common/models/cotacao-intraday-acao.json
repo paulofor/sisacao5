@@ -101,6 +101,24 @@
           "verb": "get"
         }
       ]
+    },
+    "ListaMaisRecente": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaMaisRecente",
+          "verb": "get"
+        }
+      ]
     }
   }
 }

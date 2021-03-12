@@ -16,6 +16,8 @@ import { StartupFundoListComponent } from '../startup-fundo-list/startup-fundo-l
 import { RegraSimulacaoListComponent } from '../regra-simulacao-list/regra-simulacao-list.component';
 import { ExperimentoSimulacaoListComponent } from '../experimento-simulacao-list/experimento-simulacao-list.component';
 import { GrupoAcaoListComponent } from '../grupo-acao-list/grupo-acao-list.component';
+import { CombinacaoListComponent } from '../combinacao-list/combinacao-list.component';
+import { ExecucaoSimulacaoMelhoresResultadoComponent } from '../execucao-simulacao-melhores-resultado/execucao-simulacao-melhores-resultado.component';
 
 export const routes : Routes = [
     { path: 'home' , component: HomeComponent },
@@ -38,6 +40,9 @@ export const routes : Routes = [
     { path : 'regraSimulacao' , component: RegraSimulacaoListComponent },
     { path : 'experimentoSimulacao' , component: ExperimentoSimulacaoListComponent },
     { path : 'grupoAcao' , component: GrupoAcaoListComponent },
+    { path : 'combinacaoExperimento/:id' , component: CombinacaoListComponent },
+
+    { path : 'execucaoSimulacaoMelhores' , component: ExecucaoSimulacaoMelhoresResultadoComponent },
 
     { path: '',          redirectTo: 'home', pathMatch: 'full' }
 ]

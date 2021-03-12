@@ -14,6 +14,18 @@
     },
     "quantidadePrejuizo": {
       "type": "number"
+    },
+    "target": {
+      "type": "number"
+    },
+    "stop": {
+      "type": "number"
+    },
+    "resultado": {
+      "type": "number"
+    },
+    "monitorar": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -21,6 +33,11 @@
     "trades": {
       "type": "hasMany",
       "model": "Trade",
+      "foreignKey": ""
+    },
+    "combinacaoParametro": {
+      "type": "belongsTo",
+      "model": "CombinacaoParametro",
       "foreignKey": ""
     }
   },
@@ -48,6 +65,24 @@
         {
           "path": "/insereExecucaoSimulacao",
           "verb": "post"
+        }
+      ]
+    },
+    "ListaMonitorar": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaMonitorar",
+          "verb": "get"
         }
       ]
     }

@@ -3,6 +3,22 @@
 module.exports = function (Cotacaointradayacao) {
 
 
+
+
+    /**
+    * 
+    * @param {Function(Error, array)} callback
+    */
+
+    Cotacaointradayacao.ListaMaisRecente = function(callback) {
+        let ds = Cotacaointradayacao.dataSource;
+        let sql = "select CotacaoIntradayAcao.* from CotacaoIntradayAcao "  +
+                " order by dataHora desc " +
+                " limit 10";
+        ds.connector.query(sql,callback);
+    };
+  
+
     /**
     * 
     * @param {number} valor 

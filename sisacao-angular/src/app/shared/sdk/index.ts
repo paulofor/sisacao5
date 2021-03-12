@@ -75,6 +75,8 @@ import { RelGrupoAcaoApi } from './services/custom/RelGrupoAcao';
 import { CotacaoDiarioAcaoApi } from './services/custom/CotacaoDiarioAcao';
 import { CombinacaoParametroApi } from './services/custom/CombinacaoParametro';
 import { ValorParametroApi } from './services/custom/ValorParametro';
+import { ExecucaoSimulacaoApi } from './services/custom/ExecucaoSimulacao';
+import { TradeApi } from './services/custom/Trade';
 /**
 * @module SDKBrowserModule
 * @description
@@ -132,6 +134,8 @@ export class SDKBrowserModule {
         CotacaoDiarioAcaoApi,
         CombinacaoParametroApi,
         ValorParametroApi,
+        ExecucaoSimulacaoApi,
+        TradeApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
 

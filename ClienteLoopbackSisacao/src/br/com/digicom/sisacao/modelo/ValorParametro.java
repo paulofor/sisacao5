@@ -9,7 +9,7 @@ public class ValorParametro extends Model{
 
 	private Double valorParametro;
 	//private Long combinacaoParametroId;
-	//private Long parametroRegraId;
+	private Integer parametroRegraId;
 	private ParametroRegra parametroRegra;
 	public Double getValorParametro() {
 		return valorParametro;
@@ -29,7 +29,18 @@ public class ValorParametro extends Model{
 	}
 	
 	
+	
+	public void setParametroRegra(ParametroRegra parametroRegra) {
+		this.parametroRegra = parametroRegra;
+	}
 	public String toString() {
 		return this.parametroRegra.getNome() + "=" + this.valorParametro;
 	}
+	public Integer getParametroRegraId() {
+		return parametroRegraId;
+	}
+	public void setParametroRegraId(Integer parametroRegraId) {
+		this.parametroRegraId = parametroRegraId;
+	}
+	
 }

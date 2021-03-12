@@ -7,7 +7,7 @@
       <div class="dgc-card" *ngFor="let item of listaBase">
           <div class="dgc-card-header">
               <span>{{item.codigo}}</span>
-              <span class="dgc-direita">{{item.quantidadeCombinacao}} combinações</span>
+              <a routerLink="/combinacaoExperimento/{{item.id}}" class="dgc-direita">{{item.quantidadeCombinacao}} combinações</a>
           </div>
           <div class="dgc-card-detalhe"> 
             <span>Grupo Ação: {{item.grupoAcao.nome}}</span>

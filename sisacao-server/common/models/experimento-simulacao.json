@@ -54,6 +54,11 @@
       "type": "hasMany",
       "model": "CombinacaoParametro",
       "foreignKey": ""
+    },
+    "valorParametros": {
+      "type": "hasMany",
+      "model": "ValorParametro",
+      "foreignKey": ""
     }
   },
   "acls": [],
@@ -105,6 +110,31 @@
         {
           "path": "/carregaParaSimulacao",
           "verb": "get"
+        }
+      ]
+    },
+    "FechaExperimento": {
+      "accepts": [
+        {
+          "arg": "idExperimento",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/fechaExperimento",
+          "verb": "post"
         }
       ]
     }

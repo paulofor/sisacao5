@@ -17,11 +17,33 @@ public class ExecucaoSimulacao extends Model{
 	Integer quantidadePrejuizo;
 	String ticker;
 	Long combinacaoParametroId;
+	Double target;
+	Double stop;
 	
 	List<Trade> trades = new ArrayList<Trade>();
 	
 	
 	
+	public Double getTarget() {
+		return target;
+	}
+
+
+	public void setTarget(Double target) {
+		this.target = target;
+	}
+
+
+	public Double getStop() {
+		return stop;
+	}
+
+
+	public void setStop(Double stop) {
+		this.stop = stop;
+	}
+
+
 	public JSONObject getJSON() {
 		JSONObject obj = new JSONObject();
 		try {
@@ -29,6 +51,8 @@ public class ExecucaoSimulacao extends Model{
 			obj.put("quantidadePrejuizo", this.quantidadePrejuizo);
 			obj.put("ticker", this.ticker);
 			obj.put("combinacaoParametroId", this.combinacaoParametroId);
+			obj.put("target", target);
+			obj.put("stop", stop);
 			JSONArray trades = new JSONArray();
 			for (Trade trade : this.trades) {
 				trades.put(trade.getJSON());

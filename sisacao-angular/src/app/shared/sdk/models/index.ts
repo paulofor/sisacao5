@@ -26,5 +26,7 @@ export * from './RelGrupoAcao';
 export * from './CotacaoDiarioAcao';
 export * from './CombinacaoParametro';
 export * from './ValorParametro';
+export * from './ExecucaoSimulacao';
+export * from './Trade';
 export * from './BaseModels';
 export * from './FireLoopRef';

@@ -1,2 +1,3 @@
-cd /home/paulo/ftp/files
-java -jar ColetorIntraday.jar
+cd /home/paulo/ftp/files/
+java -Xms128m -Xmx512m -jar ColetorIntraday.jar 
+

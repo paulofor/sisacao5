@@ -1,23 +1,37 @@
 /* tslint:disable */
 import {
-  ValorParametro
+  RegraSimulacao,
+  ValorParametro,
+  ExecucaoSimulacao
 } from '../index';
 
 declare var Object: any;
 export interface CombinacaoParametroInterface {
   "posicaoCombinacao"?: number;
   "dataExecucao"?: string;
+  "mediaLucro"?: number;
+  "mediaPrejuizo"?: number;
+  "descricao"?: string;
   "id"?: number;
+  "regraSimulacaoId"?: number;
   "experimentoSimulacaoId"?: number;
+  regraSimulacao?: RegraSimulacao;
   valorParametros?: ValorParametro[];
+  execucaoSimulacaos?: ExecucaoSimulacao[];
 }
 
 export class CombinacaoParametro implements CombinacaoParametroInterface {
   "posicaoCombinacao": number;
   "dataExecucao": string;
+  "mediaLucro": number;
+  "mediaPrejuizo": number;
+  "descricao": string;
   "id": number;
+  "regraSimulacaoId": number;
   "experimentoSimulacaoId": number;
+  regraSimulacao: RegraSimulacao;
   valorParametros: ValorParametro[];
+  execucaoSimulacaos: ExecucaoSimulacao[];
   constructor(data?: CombinacaoParametroInterface) {
     Object.assign(this, data);
   }
@@ -59,8 +73,24 @@ export class CombinacaoParametro implements CombinacaoParametroInterface {
           name: 'dataExecucao',
           type: 'string'
         },
+        "mediaLucro": {
+          name: 'mediaLucro',
+          type: 'number'
+        },
+        "mediaPrejuizo": {
+          name: 'mediaPrejuizo',
+          type: 'number'
+        },
+        "descricao": {
+          name: 'descricao',
+          type: 'string'
+        },
         "id": {
           name: 'id',
+          type: 'number'
+        },
+        "regraSimulacaoId": {
+          name: 'regraSimulacaoId',
           type: 'number'
         },
         "experimentoSimulacaoId": {
@@ -69,10 +99,26 @@ export class CombinacaoParametro implements CombinacaoParametroInterface {
         },
       },
       relations: {
+        regraSimulacao: {
+          name: 'regraSimulacao',
+          type: 'RegraSimulacao',
+          model: 'RegraSimulacao',
+          relationType: 'belongsTo',
+                  keyFrom: 'regraSimulacaoId',
+          keyTo: 'id'
+        },
         valorParametros: {
           name: 'valorParametros',
           type: 'ValorParametro[]',
           model: 'ValorParametro',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'combinacaoParametroId'
+        },
+        execucaoSimulacaos: {
+          name: 'execucaoSimulacaos',
+          type: 'ExecucaoSimulacao[]',
+          model: 'ExecucaoSimulacao',
           relationType: 'hasMany',
                   keyFrom: 'id',
           keyTo: 'combinacaoParametroId'
