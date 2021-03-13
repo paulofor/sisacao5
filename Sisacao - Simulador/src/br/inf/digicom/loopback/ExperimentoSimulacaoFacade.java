@@ -88,7 +88,7 @@ public class ExperimentoSimulacaoFacade {
 	}
 	
 	public void salvaDescricaoCombinacao(final CombinacaoParametro combinacao) {
-		repCombinacao.alteraDescricao(combinacao.getId(), combinacao.toString(),  new VoidCallback() {
+		repCombinacao.alteraDescricao(combinacao.getId(), combinacao.descricaoSemTargetStop(),  new VoidCallback() {
 			@Override
 			public void onSuccess() {
 				System.out.println("Alterou descrição");

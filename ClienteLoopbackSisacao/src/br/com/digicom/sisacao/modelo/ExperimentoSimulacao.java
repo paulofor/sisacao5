@@ -55,5 +55,15 @@ public class ExperimentoSimulacao extends Model{
 		this.regraSimulacao = new RegraSimulacao();
 		BeanUtil.setProperties(this.regraSimulacao, (Map<String, ? extends Object>) regraSimulacao, true);
 	}
+
+	public int diaInicio() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int diaFinal() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }

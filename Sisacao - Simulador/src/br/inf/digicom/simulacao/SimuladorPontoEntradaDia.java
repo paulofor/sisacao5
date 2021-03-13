@@ -17,7 +17,7 @@ public class SimuladorPontoEntradaDia {
 	double pontoEntrada;
 	
 	
-	public ExecucaoPontoEntrada executa(List<DiaPregao> dias, Map parametros, IRegraPontoEntrada regra) {
+	public ExecucaoPontoEntrada executa(List<DiaPregao> dias, Map parametros, IRegraPontoEntrada regra, int diaInicio, int diaFim) {
 
 		ExecucaoPontoEntrada execucao = new ExecucaoPontoEntrada();
 		regra.setExecucaoPontoEntrada(execucao);
@@ -31,7 +31,7 @@ public class SimuladorPontoEntradaDia {
 		}
 		regra.setDiaInicial(indDia);
 		indHora = 0;
-		while (dias.get(indDia).getDiaNum() < 20210226) {
+		while (dias.get(indDia).getDiaNum() < diaFim) {
 			indHora = 0;
 			pontoEntrada = regra.getPontoEntrada(indDia, dias);
 			while (dias.get(indDia).getCotacaoIntradayAcaos().size()>indHora) {

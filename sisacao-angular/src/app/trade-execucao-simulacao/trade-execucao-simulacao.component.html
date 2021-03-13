@@ -1,3 +1,20 @@
-<p>
-  trade-execucao-simulacao works!
-</p>
+
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+      <span>{{execucao.ticker}} - t:{{execucao.target}} s:{{execucao.stop}}</span>
+      <button mat-dialog-close class="dgc-direita btn btn-primary btn-sm">Fechar</button>
+  </div>
+  <div *ngIf="listaTrade" class="dgc-painel-principal">
+      <div class="dgc-card" *ngFor="let item of listaTrade">
+          <div class="dgc-card-detaalhe">
+              <span>Entrada: {{item.precoEntrada  | number : '1.2-2'}} ({{item.dataEntrada | date : 'dd/MM/yyyy' }})</span>
+          </div>
+          <div>
+              <span>Saida: {{item.precoSaida  | number : '1.2-2'}} ({{item.dataSaida | date : 'dd/MM/yyyy' }})</span>
+          </div>
+          <div>
+              <span>Dias: {{item.quantidadeDia}} - Retorno: {{((item.precoSaida - item.precoEntrada)/item.precoEntrada * 100)  | number : '1.1-1'}}%</span>
+          </div>
+      </div>
+  </div>
+</div>

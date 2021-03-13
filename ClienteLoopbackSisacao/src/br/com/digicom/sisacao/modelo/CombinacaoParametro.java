@@ -59,4 +59,13 @@ public class CombinacaoParametro extends Model{
 		return saida;
 	}
 	
+	public String descricaoSemTargetStop() {
+		String saida = "";
+		for(ValorParametro valor : this.valorParametros) {
+			if (!valor.isTargetStop())
+				saida += " " + valor;
+		}
+		return saida;
+	}
+	
 }

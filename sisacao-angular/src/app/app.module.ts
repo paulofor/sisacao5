@@ -183,7 +183,8 @@ registerLocaleData(localePt, 'pt-BR');
     ExperimentoSimulacaoEditComponent,
     ExperimentoParametroEditComponent,
     GrupoAcaoEditComponent,
-    EscolheAcaoGrupoEditComponent
+    EscolheAcaoGrupoEditComponent,
+    TradeExecucaoSimulacaoComponent
   ],
   bootstrap: [AppComponent]
 })

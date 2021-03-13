@@ -26,7 +26,7 @@ public class ExecutadorSimulacao {
 			
 			for (AtivoAcao ativo : listaAtivo) {
 				//serie.obtemSerie(ativo.getTicker(), regra, combinacao,0);
-				serie.executaTicker(ativo.getTicker(), regra, combinacao, 0);
+				serie.executaTicker(ativo.getTicker(), regra, combinacao, experimentoSimulacao.diaInicio(), experimentoSimulacao.diaFinal());
 			}
 			//do {
 			//	try {

@@ -42,5 +42,11 @@ public class ValorParametro extends Model{
 	public void setParametroRegraId(Integer parametroRegraId) {
 		this.parametroRegraId = parametroRegraId;
 	}
+	public boolean isTargetStop() {
+		if ("TARGET".equalsIgnoreCase(this.parametroRegra.getNome()) || "STOP".equalsIgnoreCase(this.parametroRegra.getNome()))
+			return true;
+		else
+			return false;
+	}
 	
 }

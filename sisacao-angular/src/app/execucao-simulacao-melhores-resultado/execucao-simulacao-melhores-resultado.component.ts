@@ -32,7 +32,7 @@ export class ExecucaoSimulacaoMelhoresResultadoComponent implements OnInit {
   trades(item) {
     console.log('Clicou trades');
     this.dialog.open(TradeExecucaoSimulacaoComponent, {
-      width: '800px',
+      width: '900px',
       data: {
           item: item
       }

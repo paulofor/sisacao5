@@ -66,12 +66,12 @@ public class SerieCotacaoIntradayFacade {
 	}
 	*/
 	
-	public void executaTicker(String ticker, IRegraPontoEntrada regra, CombinacaoParametro combinacao, int dias) {
+	public void executaTicker(String ticker, IRegraPontoEntrada regra, CombinacaoParametro combinacao, int diaInicio, int diaFim) {
 		Map parametros = new HashMap();
 		for (ValorParametro param : combinacao.getValorParametros()) {
 			parametros.put(param.getParametroRegra().getAtributoClasse(),param.getValorParametro());
 		}
-		ExecucaoPontoEntrada execucao = simulacao.executa(RepositorioCotacao.getCotacao(ticker),parametros, regra);
+		ExecucaoPontoEntrada execucao = simulacao.executa(RepositorioCotacao.getCotacao(ticker),parametros, regra, diaInicio, diaFim);
 		salvaExecucao(execucao,ticker,combinacao, regra);
 		parametros = null;
 	}
