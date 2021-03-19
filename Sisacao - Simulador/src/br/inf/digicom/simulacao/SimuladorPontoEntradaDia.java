@@ -1,10 +1,13 @@
 package br.inf.digicom.simulacao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import br.com.digicom.sisacao.modelo.CombinacaoParametro;
 import br.com.digicom.sisacao.modelo.CotacaoIntradayAcao;
 import br.com.digicom.sisacao.modelo.DiaPregao;
+import br.com.digicom.sisacao.modelo.ValorParametro;
 import br.inf.digicom.simulacao.trade.ExecucaoPontoEntrada;
 import br.inf.digicom.simulacao.trade.Trade;
 
@@ -17,6 +20,23 @@ public class SimuladorPontoEntradaDia {
 	double pontoEntrada;
 	
 	
+	public Double precoEntrada(List<DiaPregao> dias, CombinacaoParametro combinacao, IRegraPontoEntrada regra, int dia) {
+		Map parametros = new HashMap();
+		for (ValorParametro param : combinacao.getValorParametros()) {
+			parametros.put(param.getParametroRegra().getAtributoClasse(),param.getValorParametro());
+		}
+		regra.setParametros(parametros);
+		int indDia = 0;
+		int indHora = 0;
+		while (dias.get(indDia).getDiaNum() < dia) {
+			indDia++;
+		}
+		regra.setDiaInicial(0);
+		Double pontoEntrada = regra.getPontoEntrada(indDia, dias);
+		return pontoEntrada;
+	}
+	
+	
 	public ExecucaoPontoEntrada executa(List<DiaPregao> dias, Map parametros, IRegraPontoEntrada regra, int diaInicio, int diaFim) {
 
 		ExecucaoPontoEntrada execucao = new ExecucaoPontoEntrada();
@@ -26,12 +46,15 @@ public class SimuladorPontoEntradaDia {
 		
 		int indDia = 0;
 		int indHora = 0;
-		while (dias.get(indDia).getCotacaoIntradayAcaos().size() == 0) {
+		//while (dias.get(indDia).getCotacaoIntradayAcaos().size() == 0) {
+		//	indDia++;
+		//}
+		while (dias.get(indDia).getDiaNum() < diaInicio) {
 			indDia++;
 		}
 		regra.setDiaInicial(indDia);
 		indHora = 0;
-		while (dias.get(indDia).getDiaNum() < diaFim) {
+		while (dias.get(indDia).getDiaNum() <= diaFim) {
 			indHora = 0;
 			pontoEntrada = regra.getPontoEntrada(indDia, dias);
 			while (dias.get(indDia).getCotacaoIntradayAcaos().size()>indHora) {

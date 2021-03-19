@@ -10,14 +10,34 @@ import com.strongloop.android.remoting.BeanUtil;
 public class CombinacaoParametro extends Model{
 
 	private Integer posicaoCombinacao;
-	//private Long experimentoSimulacaoId;
+	private Long experimentoSimulacaoId;
 	private String dataExecucao;
 	private Integer id;
 	
 	private List<ValorParametro> valorParametros;
+	private RegraSimulacao regraSimulacao;
 	
 	
 	
+	
+	
+	public Long getExperimentoSimulacaoId() {
+		return experimentoSimulacaoId;
+	}
+
+	public void setExperimentoSimulacaoId(Long experimentoSimulacaoId) {
+		this.experimentoSimulacaoId = experimentoSimulacaoId;
+	}
+
+	public RegraSimulacao getRegraSimulacao() {
+		return regraSimulacao;
+	}
+
+	public void setRegraSimulacao(Object regraSimulacao) {
+		this.regraSimulacao = new RegraSimulacao();
+		BeanUtil.setProperties(this.regraSimulacao, (Map<String, ? extends Object>) regraSimulacao, true);
+	}
+
 	public List<ValorParametro> getValorParametros() {
 		return valorParametros;
 	}

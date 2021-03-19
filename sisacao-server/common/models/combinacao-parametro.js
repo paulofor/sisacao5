@@ -43,7 +43,7 @@ module.exports = function (Combinacaoparametro) {
   Combinacaoparametro.GetListaExecucao = function (idExperimento, callback) {
     //console.log('id' , idExperimento);
     let filtro = {
-      'where': { 'experimentoSimulacaoId': idExperimento },
+      'where': { 'and': [{ 'experimentoSimulacaoId': idExperimento }, { 'descricao': null }] },
       //'include': { 'relation': 'valorParametros', 'scope': { 'include': 'parametroRegra' } }
       'include' : 'valorParametros'
     }

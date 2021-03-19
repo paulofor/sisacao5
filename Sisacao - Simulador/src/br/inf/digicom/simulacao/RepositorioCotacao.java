@@ -23,7 +23,18 @@ public class RepositorioCotacao {
 	
 	public static void carregaAtivos(List<AtivoAcao> listaAtivo) {
 		for (AtivoAcao ativo : listaAtivo) {
-			carregaAtivo(ativo);
+			carregaAtivo(ativo.getTicker());
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public static void carregaPorTicker(String ticker) {
+		if (cotacoes.get(ticker)==null) {
+			carregaAtivo(ticker);
 			try {
 				Thread.sleep(5000);
 			} catch (InterruptedException e) {
@@ -34,13 +45,13 @@ public class RepositorioCotacao {
 	}
 	
 	
-	private static synchronized void carregaAtivo(AtivoAcao ativo) {
+	private static synchronized void carregaAtivo(String ticker) {
 		ListCallback<DiaPregao> callback = new ListCallback<DiaPregao>() {
 			@Override
 			public void onSuccess(List<DiaPregao> lista) {
-				cotacoes.put(ativo.getTicker(), lista);
+				cotacoes.put(ticker, lista);
 				contaLista++;
-				System.out.println("Contagem:" + contaLista + " " + ativo.getTicker());
+				System.out.println("Contagem:" + contaLista + " " + ticker);
 			}
 
 			@Override
@@ -49,7 +60,7 @@ public class RepositorioCotacao {
 				
 			}
 		};
-		repDiaPregao.obtemPorDiaTicker(ativo.getTicker(), 0, callback); 
+		repDiaPregao.obtemPorDiaTicker(ticker, 0, callback); 
 	}
 	
 	public static List<DiaPregao> getCotacao(AtivoAcao ativo) {

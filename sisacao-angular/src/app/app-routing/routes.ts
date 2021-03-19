@@ -18,6 +18,8 @@ import { ExperimentoSimulacaoListComponent } from '../experimento-simulacao-list
 import { GrupoAcaoListComponent } from '../grupo-acao-list/grupo-acao-list.component';
 import { CombinacaoListComponent } from '../combinacao-list/combinacao-list.component';
 import { ExecucaoSimulacaoMelhoresResultadoComponent } from '../execucao-simulacao-melhores-resultado/execucao-simulacao-melhores-resultado.component';
+import { ExecucaoSimulacaoMonitoradaComponent } from '../execucao-simulacao-monitorada/execucao-simulacao-monitorada.component';
+import { ExecucaoSimulacaoPorExperimentoComponent } from '../execucao-simulacao-por-experimento/execucao-simulacao-por-experimento.component';
 
 export const routes : Routes = [
     { path: 'home' , component: HomeComponent },
@@ -43,6 +45,8 @@ export const routes : Routes = [
     { path : 'combinacaoExperimento/:id' , component: CombinacaoListComponent },
 
     { path : 'execucaoSimulacaoMelhores' , component: ExecucaoSimulacaoMelhoresResultadoComponent },
+    { path : 'execucaoSimulacaoMonitorada' , component: ExecucaoSimulacaoMonitoradaComponent },
+    { path : 'execucaoSimulacaoPorExperimento/:id' , component: ExecucaoSimulacaoPorExperimentoComponent },
 
     { path: '',          redirectTo: 'home', pathMatch: 'full' }
 ]

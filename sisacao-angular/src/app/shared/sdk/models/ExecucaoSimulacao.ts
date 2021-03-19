@@ -13,8 +13,10 @@ export interface ExecucaoSimulacaoInterface {
   "stop"?: number;
   "resultado"?: number;
   "monitorar"?: number;
+  "precoEntrada"?: number;
   "id"?: number;
   "combinacaoParametroId"?: number;
+  "experimentoSimulacaoId"?: number;
   combinacaoParametro?: CombinacaoParametro;
   trades?: Trade[];
 }
@@ -27,8 +29,10 @@ export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
   "stop": number;
   "resultado": number;
   "monitorar": number;
+  "precoEntrada": number;
   "id": number;
   "combinacaoParametroId": number;
+  "experimentoSimulacaoId": number;
   combinacaoParametro: CombinacaoParametro;
   trades: Trade[];
   constructor(data?: ExecucaoSimulacaoInterface) {
@@ -92,12 +96,20 @@ export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
           name: 'monitorar',
           type: 'number'
         },
+        "precoEntrada": {
+          name: 'precoEntrada',
+          type: 'number'
+        },
         "id": {
           name: 'id',
           type: 'number'
         },
         "combinacaoParametroId": {
           name: 'combinacaoParametroId',
+          type: 'number'
+        },
+        "experimentoSimulacaoId": {
+          name: 'experimentoSimulacaoId',
           type: 'number'
         },
       },

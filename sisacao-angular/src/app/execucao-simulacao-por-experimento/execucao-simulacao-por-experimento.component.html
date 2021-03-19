@@ -1,9 +1,9 @@
 <div class="dgc-painel">
   <div class="dgc-painel-header">
-    <span>Melhores Execuções</span>  
+    <span>Melhores do Experimento</span>  
   </div>
-  <div class="dgc-painel-principal" *ngIf="listaMelhores">
-    <div class="dgc-card" *ngFor="let item of listaMelhores" >
+  <div class="dgc-painel-principal" *ngIf="lista">
+    <div class="dgc-card" *ngFor="let item of lista" >
       <app-execucao-simulacao-display [item]="item"></app-execucao-simulacao-display>
     </div>
   </div>

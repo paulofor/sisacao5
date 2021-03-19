@@ -12,6 +12,7 @@ export interface CombinacaoParametroInterface {
   "mediaLucro"?: number;
   "mediaPrejuizo"?: number;
   "descricao"?: string;
+  "processada"?: number;
   "id"?: number;
   "regraSimulacaoId"?: number;
   "experimentoSimulacaoId"?: number;
@@ -26,6 +27,7 @@ export class CombinacaoParametro implements CombinacaoParametroInterface {
   "mediaLucro": number;
   "mediaPrejuizo": number;
   "descricao": string;
+  "processada": number;
   "id": number;
   "regraSimulacaoId": number;
   "experimentoSimulacaoId": number;
@@ -84,6 +86,10 @@ export class CombinacaoParametro implements CombinacaoParametroInterface {
         "descricao": {
           name: 'descricao',
           type: 'string'
+        },
+        "processada": {
+          name: 'processada',
+          type: 'number'
         },
         "id": {
           name: 'id',

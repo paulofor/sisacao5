@@ -5,7 +5,8 @@ import {
   ExperimentoAcao,
   GrupoAcao,
   CombinacaoParametro,
-  ValorParametro
+  ValorParametro,
+  ExecucaoSimulacao
 } from '../index';
 
 declare var Object: any;
@@ -26,6 +27,7 @@ export interface ExperimentoSimulacaoInterface {
   grupoAcao?: GrupoAcao;
   combinacaoParametros?: CombinacaoParametro[];
   valorParametros?: ValorParametro[];
+  execucaoSimulacaos?: ExecucaoSimulacao[];
 }
 
 export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
@@ -45,6 +47,7 @@ export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
   grupoAcao: GrupoAcao;
   combinacaoParametros: CombinacaoParametro[];
   valorParametros: ValorParametro[];
+  execucaoSimulacaos: ExecucaoSimulacao[];
   constructor(data?: ExperimentoSimulacaoInterface) {
     Object.assign(this, data);
   }
@@ -164,6 +167,14 @@ export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
           name: 'valorParametros',
           type: 'ValorParametro[]',
           model: 'ValorParametro',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'experimentoSimulacaoId'
+        },
+        execucaoSimulacaos: {
+          name: 'execucaoSimulacaos',
+          type: 'ExecucaoSimulacao[]',
+          model: 'ExecucaoSimulacao',
           relationType: 'hasMany',
                   keyFrom: 'id',
           keyTo: 'experimentoSimulacaoId'

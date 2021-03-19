@@ -26,6 +26,9 @@
     },
     "monitorar": {
       "type": "number"
+    },
+    "precoEntrada": {
+      "type": "number"
     }
   },
   "validations": [],

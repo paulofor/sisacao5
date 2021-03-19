@@ -13,7 +13,8 @@
               <span>Saida: {{item.precoSaida  | number : '1.2-2'}} ({{item.dataSaida | date : 'dd/MM/yyyy' }})</span>
           </div>
           <div>
-              <span>Dias: {{item.quantidadeDia}} - Retorno: {{((item.precoSaida - item.precoEntrada)/item.precoEntrada * 100)  | number : '1.1-1'}}%</span>
+              <span>Dias: {{item.quantidadeDia}} - 
+                  Retorno: {{((item.precoSaida - item.precoEntrada)/item.precoEntrada * 100)  | number : '1.1-1'}}% ({{item.percentual | number: '1.1-1'}})</span>
           </div>
       </div>
   </div>

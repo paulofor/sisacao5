@@ -21,22 +21,16 @@ export class ExecucaoSimulacaoMelhoresResultadoComponent implements OnInit {
   carregaMelhores() {
     let filtro = {
       'order' : 'resultado desc',
-      'limit' : 140
+      'limit' : 140,
+      'include' : {'relation' : 'combinacaoParametro' , 'scope' : {'include' : 'regraSimulacao'}}
     }
     this.srv.find(filtro)
       .subscribe((result:ExecucaoSimulacao[]) => {
+        console.log('Lista:', result);
         this.listaMelhores = result;
       })
   }
 
-  trades(item) {
-    console.log('Clicou trades');
-    this.dialog.open(TradeExecucaoSimulacaoComponent, {
-      width: '900px',
-      data: {
-          item: item
-      }
-  });
-  }
+ 
 
 }

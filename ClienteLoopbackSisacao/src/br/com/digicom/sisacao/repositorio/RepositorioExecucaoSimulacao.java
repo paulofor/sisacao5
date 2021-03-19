@@ -7,10 +7,13 @@ import java.util.Map;
 
 import com.strongloop.android.loopback.ModelRepository;
 import com.strongloop.android.loopback.callbacks.EmptyResponseParser;
+import com.strongloop.android.loopback.callbacks.JsonArrayParser;
+import com.strongloop.android.loopback.callbacks.ListCallback;
 import com.strongloop.android.loopback.callbacks.VoidCallback;
 import com.strongloop.android.remoting.adapters.RestAdapter;
 import com.strongloop.android.remoting.adapters.RestContractItem;
 
+import br.com.digicom.sisacao.modelo.AtivoAcao;
 import br.com.digicom.sisacao.modelo.ExecucaoSimulacao;
 
 public class RepositorioExecucaoSimulacao extends ModelRepository<ExecucaoSimulacao>{
@@ -27,9 +30,17 @@ public class RepositorioExecucaoSimulacao extends ModelRepository<ExecucaoSimula
 		RestContractItem contrato = new RestContractItem("ExecucaoSimulacaos/insereExecucaoSimulacao","POST");
 		this.getRestAdapter().getContract().addItem(contrato, "ExecucaoSimulacao.insereExecucaoSimulacao");
         Map<String, Object> params = new HashMap<String, Object>();
-        params.put("execucao", execucao.getJSON());
+        params.put("execucao", execucao.jSON());
         invokeStaticMethod("insereExecucaoSimulacao", params,   new EmptyResponseParser(voidCallback));
         execucao = null;
+	}
+	
+	
+	public void listaMonitorar(final ListCallback<ExecucaoSimulacao> callback ) {
+		RestContractItem contrato = new RestContractItem("ExecucaoSimulacaos/listaMonitorar","GET");
+		this.getRestAdapter().getContract().addItem(contrato, "ExecucaoSimulacao.listaMonitorar");
+        Map<String, Object> params = new HashMap<String, Object>();
+        invokeStaticMethod("listaMonitorar", params,   new JsonArrayParser<ExecucaoSimulacao>(this, callback));
 	}
 	
 }

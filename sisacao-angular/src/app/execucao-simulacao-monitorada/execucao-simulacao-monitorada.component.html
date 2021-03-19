@@ -1,0 +1,20 @@
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+    <span>Monitoradas</span>  
+  </div>
+  <div *ngIf="listaBase">
+    <div class="dgc-card" *ngFor="let item of listaBase" >
+      <div class="dgc-card-header">
+        <span>{{item.ticker}}</span>
+        <span class="dgc-direita">{{item.quantidadeLucro}} x {{item.quantidadePrejuizo}}</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        Preço entrada: {{item.precoEntrada | number: '1.2-2'}}
+      </div>
+      <div class="dgc-card-detalhe">
+        <span>t: {{item.target}}  s: {{item.stop}}</span>
+      </div>
+      
+    </div>
+  </div>
+</div>

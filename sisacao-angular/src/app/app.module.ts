@@ -73,6 +73,9 @@ import { CombinacaoListComponent } from './combinacao-list/combinacao-list.compo
 import { CotacaoIntradayAcaoMaisRecenteComponent } from './cotacao-intraday-acao-mais-recente/cotacao-intraday-acao-mais-recente.component';
 import { ExecucaoSimulacaoMelhoresResultadoComponent } from './execucao-simulacao-melhores-resultado/execucao-simulacao-melhores-resultado.component';
 import { TradeExecucaoSimulacaoComponent } from './trade-execucao-simulacao/trade-execucao-simulacao.component';
+import { ExecucaoSimulacaoMonitoradaComponent } from './execucao-simulacao-monitorada/execucao-simulacao-monitorada.component';
+import { ExecucaoSimulacaoDisplayComponent } from './execucao-simulacao-display/execucao-simulacao-display.component';
+import { ExecucaoSimulacaoPorExperimentoComponent } from './execucao-simulacao-por-experimento/execucao-simulacao-por-experimento.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -121,7 +124,10 @@ registerLocaleData(localePt, 'pt-BR');
     CombinacaoListComponent,
     CotacaoIntradayAcaoMaisRecenteComponent,
     ExecucaoSimulacaoMelhoresResultadoComponent,
-    TradeExecucaoSimulacaoComponent
+    TradeExecucaoSimulacaoComponent,
+    ExecucaoSimulacaoMonitoradaComponent,
+    ExecucaoSimulacaoDisplayComponent,
+    ExecucaoSimulacaoPorExperimentoComponent
   ],
   imports: [
     BrowserModule,

@@ -59,6 +59,11 @@
       "type": "hasMany",
       "model": "ValorParametro",
       "foreignKey": ""
+    },
+    "execucaoSimulacaos": {
+      "type": "hasMany",
+      "model": "ExecucaoSimulacao",
+      "foreignKey": ""
     }
   },
   "acls": [],
@@ -135,6 +140,43 @@
         {
           "path": "/fechaExperimento",
           "verb": "post"
+        }
+      ]
+    },
+    "ObtemExecucao": {
+      "accepts": [
+        {
+          "arg": "id",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "experimento",
+          "type": "object",
+          "root": false,
+          "description": ""
+        },
+        {
+          "arg": "melhoresExecucao",
+          "type": "array",
+          "root": false,
+          "description": ""
+        },
+        {
+          "arg": "combinacaoProcessada",
+          "type": "number",
+          "root": false,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemExecucao",
+          "verb": "get"
         }
       ]
     }

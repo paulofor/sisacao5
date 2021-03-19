@@ -19,11 +19,45 @@ public class ExecucaoSimulacao extends Model{
 	Long combinacaoParametroId;
 	Double target;
 	Double stop;
+	Double precoEntrada;
+	Long experimentoSimulacaoId;
 	
 	List<Trade> trades = new ArrayList<Trade>();
+	CombinacaoParametro combinacaoParametro = null;
 	
 	
 	
+	public CombinacaoParametro getCombinacaoParametro() {
+		return combinacaoParametro;
+	}
+
+
+	public void setCombinacaoParametro(Object combinacaoParametro) {
+		this.combinacaoParametro = new CombinacaoParametro();;
+		BeanUtil.setProperties(this.combinacaoParametro, (Map<String, ? extends Object>) combinacaoParametro, true);
+	}
+
+
+	public Long getExperimentoSimulacaoId() {
+		return experimentoSimulacaoId;
+	}
+
+
+	public void setExperimentoSimulacaoId(Long experimentoSimulacaoId) {
+		this.experimentoSimulacaoId = experimentoSimulacaoId;
+	}
+
+
+	public Double getPrecoEntrada() {
+		return precoEntrada;
+	}
+
+
+	public void setPrecoEntrada(Double precoEntrada) {
+		this.precoEntrada = precoEntrada;
+	}
+
+
 	public Double getTarget() {
 		return target;
 	}
@@ -44,15 +78,19 @@ public class ExecucaoSimulacao extends Model{
 	}
 
 
-	public JSONObject getJSON() {
+	public JSONObject jSON() {
 		JSONObject obj = new JSONObject();
 		try {
 			obj.put("quantidadeLucro", this.quantidadeLucro);
 			obj.put("quantidadePrejuizo", this.quantidadePrejuizo);
 			obj.put("ticker", this.ticker);
 			obj.put("combinacaoParametroId", this.combinacaoParametroId);
+			obj.put("experimentoSimulacaoId", this.experimentoSimulacaoId);
 			obj.put("target", target);
 			obj.put("stop", stop);
+			double resultado = (100*this.target*(this.quantidadeLucro+1)) - (100*this.stop*(this.quantidadePrejuizo-1));
+			obj.put("resultado", resultado );
+			obj.put("monitorar", 0);
 			JSONArray trades = new JSONArray();
 			for (Trade trade : this.trades) {
 				trades.put(trade.getJSON());

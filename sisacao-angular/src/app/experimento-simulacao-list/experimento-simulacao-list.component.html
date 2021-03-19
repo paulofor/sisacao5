@@ -15,6 +15,9 @@
           <div class="dgc-card-detalhe">
             <span>Regra: {{item.regraSimulacao.nome}}</span>
           </div>
+          <div class="dgc-card-detalhe">
+            <span>Período: {{item.dataInicial}} até {{item.dataFinal}}</span>
+          </div>
 
           <div class="dgc-card-detalhe">
             <table>
@@ -23,15 +26,18 @@
                 <td width="15%">{{parametro.inicial}}</td>
                 <td width="15%">{{parametro.final}}</td>
                 <td width="15%">{{parametro.passo}}</td>
-                <td width="10%"><a (click)="dialogo1({'item' : parametro})">alterar</a></td>
+                <td width="10%"><a (click)="dialogo1({'item' : parametro})" class="dgc-link">alterar</a></td>
               </tr>
             </table>
           </div>
           
  
-          <div class="dgc-card-comandos">
-            <!--<button class="btn-primary btn-sm btn" (click)="dialogo1({'origem' : item})">Novo Parâmetro</button>-->
+          <div class="dgc-card-comandos" *ngIf="!item.dataExecucao">
             <button class="btn-primary btn-sm btn" (click)="gerarCombinacao(item)">Gerar Combinações</button>
+            <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar Experimento</button>
+          </div> 
+          <div class="dgc-card-comandos" *ngIf="item.dataExecucao">
+            <button class="btn-primary btn-sm btn" [routerLink]="['/execucaoSimulacaoPorExperimento' , item.id]" >Resultados</button>
             <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar Experimento</button>
           </div> 
       </div>

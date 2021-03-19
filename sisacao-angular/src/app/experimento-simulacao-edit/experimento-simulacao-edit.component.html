@@ -7,6 +7,14 @@
       <input matInput maxlength="50" #codigo [(ngModel)]="item.codigo" name="codigo" placeholder="Codigo" autocomplete="off" />
     </mat-form-field>
 
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="50" #dataInicial [(ngModel)]="item.dataInicial" name="dataInicial" placeholder="Data Inicial (dd-mm-aaaa)" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="50" #dataFinal [(ngModel)]="item.dataFinal" name="dataFinal" placeholder="Data Final (dd-mm-aaaa)" autocomplete="off" />
+    </mat-form-field>
+
 
     <mat-form-field class="example-full-width">
       <mat-select placeholder="Regra" #regraSimulacaoId [(ngModel)]="item.regraSimulacaoId" name="regraSimulacaoId">

@@ -12,8 +12,31 @@ public class ExperimentoSimulacao extends Model{
 	private Integer posicaoExecucao;
 	private RegraSimulacao regraSimulacao;
 	private Integer grupoAcaoId;
+	private String dataInicial;
+	private String dataFinal;
 	
-	
+	private int dataInicialNum;
+	private int dataFinalNum;
+
+	public String getDataInicial() {
+		return dataInicial;
+	}
+
+	public void setDataInicial(String dataInicial) {
+		this.dataInicial = dataInicial;
+		String valorNum = dataInicial.substring(6) + dataInicial.substring(3,5) + dataInicial.substring(0,2);
+		this.dataInicialNum = Integer.parseInt(valorNum);
+	}
+
+	public String getDataFinal() {
+		return dataFinal;
+	}
+
+	public void setDataFinal(String dataFinal) {
+		this.dataFinal = dataFinal;
+		String valorNum = dataFinal.substring(6) + dataFinal.substring(3,5) + dataFinal.substring(0,2);
+		this.dataFinalNum = Integer.parseInt(valorNum);
+	}
 
 	public Integer getGrupoAcaoId() {
 		return grupoAcaoId;
@@ -57,13 +80,13 @@ public class ExperimentoSimulacao extends Model{
 	}
 
 	public int diaInicio() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.dataInicialNum;
 	}
 
 	public int diaFinal() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.dataFinalNum;
 	}
+	
+	
 	
 }

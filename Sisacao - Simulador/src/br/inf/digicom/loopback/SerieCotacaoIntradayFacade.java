@@ -87,6 +87,7 @@ public class SerieCotacaoIntradayFacade {
 		exec.setQuantidadePrejuizo(execucao.getSomaPrejuizo());
 		exec.setTarget(regra.getTarget());
 		exec.setStop(regra.getStop());
+		exec.setExperimentoSimulacaoId(combinacao.getExperimentoSimulacaoId());
 		for (Trade trade : execucao.listaTrades()) {
 			br.com.digicom.sisacao.modelo.Trade tradeModel = new br.com.digicom.sisacao.modelo.Trade();
 			tradeModel.setPrecoEntrada(trade.getValorEntrada());

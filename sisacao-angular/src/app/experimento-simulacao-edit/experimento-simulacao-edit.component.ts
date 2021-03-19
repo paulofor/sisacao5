@@ -37,4 +37,10 @@ export class ExperimentoSimulacaoEditComponent extends BaseEditComponent {
       })
   }
 
+  preSubmit() {
+    delete this.item['experimentoParametros'];
+    delete this.item['grupoAcao'];
+    delete this.item['regraSimulacao'];
+  }
+
 }
