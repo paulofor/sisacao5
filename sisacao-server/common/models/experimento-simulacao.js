@@ -35,7 +35,65 @@ module.exports = function(Experimentosimulacao) {
         //callback(null,"{ 'resultado' : 'executando'}");
     };
 
+    /**
+     * 
+     * @param {number} idExperimento 
+     * @param {number} inicioBloco 
+     * @param {string} finalBloco 
+     * @param {Function(Error, object)} callback
+     */
 
+    Experimentosimulacao.GerarCombinacoesBloco =  function(idExperimento, inicioBloco, finalBloco, callback) {
+        listaComb = [];
+        let ds = Experimentosimulacao.dataSource;
+        let filtro = {
+            'where' : { 'experimentoSimulacaoId' : idExperimento },
+            'order' : 'parametroRegraId'
+
+        }
+        Experimentosimulacao.findOne({'where' : {'id' : idExperimento} }, (err,experimento) => {
+            app.models.ExperimentoParametro.find(filtro, (err1, parametros) => {
+                console.log('Erro1: ' , err1);
+                if (inicioBloco==1) {
+                    let sqlLimpeza = "delete from CombinacaoParametro where experimentoSimulacaoId = " + idExperimento;
+                    ds.connector.query(sqlLimpeza, (err,result) => {
+                        let valor = new Array();
+                        let ids = new Array();
+                        for (let i=0;i<parametros.length;i++) {
+                            valor.push(parametros[i].inicial);
+                            ids.push(parametros[i].parametroRegraId);
+                        }
+                        posicao = 0;
+                        trataItem(valor,parametros,ids, idExperimento, 0, experimento.regraSimulacaoId);
+                        let sqlQuantidade = "update ExperimentoSimulacao set quantidadeCombinacao = " + listaComb.length + 
+                                " where id = " + idExperimento;
+                        ds.connector.query(sqlQuantidade, (err,result) => {
+    
+                        })
+                        //salvaCombinacao(listaComb, inicioBloco, finalBloco);
+                        for (let i=(inicioBloco-1);i<listaComb.length && i<finalBloco;i++) {
+                            salvaCombinacaoUnica(listaComb[i]);
+                        }
+                        var saida = {'quantidade' : listaComb.length};
+                        callback(null, saida);
+                    })
+                } else {
+                    let valor = new Array();
+                    let ids = new Array();
+                    for (let i=0;i<parametros.length;i++) {
+                        valor.push(parametros[i].inicial);
+                        ids.push(parametros[i].parametroRegraId);
+                    }
+                    posicao = 0;
+                    trataItem(valor,parametros,ids, idExperimento, 0, experimento.regraSimulacaoId);
+                    salvaCombinacao(listaComb, inicioBloco, finalBloco);
+                    var saida = {'quantidade' : listaComb.length};
+                    callback(null, saida);
+                }
+
+            })
+        })
+    };
 
 
     /**
@@ -67,7 +125,7 @@ module.exports = function(Experimentosimulacao) {
                     ds.connector.query(sqlQuantidade, (err,result) => {
 
                     })
-                    salvaCombinacao(listaComb);
+                    salvaCombinacao(listaComb,1, listaComb.length);
                     var saida = {'quantidade' : listaComb.length};
                     callback(null, saida);
                 })
@@ -100,7 +158,7 @@ module.exports = function(Experimentosimulacao) {
         valor[ind] = parametros[ind].inicial;
     }
 
-    function salvaCombinacao(listaComb) {
+    function salvaCombinacao2(listaComb) {
         listaComb.forEach(combinacao => {
             app.models.CombinacaoParametro.create(combinacao , (err,result) => {
                 combinacao.valorParametros.forEach(valor => {
@@ -112,6 +170,42 @@ module.exports = function(Experimentosimulacao) {
             })
         })
     }
+    function salvaCombinacao(listaComb, inicioBloco, finalBloco) {
+        let conta = 0;
+        for (let i=(inicioBloco-1);i<listaComb.length && i<finalBloco;i++) {
+            app.models.CombinacaoParametro.create(listaComb[i] , (err,result) => {
+                for (let x=0;x<listaComb[i].valorParametros.length;x++) {
+                    let valor = listaComb[i].valorParametros[x];
+                    valor['combinacaoParametroId'] = result.id;
+                    conta = 0;
+                    app.models.ValorParametro.create(valor, (err,result) => {
+                        //conta++;
+                        //if (conta==listaComb[i].valorParametros.length) {
+                        //    listaComb[i]=null;
+                        //}
+                    })
+                };
+            })
+        }
+    }
+
+
+    async function salvaCombinacaoUnica(combinacao) {
+        await app.models.CombinacaoParametro.create(combinacao , (err,result) => {
+            for (let x=0;x<combinacao.valorParametros.length;x++) {
+                let valor = combinacao.valorParametros[x];
+                valor['combinacaoParametroId'] = result.id;
+                //conta = 0;
+                app.models.ValorParametro.create(valor, (err,result) => {
+                    //conta++;
+                    //if (conta==listaComb[i].valorParametros.length) {
+                    //    listaComb[i]=null;
+                    //}
+                })
+            };
+        })
+    }
+
         /*
         for (let i=0;i<combinacao.length;i++) {
         app.models.CombinacaoParametro.create(combinacao, (err,result) => {
@@ -196,20 +290,21 @@ module.exports = function(Experimentosimulacao) {
     * @param {Function(Error, object, array, number)} callback
     */
 
-    Experimentosimulacao.ObtemExecucao = function (id, callback) {
+    Experimentosimulacao.ObtemExecucao = function (idExperimento, callback) {
+        //console.log('idExperimento:' , idExperimento);
         var experimento, melhoresExecucao, combinacaoProcessada;
-        Experimentosimulacao.findOne({'where' : {'id' : id}}, (err,result) => {
+        Experimentosimulacao.findOne({'where' : {'id' : idExperimento}}, (err,result) => {
             experimento = result;
             let filtro = {
                 'order' : 'resultado desc',
                 'limit' : 150,
                 'include' : {'relation' : 'combinacaoParametro' , 'scope' : {'include' : 'regraSimulacao'}},
-                'where' : {'experimentoSimulacaoId' : id}
+                'where' : {'experimentoSimulacaoId' : idExperimento}
             }
             app.models.ExecucaoSimulacao.find(filtro, (err,result) => {
                 melhoresExecucao = result;
                 let sql = "select count(*) as qtde from CombinacaoParametro " +
-                    " where experimentoSimulacaoId = " + id +
+                    " where experimentoSimulacaoId = " + idExperimento +
                     " and descricao is not null";
                 let ds = Experimentosimulacao.dataSource;
                 ds.connector.query(sql, (err,result) => {

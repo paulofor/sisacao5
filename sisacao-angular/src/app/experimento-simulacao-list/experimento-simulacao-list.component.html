@@ -22,7 +22,7 @@
           <div class="dgc-card-detalhe">
             <table>
               <tr *ngFor="let parametro of item.experimentoParametros">
-                <td width="20%">{{parametro.parametroRegra.nome}}</td>
+                <td width="20%">{{parametro.parametroRegra.nome}} ({{parametro.parametroRegra.siglaDescricao}})</td>
                 <td width="15%">{{parametro.inicial}}</td>
                 <td width="15%">{{parametro.final}}</td>
                 <td width="15%">{{parametro.passo}}</td>

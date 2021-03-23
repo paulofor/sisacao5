@@ -45,7 +45,8 @@ module.exports = function (Combinacaoparametro) {
     let filtro = {
       'where': { 'and': [{ 'experimentoSimulacaoId': idExperimento }, { 'descricao': null }] },
       //'include': { 'relation': 'valorParametros', 'scope': { 'include': 'parametroRegra' } }
-      'include' : 'valorParametros'
+      'include' : 'valorParametros',
+      'limit' : 10000
     }
     //console.log('entrou no find');
     Combinacaoparametro.find(filtro, (err,result) => {

@@ -41,6 +41,9 @@ export class ExperimentoSimulacaoEditComponent extends BaseEditComponent {
     delete this.item['experimentoParametros'];
     delete this.item['grupoAcao'];
     delete this.item['regraSimulacao'];
+    if (!this.item.dataCriacao) {
+      this.item.dataCriacao = new Date();
+    }
   }
 
 }

@@ -9,10 +9,19 @@ public class ParametroRegra extends Model{
 	//private String descricao;
 	private String atributoClasse;
 	private Integer id;
+	private String siglaDescricao;
 	
 	
 
 	
+	public String getSiglaDescricao() {
+		return siglaDescricao;
+	}
+
+	public void setSiglaDescricao(String siglaDescricao) {
+		this.siglaDescricao = siglaDescricao;
+	}
+
 	public Integer getId() {
 		return id;
 	}

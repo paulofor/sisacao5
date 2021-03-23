@@ -20,7 +20,7 @@ public class ExecucaoSimulacao extends Model{
 	Double target;
 	Double stop;
 	Double precoEntrada;
-	Long experimentoSimulacaoId;
+	Integer experimentoSimulacaoId;
 	
 	List<Trade> trades = new ArrayList<Trade>();
 	CombinacaoParametro combinacaoParametro = null;
@@ -38,12 +38,12 @@ public class ExecucaoSimulacao extends Model{
 	}
 
 
-	public Long getExperimentoSimulacaoId() {
+	public Integer getExperimentoSimulacaoId() {
 		return experimentoSimulacaoId;
 	}
 
 
-	public void setExperimentoSimulacaoId(Long experimentoSimulacaoId) {
+	public void setExperimentoSimulacaoId(Integer experimentoSimulacaoId) {
 		this.experimentoSimulacaoId = experimentoSimulacaoId;
 	}
 
@@ -88,7 +88,7 @@ public class ExecucaoSimulacao extends Model{
 			obj.put("experimentoSimulacaoId", this.experimentoSimulacaoId);
 			obj.put("target", target);
 			obj.put("stop", stop);
-			double resultado = (100*this.target*(this.quantidadeLucro+1)) - (100*this.stop*(this.quantidadePrejuizo-1));
+			double resultado = (100*this.target*(this.quantidadeLucro+1)) - (100*this.stop*(this.quantidadePrejuizo+1));
 			obj.put("resultado", resultado );
 			obj.put("monitorar", 0);
 			JSONArray trades = new JSONArray();

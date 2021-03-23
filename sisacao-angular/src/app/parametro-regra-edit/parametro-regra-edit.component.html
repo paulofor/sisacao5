@@ -8,6 +8,10 @@
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #siglaDescricao [(ngModel)]="item.siglaDescricao" name="siglaDescricao" placeholder="Sigla para descrição" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
       <input matInput maxlength="50" #atributoClasse [(ngModel)]="item.atributoClasse" name="atributoClasse" placeholder="Método" autocomplete="off" />
     </mat-form-field>
 

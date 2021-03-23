@@ -26,7 +26,7 @@ export class RegraSimulacaoListComponent extends BaseListComponent {
 
 
   getFiltro() {
-    let filtro = { 'include' : 'parametroRegras' };
+    let filtro = { 'include' : 'parametroRegras' , 'order' : 'id desc'};
     return filtro;
   }
 

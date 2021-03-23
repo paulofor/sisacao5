@@ -14,10 +14,10 @@
           <div class="dgc-card-detalhe">
             <table>
               <tr *ngFor="let parametro of item.parametroRegras">
-                <td width="20%">{{parametro.nome}}</td>
+                <td width="20%">{{parametro.nome}} ({{parametro.siglaDescricao}})</td>
                 <td width="20%">{{parametro.atributoClasse}}</td>
                 <td width="50%">{{parametro.descricao}}</td>
-                <td width="10%"><a (click)="dialogo1({'item' : parametro})">alterar</a></td>
+                <td width="10%"><a class="dgc-link" (click)="dialogo1({'item' : parametro})">alterar</a></td>
               </tr>
             </table>
     

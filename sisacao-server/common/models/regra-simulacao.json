@@ -14,6 +14,9 @@
     },
     "descricao": {
       "type": "string"
+    },
+    "dataCriacao": {
+      "type": "string"
     }
   },
   "validations": [],

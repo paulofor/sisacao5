@@ -22,6 +22,7 @@ export class ExperimentoSimulacaoListComponent  extends BaseListComponent {
 
   getFiltro() {
     return {
+      'order' : 'id desc',
       'include' : [
         { 'relation' : 'regraSimulacao' } ,
         { 'relation' : 'experimentoParametros' , 'scope' : {'include' : 'parametroRegra'}},

@@ -9,6 +9,7 @@ export interface ParametroRegraInterface {
   "nome"?: string;
   "descricao"?: string;
   "atributoClasse"?: string;
+  "siglaDescricao"?: string;
   "id"?: number;
   "regraSimulacaoId"?: number;
   valorParametros?: ValorParametro[];
@@ -19,6 +20,7 @@ export class ParametroRegra implements ParametroRegraInterface {
   "nome": string;
   "descricao": string;
   "atributoClasse": string;
+  "siglaDescricao": string;
   "id": number;
   "regraSimulacaoId": number;
   valorParametros: ValorParametro[];
@@ -69,6 +71,10 @@ export class ParametroRegra implements ParametroRegraInterface {
         },
         "atributoClasse": {
           name: 'atributoClasse',
+          type: 'string'
+        },
+        "siglaDescricao": {
+          name: 'siglaDescricao',
           type: 'string'
         },
         "id": {

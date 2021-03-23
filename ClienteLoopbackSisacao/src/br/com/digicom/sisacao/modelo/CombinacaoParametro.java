@@ -10,7 +10,7 @@ import com.strongloop.android.remoting.BeanUtil;
 public class CombinacaoParametro extends Model{
 
 	private Integer posicaoCombinacao;
-	private Long experimentoSimulacaoId;
+	private Integer experimentoSimulacaoId;
 	private String dataExecucao;
 	private Integer id;
 	
@@ -21,11 +21,11 @@ public class CombinacaoParametro extends Model{
 	
 	
 	
-	public Long getExperimentoSimulacaoId() {
+	public Integer getExperimentoSimulacaoId() {
 		return experimentoSimulacaoId;
 	}
 
-	public void setExperimentoSimulacaoId(Long experimentoSimulacaoId) {
+	public void setExperimentoSimulacaoId(Integer experimentoSimulacaoId) {
 		this.experimentoSimulacaoId = experimentoSimulacaoId;
 	}
 
@@ -83,7 +83,7 @@ public class CombinacaoParametro extends Model{
 		String saida = "";
 		for(ValorParametro valor : this.valorParametros) {
 			if (!valor.isTargetStop())
-				saida += " " + valor;
+				saida += " " + valor.descricao();
 		}
 		return saida;
 	}

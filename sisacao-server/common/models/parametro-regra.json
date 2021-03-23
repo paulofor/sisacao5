@@ -17,6 +17,9 @@
     },
     "atributoClasse": {
       "type": "string"
+    },
+    "siglaDescricao": {
+      "type": "string"
     }
   },
   "validations": [],

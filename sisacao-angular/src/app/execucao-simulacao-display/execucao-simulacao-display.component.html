@@ -12,6 +12,9 @@
   <span>{{item.combinacaoParametro.regraSimulacao.nome}}</span>
 </div>
 <div class="dgc-card-detalhe">
+  <span>{{item.combinacaoParametro.descricao}}</span>
+</div>
+<div class="dgc-card-detalhe">
   <span *ngIf="item.monitorar!=1" class="dgc-link" (click)="monitorar(item)">monitorar</span>
   <img *ngIf="item.monitorar==1" src="assets/img/monitorando.png" width="20" height="20">
 </div>

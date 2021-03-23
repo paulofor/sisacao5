@@ -15,6 +15,10 @@
       <input matInput maxlength="50" #dataFinal [(ngModel)]="item.dataFinal" name="dataFinal" placeholder="Data Final (dd-mm-aaaa)" autocomplete="off" />
     </mat-form-field>
 
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #siglaDescricao [(ngModel)]="item.siglaDescricao" name="siglaDescricao" placeholder="Sigla para descrição" autocomplete="off" />
+    </mat-form-field>
+
 
     <mat-form-field class="example-full-width">
       <mat-select placeholder="Regra" #regraSimulacaoId [(ngModel)]="item.regraSimulacaoId" name="regraSimulacaoId">

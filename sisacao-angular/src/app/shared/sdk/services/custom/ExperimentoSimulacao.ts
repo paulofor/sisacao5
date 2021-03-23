@@ -1296,7 +1296,7 @@ export class ExperimentoSimulacaoApi extends BaseLoopBackApi {
          * (The remote method definition does not provide any description.)
          * </em>
    *
-   * @param {number} id 
+   * @param {number} idExperimento 
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -1310,15 +1310,14 @@ export class ExperimentoSimulacaoApi extends BaseLoopBackApi {
    *
    *  - `combinacaoProcessada` – `{number}` - 
    */
-  public ObtemExecucao(id: any = {}, customHeaders?: Function): Observable<any> {
+  public ObtemExecucao(idExperimento: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/ExperimentoSimulacaos/obtemExecucao";
-    let _routeParams: any = {
-      id: id
-    };
+    let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
+    if (typeof idExperimento !== 'undefined' && idExperimento !== null) _urlParams.idExperimento = idExperimento;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }

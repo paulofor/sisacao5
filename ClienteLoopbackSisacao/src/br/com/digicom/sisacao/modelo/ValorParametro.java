@@ -48,5 +48,8 @@ public class ValorParametro extends Model{
 		else
 			return false;
 	}
+	public String descricao() {
+		return this.parametroRegra.getSiglaDescricao() + "=" + this.valorParametro;
+	}
 	
 }

@@ -1,7 +1,9 @@
-<div class="dgc-painel">
+<div class="dgc-painel" *ngIf="experimento">
   <div class="dgc-painel-header">
-    <span>Melhores do Experimento</span>  
+    <span>{{experimento.codigo}}</span>
+    <span class="dgc-direita">{{experimento.quantidadeCombinacao}} combinações ({{percentual | number : '1.1-1'}}%)</span>  
   </div>
+  
   <div class="dgc-painel-principal" *ngIf="lista">
     <div class="dgc-card" *ngFor="let item of lista" >
       <app-execucao-simulacao-display [item]="item"></app-execucao-simulacao-display>

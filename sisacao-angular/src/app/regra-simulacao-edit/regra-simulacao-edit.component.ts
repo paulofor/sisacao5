@@ -20,4 +20,10 @@ export class RegraSimulacaoEditComponent extends BaseEditComponent {
   criaItem() {
     return new RegraSimulacao();
   }
+
+  preSubmit() {
+    if (!this.item.dataCriacao) {
+      this.item.dataCriacao = new Date();
+    }
+  }
 }
