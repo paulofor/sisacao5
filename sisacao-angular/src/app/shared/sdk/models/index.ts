@@ -28,5 +28,6 @@ export * from './CombinacaoParametro';
 export * from './ValorParametro';
 export * from './ExecucaoSimulacao';
 export * from './Trade';
+export * from './ValorMonitoria';
 export * from './BaseModels';
 export * from './FireLoopRef';

@@ -29,6 +29,9 @@
     },
     "precoEntrada": {
       "type": "number"
+    },
+    "dataNumEntrada": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -41,6 +44,16 @@
     "combinacaoParametro": {
       "type": "belongsTo",
       "model": "CombinacaoParametro",
+      "foreignKey": ""
+    },
+    "valorMonitorias": {
+      "type": "hasMany",
+      "model": "ValorMonitoria",
+      "foreignKey": ""
+    },
+    "regraSimulacao": {
+      "type": "belongsTo",
+      "model": "RegraSimulacao",
       "foreignKey": ""
     }
   },

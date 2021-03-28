@@ -8,7 +8,7 @@ public class ExperimentoMonitoradoApp {
 	public static void main(String[] args) {
 		System.out.println("Ola Mundo - ExperimentoMonitoradoApp");
 
-		int dataNum = 20210315;
+		int dataNum = 20210329;
 		
 		ExperimentoMonitoradoFacade facade = new ExperimentoMonitoradoFacade();
 		facade.atualizaPrecoEntrada(dataNum);

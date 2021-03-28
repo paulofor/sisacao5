@@ -8,8 +8,9 @@ public class CotacaoIntradayAcao extends Model {
 	private Double valor;
 	private String dataHoraNegStr;
 	private String dataHora;
-	private Long posicaoDia;
-	private Long intervalo;
+	//private Long posicaoDia;
+	//private Long intervalo;
+	private Integer diaNum;
 	
 	private String dataExtraida;
 	private String horaExtraida;
@@ -17,6 +18,12 @@ public class CotacaoIntradayAcao extends Model {
 	
 	
 	
+	public Integer getDiaNum() {
+		return diaNum;
+	}
+	public void setDiaNum(Integer diaNum) {
+		this.diaNum = diaNum;
+	}
 	public String getDataExtraida() {
 		return dataExtraida;
 	}
@@ -61,18 +68,7 @@ public class CotacaoIntradayAcao extends Model {
 		this.dataExtraida = dataHora.substring(0, 10);
 		this.horaExtraida = dataHora.substring(11, 19);
 	}
-	public Long getPosicaoDia() {
-		return posicaoDia;
-	}
-	public void setPosicaoDia(Long posicaoDia) {
-		this.posicaoDia = posicaoDia;
-	}
-	public Long getIntervalo() {
-		return intervalo;
-	}
-	public void setIntervalo(Long intervalo) {
-		this.intervalo = intervalo;
-	}
+	
 
 	public String toString() {
 		return this.dataHoraNegStr + ": " + this.valor;

@@ -1,7 +1,9 @@
 /* tslint:disable */
 import {
   CombinacaoParametro,
-  Trade
+  RegraSimulacao,
+  Trade,
+  ValorMonitoria
 } from '../index';
 
 declare var Object: any;
@@ -14,11 +16,15 @@ export interface ExecucaoSimulacaoInterface {
   "resultado"?: number;
   "monitorar"?: number;
   "precoEntrada"?: number;
+  "dataNumEntrada"?: number;
   "id"?: number;
   "combinacaoParametroId"?: number;
+  "regraSimulacaoId"?: number;
   "experimentoSimulacaoId"?: number;
   combinacaoParametro?: CombinacaoParametro;
+  regraSimulacao?: RegraSimulacao;
   trades?: Trade[];
+  valorMonitorias?: ValorMonitoria[];
 }
 
 export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
@@ -30,11 +36,15 @@ export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
   "resultado": number;
   "monitorar": number;
   "precoEntrada": number;
+  "dataNumEntrada": number;
   "id": number;
   "combinacaoParametroId": number;
+  "regraSimulacaoId": number;
   "experimentoSimulacaoId": number;
   combinacaoParametro: CombinacaoParametro;
+  regraSimulacao: RegraSimulacao;
   trades: Trade[];
+  valorMonitorias: ValorMonitoria[];
   constructor(data?: ExecucaoSimulacaoInterface) {
     Object.assign(this, data);
   }
@@ -100,12 +110,20 @@ export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
           name: 'precoEntrada',
           type: 'number'
         },
+        "dataNumEntrada": {
+          name: 'dataNumEntrada',
+          type: 'number'
+        },
         "id": {
           name: 'id',
           type: 'number'
         },
         "combinacaoParametroId": {
           name: 'combinacaoParametroId',
+          type: 'number'
+        },
+        "regraSimulacaoId": {
+          name: 'regraSimulacaoId',
           type: 'number'
         },
         "experimentoSimulacaoId": {
@@ -122,10 +140,26 @@ export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
                   keyFrom: 'combinacaoParametroId',
           keyTo: 'id'
         },
+        regraSimulacao: {
+          name: 'regraSimulacao',
+          type: 'RegraSimulacao',
+          model: 'RegraSimulacao',
+          relationType: 'belongsTo',
+                  keyFrom: 'regraSimulacaoId',
+          keyTo: 'id'
+        },
         trades: {
           name: 'trades',
           type: 'Trade[]',
           model: 'Trade',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'execucaoSimulacaoId'
+        },
+        valorMonitorias: {
+          name: 'valorMonitorias',
+          type: 'ValorMonitoria[]',
+          model: 'ValorMonitoria',
           relationType: 'hasMany',
                   keyFrom: 'id',
           keyTo: 'execucaoSimulacaoId'

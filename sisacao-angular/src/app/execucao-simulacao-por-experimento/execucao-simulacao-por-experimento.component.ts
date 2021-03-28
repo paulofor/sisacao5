@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
-import { ExecucaoSimulacao, ExecucaoSimulacaoApi, ExperimentoAcaoApi, ExperimentoSimulacao, ExperimentoSimulacaoApi } from '../shared/sdk';
+import { CotacaoIntradayAcao, CotacaoIntradayAcaoApi, ExecucaoSimulacao, ExecucaoSimulacaoApi, ExperimentoAcaoApi, ExperimentoSimulacao, ExperimentoSimulacaoApi } from '../shared/sdk';
 
 @Component({
   selector: 'app-execucao-simulacao-por-experimento',
@@ -14,6 +14,8 @@ export class ExecucaoSimulacaoPorExperimentoComponent implements OnInit {
   qtdeProcessada: number;
   experimento: ExperimentoSimulacao;
   percentual: number;
+  classeAlerta : string = '';
+
 
   private updateSubscription: Subscription;
 
@@ -21,7 +23,7 @@ export class ExecucaoSimulacaoPorExperimentoComponent implements OnInit {
 
   ngOnInit() {
     this.carrega();
-    this.updateSubscription = interval(60000)
+    this.updateSubscription = interval(180000)
       .subscribe((val) => { 
         this.carrega()
       });
@@ -41,12 +43,21 @@ export class ExecucaoSimulacaoPorExperimentoComponent implements OnInit {
         .subscribe((result) => {
           console.log('Result:' , result);
           this.lista = result.melhoresExecucao;
+          //this.obtemPrecoAtualLista();
+          let anterior = this.qtdeProcessada;
           this.qtdeProcessada = result.combinacaoProcessada;
+          if (anterior==this.qtdeProcessada) {
+            this.classeAlerta = 'dgc-alerta'
+          } else {
+            this.classeAlerta = '';
+          }
           this.experimento = result.experimento;
           this.percentual = (this.qtdeProcessada / this.experimento.quantidadeCombinacao) * 100;
           //this.lista = 2;
         })
     })
   }
+
+ 
 
 }

@@ -16,11 +16,21 @@ public class CombinacaoParametro extends Model{
 	
 	private List<ValorParametro> valorParametros;
 	private RegraSimulacao regraSimulacao;
+	private Integer regraSimulacaoId;
 	
 	
 	
 	
 	
+	
+	public Integer getRegraSimulacaoId() {
+		return regraSimulacaoId;
+	}
+
+	public void setRegraSimulacaoId(Integer regraSimulacaoId) {
+		this.regraSimulacaoId = regraSimulacaoId;
+	}
+
 	public Integer getExperimentoSimulacaoId() {
 		return experimentoSimulacaoId;
 	}

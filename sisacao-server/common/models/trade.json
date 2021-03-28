@@ -9,8 +9,8 @@
     "precoEntrada": {
       "type": "number"
     },
-    "dataEntrada": {
-      "type": "string"
+    "dataEntradaNum": {
+      "type": "number"
     },
     "dataHoraEntrada": {
       "type": "string"
@@ -18,8 +18,8 @@
     "precoSaida": {
       "type": "number"
     },
-    "dataSaida": {
-      "type": "string"
+    "dataSaidaNum": {
+      "type": "number"
     },
     "dataHoraSaida": {
       "type": "string"

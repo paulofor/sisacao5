@@ -76,6 +76,9 @@ import { TradeExecucaoSimulacaoComponent } from './trade-execucao-simulacao/trad
 import { ExecucaoSimulacaoMonitoradaComponent } from './execucao-simulacao-monitorada/execucao-simulacao-monitorada.component';
 import { ExecucaoSimulacaoDisplayComponent } from './execucao-simulacao-display/execucao-simulacao-display.component';
 import { ExecucaoSimulacaoPorExperimentoComponent } from './execucao-simulacao-por-experimento/execucao-simulacao-por-experimento.component';
+import { CotacaoDiarioAcaoComponent } from './cotacao-diario-acao/cotacao-diario-acao.component';
+import { CotacaoIntradayRecenteComponent } from './cotacao-intraday-recente/cotacao-intraday-recente.component';
+import { AcaoDetalheDiaComponent } from './acao-detalhe-dia/acao-detalhe-dia.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -127,7 +130,10 @@ registerLocaleData(localePt, 'pt-BR');
     TradeExecucaoSimulacaoComponent,
     ExecucaoSimulacaoMonitoradaComponent,
     ExecucaoSimulacaoDisplayComponent,
-    ExecucaoSimulacaoPorExperimentoComponent
+    ExecucaoSimulacaoPorExperimentoComponent,
+    CotacaoDiarioAcaoComponent,
+    CotacaoIntradayRecenteComponent,
+    AcaoDetalheDiaComponent
   ],
   imports: [
     BrowserModule,

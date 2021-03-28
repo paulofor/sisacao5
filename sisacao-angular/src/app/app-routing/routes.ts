@@ -20,6 +20,8 @@ import { CombinacaoListComponent } from '../combinacao-list/combinacao-list.comp
 import { ExecucaoSimulacaoMelhoresResultadoComponent } from '../execucao-simulacao-melhores-resultado/execucao-simulacao-melhores-resultado.component';
 import { ExecucaoSimulacaoMonitoradaComponent } from '../execucao-simulacao-monitorada/execucao-simulacao-monitorada.component';
 import { ExecucaoSimulacaoPorExperimentoComponent } from '../execucao-simulacao-por-experimento/execucao-simulacao-por-experimento.component';
+import { CotacaoDiarioAcaoComponent } from '../cotacao-diario-acao/cotacao-diario-acao.component';
+import { AcaoDetalheDiaComponent } from '../acao-detalhe-dia/acao-detalhe-dia.component';
 
 export const routes : Routes = [
     { path: 'home' , component: HomeComponent },
@@ -33,6 +35,9 @@ export const routes : Routes = [
     { path: 'cotacaoIntraOpcao/:id' , component: CotacaoIntraOpcaoComponent},
     { path: 'cotacaoIntraMercadoria/:id' , component: CotacaoIntraMercadoriaComponent},
     { path: 'cotacaoIntraImobiliario/:id' , component: CotacaoIntraImobiliarioComponent},
+
+    { path: 'cotacaoDiarioAcao/:id' , component : CotacaoDiarioAcaoComponent },
+    { path: 'acaoDetalheDia/:ticker/:diaNum' , component: AcaoDetalheDiaComponent },
 
     { path: 'dataSet' , component: DataSetListComponent},
 

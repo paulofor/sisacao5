@@ -88,14 +88,15 @@ public class SerieCotacaoIntradayFacade {
 		exec.setTarget(regra.getTarget());
 		exec.setStop(regra.getStop());
 		exec.setExperimentoSimulacaoId(combinacao.getExperimentoSimulacaoId());
+		exec.setRegraSimulacaoId(combinacao.getRegraSimulacaoId());
 		for (Trade trade : execucao.listaTrades()) {
 			br.com.digicom.sisacao.modelo.Trade tradeModel = new br.com.digicom.sisacao.modelo.Trade();
 			tradeModel.setPrecoEntrada(trade.getValorEntrada());
 			tradeModel.setPrecoSaida(trade.getValorSaida());
 			tradeModel.setPercentual(trade.percentual());
 			tradeModel.setQuantidadeDia(trade.getQuantidadeDia());
-			tradeModel.setDataEntrada(trade.getCotacaoEntrada().getDataExtraida());
-			tradeModel.setDataSaida(trade.getCotacaoSaida().getDataExtraida());
+			tradeModel.setDataEntradaNum(trade.getCotacaoEntrada().getDiaNum());
+			tradeModel.setDataSaidaNum(trade.getCotacaoSaida().getDiaNum());
 			tradeModel.setDataHoraEntrada(trade.getCotacaoEntrada().getDataExtraida() + " " + trade.getCotacaoEntrada().getHoraExtraida());
 			tradeModel.setDataHoraSaida(trade.getCotacaoSaida().getDataExtraida() + " " + trade.getCotacaoSaida().getHoraExtraida());
 			exec.addTrade(tradeModel);

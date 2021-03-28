@@ -3,6 +3,20 @@
 module.exports = function (Cotacaointradayacao) {
 
 
+    /**
+    * 
+    * @param {string} ticker 
+    * @param {number} quantidade 
+    * @param {Function(Error, array)} callback
+    */
+    Cotacaointradayacao.AtualPorTicker = function(ticker, quantidade, callback) {
+        let ds = Cotacaointradayacao.dataSource;
+        let sql = "select CotacaoIntradayAcao.* from CotacaoIntradayAcao "  +
+                " where ticker = '" + ticker + "' " +
+                " order by dataHora desc " +
+                " limit " + quantidade;
+        ds.connector.query(sql,callback);
+    };
 
 
     /**

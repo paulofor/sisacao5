@@ -29,6 +29,7 @@ import { CombinacaoParametro } from '../../models/CombinacaoParametro';
 import { ValorParametro } from '../../models/ValorParametro';
 import { ExecucaoSimulacao } from '../../models/ExecucaoSimulacao';
 import { Trade } from '../../models/Trade';
+import { ValorMonitoria } from '../../models/ValorMonitoria';
 
 export interface Models { [name: string]: any }
 
@@ -65,6 +66,7 @@ export class SDKModels {
     ValorParametro: ValorParametro,
     ExecucaoSimulacao: ExecucaoSimulacao,
     Trade: Trade,
+    ValorMonitoria: ValorMonitoria,
     
   };
 

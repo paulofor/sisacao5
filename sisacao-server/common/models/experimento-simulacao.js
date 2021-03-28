@@ -190,8 +190,8 @@ module.exports = function(Experimentosimulacao) {
     }
 
 
-    async function salvaCombinacaoUnica(combinacao) {
-        await app.models.CombinacaoParametro.create(combinacao , (err,result) => {
+    function salvaCombinacaoUnica(combinacao) {
+        app.models.CombinacaoParametro.create(combinacao , (err,result) => {
             for (let x=0;x<combinacao.valorParametros.length;x++) {
                 let valor = combinacao.valorParametros[x];
                 valor['combinacaoParametroId'] = result.id;

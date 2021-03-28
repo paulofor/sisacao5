@@ -11,11 +11,13 @@ public class Trade extends Model{
 	Double precoSaida = 0D;
 	String dataHoraEntrada = "";
 	String dataHoraSaida = "";
-	String dataSaida = "";
-	String dataEntrada = "";
+	//String dataSaida = "";
+	//String dataEntrada = "";
 	String lucroPrejuizo = "";
 	Double percentual = 0D;
 	Integer quantidadeDia = 0;
+	Integer dataSaidaNum;
+	Integer dataEntradaNum;
 	
 	
 	public JSONObject getJSON() {
@@ -25,8 +27,8 @@ public class Trade extends Model{
 			obj.put("precoSaida", precoSaida);
 			obj.put("dataHoraEntrada", dataHoraEntrada);
 			obj.put("dataHoraSaida", dataHoraSaida);
-			obj.put("dataSaida", dataSaida);
-			obj.put("dataEntrada", dataEntrada);
+			obj.put("dataSaidaNum", dataSaidaNum);
+			obj.put("dataEntradaNum", dataEntradaNum);
 			obj.put("lucroPrejuizo", lucroPrejuizo);
 			obj.put("percentual", percentual);
 			obj.put("quantidadeDia", quantidadeDia);
@@ -80,18 +82,7 @@ public class Trade extends Model{
 	public void setDataHoraSaida(String dataHoraSaida) {
 		this.dataHoraSaida = dataHoraSaida;
 	}
-	public String getDataSaida() {
-		return dataSaida;
-	}
-	public void setDataSaida(String dataSaida) {
-		this.dataSaida = dataSaida;
-	}
-	public String getDataEntrada() {
-		return dataEntrada;
-	}
-	public void setDataEntrada(String dataEntrada) {
-		this.dataEntrada = dataEntrada;
-	}
+
 	public String getLucroPrejuizo() {
 		return lucroPrejuizo;
 	}
@@ -103,6 +94,30 @@ public class Trade extends Model{
 	}
 	public void setPercentual(Double percentual) {
 		this.percentual = percentual;
+	}
+
+
+
+	public Integer getDataSaidaNum() {
+		return dataSaidaNum;
+	}
+
+
+
+	public void setDataSaidaNum(Integer dataSaidaNum) {
+		this.dataSaidaNum = dataSaidaNum;
+	}
+
+
+
+	public Integer getDataEntradaNum() {
+		return dataEntradaNum;
+	}
+
+
+
+	public void setDataEntradaNum(Integer dataEntradaNum) {
+		this.dataEntradaNum = dataEntradaNum;
 	}
 	
 	

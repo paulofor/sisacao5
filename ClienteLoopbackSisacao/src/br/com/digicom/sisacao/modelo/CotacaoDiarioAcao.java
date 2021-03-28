@@ -8,9 +8,9 @@ public class CotacaoDiarioAcao {
 	private Double minimo;
 	private Double fechamento;
 	
-	private Long negocios;
-	private Long volume;
-	private Long diaNum;
+	private Integer negocios;
+	private Integer volume;
+	private Integer diaNum;
 	
 	
 	public String getTicker() {
@@ -55,22 +55,22 @@ public class CotacaoDiarioAcao {
 	public void setFechamento(Long fechamento) {
 		this.fechamento = fechamento.doubleValue();
 	}
-	public Long getNegocios() {
+	public Integer getNegocios() {
 		return negocios;
 	}
-	public void setNegocios(Long negocios) {
+	public void setNegocios(Integer negocios) {
 		this.negocios = negocios;
 	}
-	public Long getVolume() {
+	public Integer getVolume() {
 		return volume;
 	}
-	public void setVolume(Long volume) {
+	public void setVolume(Integer volume) {
 		this.volume = volume;
 	}
-	public Long getDiaNum() {
+	public Integer getDiaNum() {
 		return diaNum;
 	}
-	public void setDiaNum(Long diaNum) {
+	public void setDiaNum(Integer diaNum) {
 		this.diaNum = diaNum;
 	}
 	

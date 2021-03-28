@@ -1,0 +1,70 @@
+{
+  "name": "ValorMonitoria",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "valorEntrada": {
+      "type": "number"
+    },
+    "ticker": {
+      "type": "string"
+    },
+    "diaNumEntrada": {
+      "type": "number"
+    },
+    "situacao": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "execucaoSimulacao": {
+      "type": "belongsTo",
+      "model": "ExecucaoSimulacao",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {
+    "InsereMonitoria": {
+      "accepts": [
+        {
+          "arg": "execucao",
+          "type": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "diaNum",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "preco",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/insereMonitoria",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

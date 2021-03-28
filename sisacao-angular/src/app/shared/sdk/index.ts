@@ -77,6 +77,7 @@ import { CombinacaoParametroApi } from './services/custom/CombinacaoParametro';
 import { ValorParametroApi } from './services/custom/ValorParametro';
 import { ExecucaoSimulacaoApi } from './services/custom/ExecucaoSimulacao';
 import { TradeApi } from './services/custom/Trade';
+import { ValorMonitoriaApi } from './services/custom/ValorMonitoria';
 /**
 * @module SDKBrowserModule
 * @description
@@ -136,9 +137,9 @@ export class SDKBrowserModule {
         ValorParametroApi,
         ExecucaoSimulacaoApi,
         TradeApi,
+        ValorMonitoriaApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
-
       ]
     };
   }

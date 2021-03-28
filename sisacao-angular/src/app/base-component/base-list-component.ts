@@ -16,12 +16,14 @@ export class BaseListComponent implements OnInit {
     }
 
     preCarregaTela() {}
+    posCarregaLista() {}
 
     carregaTela() {
         this.srv.find(this.getFiltro())
         .subscribe((result:any[]) => {
             console.log('result: ' , result);
             this.listaBase = result;
+            this.posCarregaLista();
         })
     }
 

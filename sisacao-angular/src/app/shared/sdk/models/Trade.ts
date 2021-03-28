@@ -3,10 +3,10 @@
 declare var Object: any;
 export interface TradeInterface {
   "precoEntrada"?: number;
-  "dataEntrada"?: string;
+  "dataEntradaNum"?: number;
   "dataHoraEntrada"?: string;
   "precoSaida"?: number;
-  "dataSaida"?: string;
+  "dataSaidaNum"?: number;
   "dataHoraSaida"?: string;
   "lucroPrejuizo"?: string;
   "percentual"?: number;
@@ -17,10 +17,10 @@ export interface TradeInterface {
 
 export class Trade implements TradeInterface {
   "precoEntrada": number;
-  "dataEntrada": string;
+  "dataEntradaNum": number;
   "dataHoraEntrada": string;
   "precoSaida": number;
-  "dataSaida": string;
+  "dataSaidaNum": number;
   "dataHoraSaida": string;
   "lucroPrejuizo": string;
   "percentual": number;
@@ -64,9 +64,9 @@ export class Trade implements TradeInterface {
           name: 'precoEntrada',
           type: 'number'
         },
-        "dataEntrada": {
-          name: 'dataEntrada',
-          type: 'string'
+        "dataEntradaNum": {
+          name: 'dataEntradaNum',
+          type: 'number'
         },
         "dataHoraEntrada": {
           name: 'dataHoraEntrada',
@@ -76,9 +76,9 @@ export class Trade implements TradeInterface {
           name: 'precoSaida',
           type: 'number'
         },
-        "dataSaida": {
-          name: 'dataSaida',
-          type: 'string'
+        "dataSaidaNum": {
+          name: 'dataSaidaNum',
+          type: 'number'
         },
         "dataHoraSaida": {
           name: 'dataHoraSaida',

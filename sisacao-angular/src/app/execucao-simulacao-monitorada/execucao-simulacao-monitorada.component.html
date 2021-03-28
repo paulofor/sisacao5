@@ -2,19 +2,30 @@
   <div class="dgc-painel-header">
     <span>Monitoradas</span>  
   </div>
-  <div *ngIf="listaBase">
+  <div class="dgc-painel-principal" *ngIf="listaBase">
     <div class="dgc-card" *ngFor="let item of listaBase" >
       <div class="dgc-card-header">
-        <span>{{item.ticker}}</span>
+        <span  class="dgc-link" (click)=trades(item)>{{item.ticker}}</span>
         <span class="dgc-direita">{{item.quantidadeLucro}} x {{item.quantidadePrejuizo}}</span>
       </div>
       <div class="dgc-card-detalhe">
-        Preço entrada: {{item.precoEntrada | number: '1.2-2'}}
+        Entrada: {{item.precoEntrada | number: '1.2-2'}} ({{item.dataNumEntrada}})
+      </div>
+      <div class="dgc-card-detalhe">
+        + {{valorSaidaLucro(item)  | number: '1.2-2'}} ({{pontoSaidaLucro(item)  | number: '1.2-2'}})
+      </div>
+      <div class="dgc-card-detalhe">
+        - {{valorSaidaPrejuizo(item)  | number: '1.2-2'}} ({{pontoSaidaPrejuizo(item)  | number: '1.2-2'}})
+      </div>
+      <div class="dgc-card-detalhe {{classePreco(item)}}">
+        Atual: {{item.precoAtual | number: '1.2-2'}} 
       </div>
       <div class="dgc-card-detalhe">
         <span>t: {{item.target}}  s: {{item.stop}}</span>
       </div>
-      
+      <div class="dgc-card-detalhe">
+        <span>Pontos: {{item.resultado}}</span>
+      </div>
     </div>
   </div>
 </div>

@@ -119,6 +119,37 @@
           "verb": "get"
         }
       ]
+    },
+    "AtualPorTicker": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "quantidade",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualPorTicker",
+          "verb": "get"
+        }
+      ]
     }
   }
 }

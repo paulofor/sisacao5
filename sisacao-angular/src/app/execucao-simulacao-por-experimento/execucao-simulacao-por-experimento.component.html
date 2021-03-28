@@ -1,7 +1,7 @@
 <div class="dgc-painel" *ngIf="experimento">
   <div class="dgc-painel-header">
-    <span>{{experimento.codigo}}</span>
-    <span class="dgc-direita">{{experimento.quantidadeCombinacao}} combinações ({{percentual | number : '1.1-1'}}%)</span>  
+    <span>{{experimento.codigo}} - {{experimento.quantidadeCombinacao}}</span>
+    <span class="dgc-direita {{classeAlerta}}">{{qtdeProcessada}} ({{percentual | number : '1.1-1'}}%)</span>  
   </div>
   
   <div class="dgc-painel-principal" *ngIf="lista">

@@ -146,5 +146,9 @@
   "Trade": {
     "dataSource": "mysqlDS",
     "public": true
+  },
+  "ValorMonitoria": {
+    "dataSource": "mysqlDS",
+    "public": true
   }
 }
