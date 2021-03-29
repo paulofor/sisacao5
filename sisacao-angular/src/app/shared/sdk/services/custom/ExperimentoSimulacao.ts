@@ -1309,6 +1309,8 @@ export class ExperimentoSimulacaoApi extends BaseLoopBackApi {
    *  - `melhoresExecucao` – `{any}` - 
    *
    *  - `combinacaoProcessada` – `{number}` - 
+   *
+   *  - `execucaoCriada` – `{number}` - 
    */
   public ObtemExecucao(idExperimento: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";

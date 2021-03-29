@@ -1,0 +1,21 @@
+<div class="dgc-painel">
+  <div class="dgc-painel-header" *ngIf="execucao">
+      <span>{{execucao.ticker}}</span>
+  </div>
+  <div *ngIf="listaBase">
+      <div class="dgc-card" *ngFor="let item of listaBase">
+          <div class="dgc-card-header">
+              <span>{{item.diaNumEntrada}}</span>
+          </div>
+          <div class="dgc-card-detalhe {{classeAlerta(item)}}"> 
+            <span>Preço Entrada: {{item.valorEntrada | number: '1.2-2'}} {{complementoPreco(item)}}</span>
+          </div>
+          <div class="dgc-card-detalhe"> 
+            <span>Diário: {{item.minimo | number: '1.2-2'}} - {{item.maximo | number: '1.2-2'}}</span>
+         </div>
+         <div class="dgc-card-detalhe">
+           <span>{{item.situacao}}</span>
+         </div>
+      </div>
+  </div>
+</div>

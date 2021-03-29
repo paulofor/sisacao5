@@ -292,8 +292,12 @@ module.exports = function(Experimentosimulacao) {
 
     Experimentosimulacao.ObtemExecucao = function (idExperimento, callback) {
         //console.log('idExperimento:' , idExperimento);
-        var experimento, melhoresExecucao, combinacaoProcessada;
-        Experimentosimulacao.findOne({'where' : {'id' : idExperimento}}, (err,result) => {
+        var experimento, melhoresExecucao, combinacaoProcessada, execucaoCriada;
+        let filtroExperimento = {
+            'where' : {'id' : idExperimento},
+            'include' : 'grupoAcao'
+        }
+        Experimentosimulacao.findOne(filtroExperimento, (err,result) => {
             experimento = result;
             let filtro = {
                 'order' : 'resultado desc',
@@ -309,9 +313,14 @@ module.exports = function(Experimentosimulacao) {
                 let ds = Experimentosimulacao.dataSource;
                 ds.connector.query(sql, (err,result) => {
                     combinacaoProcessada = result[0].qtde;
-                    //console.log('result:' , result);
-                    //console.log('combinacaoProcessada:' , combinacaoProcessada);
-                    callback(null, experimento, melhoresExecucao, combinacaoProcessada);
+                    let sql2 = "select count(*) as qtdeExec from ExecucaoSimulacao " +
+                    " inner join CombinacaoParametro on CombinacaoParametro.id = ExecucaoSimulacao.combinacaoParametroId " +
+                    " where ExecucaoSimulacao.experimentoSimulacaoId = " + idExperimento + 
+                    " and descricao is not null ";
+                    ds.connector.query(sql2, (err,result2) => {
+                        execucaoCriada = result2[0].qtdeExec;
+                        callback(null, experimento, melhoresExecucao, combinacaoProcessada, execucaoCriada);
+                    })
                 })
             })
 

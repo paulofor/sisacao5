@@ -79,6 +79,7 @@ import { ExecucaoSimulacaoPorExperimentoComponent } from './execucao-simulacao-p
 import { CotacaoDiarioAcaoComponent } from './cotacao-diario-acao/cotacao-diario-acao.component';
 import { CotacaoIntradayRecenteComponent } from './cotacao-intraday-recente/cotacao-intraday-recente.component';
 import { AcaoDetalheDiaComponent } from './acao-detalhe-dia/acao-detalhe-dia.component';
+import { ValorMonitoriaExecucaoComponent } from './valor-monitoria-execucao/valor-monitoria-execucao.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -133,7 +134,8 @@ registerLocaleData(localePt, 'pt-BR');
     ExecucaoSimulacaoPorExperimentoComponent,
     CotacaoDiarioAcaoComponent,
     CotacaoIntradayRecenteComponent,
-    AcaoDetalheDiaComponent
+    AcaoDetalheDiaComponent,
+    ValorMonitoriaExecucaoComponent
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,7 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
   }
 
   getFiltro() {
-    return {'where' : {'monitorar' : 1} , 'order' : 'resultado desc'}
+    return {'where' : {'monitorar' : 1} , 'include' : 'regraSimulacao' , 'order' : 'resultado desc'}
   }
 
   getValorLucro(item:ExecucaoSimulacao) {

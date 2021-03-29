@@ -22,6 +22,7 @@ import { ExecucaoSimulacaoMonitoradaComponent } from '../execucao-simulacao-moni
 import { ExecucaoSimulacaoPorExperimentoComponent } from '../execucao-simulacao-por-experimento/execucao-simulacao-por-experimento.component';
 import { CotacaoDiarioAcaoComponent } from '../cotacao-diario-acao/cotacao-diario-acao.component';
 import { AcaoDetalheDiaComponent } from '../acao-detalhe-dia/acao-detalhe-dia.component';
+import { ValorMonitoriaExecucaoComponent } from '../valor-monitoria-execucao/valor-monitoria-execucao.component';
 
 export const routes : Routes = [
     { path: 'home' , component: HomeComponent },
@@ -38,6 +39,7 @@ export const routes : Routes = [
 
     { path: 'cotacaoDiarioAcao/:id' , component : CotacaoDiarioAcaoComponent },
     { path: 'acaoDetalheDia/:ticker/:diaNum' , component: AcaoDetalheDiaComponent },
+    { path: 'valorMonitoriaExecucao/:id' , component: ValorMonitoriaExecucaoComponent },
 
     { path: 'dataSet' , component: DataSetListComponent},
 

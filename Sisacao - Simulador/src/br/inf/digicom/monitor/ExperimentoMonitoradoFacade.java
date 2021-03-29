@@ -43,7 +43,17 @@ public class ExperimentoMonitoradoFacade {
 						public void onSuccess() {
 							System.out.println("Atualizou");
 							cont++;
-							if (cont==listaExecucao.size()) System.exit(0);
+							if (cont==listaExecucao.size()) {
+								System.exit(0);
+								/*
+								try {
+									Thread.sleep(10000);
+								} catch (InterruptedException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								*/
+							}
 							
 						}
 

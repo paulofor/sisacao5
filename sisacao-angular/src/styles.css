@@ -215,6 +215,9 @@ body {
  .dgc-link:hover {
   font-weight: lighter;
  }
+ .dgc-alerta {
+   color: #cd150c;
+ }
 
 .example-form {
  min-width: 150px;

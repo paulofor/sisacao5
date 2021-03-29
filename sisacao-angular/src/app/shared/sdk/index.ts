@@ -140,6 +140,7 @@ export class SDKBrowserModule {
         ValorMonitoriaApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
+
       ]
     };
   }
