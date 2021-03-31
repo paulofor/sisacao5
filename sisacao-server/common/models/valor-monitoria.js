@@ -32,7 +32,7 @@ module.exports = function(Valormonitoria) {
                             stop = lista[i].valorEntrada * (1-execucao.stop);
                         }
                     } else {
-                        lista[i].situacao = 'comprado';
+                        lista[i].situacao = 'comprado --> t: ' + target.toFixed(2) + '  s: ' + stop.toFixed(2);
                         if (target >= lista[i].minimo && target <= lista[i].maximo) {
                             lista[i].situacao = 'saída target';
                             comprado = 0;

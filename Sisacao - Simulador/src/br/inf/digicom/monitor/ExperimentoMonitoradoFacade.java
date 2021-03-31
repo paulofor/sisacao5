@@ -45,16 +45,7 @@ public class ExperimentoMonitoradoFacade {
 							cont++;
 							if (cont==listaExecucao.size()) {
 								System.exit(0);
-								/*
-								try {
-									Thread.sleep(10000);
-								} catch (InterruptedException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								}
-								*/
 							}
-							
 						}
 
 						@Override

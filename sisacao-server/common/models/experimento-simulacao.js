@@ -22,13 +22,10 @@ module.exports = function(Experimentosimulacao) {
             " set regraSimulacaoId = " +
             " (select regraSimulacaoId from ExperimentoSimulacao where ExperimentoSimulacao.id = CombinacaoParametro.experimentoSimulacaoId) " +
             " where experimentoSimulacaoId = " + idExperimento;
-        let sql3 = " update ExecucaoSimulacao " +
-                   " set resultado = (target*quantidadeLucro) - (stop*quantidadePrejuizo) ";
+
         let ds = Experimentosimulacao.dataSource;
         ds.connector.query(sql1, (err1,result1)=> {
-            ds.connector.query(sql3, (err3,result3)=> {
             
-            });
         });
         
         ds.connector.query(sql2, callback);
@@ -300,12 +297,13 @@ module.exports = function(Experimentosimulacao) {
         Experimentosimulacao.findOne(filtroExperimento, (err,result) => {
             experimento = result;
             let filtro = {
-                'order' : 'resultado desc',
+                'order' : ['resultado desc' , 'ticker asc'],
                 'limit' : 150,
                 'include' : {'relation' : 'combinacaoParametro' , 'scope' : {'include' : 'regraSimulacao'}},
                 'where' : {'experimentoSimulacaoId' : idExperimento}
             }
             app.models.ExecucaoSimulacao.find(filtro, (err,result) => {
+                //console.log('Erro:' , err);
                 melhoresExecucao = result;
                 let sql = "select count(*) as qtde from CombinacaoParametro " +
                     " where experimentoSimulacaoId = " + idExperimento +

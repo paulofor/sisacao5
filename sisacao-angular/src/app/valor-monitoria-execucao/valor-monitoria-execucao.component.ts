@@ -45,7 +45,9 @@ export class ValorMonitoriaExecucaoComponent implements OnInit {
   complementoPreco(item) {
     let saida = '';
     if (item.valorEntrada >= item.minimo && item.valorEntrada <= item.maximo) {
-      saida = '   t: ' + item.valorEntrada * (1+this.execucao.target) + '  s: ' + item.valorEntrada * (1-this.execucao.stop);
+      let target =  item.valorEntrada * (1+this.execucao.target)
+      let stop = item.valorEntrada * (1-this.execucao.stop)
+      saida = '   t=' + target.toFixed(2) + '  s=' + stop.toFixed(2) ;
     } 
     return saida;
   }

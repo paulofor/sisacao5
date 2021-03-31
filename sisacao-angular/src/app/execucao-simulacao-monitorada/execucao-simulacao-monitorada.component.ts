@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { Subscription, interval } from 'rxjs';
 import { BaseListComponent } from '../base-component/base-list-component';
 import { CotacaoIntradayAcao, CotacaoIntradayAcaoApi, ExecucaoSimulacao, ExecucaoSimulacaoApi } from '../shared/sdk';
 import { TradeExecucaoSimulacaoComponent } from '../trade-execucao-simulacao/trade-execucao-simulacao.component';
@@ -10,6 +11,8 @@ import { TradeExecucaoSimulacaoComponent } from '../trade-execucao-simulacao/tra
   styleUrls: ['./execucao-simulacao-monitorada.component.css']
 })
 export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
+
+  private updateSubscription: Subscription;
 
   constructor(protected srv:ExecucaoSimulacaoApi, private srvCotacao: CotacaoIntradayAcaoApi,
     protected dialog: MatDialog) {
@@ -29,10 +32,25 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
   }
 
   posCarregaLista() {
+    this.carregaPrecoAtual();
+    this.updateSubscription = interval(60000)
+      .subscribe((val) => { 
+        this.carregaPrecoAtual()
+      });
+    
+  }
+
+  carregaPrecoAtual() {
     this.listaBase.forEach((execucao:ExecucaoSimulacao) => {
       this.srvCotacao.AtualPorTicker(execucao.ticker,1)
         .subscribe((cotacao:CotacaoIntradayAcao[]) => {
           execucao['precoAtual'] = cotacao[0].valor;
+        });
+      this.srvCotacao.AtualPorTicker(execucao.ticker + "F",1)
+        .subscribe((cotacao:CotacaoIntradayAcao[]) => {
+          console.log('buscando preço');
+          if (cotacao.length>0)
+            execucao['precoAtualF'] = cotacao[0].valor;
         })
     })
   }
@@ -47,19 +65,21 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
   valorSaidaLucro(item:ExecucaoSimulacao) {
     let valorEntrada = item.precoEntrada * 100;
     let valorSaida = item.precoEntrada * (1+item.target) * 100;
-    return valorSaida - valorEntrada;
+    return (valorSaida - valorEntrada) - 10;
   }
   valorSaidaPrejuizo(item:ExecucaoSimulacao) {
     let valorEntrada = item.precoEntrada * 100;
     let valorSaida = item.precoEntrada * (1-item.stop) * 100;
-    return valorEntrada - valorSaida;
+    return (valorEntrada - valorSaida) -10;
   }
 
   pontoSaidaLucro(item:ExecucaoSimulacao) {
-    return item.precoEntrada * (1+item.target);
+    let valor = item.precoEntrada * (1+item.target);
+    return valor.toFixed(2);
   }
   pontoSaidaPrejuizo(item:ExecucaoSimulacao) {
-    return item.precoEntrada * (1-item.stop);
+    let valor = item.precoEntrada * (1-item.stop);
+    return valor.toFixed(2);
   }
 
   trades(item) {

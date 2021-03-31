@@ -27,7 +27,7 @@ public class ExecucaoSimulacao extends Model{
 	List<Trade> trades = new ArrayList<Trade>();
 	CombinacaoParametro combinacaoParametro = null;
 	
-	
+	final int PESO_ZERADAS = 2;
 	
 	public Integer getRegraSimulacaoId() {
 		return regraSimulacaoId;
@@ -110,7 +110,8 @@ public class ExecucaoSimulacao extends Model{
 			obj.put("experimentoSimulacaoId", this.experimentoSimulacaoId);
 			obj.put("target", target);
 			obj.put("stop", stop);
-			double resultado = (100*this.target*(this.quantidadeLucro+1)) - (100*this.stop*(this.quantidadePrejuizo+1));
+			double resultado = (100*this.target*(this.quantidadeLucro+1)) - (100*this.stop*(this.quantidadePrejuizo+1)) +
+					(PESO_ZERADAS - (quantidadePrejuizo*PESO_ZERADAS) );
 			obj.put("resultado", resultado );
 			obj.put("monitorar", 0);
 			obj.put("id", this.id);
