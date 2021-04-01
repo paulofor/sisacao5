@@ -24,6 +24,9 @@
         <span>t: {{item.target}}  s: {{item.stop}}</span>
       </div>
       <div class="dgc-card-detalhe">
+        <span *ngIf="item.valorMonitorias.length>1">{{item.valorMonitorias[1].situacao}}</span>
+      </div>
+      <div class="dgc-card-detalhe">
         <span>Pontos: {{item.resultado}}</span>
       </div>
       <div class="dgc-card-detalhe">

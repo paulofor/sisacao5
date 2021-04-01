@@ -22,17 +22,19 @@ module.exports = function(Valormonitoria) {
                 let comprado = 0;
                 let target = 0;
                 let stop = 0;
+                let valorEntrada = 0;
                 for (let i=0;i<lista.length;i++) {
-                    lista[i].situacao = '';
+                    lista[i].situacao = 'fora';
                     if (comprado==0) {
                         if (lista[i].valorEntrada >= lista[i].minimo && lista[i].valorEntrada <= lista[i].maximo) {
                             lista[i].situacao = 'entrada em ' + lista[i].valorEntrada;
                             comprado = 1;
                             target = lista[i].valorEntrada * (1+execucao.target);
                             stop = lista[i].valorEntrada * (1-execucao.stop);
+                            valorEntrada = lista[i].valorEntrada;
                         }
                     } else {
-                        lista[i].situacao = 'comprado --> t: ' + target.toFixed(2) + '  s: ' + stop.toFixed(2);
+                        lista[i].situacao = '(' + valorEntrada.toFixed(2) +') --> s: ' + stop.toFixed(2) + '  t: ' + target.toFixed(2);
                         if (target >= lista[i].minimo && target <= lista[i].maximo) {
                             lista[i].situacao = 'saída target';
                             comprado = 0;
@@ -46,7 +48,7 @@ module.exports = function(Valormonitoria) {
                             stop = 0;
                         }
                     }
-                    atualizaDescricao(lista[i].id,lista[i].situacao);
+                    atualizaDescricao(lista[i]);
                 };
                 callback(null, lista);
             })
@@ -54,9 +56,9 @@ module.exports = function(Valormonitoria) {
     };
 
 
-    function atualizaDescricao(id, descricao) {
-        let sql = " update ValorMonitoria set situacao = '" + descricao + "' " +
-            "where id = " + id;
+    function atualizaValorMonitoria(valorMonitoria) {
+        let sql = " update ValorMonitoria set situacao = '" + valorMonitoria.situacao + "' " +
+            "where id = " + valorMonitoria.id;
         let ds = Valormonitoria.dataSource;
         ds.connector.query(sql, (err, resultado) => {
             //console.log('Erro: ' , err);
