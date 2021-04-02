@@ -9,6 +9,10 @@ export interface ValorMonitoriaInterface {
   "ticker"?: string;
   "diaNumEntrada"?: number;
   "situacao"?: string;
+  "valorTarget"?: number;
+  "valorStop"?: number;
+  "posicao"?: number;
+  "pontoEntrada"?: number;
   "id"?: number;
   "execucaoSimulacaoId"?: number;
   execucaoSimulacao?: ExecucaoSimulacao;
@@ -19,6 +23,10 @@ export class ValorMonitoria implements ValorMonitoriaInterface {
   "ticker": string;
   "diaNumEntrada": number;
   "situacao": string;
+  "valorTarget": number;
+  "valorStop": number;
+  "posicao": number;
+  "pontoEntrada": number;
   "id": number;
   "execucaoSimulacaoId": number;
   execucaoSimulacao: ExecucaoSimulacao;
@@ -70,6 +78,22 @@ export class ValorMonitoria implements ValorMonitoriaInterface {
         "situacao": {
           name: 'situacao',
           type: 'string'
+        },
+        "valorTarget": {
+          name: 'valorTarget',
+          type: 'number'
+        },
+        "valorStop": {
+          name: 'valorStop',
+          type: 'number'
+        },
+        "posicao": {
+          name: 'posicao',
+          type: 'number'
+        },
+        "pontoEntrada": {
+          name: 'pontoEntrada',
+          type: 'number'
         },
         "id": {
           name: 'id',

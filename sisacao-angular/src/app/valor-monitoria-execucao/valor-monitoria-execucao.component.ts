@@ -25,7 +25,7 @@ export class ValorMonitoriaExecucaoComponent implements OnInit {
       this.srvExecucao.findById(idExecuao)
         .subscribe((result:ExecucaoSimulacao) => {
           this.execucao = result;
-          this.srv.TrataSituacao(idExecuao)
+          this.srv.ObtemComCotacao(idExecuao)
             .subscribe((result:any) => {
               this.listaBase = result;
               console.log('ListaBase: ' , this.listaBase)

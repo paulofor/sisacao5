@@ -32,7 +32,7 @@ public class RegraPontoEntrada implements IRegraPontoEntrada {
 
 	
 	public int getLimiteMinimo() {
-		return this.diasAtual * 30;
+		return this.diasAtual * FabricaRegra.TICKER_DIA;
 	}
 	
 	

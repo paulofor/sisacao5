@@ -22,7 +22,8 @@ module.exports = function(Execucaosimulacao) {
                                     {'relation' : 'valorParametros', 'scope' : {'include' : 'parametroRegra'}}
                                     ] 
                                 }
-                            }
+                            },
+                            { 'relation' : 'ativoAcao'}
                         ] 
                     }
         Execucaosimulacao.find(filtro,callback);

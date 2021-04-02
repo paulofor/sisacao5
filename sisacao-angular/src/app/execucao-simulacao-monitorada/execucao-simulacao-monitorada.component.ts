@@ -13,6 +13,7 @@ import { TradeExecucaoSimulacaoComponent } from '../trade-execucao-simulacao/tra
 export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
 
   private updateSubscription: Subscription;
+  private PERCENTUAL_AVISO = 1.5;
 
   constructor(protected srv:ExecucaoSimulacaoApi, private srvCotacao: CotacaoIntradayAcaoApi,
     protected dialog: MatDialog) {
@@ -24,7 +25,8 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
       'where' : {'monitorar' : 1} , 
       'include' : [
         {'relation' : 'regraSimulacao'},
-        {'relation' : 'valorMonitorias' , 'scope' : {'limit' : 2 , 'order' : 'diaNumEntrada desc'}} 
+        {'relation' : 'valorMonitorias' , 'scope' : {'limit' : 2 , 'order' : 'diaNumEntrada desc'}} ,
+        {'relation' : 'ativoAcao' }
       ], 
       'order' : 'resultado desc'
     }
@@ -87,6 +89,41 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
   pontoSaidaPrejuizo(item:ExecucaoSimulacao) {
     let valor = item.precoEntrada * (1-item.stop);
     return valor.toFixed(2);
+  }
+
+  classeTargetCompra(item:ExecucaoSimulacao) {
+    //console.log('valorSaida' , this.valorSaidaLucro(item));
+    //console.log('maximo:' , item.ativoAcao.max1Mes);
+    if ( (item.precoEntrada * (1+item.target)) > item.ativoAcao.max1Mes) {
+      return 'dgc-alerta';
+    } else {
+      return '';
+    }
+  }
+  classeTarget(item) {
+    let perc = this.percTarget(item);
+    if (perc<=this.PERCENTUAL_AVISO) {
+      return 'dgc-alerta'
+    } else {
+      return '';
+    }
+  }
+  classeStop(item) {
+    let perc = this.percStop(item);
+    if (perc>=(this.PERCENTUAL_AVISO*-1)) {
+      return 'dgc-alerta'
+    } else {
+      return '';
+    }
+  }
+
+  percTarget(item:ExecucaoSimulacao) {
+    let valor = item.valorMonitorias[1].valorTarget - item['precoAtual'];
+    return (valor / item['precoAtual']) * 100;
+  }
+  percStop(item:ExecucaoSimulacao) {
+    let valor = item.valorMonitorias[1].valorStop - item['precoAtual'];
+    return (valor / item['precoAtual']) * 100;
   }
 
   trades(item) {

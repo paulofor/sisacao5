@@ -18,6 +18,9 @@
     },
     "dataStr": {
       "type": "string"
+    },
+    "data" : {
+      "type": "date"
     }
   },
   "validations": [],
@@ -123,6 +126,24 @@
         {
           "path": "/criaDatasAno",
           "verb": "post"
+        }
+      ]
+    },
+    "ObtemProximo": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "dia",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemProximo",
+          "verb": "get"
         }
       ]
     }

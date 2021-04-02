@@ -40,6 +40,14 @@ public class RepositorioAcaoBase {
 	        invokeStaticMethod("listaPorGrupo", params,   new JsonArrayParser<AtivoAcao>(this, callback));
 		}
 		
+		public void atualizaPosDiario(final VoidCallback voidCallback) {
+			RestContractItem contrato = new RestContractItem("AtivoAcaos/atualizaPosDiario","POST");
+			this.getRestAdapter().getContract().addItem(contrato, "AtivoAcao.atualizaPosDiario");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        invokeStaticMethod("atualizaPosDiario", params,   new EmptyResponseParser(voidCallback));
+			
+		}
+		
 		public void insereAcaoIndice(String ticker, String nome, String tipo, Long quantidade, Double percentual, String indice,
 				final VoidCallback voidCallback) {
 			RestContractItem contrato = new RestContractItem("AtivoAcaos/insereAcaoIndice","POST");

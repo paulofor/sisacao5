@@ -38,10 +38,10 @@ public class RegraPontoEntradaLimiteTopo implements IRegraPontoEntrada {
 
 	
 	public int getLimiteMinimo() {
-		return this.diasMin * 30;
+		return this.diasMin * FabricaRegra.TICKER_DIA;
 	}
 	public int getLimiteMinimoTopo() {
-		return this.diasTopo * 30;
+		return this.diasTopo * FabricaRegra.TICKER_DIA;
 	}
 	
 	

@@ -33,7 +33,7 @@ public class RegraEntradaDistanteAlvo implements IRegraPontoEntrada {
 
 	
 	public int getLimiteMinimo() {
-		return this.dias * 30;
+		return this.dias * FabricaRegra.TICKER_DIA;
 	}
 	
 	

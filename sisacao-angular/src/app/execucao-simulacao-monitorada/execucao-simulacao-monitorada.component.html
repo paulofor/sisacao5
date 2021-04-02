@@ -12,7 +12,7 @@
         Entrada: {{item.precoEntrada | number: '1.2-2'}} ({{item.dataNumEntrada}})
       </div>
       <div class="dgc-card-detalhe">
-        + {{valorSaidaLucro(item)  | number: '1.2-2'}} ({{pontoSaidaLucro(item)  | number: '1.2-2'}})
+        <span class="{{classeTargetCompra(item)}}">+ {{valorSaidaLucro(item)  | number: '1.2-2'}} ({{pontoSaidaLucro(item)  | number: '1.2-2'}})</span>
       </div>
       <div class="dgc-card-detalhe">
         - {{valorSaidaPrejuizo(item)  | number: '1.2-2'}} ({{pontoSaidaPrejuizo(item)  | number: '1.2-2'}})
@@ -23,8 +23,16 @@
       <div class="dgc-card-detalhe">
         <span>t: {{item.target}}  s: {{item.stop}}</span>
       </div>
+      <div class="dgc-card-detalhe" *ngIf="(item.valorMonitorias.length>1) && item.valorMonitorias[1].posicao==1">
+        <span>{{item.valorMonitorias[1].pontoEntrada | number: '1.2-2'}} --> </span>
+        <span class="{{classeStop(item)}}"> {{item.valorMonitorias[1].valorStop | number: '1.2-2'}} ({{percStop(item) | number: '1.1-1'}}%)</span>
+        <span class="{{classeTarget(item)}}"> {{item.valorMonitorias[1].valorTarget | number: '1.2-2'}} ({{percTarget(item) | number: '1.1-1'}}%)</span>
+      </div>
+      <div class="dgc-card-detalhe" *ngIf="(item.valorMonitorias.length>1) && item.valorMonitorias[1].posicao==0">
+        <span>fora</span>
+      </div>
       <div class="dgc-card-detalhe">
-        <span *ngIf="item.valorMonitorias.length>1">{{item.valorMonitorias[1].situacao}}</span>
+        <span>Mês: {{item.ativoAcao.min1Mes | number: '1.2-2'}} - {{item.ativoAcao.max1Mes | number: '1.2-2'}}</span>
       </div>
       <div class="dgc-card-detalhe">
         <span>Pontos: {{item.resultado}}</span>

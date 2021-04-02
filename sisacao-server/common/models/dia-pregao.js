@@ -5,6 +5,22 @@ module.exports = function(Diapregao) {
 
     /**
     * 
+    * @param {Function(Error, object)} callback
+    */
+    Diapregao.ObtemProximo = function(callback) {
+        var data = new Date();
+        data.setUTCMinutes(0);
+        data.setUTCHours(0);
+        data.setUTCSeconds(0);
+        data.setUTCMilliseconds(0);
+        //console.log(data);
+        let filtro = { "where" : {"data" : {"gte": data } } }
+        Diapregao.findOne(filtro, callback);
+    };
+  
+
+    /**
+    * 
     * @param {number} ano 
     * @param {Function(Error, object)} callback
     */

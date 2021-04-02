@@ -2,9 +2,15 @@ package sisacao.opcaointra.thread;
 
 import java.util.TimerTask;
 
+import com.strongloop.android.loopback.RestAdapter;
+import com.strongloop.android.loopback.callbacks.VoidCallback;
+
 import br.com.digicom.lib.dao.DaoException;
 import br.com.digicom.parse.log.ArquivoLog;
 import br.com.digicom.parse.log.DatasUtils;
+import br.com.digicom.sisacao.app.Loopback;
+import br.com.digicom.sisacao.repositorio.RepositorioAcaoBase;
+import br.com.digicom.sisacao.repositorio.RepositorioValorMonitoria;
 import coletorjava.modelo.DiaPregao;
 import coletorjava.regracolecao.DiaPregaoRegraColecao;
 import coletorjava.regracolecao.FabricaRegra;
@@ -16,6 +22,8 @@ public abstract class ThreadPaiBase extends TimerTask {
 	private boolean existePregao;
 
 	private DiaPregaoRegraColecao diaSrv = FabricaRegra.getInstancia().getDiaPregaoRegraColecao();
+	RestAdapter adapter = new RestAdapter(Loopback.URL_SISACAO); 
+	RepositorioAcaoBase.AtivoAcaoRepository repAtivo  = adapter.createRepository(RepositorioAcaoBase.AtivoAcaoRepository.class);
 
 	public ThreadPaiBase() {
 		// this.locatorPeriodoPregao = new PeriodoPregaoWSLocator();
@@ -34,9 +42,23 @@ public abstract class ThreadPaiBase extends TimerTask {
 				if (this.diaAnterior.length() > 0) {
 					//mudouDia(this.diaAtual, this.diaAnterior, existePregao(diaAnterior));
 					mudouDia(this.diaAtual, this.diaAnterior, true);
-					System.out.println("[debug] ThreadPaiBase.run: existePregao(diaAnterior):" + existePregao(diaAnterior));
-					System.out.println("[debug] Exit");
-					System.exit(0);
+					repAtivo.atualizaPosDiario(new VoidCallback(){
+						@Override
+						public void onSuccess() {
+							System.out.println("[sucesso] ThreadPaiBase.run: existePregao(diaAnterior):" + existePregao(diaAnterior));
+							System.out.println("[sucesso] Exit");
+							System.exit(0);
+						}
+
+						@Override
+						public void onError(Throwable t) {
+							System.out.println("[erro] ThreadPaiBase.run: existePregao(diaAnterior):" + existePregao(diaAnterior));
+							System.out.println("[erro] Exit");
+							System.exit(0);
+						}
+						
+					});
+					
 				} else {
 					this.mudouDiaColetores(diaAtual);
 				}

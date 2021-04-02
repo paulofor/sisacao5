@@ -2,6 +2,7 @@
 import {
   CombinacaoParametro,
   RegraSimulacao,
+  AtivoAcao,
   Trade,
   ValorMonitoria
 } from '../index';
@@ -23,6 +24,7 @@ export interface ExecucaoSimulacaoInterface {
   "experimentoSimulacaoId"?: number;
   combinacaoParametro?: CombinacaoParametro;
   regraSimulacao?: RegraSimulacao;
+  ativoAcao?: AtivoAcao;
   trades?: Trade[];
   valorMonitorias?: ValorMonitoria[];
 }
@@ -43,6 +45,7 @@ export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
   "experimentoSimulacaoId": number;
   combinacaoParametro: CombinacaoParametro;
   regraSimulacao: RegraSimulacao;
+  ativoAcao: AtivoAcao;
   trades: Trade[];
   valorMonitorias: ValorMonitoria[];
   constructor(data?: ExecucaoSimulacaoInterface) {
@@ -147,6 +150,14 @@ export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
           relationType: 'belongsTo',
                   keyFrom: 'regraSimulacaoId',
           keyTo: 'id'
+        },
+        ativoAcao: {
+          name: 'ativoAcao',
+          type: 'AtivoAcao',
+          model: 'AtivoAcao',
+          relationType: 'belongsTo',
+                  keyFrom: 'ticker',
+          keyTo: 'ticker'
         },
         trades: {
           name: 'trades',

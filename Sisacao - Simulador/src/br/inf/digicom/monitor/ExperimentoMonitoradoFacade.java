@@ -81,20 +81,6 @@ public class ExperimentoMonitoradoFacade {
 		SimuladorPontoEntradaDia simulador = new SimuladorPontoEntradaDia();
 		Double preco = simulador.precoEntrada(RepositorioCotacao.getCotacao(execucao.getTicker()), execucao.getCombinacaoParametro(), regra, dataNum);
 		execucao.setPrecoEntrada(preco);
-		/*
-		execucao.save(new VoidCallback() {
-			@Override
-			public void onSuccess() {
-				System.out.println("Atualizou");
-			}
-
-			@Override
-			public void onError(Throwable t) {
-				t.printStackTrace();
-			}
-			
-		});
-		*/
 	}
 
 }

@@ -55,6 +55,11 @@
       "type": "belongsTo",
       "model": "RegraSimulacao",
       "foreignKey": ""
+    },
+    "ativoAcao": {
+      "type": "belongsTo",
+      "model": "AtivoAcao",
+      "foreignKey": "ticker"
     }
   },
   "acls": [],

@@ -18,11 +18,17 @@
     "situacao": {
       "type": "string"
     },
-    "valorTarget" : {
-      "type" : "number"
+    "valorTarget": {
+      "type": "number"
     },
-    "valorStop" : {
-      "type" : "number"
+    "valorStop": {
+      "type": "number"
+    },
+    "posicao": {
+      "type": "number"
+    },
+    "pontoEntrada": {
+      "type": "number"
     }
   },
   "validations": [],

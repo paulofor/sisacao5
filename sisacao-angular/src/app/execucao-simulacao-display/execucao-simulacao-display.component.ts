@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { LIMITE_PONTOS_MONITORIA } from '../constantes/base.url';
 import { ExecucaoSimulacao, ExecucaoSimulacaoApi } from '../shared/sdk';
 import { TradeExecucaoSimulacaoComponent } from '../trade-execucao-simulacao/trade-execucao-simulacao.component';
 
@@ -35,5 +36,9 @@ export class ExecucaoSimulacaoDisplayComponent implements OnInit {
       .subscribe((result) => {
         //this.carregaMelhores();
       })
+  }
+
+  permiteMonitorar(item) {
+    return item.resultado >= LIMITE_PONTOS_MONITORIA;
   }
 }

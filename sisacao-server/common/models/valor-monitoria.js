@@ -24,6 +24,7 @@ module.exports = function(Valormonitoria) {
                 let stop = 0;
                 let valorEntrada = 0;
                 for (let i=0;i<lista.length;i++) {
+                    //console.log('Tratando ' + lista[i].ticker + ' [' + lista[i].diaNumEntrada + ']');
                     lista[i].situacao = 'fora';
                     if (comprado==0) {
                         if (lista[i].valorEntrada >= lista[i].minimo && lista[i].valorEntrada <= lista[i].maximo) {
@@ -48,19 +49,29 @@ module.exports = function(Valormonitoria) {
                             stop = 0;
                         }
                     }
-                    atualizaDescricao(lista[i]);
+                    lista[i].posicao = comprado;
+                    lista[i].valorTarget = target;
+                    lista[i].valorStop = stop;
+                    lista[i].pontoEntrada = valorEntrada;
+                    atualizaValorMonitoria(lista[i]);
                 };
                 callback(null, lista);
             })
         })
     };
 
+  
 
     function atualizaValorMonitoria(valorMonitoria) {
-        let sql = " update ValorMonitoria set situacao = '" + valorMonitoria.situacao + "' " +
-            "where id = " + valorMonitoria.id;
+        let sql = " update ValorMonitoria set situacao = '" + valorMonitoria.situacao + "', " +
+            " valorTarget = " + valorMonitoria.valorTarget + " , " +
+            " valorStop = " + valorMonitoria.valorStop + ", " +
+            " posicao = " + valorMonitoria.posicao + ", " +
+            " pontoEntrada = " + valorMonitoria.pontoEntrada + " " +
+            " where id = " + valorMonitoria.id;
         let ds = Valormonitoria.dataSource;
         ds.connector.query(sql, (err, resultado) => {
+            //console.log('sql:' , sql);
             //console.log('Erro: ' , err);
         })
     }
@@ -110,7 +121,12 @@ module.exports = function(Valormonitoria) {
                 'diaNumEntrada' : diaNum,
                 'situacao' : '' 
              }
-             Valormonitoria.create(novo, callback);
+             Valormonitoria.create(novo, (err,result) => {
+                Valormonitoria.TrataSituacao(execucao.id, (err,result) => {
+
+                });
+                callback(err,result);
+             });
         })
         
     };
