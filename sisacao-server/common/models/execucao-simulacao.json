@@ -106,6 +106,68 @@
           "verb": "get"
         }
       ]
+    },
+    "AtualizaMonitoria": {
+      "accepts": [
+        {
+          "arg": "idExecucao",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "diaNum",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "preco",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaMonitoria",
+          "verb": "post"
+        }
+      ]
+    },
+    "ObtemMonitorarPorId": {
+      "accepts": [
+        {
+          "arg": "idExecucao",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "execucao",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemMonitorarPorId",
+          "verb": "get"
+        }
+      ]
     }
   }
 }

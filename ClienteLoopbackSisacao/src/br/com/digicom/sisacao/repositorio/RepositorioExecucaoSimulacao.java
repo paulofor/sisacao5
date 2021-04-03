@@ -1,19 +1,17 @@
 package br.com.digicom.sisacao.repositorio;
 
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.strongloop.android.loopback.ModelRepository;
 import com.strongloop.android.loopback.callbacks.EmptyResponseParser;
 import com.strongloop.android.loopback.callbacks.JsonArrayParser;
+import com.strongloop.android.loopback.callbacks.JsonObjectParser;
 import com.strongloop.android.loopback.callbacks.ListCallback;
+import com.strongloop.android.loopback.callbacks.ObjectCallback;
 import com.strongloop.android.loopback.callbacks.VoidCallback;
-import com.strongloop.android.remoting.adapters.RestAdapter;
 import com.strongloop.android.remoting.adapters.RestContractItem;
 
-import br.com.digicom.sisacao.modelo.AtivoAcao;
 import br.com.digicom.sisacao.modelo.ExecucaoSimulacao;
 
 public class RepositorioExecucaoSimulacao extends ModelRepository<ExecucaoSimulacao>{
@@ -35,6 +33,14 @@ public class RepositorioExecucaoSimulacao extends ModelRepository<ExecucaoSimula
         execucao = null;
 	}
 	
+	
+	public void obtemMonitorarPorId(final int id, final ObjectCallback<ExecucaoSimulacao> callback ) {
+		RestContractItem contrato = new RestContractItem("ExecucaoSimulacaos/obtemMonitorarPorId","GET");
+		this.getRestAdapter().getContract().addItem(contrato, "ExecucaoSimulacao.obtemMonitorarPorId");
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("idExecucao",id);
+        invokeStaticMethod("obtemMonitorarPorId", params,   new JsonObjectParser<ExecucaoSimulacao>(this, callback));
+	}
 	
 	public void listaMonitorar(final ListCallback<ExecucaoSimulacao> callback ) {
 		RestContractItem contrato = new RestContractItem("ExecucaoSimulacaos/listaMonitorar","GET");

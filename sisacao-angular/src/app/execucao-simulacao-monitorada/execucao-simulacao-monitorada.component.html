@@ -9,16 +9,16 @@
         <span class="dgc-direita">{{item.quantidadeLucro}} x {{item.quantidadePrejuizo}}</span>
       </div>
       <div class="dgc-card-detalhe">
-        Entrada: {{item.precoEntrada | number: '1.2-2'}} ({{item.dataNumEntrada}})
+        <span>Entrada: {{item.precoEntrada | number: '1.2-2'}} ({{item.dataNumEntrada}}) - ({{percPrecoAtual(item.precoEntrada,item)}}%)</span>
       </div>
       <div class="dgc-card-detalhe">
         <span class="{{classeTargetCompra(item)}}">+ {{valorSaidaLucro(item)  | number: '1.2-2'}} ({{pontoSaidaLucro(item)  | number: '1.2-2'}})</span>
       </div>
       <div class="dgc-card-detalhe">
-        - {{valorSaidaPrejuizo(item)  | number: '1.2-2'}} ({{pontoSaidaPrejuizo(item)  | number: '1.2-2'}})
+        <span class="{{classeStopCompra(item)}}">- {{valorSaidaPrejuizo(item)  | number: '1.2-2'}} ({{pontoSaidaPrejuizo(item)  | number: '1.2-2'}})</span>
       </div>
-      <div class="dgc-card-detalhe {{classePreco(item)}}">
-        Atual: {{item.precoAtual | number: '1.2-2'}} (F: {{item.precoAtualF | number: '1.2-2'}})
+      <div class="dgc-card-detalhe">
+        <span class="dgc-destaque dgc-link {{classePreco(item)}}" routerLink="/cotacaoIntraAcao/{{item.ticker}}">$: {{item.precoAtual | number: '1.2-2'}} (F: {{item.precoAtualF | number: '1.2-2'}})</span>
       </div>
       <div class="dgc-card-detalhe">
         <span>t: {{item.target}}  s: {{item.stop}}</span>
@@ -29,7 +29,7 @@
         <span class="{{classeTarget(item)}}"> {{item.valorMonitorias[1].valorTarget | number: '1.2-2'}} ({{percTarget(item) | number: '1.1-1'}}%)</span>
       </div>
       <div class="dgc-card-detalhe" *ngIf="(item.valorMonitorias.length>1) && item.valorMonitorias[1].posicao==0">
-        <span>fora</span>
+        <span class="dgc-disponivel">fora</span>
       </div>
       <div class="dgc-card-detalhe">
         <span>Mês: {{item.ativoAcao.min1Mes | number: '1.2-2'}} - {{item.ativoAcao.max1Mes | number: '1.2-2'}}</span>

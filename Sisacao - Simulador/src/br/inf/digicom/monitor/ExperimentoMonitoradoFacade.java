@@ -22,6 +22,25 @@ public class ExperimentoMonitoradoFacade {
 	RepositorioValorMonitoria repValorMonitoria = adapter.createRepository(RepositorioValorMonitoria.class);
 	
 	int cont = 0;
+	
+	public synchronized void atualizaPrecoEntrada(final int dataNum, final ExecucaoSimulacao execucao) {
+		trataExecucaoMonitor(execucao,dataNum);
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		repValorMonitoria.insereMonitoria(execucao, dataNum, execucao.getPrecoEntrada(), new VoidCallback() {
+			@Override
+			public void onSuccess() {
+				System.out.println("Atualizou");
+			}
+			@Override
+			public void onError(Throwable t) {
+				t.printStackTrace();
+			}
+		});
+	}
 
 	public void atualizaPrecoEntrada(final int dataNum) {
 		repExecucaoSimulacao.listaMonitorar( new ListCallback<ExecucaoSimulacao>() {

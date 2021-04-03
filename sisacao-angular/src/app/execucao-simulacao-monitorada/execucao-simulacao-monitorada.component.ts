@@ -66,7 +66,7 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
 
   classePreco(item:ExecucaoSimulacao) {
     if (item['precoAtual'] < item.precoEntrada)
-      return "entrada"
+      return "dgc-alerta"
     else
       return ""
   }
@@ -92,14 +92,20 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
   }
 
   classeTargetCompra(item:ExecucaoSimulacao) {
-    //console.log('valorSaida' , this.valorSaidaLucro(item));
-    //console.log('maximo:' , item.ativoAcao.max1Mes);
     if ( (item.precoEntrada * (1+item.target)) > item.ativoAcao.max1Mes) {
       return 'dgc-alerta';
     } else {
       return '';
     }
   }
+  classeStopCompra(item:ExecucaoSimulacao) {
+    if ( (item.precoEntrada * (1-item.stop)) < item.ativoAcao.min1Mes) {
+      return 'dgc-vantagem';
+    } else {
+      return '';
+    }
+  }
+
   classeTarget(item) {
     let perc = this.percTarget(item);
     if (perc<=this.PERCENTUAL_AVISO) {
@@ -124,6 +130,15 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
   percStop(item:ExecucaoSimulacao) {
     let valor = item.valorMonitorias[1].valorStop - item['precoAtual'];
     return (valor / item['precoAtual']) * 100;
+  }
+  percPrecoEntrada(item:ExecucaoSimulacao) {
+    let valor = item.precoEntrada - item['precoAtual'];
+    return (valor / item['precoAtual']) * 100;
+  }
+  percPrecoAtual(preco: number, item:ExecucaoSimulacao) {
+    let valor = preco - item['precoAtual'];
+    let saida = (valor / item['precoAtual']) * 100;
+    return saida.toFixed(1);
   }
 
   trades(item) {

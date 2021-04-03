@@ -19,7 +19,7 @@
     "dataStr": {
       "type": "string"
     },
-    "data" : {
+    "data": {
       "type": "date"
     }
   },
