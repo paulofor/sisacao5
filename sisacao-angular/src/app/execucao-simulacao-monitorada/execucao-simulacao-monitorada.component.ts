@@ -4,6 +4,7 @@ import { Subscription, interval } from 'rxjs';
 import { BaseListComponent } from '../base-component/base-list-component';
 import { CotacaoIntradayAcao, CotacaoIntradayAcaoApi, ExecucaoSimulacao, ExecucaoSimulacaoApi } from '../shared/sdk';
 import { TradeExecucaoSimulacaoComponent } from '../trade-execucao-simulacao/trade-execucao-simulacao.component';
+import { TradeRealEditaComponent } from '../trade-real-edita/trade-real-edita.component';
 
 @Component({
   selector: 'app-execucao-simulacao-monitorada',
@@ -14,6 +15,7 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
 
   private updateSubscription: Subscription;
   private PERCENTUAL_AVISO = 1.5;
+  private CORRETAGEM_ENTRADA_SAIDA = 11;
 
   constructor(protected srv:ExecucaoSimulacaoApi, private srvCotacao: CotacaoIntradayAcaoApi,
     protected dialog: MatDialog) {
@@ -49,11 +51,22 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
     
   }
 
+  telaCompra(item:ExecucaoSimulacao) {
+    this.dialog.open(TradeRealEditaComponent, {
+      width: '900px',
+      data: {
+          origem: item
+      }
+    });
+  }
+
+
   carregaPrecoAtual() {
     this.listaBase.forEach((execucao:ExecucaoSimulacao) => {
       this.srvCotacao.AtualPorTicker(execucao.ticker,1)
         .subscribe((cotacao:CotacaoIntradayAcao[]) => {
           execucao['precoAtual'] = cotacao[0].valor;
+          execucao['dataHora'] = cotacao[0].dataHora;
         });
       this.srvCotacao.AtualPorTicker(execucao.ticker + "F",1)
         .subscribe((cotacao:CotacaoIntradayAcao[]) => {
@@ -65,21 +78,30 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
   }
 
   classePreco(item:ExecucaoSimulacao) {
-    if (item['precoAtual'] < item.precoEntrada)
-      return "dgc-alerta"
-    else
-      return ""
+    if ((item.valorMonitorias.length>1) && item.valorMonitorias[1].posicao==1) {
+      // comprado
+      if (item['precoAtual'] < item.valorMonitorias[1].pontoEntrada)
+        return "dgc-alerta"
+      else
+        return ""
+    } else {
+      // fora
+      if (item['precoAtual'] < item.precoEntrada)
+        return "dgc-alerta"
+      else
+        return ""
+    }
   }
 
   valorSaidaLucro(item:ExecucaoSimulacao) {
     let valorEntrada = item.precoEntrada * 100;
     let valorSaida = item.precoEntrada * (1+item.target) * 100;
-    return (valorSaida - valorEntrada) - 10;
+    return (valorSaida - valorEntrada) - this.CORRETAGEM_ENTRADA_SAIDA;
   }
   valorSaidaPrejuizo(item:ExecucaoSimulacao) {
     let valorEntrada = item.precoEntrada * 100;
     let valorSaida = item.precoEntrada * (1-item.stop) * 100;
-    return (valorEntrada - valorSaida) -10;
+    return (valorEntrada - valorSaida) - this.CORRETAGEM_ENTRADA_SAIDA;
   }
 
   pontoSaidaLucro(item:ExecucaoSimulacao) {
@@ -109,7 +131,7 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
   classeTarget(item) {
     let perc = this.percTarget(item);
     if (perc<=this.PERCENTUAL_AVISO) {
-      return 'dgc-alerta'
+      return 'dgc-alerta  marcatexto'
     } else {
       return '';
     }

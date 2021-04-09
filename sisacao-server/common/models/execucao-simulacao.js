@@ -2,10 +2,29 @@
 
 var app = require('../../server/server');
 
-module.exports = function(Execucaosimulacao) {
+module.exports = function(Execucaosimulacao) {  
 
-
-
+    /**
+    * Faz todos os procedimentos necessários para a criação de um novo item de monitoria
+    * @param {number} idExecucao 
+    * @param {Function(Error, object)} callback
+    */
+    Execucaosimulacao.LigaMonitoria = function(idExecucao, callback) {
+        var saida;
+        // TODO
+        callback(null, saida);
+    };
+  
+    /**
+    * Retorna todas as execuções que foram marcadas recentemente para monitoria e não estão com ValorMonitoria ainda.
+    * @param {Function(Error, array)} callback
+    */
+    Execucaosimulacao.ListaNovaMonitoria = function(callback) {
+        var listaItem;
+        // TODO
+        callback(null, listaItem);
+    };
+  
 
 
     /**
@@ -42,7 +61,11 @@ module.exports = function(Execucaosimulacao) {
                                     ] 
                                 }
                             },
-                            { 'relation' : 'ativoAcao'}
+                            { 'relation' : 'ativoAcao'},
+                            { 
+                                'relation' : 'tradeReals',
+                                'scope' : { 'where' : {'posicaoAtual' : '1' } }
+                            }
                         ] 
                     }
         Execucaosimulacao.find(filtro,callback);

@@ -32,6 +32,12 @@
     },
     "dataNumEntrada": {
       "type": "number"
+    },
+    "mediaDiaTrade": {
+      "type": "number"
+    },
+    "maximoDiaTrade": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -60,6 +66,11 @@
       "type": "belongsTo",
       "model": "AtivoAcao",
       "foreignKey": "ticker"
+    },
+    "tradeReals": {
+      "type": "hasMany",
+      "model": "TradeReal",
+      "foreignKey": ""
     }
   },
   "acls": [],
@@ -165,6 +176,49 @@
       "http": [
         {
           "path": "/obtemMonitorarPorId",
+          "verb": "get"
+        }
+      ]
+    },
+    "LigaMonitoria": {
+      "accepts": [
+        {
+          "arg": "idExecucao",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "Faz todos os procedimentos necessários para a criação de um novo item de monitoria",
+      "http": [
+        {
+          "path": "/ligaMonitoria",
+          "verb": "post"
+        }
+      ]
+    },
+    "ListaNovaMonitoria": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "listaItem",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "Retorna todas as execuções que foram marcadas recentemente para monitoria e não estão com ValorMonitoria ainda.",
+      "http": [
+        {
+          "path": "/listaNovaMonitoria",
           "verb": "get"
         }
       ]

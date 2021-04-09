@@ -150,5 +150,13 @@
   "ValorMonitoria": {
     "dataSource": "mysqlDS",
     "public": true
+  },
+  "TradeReal": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "PeriodoExperimento": {
+    "dataSource": "mysqlDS",
+    "public": true
   }
 }

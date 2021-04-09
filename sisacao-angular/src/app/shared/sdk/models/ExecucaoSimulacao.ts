@@ -4,7 +4,8 @@ import {
   RegraSimulacao,
   AtivoAcao,
   Trade,
-  ValorMonitoria
+  ValorMonitoria,
+  TradeReal
 } from '../index';
 
 declare var Object: any;
@@ -18,6 +19,8 @@ export interface ExecucaoSimulacaoInterface {
   "monitorar"?: number;
   "precoEntrada"?: number;
   "dataNumEntrada"?: number;
+  "mediaDiaTrade"?: number;
+  "maximoDiaTrade"?: number;
   "id"?: number;
   "combinacaoParametroId"?: number;
   "regraSimulacaoId"?: number;
@@ -27,6 +30,7 @@ export interface ExecucaoSimulacaoInterface {
   ativoAcao?: AtivoAcao;
   trades?: Trade[];
   valorMonitorias?: ValorMonitoria[];
+  tradeReals?: TradeReal[];
 }
 
 export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
@@ -39,6 +43,8 @@ export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
   "monitorar": number;
   "precoEntrada": number;
   "dataNumEntrada": number;
+  "mediaDiaTrade": number;
+  "maximoDiaTrade": number;
   "id": number;
   "combinacaoParametroId": number;
   "regraSimulacaoId": number;
@@ -48,6 +54,7 @@ export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
   ativoAcao: AtivoAcao;
   trades: Trade[];
   valorMonitorias: ValorMonitoria[];
+  tradeReals: TradeReal[];
   constructor(data?: ExecucaoSimulacaoInterface) {
     Object.assign(this, data);
   }
@@ -117,6 +124,14 @@ export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
           name: 'dataNumEntrada',
           type: 'number'
         },
+        "mediaDiaTrade": {
+          name: 'mediaDiaTrade',
+          type: 'number'
+        },
+        "maximoDiaTrade": {
+          name: 'maximoDiaTrade',
+          type: 'number'
+        },
         "id": {
           name: 'id',
           type: 'number'
@@ -171,6 +186,14 @@ export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
           name: 'valorMonitorias',
           type: 'ValorMonitoria[]',
           model: 'ValorMonitoria',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'execucaoSimulacaoId'
+        },
+        tradeReals: {
+          name: 'tradeReals',
+          type: 'TradeReal[]',
+          model: 'TradeReal',
           relationType: 'hasMany',
                   keyFrom: 'id',
           keyTo: 'execucaoSimulacaoId'

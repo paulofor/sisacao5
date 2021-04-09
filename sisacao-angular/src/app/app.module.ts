@@ -80,6 +80,7 @@ import { CotacaoDiarioAcaoComponent } from './cotacao-diario-acao/cotacao-diario
 import { CotacaoIntradayRecenteComponent } from './cotacao-intraday-recente/cotacao-intraday-recente.component';
 import { AcaoDetalheDiaComponent } from './acao-detalhe-dia/acao-detalhe-dia.component';
 import { ValorMonitoriaExecucaoComponent } from './valor-monitoria-execucao/valor-monitoria-execucao.component';
+import { TradeRealEditaComponent } from './trade-real-edita/trade-real-edita.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -135,7 +136,8 @@ registerLocaleData(localePt, 'pt-BR');
     CotacaoDiarioAcaoComponent,
     CotacaoIntradayRecenteComponent,
     AcaoDetalheDiaComponent,
-    ValorMonitoriaExecucaoComponent
+    ValorMonitoriaExecucaoComponent,
+    TradeRealEditaComponent
   ],
   imports: [
     BrowserModule,
@@ -198,7 +200,8 @@ registerLocaleData(localePt, 'pt-BR');
     ExperimentoParametroEditComponent,
     GrupoAcaoEditComponent,
     EscolheAcaoGrupoEditComponent,
-    TradeExecucaoSimulacaoComponent
+    TradeExecucaoSimulacaoComponent,
+    TradeRealEditaComponent
   ],
   bootstrap: [AppComponent]
 })

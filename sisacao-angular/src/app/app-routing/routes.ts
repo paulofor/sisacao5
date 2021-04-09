@@ -55,5 +55,7 @@ export const routes : Routes = [
     { path : 'execucaoSimulacaoMonitorada' , component: ExecucaoSimulacaoMonitoradaComponent },
     { path : 'execucaoSimulacaoPorExperimento/:id' , component: ExecucaoSimulacaoPorExperimentoComponent },
 
+
+
     { path: '',          redirectTo: 'home', pathMatch: 'full' }
 ]

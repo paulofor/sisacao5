@@ -150,7 +150,7 @@ public class AgregadorThreadColeta {
 	private RestricaoTempo getRestricaoTempo() {
 		Tempo restricao = new Tempo();
 		//restricao.inicializaHorarios(10, 23); // Parra testes
-		restricao.inicializaHorarios(9, 30, 17,30);
+		restricao.inicializaHorarios(9, 50, 17,50);
 		return restricao;
 	}
 }

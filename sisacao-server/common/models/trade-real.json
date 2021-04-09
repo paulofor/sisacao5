@@ -1,0 +1,71 @@
+{
+  "name": "TradeReal",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ticker": {
+      "type": "string"
+    },
+    "precoEntrada": {
+      "type": "number"
+    },
+    "precoSaida": {
+      "type": "number"
+    },
+    "dataNumEntrada": {
+      "type": "number"
+    },
+    "dataNumSaida": {
+      "type": "number"
+    },
+    "quantidade": {
+      "type": "number"
+    },
+    "valorEntrada": {
+      "type": "number"
+    },
+    "valorSaida": {
+      "type": "number"
+    },
+    "custoEntrada": {
+      "type": "number"
+    },
+    "custoSaida": {
+      "type": "number"
+    },
+    "fracionario": {
+      "type": "number"
+    },
+    "precoTarget": {
+      "type": "number"
+    },
+    "valorTarget": {
+      "type": "number"
+    },
+    "precoStop": {
+      "type": "number"
+    },
+    "valorStop": {
+      "type": "number"
+    },
+    "posicaoAtual": {
+      "type": "number"
+    },
+    "lucroPrejuizo": {
+      "type": "number"
+    },
+    "dataEntrada": {
+      "type": "date"
+    },
+    "dataSaida": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

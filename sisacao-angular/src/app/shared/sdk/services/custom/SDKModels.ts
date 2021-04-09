@@ -30,6 +30,8 @@ import { ValorParametro } from '../../models/ValorParametro';
 import { ExecucaoSimulacao } from '../../models/ExecucaoSimulacao';
 import { Trade } from '../../models/Trade';
 import { ValorMonitoria } from '../../models/ValorMonitoria';
+import { TradeReal } from '../../models/TradeReal';
+import { PeriodoExperimento } from '../../models/PeriodoExperimento';
 
 export interface Models { [name: string]: any }
 
@@ -67,6 +69,8 @@ export class SDKModels {
     ExecucaoSimulacao: ExecucaoSimulacao,
     Trade: Trade,
     ValorMonitoria: ValorMonitoria,
+    TradeReal: TradeReal,
+    PeriodoExperimento: PeriodoExperimento,
     
   };
 

@@ -11,6 +11,7 @@ export interface DiaPregaoInterface {
   "mes"?: number;
   "ano"?: number;
   "dataStr"?: string;
+  "data"?: Date;
   cotacaoIntradayAcaos?: CotacaoIntradayAcao[];
   cotacaoIntradayMercadorias?: CotacaoIntradayMercadoria[];
   cotacaoDiarioAcaos?: CotacaoDiarioAcao[];
@@ -21,6 +22,7 @@ export class DiaPregao implements DiaPregaoInterface {
   "mes": number;
   "ano": number;
   "dataStr": string;
+  "data": Date;
   cotacaoIntradayAcaos: CotacaoIntradayAcao[];
   cotacaoIntradayMercadorias: CotacaoIntradayMercadoria[];
   cotacaoDiarioAcaos: CotacaoDiarioAcao[];
@@ -72,6 +74,10 @@ export class DiaPregao implements DiaPregaoInterface {
         "dataStr": {
           name: 'dataStr',
           type: 'string'
+        },
+        "data": {
+          name: 'data',
+          type: 'Date'
         },
       },
       relations: {

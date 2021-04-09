@@ -1,0 +1,26 @@
+{
+  "name": "PeriodoExperimento",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "dataStrInicial": {
+      "type": "string"
+    },
+    "dataStrFinal": {
+      "type": "string"
+    },
+    "quantidadeMes": {
+      "type": "number"
+    },
+    "titulo": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

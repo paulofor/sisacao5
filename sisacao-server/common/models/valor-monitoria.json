@@ -29,6 +29,9 @@
     },
     "pontoEntrada": {
       "type": "number"
+    },
+    "quantidadeDiaTrade": {
+      "type": "number"
     }
   },
   "validations": [],
