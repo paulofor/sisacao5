@@ -1,6 +1,7 @@
 <div class="dgc-painel">
   <div class="dgc-painel-header">
-    <span>Monitoradas</span>  
+    <span>Monitoradas</span> 
+    <span *ngIf="totalExposicao" class="dgc-direita">Exposição: {{ totalExposicao | number : '1.2-2'}}</span> 
   </div>
   <div class="dgc-painel-principal" *ngIf="listaBase">
     <div class="dgc-card" *ngFor="let item of listaBase" >

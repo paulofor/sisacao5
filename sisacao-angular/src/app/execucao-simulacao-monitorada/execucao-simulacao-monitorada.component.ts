@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Subscription, interval } from 'rxjs';
 import { BaseListComponent } from '../base-component/base-list-component';
-import { CotacaoIntradayAcao, CotacaoIntradayAcaoApi, ExecucaoSimulacao, ExecucaoSimulacaoApi } from '../shared/sdk';
+import { CotacaoIntradayAcao, CotacaoIntradayAcaoApi, ExecucaoSimulacao, ExecucaoSimulacaoApi, OrdemCompraApi } from '../shared/sdk';
 import { TradeExecucaoSimulacaoComponent } from '../trade-execucao-simulacao/trade-execucao-simulacao.component';
 import { TradeRealEditaComponent } from '../trade-real-edita/trade-real-edita.component';
 
@@ -16,9 +16,10 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
   private updateSubscription: Subscription;
   private PERCENTUAL_AVISO = 1.5;
   private CORRETAGEM_ENTRADA_SAIDA = 11;
+  private totalExposicao;
 
   constructor(protected srv:ExecucaoSimulacaoApi, private srvCotacao: CotacaoIntradayAcaoApi,
-    protected dialog: MatDialog) {
+    protected dialog: MatDialog, private srvOrdem: OrdemCompraApi) {
     super(dialog, srv)
   }
 
@@ -44,11 +45,19 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
 
   posCarregaLista() {
     this.carregaPrecoAtual();
+    this.carregaExposicao();
     this.updateSubscription = interval(60000)
       .subscribe((val) => { 
         this.carregaPrecoAtual()
       });
     
+  }
+
+  carregaExposicao() {
+    this.srvOrdem.TotalExposicaoGeral()
+      .subscribe((result) => {
+        this.totalExposicao = result.valor;
+      })
   }
 
   telaCompra(item:ExecucaoSimulacao) {

@@ -31,5 +31,6 @@ export * from './Trade';
 export * from './ValorMonitoria';
 export * from './TradeReal';
 export * from './PeriodoExperimento';
+export * from './OrdemCompra';
 export * from './BaseModels';
 export * from './FireLoopRef';

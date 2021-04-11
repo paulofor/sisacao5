@@ -62,10 +62,60 @@
     },
     "dataSaida": {
       "type": "date"
+    },
+    "valorExposicao": {
+      "type": "number"
+    },
+    "lucroAlvo": {
+      "type": "number"
     }
   },
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {}
+  "methods": {
+    "CalculaEstimativa": {
+      "accepts": [
+        {
+          "arg": "idTrade",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/calculaEstimativa",
+          "verb": "post"
+        }
+      ]
+    },
+    "TotalExposicao": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "valor",
+          "type": "number",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/totalExposicao",
+          "verb": "get"
+        }
+      ]
+    }
+  }
 }

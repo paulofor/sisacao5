@@ -1,0 +1,32 @@
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+      <span>Trades</span>
+      <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita()">novo</button>
+  </div>
+  <div *ngIf="listaBase">
+      <div class="dgc-card" *ngFor="let item of listaBase">
+          <div class="dgc-card-header">
+              <span>{{item.ticker}}</span>
+          </div>
+          <div class="dgc-card-detalhe">
+              <div>Entrada</div>
+              <div>Preço: {{item.precoEntrada}}</div>
+              <div>Quantidade: {{item.quantidade}}</div>
+              <div>Valor Compra: </div>
+              <div>Custo Compra: {{item.custoEntrada}}</div>
+              <div>Data Compra: {{item.dataEntrada | date : 'dd-MM-yyyy' : 'UTC'}}</div>
+          </div>
+          <div>
+              <div>Stop: {{item.precoStop | number: '1.2-2'}}</div>
+              <div>Target: {{item.precoTarget | number: '1.2-2'}}</div>
+              <div>Exposição: {{item.valorExposicao | number: '1.2-2' }}</div>
+              <div>Alvo: {{ item.lucroAlvo | number: '1.2-2' }}</div>
+           </div>
+
+          <div class="dgc-card-comandos">
+              <button class="btn-primary btn-sm btn" >Calcular</button>
+              <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar</button>
+          </div>
+      </div>
+  </div>
+</div>

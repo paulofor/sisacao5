@@ -1,4 +1,4 @@
-<h2 *ngIf="item" mat-dialog-title>Compra - {{item.ticker}}</h2>
+
 
 <form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
 
@@ -21,6 +21,13 @@
       <input matInput maxlength="30" #precoStop [(ngModel)]="item.precoStop" name="precoStop" placeholder="Preço Stop (formato: 9.99)" autocomplete="off" />
     </mat-form-field>
 
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="30" #custoEntrada [(ngModel)]="item.custoEntrada" name="custoEntrada" placeholder="Custo Total Entrada (formato: 9.99)" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="30" #dataEntrada [(ngModel)]="item.dataEntrada" name="dataEntrada" placeholder="Data Entrada (formato: 9.99)" autocomplete="off" />
+    </mat-form-field>
 
   </mat-dialog-content>
 

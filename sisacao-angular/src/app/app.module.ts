@@ -33,8 +33,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatTableModule} from '@angular/material/table';
-import { MatFormFieldModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatCheckbox, MatCheckboxModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatCheckbox, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
+//import { MatMomentDateModule } from "@angular/material-moment-adapter";
 //import { NgxImgModule } from 'ngx-img';
 import { FileDropModule } from 'ngx-file-drop';
 //import { UploadModule } from './upload/upload.module';
@@ -81,6 +82,9 @@ import { CotacaoIntradayRecenteComponent } from './cotacao-intraday-recente/cota
 import { AcaoDetalheDiaComponent } from './acao-detalhe-dia/acao-detalhe-dia.component';
 import { ValorMonitoriaExecucaoComponent } from './valor-monitoria-execucao/valor-monitoria-execucao.component';
 import { TradeRealEditaComponent } from './trade-real-edita/trade-real-edita.component';
+import { TradeRealListaComponent } from './trade-real-lista/trade-real-lista.component';
+import { TradeRealListaEditComponent } from './trade-real-lista-edit/trade-real-lista-edit.component';
+import { OrdemCompraEditaComponent } from './ordem-compra-edita/ordem-compra-edita.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -137,7 +141,10 @@ registerLocaleData(localePt, 'pt-BR');
     CotacaoIntradayRecenteComponent,
     AcaoDetalheDiaComponent,
     ValorMonitoriaExecucaoComponent,
-    TradeRealEditaComponent
+    TradeRealEditaComponent,
+    TradeRealListaComponent,
+    TradeRealListaEditComponent,
+    OrdemCompraEditaComponent
   ],
   imports: [
     BrowserModule,
@@ -167,7 +174,8 @@ registerLocaleData(localePt, 'pt-BR');
     ReactiveFormsModule,
     MatCheckboxModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDatepickerModule,
   ],
   providers: [
     AtivoAcaoApi,
@@ -180,6 +188,8 @@ registerLocaleData(localePt, 'pt-BR');
     SDKModels,
     LoopBackAuth,
     InternalStorage,
+    MatNativeDateModule,
+    //MatMomentDateModule,
     { provide: LOCALE_ID, useValue: 'pt-BR' } 
 
   ],
@@ -201,7 +211,8 @@ registerLocaleData(localePt, 'pt-BR');
     GrupoAcaoEditComponent,
     EscolheAcaoGrupoEditComponent,
     TradeExecucaoSimulacaoComponent,
-    TradeRealEditaComponent
+    TradeRealEditaComponent,
+    TradeRealListaEditComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -32,6 +32,7 @@ import { Trade } from '../../models/Trade';
 import { ValorMonitoria } from '../../models/ValorMonitoria';
 import { TradeReal } from '../../models/TradeReal';
 import { PeriodoExperimento } from '../../models/PeriodoExperimento';
+import { OrdemCompra } from '../../models/OrdemCompra';
 
 export interface Models { [name: string]: any }
 
@@ -71,6 +72,7 @@ export class SDKModels {
     ValorMonitoria: ValorMonitoria,
     TradeReal: TradeReal,
     PeriodoExperimento: PeriodoExperimento,
+    OrdemCompra: OrdemCompra,
     
   };
 

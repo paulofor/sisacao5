@@ -158,5 +158,9 @@
   "PeriodoExperimento": {
     "dataSource": "mysqlDS",
     "public": true
+  },
+  "OrdemCompra": {
+    "dataSource": "mysqlDS",
+    "public": true
   }
 }
