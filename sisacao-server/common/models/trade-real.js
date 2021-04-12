@@ -5,6 +5,26 @@ module.exports = function(Tradereal) {
 
     let CUSTO_OPERACAO = 11;
 
+
+
+    /**
+    * 
+    * @param {number} idTrade 
+    * @param {Function(Error, object)} callback
+    */
+    Tradereal.CalculaSaida = function(idTrade, callback) {
+        let sql1 = "update TradeReal " +
+            " set lucroPrejuizo = custoSaida - custoEntrada , " +
+            " percentual = ((precoSaida - precoEntrada) / precoEntrada) * 100, " +
+            " custoTotal = (valorSaida - valorEntrada) - (custoSaida - custoEntrada) " +
+            " where id = " + idTrade;
+        let ds = Tradereal.dataSource;
+        ds.connector.query(sql1,(err,result) => {
+            callback(err,result);
+        });
+    };
+  
+
     /**
     * 
     * @param {number} idTrade 

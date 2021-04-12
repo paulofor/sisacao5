@@ -26,6 +26,9 @@
     },
     "posicaoExecucao": {
       "type": "number"
+    },
+    "permiteEdicao": {
+      "type": "number"
     }
   },
   "validations": [],

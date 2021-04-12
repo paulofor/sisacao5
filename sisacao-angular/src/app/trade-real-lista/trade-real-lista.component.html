@@ -16,12 +16,18 @@
               <div>Custo Compra: {{item.custoEntrada}}</div>
               <div>Data Compra: {{item.dataEntrada | date : 'dd-MM-yyyy' : 'UTC'}}</div>
           </div>
-          <div>
+          <div *ngIf="(item.posicaoAtual==1)">
               <div>Stop: {{item.precoStop | number: '1.2-2'}}</div>
               <div>Target: {{item.precoTarget | number: '1.2-2'}}</div>
               <div>Exposição: {{item.valorExposicao | number: '1.2-2' }}</div>
               <div>Alvo: {{ item.lucroAlvo | number: '1.2-2' }}</div>
-           </div>
+          </div>
+          <div *ngIf="(item.posicaoAtual==0)">
+            <div>Saida: {{item.precoSaida | number: '1.2-2'}}</div>
+            <div>Lucro/Prejuizo: {{item.lucroPrejuizo | number: '1.2-2'}}</div>
+            <div>Percentual: {{item.percentual | number: '1.1-1' }}</div>
+            <div>Custo: {{ item.custoTotal | number: '1.2-2' }}</div>
+          </div>
 
           <div class="dgc-card-comandos">
               <button class="btn-primary btn-sm btn" >Calcular</button>

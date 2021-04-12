@@ -212,7 +212,8 @@ registerLocaleData(localePt, 'pt-BR');
     EscolheAcaoGrupoEditComponent,
     TradeExecucaoSimulacaoComponent,
     TradeRealEditaComponent,
-    TradeRealListaEditComponent
+    TradeRealListaEditComponent,
+    OrdemCompraEditaComponent
   ],
   bootstrap: [AppComponent]
 })

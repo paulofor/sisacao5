@@ -23,6 +23,9 @@ export interface TradeRealInterface {
   "dataSaida"?: Date;
   "valorExposicao"?: number;
   "lucroAlvo"?: number;
+  "percentual"?: number;
+  "dias"?: number;
+  "custoTotal"?: number;
   "id"?: number;
   "execucaoSimulacaoId"?: number;
 }
@@ -49,6 +52,9 @@ export class TradeReal implements TradeRealInterface {
   "dataSaida": Date;
   "valorExposicao": number;
   "lucroAlvo": number;
+  "percentual": number;
+  "dias": number;
+  "custoTotal": number;
   "id": number;
   "execucaoSimulacaoId": number;
   constructor(data?: TradeRealInterface) {
@@ -166,6 +172,18 @@ export class TradeReal implements TradeRealInterface {
         },
         "lucroAlvo": {
           name: 'lucroAlvo',
+          type: 'number'
+        },
+        "percentual": {
+          name: 'percentual',
+          type: 'number'
+        },
+        "dias": {
+          name: 'dias',
+          type: 'number'
+        },
+        "custoTotal": {
+          name: 'custoTotal',
           type: 'number'
         },
         "id": {

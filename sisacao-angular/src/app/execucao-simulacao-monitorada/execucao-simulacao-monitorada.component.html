@@ -61,12 +61,12 @@
       <div class="dgc-card-detalhe">
         <span>{{item.regraSimulacao.nomeClasse}}</span>
       </div>
-      <div clas="dgc-card-detalhe">
-        <a class="dgc-direita dgc-link" routerLink="/valorMonitoriaExecucao/{{item.id}}">acompanhamento</a>
-      </div>
-      <div>
-        <a class="dgc-link" (click)="telaCompra(item)">comprar</a>
-      </div>
+
+      <div class="dgc-card-comandos">
+        <button class="btn btn-primary btn-sm dgc-botao-comando" (click)="telaCompra(item)">Trade</button>
+        <button class="btn btn-primary btn-sm dgc-botao-comando" (click)="telaOrdem(item)">Ordem</button>
+        <button class="btn btn-primary btn-sm dgc-botao-comando" routerLink="/valorMonitoriaExecucao/{{item.id}}">Acomp.</button>
+     </div> 
     </div>
   </div>
 </div>

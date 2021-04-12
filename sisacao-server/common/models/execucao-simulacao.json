@@ -38,6 +38,9 @@
     },
     "maximoDiaTrade": {
       "type": "number"
+    },
+    "favorito": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -70,6 +73,16 @@
     "tradeReals": {
       "type": "hasMany",
       "model": "TradeReal",
+      "foreignKey": ""
+    },
+    "ordemCompras": {
+      "type": "hasMany",
+      "model": "OrdemCompra",
+      "foreignKey": ""
+    },
+    "periodoExperimento": {
+      "type": "belongsTo",
+      "model": "PeriodoExperimento",
       "foreignKey": ""
     }
   },

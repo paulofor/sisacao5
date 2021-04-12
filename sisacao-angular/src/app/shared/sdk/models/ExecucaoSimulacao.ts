@@ -5,7 +5,8 @@ import {
   AtivoAcao,
   Trade,
   ValorMonitoria,
-  TradeReal
+  TradeReal,
+  OrdemCompra
 } from '../index';
 
 declare var Object: any;
@@ -31,6 +32,7 @@ export interface ExecucaoSimulacaoInterface {
   trades?: Trade[];
   valorMonitorias?: ValorMonitoria[];
   tradeReals?: TradeReal[];
+  ordemCompras?: OrdemCompra[];
 }
 
 export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
@@ -55,6 +57,7 @@ export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
   trades: Trade[];
   valorMonitorias: ValorMonitoria[];
   tradeReals: TradeReal[];
+  ordemCompras: OrdemCompra[];
   constructor(data?: ExecucaoSimulacaoInterface) {
     Object.assign(this, data);
   }
@@ -194,6 +197,14 @@ export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
           name: 'tradeReals',
           type: 'TradeReal[]',
           model: 'TradeReal',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'execucaoSimulacaoId'
+        },
+        ordemCompras: {
+          name: 'ordemCompras',
+          type: 'OrdemCompra[]',
+          model: 'OrdemCompra',
           relationType: 'hasMany',
                   keyFrom: 'id',
           keyTo: 'execucaoSimulacaoId'

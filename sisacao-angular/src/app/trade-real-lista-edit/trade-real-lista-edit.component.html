@@ -29,6 +29,20 @@
       <input matInput maxlength="30" #dataEntrada [(ngModel)]="item.dataEntrada" name="dataEntrada" placeholder="Data Entrada (formato: 9.99)" autocomplete="off" />
     </mat-form-field>
 
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="30" #precoSaida [(ngModel)]="item.precoSaida" name="precoSaida" placeholder="Preço Veenda (formato: 9.99)" autocomplete="off" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="30" #dataSaida [(ngModel)]="item.dataSaida" name="dataSaida" placeholder="Data Saida (formato: aaaa-mm-dd)" autocomplete="off" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="3" #posicaoAtual [(ngModel)]="item.posicaoAtual" name="posicaoAtual" placeholder="Posição" autocomplete="off" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="30" #custoSaida [(ngModel)]="item.custoSaida" name="custoSaida" placeholder="Custo Total Saida (formato: 9.99)" autocomplete="off" />
+    </mat-form-field>
+
   </mat-dialog-content>
 
   <mat-dialog-actions>

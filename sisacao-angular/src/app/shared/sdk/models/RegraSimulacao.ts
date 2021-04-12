@@ -9,6 +9,7 @@ export interface RegraSimulacaoInterface {
   "nomeClasse"?: string;
   "descricao"?: string;
   "dataCriacao"?: string;
+  "usada"?: number;
   "id"?: number;
   parametroRegras?: ParametroRegra[];
 }
@@ -18,6 +19,7 @@ export class RegraSimulacao implements RegraSimulacaoInterface {
   "nomeClasse": string;
   "descricao": string;
   "dataCriacao": string;
+  "usada": number;
   "id": number;
   parametroRegras: ParametroRegra[];
   constructor(data?: RegraSimulacaoInterface) {
@@ -68,6 +70,10 @@ export class RegraSimulacao implements RegraSimulacaoInterface {
         "dataCriacao": {
           name: 'dataCriacao',
           type: 'string'
+        },
+        "usada": {
+          name: 'usada',
+          type: 'number'
         },
         "id": {
           name: 'id',

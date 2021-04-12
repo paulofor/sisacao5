@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Subscription, interval } from 'rxjs';
 import { BaseListComponent } from '../base-component/base-list-component';
+import { OrdemCompraEditaComponent } from '../ordem-compra-edita/ordem-compra-edita.component';
 import { CotacaoIntradayAcao, CotacaoIntradayAcaoApi, ExecucaoSimulacao, ExecucaoSimulacaoApi, OrdemCompraApi } from '../shared/sdk';
 import { TradeExecucaoSimulacaoComponent } from '../trade-execucao-simulacao/trade-execucao-simulacao.component';
 import { TradeRealEditaComponent } from '../trade-real-edita/trade-real-edita.component';
@@ -62,6 +63,16 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
 
   telaCompra(item:ExecucaoSimulacao) {
     this.dialog.open(TradeRealEditaComponent, {
+      width: '900px',
+      data: {
+          origem: item
+      }
+    });
+  }
+  telaOrdem(item:ExecucaoSimulacao) {
+    item['precoStop'] = 
+    item['precoTarget'] = 
+    this.dialog.open(OrdemCompraEditaComponent, {
       width: '900px',
       data: {
           origem: item

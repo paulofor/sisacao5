@@ -10,6 +10,7 @@ export interface OrdemCompraInterface {
   "lucroAlvo"?: number;
   "aberta"?: number;
   "id"?: number;
+  "execucaoSimulacaoId"?: number;
 }
 
 export class OrdemCompra implements OrdemCompraInterface {
@@ -21,6 +22,7 @@ export class OrdemCompra implements OrdemCompraInterface {
   "lucroAlvo": number;
   "aberta": number;
   "id": number;
+  "execucaoSimulacaoId": number;
   constructor(data?: OrdemCompraInterface) {
     Object.assign(this, data);
   }
@@ -84,6 +86,10 @@ export class OrdemCompra implements OrdemCompraInterface {
         },
         "id": {
           name: 'id',
+          type: 'number'
+        },
+        "execucaoSimulacaoId": {
+          name: 'execucaoSimulacaoId',
           type: 'number'
         },
       },
