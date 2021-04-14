@@ -4,6 +4,15 @@ module.exports = function (Ordemcompra) {
 
 
     /**
+    * Limpa todas a ordens do dia.
+    * @param {Function(Error, object)} callback
+    */
+    Ordemcompra.LimpaGeral = function (callback) {
+        let sql = "delete from OrdemCompra";
+        let ds = Ordemcompra.dataSource;
+        ds.connector.query(sql,callback);
+    };
+    /**
     * 
     * @param {Function(Error, number)} callback
     */

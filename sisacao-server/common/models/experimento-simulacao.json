@@ -67,6 +67,11 @@
       "type": "hasMany",
       "model": "ExecucaoSimulacao",
       "foreignKey": ""
+    },
+    "experimentoSimulacaoPeriodos": {
+      "type": "hasMany",
+      "model": "ExperimentoSimulacaoPeriodo",
+      "foreignKey": ""
     }
   },
   "acls": [],
@@ -222,6 +227,37 @@
       "http": [
         {
           "path": "/gerarCombinacoesBloco",
+          "verb": "post"
+        }
+      ]
+    },
+    "InicioExecucao": {
+      "accepts": [
+        {
+          "arg": "idExperimento",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "idPeriodo",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": false,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/inicioExecucao",
           "verb": "post"
         }
       ]

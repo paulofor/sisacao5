@@ -1,5 +1,7 @@
 'use strict';
 
+var app = require('../../server/server');
+
 module.exports = function (Ativoacao) {
 
 
@@ -83,6 +85,10 @@ module.exports = function (Ativoacao) {
                     ") "; 
         let sqlSpread1 = "update AtivoAcao " +
                     " set spread1Mes = ((max1Mes - min1Mes) / max1Mes) * 100;";
+
+        app.models.OrdemCompra.LimpaGeral((err,result) => {
+
+        });
 
         var ds = Ativoacao.dataSource;
         ds.connector.query(sqlFechameentoAtual, (err1, result1) => {

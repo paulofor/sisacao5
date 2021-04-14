@@ -9,7 +9,20 @@ module.exports = function(Experimentosimulacao) {
 
 
 
-
+    /**
+    * 
+    * @param {number} idExperimento 
+    * @param {number} idPeriodo 
+    * @param {Function(Error, object)} callback
+    */
+    Experimentosimulacao.InicioExecucao = function(idExperimento, idPeriodo, callback) {
+        let sql = "update ExperimentoSimulacao set permiteEdicao = 0 " +
+            " where id = " + idExperimento;
+        let ds = Experimentosimulacao.dataSource;
+        ds.connector.query(sql, (err,result) => {
+            callback(err,result);
+        })
+    };
     
     /**
     * 

@@ -18,7 +18,7 @@ public class ExperimentoMonitoradoLoteApp {
 		
 		System.out.println("Ola Mundo - ExperimentoMonitoradoLoteApp");
 
-		int id = 803375;
+		int id = 2742622;
 		repExecucaoSimulacao.obtemMonitorarPorId(id, new ObjectCallback<ExecucaoSimulacao>() {
 
 			@Override
@@ -49,7 +49,13 @@ public class ExperimentoMonitoradoLoteApp {
 				facade.atualizaPrecoEntrada(20210330, execucao);
 				facade.atualizaPrecoEntrada(20210331, execucao);
 				facade.atualizaPrecoEntrada(20210401, execucao);
-				facade.atualizaPrecoEntrada(20210405, execucao);
+				facade.atualizaPrecoEntrada(20210406, execucao);
+				facade.atualizaPrecoEntrada(20210407, execucao);
+				facade.atualizaPrecoEntrada(20210408, execucao);
+				facade.atualizaPrecoEntrada(20210409, execucao);
+				facade.atualizaPrecoEntrada(20210412, execucao);
+				facade.atualizaPrecoEntrada(20210413, execucao);
+				facade.atualizaPrecoEntrada(20210414, execucao);
 			}
 
 			@Override

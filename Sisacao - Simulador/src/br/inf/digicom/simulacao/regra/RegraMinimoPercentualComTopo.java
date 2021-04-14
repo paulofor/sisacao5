@@ -37,7 +37,7 @@ public class RegraMinimoPercentualComTopo implements IRegraPontoEntrada{
 		this.diasTopo = ((Double) parametros.get("diasTopo")).intValue();
 		this.posicaoTopo = ((Double) parametros.get("posicaoTopo")).intValue();
 		this.percentualSeguranca = (double) parametros.get("percentualSeguranca");
-		this.percentualInferior = (double) parametros.get("percentualMinimo	");
+		this.percentualInferior = (double) parametros.get("percentualMinimo");
 		this.deslocamentoDias = ((Double) parametros.get("deslocamento")).intValue();
 	}
 

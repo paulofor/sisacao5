@@ -9,7 +9,7 @@ public class MontaExperimentoSimulacaoApp {
 	public static void main(String[] args) {
 		System.out.println("Ola Mundo - MontaExperimentoSimulacaoApp");
 
-		Long idExperimento = 14L;
+		Long idExperimento = 15L;
 		
 		ExperimentoSimulacaoFacade facade = new ExperimentoSimulacaoFacade();
 		facade.carregaExperimento(idExperimento);

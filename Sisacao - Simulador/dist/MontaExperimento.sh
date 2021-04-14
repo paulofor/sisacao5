@@ -1,3 +1,3 @@
 
-java -Xms128m -Xmx320m -jar MontaExperimentoSimulacao.jar 
+java -Xms128m -Xmx512m -jar MontaExperimentoSimulacao.jar 
 

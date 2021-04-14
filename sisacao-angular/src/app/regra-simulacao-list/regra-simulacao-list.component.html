@@ -22,7 +22,7 @@
             </table>
     
           </div>
-          <div class="dgc-card-comandos">
+          <div *ngIf="(item.permiteEdicao==1)" class="dgc-card-comandos">
             <button class="btn-primary btn-sm btn" (click)="dialogo1({'origem' : item})">Novo Parâmetro</button>
             <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar Regra</button>
           </div> 

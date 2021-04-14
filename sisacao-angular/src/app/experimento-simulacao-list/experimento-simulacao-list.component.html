@@ -26,19 +26,19 @@
                 <td width="15%">{{parametro.inicial}}</td>
                 <td width="15%">{{parametro.final}}</td>
                 <td width="15%">{{parametro.passo}}</td>
-                <td width="10%"><a (click)="dialogo1({'item' : parametro})" class="dgc-link">alterar</a></td>
+                <td width="10%"><a *ngIf="(item.permiteEdicao==1)" (click)="dialogo1({'item' : parametro})" class="dgc-link">alterar</a></td>
               </tr>
             </table>
           </div>
           
  
-          <div class="dgc-card-comandos" *ngIf="!item.dataExecucao">
+          <div class="dgc-card-comandos" *ngIf="(item.permiteEdicao==1)">
             <button class="btn-primary btn-sm btn" (click)="gerarCombinacao(item)">Gerar Combinações</button>
             <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar Experimento</button>
           </div> 
-          <div class="dgc-card-comandos" *ngIf="item.dataExecucao">
+          <div class="dgc-card-comandos" *ngIf="(item.permiteEdicao==0)">
             <button class="btn-primary btn-sm btn" [routerLink]="['/execucaoSimulacaoPorExperimento' , item.id]" >Resultados</button>
-            <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar Experimento</button>
+
           </div> 
       </div>
      

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Subscription, interval } from 'rxjs';
 import { BaseListComponent } from '../base-component/base-list-component';
+import { CUSTO_TRADE } from '../constantes/base.url';
 import { OrdemCompraEditaComponent } from '../ordem-compra-edita/ordem-compra-edita.component';
 import { CotacaoIntradayAcao, CotacaoIntradayAcaoApi, ExecucaoSimulacao, ExecucaoSimulacaoApi, OrdemCompraApi } from '../shared/sdk';
 import { TradeExecucaoSimulacaoComponent } from '../trade-execucao-simulacao/trade-execucao-simulacao.component';
@@ -16,7 +17,6 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
 
   private updateSubscription: Subscription;
   private PERCENTUAL_AVISO = 1.5;
-  private CORRETAGEM_ENTRADA_SAIDA = 11;
   private totalExposicao;
 
   constructor(protected srv:ExecucaoSimulacaoApi, private srvCotacao: CotacaoIntradayAcaoApi,
@@ -47,6 +47,7 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
   posCarregaLista() {
     this.carregaPrecoAtual();
     this.carregaExposicao();
+    this.carregaOrdem();
     this.updateSubscription = interval(60000)
       .subscribe((val) => { 
         this.carregaPrecoAtual()
@@ -54,9 +55,23 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
     
   }
 
+  carregaOrdem() {
+    this.listaBase.forEach((execucao:ExecucaoSimulacao) => {
+      this.srv.countOrdemCompras(execucao.id)
+        .subscribe((result) => {
+          execucao['qtdeOrdem'] = result.count;
+        });
+      this.srv.countTradeReals(execucao.id, {'posicaoAtual' : 1})
+        .subscribe((result) => {
+          execucao['qtdeTrade'] = result.count;
+        })
+    })
+  }
+
   carregaExposicao() {
     this.srvOrdem.TotalExposicaoGeral()
       .subscribe((result) => {
+        console.log('Exposicao: ' , result);
         this.totalExposicao = result.valor;
       })
   }
@@ -70,8 +85,11 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
     });
   }
   telaOrdem(item:ExecucaoSimulacao) {
-    item['precoStop'] = 
-    item['precoTarget'] = 
+    item['pontoSaidaLucro'] = this.pontoSaidaLucro(item);
+    item['pontoSaidaPrejuizo'] = this.pontoSaidaPrejuizo(item);
+    this.dialog.afterAllClosed.subscribe(result => {
+      this.carregaExposicao();
+    });
     this.dialog.open(OrdemCompraEditaComponent, {
       width: '900px',
       data: {
@@ -116,12 +134,12 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
   valorSaidaLucro(item:ExecucaoSimulacao) {
     let valorEntrada = item.precoEntrada * 100;
     let valorSaida = item.precoEntrada * (1+item.target) * 100;
-    return (valorSaida - valorEntrada) - this.CORRETAGEM_ENTRADA_SAIDA;
+    return (valorSaida - valorEntrada) - CUSTO_TRADE;
   }
   valorSaidaPrejuizo(item:ExecucaoSimulacao) {
     let valorEntrada = item.precoEntrada * 100;
     let valorSaida = item.precoEntrada * (1-item.stop) * 100;
-    return (valorEntrada - valorSaida) - this.CORRETAGEM_ENTRADA_SAIDA;
+    return (valorEntrada - valorSaida) - CUSTO_TRADE;
   }
 
   pontoSaidaLucro(item:ExecucaoSimulacao) {

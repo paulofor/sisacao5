@@ -24,6 +24,8 @@ import { CotacaoDiarioAcaoComponent } from '../cotacao-diario-acao/cotacao-diari
 import { AcaoDetalheDiaComponent } from '../acao-detalhe-dia/acao-detalhe-dia.component';
 import { ValorMonitoriaExecucaoComponent } from '../valor-monitoria-execucao/valor-monitoria-execucao.component';
 import { TradeRealListaComponent } from '../trade-real-lista/trade-real-lista.component';
+import { OrdemCompraListaComponent } from '../ordem-compra-lista/ordem-compra-lista.component';
+import { PeriodoExperimentoListaComponent } from '../periodo-experimento-lista/periodo-experimento-lista.component';
 
 export const routes : Routes = [
     { path: 'home' , component: HomeComponent },
@@ -57,6 +59,8 @@ export const routes : Routes = [
     { path : 'execucaoSimulacaoPorExperimento/:id' , component: ExecucaoSimulacaoPorExperimentoComponent },
 
     { path : 'tradeReal' , component: TradeRealListaComponent },
+    { path : 'ordemCompra' , component: OrdemCompraListaComponent },
+    { path : 'periodoExperimento' , component: PeriodoExperimentoListaComponent },
 
     { path: '',          redirectTo: 'home', pathMatch: 'full' }
 ]

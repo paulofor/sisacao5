@@ -162,5 +162,9 @@
   "OrdemCompra": {
     "dataSource": "mysqlDS",
     "public": true
+  },
+  "ExperimentoSimulacaoPeriodo": {
+    "dataSource": "mysqlDS",
+    "public": true
   }
 }

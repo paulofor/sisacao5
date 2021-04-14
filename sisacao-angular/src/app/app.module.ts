@@ -85,6 +85,11 @@ import { TradeRealEditaComponent } from './trade-real-edita/trade-real-edita.com
 import { TradeRealListaComponent } from './trade-real-lista/trade-real-lista.component';
 import { TradeRealListaEditComponent } from './trade-real-lista-edit/trade-real-lista-edit.component';
 import { OrdemCompraEditaComponent } from './ordem-compra-edita/ordem-compra-edita.component';
+import { OrdemCompraListaComponent } from './ordem-compra-lista/ordem-compra-lista.component';
+import { OrdemCompraListaEditaComponent } from './ordem-compra-lista-edita/ordem-compra-lista-edita.component';
+import { PeriodoExperimentoListaComponent } from './periodo-experimento-lista/periodo-experimento-lista.component';
+
+import { PeriodoExperimentoEditaComponent } from './periodo-experimento-edita/periodo-experimento-edita.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -144,7 +149,11 @@ registerLocaleData(localePt, 'pt-BR');
     TradeRealEditaComponent,
     TradeRealListaComponent,
     TradeRealListaEditComponent,
-    OrdemCompraEditaComponent
+    OrdemCompraEditaComponent,
+    OrdemCompraListaComponent,
+    OrdemCompraListaEditaComponent,
+    PeriodoExperimentoListaComponent,
+    PeriodoExperimentoEditaComponent
   ],
   imports: [
     BrowserModule,
@@ -213,7 +222,9 @@ registerLocaleData(localePt, 'pt-BR');
     TradeExecucaoSimulacaoComponent,
     TradeRealEditaComponent,
     TradeRealListaEditComponent,
-    OrdemCompraEditaComponent
+    OrdemCompraEditaComponent,
+    PeriodoExperimentoEditaComponent,
+    OrdemCompraListaEditaComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -6,6 +6,9 @@ export interface PeriodoExperimentoInterface {
   "dataStrFinal"?: string;
   "quantidadeMes"?: number;
   "titulo"?: string;
+  "permiteEditar"?: number;
+  "dataNumInicial"?: number;
+  "dataNumFinal"?: number;
   "id"?: number;
 }
 
@@ -14,6 +17,9 @@ export class PeriodoExperimento implements PeriodoExperimentoInterface {
   "dataStrFinal": string;
   "quantidadeMes": number;
   "titulo": string;
+  "permiteEditar": number;
+  "dataNumInicial": number;
+  "dataNumFinal": number;
   "id": number;
   constructor(data?: PeriodoExperimentoInterface) {
     Object.assign(this, data);
@@ -63,6 +69,18 @@ export class PeriodoExperimento implements PeriodoExperimentoInterface {
         "titulo": {
           name: 'titulo',
           type: 'string'
+        },
+        "permiteEditar": {
+          name: 'permiteEditar',
+          type: 'number'
+        },
+        "dataNumInicial": {
+          name: 'dataNumInicial',
+          type: 'number'
+        },
+        "dataNumFinal": {
+          name: 'dataNumFinal',
+          type: 'number'
         },
         "id": {
           name: 'id',

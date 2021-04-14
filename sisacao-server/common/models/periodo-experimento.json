@@ -17,6 +17,15 @@
     },
     "titulo": {
       "type": "string"
+    },
+    "permiteEditar": {
+      "type": "number"
+    },
+    "dataNumInicial" : {
+      "type" : "number"
+    },
+    "dataNumFinal" : {
+      "type" : "number"
     }
   },
   "validations": [],

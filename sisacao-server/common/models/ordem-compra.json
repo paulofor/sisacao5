@@ -91,6 +91,24 @@
           "verb": "get"
         }
       ]
+    },
+    "LimpaGeral": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "Limpa todas a ordens do dia.",
+      "http": [
+        {
+          "path": "/limpaGeral",
+          "verb": "post"
+        }
+      ]
     }
   }
 }

@@ -1,14 +1,16 @@
 <h2 *ngIf="item" mat-dialog-title>Ordem - {{item.ticker}}</h2>
 
 <div>
-  <span>Exposição</span><span>: {{exposicao | number : '1.2-2'}}</span>
+  <span>Exposição Atual</span><span>: {{exposicao | number : '1.2-2'}}</span>
 </div>
 <div>
   <span>Exposição Nova</span><span>: {{exposicaoNova | number : '1.2-2'}}</span>
 </div>
 <div>
-  <span>Preço Stop</span><span>: {{item.precoStop | number: '1.2-2'}}</span>
+  <span>Stop</span><span>: {{item.precoStop | number: '1.2-2'}}</span>
+  <span>Target</span><span>: {{item.precoTarget | number: '1.2-2'}}</span>
 </div>
+
 <div>
   <span>Lucro Operação</span><span>: {{lucroOperacao | number: '1.2-2'}}</span>
 </div>
@@ -22,7 +24,7 @@
  
    
     <mat-form-field class="example-full-width">
-      <input matInput maxlength="30" #precoEntrada [(ngModel)]="item.precoEntrada" name="precoEntrada" placeholder="Preço Compra (formato: 9.99)" autocomplete="off" />
+      <input matInput maxlength="30" #precoCompra [(ngModel)]="item.precoCompra" name="precoCompra" placeholder="Preço Compra (formato: 9.99)" autocomplete="off" />
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
@@ -35,7 +37,7 @@
   </mat-dialog-content>
 
   <mat-dialog-actions>
-    <button mat-raised-button (click)="calculaExposicao()">Calcular</button>
+    <button mat-raised-button (click)="calculaExposicao()" type="button">Calcular</button>
     <button mat-raised-button>Salvar</button>
     <button mat-raised-button mat-dialog-close>Fechar</button>
   </mat-dialog-actions>

@@ -9,6 +9,7 @@
           </div>
           <div class="dgc-card-detalhe {{classeAlerta(item)}}"> 
             <span>Preço Entrada: {{item.valorEntrada | number: '1.2-2'}} {{complementoPreco(item)}}</span>
+            <span>({{item.quantidadeDiaTrade}})</span>
           </div>
           <div class="dgc-card-detalhe"> 
             <span>Diário: {{item.minimo | number: '1.2-2'}} - {{item.maximo | number: '1.2-2'}}</span>

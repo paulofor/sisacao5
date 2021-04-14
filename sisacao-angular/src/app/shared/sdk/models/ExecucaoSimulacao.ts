@@ -6,6 +6,7 @@ import {
   Trade,
   ValorMonitoria,
   TradeReal,
+  PeriodoExperimento,
   OrdemCompra
 } from '../index';
 
@@ -22,16 +23,19 @@ export interface ExecucaoSimulacaoInterface {
   "dataNumEntrada"?: number;
   "mediaDiaTrade"?: number;
   "maximoDiaTrade"?: number;
+  "favorito"?: number;
   "id"?: number;
   "combinacaoParametroId"?: number;
   "regraSimulacaoId"?: number;
   "experimentoSimulacaoId"?: number;
+  "periodoExperimentoId"?: number;
   combinacaoParametro?: CombinacaoParametro;
   regraSimulacao?: RegraSimulacao;
   ativoAcao?: AtivoAcao;
   trades?: Trade[];
   valorMonitorias?: ValorMonitoria[];
   tradeReals?: TradeReal[];
+  periodoExperimento?: PeriodoExperimento;
   ordemCompras?: OrdemCompra[];
 }
 
@@ -47,16 +51,19 @@ export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
   "dataNumEntrada": number;
   "mediaDiaTrade": number;
   "maximoDiaTrade": number;
+  "favorito": number;
   "id": number;
   "combinacaoParametroId": number;
   "regraSimulacaoId": number;
   "experimentoSimulacaoId": number;
+  "periodoExperimentoId": number;
   combinacaoParametro: CombinacaoParametro;
   regraSimulacao: RegraSimulacao;
   ativoAcao: AtivoAcao;
   trades: Trade[];
   valorMonitorias: ValorMonitoria[];
   tradeReals: TradeReal[];
+  periodoExperimento: PeriodoExperimento;
   ordemCompras: OrdemCompra[];
   constructor(data?: ExecucaoSimulacaoInterface) {
     Object.assign(this, data);
@@ -135,6 +142,10 @@ export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
           name: 'maximoDiaTrade',
           type: 'number'
         },
+        "favorito": {
+          name: 'favorito',
+          type: 'number'
+        },
         "id": {
           name: 'id',
           type: 'number'
@@ -149,6 +160,10 @@ export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
         },
         "experimentoSimulacaoId": {
           name: 'experimentoSimulacaoId',
+          type: 'number'
+        },
+        "periodoExperimentoId": {
+          name: 'periodoExperimentoId',
           type: 'number'
         },
       },
@@ -200,6 +215,14 @@ export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
           relationType: 'hasMany',
                   keyFrom: 'id',
           keyTo: 'execucaoSimulacaoId'
+        },
+        periodoExperimento: {
+          name: 'periodoExperimento',
+          type: 'PeriodoExperimento',
+          model: 'PeriodoExperimento',
+          relationType: 'belongsTo',
+                  keyFrom: 'periodoExperimentoId',
+          keyTo: 'id'
         },
         ordemCompras: {
           name: 'ordemCompras',

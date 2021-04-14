@@ -1,0 +1,23 @@
+{
+  "name": "ExperimentoSimulacaoPeriodo",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "concluido": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "periodoExperimento": {
+      "type": "belongsTo",
+      "model": "PeriodoExperimento",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
