@@ -6,17 +6,15 @@ import {
 declare var Object: any;
 export interface ExperimentoSimulacaoPeriodoInterface {
   "concluido"?: number;
-  "id"?: number;
-  "periodoExperimentoId"?: number;
   "experimentoSimulacaoId"?: number;
+  "periodoExperimentoId"?: number;
   periodoExperimento?: PeriodoExperimento;
 }
 
 export class ExperimentoSimulacaoPeriodo implements ExperimentoSimulacaoPeriodoInterface {
   "concluido": number;
-  "id": number;
-  "periodoExperimentoId": number;
   "experimentoSimulacaoId": number;
+  "periodoExperimentoId": number;
   periodoExperimento: PeriodoExperimento;
   constructor(data?: ExperimentoSimulacaoPeriodoInterface) {
     Object.assign(this, data);
@@ -49,22 +47,18 @@ export class ExperimentoSimulacaoPeriodo implements ExperimentoSimulacaoPeriodoI
       name: 'ExperimentoSimulacaoPeriodo',
       plural: 'ExperimentoSimulacaoPeriodos',
       path: 'ExperimentoSimulacaoPeriodos',
-      idName: 'id',
+      idName: 'experimentoSimulacaoId',
       properties: {
         "concluido": {
           name: 'concluido',
           type: 'number'
         },
-        "id": {
-          name: 'id',
+        "experimentoSimulacaoId": {
+          name: 'experimentoSimulacaoId',
           type: 'number'
         },
         "periodoExperimentoId": {
           name: 'periodoExperimentoId',
-          type: 'number'
-        },
-        "experimentoSimulacaoId": {
-          name: 'experimentoSimulacaoId',
           type: 'number'
         },
       },

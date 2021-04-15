@@ -17,7 +17,7 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
 
   private updateSubscription: Subscription;
   private PERCENTUAL_AVISO = 1.5;
-  private totalExposicao;
+  public totalExposicao;
 
   constructor(protected srv:ExecucaoSimulacaoApi, private srvCotacao: CotacaoIntradayAcaoApi,
     protected dialog: MatDialog, private srvOrdem: OrdemCompraApi) {

@@ -15,7 +15,6 @@ module.exports = function(Relgrupoacao) {
         var sqlQuantidade = "update GrupoAcao " +
                         " set quantidade = (select count(*) from RelGrupoAcao where GrupoAcao.id = RelGrupoAcao.grupoAcaoId) ";
         var sqlDelete = "delete from RelGrupoAcao where grupoAcaoId = " + idGrupo;
-        console.log('sql: ', sqlDelete);
         var ds = Relgrupoacao.dataSource;
         ds.connector.query(sqlDelete, (err1, result1) => {
             //console.log('Retorno 1: ', result1, " - Erro: ",)

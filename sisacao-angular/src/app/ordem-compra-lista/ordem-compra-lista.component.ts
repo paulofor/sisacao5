@@ -13,7 +13,7 @@ import { CotacaoIntradayAcao, CotacaoIntradayAcaoApi, OrdemCompra, OrdemCompraAp
 export class OrdemCompraListaComponent extends BaseListComponent{
 
   private updateSubscription: Subscription;
-  private totalExposicao;
+  public totalExposicao;
 
   constructor(protected dialog: MatDialog, protected srv:OrdemCompraApi, private srvCotacao: CotacaoIntradayAcaoApi) { 
     super(dialog,srv)

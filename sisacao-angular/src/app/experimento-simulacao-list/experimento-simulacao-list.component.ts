@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { BaseListComponent } from '../base-component/base-list-component';
+import { EscolhePeriodoParaExperimentoComponent } from '../escolhe-periodo-para-experimento/escolhe-periodo-para-experimento.component';
 import { ExperimentoParametroEditComponent } from '../experimento-parametro-edit/experimento-parametro-edit.component';
 import { ExperimentoSimulacaoEditComponent } from '../experimento-simulacao-edit/experimento-simulacao-edit.component';
 import { ExperimentoAcaoApi, ExperimentoSimulacao, ExperimentoSimulacaoApi } from '../shared/sdk';
@@ -26,13 +27,17 @@ export class ExperimentoSimulacaoListComponent  extends BaseListComponent {
       'include' : [
         { 'relation' : 'regraSimulacao' } ,
         { 'relation' : 'experimentoParametros' , 'scope' : {'include' : 'parametroRegra'}},
-        { 'relation' : 'grupoAcao'}
+        { 'relation' : 'grupoAcao'},
+        { 'relation' : 'experimentoSimulacaoPeriodos' , 'scope' : {'include' : 'periodoExperimento'} }
       ] 
     }
   }
 
   getDialogo1() {
     return ExperimentoParametroEditComponent;
+  }
+  getDialogo2() {
+    return EscolhePeriodoParaExperimentoComponent;
   }
 
   gerarCombinacao(item) {

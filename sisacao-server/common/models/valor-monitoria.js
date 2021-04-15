@@ -25,7 +25,7 @@ module.exports = function(Valormonitoria) {
                 let valorEntrada = 0;
                 let contaDia = 0;
                 for (let i=0;i<lista.length;i++) {
-                    //console.log('Tratando ' + lista[i].ticker + ' [' + lista[i].diaNumEntrada + ']');
+                    console.log('Tratando ' + lista[i].ticker + ' [' + lista[i].diaNumEntrada + ']');
                     lista[i].situacao = 'fora';
                     if (comprado==0) {
                         contaDia = 0;
@@ -77,7 +77,7 @@ module.exports = function(Valormonitoria) {
             " where id = " + valorMonitoria.id;
         let ds = Valormonitoria.dataSource;
         ds.connector.query(sql, (err, resultado) => {
-            //console.log('sql:' , sql);
+            console.log('sql:' , sql);
             //console.log('Erro: ' , err);
         })
     }

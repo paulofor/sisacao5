@@ -21,7 +21,7 @@ export class ExecucaoSimulacaoMelhoresResultadoComponent implements OnInit {
   carregaMelhores() {
     let filtro = {
       'order' : ['resultado desc','ticker asc'],
-      'limit' : 140,
+      'limit' : 200,
       'include' : {'relation' : 'combinacaoParametro' , 'scope' : {'include' : 'regraSimulacao'}}
     }
     this.srv.find(filtro)

@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { BaseEditComponent } from '../base-component/base-edit-component';
 import { BaseListComponent } from '../base-component/base-list-component';
+import { BaseSelecionaEditComponent } from '../base-component/base-seleciona-component';
 import { AtivoAcao, AtivoAcaoApi, BaseLoopBackApi, RelGrupoAcao, RelGrupoAcaoApi } from '../shared/sdk';
 
 @Component({
@@ -9,63 +10,42 @@ import { AtivoAcao, AtivoAcaoApi, BaseLoopBackApi, RelGrupoAcao, RelGrupoAcaoApi
   templateUrl: './escolhe-acao-grupo-edit.component.html',
   styleUrls: ['./escolhe-acao-grupo-edit.component.css']
 })
-export class EscolheAcaoGrupoEditComponent extends BaseEditComponent{
+export class EscolheAcaoGrupoEditComponent extends BaseSelecionaEditComponent{
 
-  listaAcao:AtivoAcao[];
+  getNomeFuncaoAtualizacaoRelacionamento(): string {
+    return "AtualizaPorGrupoAcao"
+  }
+  criaRelacionamento() {
+    return new RelGrupoAcao();
+  }
+  getNomeChaveItem() {
+    return "ticker";
+  }
+  getNomeChaveItemNoRelacionamento() {
+    return "ticker";
+  }
+  getNomeChaveOrigemNoRelacionamento() {
+    return "grupoAcaoId";
+  }
+
+
+  getNomePropriedadeRel() {
+    return "relGrupoAcaos";
+  }
+
+  
 
 
    constructor(protected dialogRef: MatDialogRef<EscolheAcaoGrupoEditComponent>
-    , @Inject(MAT_DIALOG_DATA) protected data: any, protected servico: RelGrupoAcaoApi, private srvAtivo: AtivoAcaoApi
+    , @Inject(MAT_DIALOG_DATA) protected data: any, protected servico: RelGrupoAcaoApi, protected srvAtivo: AtivoAcaoApi
   ) {
-    super(dialogRef,data,servico)
+    super(dialogRef,data,srvAtivo,servico)
   }
 
-  onSubmit() {
-    let listaAcaoEnvio:RelGrupoAcao[] = [];
-    
-    for(let i=0;i<this.listaAcao.length;i++) {
-      if (this.listaAcao[i].relGrupoAcaos.length>0) {
-        console.log(this.listaAcao[i].ticker);
-        listaAcaoEnvio.push(this.listaAcao[i].relGrupoAcaos[0]);
-      }
-    }
-    this.servico.AtualizaPorGrupoAcao(this.origem.id, listaAcaoEnvio)
-      .subscribe((resultado) => {
-        console.log('resultado: ' , resultado);
-        this.closeDialog();
-      })
-  }
-  
-  getCheck(acao:AtivoAcao) : boolean {
-    return (acao.relGrupoAcaos.length>0);
-  }
-  onChange(event, index, acao : AtivoAcao) {
-
-    if (event.checked) {
-      let relNovo:RelGrupoAcao = new RelGrupoAcao();
-      relNovo.grupoAcaoId = this.origem.id;
-      relNovo.ticker = acao.ticker;
-      acao.relGrupoAcaos.push(relNovo);
-    } else {
-      acao.relGrupoAcaos = [];
-    }
-  }
  
-  posItem() {
-    /* Modelo copiado  */
-    /*
+  getFiltro() {
     let filtro = {
-      "where" : { "ativo" : 1 },
-      "order" : "ordenacao ASC",
-      "include": {
-          "relation": "processoNegocioEtapaProjetos",
-          "scope": {
-              "where": { "processoNegocioId": idProcessoNegocio }
-          }
-      }
-    }
-    */
-    let filtro = {
+      "counts" : "relGrupoAcaos",
       "order" : "mediaNegocio3Mes DESC",
       "include" : {
         "relation" : "relGrupoAcaos",
@@ -74,10 +54,8 @@ export class EscolheAcaoGrupoEditComponent extends BaseEditComponent{
         }
       }
     }
-    this.srvAtivo.find(filtro)
-      .subscribe((result: AtivoAcao[]) => {
-        this.listaAcao = result;
-        console.log('listaAcao', this.listaAcao);
-      })
+    return filtro;
   }
+ 
+ 
 }

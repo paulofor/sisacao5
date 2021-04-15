@@ -90,6 +90,7 @@ import { OrdemCompraListaEditaComponent } from './ordem-compra-lista-edita/ordem
 import { PeriodoExperimentoListaComponent } from './periodo-experimento-lista/periodo-experimento-lista.component';
 
 import { PeriodoExperimentoEditaComponent } from './periodo-experimento-edita/periodo-experimento-edita.component';
+import { EscolhePeriodoParaExperimentoComponent } from './escolhe-periodo-para-experimento/escolhe-periodo-para-experimento.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -153,7 +154,8 @@ registerLocaleData(localePt, 'pt-BR');
     OrdemCompraListaComponent,
     OrdemCompraListaEditaComponent,
     PeriodoExperimentoListaComponent,
-    PeriodoExperimentoEditaComponent
+    PeriodoExperimentoEditaComponent,
+    EscolhePeriodoParaExperimentoComponent
   ],
   imports: [
     BrowserModule,
@@ -224,7 +226,8 @@ registerLocaleData(localePt, 'pt-BR');
     TradeRealListaEditComponent,
     OrdemCompraEditaComponent,
     PeriodoExperimentoEditaComponent,
-    OrdemCompraListaEditaComponent
+    OrdemCompraListaEditaComponent,
+    EscolhePeriodoParaExperimentoComponent
   ],
   bootstrap: [AppComponent]
 })

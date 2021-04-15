@@ -7,7 +7,8 @@
       <div class="dgc-card" *ngFor="let item of listaBase">
           <div class="dgc-card-header">
               <span>{{item.codigo}}</span>
-              <a routerLink="/combinacaoExperimento/{{item.id}}" class="dgc-direita">{{item.quantidadeCombinacao}} combinações</a>
+              <a routerLink="/combinacaoExperimento/{{item.id}}" class="dgc-direita dgc-direita-com-botao">{{item.quantidadeCombinacao}} combinações</a>
+              <button class="btn-primary btn-sm btn" *ngIf="(item.permiteEdicao==0)" [routerLink]="['/execucaoSimulacaoPorExperimento' , item.id]" >Resultados</button>
           </div>
           <div class="dgc-card-detalhe"> 
             <span>Grupo Ação: {{item.grupoAcao.nome}}</span>
@@ -17,6 +18,12 @@
           </div>
           <div class="dgc-card-detalhe">
             <span>Período: {{item.dataInicial}} até {{item.dataFinal}}</span>
+          </div>
+          <div class="dgc-card-detalhe">
+            <div><span>Períodos:</span></div>
+            <div *ngFor="let periodo of item.experimentoSimulacaoPeriodos">
+              <div><span>{{periodo.periodoExperimento.dataStrInicial}} até {{periodo.periodoExperimento.dataStrFinal}}</span></div>
+            </div>
           </div>
 
           <div class="dgc-card-detalhe">
@@ -37,9 +44,9 @@
             <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar Experimento</button>
           </div> 
           <div class="dgc-card-comandos" *ngIf="(item.permiteEdicao==0)">
-            <button class="btn-primary btn-sm btn" [routerLink]="['/execucaoSimulacaoPorExperimento' , item.id]" >Resultados</button>
+            <button class="btn-primary btn-sm btn" (click)="dialogo2({'origem' : item })">Períodos</button>
+          </div>
 
-          </div> 
       </div>
      
   </div>

@@ -1,4 +1,7 @@
 /* tslint:disable */
+import {
+  ExperimentoSimulacaoPeriodo
+} from '../index';
 
 declare var Object: any;
 export interface PeriodoExperimentoInterface {
@@ -10,6 +13,7 @@ export interface PeriodoExperimentoInterface {
   "dataNumInicial"?: number;
   "dataNumFinal"?: number;
   "id"?: number;
+  experimentoSimulacaoPeriodos?: ExperimentoSimulacaoPeriodo[];
 }
 
 export class PeriodoExperimento implements PeriodoExperimentoInterface {
@@ -21,6 +25,7 @@ export class PeriodoExperimento implements PeriodoExperimentoInterface {
   "dataNumInicial": number;
   "dataNumFinal": number;
   "id": number;
+  experimentoSimulacaoPeriodos: ExperimentoSimulacaoPeriodo[];
   constructor(data?: PeriodoExperimentoInterface) {
     Object.assign(this, data);
   }
@@ -88,6 +93,14 @@ export class PeriodoExperimento implements PeriodoExperimentoInterface {
         },
       },
       relations: {
+        experimentoSimulacaoPeriodos: {
+          name: 'experimentoSimulacaoPeriodos',
+          type: 'ExperimentoSimulacaoPeriodo[]',
+          model: 'ExperimentoSimulacaoPeriodo',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'periodoExperimentoId'
+        },
       }
     }
   }

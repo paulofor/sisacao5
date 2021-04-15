@@ -1,12 +1,15 @@
 <h2 *ngIf="item" mat-dialog-title>Ações para Grupo</h2>
 
-<form *ngIf="listaAcao" class="example-full-width" (ngSubmit)="onSubmit()">
+<form *ngIf="listaItem" class="example-full-width" (ngSubmit)="onSubmit()">
 
   <mat-dialog-content>
 
-    <div *ngFor="let item of listaAcao; let i = index;">
+    <div *ngFor="let item of listaItem; let i = index;">
       <mat-checkbox  [checked]="getCheck(item)"  (change)="onChange($event, i, item)">
-        {{item.ticker}} - R$ {{item.fechamentoAtual}} ({{item.spread1Mes}})
+        <span class="ticker">{{item.ticker}}</span>
+        <span class="preco">R$ {{item.fechamentoAtual}}</span> 
+        <span class="spread">mês: {{item.spread1Mes | number: '1.1-1'}}%</span>
+        <span class="detalhe">grupos: {{item.relGrupoAcaosCount}}</span>
       </mat-checkbox>
     </div>
 

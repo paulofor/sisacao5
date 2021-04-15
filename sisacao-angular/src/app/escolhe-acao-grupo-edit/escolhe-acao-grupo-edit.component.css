@@ -1,0 +1,19 @@
+.ticker {
+    width: 80px;
+    float: left;
+}
+
+.preco {
+    width: 80px;
+    float: left;
+}
+
+.spread {
+    width: 120px;
+    float: left;
+}
+
+.detalhe {
+    width: 80px;
+    float: left;
+}
