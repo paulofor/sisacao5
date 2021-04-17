@@ -40,7 +40,12 @@ export class EscolhePeriodoParaExperimentoComponent extends BaseSelecionaEditCom
   getFiltro() {
     return {
       'order' : 'dataNumFinal',
-      'include' : 'experimentoSimulacaoPeriodos'
+      'include' : {
+        'relation' : 'experimentoSimulacaoPeriodos',
+        'scope' : {
+          'where' : {'experimentoSimulacaoId' : this.origem.id }
+        } 
+      }
     }
   }
 

@@ -20,7 +20,7 @@ public class ExecutadorSimulacao {
 		IRegraPontoEntrada regra = FabricaRegra.criaRegra(experimentoSimulacao.getRegraSimulacao());
 		combinacao = trataCombinacao(combinacao,experimentoSimulacao.getRegraSimulacao().getParametroRegras());
 		for (AtivoAcao ativo : listaAtivo) {
-			serie.executaTicker(ativo.getTicker(), regra, combinacao, experimentoSimulacao.diaInicio(), experimentoSimulacao.diaFinal());
+			serie.executaTicker(ativo.getTicker(), regra, combinacao, experimentoSimulacao);
 		}
 	}
 

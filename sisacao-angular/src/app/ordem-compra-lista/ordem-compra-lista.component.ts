@@ -59,4 +59,9 @@ export class OrdemCompraListaComponent extends BaseListComponent{
       })
   }
 
+  getFiltro() {
+    return {
+      'include' : 'execucaoSimulacao'
+    }
+  }
 }

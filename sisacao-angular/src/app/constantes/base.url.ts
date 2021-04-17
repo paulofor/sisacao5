@@ -13,4 +13,5 @@ export const DS_MES = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho
 
 export const LIMITE_PONTOS_MONITORIA = 19;
 
-export const CUSTO_TRADE = 10;
+export const CUSTO_TRADE = 11;
+export const PERCENTUAL_AVISO = 1.5;

@@ -89,6 +89,9 @@ module.exports = function (Ativoacao) {
         app.models.OrdemCompra.LimpaGeral((err,result) => {
 
         });
+        app.models.TradeReal.AtualizaDiaAberto((err,result) => {
+            
+        })
 
         var ds = Ativoacao.dataSource;
         ds.connector.query(sqlFechameentoAtual, (err1, result1) => {

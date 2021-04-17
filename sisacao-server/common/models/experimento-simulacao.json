@@ -9,12 +9,6 @@
     "codigo": {
       "type": "string"
     },
-    "dataInicial": {
-      "type": "string"
-    },
-    "dataFinal": {
-      "type": "string"
-    },
     "dataCriacao": {
       "type": "string"
     },
@@ -28,6 +22,9 @@
       "type": "number"
     },
     "permiteEdicao": {
+      "type": "number"
+    },
+    "emExecucao": {
       "type": "number"
     }
   },
@@ -259,6 +256,24 @@
         {
           "path": "/inicioExecucao",
           "verb": "post"
+        }
+      ]
+    },
+    "ObtemParaSimulacao": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "experimento",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemParaSimulacao",
+          "verb": "get"
         }
       ]
     }

@@ -9,7 +9,7 @@
         <span  class="dgc-link" (click)=trades(item)>{{item.ticker}}</span>
         <span class="dgc-direita">{{item.quantidadeLucro}} x {{item.quantidadePrejuizo}}</span>
       </div>
-      <div class="dgc-card-detalhe">
+      <div class="dgc-card-detalhe {{(posicaoAtual(item)==0?verificaMarcaTexto(-1*percPrecoAtual(item.precoEntrada,item)):'')}}">
         <span>Entrada: {{item.precoEntrada | number: '1.2-2'}} ({{item.dataNumEntrada}}) </span> 
         <span class="dgc-disponivel" *ngIf="(item.valorMonitorias.length>1) && item.valorMonitorias[1].posicao==0">
           ({{percPrecoAtual(item.precoEntrada,item)}}%)

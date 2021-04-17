@@ -48,6 +48,9 @@ public class ExperimentoSimulacaoFacade {
 		}); 
 	}
 	
+
+	
+	
 	public void carregaCombinacao(Integer id) {
 		repCombinacao.getListaExecucao(id, new ListCallback<CombinacaoParametro>() {
 			@Override

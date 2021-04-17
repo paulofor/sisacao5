@@ -29,7 +29,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "execucaoSimulacao": {
+      "type": "belongsTo",
+      "model": "ExecucaoSimulacao",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {
     "TotalExposicaoGeral": {

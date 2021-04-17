@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { BaseListComponent } from '../base-component/base-list-component';
-import { TradeRealApi } from '../shared/sdk';
+import { TradeReal, TradeRealApi } from '../shared/sdk';
 import { TradeRealListaEditComponent } from '../trade-real-lista-edit/trade-real-lista-edit.component';
 
 @Component({
@@ -19,8 +19,26 @@ export class TradeRealListaComponent extends BaseListComponent {
     return TradeRealListaEditComponent;
   }
  
-  calcular(item) {
-   
+  calcular(item:TradeReal) {
+   if (item.posicaoAtual==0) {
+     this.srv.CalculaSaida(item.id)
+      .subscribe((result) => {
+        this.carregaTela();
+      })
+   }
+   if (item.posicaoAtual==1) {
+    this.srv.CalculaEstimativa(item.id)
+     .subscribe((result) => {
+       this.carregaTela();
+     })
+  }
   }
 
+
+  getFiltro() {
+    return {
+      'order' : 'dataEntrada desc',
+      'include' : 'execucaoSimulacao'
+    }
+  }
 }

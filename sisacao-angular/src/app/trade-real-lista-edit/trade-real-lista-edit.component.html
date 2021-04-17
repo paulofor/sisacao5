@@ -5,43 +5,44 @@
 
   <mat-dialog-content>
    
-    <mat-form-field class="example-full-width">
-      <input matInput maxlength="30" #precoEntrada [(ngModel)]="item.precoEntrada" name="precoEntrada" placeholder="Preço Compra (formato: 9.99)" autocomplete="off" />
+    <mat-form-field class="dgc-campo-form-50">
+      <input matInput maxlength="30" #precoEntrada [(ngModel)]="item.precoEntrada" name="precoEntrada" placeholder="Preço Compra (formato: 9.99) {{precoCompraExec | number: '1.2-2'}}" autocomplete="off" />
     </mat-form-field>
-
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="dgc-campo-form-50">
       <input matInput maxlength="30" #quantidade [(ngModel)]="item.quantidade" name="quantidade" placeholder="Quantidade" autocomplete="off" />
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
-      <input matInput maxlength="30" #precoTarget [(ngModel)]="item.precoTarget" name="precoTarget" placeholder="Preço Target (formato: 9.99)" autocomplete="off" />
+    <mat-form-field class="dgc-campo-form-50">
+      <input matInput maxlength="30" #precoTarget [(ngModel)]="item.precoTarget" name="precoTarget" placeholder="Preço Target (formato: 9.99) {{precoTargetExec | number: '1.2-2'}}" autocomplete="off" />
+    </mat-form-field>
+    <mat-form-field class="dgc-campo-form-50">
+      <input matInput maxlength="30" #precoStop [(ngModel)]="item.precoStop" name="precoStop" placeholder="Preço Stop (formato: 9.99) {{precoStopExec | number: '1.2-2'}}" autocomplete="off" />
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
-      <input matInput maxlength="30" #precoStop [(ngModel)]="item.precoStop" name="precoStop" placeholder="Preço Stop (formato: 9.99)" autocomplete="off" />
+    <mat-form-field class="dgc-campo-form-50">
+      <input matInput maxlength="30" #dataEntrada [(ngModel)]="item.dataEntrada" name="dataEntrada" placeholder="Data Entrada (formato: aaaa-mm-dd)" autocomplete="off" />
     </mat-form-field>
-
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="dgc-campo-form-50">
       <input matInput maxlength="30" #custoEntrada [(ngModel)]="item.custoEntrada" name="custoEntrada" placeholder="Custo Total Entrada (formato: 9.99)" autocomplete="off" />
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
-      <input matInput maxlength="30" #dataEntrada [(ngModel)]="item.dataEntrada" name="dataEntrada" placeholder="Data Entrada (formato: 9.99)" autocomplete="off" />
-    </mat-form-field>
-
-
-    <mat-form-field class="example-full-width">
-      <input matInput maxlength="30" #precoSaida [(ngModel)]="item.precoSaida" name="precoSaida" placeholder="Preço Veenda (formato: 9.99)" autocomplete="off" />
-    </mat-form-field>
-    <mat-form-field class="example-full-width">
-      <input matInput maxlength="30" #dataSaida [(ngModel)]="item.dataSaida" name="dataSaida" placeholder="Data Saida (formato: aaaa-mm-dd)" autocomplete="off" />
-    </mat-form-field>
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="dgc-campo-form-100">
       <input matInput maxlength="3" #posicaoAtual [(ngModel)]="item.posicaoAtual" name="posicaoAtual" placeholder="Posição" autocomplete="off" />
     </mat-form-field>
-    <mat-form-field class="example-full-width">
+
+    <mat-form-field class="dgc-campo-form-100">
+      <input matInput maxlength="30" #precoSaida [(ngModel)]="item.precoSaida" name="precoSaida" placeholder="Preço Venda (formato: 9.99)" autocomplete="off" />
+    </mat-form-field>
+    <mat-form-field class="dgc-campo-form-50">
+      <input matInput maxlength="30" #dataSaida [(ngModel)]="item.dataSaida" name="dataSaida" placeholder="Data Saida (formato: aaaa-mm-dd)" autocomplete="off" />
+    </mat-form-field>
+    <mat-form-field class="dgc-campo-form-50">
       <input matInput maxlength="30" #custoSaida [(ngModel)]="item.custoSaida" name="custoSaida" placeholder="Custo Total Saida (formato: 9.99)" autocomplete="off" />
     </mat-form-field>
+
+
+
+
 
   </mat-dialog-content>
 

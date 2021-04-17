@@ -6,8 +6,16 @@ public class PeriodoExperimento extends Model{
 
 	private int dataNumInicial;
 	private int dataNumFinal;
+	private Integer id;
 	
 	
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public int getDataNumInicial() {
 		return dataNumInicial;
 	}

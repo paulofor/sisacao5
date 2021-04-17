@@ -1,4 +1,7 @@
 /* tslint:disable */
+import {
+  ExecucaoSimulacao
+} from '../index';
 
 declare var Object: any;
 export interface TradeRealInterface {
@@ -28,6 +31,7 @@ export interface TradeRealInterface {
   "custoTotal"?: number;
   "id"?: number;
   "execucaoSimulacaoId"?: number;
+  execucaoSimulacao?: ExecucaoSimulacao;
 }
 
 export class TradeReal implements TradeRealInterface {
@@ -57,6 +61,7 @@ export class TradeReal implements TradeRealInterface {
   "custoTotal": number;
   "id": number;
   "execucaoSimulacaoId": number;
+  execucaoSimulacao: ExecucaoSimulacao;
   constructor(data?: TradeRealInterface) {
     Object.assign(this, data);
   }
@@ -196,6 +201,14 @@ export class TradeReal implements TradeRealInterface {
         },
       },
       relations: {
+        execucaoSimulacao: {
+          name: 'execucaoSimulacao',
+          type: 'ExecucaoSimulacao',
+          model: 'ExecucaoSimulacao',
+          relationType: 'belongsTo',
+                  keyFrom: 'execucaoSimulacaoId',
+          keyTo: 'id'
+        },
       }
     }
   }

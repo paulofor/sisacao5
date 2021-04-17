@@ -1,17 +1,15 @@
 package br.inf.digicom.loopback;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.strongloop.android.loopback.RestAdapter;
-import com.strongloop.android.loopback.callbacks.ListCallback;
 import com.strongloop.android.loopback.callbacks.VoidCallback;
 
 import br.com.digicom.sisacao.app.Loopback;
 import br.com.digicom.sisacao.modelo.CombinacaoParametro;
-import br.com.digicom.sisacao.modelo.DiaPregao;
 import br.com.digicom.sisacao.modelo.ExecucaoSimulacao;
+import br.com.digicom.sisacao.modelo.ExperimentoSimulacao;
 import br.com.digicom.sisacao.modelo.ValorParametro;
 import br.com.digicom.sisacao.repositorio.RepositorioDiaPregao;
 import br.com.digicom.sisacao.repositorio.RepositorioExecucaoSimulacao;
@@ -66,17 +64,17 @@ public class SerieCotacaoIntradayFacade {
 	}
 	*/
 	
-	public void executaTicker(String ticker, IRegraPontoEntrada regra, CombinacaoParametro combinacao, int diaInicio, int diaFim) {
+	public void executaTicker(String ticker, IRegraPontoEntrada regra, CombinacaoParametro combinacao,ExperimentoSimulacao experimento) {
 		Map parametros = new HashMap();
 		for (ValorParametro param : combinacao.getValorParametros()) {
 			parametros.put(param.getParametroRegra().getAtributoClasse(),param.getValorParametro());
 		}
-		ExecucaoPontoEntrada execucao = simulacao.executa(RepositorioCotacao.getCotacao(ticker),parametros, regra, diaInicio, diaFim);
-		salvaExecucao(execucao,ticker,combinacao, regra);
+		ExecucaoPontoEntrada execucao = simulacao.executa(RepositorioCotacao.getCotacao(ticker),parametros, regra, experimento.diaInicio(), experimento.diaFinal());
+		salvaExecucao(execucao,ticker,combinacao, regra, experimento);
 		parametros = null;
 	}
 	
-	public void salvaExecucao(ExecucaoPontoEntrada execucao, String ticker, CombinacaoParametro combinacao, IRegraPontoEntrada regra) {
+	public void salvaExecucao(ExecucaoPontoEntrada execucao, String ticker, CombinacaoParametro combinacao, IRegraPontoEntrada regra, ExperimentoSimulacao experimento) {
 		System.out.println(ticker);
 		System.out.println(combinacao);
 		execucao.exibeResultado();
@@ -89,6 +87,7 @@ public class SerieCotacaoIntradayFacade {
 		exec.setStop(regra.getStop());
 		exec.setExperimentoSimulacaoId(combinacao.getExperimentoSimulacaoId());
 		exec.setRegraSimulacaoId(combinacao.getRegraSimulacaoId());
+		exec.setPeriodoExperimentoId(experimento.periodoExperimentoId());
 		for (Trade trade : execucao.listaTrades()) {
 			br.com.digicom.sisacao.modelo.Trade tradeModel = new br.com.digicom.sisacao.modelo.Trade();
 			tradeModel.setPrecoEntrada(trade.getValorEntrada());

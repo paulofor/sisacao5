@@ -17,12 +17,14 @@
             <span>Regra: {{item.regraSimulacao.nome}}</span>
           </div>
           <div class="dgc-card-detalhe">
-            <span>Período: {{item.dataInicial}} até {{item.dataFinal}}</span>
-          </div>
-          <div class="dgc-card-detalhe">
             <div><span>Períodos:</span></div>
             <div *ngFor="let periodo of item.experimentoSimulacaoPeriodos">
-              <div><span>{{periodo.periodoExperimento.dataStrInicial}} até {{periodo.periodoExperimento.dataStrFinal}}</span></div>
+              <div *ngIf="(periodo.concluido==1)">
+                <span class="dgc-link">{{periodo.periodoExperimento.dataStrInicial}} até {{periodo.periodoExperimento.dataStrFinal}} -> concluído</span>
+              </div>
+              <div *ngIf="(periodo.concluido==0)">
+                <span>{{periodo.periodoExperimento.dataStrInicial}} até {{periodo.periodoExperimento.dataStrFinal}}</span>
+              </div>
             </div>
           </div>
 

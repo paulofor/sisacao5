@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Subscription, interval } from 'rxjs';
 import { BaseListComponent } from '../base-component/base-list-component';
-import { CUSTO_TRADE } from '../constantes/base.url';
+import { CUSTO_TRADE, PERCENTUAL_AVISO } from '../constantes/base.url';
 import { OrdemCompraEditaComponent } from '../ordem-compra-edita/ordem-compra-edita.component';
 import { CotacaoIntradayAcao, CotacaoIntradayAcaoApi, ExecucaoSimulacao, ExecucaoSimulacaoApi, OrdemCompraApi } from '../shared/sdk';
 import { TradeExecucaoSimulacaoComponent } from '../trade-execucao-simulacao/trade-execucao-simulacao.component';
@@ -16,7 +16,7 @@ import { TradeRealEditaComponent } from '../trade-real-edita/trade-real-edita.co
 export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
 
   private updateSubscription: Subscription;
-  private PERCENTUAL_AVISO = 1.5;
+ 
   public totalExposicao;
 
   constructor(protected srv:ExecucaoSimulacaoApi, private srvCotacao: CotacaoIntradayAcaoApi,
@@ -168,7 +168,7 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
 
   classeTarget(item) {
     let perc = this.percTarget(item);
-    if (perc<=this.PERCENTUAL_AVISO) {
+    if (perc<=PERCENTUAL_AVISO) {
       return 'dgc-alerta  marcatexto'
     } else {
       return '';
@@ -176,10 +176,25 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
   }
   classeStop(item) {
     let perc = this.percStop(item);
-    if (perc>=(this.PERCENTUAL_AVISO*-1)) {
+    if (perc>=(PERCENTUAL_AVISO*-1)) {
       return 'dgc-alerta'
     } else {
       return '';
+    }
+  }
+
+  verificaMarcaTexto(valor) {
+    if (valor<=PERCENTUAL_AVISO) {
+      return 'marcatexto'
+    } else {
+      return '';
+    }
+  }
+  posicaoAtual(item) {
+    if (item.valorMonitorias.length>1) {
+      return item.valorMonitorias[1].posicao;
+    } else {
+      return 0;
     }
   }
 

@@ -23,6 +23,8 @@ public class ExecucaoSimulacao extends Model{
 	Integer experimentoSimulacaoId;
 	Integer id;
 	Integer regraSimulacaoId;
+	Integer periodoExperimentoId;
+	
 	
 	List<Trade> trades = new ArrayList<Trade>();
 	CombinacaoParametro combinacaoParametro = null;
@@ -116,6 +118,7 @@ public class ExecucaoSimulacao extends Model{
 			obj.put("monitorar", 0);
 			obj.put("id", this.id);
 			obj.put("regraSimulacaoId", this.regraSimulacaoId);
+			obj.put("periodoExperimentoId", this.periodoExperimentoId);
 			JSONArray trades = new JSONArray();
 			for (Trade trade : this.trades) {
 				trades.put(trade.getJSON());
@@ -170,6 +173,18 @@ public class ExecucaoSimulacao extends Model{
 	public List<Trade> getTrades() {
 		return trades;
 	}
+
+	
+	
+	public Integer getPeriodoExperimentoId() {
+		return periodoExperimentoId;
+	}
+
+
+	public void setPeriodoExperimentoId(Integer periodoExperimentoId) {
+		this.periodoExperimentoId = periodoExperimentoId;
+	}
+
 
 	public void setTrades(List<Trade> trades) {
 		this.trades = new ArrayList<Trade>();

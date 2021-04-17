@@ -1,4 +1,7 @@
 /* tslint:disable */
+import {
+  ExecucaoSimulacao
+} from '../index';
 
 declare var Object: any;
 export interface OrdemCompraInterface {
@@ -11,6 +14,7 @@ export interface OrdemCompraInterface {
   "aberta"?: number;
   "id"?: number;
   "execucaoSimulacaoId"?: number;
+  execucaoSimulacao?: ExecucaoSimulacao;
 }
 
 export class OrdemCompra implements OrdemCompraInterface {
@@ -23,6 +27,7 @@ export class OrdemCompra implements OrdemCompraInterface {
   "aberta": number;
   "id": number;
   "execucaoSimulacaoId": number;
+  execucaoSimulacao: ExecucaoSimulacao;
   constructor(data?: OrdemCompraInterface) {
     Object.assign(this, data);
   }
@@ -94,6 +99,14 @@ export class OrdemCompra implements OrdemCompraInterface {
         },
       },
       relations: {
+        execucaoSimulacao: {
+          name: 'execucaoSimulacao',
+          type: 'ExecucaoSimulacao',
+          model: 'ExecucaoSimulacao',
+          relationType: 'belongsTo',
+                  keyFrom: 'execucaoSimulacaoId',
+          keyTo: 'id'
+        },
       }
     }
   }

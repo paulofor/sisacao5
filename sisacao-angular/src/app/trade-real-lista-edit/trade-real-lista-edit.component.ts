@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { BaseEditComponent } from '../base-component/base-edit-component';
-import { TradeRealApi } from '../shared/sdk';
+import { TradeReal, TradeRealApi } from '../shared/sdk';
 
 @Component({
   selector: 'app-trade-real-lista-edit',
@@ -10,10 +10,26 @@ import { TradeRealApi } from '../shared/sdk';
 })
 export class TradeRealListaEditComponent extends BaseEditComponent {
 
+  precoCompraExec: number;
+  precoStopExec: number;
+  precoTargetExec: number;
 
   constructor(protected dialogRef: MatDialogRef<any>
     , @Inject(MAT_DIALOG_DATA) protected data: any, protected servico: TradeRealApi
   ) {
     super(dialogRef,data,servico);
+  }
+
+  preSubmit() {
+
+  }
+
+  posItem() {
+    let itemTrade:TradeReal = this.item;
+    this.precoCompraExec = itemTrade.execucaoSimulacao.precoEntrada;
+    this.precoStopExec = itemTrade.execucaoSimulacao.precoEntrada * (1-itemTrade.execucaoSimulacao.stop);
+    this.precoTargetExec = itemTrade.execucaoSimulacao.precoEntrada * (1+itemTrade.execucaoSimulacao.target);
+    
+    //console.log('precoCompraExec:' , itemTrade.execucaoSimulacao.precoEntrada);
   }
 }

@@ -13,13 +13,12 @@ import {
 declare var Object: any;
 export interface ExperimentoSimulacaoInterface {
   "codigo"?: string;
-  "dataInicial"?: string;
-  "dataFinal"?: string;
   "dataCriacao"?: string;
   "dataExecucao"?: string;
   "quantidadeCombinacao"?: number;
   "posicaoExecucao"?: number;
   "permiteEdicao"?: number;
+  "emExecucao"?: number;
   "id"?: number;
   "regraSimulacaoId"?: number;
   "grupoAcaoId"?: number;
@@ -35,13 +34,12 @@ export interface ExperimentoSimulacaoInterface {
 
 export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
   "codigo": string;
-  "dataInicial": string;
-  "dataFinal": string;
   "dataCriacao": string;
   "dataExecucao": string;
   "quantidadeCombinacao": number;
   "posicaoExecucao": number;
   "permiteEdicao": number;
+  "emExecucao": number;
   "id": number;
   "regraSimulacaoId": number;
   "grupoAcaoId": number;
@@ -90,14 +88,6 @@ export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
           name: 'codigo',
           type: 'string'
         },
-        "dataInicial": {
-          name: 'dataInicial',
-          type: 'string'
-        },
-        "dataFinal": {
-          name: 'dataFinal',
-          type: 'string'
-        },
         "dataCriacao": {
           name: 'dataCriacao',
           type: 'string'
@@ -116,6 +106,10 @@ export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
         },
         "permiteEdicao": {
           name: 'permiteEdicao',
+          type: 'number'
+        },
+        "emExecucao": {
+          name: 'emExecucao',
           type: 'number'
         },
         "id": {

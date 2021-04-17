@@ -148,7 +148,6 @@ export class SDKBrowserModule {
         ExperimentoSimulacaoPeriodoApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser },
-
       ]
     };
   }

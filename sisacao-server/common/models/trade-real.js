@@ -9,6 +9,25 @@ module.exports = function(Tradereal) {
 
     /**
     * 
+    * @param {Function(Error, object)} callback
+    */
+    Tradereal.AtualizaDiaAberto = function(callback) {
+        let sql = " update TradeReal " +
+            " set  dataNumEntrada = concat(substring(dataEntrada,1,4),substring(dataEntrada,6,2),substring(dataEntrada,9,2)) " +
+            " where posicaoAtual = 1";
+        let sql2 = " update TradeReal " +
+                " set dias = (select count(*) from DiaPregao where diaNum > TradeReal.dataNumEntrada and data <= now() ) " +
+                " where posicaoAtual = 1"
+        let ds = Tradereal.dataSource;
+        ds.connector.query(sql, (err,result) => {
+            ds.connector.query(sql2, callback);
+        })
+    };
+  
+
+
+    /**
+    * 
     * @param {number} idTrade 
     * @param {Function(Error, object)} callback
     */
@@ -16,11 +35,20 @@ module.exports = function(Tradereal) {
         let sql1 = "update TradeReal " +
             " set lucroPrejuizo = custoSaida - custoEntrada , " +
             " percentual = ((precoSaida - precoEntrada) / precoEntrada) * 100, " +
-            " custoTotal = (valorSaida - valorEntrada) - (custoSaida - custoEntrada) " +
+            " custoTotal = (valorSaida - valorEntrada) - (custoSaida - custoEntrada), " +
+            " dataNumEntrada = concat(substring(dataEntrada,1,4),substring(dataEntrada,6,2),substring(dataEntrada,9,2)), " +
+            " dataNumSaida = concat(substring(dataSaida,1,4),substring(dataSaida,6,2),substring(dataSaida,9,2)) " +
             " where id = " + idTrade;
+        let sql2 = " select count(*) as dias from DiaPregao " +
+                   " where diaNum > (select dataNumEntrada from TradeReal where id = " + idTrade + ") " +
+                   " and diaNum <= (select dataNumSaida from TradeReal where id = " + idTrade + ")";
         let ds = Tradereal.dataSource;
         ds.connector.query(sql1,(err,result) => {
-            callback(err,result);
+            ds.connector.query(sql2, (err,result2) => {
+                let sql3 = "update TradeReal set dias = " + result2[0].dias +
+                    " where id = " + idTrade;
+                ds.connector.query(sql3, callback); 
+            })
         });
     };
   
@@ -35,6 +63,7 @@ module.exports = function(Tradereal) {
             " set valorTarget = precoTarget * quantidade, " +
             " valorStop = precoStop * quantidade, " +
             " valorEntrada = precoEntrada * quantidade " +
+            " dataNumEntrada = concat(substring(dataEntrada,1,4),substring(dataEntrada,6,2),substring(dataEntrada,9,2)), " +
             " where id = " + idTrade;
         let sql2 = "update TradeReal " +
             " set valorExposicao = (valorEntrada - valorStop + " + CUSTO_OPERACAO + ") , " +

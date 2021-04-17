@@ -8,6 +8,17 @@ module.exports = function(Experimentosimulacao) {
     let listaComb = [];
 
 
+    /**
+    * 
+    * @param {Function(Error, object)} callback
+    */
+    Experimentosimulacao.ObtemParaSimulacao = function(callback) {
+        var experimento;
+        // TODO
+        callback(null, experimento);
+    };
+  
+  
 
     /**
     * 
@@ -287,7 +298,17 @@ module.exports = function(Experimentosimulacao) {
     Experimentosimulacao.CarregaParaSimulacao = function(idExperimento, callback) {
         let filtro = { 
             'where' : {'id' : idExperimento},
-            'include' : { 'relation' : 'regraSimulacao' , 'scope' : {'include' : 'parametroRegras'} }
+            'include' : [
+                { 'relation' : 'regraSimulacao' , 'scope' : {'include' : 'parametroRegras'} },
+                { 'relation' : 'experimentoSimulacaoPeriodos' , 
+                                'scope' : {
+                                        'include':'periodoExperimento',
+                                        'where' : {'concluido' : 0 }
+ 
+                                }
+                }
+            ]
+            
         }
         Experimentosimulacao.findOne(filtro, callback);
     };

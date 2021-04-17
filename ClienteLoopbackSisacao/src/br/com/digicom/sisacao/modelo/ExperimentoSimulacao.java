@@ -1,5 +1,7 @@
 package br.com.digicom.sisacao.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import com.strongloop.android.loopback.Model;
@@ -12,31 +14,44 @@ public class ExperimentoSimulacao extends Model{
 	private Integer posicaoExecucao;
 	private RegraSimulacao regraSimulacao;
 	private Integer grupoAcaoId;
-	private String dataInicial;
-	private String dataFinal;
+	//private String dataInicial;
+	//private String dataFinal;
 	
-	private int dataInicialNum;
-	private int dataFinalNum;
+	//private int dataInicialNum;
+	//private int dataFinalNum;
+	
+	private List<ExperimentoSimulacaoPeriodo> experimentoSimulacaoPeriodos;
 
+	
+	
+	public void setExperimentoSimulacaoPeriodos(List<ExperimentoSimulacaoPeriodo> experimentoSimulacaoPeriodos) {
+		this.experimentoSimulacaoPeriodos = new ArrayList<ExperimentoSimulacaoPeriodo>();
+		for (int i = 0; i < experimentoSimulacaoPeriodos.size(); i++) {
+			Object objeto = new ExperimentoSimulacaoPeriodo();
+			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) experimentoSimulacaoPeriodos.get(i), true);
+			this.experimentoSimulacaoPeriodos.add((ExperimentoSimulacaoPeriodo) objeto);
+		}
+	}
+	
+	
+	/*
 	public String getDataInicial() {
 		return dataInicial;
 	}
-
 	public void setDataInicial(String dataInicial) {
 		this.dataInicial = dataInicial;
 		String valorNum = dataInicial.substring(6) + dataInicial.substring(3,5) + dataInicial.substring(0,2);
 		this.dataInicialNum = Integer.parseInt(valorNum);
 	}
-
 	public String getDataFinal() {
 		return dataFinal;
 	}
-
 	public void setDataFinal(String dataFinal) {
 		this.dataFinal = dataFinal;
 		String valorNum = dataFinal.substring(6) + dataFinal.substring(3,5) + dataFinal.substring(0,2);
 		this.dataFinalNum = Integer.parseInt(valorNum);
 	}
+	*/
 
 	public Integer getGrupoAcaoId() {
 		return grupoAcaoId;
@@ -80,13 +95,15 @@ public class ExperimentoSimulacao extends Model{
 	}
 
 	public int diaInicio() {
-		return this.dataInicialNum;
+		return this.experimentoSimulacaoPeriodos.get(0).getPeriodoExperimento().getDataNumInicial();
 	}
 
 	public int diaFinal() {
-		return this.dataFinalNum;
+		return this.experimentoSimulacaoPeriodos.get(0).getPeriodoExperimento().getDataNumFinal();
 	}
-	
+	public int periodoExperimentoId() {
+		return this.experimentoSimulacaoPeriodos.get(0).getPeriodoExperimento().getId();
+	}
 	
 	
 }

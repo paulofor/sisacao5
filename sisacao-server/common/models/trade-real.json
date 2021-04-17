@@ -80,7 +80,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "execucaoSimulacao": {
+      "type": "belongsTo",
+      "model": "ExecucaoSimulacao",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {
     "CalculaEstimativa": {
@@ -147,6 +153,24 @@
       "http": [
         {
           "path": "/calculaSaida",
+          "verb": "post"
+        }
+      ]
+    },
+    "AtualizaDiaAberto": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaDiaAberto",
           "verb": "post"
         }
       ]

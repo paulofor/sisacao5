@@ -18,6 +18,9 @@ export class OrdemCompraEditaComponent extends BaseEditComponent {
   totalOrdem:number;
   lucroOperacao: number;
 
+  precoTarget: number;
+  precoStop: number;
+
   constructor(protected dialogRef: MatDialogRef<any>
     , @Inject(MAT_DIALOG_DATA) protected data: any, protected servico: OrdemCompraApi,
   ) {
@@ -69,12 +72,17 @@ export class OrdemCompraEditaComponent extends BaseEditComponent {
   }
 
   calculaExposicao() {
-    let prejuizoUnitario = this.item.precoCompra - this.item.precoStop;
+    //console.log('Preco Compra: ' , this.item.precoCompra);
+    this.precoTarget = this.item.precoCompra * (1+this.item.execucaoSimulacao.target);
+    this.precoStop = this.item.precoCompra * (1-this.item.execucaoSimulacao.stop);
+    
+    let prejuizoUnitario = this.item.precoCompra - this.precoStop;
     this.exposicaoOperacao = (prejuizoUnitario * this.item.quantidade) + CUSTO_TRADE;
     this.exposicaoNova = this.exposicao + this.exposicaoOperacao;
-    let lucroUnitario = this.item.precoTarget - this.item.precoCompra;
+    let lucroUnitario = this.precoTarget - this.item.precoCompra;
     let totalOrdem = lucroUnitario * this.item.quantidade;
     this.lucroOperacao = totalOrdem - CUSTO_TRADE;
+    
   }
 
 }
