@@ -10,6 +10,7 @@ import br.com.digicom.sisacao.app.Loopback;
 import br.com.digicom.sisacao.modelo.ExecucaoSimulacao;
 import br.com.digicom.sisacao.repositorio.RepositorioExecucaoSimulacao;
 import br.com.digicom.sisacao.repositorio.RepositorioValorMonitoria;
+import br.inf.digicom.TempoSleep;
 import br.inf.digicom.simulacao.IRegraPontoEntrada;
 import br.inf.digicom.simulacao.RepositorioCotacao;
 import br.inf.digicom.simulacao.SimuladorPontoEntradaDia;
@@ -26,7 +27,7 @@ public class ExperimentoMonitoradoFacade {
 	public synchronized void atualizaPrecoEntrada(final int dataNum, final ExecucaoSimulacao execucao) {
 		trataExecucaoMonitor(execucao,dataNum);
 		try {
-			Thread.sleep(10000);
+			Thread.sleep(TempoSleep.PRE_INSERE_MONITORIA);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -93,7 +94,7 @@ public class ExperimentoMonitoradoFacade {
 		RepositorioCotacao.carregaPorTicker(execucao.getTicker());
 		IRegraPontoEntrada regra = FabricaRegra.criaRegra(execucao.getCombinacaoParametro().getRegraSimulacao());
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(TempoSleep.TRATA_EXECUCAO_MONITOR);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

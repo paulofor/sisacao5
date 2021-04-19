@@ -14,6 +14,10 @@
 <div class="dgc-card-detalhe">
   <span>{{item.combinacaoParametro.descricao}}</span>
 </div>
+<div class="dgc-card-detalhe" *ngIf="item.trades && item.trades.length > 0">
+  <span>{{item.trades[0].dataHoraEntrada | date: 'dd-MM-yyyy' : 'UTC'}}  </span>
+  <span>({{item.trades[0].precoEntrada | number: '1.2-2'}})</span>
+</div>
 <div class="dgc-card-detalhe">
   <span *ngIf="item.monitorar!=1 && permiteMonitorar(item)" class="dgc-link" (click)="monitorar(item)">monitorar</span>
   <img *ngIf="item.monitorar==1" src="assets/img/monitorando.png" width="20" height="20">

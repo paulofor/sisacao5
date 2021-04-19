@@ -46,4 +46,11 @@ export class ExperimentoSimulacaoListComponent  extends BaseListComponent {
         item.quantidadeCombinacao = result.quantidade;
       })
   }
+
+  executa(item) {
+    this.srv.ColocaEmExecucao(item.id)
+      .subscribe(result => {
+        this.carregaTela();
+      })
+  }
 }

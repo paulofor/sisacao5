@@ -30,7 +30,7 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
       'include' : [
         {'relation' : 'regraSimulacao'},
         {'relation' : 'valorMonitorias' , 'scope' : {'limit' : 2 , 'order' : 'diaNumEntrada desc'}} ,
-        {'relation' : 'ativoAcao' }
+        {'relation' : 'ativoAcao' } 
       ], 
       'order' : 'resultado desc'
     }

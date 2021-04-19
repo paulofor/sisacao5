@@ -36,4 +36,11 @@ public class RepositorioDiaPregao extends ModelRepository<DiaPregao>{
 	        Map<String, Object> params = new HashMap<String, Object>();
 	        invokeStaticMethod("obtemProximo", params,   new JsonObjectParser<DiaPregao>(this, callback));
 		}
+		public synchronized void periodoAtualizacaoMonitoria(int idExecucao, final ListCallback<DiaPregao> callback ) {
+			RestContractItem contrato = new RestContractItem("DiaPregaos/periodoAtualizacaoMonitoria","GET");
+			this.getRestAdapter().getContract().addItem(contrato, "DiaPregao.periodoAtualizacaoMonitoria");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        params.put("idExecucao", idExecucao);
+	        invokeStaticMethod("periodoAtualizacaoMonitoria", params,   new JsonArrayParser<DiaPregao>(this, callback));
+		}
 }

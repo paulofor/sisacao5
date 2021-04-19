@@ -3,6 +3,27 @@
 module.exports = function(Diapregao) {
 
 
+
+
+    /**
+    * 
+    * @param {number} idExecucao 
+    * @param {Function(Error, array)} callback
+    */
+    Diapregao.PeriodoAtualizacaoMonitoria = function(idExecucao, callback) {
+        let sql = " select DiaPregao.* from DiaPregao " +
+                " where diaNum > ( " +
+                " select PeriodoExperimento.dataNumFinal from PeriodoExperimento " + 
+                " inner join ExecucaoSimulacao on ExecucaoSimulacao.periodoExperimentoId = PeriodoExperimento.id " +
+                " where ExecucaoSimulacao.id = " + idExecucao +
+                " ) " +
+                " and data <= now() " +
+                " order by data ";
+        let ds = Diapregao.dataSource;
+        //console.log(sql);
+        ds.connector.query(sql,callback);
+    };
+
     /**
     * 
     * @param {Function(Error, object)} callback

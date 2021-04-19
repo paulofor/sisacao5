@@ -24,14 +24,16 @@ module.exports = function(Valormonitoria) {
                 let stop = 0;
                 let valorEntrada = 0;
                 let contaDia = 0;
+                let contaTrade = 0;
                 for (let i=0;i<lista.length;i++) {
-                    console.log('Tratando ' + lista[i].ticker + ' [' + lista[i].diaNumEntrada + ']');
+                    //console.log('Tratando ' + lista[i].ticker + ' [' + lista[i].diaNumEntrada + ']');
                     lista[i].situacao = 'fora';
                     if (comprado==0) {
                         contaDia = 0;
                         if (lista[i].valorEntrada >= lista[i].minimo && lista[i].valorEntrada <= lista[i].maximo) {
                             lista[i].situacao = 'entrada em ' + lista[i].valorEntrada;
                             comprado = 1;
+                            contaTrade++;
                             target = lista[i].valorEntrada * (1+execucao.target);
                             stop = lista[i].valorEntrada * (1-execucao.stop);
                             valorEntrada = lista[i].valorEntrada;
@@ -58,6 +60,7 @@ module.exports = function(Valormonitoria) {
                     lista[i].valorStop = stop;
                     lista[i].pontoEntrada = valorEntrada;
                     lista[i].quantidadeDiaTrade = contaDia;
+                    lista[i].contaTrade = contaTrade;
                     atualizaValorMonitoria(lista[i]);
                 };
                 callback(null, lista);
@@ -73,11 +76,12 @@ module.exports = function(Valormonitoria) {
             " valorStop = " + valorMonitoria.valorStop + ", " +
             " posicao = " + valorMonitoria.posicao + ", " +
             " pontoEntrada = " + valorMonitoria.pontoEntrada + ", " +
-            " quantidadeDiaTrade = " + valorMonitoria.quantidadeDiaTrade + " " +
+            " quantidadeDiaTrade = " + valorMonitoria.quantidadeDiaTrade + ", " +
+            " contaTrade = " + valorMonitoria.contaTrade + " " +
             " where id = " + valorMonitoria.id;
         let ds = Valormonitoria.dataSource;
         ds.connector.query(sql, (err, resultado) => {
-            console.log('sql:' , sql);
+            //console.log('sql:' , sql);
             //console.log('Erro: ' , err);
         })
     }

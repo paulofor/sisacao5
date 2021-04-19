@@ -48,7 +48,23 @@ public class ExperimentoSimulacaoFacade {
 		}); 
 	}
 	
+	public void obtemExperimento() {
+		repExperimento.obtemParaSimulacao( new ObjectCallback<ExperimentoSimulacao>() {
 
+			@Override
+			public void onSuccess(ExperimentoSimulacao experimento) {
+				System.out.println(experimento.getCodigo());
+				experimentoSimulacao = experimento;
+				carregaAtivos(experimento.getGrupoAcaoId());
+				//carregaCombinacao((Integer) experimento.getId());
+			}
+			@Override
+			public void onError(Throwable t) {
+				t.printStackTrace();
+			}
+			
+		}); 
+	}
 	
 	
 	public void carregaCombinacao(Integer id) {

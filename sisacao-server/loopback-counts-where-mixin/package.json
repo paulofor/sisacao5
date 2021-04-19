@@ -1,0 +1,101 @@
+{
+  "_from": "loopback-counts-where-mixin",
+  "_id": "loopback-counts-where-mixin@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-28qX0y5yho12Wp3veJnV9ssOSTbYWTfvBTqYVllVp0NNGL/Qvf+iDTnXAb0LNLWqsGMKqVnu/hOGRLKARF/N6g==",
+  "_location": "/loopback-counts-where-mixin",
+  "_phantomChildren": {
+    "@babel/code-frame": "7.5.5",
+    "argparse": "1.0.10",
+    "chalk": "2.4.2",
+    "eslint-scope": "4.0.3",
+    "eslint-utils": "1.4.3",
+    "eslint-visitor-keys": "1.1.0",
+    "esprima": "4.0.0",
+    "esquery": "1.0.1",
+    "esutils": "2.0.2",
+    "fast-json-stable-stringify": "2.0.0",
+    "flatted": "2.0.1",
+    "fs.realpath": "1.0.0",
+    "functional-red-black-tree": "1.0.1",
+    "glob": "7.1.2",
+    "globals": "11.12.0",
+    "import-fresh": "3.1.0",
+    "imurmurhash": "0.1.4",
+    "inflight": "1.0.6",
+    "inherits": "2.0.3",
+    "inquirer": "6.5.2",
+    "json-stable-stringify-without-jsonify": "1.0.1",
+    "levn": "0.3.0",
+    "minimatch": "3.0.4",
+    "mkdirp": "0.5.1",
+    "natural-compare": "1.4.0",
+    "nice-try": "1.0.5",
+    "once": "1.4.0",
+    "optionator": "0.8.2",
+    "path-is-absolute": "1.0.1",
+    "path-is-inside": "1.0.2",
+    "path-key": "2.0.1",
+    "progress": "2.0.3",
+    "regexpp": "2.0.1",
+    "shebang-command": "1.2.0",
+    "strip-ansi": "4.0.0",
+    "strip-json-comments": "2.0.1",
+    "table": "5.4.6",
+    "text-table": "0.2.0",
+    "uri-js": "4.2.2",
+    "which": "1.3.0"
+  },
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "loopback-counts-where-mixin",
+    "name": "loopback-counts-where-mixin",
+    "escapedName": "loopback-counts-where-mixin",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/loopback-counts-where-mixin/-/loopback-counts-where-mixin-1.0.0.tgz",
+  "_shasum": "90a4dc2787e8d21cad9e89e77563d6bf5bbc85a1",
+  "_spec": "loopback-counts-where-mixin",
+  "_where": "C:\\Aplicacoes\\server\\work-server\\validador-server",
+  "author": {
+    "name": "VietChaien",
+    "email": "viet.levanthanh@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/VietChaien/loopback-counts-where-mixin/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "eslint": "^5.16.0"
+  },
+  "deprecated": false,
+  "description": "A mixin to enable get count with condition of related models for a loopback Model.",
+  "homepage": "https://github.com/VietChaien/loopback-counts-where-mixin#readme",
+  "keywords": [
+    "loopback",
+    "strongloop",
+    "mixin",
+    "relation",
+    "count",
+    "condition",
+    "where"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "loopback-counts-where-mixin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VietChaien/loopback-counts-where-mixin.git"
+  },
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "version": "1.0.0"
+}

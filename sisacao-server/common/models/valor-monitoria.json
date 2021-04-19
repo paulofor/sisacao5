@@ -32,6 +32,9 @@
     },
     "quantidadeDiaTrade": {
       "type": "number"
+    },
+    "contaTrade" : {
+      "type" : "number"
     }
   },
   "validations": [],

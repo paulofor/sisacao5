@@ -71,7 +71,9 @@
       <div class="dgc-card-comandos">
         <button class="btn btn-primary btn-sm dgc-botao-comando" (click)="telaCompra(item)">Trade({{item.qtdeTrade}})</button>
         <button class="btn btn-primary btn-sm dgc-botao-comando" (click)="telaOrdem(item)">Ordem({{item.qtdeOrdem}})</button>
-        <button class="btn btn-primary btn-sm dgc-botao-comando" routerLink="/valorMonitoriaExecucao/{{item.id}}">Acomp.</button>
+        <button class="btn btn-primary btn-sm dgc-botao-comando" routerLink="/valorMonitoriaExecucao/{{item.id}}">
+          Hist<span *ngIf="item.valorMonitorias.length>1">({{item.valorMonitorias[1].contaTrade}})</span>
+        </button>
      </div> 
     </div>
   </div>

@@ -276,6 +276,31 @@
           "verb": "get"
         }
       ]
+    },
+    "ColocaEmExecucao": {
+      "accepts": [
+        {
+          "arg": "idExperimento",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/colocaEmExecucao",
+          "verb": "post"
+        }
+      ]
     }
   }
 }

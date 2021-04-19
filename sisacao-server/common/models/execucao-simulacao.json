@@ -235,6 +235,24 @@
           "verb": "get"
         }
       ]
+    },
+    "ObtemProximoMonitorar": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "execucao",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemProximoMonitorar",
+          "verb": "get"
+        }
+      ]
     }
   }
 }

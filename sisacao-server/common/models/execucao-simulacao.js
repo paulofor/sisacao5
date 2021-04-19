@@ -110,4 +110,29 @@ Execucaosimulacao.InsereExecucaoSimulacao = function(execucao, callback) {
 };
   
 
+
+/**
+ * 
+ * @param {Function(Error, object)} callback
+ */
+
+ Execucaosimulacao.ObtemProximoMonitorar = function(callback) {
+    let sql = "select id " +
+            " from ExecucaoSimulacao " +
+            " where monitorar = 1 " +
+            " and id not in (select execucaoSimulacaoId from ValorMonitoria) " +
+            " limit 1 ";
+    let ds = Execucaosimulacao.dataSource;
+    ds.connector.query(sql, (err,result) => {
+        if (result.length==0) {
+            callback(err,{})
+        } else {
+            //callback(err,{});
+            Execucaosimulacao.ObtemMonitorarPorId(result[0].id,callback);
+        }
+    })
+  };
+  
+
+
 };

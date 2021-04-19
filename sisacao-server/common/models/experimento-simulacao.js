@@ -10,12 +10,16 @@ module.exports = function(Experimentosimulacao) {
 
     /**
     * 
+    * @param {number} idExperimento 
     * @param {Function(Error, object)} callback
     */
-    Experimentosimulacao.ObtemParaSimulacao = function(callback) {
-        var experimento;
-        // TODO
-        callback(null, experimento);
+    Experimentosimulacao.ColocaEmExecucao = function(idExperimento, callback) {
+        let sql1 = "update ExperimentoSimulacao set emExecucao = 0 ";
+        let sql2 = "update ExperimentoSimulacao set emExecucao = 1 where id = " + idExperimento;
+        let ds = Experimentosimulacao.dataSource;
+        ds.connector.query(sql1, (err1,result1) => {
+            ds.connector.query(sql2, callback);
+        })
     };
   
   
@@ -313,6 +317,27 @@ module.exports = function(Experimentosimulacao) {
         Experimentosimulacao.findOne(filtro, callback);
     };
 
+    /**
+    * 
+    * @param {Function(Error, object)} callback
+    */
+    Experimentosimulacao.ObtemParaSimulacao = function(callback) {
+        let filtro = { 
+            'where' : {'emExecucao' : 1},
+            'include' : [
+                { 'relation' : 'regraSimulacao' , 'scope' : {'include' : 'parametroRegras'} },
+                { 'relation' : 'experimentoSimulacaoPeriodos' , 
+                            'scope' : {
+                                    'include':'periodoExperimento',
+                                    'where' : {'concluido' : 0 }
+
+                            }
+            }
+        ]
+
+        }
+        Experimentosimulacao.findOne(filtro, callback);
+    };
 
 
     /**
@@ -332,8 +357,11 @@ module.exports = function(Experimentosimulacao) {
             experimento = result;
             let filtro = {
                 'order' : ['resultado desc' , 'ticker asc'],
-                'limit' : 150,
-                'include' : {'relation' : 'combinacaoParametro' , 'scope' : {'include' : 'regraSimulacao'}},
+                'limit' : 200,
+                'include' : [
+                    {'relation' : 'combinacaoParametro' , 'scope' : {'include' : 'regraSimulacao'}},
+                    {'relation' : 'trades' }
+                ],
                 'where' : {'experimentoSimulacaoId' : idExperimento}
             }
             app.models.ExecucaoSimulacao.find(filtro, (err,result) => {
