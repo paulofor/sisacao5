@@ -1,7 +1,7 @@
 <div class="dgc-painel">
   <div class="dgc-painel-header">
     <span>Monitoradas</span> 
-    <span  class="dgc-direita">Exposição: {{ totalExposicao | number : '1.2-2'}}</span> 
+    <span  class="dgc-direita">Exposição: {{ totalExposicao | number : '1.2-2'}} ({{ exposicaoTrade | number: '1.2-2'}})</span> 
   </div>
   <div class="dgc-painel-principal" *ngIf="listaBase">
     <div class="dgc-card" *ngFor="let item of listaBase" >
@@ -59,7 +59,8 @@
         <span>Médio: {{item.mediaDiaTrade | number: '1.1-1'}}d  Máximo: {{item.maximoDiaTrade | number: '1.0-0'}}d</span>
       </div>
       <div class="dgc-card-detalhe">
-        <span>Mês: {{item.ativoAcao.min1Mes | number: '1.2-2'}} - {{item.ativoAcao.max1Mes | number: '1.2-2'}}</span>
+        <span>1:({{item.ativoAcao.min1Mes | number: '1.2-2'}} - {{item.ativoAcao.max1Mes | number: '1.2-2'}})&nbsp;&nbsp;&nbsp;</span>
+        <span>3:({{item.ativoAcao.min3Mes | number: '1.2-2'}} - {{item.ativoAcao.max3Mes | number: '1.2-2'}})</span>
       </div>
       <div class="dgc-card-detalhe">
         <span>Pontos: {{item.resultado}}</span>

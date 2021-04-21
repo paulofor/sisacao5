@@ -53,4 +53,10 @@ export class ExperimentoSimulacaoListComponent  extends BaseListComponent {
         this.carregaTela();
       })
   }
+  ajustar() {
+    this.srv.ProcessaPermiteEdicaoExperimento()
+      .subscribe((result => {
+        this.carregaTela();
+      }))
+  }
 }

@@ -41,6 +41,9 @@
     },
     "favorito": {
       "type": "number"
+    },
+    "primeiraEntrada": {
+      "type": "string"
     }
   },
   "validations": [],

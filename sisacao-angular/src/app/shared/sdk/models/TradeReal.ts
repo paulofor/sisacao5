@@ -1,6 +1,7 @@
 /* tslint:disable */
 import {
-  ExecucaoSimulacao
+  ExecucaoSimulacao,
+  AtivoAcao
 } from '../index';
 
 declare var Object: any;
@@ -32,6 +33,7 @@ export interface TradeRealInterface {
   "id"?: number;
   "execucaoSimulacaoId"?: number;
   execucaoSimulacao?: ExecucaoSimulacao;
+  ativoAcao?: AtivoAcao;
 }
 
 export class TradeReal implements TradeRealInterface {
@@ -62,6 +64,7 @@ export class TradeReal implements TradeRealInterface {
   "id": number;
   "execucaoSimulacaoId": number;
   execucaoSimulacao: ExecucaoSimulacao;
+  ativoAcao: AtivoAcao;
   constructor(data?: TradeRealInterface) {
     Object.assign(this, data);
   }
@@ -208,6 +211,14 @@ export class TradeReal implements TradeRealInterface {
           relationType: 'belongsTo',
                   keyFrom: 'execucaoSimulacaoId',
           keyTo: 'id'
+        },
+        ativoAcao: {
+          name: 'ativoAcao',
+          type: 'AtivoAcao',
+          model: 'AtivoAcao',
+          relationType: 'belongsTo',
+                  keyFrom: 'ticker',
+          keyTo: 'ticker'
         },
       }
     }

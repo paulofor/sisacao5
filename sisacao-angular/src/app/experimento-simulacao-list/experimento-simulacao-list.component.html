@@ -1,7 +1,10 @@
 <div class="dgc-painel">
   <div class="dgc-painel-header">
       <span>Experimento Simulação</span>
-      <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita()">Novo Experimento</button>
+      <span class="dgc-direita"> 
+        <button class="btn btn-primary btn-sm dgc-botao-comando" (click)="ajustar()">Ajustar</button>&nbsp;&nbsp;
+        <button class="btn btn-primary btn-sm dgc-botao-comando" (click)="edita()">Novo Experimento</button>
+      </span>
   </div>
   <div *ngIf="listaBase">
       <div class="dgc-card" *ngFor="let item of listaBase">

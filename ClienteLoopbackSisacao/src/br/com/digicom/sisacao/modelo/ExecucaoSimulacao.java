@@ -24,6 +24,7 @@ public class ExecucaoSimulacao extends Model{
 	Integer id;
 	Integer regraSimulacaoId;
 	Integer periodoExperimentoId;
+	String primeiraEntrada = "";
 	
 	
 	List<Trade> trades = new ArrayList<Trade>();
@@ -119,6 +120,7 @@ public class ExecucaoSimulacao extends Model{
 			obj.put("id", this.id);
 			obj.put("regraSimulacaoId", this.regraSimulacaoId);
 			obj.put("periodoExperimentoId", this.periodoExperimentoId);
+			obj.put("primeiraEntrada", this.primeiraEntrada);
 			JSONArray trades = new JSONArray();
 			for (Trade trade : this.trades) {
 				trades.put(trade.getJSON());
@@ -193,6 +195,16 @@ public class ExecucaoSimulacao extends Model{
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) trades.get(i), true);
 			this.trades.add((Trade) objeto);
 		}
+	}
+
+
+	public String getPrimeiraEntrada() {
+		return primeiraEntrada;
+	}
+
+
+	public void setPrimeiraEntrada(String primeiraEntrada) {
+		this.primeiraEntrada = primeiraEntrada;
 	}
 
 	

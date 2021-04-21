@@ -50,6 +50,10 @@ public class Trade {
 		this.precoSaida = precoSaida;
 	}
 	
+	public String entradaDataPrecoDisplay() {
+		return "" + entrada.getDataExtraida() + " (" + entrada.getValor() + ")";
+	}
+	
 	public String entradaDisplay() {
 		return "" + entrada.getValor();
 	}

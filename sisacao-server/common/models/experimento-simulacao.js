@@ -356,7 +356,7 @@ module.exports = function(Experimentosimulacao) {
         Experimentosimulacao.findOne(filtroExperimento, (err,result) => {
             experimento = result;
             let filtro = {
-                'order' : ['resultado desc' , 'ticker asc'],
+                'order' : ['resultado desc' , 'ticker asc' , 'primeiraEntrada asc'],
                 'limit' : 200,
                 'include' : [
                     {'relation' : 'combinacaoParametro' , 'scope' : {'include' : 'regraSimulacao'}},
@@ -387,5 +387,25 @@ module.exports = function(Experimentosimulacao) {
         })
     };
   
-
+    /**
+    * 
+    * @param {Function(Error)} callback
+    */
+    Experimentosimulacao.ProcessaPermiteEdicaoExperimento = function(callback) {
+        let sql1 = "update ExperimentoSimulacao " +
+                " set permiteEdicao = " +
+                " (select count(*) from ExecucaoSimulacao where experimentoSimulacaoId = ExperimentoSimulacao.id)";
+        let sql2 = "update ExperimentoSimulacao " +
+                " set permiteEdicao = 1 " +
+                " where permiteEdicao = 0";
+        let sql3 = "update ExperimentoSimulacao " +
+                " set permiteEdicao = 0 " +
+                " where permiteEdicao > 1";
+        let ds = Experimentosimulacao.dataSource;
+        ds.connector.query(sql1, (err,result) => {
+            ds.connector.query(sql2, (err,result) => {
+                ds.connector.query(sql3, callback);
+            });
+        })
+    };
 };

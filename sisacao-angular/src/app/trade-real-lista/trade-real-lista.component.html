@@ -14,6 +14,9 @@
           </div>
           <div *ngIf="(item.posicaoAtual==1)">
                 <div>
+                    <span>{{item.dias}} dias</span>
+                </div>
+                <div>
                     <span class="dgc-titulo">Stop</span>
                     <span class="dgc-valor">:  R$ {{item.precoStop | number: '1.2-2'}}</span>
                 </div>
@@ -28,6 +31,10 @@
                 <div>
                     <span class="dgc-titulo">Alvo</span>
                     <span class="dgc-valor">:  R$ {{item.lucroAlvo | number: '1.2-2'}}</span>
+                </div>
+                <div class="dgc-card-detalhe">
+                    <span>1:({{item.ativoAcao.min1Mes | number: '1.2-2'}} - {{item.ativoAcao.max1Mes | number: '1.2-2'}})&nbsp;&nbsp;&nbsp;</span>
+                    <span>3:({{item.ativoAcao.min3Mes | number: '1.2-2'}} - {{item.ativoAcao.max3Mes | number: '1.2-2'}})</span>
                 </div>
           </div>
           <div *ngIf="(item.posicaoAtual==0)">

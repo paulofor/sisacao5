@@ -92,6 +92,8 @@ module.exports = function (Ativoacao) {
         app.models.TradeReal.AtualizaDiaAberto((err,result) => {
             
         })
+        //app.models.ExperimentoSimulacao.ProcessaPermiteEdicaoExperimento((err,result) => {
+        //})
 
         var ds = Ativoacao.dataSource;
         ds.connector.query(sqlFechameentoAtual, (err1, result1) => {

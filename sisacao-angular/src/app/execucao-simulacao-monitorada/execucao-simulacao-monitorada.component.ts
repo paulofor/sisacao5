@@ -4,7 +4,7 @@ import { Subscription, interval } from 'rxjs';
 import { BaseListComponent } from '../base-component/base-list-component';
 import { CUSTO_TRADE, PERCENTUAL_AVISO } from '../constantes/base.url';
 import { OrdemCompraEditaComponent } from '../ordem-compra-edita/ordem-compra-edita.component';
-import { CotacaoIntradayAcao, CotacaoIntradayAcaoApi, ExecucaoSimulacao, ExecucaoSimulacaoApi, OrdemCompraApi } from '../shared/sdk';
+import { CotacaoIntradayAcao, CotacaoIntradayAcaoApi, ExecucaoSimulacao, ExecucaoSimulacaoApi, OrdemCompraApi, TradeRealApi } from '../shared/sdk';
 import { TradeExecucaoSimulacaoComponent } from '../trade-execucao-simulacao/trade-execucao-simulacao.component';
 import { TradeRealEditaComponent } from '../trade-real-edita/trade-real-edita.component';
 
@@ -18,9 +18,10 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
   private updateSubscription: Subscription;
  
   public totalExposicao;
+  public exposicaoTrade;
 
   constructor(protected srv:ExecucaoSimulacaoApi, private srvCotacao: CotacaoIntradayAcaoApi,
-    protected dialog: MatDialog, private srvOrdem: OrdemCompraApi) {
+    protected dialog: MatDialog, private srvOrdem: OrdemCompraApi, private srvTrade: TradeRealApi) {
     super(dialog, srv)
   }
 
@@ -47,8 +48,9 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
   posCarregaLista() {
     this.carregaPrecoAtual();
     this.carregaExposicao();
+    this.carregaExposicaoTrade();
     this.carregaOrdem();
-    this.updateSubscription = interval(60000)
+    this.updateSubscription = interval(300000)
       .subscribe((val) => { 
         this.carregaPrecoAtual()
       });
@@ -73,6 +75,12 @@ export class ExecucaoSimulacaoMonitoradaComponent extends BaseListComponent{
       .subscribe((result) => {
         console.log('Exposicao: ' , result);
         this.totalExposicao = result.valor;
+      })
+  }
+  carregaExposicaoTrade() {
+    this.srvTrade.TotalExposicao() 
+      .subscribe((result) => {
+        this.exposicaoTrade = result.valor;
       })
   }
 

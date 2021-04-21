@@ -47,6 +47,7 @@ export class OrdemCompraEditaComponent extends BaseEditComponent {
   }
 
   posItem() {
+    this.item.execucaoSimulacao = this.origem;
     this.carregaExposicaoLucro();
   }
 

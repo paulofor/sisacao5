@@ -59,11 +59,12 @@ module.exports = function(Tradereal) {
     * @param {Function(Error, object)} callback
     */
     Tradereal.CalculaEstimativa = function(idTrade, callback) {
+        //console.log('CalculaEstimativa');
         let sql1 = "update TradeReal " +
             " set valorTarget = precoTarget * quantidade, " +
             " valorStop = precoStop * quantidade, " +
-            " valorEntrada = precoEntrada * quantidade " +
-            " dataNumEntrada = concat(substring(dataEntrada,1,4),substring(dataEntrada,6,2),substring(dataEntrada,9,2)), " +
+            " valorEntrada = precoEntrada * quantidade, " +
+            " dataNumEntrada = concat(substring(dataEntrada,1,4),substring(dataEntrada,6,2),substring(dataEntrada,9,2)) " +
             " where id = " + idTrade;
         let sql2 = "update TradeReal " +
             " set valorExposicao = (valorEntrada - valorStop + " + CUSTO_OPERACAO + ") , " +
@@ -71,6 +72,7 @@ module.exports = function(Tradereal) {
             " where id = " + idTrade;
         let ds = Tradereal.dataSource;
         ds.connector.query(sql1,(err,result) => {
+            //console.log('err', err);
             ds.connector.query(sql2,callback);
         });
     };

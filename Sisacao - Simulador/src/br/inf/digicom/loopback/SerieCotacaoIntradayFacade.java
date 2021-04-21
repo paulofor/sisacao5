@@ -13,6 +13,7 @@ import br.com.digicom.sisacao.modelo.ExperimentoSimulacao;
 import br.com.digicom.sisacao.modelo.ValorParametro;
 import br.com.digicom.sisacao.repositorio.RepositorioDiaPregao;
 import br.com.digicom.sisacao.repositorio.RepositorioExecucaoSimulacao;
+import br.inf.digicom.TempoSleep;
 import br.inf.digicom.simulacao.IRegraPontoEntrada;
 import br.inf.digicom.simulacao.RepositorioCotacao;
 import br.inf.digicom.simulacao.SimuladorPontoEntradaDia;
@@ -88,6 +89,11 @@ public class SerieCotacaoIntradayFacade {
 		exec.setExperimentoSimulacaoId(combinacao.getExperimentoSimulacaoId());
 		exec.setRegraSimulacaoId(combinacao.getRegraSimulacaoId());
 		exec.setPeriodoExperimentoId(experimento.periodoExperimentoId());
+		String primeiraEntrada = "";
+		if (execucao.listaTrades().size()>0) {
+			primeiraEntrada = execucao.listaTrades().get(0).entradaDataPrecoDisplay();
+		}
+		exec.setPrimeiraEntrada(primeiraEntrada);
 		for (Trade trade : execucao.listaTrades()) {
 			br.com.digicom.sisacao.modelo.Trade tradeModel = new br.com.digicom.sisacao.modelo.Trade();
 			tradeModel.setPrecoEntrada(trade.getValorEntrada());
@@ -101,14 +107,14 @@ public class SerieCotacaoIntradayFacade {
 			exec.addTrade(tradeModel);
 		};
 		try {
-			Thread.sleep(800);
+			Thread.sleep(TempoSleep.PRE_INSERT_SIMULACAO);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		repExecucaoSimulacao.insereExecucaoSimulacao(exec, new VoidCallback() {
 			@Override
 			public void onSuccess() {
-				System.out.println("Inseriu execucao");
+				//System.out.println("Inseriu execucao");
 				addConcluido();
 				
 			}

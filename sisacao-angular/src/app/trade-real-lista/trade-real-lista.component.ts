@@ -38,7 +38,10 @@ export class TradeRealListaComponent extends BaseListComponent {
   getFiltro() {
     return {
       'order' : 'dataEntrada desc',
-      'include' : 'execucaoSimulacao'
+      'include' : [
+          {'relation' : 'execucaoSimulacao'},
+          {'relation' : 'ativoAcao' }
+      ]
     }
   }
 }

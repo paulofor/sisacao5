@@ -301,6 +301,17 @@
           "verb": "post"
         }
       ]
+    },
+    "ProcessaPermiteEdicaoExperimento": {
+      "accepts": [],
+      "returns": [],
+      "description": "",
+      "http": [
+        {
+          "path": "/processaPermiteEdicaoExperimento",
+          "verb": "post"
+        }
+      ]
     }
   }
 }
