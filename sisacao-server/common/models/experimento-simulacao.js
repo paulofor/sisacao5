@@ -408,4 +408,48 @@ module.exports = function(Experimentosimulacao) {
             });
         })
     };
+
+
+
+    /**
+    * 
+    * @param {number} idExperimento 
+    * @param {Function(Error, object)} callback
+    */
+    Experimentosimulacao.ValidarFechar = function(idExperimento, callback) {
+        //console.log('idExperimento', idExperimento);
+        let experimento;
+        let ds = Experimentosimulacao.dataSource;
+        Experimentosimulacao.findById(idExperimento, (err,result) => {
+            experimento = result;
+            let sqlCombinacao = "select count(1) as qtde from CombinacaoParametro where experimentoSimulacaoId = " + idExperimento;
+            
+            ds.connector.query(sqlCombinacao, (err,result2) => {
+                //console.log('experimento.quantidadeCombinacao:' , experimento.quantidadeCombinacao);
+                //console.log('result2.qtde:' , result2[0].qtde);
+                if (experimento.quantidadeCombinacao==result2[0].qtde) {
+                    let sqlParametro = "select count(1) as qtdeParam from ValorParametro where experimentoSimulacaoId = " + idExperimento;
+                    ds.connector.query(sqlParametro, (err,result3) => {
+                        //console.log('result3.qtdeParam' , result3[0].qtdeParam);
+                        let sqlParamSimples = " select count(1) as qtdeParamSimples from ParametroRegra " +
+                                " inner join RegraSimulacao on RegraSimulacao.Id = ParametroRegra.regraSimulacaoId " +
+                                " inner join ExperimentoSimulacao on ExperimentoSimulacao.regraSimulacaoId = RegraSimulacao.id " +
+                                " where ExperimentoSimulacao.id = " + idExperimento;
+                        ds.connector.query(sqlParamSimples, (err,result4) => {
+                            let totalEsperado = result2[0].qtde * result4[0].qtdeParamSimples;
+                            //console.log('totalEsperado:' , totalEsperado);
+                            if (totalEsperado==result3[0].qtdeParam) {
+                                //console.log('iguais2')
+                                let sqlEdicao = "update ExperimentoSimulacao set permiteEdicao = 0 where id = " + idExperimento;
+                                console.log('sqlEdicao', sqlEdicao);
+                                ds.connector.query(sqlEdicao,callback);
+                            }
+                        })
+                    })
+
+                }
+            })
+        })
+    };
+  
 };

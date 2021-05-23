@@ -59,4 +59,10 @@ export class ExperimentoSimulacaoListComponent  extends BaseListComponent {
         this.carregaTela();
       }))
   }
+  fecharExperimento(item) {
+    this.srv.ValidarFechar(item.id)
+      .subscribe((result => {
+        this.carregaTela();
+      }))
+  }
 }

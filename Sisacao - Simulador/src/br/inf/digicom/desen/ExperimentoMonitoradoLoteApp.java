@@ -29,7 +29,9 @@ public class ExperimentoMonitoradoLoteApp {
 		repExecucaoSimulacao.obtemProximoMonitorar(new ObjectCallback<ExecucaoSimulacao>() {
 			@Override
 			public void onSuccess(ExecucaoSimulacao execucao) {
+				//execucao.setExperimentoSimulacaoId(3700658);
 				if (execucao.getExperimentoSimulacaoId()!=null) {
+					System.out.println("ID-Execucao: " + execucao.getId());
 					atualizaPeriodos(execucao);
 				} else {
 					System.out.println("Sem pendencias");
