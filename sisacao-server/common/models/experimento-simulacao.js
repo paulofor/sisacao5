@@ -439,9 +439,9 @@ module.exports = function(Experimentosimulacao) {
                             let totalEsperado = result2[0].qtde * result4[0].qtdeParamSimples;
                             //console.log('totalEsperado:' , totalEsperado);
                             if (totalEsperado==result3[0].qtdeParam) {
-                                //console.log('iguais2')
+                                console.log('iguais2')
                                 let sqlEdicao = "update ExperimentoSimulacao set permiteEdicao = 0 where id = " + idExperimento;
-                                console.log('sqlEdicao', sqlEdicao);
+                                //console.log('sqlEdicao', sqlEdicao);
                                 ds.connector.query(sqlEdicao,callback);
                             }
                         })

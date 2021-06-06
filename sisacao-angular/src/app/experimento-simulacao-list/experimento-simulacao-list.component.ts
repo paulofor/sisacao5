@@ -13,6 +13,8 @@ import { ExperimentoAcaoApi, ExperimentoSimulacao, ExperimentoSimulacaoApi } fro
 })
 export class ExperimentoSimulacaoListComponent  extends BaseListComponent {
 
+  geraCombinacaoBtn = false;
+
   constructor(protected dialog: MatDialog, protected srv:ExperimentoSimulacaoApi) { 
     super(dialog,srv);
   }
@@ -41,10 +43,13 @@ export class ExperimentoSimulacaoListComponent  extends BaseListComponent {
   }
 
   gerarCombinacao(item) {
+    this.geraCombinacaoBtn = true;
+    
     this.srv.GerarCombinacoes(item.id)
       .subscribe(result => {
         item.quantidadeCombinacao = result.quantidade;
       })
+    
   }
 
   executa(item) {

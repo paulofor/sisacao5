@@ -50,7 +50,7 @@
  
           <div class="dgc-card-comandos" *ngIf="(item.permiteEdicao==1)">
             <button class="btn-primary btn-sm btn" (click)="fecharExperimento(item)">Fechar</button>
-            <button class="btn-primary btn-sm btn" (click)="gerarCombinacao(item)">Gerar Combinações</button>
+            <button class="btn-primary btn-sm btn" [disabled]="geraCombinacaoBtn" (click)="gerarCombinacao(item)">Gerar Combinações</button>
             <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar Experimento</button>
           </div> 
           <div class="dgc-card-comandos" *ngIf="(item.permiteEdicao==0)">

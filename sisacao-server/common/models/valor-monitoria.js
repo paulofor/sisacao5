@@ -25,6 +25,8 @@ module.exports = function(Valormonitoria) {
                 let valorEntrada = 0;
                 let contaDia = 0;
                 let contaTrade = 0;
+                let contaTradeLucro = 0;
+                let contaTradePrejuizo = 0;
                 for (let i=0;i<lista.length;i++) {
                     //console.log('Tratando ' + lista[i].ticker + ' [' + lista[i].diaNumEntrada + ']');
                     lista[i].situacao = 'fora';
@@ -39,6 +41,16 @@ module.exports = function(Valormonitoria) {
                             valorEntrada = lista[i].valorEntrada;
                             
                         }
+                        if (lista[i].valorEntrada >= lista[i].minimo && lista[i].valorEntrada >= lista[i].maximo) {
+                            lista[i].situacao = 'entrada em ' + lista[i].abertura;
+                            comprado = 1;
+                            contaTrade++;
+                            target = lista[i].abertura * (1+execucao.target);
+                            stop = lista[i].abertura * (1-execucao.stop);
+                            valorEntrada = lista[i].abertura;
+                            
+                        }
+                        
                     } else {
                         contaDia++;
                         lista[i].situacao = '(' + valorEntrada.toFixed(2) +') --> s: ' + stop.toFixed(2) + '  t: ' + target.toFixed(2);
@@ -47,12 +59,14 @@ module.exports = function(Valormonitoria) {
                             comprado = 0;
                             target = 0;
                             stop = 0;
+                            contaTradeLucro++;
                         }
                         if (stop >= lista[i].minimo && stop <= lista[i].maximo) {
                             lista[i].situacao = 'saida stop';
                             comprado = 0;
                             target = 0;
                             stop = 0;
+                            contaTradePrejuizo++;
                         }
                     }
                     lista[i].posicao = comprado;
@@ -61,6 +75,8 @@ module.exports = function(Valormonitoria) {
                     lista[i].pontoEntrada = valorEntrada;
                     lista[i].quantidadeDiaTrade = contaDia;
                     lista[i].contaTrade = contaTrade;
+                    lista[i].contaTradeLucro = contaTradeLucro;
+                    lista[i].contaTradePrejuizo = contaTradePrejuizo;
                     atualizaValorMonitoria(lista[i]);
                 };
                 callback(null, lista);
@@ -77,7 +93,9 @@ module.exports = function(Valormonitoria) {
             " posicao = " + valorMonitoria.posicao + ", " +
             " pontoEntrada = " + valorMonitoria.pontoEntrada + ", " +
             " quantidadeDiaTrade = " + valorMonitoria.quantidadeDiaTrade + ", " +
-            " contaTrade = " + valorMonitoria.contaTrade + " " +
+            " contaTrade = " + valorMonitoria.contaTrade + ", " +
+            " contaTradeLucro = " + valorMonitoria.contaTradeLucro + ", " +
+            " contaTradePrejuizo = " + valorMonitoria.contaTradePrejuizo + " " +
             " where id = " + valorMonitoria.id;
         let ds = Valormonitoria.dataSource;
         ds.connector.query(sql, (err, resultado) => {

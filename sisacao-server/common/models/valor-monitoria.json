@@ -35,6 +35,12 @@
     },
     "contaTrade": {
       "type": "number"
+    },
+    "contaTradeLucro": {
+      "type": "number"
+    },
+    "contaTradePrejuizo": {
+      "type": "number"
     }
   },
   "validations": [],
