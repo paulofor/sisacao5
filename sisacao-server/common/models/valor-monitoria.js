@@ -53,15 +53,16 @@ module.exports = function(Valormonitoria) {
                         
                     } else {
                         contaDia++;
-                        lista[i].situacao = '(' + valorEntrada.toFixed(2) +') --> s: ' + stop.toFixed(2) + '  t: ' + target.toFixed(2);
-                        if (target >= lista[i].minimo && target <= lista[i].maximo) {
+                        //lista[i].situacao = '(' + valorEntrada.toFixed(2) +') --> s: ' + stop.toFixed(2) + '  t: ' + target.toFixed(2);
+                        lista[i].situacao = lista[i-1].situacao;
+                        if (target <= lista[i].maximo ) {
                             lista[i].situacao = 'saída target';
                             comprado = 0;
                             target = 0;
                             stop = 0;
                             contaTradeLucro++;
                         }
-                        if (stop >= lista[i].minimo && stop <= lista[i].maximo) {
+                        if (stop >= lista[i].minimo) {
                             lista[i].situacao = 'saida stop';
                             comprado = 0;
                             target = 0;
@@ -134,6 +135,7 @@ module.exports = function(Valormonitoria) {
      */
 
     Valormonitoria.InsereMonitoria = function(execucao, diaNum, preco, callback) {
+        //console.log(" ****** ");
         let sql = "update ExecucaoSimulacao set precoEntrada = " + preco +
             ", dataNumEntrada = " + diaNum + " where id = " + execucao.id;
         //console.log(sql);
