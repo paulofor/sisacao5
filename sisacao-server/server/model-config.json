@@ -166,5 +166,17 @@
   "ExperimentoSimulacaoPeriodo": {
     "dataSource": "mysqlDS",
     "public": true
+  },
+  "FundoImobiliario": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "CDB": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "RendaFixa": {
+    "dataSource": "mysqlDS",
+    "public": true
   }
 }

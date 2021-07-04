@@ -91,6 +91,7 @@ import { PeriodoExperimentoListaComponent } from './periodo-experimento-lista/pe
 
 import { PeriodoExperimentoEditaComponent } from './periodo-experimento-edita/periodo-experimento-edita.component';
 import { EscolhePeriodoParaExperimentoComponent } from './escolhe-periodo-para-experimento/escolhe-periodo-para-experimento.component';
+import { FundoImobiliarioMelhoresComponent } from './fundo-imobiliario-melhores/fundo-imobiliario-melhores.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -155,7 +156,8 @@ registerLocaleData(localePt, 'pt-BR');
     OrdemCompraListaEditaComponent,
     PeriodoExperimentoListaComponent,
     PeriodoExperimentoEditaComponent,
-    EscolhePeriodoParaExperimentoComponent
+    EscolhePeriodoParaExperimentoComponent,
+    FundoImobiliarioMelhoresComponent
   ],
   imports: [
     BrowserModule,

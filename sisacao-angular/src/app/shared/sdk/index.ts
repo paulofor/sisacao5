@@ -82,6 +82,7 @@ import { TradeRealApi } from './services/custom/TradeReal';
 import { PeriodoExperimentoApi } from './services/custom/PeriodoExperimento';
 import { OrdemCompraApi } from './services/custom/OrdemCompra';
 import { ExperimentoSimulacaoPeriodoApi } from './services/custom/ExperimentoSimulacaoPeriodo';
+import { FundoImobiliarioApi } from './services/custom/FundoImobiliario';
 /**
 * @module SDKBrowserModule
 * @description
@@ -146,8 +147,10 @@ export class SDKBrowserModule {
         PeriodoExperimentoApi,
         OrdemCompraApi,
         ExperimentoSimulacaoPeriodoApi,
+        FundoImobiliarioApi,
         internalStorageProvider,
-        { provide: SDKStorage, useClass: StorageBrowser }
+        { provide: SDKStorage, useClass: StorageBrowser },
+
       ]
     };
   }

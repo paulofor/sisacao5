@@ -34,6 +34,7 @@ import { TradeReal } from '../../models/TradeReal';
 import { PeriodoExperimento } from '../../models/PeriodoExperimento';
 import { OrdemCompra } from '../../models/OrdemCompra';
 import { ExperimentoSimulacaoPeriodo } from '../../models/ExperimentoSimulacaoPeriodo';
+import { FundoImobiliario } from '../../models/FundoImobiliario';
 
 export interface Models { [name: string]: any }
 
@@ -75,6 +76,7 @@ export class SDKModels {
     PeriodoExperimento: PeriodoExperimento,
     OrdemCompra: OrdemCompra,
     ExperimentoSimulacaoPeriodo: ExperimentoSimulacaoPeriodo,
+    FundoImobiliario: FundoImobiliario,
     
   };
 

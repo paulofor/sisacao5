@@ -16,7 +16,7 @@ public abstract class CallbackParseHtml extends HTMLEditorKit.ParserCallback imp
 	
 	private boolean debug = false;
 
-	private String ultConteudo = null, ultConteudo2 = null;
+	private String ultConteudo = null, ultConteudo2 = null, ultConteudo3 = null;
 	private String ultId = null;
 	private String ultClasse = null, ultClasse2 = null, ultClasse3 = null;
 	private String ultUrl = null, ultUrl2 = null, ultUrl3 = null;
@@ -27,6 +27,8 @@ public abstract class CallbackParseHtml extends HTMLEditorKit.ParserCallback imp
 	
 	private String ultConteudoComTexto = null;
 	
+	private String ultConteudoElementoSimples = null;
+	
 	private int contLi = 0;
 
 	public final ParserThread criaParse() {
@@ -34,6 +36,14 @@ public abstract class CallbackParseHtml extends HTMLEditorKit.ParserCallback imp
 		parser.setCallback(this);
 		return parser;
 	}
+
+	
+	
+	public String getUltConteudoElementoSimples() {
+		return ultConteudoElementoSimples;
+	}
+
+
 
 	private CookieManager cookies = null;
 	
@@ -69,6 +79,10 @@ public abstract class CallbackParseHtml extends HTMLEditorKit.ParserCallback imp
 	protected String getUltConteudo2() {
 		return (ultConteudo2 == null ? "" : ultConteudo2);
 	}
+	protected String getUltConteudo3() {
+		return (ultConteudo3 == null ? "" : ultConteudo3);
+	}
+	
 	protected String getUltConteudoComTexto() {
 		return this.ultConteudoComTexto;
 	}
@@ -116,6 +130,7 @@ public abstract class CallbackParseHtml extends HTMLEditorKit.ParserCallback imp
 	String bufferConteudo = null;
 	public void handleText(char[] data, int pos) {
 		String conteudo = String.copyValueOf(data);
+		ultConteudo3 = ultConteudo2;
 		ultConteudo2 = ultConteudo;
 		ultConteudo = conteudo;
 		if (conteudo.trim().length()>1) {
@@ -127,11 +142,12 @@ public abstract class CallbackParseHtml extends HTMLEditorKit.ParserCallback imp
 	}
 
 	protected void elementoSimples(HTML.Tag t, String nomeId, String nomeClasse, String conteudo) {
+		ultConteudoElementoSimples = conteudo;
 		if (this.debug)
 			System.out.println("<elementoSimples>:" + t + "." + nomeClasse + "#" + nomeId + ":" + conteudo);
 	}
 
-	protected void inicioTag(HTML.Tag t, String classeNome, String idNome) {
+	protected final void inicioTag(HTML.Tag t, String classeNome, String idNome) {
 		ultId = idNome;
 		ultClasse3 = ultClasse2;
 		ultClasse2 = ultClasse;

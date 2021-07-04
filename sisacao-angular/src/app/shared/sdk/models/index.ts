@@ -33,5 +33,6 @@ export * from './TradeReal';
 export * from './PeriodoExperimento';
 export * from './OrdemCompra';
 export * from './ExperimentoSimulacaoPeriodo';
+export * from './FundoImobiliario';
 export * from './BaseModels';
 export * from './FireLoopRef';

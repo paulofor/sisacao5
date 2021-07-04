@@ -91,6 +91,9 @@ module.exports = function (Ativoacao) {
         });
         app.models.TradeReal.AtualizaDiaAberto((err,result) => {
             
+        });
+        app.models.FundoImobiliario.AtualizaMetricaFundoImobiliario((err,result) => {
+            
         })
         //app.models.ExperimentoSimulacao.ProcessaPermiteEdicaoExperimento((err,result) => {
         //})

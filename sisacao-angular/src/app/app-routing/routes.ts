@@ -26,6 +26,7 @@ import { ValorMonitoriaExecucaoComponent } from '../valor-monitoria-execucao/val
 import { TradeRealListaComponent } from '../trade-real-lista/trade-real-lista.component';
 import { OrdemCompraListaComponent } from '../ordem-compra-lista/ordem-compra-lista.component';
 import { PeriodoExperimentoListaComponent } from '../periodo-experimento-lista/periodo-experimento-lista.component';
+import { FundoImobiliarioMelhoresComponent } from '../fundo-imobiliario-melhores/fundo-imobiliario-melhores.component';
 
 export const routes : Routes = [
     { path: 'home' , component: HomeComponent },
@@ -61,6 +62,7 @@ export const routes : Routes = [
     { path : 'tradeReal' , component: TradeRealListaComponent },
     { path : 'ordemCompra' , component: OrdemCompraListaComponent },
     { path : 'periodoExperimento' , component: PeriodoExperimentoListaComponent },
+    { path : 'fundoImobiliarioMelhores' , component: FundoImobiliarioMelhoresComponent},
 
     { path: '',          redirectTo: 'home', pathMatch: 'full' }
 ]

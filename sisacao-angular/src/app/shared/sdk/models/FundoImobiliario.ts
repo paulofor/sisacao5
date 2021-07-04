@@ -1,0 +1,124 @@
+/* tslint:disable */
+
+declare var Object: any;
+export interface FundoImobiliarioInterface {
+  "ticker"?: string;
+  "nome"?: string;
+  "segmento"?: string;
+  "administrador"?: string;
+  "descricao"?: string;
+  "percentual12"?: number;
+  "percentual6"?: number;
+  "mediaNegocio1"?: number;
+  "mediaNegocio3"?: number;
+  "mediaNegocio4"?: number;
+  "precoAtual"?: number;
+  "preco6"?: number;
+  "preco12"?: number;
+}
+
+export class FundoImobiliario implements FundoImobiliarioInterface {
+  "ticker": string;
+  "nome": string;
+  "segmento": string;
+  "administrador": string;
+  "descricao": string;
+  "percentual12": number;
+  "percentual6": number;
+  "mediaNegocio1": number;
+  "mediaNegocio3": number;
+  "mediaNegocio4": number;
+  "precoAtual": number;
+  "preco6": number;
+  "preco12": number;
+  constructor(data?: FundoImobiliarioInterface) {
+    Object.assign(this, data);
+  }
+  /**
+   * The name of the model represented by this $resource,
+   * i.e. `FundoImobiliario`.
+   */
+  public static getModelName() {
+    return "FundoImobiliario";
+  }
+  /**
+  * @method factory
+  * @author Jonathan Casarrubias
+  * @license MIT
+  * This method creates an instance of FundoImobiliario for dynamic purposes.
+  **/
+  public static factory(data: FundoImobiliarioInterface): FundoImobiliario{
+    return new FundoImobiliario(data);
+  }
+  /**
+  * @method getModelDefinition
+  * @author Julien Ledun
+  * @license MIT
+  * This method returns an object that represents some of the model
+  * definitions.
+  **/
+  public static getModelDefinition() {
+    return {
+      name: 'FundoImobiliario',
+      plural: 'FundoImobiliarios',
+      path: 'FundoImobiliarios',
+      idName: 'ticker',
+      properties: {
+        "ticker": {
+          name: 'ticker',
+          type: 'string'
+        },
+        "nome": {
+          name: 'nome',
+          type: 'string'
+        },
+        "segmento": {
+          name: 'segmento',
+          type: 'string'
+        },
+        "administrador": {
+          name: 'administrador',
+          type: 'string'
+        },
+        "descricao": {
+          name: 'descricao',
+          type: 'string'
+        },
+        "percentual12": {
+          name: 'percentual12',
+          type: 'number'
+        },
+        "percentual6": {
+          name: 'percentual6',
+          type: 'number'
+        },
+        "mediaNegocio1": {
+          name: 'mediaNegocio1',
+          type: 'number'
+        },
+        "mediaNegocio3": {
+          name: 'mediaNegocio3',
+          type: 'number'
+        },
+        "mediaNegocio4": {
+          name: 'mediaNegocio4',
+          type: 'number'
+        },
+        "precoAtual": {
+          name: 'precoAtual',
+          type: 'number'
+        },
+        "preco6": {
+          name: 'preco6',
+          type: 'number'
+        },
+        "preco12": {
+          name: 'preco12',
+          type: 'number'
+        },
+      },
+      relations: {
+      }
+    }
+  }
+}
