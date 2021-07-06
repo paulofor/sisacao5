@@ -11,13 +11,14 @@
               <thead>
                 <tr>
                   <th width="10%">Ticker</th>
-                  <th width="10%">Nome</th>
-                  <th width="10%">Segmento</th>
-                  <th width="10%">Administrador</th>
-                  <th width="10%">Percentual 6</th>
-                  <th width="10%">Percentual 12</th>
-                  <th width="10%">Negócios 1</th>
-                  <th width="15%"></th>
+                  <th width="25%">Nome</th>
+                  <th width="15%">Segmento</th>
+                  <th width="20%">Administrador</th>
+                  <th width="5%">Perc6</th>
+                  <th width="5%">Perc12</th>
+                  <th width="5%">Neg1</th>
+                  <th width="10%">Atual</th>
+                  <th width="10%"></th>
                 </tr>
               </thead>
               <tbody>
@@ -29,6 +30,7 @@
                   <td>{{item.percentual6 | number: '1.1-1'}}</td>
                   <td>{{item.percentual12 | number: '1.1-1'}}</td>
                   <td>{{item.mediaNegocio1 | number: '1.1-1'}}</td>
+                  <td>{{item.precoAtual | number: '1.2-2'}}</td>
                   <td align="right">
                     <a style="margin-left: 8px; margin-right: 8px;" routerLink="/cotacaoDiarioAcao/{{item.ticker}}">diario</a>
                   </td>
