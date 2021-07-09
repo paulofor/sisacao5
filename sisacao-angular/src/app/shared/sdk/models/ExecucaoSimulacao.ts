@@ -25,6 +25,7 @@ export interface ExecucaoSimulacaoInterface {
   "maximoDiaTrade"?: number;
   "favorito"?: number;
   "primeiraEntrada"?: string;
+  "tipo"?: string;
   "id"?: number;
   "combinacaoParametroId"?: number;
   "regraSimulacaoId"?: number;
@@ -54,6 +55,7 @@ export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
   "maximoDiaTrade": number;
   "favorito": number;
   "primeiraEntrada": string;
+  "tipo": string;
   "id": number;
   "combinacaoParametroId": number;
   "regraSimulacaoId": number;
@@ -150,6 +152,10 @@ export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
         },
         "primeiraEntrada": {
           name: 'primeiraEntrada',
+          type: 'string'
+        },
+        "tipo": {
+          name: 'tipo',
           type: 'string'
         },
         "id": {

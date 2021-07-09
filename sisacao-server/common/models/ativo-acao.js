@@ -95,6 +95,9 @@ module.exports = function (Ativoacao) {
         app.models.FundoImobiliario.AtualizaMetricaFundoImobiliario((err,result) => {
             
         })
+        app.models.ExecucaoSimulacao.CalculaMaximoMedioGeral((err,result) => {
+
+        })
         //app.models.ExperimentoSimulacao.ProcessaPermiteEdicaoExperimento((err,result) => {
         //})
 

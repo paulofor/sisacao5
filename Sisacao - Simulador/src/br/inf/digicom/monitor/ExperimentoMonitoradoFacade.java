@@ -14,7 +14,9 @@ import br.inf.digicom.TempoSleep;
 import br.inf.digicom.simulacao.IRegraPontoEntrada;
 import br.inf.digicom.simulacao.RepositorioCotacao;
 import br.inf.digicom.simulacao.SimuladorPontoEntradaDia;
+import br.inf.digicom.simulacao.SimuladorPontoEntradaDiaVenda;
 import br.inf.digicom.simulacao.regra.FabricaRegra;
+import br.inf.digicom.simulacao.regra.IRegraVenda;
 
 public class ExperimentoMonitoradoFacade {
 	
@@ -98,7 +100,12 @@ public class ExperimentoMonitoradoFacade {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		SimuladorPontoEntradaDia simulador = new SimuladorPontoEntradaDia();
+		SimuladorPontoEntradaDia simulador = null;
+		if (regra instanceof IRegraVenda) {
+			 simulador = new SimuladorPontoEntradaDiaVenda();
+		} else {
+			 simulador = new SimuladorPontoEntradaDia();
+		}
 		Double preco = simulador.precoEntrada(RepositorioCotacao.getCotacao(execucao.getTicker()), execucao.getCombinacaoParametro(), regra, dataNum);
 		execucao.setPrecoEntrada(preco);
 	}

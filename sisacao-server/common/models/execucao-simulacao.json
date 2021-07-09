@@ -44,6 +44,9 @@
     },
     "primeiraEntrada": {
       "type": "string"
+    },
+    "tipo": {
+      "type": "string"
     }
   },
   "validations": [],
@@ -91,6 +94,24 @@
   },
   "acls": [],
   "methods": {
+    "CalculaMaximoMedioGeral": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "result",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/calculaMaximoMedioGeral",
+          "verb": "post"
+        }
+      ]
+    },
     "InsereExecucaoSimulacao": {
       "accepts": [
         {

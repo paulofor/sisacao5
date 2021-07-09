@@ -10,8 +10,7 @@ import br.com.digicom.sisacao.modelo.DiaPregao;
 import br.inf.digicom.simulacao.IRegraPontoEntrada;
 import br.inf.digicom.simulacao.trade.ExecucaoPontoEntrada;
 
-public class RegraMinimoPercentualComTopo implements IRegraPontoEntrada, IRegraCompra {
-
+public class RegraPontoEntradaLimiteTopoVenda implements IRegraPontoEntrada, IRegraVenda {
 	
 	private int diaInicial;
 	
@@ -25,8 +24,6 @@ public class RegraMinimoPercentualComTopo implements IRegraPontoEntrada, IRegraC
 	private int diasTopo;
 	private int posicaoTopo;
 	private double percentualSeguranca;
-	private double percentualInferior;
-	private int deslocamentoDias;
 	
 	@Override
 	public void setParametros(Map parametros) {
@@ -37,17 +34,16 @@ public class RegraMinimoPercentualComTopo implements IRegraPontoEntrada, IRegraC
 		this.diasTopo = ((Double) parametros.get("diasTopo")).intValue();
 		this.posicaoTopo = ((Double) parametros.get("posicaoTopo")).intValue();
 		this.percentualSeguranca = (double) parametros.get("percentualSeguranca");
-		this.percentualInferior = (double) parametros.get("percentualMinimo");
-		this.deslocamentoDias = ((Double) parametros.get("deslocamento")).intValue();
 	}
 
 	
 	public int getLimiteMinimo() {
-		return (this.diasMin+this.deslocamentoDias) * FabricaRegra.TICKER_DIA;
+		return this.diasMin * FabricaRegra.TICKER_DIA;
 	}
 	public int getLimiteMinimoTopo() {
-		return (this.diasTopo +this.deslocamentoDias) * FabricaRegra.TICKER_DIA;
+		return this.diasTopo * FabricaRegra.TICKER_DIA;
 	}
+	
 	
 	
 	private ExecucaoPontoEntrada execucao = null;
@@ -57,7 +53,6 @@ public class RegraMinimoPercentualComTopo implements IRegraPontoEntrada, IRegraC
 	}
 
 	public double getPontoEntrada(int indDia, List<DiaPregao> dias) {
-		indDia = indDia - this.deslocamentoDias;
 		if (indDia - diaInicial <= diasMin) {
 			return 0;
 		} else {
@@ -82,10 +77,11 @@ public class RegraMinimoPercentualComTopo implements IRegraPontoEntrada, IRegraC
 			//System.out.println("(" + valoresTopo.get(0) + " - " + valoresTopo.get(valoresTopo.size()-1) + ")");
 			
 			if (valores.size() > getLimiteMinimo() && valoresTopo.size() > this.getLimiteMinimoTopo()) {
-				double valorEntrada = valores.get(posicaoMin) * (1-this.percentualInferior);
-				double saidaLucro = valorEntrada * (1 + this.target + this.percentualSeguranca);
-				double limiteTopo = valoresTopo.get(valoresTopo.size() - this.posicaoTopo - 1);
-				if (limiteTopo>=saidaLucro) {
+				//double valorEntrada = valores.get(posicaoMin);
+				double valorEntrada = valoresTopo.get(valoresTopo.size() - this.posicaoTopo - 1);
+				double saidaLucro = valorEntrada * (1 - this.target - this.percentualSeguranca);
+				double limiteMinimo = valores.get(posicaoMin);
+				if (limiteMinimo<=saidaLucro) {
 					return valorEntrada;
 				} else {
 					return 0;
@@ -112,6 +108,6 @@ public class RegraMinimoPercentualComTopo implements IRegraPontoEntrada, IRegraC
 
 	@Override
 	public String getTipo() {
-		return "C";
+		return "V";
 	}
 }

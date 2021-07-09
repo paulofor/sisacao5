@@ -59,6 +59,11 @@
       "type": "hasMany",
       "model": "RelGrupoAcao",
       "foreignKey": "ticker"
+    },
+    "execucaoSimulacaos": {
+      "type": "hasMany",
+      "model": "ExecucaoSimulacao",
+      "foreignKey": "ticker"
     }
   },
   "acls": [],

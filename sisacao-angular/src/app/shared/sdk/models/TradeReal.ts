@@ -30,6 +30,7 @@ export interface TradeRealInterface {
   "percentual"?: number;
   "dias"?: number;
   "custoTotal"?: number;
+  "tipo"?: string;
   "id"?: number;
   "execucaoSimulacaoId"?: number;
   execucaoSimulacao?: ExecucaoSimulacao;
@@ -61,6 +62,7 @@ export class TradeReal implements TradeRealInterface {
   "percentual": number;
   "dias": number;
   "custoTotal": number;
+  "tipo": string;
   "id": number;
   "execucaoSimulacaoId": number;
   execucaoSimulacao: ExecucaoSimulacao;
@@ -193,6 +195,10 @@ export class TradeReal implements TradeRealInterface {
         "custoTotal": {
           name: 'custoTotal',
           type: 'number'
+        },
+        "tipo": {
+          name: 'tipo',
+          type: 'string'
         },
         "id": {
           name: 'id',

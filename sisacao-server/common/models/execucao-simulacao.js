@@ -111,28 +111,40 @@ Execucaosimulacao.InsereExecucaoSimulacao = function(execucao, callback) {
   
 
 
-/**
- * 
- * @param {Function(Error, object)} callback
- */
+    /**
+     * 
+     * @param {Function(Error, object)} callback
+     */
 
- Execucaosimulacao.ObtemProximoMonitorar = function(callback) {
-    let sql = "select id " +
+    Execucaosimulacao.ObtemProximoMonitorar = function (callback) {
+        let sql = "select id " +
             " from ExecucaoSimulacao " +
             " where monitorar = 1 " +
             " and id not in (select execucaoSimulacaoId from ValorMonitoria) " +
             " limit 1 ";
-    let ds = Execucaosimulacao.dataSource;
-    ds.connector.query(sql, (err,result) => {
-        if (result.length==0) {
-            callback(err,{})
-        } else {
-            //callback(err,{});
-            Execucaosimulacao.ObtemMonitorarPorId(result[0].id,callback);
-        }
-    })
-  };
-  
+        let ds = Execucaosimulacao.dataSource;
+        ds.connector.query(sql, (err, result) => {
+            if (result.length == 0) {
+                callback(err, {})
+            } else {
+                //callback(err,{});
+                Execucaosimulacao.ObtemMonitorarPorId(result[0].id, callback);
+            }
+        })
+    };
 
+    /**
+    * 
+    * @param {Function(Error, object)} callback
+    */
+    Execucaosimulacao.CalculaMaximoMedioGeral = function (callback) {
+        let sql = "update ExecucaoSimulacao " +
+            " set maximoDiaTrade = (select max(quantidadeDia) from Trade where Trade.execucaoSimulacaoId = ExecucaoSimulacao.id), " +
+            " mediaDiaTrade = (select avg(quantidadeDia) from Trade where Trade.execucaoSimulacaoId = ExecucaoSimulacao.id) " +
+            " where monitorar = 1";
+        let ds = Execucaosimulacao.dataSource;
+        ds.connector.query(sql, callback);
+    };
+  
 
 };

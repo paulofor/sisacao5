@@ -15,7 +15,7 @@ export class FundoImobiliarioMelhoresComponent extends BaseListComponent  {
   }
 
   carregaTela() {
-    this.srv.Melhores6M(25)
+    this.srv.Melhores6M(30)
     .subscribe((result:any[]) => {
         console.log('result: ' , result);
         this.listaBase = result;

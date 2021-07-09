@@ -10,31 +10,11 @@ import br.com.digicom.sisacao.modelo.DiaPregao;
 import br.com.digicom.sisacao.modelo.ValorParametro;
 import br.inf.digicom.simulacao.trade.ExecucaoPontoEntrada;
 import br.inf.digicom.simulacao.trade.Trade;
+import br.inf.digicom.simulacao.trade.TradeVenda;
 
-public class SimuladorPontoEntradaDia {
+public class SimuladorPontoEntradaDiaVenda extends SimuladorPontoEntradaDia {
 	
 	//RegraPontoEntrada regra = new RegraPontoEntrada();
-	int somaLucro = 0;
-	int somaPrejuizo = 0;
-	
-	double pontoEntrada;
-	
-	
-	public Double precoEntrada(List<DiaPregao> dias, CombinacaoParametro combinacao, IRegraPontoEntrada regra, int dia) {
-		Map parametros = new HashMap();
-		for (ValorParametro param : combinacao.getValorParametros()) {
-			parametros.put(param.getParametroRegra().getAtributoClasse(),param.getValorParametro());
-		}
-		regra.setParametros(parametros);
-		int indDia = 0;
-		int indHora = 0;
-		while (dias.get(indDia).getDiaNum() < dia) {
-			indDia++;
-		}
-		regra.setDiaInicial(0);
-		Double pontoEntrada = regra.getPontoEntrada(indDia - 1, dias);
-		return pontoEntrada;
-	}
 	
 	
 	public ExecucaoPontoEntrada executa(List<DiaPregao> dias, Map parametros, IRegraPontoEntrada regra, int diaInicio, int diaFim) {
@@ -62,15 +42,15 @@ public class SimuladorPontoEntradaDia {
 				if (cotacao!=null) {
 					if (trade==null) {
 						//System.out.println("Valor: " + cotacao.getValor() + " Entrada: " + pontoEntrada);
-						if (pontoEntrada>=cotacao.getValor()) {
-							trade = new Trade((indHora==0?cotacao.getValor():pontoEntrada),cotacao, indDia);
+						if (pontoEntrada<=cotacao.getValor()) {
+							trade = new TradeVenda((indHora==0?cotacao.getValor():pontoEntrada),cotacao, indDia);
 						}
 					} else {
-						double saidaAlta = trade.getValorEntrada() * (1+regra.getTarget());;
-						double saidaBaixa = trade.getValorEntrada() * (1-regra.getStop());
+						double saidaAlta = trade.getValorEntrada() * (1+regra.getStop());;
+						double saidaBaixa = trade.getValorEntrada() * (1-regra.getTarget());
 						//System.out.println("Valor: " + cotacao.getValor() + " Target: " + saidaAlta + "Stop: " + saidaBaixa);
 						if (cotacao.getValor()>=saidaAlta) {
-							this.somaLucro++;
+							this.somaPrejuizo++;
 							trade.setSaida((indHora==0?cotacao.getValor():saidaAlta), cotacao, indDia);
 							indDia++;
 							indHora=0;
@@ -79,7 +59,7 @@ public class SimuladorPontoEntradaDia {
 							//break;
 						}
 						if (cotacao.getValor()<=saidaBaixa) {
-							this.somaPrejuizo++;
+							this.somaLucro++;
 							trade.setSaida((indHora==0?cotacao.getValor():saidaBaixa),cotacao, indDia);
 							indDia++;
 							indHora=0;
@@ -102,12 +82,6 @@ public class SimuladorPontoEntradaDia {
 	
 	
 
-	protected CotacaoIntradayAcao getCotacao(int indDia, int indHora, List<DiaPregao> dias) {
-		if (dias.get(indDia).getCotacaoIntradayAcaos().size() > indHora) {
-			return dias.get(indDia).getCotacaoIntradayAcaos().get(indHora);
-		} else {
-			return null;
-		}
-	}
+	
 
 }

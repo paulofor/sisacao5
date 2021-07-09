@@ -1,6 +1,6 @@
 <div class="dgc-painel">
   <div class="dgc-painel-header">
-    <span>Monitoradas</span> 
+    <span>Monitoradas - {{periodo.quantidadeMes | number: '1.0-0'}}M</span> 
     <span  class="dgc-direita">Exposição: {{ totalExposicao | number : '1.2-2'}} ({{ exposicaoTrade | number: '1.2-2'}})</span> 
   </div>
   <div class="dgc-painel-principal" *ngIf="listaBase">

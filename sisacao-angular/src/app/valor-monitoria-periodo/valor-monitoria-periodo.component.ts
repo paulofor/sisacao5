@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription, interval } from 'rxjs';
 import { BaseListComponent } from '../base-component/base-list-component';
 import { CUSTO_TRADE, PERCENTUAL_AVISO } from '../constantes/base.url';
 import { OrdemCompraEditaComponent } from '../ordem-compra-edita/ordem-compra-edita.component';
-import { ExecucaoSimulacaoApi, CotacaoIntradayAcaoApi, OrdemCompraApi, TradeRealApi, ExecucaoSimulacao, CotacaoIntradayAcao } from '../shared/sdk';
+import { ExecucaoSimulacaoApi, CotacaoIntradayAcaoApi, OrdemCompraApi, TradeRealApi, ExecucaoSimulacao, CotacaoIntradayAcao, PeriodoExperimentoApi, PeriodoExperimento } from '../shared/sdk';
 import { TradeExecucaoSimulacaoComponent } from '../trade-execucao-simulacao/trade-execucao-simulacao.component';
 import { TradeRealEditaComponent } from '../trade-real-edita/trade-real-edita.component';
 
@@ -21,14 +22,29 @@ export class ValorMonitoriaPeriodoComponent extends BaseListComponent {
   public totalExposicao;
   public exposicaoTrade;
 
+  private idPeriodo;
+  public periodo:PeriodoExperimento;
+
+  preCarregaTela() {
+    this.router.params.subscribe((params) => {
+      this.idPeriodo = params['id'];
+      this.srvPeriodo.findById(this.idPeriodo)
+        .subscribe((result: PeriodoExperimento) => {
+          this.periodo = result;
+        })
+    })
+
+  }
+
   constructor(protected srv:ExecucaoSimulacaoApi, private srvCotacao: CotacaoIntradayAcaoApi,
-    protected dialog: MatDialog, private srvOrdem: OrdemCompraApi, private srvTrade: TradeRealApi) {
+    protected dialog: MatDialog, private srvOrdem: OrdemCompraApi, private srvTrade: TradeRealApi, 
+    private router: ActivatedRoute, private srvPeriodo: PeriodoExperimentoApi) {
     super(dialog, srv)
   }
 
   getFiltro() {
     return { 
-      'where' : {'and': [{'periodoExperimentoId' : 3} , {'monitorar' : 1} , {'precoEntrada' : { 'gt' : 0 }}] } , 
+      'where' : {'and': [{'periodoExperimentoId' : this.idPeriodo} , {'monitorar' : 1} , {'precoEntrada' : { 'gt' : 0 }}] } , 
       'include' : [
         {'relation' : 'regraSimulacao'},
         {'relation' : 'valorMonitorias' , 'scope' : {'limit' : 2 , 'order' : 'diaNumEntrada desc'}} ,

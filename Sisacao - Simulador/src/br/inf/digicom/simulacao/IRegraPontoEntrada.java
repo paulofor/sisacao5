@@ -19,5 +19,7 @@ public interface IRegraPontoEntrada {
 	double getStop();
 
 	void setParametros(Map parametros);
+	
+	String getTipo();
 
 }

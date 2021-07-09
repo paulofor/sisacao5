@@ -18,6 +18,7 @@ public class Trade extends Model{
 	Integer quantidadeDia = 0;
 	Integer dataSaidaNum;
 	Integer dataEntradaNum;
+
 	
 	
 	public JSONObject getJSON() {
@@ -32,6 +33,7 @@ public class Trade extends Model{
 			obj.put("lucroPrejuizo", lucroPrejuizo);
 			obj.put("percentual", percentual);
 			obj.put("quantidadeDia", quantidadeDia);
+
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -119,7 +121,10 @@ public class Trade extends Model{
 	public void setDataEntradaNum(Integer dataEntradaNum) {
 		this.dataEntradaNum = dataEntradaNum;
 	}
-	
+
+
+
+
 	
 	
 }

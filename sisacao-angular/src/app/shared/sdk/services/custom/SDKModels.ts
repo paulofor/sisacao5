@@ -35,6 +35,8 @@ import { PeriodoExperimento } from '../../models/PeriodoExperimento';
 import { OrdemCompra } from '../../models/OrdemCompra';
 import { ExperimentoSimulacaoPeriodo } from '../../models/ExperimentoSimulacaoPeriodo';
 import { FundoImobiliario } from '../../models/FundoImobiliario';
+import { CDB } from '../../models/CDB';
+import { RendaFixa } from '../../models/RendaFixa';
 
 export interface Models { [name: string]: any }
 
@@ -77,6 +79,8 @@ export class SDKModels {
     OrdemCompra: OrdemCompra,
     ExperimentoSimulacaoPeriodo: ExperimentoSimulacaoPeriodo,
     FundoImobiliario: FundoImobiliario,
+    CDB: CDB,
+    RendaFixa: RendaFixa,
     
   };
 

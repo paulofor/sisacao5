@@ -94,6 +94,7 @@ import { EscolhePeriodoParaExperimentoComponent } from './escolhe-periodo-para-e
 import { FundoImobiliarioMelhoresComponent } from './fundo-imobiliario-melhores/fundo-imobiliario-melhores.component';
 import { ValorMonitoriaPeriodoTabelaComponent } from './valor-monitoria-periodo-tabela/valor-monitoria-periodo-tabela.component';
 import { ValorMonitoriaPeriodoComponent } from './valor-monitoria-periodo/valor-monitoria-periodo.component';
+import { ExecucaoSimulacaoMelhoresPeriodoComponent } from './execucao-simulacao-melhores-periodo/execucao-simulacao-melhores-periodo.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -161,7 +162,8 @@ registerLocaleData(localePt, 'pt-BR');
     EscolhePeriodoParaExperimentoComponent,
     FundoImobiliarioMelhoresComponent,
     ValorMonitoriaPeriodoTabelaComponent,
-    ValorMonitoriaPeriodoComponent
+    ValorMonitoriaPeriodoComponent,
+    ExecucaoSimulacaoMelhoresPeriodoComponent
   ],
   imports: [
     BrowserModule,

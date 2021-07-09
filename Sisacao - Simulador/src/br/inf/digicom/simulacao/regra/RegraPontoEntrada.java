@@ -10,7 +10,7 @@ import br.com.digicom.sisacao.modelo.DiaPregao;
 import br.inf.digicom.simulacao.IRegraPontoEntrada;
 import br.inf.digicom.simulacao.trade.ExecucaoPontoEntrada;
 
-public class RegraPontoEntrada implements IRegraPontoEntrada {
+public class RegraPontoEntrada implements IRegraPontoEntrada, IRegraCompra {
 	
 	private int diaInicial;
 	
@@ -78,5 +78,8 @@ public class RegraPontoEntrada implements IRegraPontoEntrada {
 		return this.stopAtual;
 	}
 
-	
+	@Override
+	public String getTipo() {
+		return "C";
+	}
 }

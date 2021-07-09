@@ -17,6 +17,8 @@ import br.inf.digicom.TempoSleep;
 import br.inf.digicom.simulacao.IRegraPontoEntrada;
 import br.inf.digicom.simulacao.RepositorioCotacao;
 import br.inf.digicom.simulacao.SimuladorPontoEntradaDia;
+import br.inf.digicom.simulacao.SimuladorPontoEntradaDiaVenda;
+import br.inf.digicom.simulacao.regra.IRegraVenda;
 import br.inf.digicom.simulacao.trade.ExecucaoPontoEntrada;
 import br.inf.digicom.simulacao.trade.Trade;
 
@@ -27,7 +29,7 @@ public class SerieCotacaoIntradayFacade {
 	RepositorioDiaPregao repDiaPregao = adapter.createRepository(RepositorioDiaPregao.class);
 	RepositorioExecucaoSimulacao repExecucaoSimulacao = adapter.createRepository(RepositorioExecucaoSimulacao.class);
 	
-	SimuladorPontoEntradaDia simulacao = new SimuladorPontoEntradaDia();
+	//SimuladorPontoEntradaDia simulacao = new SimuladorPontoEntradaDia();
 	
 	private int contaConcluidos = 0;
 	
@@ -70,6 +72,12 @@ public class SerieCotacaoIntradayFacade {
 		for (ValorParametro param : combinacao.getValorParametros()) {
 			parametros.put(param.getParametroRegra().getAtributoClasse(),param.getValorParametro());
 		}
+		SimuladorPontoEntradaDia simulacao = null;
+		if (regra instanceof IRegraVenda) {
+			simulacao = new SimuladorPontoEntradaDiaVenda();
+		} else {
+			simulacao = new SimuladorPontoEntradaDia();
+		}
 		ExecucaoPontoEntrada execucao = simulacao.executa(RepositorioCotacao.getCotacao(ticker),parametros, regra, experimento.diaInicio(), experimento.diaFinal());
 		salvaExecucao(execucao,ticker,combinacao, regra, experimento);
 		parametros = null;
@@ -89,6 +97,7 @@ public class SerieCotacaoIntradayFacade {
 		exec.setExperimentoSimulacaoId(combinacao.getExperimentoSimulacaoId());
 		exec.setRegraSimulacaoId(combinacao.getRegraSimulacaoId());
 		exec.setPeriodoExperimentoId(experimento.periodoExperimentoId());
+		exec.setTipo(regra.getTipo());
 		String primeiraEntrada = "";
 		if (execucao.listaTrades().size()>0) {
 			primeiraEntrada = execucao.listaTrades().get(0).entradaDataPrecoDisplay();

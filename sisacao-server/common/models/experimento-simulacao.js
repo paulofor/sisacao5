@@ -127,6 +127,9 @@ module.exports = function(Experimentosimulacao) {
     * @param {Function(Error, object)} callback
     */
     Experimentosimulacao.GerarCombinacoes = function(idExperimento, callback) {
+        //console.log('Entrou gerar combinacoes');
+        posicao = 0;
+        listaComb = [];
         let ds = Experimentosimulacao.dataSource;
         let filtro = {
             'where' : { 'experimentoSimulacaoId' : idExperimento }
@@ -196,19 +199,20 @@ module.exports = function(Experimentosimulacao) {
         })
     }
     function salvaCombinacao(listaComb, inicioBloco, finalBloco) {
+        //console.log('Entrou em salva Combinacao');
         let conta = 0;
         for (let i=(inicioBloco-1);i<listaComb.length && i<finalBloco;i++) {
             app.models.CombinacaoParametro.create(listaComb[i] , (err,result) => {
                 for (let x=0;x<listaComb[i].valorParametros.length;x++) {
-                    let valor = listaComb[i].valorParametros[x];
-                    valor['combinacaoParametroId'] = result.id;
-                    conta = 0;
-                    app.models.ValorParametro.create(valor, (err,result) => {
-                        //conta++;
-                        //if (conta==listaComb[i].valorParametros.length) {
-                        //    listaComb[i]=null;
-                        //}
+                    setTimeout( function () {
+                        let valor = listaComb[i].valorParametros[x];
+                        valor['combinacaoParametroId'] = result.id;
+                        conta = 0;
+                        app.models.ValorParametro.create(valor, (err,result) => {
+                            conta++;
+                            //console.log(conta);
                     })
+                    }, 3000);
                 };
             })
         }
@@ -417,7 +421,7 @@ module.exports = function(Experimentosimulacao) {
     * @param {Function(Error, object)} callback
     */
     Experimentosimulacao.ValidarFechar = function(idExperimento, callback) {
-        //console.log('idExperimento', idExperimento);
+        console.log('idExperimento', idExperimento);
         let experimento;
         let ds = Experimentosimulacao.dataSource;
         Experimentosimulacao.findById(idExperimento, (err,result) => {
@@ -425,24 +429,26 @@ module.exports = function(Experimentosimulacao) {
             let sqlCombinacao = "select count(1) as qtde from CombinacaoParametro where experimentoSimulacaoId = " + idExperimento;
             
             ds.connector.query(sqlCombinacao, (err,result2) => {
-                //console.log('experimento.quantidadeCombinacao:' , experimento.quantidadeCombinacao);
-                //console.log('result2.qtde:' , result2[0].qtde);
+                console.log('experimento.quantidadeCombinacao:' , experimento.quantidadeCombinacao);
+                console.log('result2.qtde:' , result2[0].qtde);
                 if (experimento.quantidadeCombinacao==result2[0].qtde) {
                     let sqlParametro = "select count(1) as qtdeParam from ValorParametro where experimentoSimulacaoId = " + idExperimento;
                     ds.connector.query(sqlParametro, (err,result3) => {
-                        //console.log('result3.qtdeParam' , result3[0].qtdeParam);
+                        console.log('result3.qtdeParam' , result3[0].qtdeParam);
                         let sqlParamSimples = " select count(1) as qtdeParamSimples from ParametroRegra " +
                                 " inner join RegraSimulacao on RegraSimulacao.Id = ParametroRegra.regraSimulacaoId " +
                                 " inner join ExperimentoSimulacao on ExperimentoSimulacao.regraSimulacaoId = RegraSimulacao.id " +
                                 " where ExperimentoSimulacao.id = " + idExperimento;
                         ds.connector.query(sqlParamSimples, (err,result4) => {
                             let totalEsperado = result2[0].qtde * result4[0].qtdeParamSimples;
-                            //console.log('totalEsperado:' , totalEsperado);
+                            console.log('totalEsperado:' , totalEsperado);
                             if (totalEsperado==result3[0].qtdeParam) {
                                 console.log('iguais2')
                                 let sqlEdicao = "update ExperimentoSimulacao set permiteEdicao = 0 where id = " + idExperimento;
-                                //console.log('sqlEdicao', sqlEdicao);
+                                console.log('sqlEdicao', sqlEdicao);
                                 ds.connector.query(sqlEdicao,callback);
+                            } else {
+                                callback({'mensagem' : 'Parametros insuficientes'},null);
                             }
                         })
                     })
@@ -451,5 +457,10 @@ module.exports = function(Experimentosimulacao) {
             })
         })
     };
+
+
+
+
+   
   
 };

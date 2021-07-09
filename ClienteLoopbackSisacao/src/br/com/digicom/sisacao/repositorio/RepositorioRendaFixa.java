@@ -28,7 +28,7 @@ public class RepositorioRendaFixa extends ModelRepository<RendaFixa>{
 		RestContractItem contrato = new RestContractItem("RendaFixa/insereSeNaoExisteFixa","POST");
 		this.getRestAdapter().getContract().addItem(contrato, "RendaFixa.insereSeNaoExisteFixa");
         Map<String, Object> params = new HashMap<String, Object>();
-        params.put("listaItem", obtemLista(listaItem))
+        params.put("listaItem", obtemLista(listaItem));
         invokeStaticMethod("insereSeNaoExisteFixa", params,   new EmptyResponseParser(voidCallback));
 	}
 	
@@ -37,5 +37,6 @@ public class RepositorioRendaFixa extends ModelRepository<RendaFixa>{
 		for (RendaFixa item : listaEntrada) {
 			lista.put(item.getJSON());
 		}
+		return lista;
 	}
 }

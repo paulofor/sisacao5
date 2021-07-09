@@ -10,7 +10,7 @@ import br.com.digicom.sisacao.modelo.DiaPregao;
 import br.inf.digicom.simulacao.IRegraPontoEntrada;
 import br.inf.digicom.simulacao.trade.ExecucaoPontoEntrada;
 
-public class RegraEntradaDistanteAlvo implements IRegraPontoEntrada {
+public class RegraEntradaDistanteAlvo implements IRegraPontoEntrada, IRegraCompra {
 	
 	private int diaInicial;
 	
@@ -80,6 +80,12 @@ public class RegraEntradaDistanteAlvo implements IRegraPontoEntrada {
 	@Override
 	public double getStop() {
 		return this.stop;
+	}
+
+
+	@Override
+	public String getTipo() {
+		return "C";
 	}
 
 	

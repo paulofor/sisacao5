@@ -25,7 +25,7 @@ public class ExecucaoSimulacao extends Model{
 	Integer regraSimulacaoId;
 	Integer periodoExperimentoId;
 	String primeiraEntrada = "";
-	
+	String tipo;
 	
 	List<Trade> trades = new ArrayList<Trade>();
 	CombinacaoParametro combinacaoParametro = null;
@@ -121,6 +121,7 @@ public class ExecucaoSimulacao extends Model{
 			obj.put("regraSimulacaoId", this.regraSimulacaoId);
 			obj.put("periodoExperimentoId", this.periodoExperimentoId);
 			obj.put("primeiraEntrada", this.primeiraEntrada);
+			obj.put("tipo", tipo);
 			JSONArray trades = new JSONArray();
 			for (Trade trade : this.trades) {
 				trades.put(trade.getJSON());
@@ -208,6 +209,15 @@ public class ExecucaoSimulacao extends Model{
 	}
 
 	
+	public String getTipo() {
+		return tipo;
+	}
+
+
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 	
 	
 

@@ -10,8 +10,8 @@ public class Trade {
 	private int indDiaSaida = 0;
 	private int difDias = 0;
 	
-	private double precoEntrada;
-	private double precoSaida;
+	protected double precoEntrada;
+	protected double precoSaida;
 
 	public CotacaoIntradayAcao getCotacaoEntrada() {
 		return this.entrada;
@@ -68,6 +68,9 @@ public class Trade {
 	}
 	public Integer getQuantidadeDia() {
 		return this.difDias;
+	}
+	public String getTipo() {
+		return "C";
 	}
 
 }
