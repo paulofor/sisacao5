@@ -1,6 +1,7 @@
 /* tslint:disable */
 import {
-  RelGrupoAcao
+  RelGrupoAcao,
+  ExecucaoSimulacao
 } from '../index';
 
 declare var Object: any;
@@ -20,6 +21,7 @@ export interface AtivoAcaoInterface {
   "spread3Mes"?: number;
   "mediaNegocio3Mes"?: number;
   relGrupoAcaos?: RelGrupoAcao[];
+  execucaoSimulacaos?: ExecucaoSimulacao[];
 }
 
 export class AtivoAcao implements AtivoAcaoInterface {
@@ -38,6 +40,7 @@ export class AtivoAcao implements AtivoAcaoInterface {
   "spread3Mes": number;
   "mediaNegocio3Mes": number;
   relGrupoAcaos: RelGrupoAcao[];
+  execucaoSimulacaos: ExecucaoSimulacao[];
   constructor(data?: AtivoAcaoInterface) {
     Object.assign(this, data);
   }
@@ -133,6 +136,14 @@ export class AtivoAcao implements AtivoAcaoInterface {
           name: 'relGrupoAcaos',
           type: 'RelGrupoAcao[]',
           model: 'RelGrupoAcao',
+          relationType: 'hasMany',
+                  keyFrom: 'ticker',
+          keyTo: 'ticker'
+        },
+        execucaoSimulacaos: {
+          name: 'execucaoSimulacaos',
+          type: 'ExecucaoSimulacao[]',
+          model: 'ExecucaoSimulacao',
           relationType: 'hasMany',
                   keyFrom: 'ticker',
           keyTo: 'ticker'

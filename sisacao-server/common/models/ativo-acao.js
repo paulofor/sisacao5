@@ -5,6 +5,47 @@ var app = require('../../server/server');
 module.exports = function (Ativoacao) {
 
 
+
+
+
+    /**
+    * 
+    * @param {number} idPeriodo 
+    * @param {number} cortePontos 
+    * @param {number} qtdeExecucao 
+    * @param {Function(Error, array)} callback
+    */
+    Ativoacao.MelhorSimulacaoPorPeriodo = function(idPeriodo, cortePontos, qtdeExecucao, callback) {
+        let filtro = {
+            'include' : {
+                'relation' : 'execucaoSimulacaos' , 'scope' : {
+                    'where' : { and : [ {'periodoExperimentoId': idPeriodo } , {'resultado' : { gt: cortePontos } }]}
+                }
+            }
+           
+        }
+        filtro = {
+            'include' : {
+                'relation' : 'execucaoSimulacaos' , 'scope' : {
+                        'limit' : qtdeExecucao,
+                        'where' : { 'and' : [{'resultado' : { gt : cortePontos }} , {'periodoExperimentoId' : idPeriodo } ]},
+                        'order' : 'resultado desc'
+                }
+            },
+
+        }
+        Ativoacao.find(filtro,(err,result) => {
+            let lista = result.filter(function (item)  {
+                let json = JSON.stringify(item);
+                let tam = JSON.parse(json).execucaoSimulacaos.length
+                return (tam > 0);
+            })
+            callback(err,lista);
+        });
+        
+    };
+
+
     /**
      * 
      * @param {Function(Error, array)} callback

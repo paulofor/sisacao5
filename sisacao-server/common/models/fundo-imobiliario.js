@@ -10,7 +10,7 @@ module.exports = function (Fundoimobiliario) {
     Fundoimobiliario.Melhores6M = function(quantidade, callback) {
         let sql = " SELECT * FROM lojadigicom35.FundoImobiliario " +
                 " where mediaNegocio1 >= 250 " +
-                " and percentual12 > 0 " +
+                //" and percentual12 > 0 " +
                 " order by percentual6 desc " +
                 " limit " + quantidade;
                 var ds = Fundoimobiliario.dataSource;

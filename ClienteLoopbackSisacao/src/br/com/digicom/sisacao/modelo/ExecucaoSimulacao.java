@@ -30,7 +30,8 @@ public class ExecucaoSimulacao extends Model{
 	List<Trade> trades = new ArrayList<Trade>();
 	CombinacaoParametro combinacaoParametro = null;
 	
-	final int PESO_ZERADAS = 2;
+	final int PESO_ZERADAS_PADRAO = 2;
+	final int PESO_ZERADAS_8MESES = 3;
 	
 	public Integer getRegraSimulacaoId() {
 		return regraSimulacaoId;
@@ -103,6 +104,12 @@ public class ExecucaoSimulacao extends Model{
 	}
 
 
+	private int getPesoZeradas() {
+		if (this.periodoExperimentoId == 3) 
+			return PESO_ZERADAS_8MESES;
+		return PESO_ZERADAS_PADRAO;
+	}
+	
 	public JSONObject jSON() {
 		JSONObject obj = new JSONObject();
 		try {
@@ -114,7 +121,7 @@ public class ExecucaoSimulacao extends Model{
 			obj.put("target", target);
 			obj.put("stop", stop);
 			double resultado = (100*this.target*(this.quantidadeLucro+1)) - (100*this.stop*(this.quantidadePrejuizo+1)) +
-					(PESO_ZERADAS - (quantidadePrejuizo*PESO_ZERADAS) );
+					(getPesoZeradas() - (quantidadePrejuizo*getPesoZeradas()) );
 			obj.put("resultado", resultado );
 			obj.put("monitorar", 0);
 			obj.put("id", this.id);
