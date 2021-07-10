@@ -29,7 +29,8 @@ module.exports = function (Ativoacao) {
                 'relation' : 'execucaoSimulacaos' , 'scope' : {
                         'limit' : qtdeExecucao,
                         'where' : { 'and' : [{'resultado' : { gt : cortePontos }} , {'periodoExperimentoId' : idPeriodo } ]},
-                        'order' : 'resultado desc'
+                        'order' : 'resultado desc',
+                        'include' : {'relation' : 'combinacaoParametro' , 'scope' : {'include' : 'regraSimulacao'}}
                 }
             },
 

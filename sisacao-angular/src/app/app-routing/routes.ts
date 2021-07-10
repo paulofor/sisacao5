@@ -29,6 +29,7 @@ import { PeriodoExperimentoListaComponent } from '../periodo-experimento-lista/p
 import { FundoImobiliarioMelhoresComponent } from '../fundo-imobiliario-melhores/fundo-imobiliario-melhores.component';
 import { ValorMonitoriaPeriodoTabelaComponent } from '../valor-monitoria-periodo-tabela/valor-monitoria-periodo-tabela.component';
 import { ValorMonitoriaPeriodoComponent } from '../valor-monitoria-periodo/valor-monitoria-periodo.component';
+import { MelhoresExecucaoPeriodoComponent } from '../melhores-execucao-periodo/melhores-execucao-periodo.component';
 
 export const routes : Routes = [
     { path: 'home' , component: HomeComponent },
@@ -68,6 +69,8 @@ export const routes : Routes = [
 
     { path : 'valorMonitoriaPeriodo/:id' , component : ValorMonitoriaPeriodoComponent },
     { path : 'valorMonitoriaPeriodoTabela/:id' , component: ValorMonitoriaPeriodoTabelaComponent },
+
+    { path : 'melhoresExecucaoPeriodo/:id' , component: MelhoresExecucaoPeriodoComponent },
 
     { path: '',          redirectTo: 'home', pathMatch: 'full' }
 ]
