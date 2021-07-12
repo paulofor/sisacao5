@@ -37,7 +37,7 @@ public class SimuladorPontoEntradaDiaVenda extends SimuladorPontoEntradaDia {
 		while (dias.get(indDia).getDiaNum() <= diaFim) {
 			indHora = 0;
 			pontoEntrada = regra.getPontoEntrada(indDia -1, dias);
-			while (dias.get(indDia).getCotacaoIntradayAcaos().size()>indHora) {
+			while (dias.get(indDia).getCotacaoIntradayAcaos().size()>indHora   && pontoEntrada>0) {
 				CotacaoIntradayAcao cotacao = getCotacao(indDia,indHora,dias);
 				if (cotacao!=null) {
 					if (trade==null) {
