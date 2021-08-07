@@ -55,7 +55,7 @@ public class ExperimentoSimulacaoFacade {
 			public void onSuccess(ExperimentoSimulacao experimento) {
 				System.out.println(experimento.getCodigo());
 				experimentoSimulacao = experimento;
-				carregaAtivos(experimento.getGrupoAcaoId());
+				carregaAtivos(experimento.getGrupoAcaoId(),experimento.diaInicioColeta());
 				//carregaCombinacao((Integer) experimento.getId());
 			}
 			@Override
@@ -126,6 +126,21 @@ public class ExperimentoSimulacaoFacade {
 			public void onSuccess(List<AtivoAcao> objects) {
 				listaAtivo = objects;
 				RepositorioCotacao.carregaAtivos(listaAtivo);
+				carregaCombinacao((Integer) experimentoSimulacao.getId());
+			}
+
+			@Override
+			public void onError(Throwable t) {
+				t.printStackTrace();
+			}});
+	}
+	
+	public void carregaAtivos(Integer idGrupo,final int diaNumInicioColeta) {
+		repAtivoAcao.listaPorGrupo(idGrupo, new ListCallback<AtivoAcao>() {
+			@Override
+			public void onSuccess(List<AtivoAcao> objects) {
+				listaAtivo = objects;
+				RepositorioCotacao.carregaAtivos(listaAtivo, diaNumInicioColeta);
 				carregaCombinacao((Integer) experimentoSimulacao.getId());
 			}
 

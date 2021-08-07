@@ -11,6 +11,27 @@ module.exports = function(Experimentosimulacao) {
     /**
     * 
     * @param {number} idExperimento 
+    * @param {object} resultado 
+    * @param {Function(Error, object)} callback
+    */
+
+    Experimentosimulacao.Reinicializa = function(idExperimento, callback) {
+        let sqlCombinacao = "delete FROM CombinacaoParametro " +
+                " where experimentoSimulacaoId = " + idExperimento;
+        let sqlExperimento = "update ExperimentoSimulacao set quantidadeCombinacao = 0 , " +
+                " permiteEdicao = 1 " +
+                " where id = " + idExperimento;
+        let ds = Experimentosimulacao.dataSource;
+        ds.connector.query(sqlCombinacao, (err1,result1) => {
+            ds.connector.query(sqlExperimento, callback);
+        })
+    };
+  
+
+
+    /**
+    * 
+    * @param {number} idExperimento 
     * @param {Function(Error, object)} callback
     */
     Experimentosimulacao.ColocaEmExecucao = function(idExperimento, callback) {
@@ -212,7 +233,7 @@ module.exports = function(Experimentosimulacao) {
                             conta++;
                             //console.log(conta);
                     })
-                    }, 3000);
+                    }, 5000);
                 };
             })
         }

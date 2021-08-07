@@ -45,10 +45,43 @@
     },
     "preco12": {
       "type": "number"
+    },
+    "dataInsercao": {
+      "type": "date"
+    },
+    "maximo3": {
+      "type": "number"
+    },
+    "maximo1": {
+      "type": "number"
+    },
+    "minimo3": {
+      "type": "number"
+    },
+    "minimo1": {
+      "type": "number"
+    },
+    "totalAluguel3": {
+      "type": "number"
+    },
+    "totalAluguel6": {
+      "type": "number"
+    },
+    "mediaPercentualAluguel3": {
+      "type": "number"
+    },
+    "mediaPercentualAluguel6": {
+      "type": "number"
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "aluguelFundoImobiliarios": {
+      "type": "hasMany",
+      "model": "AluguelFundoImobiliario",
+      "foreignKey": "ticker"
+    }
+  },
   "acls": [],
   "methods": {
     "InsereSeNaoExiste": {
@@ -115,6 +148,67 @@
       "http": [
         {
           "path": "/melhores6M",
+          "verb": "get"
+        }
+      ]
+    },
+    "ListaAluguel": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaAluguel",
+          "verb": "get"
+        }
+      ]
+    },
+    "AtualizaDiarioFII": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaDiarioFII",
+          "verb": "post"
+        }
+      ]
+    },
+    "MelhoresAluguel": {
+      "accepts": [
+        {
+          "arg": "quantidade",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/melhoresAluguel",
           "verb": "get"
         }
       ]

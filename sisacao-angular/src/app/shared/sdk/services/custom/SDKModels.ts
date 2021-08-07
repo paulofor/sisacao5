@@ -37,6 +37,7 @@ import { ExperimentoSimulacaoPeriodo } from '../../models/ExperimentoSimulacaoPe
 import { FundoImobiliario } from '../../models/FundoImobiliario';
 import { CDB } from '../../models/CDB';
 import { RendaFixa } from '../../models/RendaFixa';
+import { AluguelFundoImobiliario } from '../../models/AluguelFundoImobiliario';
 
 export interface Models { [name: string]: any }
 
@@ -81,6 +82,7 @@ export class SDKModels {
     FundoImobiliario: FundoImobiliario,
     CDB: CDB,
     RendaFixa: RendaFixa,
+    AluguelFundoImobiliario: AluguelFundoImobiliario,
     
   };
 

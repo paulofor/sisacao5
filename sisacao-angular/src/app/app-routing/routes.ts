@@ -30,6 +30,7 @@ import { FundoImobiliarioMelhoresComponent } from '../fundo-imobiliario-melhores
 import { ValorMonitoriaPeriodoTabelaComponent } from '../valor-monitoria-periodo-tabela/valor-monitoria-periodo-tabela.component';
 import { ValorMonitoriaPeriodoComponent } from '../valor-monitoria-periodo/valor-monitoria-periodo.component';
 import { MelhoresExecucaoPeriodoComponent } from '../melhores-execucao-periodo/melhores-execucao-periodo.component';
+import { FundoImobiliarioAluguelMelhoresComponent } from '../fundo-imobiliario-aluguel-melhores/fundo-imobiliario-aluguel-melhores.component';
 
 export const routes : Routes = [
     { path: 'home' , component: HomeComponent },
@@ -66,6 +67,7 @@ export const routes : Routes = [
     { path : 'ordemCompra' , component: OrdemCompraListaComponent },
     { path : 'periodoExperimento' , component: PeriodoExperimentoListaComponent },
     { path : 'fundoImobiliarioMelhores' , component: FundoImobiliarioMelhoresComponent},
+    { path : 'fundoImobiliarioAluguelMelhores' , component: FundoImobiliarioAluguelMelhoresComponent},
 
     { path : 'valorMonitoriaPeriodo/:id' , component : ValorMonitoriaPeriodoComponent },
     { path : 'valorMonitoriaPeriodoTabela/:id' , component: ValorMonitoriaPeriodoTabelaComponent },

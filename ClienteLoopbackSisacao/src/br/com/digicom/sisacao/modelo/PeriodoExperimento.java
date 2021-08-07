@@ -7,9 +7,17 @@ public class PeriodoExperimento extends Model{
 	private int dataNumInicial;
 	private int dataNumFinal;
 	private Integer id;
+	private int dataNumInicioColeta;
 	
 	
 	
+	
+	public int getDataNumInicioColeta() {
+		return dataNumInicioColeta;
+	}
+	public void setDataNumInicioColeta(int dataNumInicioColeta) {
+		this.dataNumInicioColeta = dataNumInicioColeta;
+	}
 	public Integer getId() {
 		return id;
 	}

@@ -13,11 +13,3 @@
     font-weight: 400;
 }
 
-
-.marcatexto {
-	box-shadow: 1px 0 0 0 #ffff00, -1px 0 0 0 #ffff00;
-	background: #ffff00;
-	display: inline;
-	padding: 3px 0 !important;
-	position: relative;
-}

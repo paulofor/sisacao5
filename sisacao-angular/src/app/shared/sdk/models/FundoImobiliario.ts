@@ -1,4 +1,7 @@
 /* tslint:disable */
+import {
+  AluguelFundoImobiliario
+} from '../index';
 
 declare var Object: any;
 export interface FundoImobiliarioInterface {
@@ -15,6 +18,16 @@ export interface FundoImobiliarioInterface {
   "precoAtual"?: number;
   "preco6"?: number;
   "preco12"?: number;
+  "dataInsercao"?: Date;
+  "maximo3"?: number;
+  "maximo1"?: number;
+  "minimo3"?: number;
+  "minimo1"?: number;
+  "totalAluguel3"?: number;
+  "totalAluguel6"?: number;
+  "mediaPercentualAluguel3"?: number;
+  "mediaPercentualAluguel6"?: number;
+  aluguelFundoImobiliarios?: AluguelFundoImobiliario[];
 }
 
 export class FundoImobiliario implements FundoImobiliarioInterface {
@@ -31,6 +44,16 @@ export class FundoImobiliario implements FundoImobiliarioInterface {
   "precoAtual": number;
   "preco6": number;
   "preco12": number;
+  "dataInsercao": Date;
+  "maximo3": number;
+  "maximo1": number;
+  "minimo3": number;
+  "minimo1": number;
+  "totalAluguel3": number;
+  "totalAluguel6": number;
+  "mediaPercentualAluguel3": number;
+  "mediaPercentualAluguel6": number;
+  aluguelFundoImobiliarios: AluguelFundoImobiliario[];
   constructor(data?: FundoImobiliarioInterface) {
     Object.assign(this, data);
   }
@@ -116,8 +139,52 @@ export class FundoImobiliario implements FundoImobiliarioInterface {
           name: 'preco12',
           type: 'number'
         },
+        "dataInsercao": {
+          name: 'dataInsercao',
+          type: 'Date'
+        },
+        "maximo3": {
+          name: 'maximo3',
+          type: 'number'
+        },
+        "maximo1": {
+          name: 'maximo1',
+          type: 'number'
+        },
+        "minimo3": {
+          name: 'minimo3',
+          type: 'number'
+        },
+        "minimo1": {
+          name: 'minimo1',
+          type: 'number'
+        },
+        "totalAluguel3": {
+          name: 'totalAluguel3',
+          type: 'number'
+        },
+        "totalAluguel6": {
+          name: 'totalAluguel6',
+          type: 'number'
+        },
+        "mediaPercentualAluguel3": {
+          name: 'mediaPercentualAluguel3',
+          type: 'number'
+        },
+        "mediaPercentualAluguel6": {
+          name: 'mediaPercentualAluguel6',
+          type: 'number'
+        },
       },
       relations: {
+        aluguelFundoImobiliarios: {
+          name: 'aluguelFundoImobiliarios',
+          type: 'AluguelFundoImobiliario[]',
+          model: 'AluguelFundoImobiliario',
+          relationType: 'hasMany',
+                  keyFrom: 'ticker',
+          keyTo: 'ticker'
+        },
       }
     }
   }

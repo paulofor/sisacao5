@@ -26,7 +26,11 @@
     },
     "dataNumFinal": {
       "type": "number"
+    },
+    "dataNumInicioColeta" : {
+      "type" : "number"
     }
+    
   },
   "validations": [],
   "relations": {
@@ -60,6 +64,24 @@
         {
           "path": "/obtemPeriodoParaExecucao",
           "verb": "get"
+        }
+      ]
+    },
+    "CalculaInicioColeta": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/calculaInicioColeta",
+          "verb": "post"
         }
       ]
     }

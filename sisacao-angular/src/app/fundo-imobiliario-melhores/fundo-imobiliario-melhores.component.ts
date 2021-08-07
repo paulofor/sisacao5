@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { BaseListComponent } from '../base-component/base-list-component';
+import { DescricaoFundoImobiliarioComponent } from '../descricao-fundo-imobiliario/descricao-fundo-imobiliario.component';
 import { FundoImobiliarioApi } from '../shared/sdk';
 
 @Component({
@@ -8,19 +9,31 @@ import { FundoImobiliarioApi } from '../shared/sdk';
   templateUrl: './fundo-imobiliario-melhores.component.html',
   styleUrls: ['./fundo-imobiliario-melhores.component.css']
 })
-export class FundoImobiliarioMelhoresComponent extends BaseListComponent  {
+export class FundoImobiliarioMelhoresComponent extends BaseListComponent {
 
-  constructor(protected dialog: MatDialog, protected srv:FundoImobiliarioApi) { 
-    super(dialog,srv);
+  constructor(protected dialog: MatDialog, protected srv: FundoImobiliarioApi) {
+    super(dialog, srv);
   }
 
   carregaTela() {
     this.srv.Melhores6M(30)
-    .subscribe((result:any[]) => {
-        console.log('result: ' , result);
+      .subscribe((result: any[]) => {
+        console.log('result: ', result);
         this.listaBase = result;
         this.posCarregaLista();
-    })
-}
+      })
+
+
+  }
+
+  abreExplicacao(itemCorrente) {
+    this.dialog.open(DescricaoFundoImobiliarioComponent, {
+      width: '600px',
+      height: '400px',
+      data: {
+        item: itemCorrente
+      }
+    });
+  }
 
 }

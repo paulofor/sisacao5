@@ -188,6 +188,11 @@ public class FundoImobiliario extends Model{
 		}
 		return obj;
 	}
+
+
+
+
+	
 	
 	
 

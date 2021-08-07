@@ -85,6 +85,7 @@ import { ExperimentoSimulacaoPeriodoApi } from './services/custom/ExperimentoSim
 import { FundoImobiliarioApi } from './services/custom/FundoImobiliario';
 import { CDBApi } from './services/custom/CDB';
 import { RendaFixaApi } from './services/custom/RendaFixa';
+import { AluguelFundoImobiliarioApi } from './services/custom/AluguelFundoImobiliario';
 /**
 * @module SDKBrowserModule
 * @description
@@ -152,9 +153,9 @@ export class SDKBrowserModule {
         FundoImobiliarioApi,
         CDBApi,
         RendaFixaApi,
+        AluguelFundoImobiliarioApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
-
       ]
     };
   }

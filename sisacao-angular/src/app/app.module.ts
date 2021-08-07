@@ -96,6 +96,9 @@ import { ValorMonitoriaPeriodoTabelaComponent } from './valor-monitoria-periodo-
 import { ValorMonitoriaPeriodoComponent } from './valor-monitoria-periodo/valor-monitoria-periodo.component';
 import { ExecucaoSimulacaoMelhoresPeriodoComponent } from './execucao-simulacao-melhores-periodo/execucao-simulacao-melhores-periodo.component';
 import { MelhoresExecucaoPeriodoComponent } from './melhores-execucao-periodo/melhores-execucao-periodo.component';
+import { DescricaoFundoImobiliarioComponent } from './descricao-fundo-imobiliario/descricao-fundo-imobiliario.component';
+import { FundoImobiliarioAluguelMelhoresComponent } from './fundo-imobiliario-aluguel-melhores/fundo-imobiliario-aluguel-melhores.component';
+import { DetalheAluguelFundoImobiliarioComponent } from './detalhe-aluguel-fundo-imobiliario/detalhe-aluguel-fundo-imobiliario.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -165,7 +168,10 @@ registerLocaleData(localePt, 'pt-BR');
     ValorMonitoriaPeriodoTabelaComponent,
     ValorMonitoriaPeriodoComponent,
     ExecucaoSimulacaoMelhoresPeriodoComponent,
-    MelhoresExecucaoPeriodoComponent
+    MelhoresExecucaoPeriodoComponent,
+    DescricaoFundoImobiliarioComponent,
+    FundoImobiliarioAluguelMelhoresComponent,
+    DetalheAluguelFundoImobiliarioComponent
   ],
   imports: [
     BrowserModule,
@@ -237,7 +243,9 @@ registerLocaleData(localePt, 'pt-BR');
     OrdemCompraEditaComponent,
     PeriodoExperimentoEditaComponent,
     OrdemCompraListaEditaComponent,
-    EscolhePeriodoParaExperimentoComponent
+    EscolhePeriodoParaExperimentoComponent,
+    DescricaoFundoImobiliarioComponent,
+    DetalheAluguelFundoImobiliarioComponent
   ],
   bootstrap: [AppComponent]
 })

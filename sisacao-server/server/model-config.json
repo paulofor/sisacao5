@@ -178,5 +178,9 @@
   "RendaFixa": {
     "dataSource": "mysqlDS",
     "public": true
+  },
+  "AluguelFundoImobiliario": {
+    "dataSource": "mysqlDS",
+    "public": true
   }
 }

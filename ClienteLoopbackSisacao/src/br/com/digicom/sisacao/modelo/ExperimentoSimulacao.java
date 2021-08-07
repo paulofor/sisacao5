@@ -101,6 +101,9 @@ public class ExperimentoSimulacao extends Model{
 	public int diaFinal() {
 		return this.experimentoSimulacaoPeriodos.get(0).getPeriodoExperimento().getDataNumFinal();
 	}
+	public int diaInicioColeta() {
+		return this.experimentoSimulacaoPeriodos.get(0).getPeriodoExperimento().getDataNumInicioColeta();
+	}
 	public int periodoExperimentoId() {
 		return this.experimentoSimulacaoPeriodos.get(0).getPeriodoExperimento().getId();
 	}

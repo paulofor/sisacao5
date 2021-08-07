@@ -4,6 +4,7 @@ import java.net.CookieManager;
 
 import javax.swing.text.MutableAttributeSet;
 import javax.swing.text.html.HTML;
+import javax.swing.text.html.HTML.Tag;
 import javax.swing.text.html.HTMLEditorKit;
 
 import br.com.digicom.parse.ParserHtmlTh;
@@ -181,6 +182,7 @@ public abstract class CallbackParseHtml extends HTMLEditorKit.ParserCallback imp
 			System.out.print(pos + "-<inicio>:" + t + "." + classeNome + "#" + idNome);
 		}
 		inicioTag(t, classeNome, idNome);
+		inicioTagImpl(t,classeNome,idNome);
 		if ((t == HTML.Tag.A) && (a.getAttribute(HTML.Attribute.HREF) != null)) {
 			String urlCorrente = a.getAttribute(HTML.Attribute.HREF).toString();
 			// trocas de url
@@ -205,6 +207,13 @@ public abstract class CallbackParseHtml extends HTMLEditorKit.ParserCallback imp
 		if (this.debug)
 			System.out.println();
 	}
+
+	protected void inicioTagImpl(Tag t, String classeNome, String idNome) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 
 	public void handleSimpleTag(HTML.Tag t, MutableAttributeSet a, int pos) {
 		this.ultTagSimples = t;

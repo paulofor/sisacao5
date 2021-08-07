@@ -30,6 +30,14 @@ public class RepositorioDiaPregao extends ModelRepository<DiaPregao>{
 	        //params.put("dia", dias);
 	        invokeStaticMethod("obtemIntradayPorTicker", params,   new JsonArrayParser<DiaPregao>(this, callback));
 		}
+		public synchronized void obtemIntradayTickerPeriodo(String ticker, int inicioPeriodo, final ListCallback<DiaPregao> callback ) {
+			RestContractItem contrato = new RestContractItem("DiaPregaos/obtemIntradayTickerPeriodo","GET");
+			this.getRestAdapter().getContract().addItem(contrato, "DiaPregao.obtemIntradayTickerPeriodo");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        params.put("ticker", ticker);
+	        params.put("dataNumInicio", inicioPeriodo);
+	        invokeStaticMethod("obtemIntradayTickerPeriodo", params,   new JsonArrayParser<DiaPregao>(this, callback));
+		}
 		public synchronized void obtemProximo(final ObjectCallback<DiaPregao> callback ) {
 			RestContractItem contrato = new RestContractItem("DiaPregaos/obtemProximo","GET");
 			this.getRestAdapter().getContract().addItem(contrato, "DiaPregao.obtemProximo");

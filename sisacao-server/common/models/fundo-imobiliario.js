@@ -3,12 +3,100 @@
 module.exports = function (Fundoimobiliario) {
 
 
+
+
+
+
+    /**
+    * 
+    * @param {Function(Error, object)} callback
+    */
+    Fundoimobiliario.AtualizaDiarioFII = function(callback) {
+        let sqlMaximo1 = " update FundoImobiliario " +
+                    " set maximo1 = ( " +
+                    " select max(maximo) from CotacaoDiarioAcao " +
+                    " where ticker = FundoImobiliario.ticker " +
+                    " and data >= (select DATE_SUB(now(), INTERVAL 1 month)) " +
+                    ") ";   
+        let sqlMinimo1 = " update FundoImobiliario " +
+                    " set minimo1 = ( " +
+                    " select min(minimo) from CotacaoDiarioAcao " +
+                    " where ticker = FundoImobiliario.ticker " +
+                    " and data >= (select DATE_SUB(now(), INTERVAL 1 month)) " +
+                    ") "; 
+        let sqlMaximo3 = " update FundoImobiliario " +
+                    " set maximo3 = ( " +
+                    " select max(maximo) from CotacaoDiarioAcao " +
+                    " where ticker = FundoImobiliario.ticker " +
+                    " and data >= (select DATE_SUB(now(), INTERVAL 3 month)) " +
+                    ") ";   
+        let sqlMinimo3 = " update FundoImobiliario " +
+                    " set minimo3 = ( " +
+                    " select min(minimo) from CotacaoDiarioAcao " +
+                    " where ticker = FundoImobiliario.ticker " +
+                    " and data >= (select DATE_SUB(now(), INTERVAL 3 month)) " +
+                    ") "; 
+        let sqlAluguel3 = " update FundoImobiliario " +
+                    " set totalAluguel3 = ( " +
+                    " select sum(valor) from AluguelFundoImobiliario " +
+                    " where ticker = FundoImobiliario.ticker " +
+                    " and dataPagamento >= (select DATE_SUB(now(), INTERVAL 3 month)) " +
+                    ") "; 
+        let sqlAluguel6 = " update FundoImobiliario " +
+                    " set totalAluguel6 = ( " +
+                    " select sum(valor) from AluguelFundoImobiliario " +
+                    " where ticker = FundoImobiliario.ticker " +
+                    " and dataPagamento >= (select DATE_SUB(now(), INTERVAL 6 month)) " +
+                    ") "; 
+        let sqlPercMedia3 = " update FundoImobiliario " +
+                    " set mediaPercentualAluguel3 = ( " +
+                    " select avg(percentual) from AluguelFundoImobiliario " +
+                    " where ticker = FundoImobiliario.ticker " +
+                    " and dataPagamento >= (select DATE_SUB(now(), INTERVAL 3 month)) " +
+                    ") "; 
+        let sqlPercMedia6 = " update FundoImobiliario " +
+                    " set mediaPercentualAluguel6 = ( " +
+                    " select avg(percentual) from AluguelFundoImobiliario " +
+                    " where ticker = FundoImobiliario.ticker " +
+                    " and dataPagamento >= (select DATE_SUB(now(), INTERVAL 6 month)) " +
+                    ") "; 
+        var ds = Fundoimobiliario.dataSource;
+        ds.connector.query(sqlMaximo1, (err,result) => {
+           ds.connector.query(sqlMinimo1, (err,result) => {
+               ds.connector.query(sqlMaximo3, (err,reult) => {
+                   ds.connector.query(sqlMinimo3,(err,reult) => {
+                        ds.connector.query(sqlAluguel3,(err,result) => {
+                            ds.connector.query(sqlAluguel6, (err,result) => {
+                                ds.connector.query(sqlPercMedia3, (err,result) => {
+                                    ds.connector.query(sqlPercMedia6,callback)
+                                })
+                            })
+                        })
+                   })
+               })
+           })
+        })
+        
+    };
+  
+
+
+    /**
+    * 
+    * @param {Function(Error, array)} callback
+    */
+    Fundoimobiliario.ListaAluguel = function(callback) {
+        Fundoimobiliario.find(callback);
+    };
+  
+
+
     /**
     * 
     * @param {Function(Error, array)} callback
     */
     Fundoimobiliario.Melhores6M = function(quantidade, callback) {
-        let sql = " SELECT * FROM lojadigicom35.FundoImobiliario " +
+        let sql = " SELECT * FROM FundoImobiliario " +
                 " where mediaNegocio1 >= 250 " +
                 //" and percentual12 > 0 " +
                 " order by percentual6 desc " +
@@ -19,12 +107,27 @@ module.exports = function (Fundoimobiliario) {
 
 
     /**
+    * 
+    * @param {number} quantidade 
+    * @param {Function(Error, array)} callback
+    */
+    Fundoimobiliario.MelhoresAluguel = function(quantidade, callback) {
+        let sql = " SELECT * FROM FundoImobiliario " +
+        " order by mediaPercentualAluguel6 desc " +
+        " limit " + quantidade;
+        var ds = Fundoimobiliario.dataSource;
+        ds.connector.query(sql, callback)
+    };
+  
+
+    /**
      * 
      * @param {object} fundo 
      * @param {Function(Error, object)} callback
      */
 
     Fundoimobiliario.InsereSeNaoExiste = function (fundo, callback) {
+        fundo.dataInsercao = new Date();
         Fundoimobiliario.upsert(fundo, (err,result) => {
             callback(err,result);
         })

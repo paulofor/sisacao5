@@ -91,4 +91,27 @@ module.exports = function(Diapregao) {
         }
         Diapregao.find(filtro,callback);
     }
+
+
+    Diapregao.ObtemIntradayTickerPeriodo = function(ticker, dataNumInicio, callback) {
+        let filtro = {
+            'include' : 
+            [
+                { 
+                'relation' : 'cotacaoIntradayAcaos',
+                'scope' : 
+                    {'where' : {'ticker' : ticker } , "order" : "dataHora" , "fields" : { valor:true, ticker: true, dataHora: true, dataHoraNegStr: true }} 
+                },
+                { 
+                'relation' : 'cotacaoDiarioAcaos',
+                'scope' : 
+                    {'where' : {'ticker' : ticker }} 
+                }
+            ], 
+            'order' : 'diaNum',
+            'where' : {'diaNum' : { 'gte' : dataNumInicio }}
+        }
+        Diapregao.find(filtro,callback);
+      };
+      
 };

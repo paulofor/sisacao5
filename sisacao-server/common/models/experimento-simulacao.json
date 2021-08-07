@@ -337,6 +337,31 @@
           "verb": "post"
         }
       ]
+    },
+    "Reinicializa": {
+      "accepts": [
+        {
+          "arg": "idExperimento",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/reinicializa",
+          "verb": "post"
+        }
+      ]
     }
   }
 }

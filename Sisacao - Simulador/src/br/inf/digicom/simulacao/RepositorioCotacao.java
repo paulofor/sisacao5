@@ -11,6 +11,7 @@ import br.com.digicom.sisacao.app.Loopback;
 import br.com.digicom.sisacao.modelo.AtivoAcao;
 import br.com.digicom.sisacao.modelo.DiaPregao;
 import br.com.digicom.sisacao.repositorio.RepositorioDiaPregao;
+import br.inf.digicom.TempoSleep;
 
 public class RepositorioCotacao {
 	
@@ -31,12 +32,22 @@ public class RepositorioCotacao {
 			}
 		}
 	}
+	public static void carregaAtivos(List<AtivoAcao> listaAtivo, int diaNumInicioColeta) {
+		for (AtivoAcao ativo : listaAtivo) {
+			carregaAtivo(ativo.getTicker(), diaNumInicioColeta);
+			try {
+				Thread.sleep(TempoSleep.LOOP_CARREGA_ATIVO);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	public static void carregaPorTicker(String ticker) {
 		if (cotacoes.get(ticker)==null) {
 			carregaAtivo(ticker);
 			try {
-				Thread.sleep(5000);
+				Thread.sleep(TempoSleep.LOOP_CARREGA_ATIVO);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -61,6 +72,23 @@ public class RepositorioCotacao {
 			}
 		};
 		repDiaPregao.obtemPorDiaTicker(ticker, 0, callback); 
+	}
+	private static synchronized void carregaAtivo(String ticker, final int diaNumInicio) {
+		ListCallback<DiaPregao> callback = new ListCallback<DiaPregao>() {
+			@Override
+			public void onSuccess(List<DiaPregao> lista) {
+				cotacoes.put(ticker, lista);
+				contaLista++;
+				System.out.println("Contagem:" + contaLista + " " + ticker);
+			}
+
+			@Override
+			public void onError(Throwable t) {
+				t.printStackTrace();
+				
+			}
+		};
+		repDiaPregao.obtemIntradayTickerPeriodo(ticker, diaNumInicio, callback); 
 	}
 	
 	public static List<DiaPregao> getCotacao(AtivoAcao ativo) {

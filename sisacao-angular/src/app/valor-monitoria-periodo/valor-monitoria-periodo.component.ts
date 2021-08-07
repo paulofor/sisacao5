@@ -208,13 +208,7 @@ export class ValorMonitoriaPeriodoComponent extends BaseListComponent {
     }
   }
 
-  verificaMarcaTexto(valor) {
-    if (valor<=PERCENTUAL_AVISO) {
-      return 'marcatexto'
-    } else {
-      return '';
-    }
-  }
+
   posicaoAtual(item) {
     if (item.valorMonitorias.length>1) {
       return item.valorMonitorias[1].posicao;

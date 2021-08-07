@@ -3,6 +3,17 @@
 module.exports = function(Periodoexperimento) {
 
 
+ /**
+ * 
+ * @param {Function(Error, object)} callback
+ */
+  Periodoexperimento.CalculaInicioColeta = function(callback) {
+    let sql = " update PeriodoExperimento " +
+        " set dataNumInicioColeta = DATE_FORMAT(DATE_SUB(STR_TO_DATE(dataStrInicial, '%d-%m-%Y'),INTERVAL 1 MONTH) , '%Y%m%d')";
+    let ds = Periodoexperimento.dataSource;
+    ds.connector.query(sql,callback);
+  };
+
 /**
  * 
  * @param {number} idExperimento 

@@ -230,7 +230,7 @@ public class RestAdapter extends Adapter {
 			try {
 				String responseBody = response.getResponseBody();
 				Log.getLogger().info("Success (string): " + response);
-				// System.out.println("Resposta Servidor: " + response);
+				//System.out.println("Resposta Servidor: " + response);
 				callback.onSuccess(responseBody);
 			} catch (Throwable t) {
 				t.printStackTrace();

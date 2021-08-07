@@ -1,6 +1,0 @@
-(18:36:15) - java.io.FileNotFoundException: http://www.bmf.com.br/Ftp/IPN/TRS/BVBG.086.01/PR210610.zip
-	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1920)
-	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1520)
-	at java.base/java.net.URL.openStream(URL.java:1140)
-	at sisacao.opcaointra.importador.TransferidorObj.main(TransferidorObj.java:39)
-	at sisacao.opcaointra.app.ObtemDiarioFalha.main(ObtemDiarioFalha.java:16)

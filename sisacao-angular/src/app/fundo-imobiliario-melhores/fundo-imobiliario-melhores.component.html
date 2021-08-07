@@ -11,15 +11,16 @@
               <thead>
                 <tr>
                   <th width="3%">Pos</th>
-                  <th width="10%">Ticker</th>
+                  <th width="5%">Ticker</th>
                   <th width="25%">Nome</th>
                   <th width="15%">Segmento</th>
-                  <th width="20%">Administrador</th>
+                  <th width="15%">Administrador</th>
                   <th width="5%">Perc6</th>
                   <th width="5%">Perc12</th>
                   <th width="5%">Neg1</th>
                   <th width="8%">Atual</th>
-                  <th width="5%"></th>
+                  <th width="5%">Aluguel 6</th>
+                  <th width="10%"></th>
                 </tr>
               </thead>
               <tbody>
@@ -33,8 +34,10 @@
                   <td>{{item.percentual12 | number: '1.1-1'}}</td>
                   <td>{{item.mediaNegocio1 | number: '1.0-0'}}</td>
                   <td>{{item.precoAtual | number: '1.2-2'}}</td>
+                  <td>{{item.totalAluguel6 | number: '1.2-2'}}</td>
                   <td align="right">
                     <a style="margin-left: 8px; margin-right: 8px;" routerLink="/cotacaoDiarioAcao/{{item.ticker}}">diario</a>
+                    <button type="button" (click)="abreExplicacao(item)">?</button>
                   </td>
                 </tr>
               </tbody>

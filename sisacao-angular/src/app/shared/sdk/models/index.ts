@@ -36,5 +36,6 @@ export * from './ExperimentoSimulacaoPeriodo';
 export * from './FundoImobiliario';
 export * from './CDB';
 export * from './RendaFixa';
+export * from './AluguelFundoImobiliario';
 export * from './BaseModels';
 export * from './FireLoopRef';
