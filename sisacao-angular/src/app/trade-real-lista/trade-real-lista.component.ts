@@ -42,6 +42,7 @@ export class TradeRealListaComponent extends BaseListComponent {
             trade['financeiro'] = (trade['precoAtual'] - trade['precoEntrada']) * trade.quantidade;
             this.financeiroTotal += trade['financeiro'];
           }
+          
         });
       this.srvCotacao.AtualPorTicker(trade.ticker + "F",1)
         .subscribe((cotacao:CotacaoIntradayAcao[]) => {

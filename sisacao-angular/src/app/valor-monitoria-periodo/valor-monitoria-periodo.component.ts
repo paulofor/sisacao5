@@ -28,8 +28,10 @@ export class ValorMonitoriaPeriodoComponent extends BaseListComponent {
   preCarregaTela() {
     this.router.params.subscribe((params) => {
       this.idPeriodo = params['id'];
+      console.log('idPeriodo:' , this.idPeriodo);
       this.srvPeriodo.findById(this.idPeriodo)
         .subscribe((result: PeriodoExperimento) => {
+          console.log('periodo:' , result);
           this.periodo = result;
         })
     })
@@ -157,23 +159,59 @@ export class ValorMonitoriaPeriodoComponent extends BaseListComponent {
   }
 
   valorSaidaLucro(item:ExecucaoSimulacao) {
-    let valorEntrada = item.precoEntrada * 100;
-    let valorSaida = item.precoEntrada * (1+item.target) * 100;
-    return (valorSaida - valorEntrada) - CUSTO_TRADE;
+    if (item.tipo=='C') {
+      let valorEntrada = item.precoEntrada * 100;
+      let valorSaida = item.precoEntrada * (1+item.target) * 100;
+      return (valorSaida - valorEntrada) - CUSTO_TRADE;
+    }
+    if (item.tipo=='V') {
+      let valorEntrada = item.precoEntrada * 100;
+      let valorSaida = item.precoEntrada * (1-item.target) * 100;
+      return (valorEntrada - valorSaida) - CUSTO_TRADE;
+    }
+    return 0;
   }
   valorSaidaPrejuizo(item:ExecucaoSimulacao) {
-    let valorEntrada = item.precoEntrada * 100;
-    let valorSaida = item.precoEntrada * (1-item.stop) * 100;
-    return (valorEntrada - valorSaida) - CUSTO_TRADE;
+    if (item.tipo=='C') {
+      let valorEntrada = item.precoEntrada * 100;
+      let valorSaida = item.precoEntrada * (1-item.stop) * 100;
+      return (valorEntrada - valorSaida) - CUSTO_TRADE;
+    }
+    if (item.tipo=='V') {
+      let valorEntrada = item.precoEntrada * 100;
+      let valorSaida = item.precoEntrada * (1+item.stop) * 100;
+      return (valorSaida - valorEntrada) - CUSTO_TRADE;
+    }
+    return 0;
+
   }
 
   pontoSaidaLucro(item:ExecucaoSimulacao) {
-    let valor = item.precoEntrada * (1+item.target);
-    return valor.toFixed(2);
+    if (item.tipo=='C') {
+      console.log('tipo Compra');
+      let valor = item.precoEntrada * (1+item.target);
+      return valor.toFixed(2);
+    }
+    if (item.tipo=='V') {
+      console.log('tipo Venda');
+      let valor = item.precoEntrada * (1-item.target);
+      console.log('Entrada:' , item.precoEntrada);
+      console.log('SaidaLucro:' , valor);
+      return valor.toFixed(2);
+    }
+    return 0;
   }
   pontoSaidaPrejuizo(item:ExecucaoSimulacao) {
-    let valor = item.precoEntrada * (1-item.stop);
-    return valor.toFixed(2);
+    if (item.tipo=='C') {
+      let valor = item.precoEntrada * (1-item.stop);
+      return valor.toFixed(2);
+    } 
+    if (item.tipo=='V') {
+      let valor = item.precoEntrada * (1+item.stop);
+      return valor.toFixed(2);
+    } 
+    return 0;
+
   }
 
   classeTargetCompra(item:ExecucaoSimulacao) {

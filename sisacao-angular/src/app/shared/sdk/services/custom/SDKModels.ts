@@ -38,6 +38,13 @@ import { FundoImobiliario } from '../../models/FundoImobiliario';
 import { CDB } from '../../models/CDB';
 import { RendaFixa } from '../../models/RendaFixa';
 import { AluguelFundoImobiliario } from '../../models/AluguelFundoImobiliario';
+import { ValorAplicado } from '../../models/ValorAplicado';
+import { TipoAplicacao } from '../../models/TipoAplicacao';
+import { InstituicaoFinanceira } from '../../models/InstituicaoFinanceira';
+import { CotacaoIntradayResultado } from '../../models/CotacaoIntradayResultado';
+import { AtivoIndice } from '../../models/AtivoIndice';
+import { CotacaoIntradayIndice } from '../../models/CotacaoIntradayIndice';
+import { ExecucaoSimulacaoValidacao } from '../../models/ExecucaoSimulacaoValidacao';
 
 export interface Models { [name: string]: any }
 
@@ -83,6 +90,13 @@ export class SDKModels {
     CDB: CDB,
     RendaFixa: RendaFixa,
     AluguelFundoImobiliario: AluguelFundoImobiliario,
+    ValorAplicado: ValorAplicado,
+    TipoAplicacao: TipoAplicacao,
+    InstituicaoFinanceira: InstituicaoFinanceira,
+    CotacaoIntradayResultado: CotacaoIntradayResultado,
+    AtivoIndice: AtivoIndice,
+    CotacaoIntradayIndice: CotacaoIntradayIndice,
+    ExecucaoSimulacaoValidacao: ExecucaoSimulacaoValidacao,
     
   };
 

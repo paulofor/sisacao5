@@ -39,7 +39,15 @@ public class RepositorioAcaoBase {
 	        params.put("idGrupo", idGrupo);
 	        invokeStaticMethod("listaPorGrupo", params,   new JsonArrayParser<AtivoAcao>(this, callback));
 		}
-		
+		public void melhorSimulacaoPorExperimento(final Integer idExperimento, final Integer cortePontos, final Integer qtdeExecucao, final ListCallback<AtivoAcao> callback) {
+			RestContractItem contrato = new RestContractItem("AtivoAcaos/melhorSimulacaoPorExperimento","GET");
+			this.getRestAdapter().getContract().addItem(contrato, "AtivoAcao.melhorSimulacaoPorExperimento");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        params.put("idExperimento", idExperimento);
+	        params.put("cortePontos", cortePontos);
+	        params.put("qtdeExecucao", qtdeExecucao);
+	        invokeStaticMethod("melhorSimulacaoPorExperimento", params,   new JsonArrayParser<AtivoAcao>(this, callback));
+		}
 		public void atualizaPosDiario(final VoidCallback voidCallback) {
 			RestContractItem contrato = new RestContractItem("AtivoAcaos/atualizaPosDiario","POST");
 			this.getRestAdapter().getContract().addItem(contrato, "AtivoAcao.atualizaPosDiario");

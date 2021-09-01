@@ -10,7 +10,7 @@ import br.com.digicom.sisacao.modelo.DiaPregao;
 import br.inf.digicom.simulacao.IRegraPontoEntrada;
 import br.inf.digicom.simulacao.trade.ExecucaoPontoEntrada;
 
-public class RegraPontoEntradaVenda implements IRegraPontoEntrada, IRegraCompra {
+public class RegraPontoEntradaVenda implements IRegraPontoEntrada, IRegraVenda {
 	
 	private int diaInicial;
 	

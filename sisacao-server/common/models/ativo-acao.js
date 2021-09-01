@@ -5,6 +5,45 @@ var app = require('../../server/server');
 module.exports = function (Ativoacao) {
 
 
+ /**
+    * 
+    * @param {number} idPeriodo 
+    * @param {number} cortePontos 
+    * @param {number} qtdeExecucao 
+    * @param {Function(Error, array)} callback
+    */
+  Ativoacao.MelhorSimulacaoPorExperimento = function(idExperimento, cortePontos, qtdeExecucao, callback) {
+    /*
+    let filtro = {
+        'include' : {
+            'relation' : 'execucaoSimulacaos' , 'scope' : {
+                'where' : { and : [ {'experimentoSimulacaoId': idExperimento } , {'resultado' : { gt: cortePontos } }]}
+            }
+        }
+       
+    }
+    */
+    let filtro = {
+        'include' : {
+            'relation' : 'execucaoSimulacaos' , 'scope' : {
+                    'limit' : qtdeExecucao,
+                    'where' : { 'and' : [{'resultado' : { gt : cortePontos }} , {'experimentoSimulacaoId' : idExperimento } ]},
+                    'order' : 'resultado desc',
+                    'include' : {'relation' : 'combinacaoParametro' , 'scope' : {'include' : 'regraSimulacao'}}
+            }
+        },
+
+    }
+    Ativoacao.find(filtro,(err,result) => {
+        let lista = result.filter(function (item)  {
+            let json = JSON.stringify(item);
+            let tam = JSON.parse(json).execucaoSimulacaos.length
+            return (tam > 0);
+        })
+        callback(err,lista);
+    });
+    
+};
 
 
 
@@ -16,6 +55,7 @@ module.exports = function (Ativoacao) {
     * @param {Function(Error, array)} callback
     */
     Ativoacao.MelhorSimulacaoPorPeriodo = function(idPeriodo, cortePontos, qtdeExecucao, callback) {
+        /*
         let filtro = {
             'include' : {
                 'relation' : 'execucaoSimulacaos' , 'scope' : {
@@ -24,7 +64,8 @@ module.exports = function (Ativoacao) {
             }
            
         }
-        filtro = {
+        */
+        let filtro = {
             'include' : {
                 'relation' : 'execucaoSimulacaos' , 'scope' : {
                         'limit' : qtdeExecucao,

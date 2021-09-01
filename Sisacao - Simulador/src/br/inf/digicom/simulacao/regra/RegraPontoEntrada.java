@@ -56,7 +56,7 @@ public class RegraPontoEntrada implements IRegraPontoEntrada, IRegraCompra {
 			}
 			Collections.sort(valores);
 			if (valores.size() > getLimiteMinimo()) {
-				System.out.println("(" + valores.get(0) + " - " + valores.get(valores.size()-1) + ")");
+				//System.out.println("(" + valores.get(0) + " - " + valores.get(valores.size()-1) + ")");
 				return valores.get(posicaoSaidaAtual);
 			} else {
 				return 0;

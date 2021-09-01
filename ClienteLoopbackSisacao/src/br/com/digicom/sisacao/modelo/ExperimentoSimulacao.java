@@ -14,6 +14,7 @@ public class ExperimentoSimulacao extends Model{
 	private Integer posicaoExecucao;
 	private RegraSimulacao regraSimulacao;
 	private Integer grupoAcaoId;
+	private Integer id;
 	//private String dataInicial;
 	//private String dataFinal;
 	
@@ -106,6 +107,16 @@ public class ExperimentoSimulacao extends Model{
 	}
 	public int periodoExperimentoId() {
 		return this.experimentoSimulacaoPeriodos.get(0).getPeriodoExperimento().getId();
+	}
+
+
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	

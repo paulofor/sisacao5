@@ -35,7 +35,12 @@ public class RepositorioExperimentoSimulacao extends ModelRepository<Experimento
         Map<String, Object> params = new HashMap<String, Object>();
         invokeStaticMethod("obtemParaSimulacao", params,   new JsonObjectParser<ExperimentoSimulacao>(this, callback));
 	}
-	
+	public void obtemParaValidacao(final ObjectCallback<ExperimentoSimulacao> callback ) {
+		RestContractItem contrato = new RestContractItem("ExperimentoSimulacaos/obtemParaValidacao","GET");
+		this.getRestAdapter().getContract().addItem(contrato, "ExperimentoSimulacao.obtemParaValidacao");
+        Map<String, Object> params = new HashMap<String, Object>();
+        invokeStaticMethod("obtemParaValidacao", params,   new JsonObjectParser<ExperimentoSimulacao>(this, callback));
+	}
 	public void fechaExperimento(final long idExperimento,  final VoidCallback voidCallback) {
 		RestContractItem contrato = new RestContractItem("ExperimentoSimulacaos/fechaExperimento","GET");
 		this.getRestAdapter().getContract().addItem(contrato, "ExperimentoSimulacao.fechaExperimento");

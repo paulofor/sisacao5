@@ -19,6 +19,7 @@ export interface ExperimentoSimulacaoInterface {
   "posicaoExecucao"?: number;
   "permiteEdicao"?: number;
   "emExecucao"?: number;
+  "emValidacao"?: number;
   "id"?: number;
   "regraSimulacaoId"?: number;
   "grupoAcaoId"?: number;
@@ -40,6 +41,7 @@ export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
   "posicaoExecucao": number;
   "permiteEdicao": number;
   "emExecucao": number;
+  "emValidacao": number;
   "id": number;
   "regraSimulacaoId": number;
   "grupoAcaoId": number;
@@ -110,6 +112,10 @@ export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
         },
         "emExecucao": {
           name: 'emExecucao',
+          type: 'number'
+        },
+        "emValidacao": {
+          name: 'emValidacao',
           type: 'number'
         },
         "id": {

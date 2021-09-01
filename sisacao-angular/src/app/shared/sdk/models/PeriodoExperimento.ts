@@ -12,6 +12,7 @@ export interface PeriodoExperimentoInterface {
   "permiteEditar"?: number;
   "dataNumInicial"?: number;
   "dataNumFinal"?: number;
+  "dataNumInicioColeta"?: number;
   "id"?: number;
   experimentoSimulacaoPeriodos?: ExperimentoSimulacaoPeriodo[];
 }
@@ -24,6 +25,7 @@ export class PeriodoExperimento implements PeriodoExperimentoInterface {
   "permiteEditar": number;
   "dataNumInicial": number;
   "dataNumFinal": number;
+  "dataNumInicioColeta": number;
   "id": number;
   experimentoSimulacaoPeriodos: ExperimentoSimulacaoPeriodo[];
   constructor(data?: PeriodoExperimentoInterface) {
@@ -85,6 +87,10 @@ export class PeriodoExperimento implements PeriodoExperimentoInterface {
         },
         "dataNumFinal": {
           name: 'dataNumFinal',
+          type: 'number'
+        },
+        "dataNumInicioColeta": {
+          name: 'dataNumInicioColeta',
           type: 'number'
         },
         "id": {

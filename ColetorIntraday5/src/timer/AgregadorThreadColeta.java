@@ -13,14 +13,14 @@ import br.com.digicom.sisacao.app.Loopback;
 import br.com.digicom.sisacao.modelo.Ativo;
 import br.com.digicom.sisacao.modelo.AtivoAcao;
 import br.com.digicom.sisacao.modelo.AtivoImobiliario;
+import br.com.digicom.sisacao.modelo.AtivoIndice;
 import br.com.digicom.sisacao.modelo.AtivoMercadoria;
 import br.com.digicom.sisacao.modelo.AtivoOpcao;
 import br.com.digicom.sisacao.repositorio.RepositorioAcaoBase;
 import br.com.digicom.sisacao.repositorio.RepositorioImobiliarioBase;
+import br.com.digicom.sisacao.repositorio.RepositorioIndiceBase;
 import br.com.digicom.sisacao.repositorio.RepositorioMercadoriaBase;
 import br.com.digicom.sisacao.repositorio.RepositorioOpcaoBase;
-import coletorjava.modelo.FabricaVo;
-import coletorjava.modelo.OpcaoSisacao;
 import sisacao.opcaointra.cotacao.PesquisadorIntradayAtivo;
 
 public class AgregadorThreadColeta {
@@ -34,7 +34,8 @@ public class AgregadorThreadColeta {
 	RepositorioOpcaoBase.AtivoOpcaoRepository repOpcao = adapter.createRepository(RepositorioOpcaoBase.AtivoOpcaoRepository.class);
 	RepositorioMercadoriaBase.AtivoMercadoriaRepository repMercadoria = adapter.createRepository(RepositorioMercadoriaBase.AtivoMercadoriaRepository.class);
 	RepositorioImobiliarioBase.AtivoImobiliarioRepository repImobiliario = adapter.createRepository(RepositorioImobiliarioBase.AtivoImobiliarioRepository.class);
-	
+	RepositorioIndiceBase.AtivoIndiceRepository repIndice = adapter.createRepository(RepositorioIndiceBase.AtivoIndiceRepository.class);
+
 	
 	final Timer timer = new Timer();
 	
@@ -65,7 +66,8 @@ public class AgregadorThreadColeta {
 		this.disparaColetoresDiaAcao(diaAtual);
 		this.disparaColetoresDiaImobiliario(diaAtual);
 		this.disparaColetoresDiaMercadoria(diaAtual);
-		this.disparaColetoresDiaOpcao(diaAtual);
+		//this.disparaColetoresDiaOpcao(diaAtual);
+		this.disparaColetoresDiaIndice(diaAtual);
 	}
 	
 	
@@ -87,7 +89,22 @@ public class AgregadorThreadColeta {
 		
 	}
 
-	
+	private void disparaColetoresDiaIndice(final String diaAtual) {
+		final RestricaoTempo restricao = getRestricaoTempo();
+		repIndice.findAll(new ListCallback<AtivoIndice>() { 
+			@Override
+			public void onError(Throwable t) {
+				t.printStackTrace();
+			}
+			@Override
+			public void onSuccess(List<AtivoIndice> objects) {
+				System.out.println("Total Acao: " + objects.size());
+				for (AtivoIndice item : objects) {
+					inicializaAtivo((Ativo)item, diaAtual, restricao);
+				}
+			} 
+        });
+	}
 	private void disparaColetoresDiaOpcao(final String diaAtual) {
 		final RestricaoTempo restricao = getRestricaoTempo();
 		repOpcao.findAll(new ListCallback<AtivoOpcao>() { 

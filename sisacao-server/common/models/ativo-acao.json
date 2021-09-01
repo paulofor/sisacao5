@@ -220,6 +220,43 @@
           "verb": "get"
         }
       ]
+    },
+    "MelhorSimulacaoPorExperimento": {
+      "accepts": [
+        {
+          "arg": "idExperimento",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "cortePontos",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "qtdeExecucao",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/melhorSimulacaoPorExperimento",
+          "verb": "get"
+        }
+      ]
     }
   }
 }

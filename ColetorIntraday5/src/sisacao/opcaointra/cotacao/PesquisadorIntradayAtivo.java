@@ -20,7 +20,7 @@ public class PesquisadorIntradayAtivo extends PesquisadorTimer {
 	}
 	
 	
-	private ICallbackCotacao getCallback() {
+	protected ICallbackCotacao getCallback() {
 		return new CallbackCotacaoB3Json();
 	}
 	

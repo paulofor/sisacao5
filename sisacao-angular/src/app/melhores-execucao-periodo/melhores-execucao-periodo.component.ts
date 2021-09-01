@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { AtivoAcao, AtivoAcaoApi } from '../shared/sdk';
 
 @Component({
@@ -10,18 +11,22 @@ export class MelhoresExecucaoPeriodoComponent implements OnInit {
 
   listaMelhores: AtivoAcao[];
 
-  constructor(private srv:AtivoAcaoApi) { }
+  constructor(private srv:AtivoAcaoApi, private router: ActivatedRoute) { }
 
   ngOnInit() {
     this.carregaMelhores();
   }
 
   carregaMelhores() {
-    this.srv.MelhorSimulacaoPorPeriodo(3,39,8)
+    this.router.params.subscribe((params) => {
+      let idPeriodo = params['id'];
+      this.srv.MelhorSimulacaoPorPeriodo(idPeriodo,14,8)
       .subscribe((result:AtivoAcao[]) => {
         this.listaMelhores = result;
         console.log('Melhores:' , this.listaMelhores);
       })
+    })
+    
   }
 
 }

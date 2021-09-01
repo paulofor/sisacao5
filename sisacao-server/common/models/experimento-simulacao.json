@@ -26,6 +26,9 @@
     },
     "emExecucao": {
       "type": "number"
+    },
+    "emValidacao": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -277,6 +280,24 @@
         }
       ]
     },
+    "ObtemParaValidacao": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "experimento",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemParaValidacao",
+          "verb": "get"
+        }
+      ]
+    },
     "ColocaEmExecucao": {
       "accepts": [
         {
@@ -298,6 +319,31 @@
       "http": [
         {
           "path": "/colocaEmExecucao",
+          "verb": "post"
+        }
+      ]
+    },
+    "ColocaEmValidacao": {
+      "accepts": [
+        {
+          "arg": "idExperimento",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/colocaEmValidacao",
           "verb": "post"
         }
       ]

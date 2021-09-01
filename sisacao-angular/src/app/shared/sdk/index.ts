@@ -86,6 +86,13 @@ import { FundoImobiliarioApi } from './services/custom/FundoImobiliario';
 import { CDBApi } from './services/custom/CDB';
 import { RendaFixaApi } from './services/custom/RendaFixa';
 import { AluguelFundoImobiliarioApi } from './services/custom/AluguelFundoImobiliario';
+import { ValorAplicadoApi } from './services/custom/ValorAplicado';
+import { TipoAplicacaoApi } from './services/custom/TipoAplicacao';
+import { InstituicaoFinanceiraApi } from './services/custom/InstituicaoFinanceira';
+import { CotacaoIntradayResultadoApi } from './services/custom/CotacaoIntradayResultado';
+import { AtivoIndiceApi } from './services/custom/AtivoIndice';
+import { CotacaoIntradayIndiceApi } from './services/custom/CotacaoIntradayIndice';
+import { ExecucaoSimulacaoValidacaoApi } from './services/custom/ExecucaoSimulacaoValidacao';
 /**
 * @module SDKBrowserModule
 * @description
@@ -154,8 +161,16 @@ export class SDKBrowserModule {
         CDBApi,
         RendaFixaApi,
         AluguelFundoImobiliarioApi,
+        ValorAplicadoApi,
+        TipoAplicacaoApi,
+        InstituicaoFinanceiraApi,
+        CotacaoIntradayResultadoApi,
+        AtivoIndiceApi,
+        CotacaoIntradayIndiceApi,
+        ExecucaoSimulacaoValidacaoApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
+
       ]
     };
   }

@@ -2,6 +2,8 @@ package br.com.digicom.sisacao.app;
 
 public class Loopback {
 
-	//public static final String URL_SISACAO = "http://www.digicom.inf.br:21046/api";
-	public static final String URL_SISACAO = "http://localhost:21046/api";
+	public static final String URL_SISACAO = "http://www.digicom.inf.br:21046/api";
+	//public static final String URL_SISACAO = "http://localhost:21046/api";
+	//public static final String URL_SISACAO = "http://sisacaoserver-env.eba-zf6mgrfp.us-east-1.elasticbeanstalk.com//api"; // aws1 - digicomcd
+	//public static final String URL_SISACAO = "http://sisacao6-env.eba-tg3s28jd.us-east-1.elasticbeanstalk.com/api"; // aws2 - paulopes
 }

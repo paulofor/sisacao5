@@ -182,5 +182,33 @@
   "AluguelFundoImobiliario": {
     "dataSource": "mysqlDS",
     "public": true
+  },
+  "ValorAplicado": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "TipoAplicacao": {
+    "dataSource": "db",
+    "public": true
+  },
+  "InstituicaoFinanceira": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "CotacaoIntradayResultado": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "AtivoIndice": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "CotacaoIntradayIndice": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "ExecucaoSimulacaoValidacao": {
+    "dataSource": "mysqlDS",
+    "public": true
   }
 }

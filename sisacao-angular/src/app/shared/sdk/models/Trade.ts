@@ -13,6 +13,7 @@ export interface TradeInterface {
   "quantidadeDia"?: number;
   "id"?: number;
   "execucaoSimulacaoId"?: number;
+  "execucaoSimulacaoValidacaoId"?: number;
 }
 
 export class Trade implements TradeInterface {
@@ -27,6 +28,7 @@ export class Trade implements TradeInterface {
   "quantidadeDia": number;
   "id": number;
   "execucaoSimulacaoId": number;
+  "execucaoSimulacaoValidacaoId": number;
   constructor(data?: TradeInterface) {
     Object.assign(this, data);
   }
@@ -102,6 +104,10 @@ export class Trade implements TradeInterface {
         },
         "execucaoSimulacaoId": {
           name: 'execucaoSimulacaoId',
+          type: 'number'
+        },
+        "execucaoSimulacaoValidacaoId": {
+          name: 'execucaoSimulacaoValidacaoId',
           type: 'number'
         },
       },

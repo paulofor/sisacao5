@@ -44,6 +44,20 @@ module.exports = function(Experimentosimulacao) {
     };
   
   
+    /**
+    * 
+    * @param {number} idExperimento 
+    * @param {Function(Error, object)} callback
+    */
+     Experimentosimulacao.ColocaEmValidacao = function(idExperimento, callback) {
+        let sql1 = "update ExperimentoSimulacao set emValidacao = 0 ";
+        let sql2 = "update ExperimentoSimulacao set emValidacao = 1 where id = " + idExperimento;
+        let ds = Experimentosimulacao.dataSource;
+        ds.connector.query(sql1, (err1,result1) => {
+            ds.connector.query(sql2, callback);
+        })
+    };
+  
 
     /**
     * 
@@ -349,6 +363,28 @@ module.exports = function(Experimentosimulacao) {
     Experimentosimulacao.ObtemParaSimulacao = function(callback) {
         let filtro = { 
             'where' : {'emExecucao' : 1},
+            'include' : [
+                { 'relation' : 'regraSimulacao' , 'scope' : {'include' : 'parametroRegras'} },
+                { 'relation' : 'experimentoSimulacaoPeriodos' , 
+                            'scope' : {
+                                    'include':'periodoExperimento',
+                                    'where' : {'concluido' : 0 }
+
+                            }
+            }
+        ]
+
+        }
+        Experimentosimulacao.findOne(filtro, callback);
+    };
+
+     /**
+    * 
+    * @param {Function(Error, object)} callback
+    */
+      Experimentosimulacao.ObtemParaValidacao = function(callback) {
+        let filtro = { 
+            'where' : {'emValidacao' : 1},
             'include' : [
                 { 'relation' : 'regraSimulacao' , 'scope' : {'include' : 'parametroRegras'} },
                 { 'relation' : 'experimentoSimulacaoPeriodos' , 

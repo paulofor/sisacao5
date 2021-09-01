@@ -23,6 +23,7 @@ public class RepositorioImobiliarioBase {
 		protected String verificaNomeUrl(String nome) {
 			return "AtivoImobiliarios";
 		}
+		/*
 		public void listaColetaIntraday(final ListCallback<AtivoImobiliario> callback) {
 			RestContractItem contrato = new RestContractItem("AtivoImobiliarios/listaColetaIntraday","POST");
 			this.getRestAdapter().getContract().addItem(contrato, "AtivoImobiliario.listaColetaIntraday");
@@ -30,6 +31,7 @@ public class RepositorioImobiliarioBase {
 	        invokeStaticMethod("listaColetaIntraday", params,   new JsonArrayParser<AtivoImobiliario>(this, callback));
 			
 		}
+		*/
 	}
 	
 	public static class CotacaoIntradayImobiliarioRepository extends ModelRepository<CotacaoIntradayImobiliario> {

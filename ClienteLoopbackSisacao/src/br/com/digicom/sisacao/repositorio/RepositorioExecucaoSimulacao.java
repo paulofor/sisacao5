@@ -33,7 +33,7 @@ public class RepositorioExecucaoSimulacao extends ModelRepository<ExecucaoSimula
         execucao = null;
 	}
 	
-	
+
 	public void obtemMonitorarPorId(final int id, final ObjectCallback<ExecucaoSimulacao> callback ) {
 		RestContractItem contrato = new RestContractItem("ExecucaoSimulacaos/obtemMonitorarPorId","GET");
 		this.getRestAdapter().getContract().addItem(contrato, "ExecucaoSimulacao.obtemMonitorarPorId");
@@ -55,5 +55,6 @@ public class RepositorioExecucaoSimulacao extends ModelRepository<ExecucaoSimula
         Map<String, Object> params = new HashMap<String, Object>();
         invokeStaticMethod("obtemProximoMonitorar", params,   new JsonObjectParser<ExecucaoSimulacao>(this, callback));
 	}
+
 	
 }

@@ -1,0 +1,37 @@
+{
+  "name": "CotacaoIntradayResultado",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ticker": {
+      "type": "string",
+      "id": true
+    },
+    "valor": {
+      "type": "number"
+    },
+    "dataHoraNegStr": {
+      "type": "string"
+    },
+    "dataHora": {
+      "type": "date",
+      "id": true
+    },
+    "dia": {
+      "type": "date"
+    },
+    "tg12St12": {
+      "type": "number"
+    },
+    "tg13St13": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

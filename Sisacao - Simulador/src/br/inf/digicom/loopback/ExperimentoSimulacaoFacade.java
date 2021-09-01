@@ -16,6 +16,7 @@ import br.com.digicom.sisacao.repositorio.RepositorioCombinacaoParametro;
 import br.com.digicom.sisacao.repositorio.RepositorioExperimentoSimulacao;
 import br.inf.digicom.simulacao.ExecutadorSimulacao;
 import br.inf.digicom.simulacao.RepositorioCotacao;
+import br.inf.digicom.simulacao.validacao.ExecutadorSimulacaoValidacao;
 
 public class ExperimentoSimulacaoFacade {
 
@@ -29,6 +30,9 @@ public class ExperimentoSimulacaoFacade {
 	List<AtivoAcao> listaAtivo = null;
 	
 	ExecutadorSimulacao executador = new ExecutadorSimulacao();
+	ExecutadorSimulacaoValidacao executadorValidacao = new ExecutadorSimulacaoValidacao();
+	
+	ExperimentoSimulacao experimentoValidacao = null;
 	
 	public void carregaExperimento(Long idExperimento) {
 		repExperimento.carregaParaSimulacao(idExperimento, new ObjectCallback<ExperimentoSimulacao>() {
@@ -56,7 +60,6 @@ public class ExperimentoSimulacaoFacade {
 				System.out.println(experimento.getCodigo());
 				experimentoSimulacao = experimento;
 				carregaAtivos(experimento.getGrupoAcaoId(),experimento.diaInicioColeta());
-				//carregaCombinacao((Integer) experimento.getId());
 			}
 			@Override
 			public void onError(Throwable t) {
@@ -149,8 +152,55 @@ public class ExperimentoSimulacaoFacade {
 				t.printStackTrace();
 			}});
 	}
+
+	public void obtemExperimentoValidacao() {
+		// TODO Auto-generated method stub
+		repExperimento.obtemParaValidacao( new ObjectCallback<ExperimentoSimulacao>() {
+
+			@Override
+			public void onSuccess(ExperimentoSimulacao experimento) {
+				System.out.println(experimento.getCodigo());
+				experimentoValidacao = experimento;
+				carregaMelhorAtivos(experimento);
+			}
+			@Override
+			public void onError(Throwable t) {
+				t.printStackTrace();
+			}
+			
+		}); 
+	}
 	
-	
-	
+	public void carregaMelhorAtivos(ExperimentoSimulacao experimento) {
+		repAtivoAcao.melhorSimulacaoPorExperimento(experimento.getId(), 18, 3, new ListCallback<AtivoAcao>() {
+			@Override
+			public void onSuccess(List<AtivoAcao> objects) {
+				listaAtivo = objects;
+				RepositorioCotacao.carregaAtivos(listaAtivo, experimento.diaInicioColeta());
+				carregaCombinacaoValidacao((Integer) experimentoSimulacao.getId());
+			}
+
+			@Override
+			public void onError(Throwable t) {
+				t.printStackTrace();
+			}});
+	}
+	public void carregaCombinacaoValidacao(Integer id) {
+		repCombinacao.getListaExecucao(id, new ListCallback<CombinacaoParametro>() {
+			@Override
+			public void onSuccess(List<CombinacaoParametro> listaCombinacao) {
+				for (CombinacaoParametro combinacao : listaCombinacao) {
+					executadorValidacao.executa(listaAtivo,combinacao,experimentoSimulacao);
+					//salvaDescricaoCombinacao(combinacao);
+				}
+				fechaExperimento(id);
+			}
+			@Override
+			public void onError(Throwable t) {
+				t.printStackTrace();
+			}
+			
+		});
+	}
 	
 }

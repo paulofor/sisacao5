@@ -93,9 +93,9 @@ public class FundoImobiliarioFacade {
 	public static void trataAluguel(List<FundoImobiliario> lista) {
 		try {
 			//chamaDetalheAluguel(lista.get(0));
-			//FundoImobiliario fundo = new FundoImobiliario();
-			//fundo.setTicker("HABT11");
-			//chamaDetalheAluguel(fundo);
+			FundoImobiliario fundoTeste = new FundoImobiliario();
+			fundoTeste.setTicker("HABT11");
+			chamaDetalheAluguel(fundoTeste);
 			for (FundoImobiliario fundo : lista) {
 				Thread.sleep(5000);
 				chamaDetalheAluguel(fundo);
@@ -132,7 +132,7 @@ public class FundoImobiliarioFacade {
 	*/
 	
 	public static void insereListaAluguelPorItem(List<AluguelFundoImobiliario> lista) {
-		final int LIMITE = 100;
+		final int LIMITE = 5;
 		for (int ind=0;ind<LIMITE && ind<lista.size(); ind++) {
 			AluguelFundoImobiliario item = lista.get(ind);
 			if (item.getValor()==0) continue;

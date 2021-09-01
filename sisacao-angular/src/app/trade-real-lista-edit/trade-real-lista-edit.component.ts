@@ -26,9 +26,16 @@ export class TradeRealListaEditComponent extends BaseEditComponent {
 
   posItem() {
     let itemTrade:TradeReal = this.item;
-    this.precoCompraExec = itemTrade.execucaoSimulacao.precoEntrada;
-    this.precoStopExec = itemTrade.execucaoSimulacao.precoEntrada * (1-itemTrade.execucaoSimulacao.stop);
-    this.precoTargetExec = itemTrade.execucaoSimulacao.precoEntrada * (1+itemTrade.execucaoSimulacao.target);
+    if (itemTrade.tipo=='C') {
+      this.precoCompraExec = itemTrade.execucaoSimulacao.precoEntrada;
+      this.precoStopExec = itemTrade.execucaoSimulacao.precoEntrada * (1-itemTrade.execucaoSimulacao.stop);
+      this.precoTargetExec = itemTrade.execucaoSimulacao.precoEntrada * (1+itemTrade.execucaoSimulacao.target);
+    }
+    if (itemTrade.tipo=='V') {
+      this.precoCompraExec = itemTrade.execucaoSimulacao.precoEntrada;
+      this.precoStopExec = itemTrade.execucaoSimulacao.precoEntrada * (1+itemTrade.execucaoSimulacao.stop);
+      this.precoTargetExec = itemTrade.execucaoSimulacao.precoEntrada * (1-itemTrade.execucaoSimulacao.target);
+    }
     
     //console.log('precoCompraExec:' , itemTrade.execucaoSimulacao.precoEntrada);
   }

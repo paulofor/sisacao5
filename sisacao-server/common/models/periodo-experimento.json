@@ -27,10 +27,9 @@
     "dataNumFinal": {
       "type": "number"
     },
-    "dataNumInicioColeta" : {
-      "type" : "number"
+    "dataNumInicioColeta": {
+      "type": "number"
     }
-    
   },
   "validations": [],
   "relations": {
