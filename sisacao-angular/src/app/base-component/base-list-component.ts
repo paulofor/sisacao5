@@ -55,7 +55,7 @@ export class BaseListComponent implements OnInit {
     }
 
     dialogo2(dados) {
-        console.log('dialogo1.dados:' , dados);
+        console.log('dialogo2.dados:' , dados);
         this.dialog.afterAllClosed.subscribe(result => {
             this.carregaTela();
         });

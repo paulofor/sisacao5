@@ -8,11 +8,13 @@ public abstract class Ativo extends Model{
 	public abstract Integer getIntraday5();
 	public abstract Integer getIntraday15();
 	public abstract Integer getIntraday30();
+	public abstract Integer getIntraday10();
 
 	public Long minutos() {
 		if (this.getIntraday5() == 1) return 5L;
 		if (this.getIntraday15() == 1) return 15L;
 		if (this.getIntraday30() == 1) return 30L;
+		if (this.getIntraday10() == 1) return 10L;
 		return null;
 	}
 	public Long milisegundos() {

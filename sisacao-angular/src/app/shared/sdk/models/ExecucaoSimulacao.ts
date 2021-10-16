@@ -3,11 +3,13 @@ import {
   CombinacaoParametro,
   RegraSimulacao,
   AtivoAcao,
+  ExperimentoSimulacao,
   Trade,
   ValorMonitoria,
   TradeReal,
   PeriodoExperimento,
-  OrdemCompra
+  OrdemCompra,
+  ExecucaoSimulacaoValidacao
 } from '../index';
 
 declare var Object: any;
@@ -34,11 +36,13 @@ export interface ExecucaoSimulacaoInterface {
   combinacaoParametro?: CombinacaoParametro;
   regraSimulacao?: RegraSimulacao;
   ativoAcao?: AtivoAcao;
+  experimentoSimulacao?: ExperimentoSimulacao;
   trades?: Trade[];
   valorMonitorias?: ValorMonitoria[];
   tradeReals?: TradeReal[];
   periodoExperimento?: PeriodoExperimento;
   ordemCompras?: OrdemCompra[];
+  execucaoSimulacaoValidacaos?: ExecucaoSimulacaoValidacao[];
 }
 
 export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
@@ -64,11 +68,13 @@ export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
   combinacaoParametro: CombinacaoParametro;
   regraSimulacao: RegraSimulacao;
   ativoAcao: AtivoAcao;
+  experimentoSimulacao: ExperimentoSimulacao;
   trades: Trade[];
   valorMonitorias: ValorMonitoria[];
   tradeReals: TradeReal[];
   periodoExperimento: PeriodoExperimento;
   ordemCompras: OrdemCompra[];
+  execucaoSimulacaoValidacaos: ExecucaoSimulacaoValidacao[];
   constructor(data?: ExecucaoSimulacaoInterface) {
     Object.assign(this, data);
   }
@@ -204,6 +210,14 @@ export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
                   keyFrom: 'ticker',
           keyTo: 'ticker'
         },
+        experimentoSimulacao: {
+          name: 'experimentoSimulacao',
+          type: 'ExperimentoSimulacao',
+          model: 'ExperimentoSimulacao',
+          relationType: 'belongsTo',
+                  keyFrom: 'experimentoSimulacaoId',
+          keyTo: 'id'
+        },
         trades: {
           name: 'trades',
           type: 'Trade[]',
@@ -240,6 +254,14 @@ export class ExecucaoSimulacao implements ExecucaoSimulacaoInterface {
           name: 'ordemCompras',
           type: 'OrdemCompra[]',
           model: 'OrdemCompra',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'execucaoSimulacaoId'
+        },
+        execucaoSimulacaoValidacaos: {
+          name: 'execucaoSimulacaoValidacaos',
+          type: 'ExecucaoSimulacaoValidacao[]',
+          model: 'ExecucaoSimulacaoValidacao',
           relationType: 'hasMany',
                   keyFrom: 'id',
           keyTo: 'execucaoSimulacaoId'

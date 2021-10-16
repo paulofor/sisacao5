@@ -37,6 +37,7 @@ public class RepositorioCombinacaoParametro extends ModelRepository<CombinacaoPa
 		this.getRestAdapter().getContract().addItem(contrato, "CombinacaoParametro.getListaExecucao");
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("idExperimento", idExperimento);
+        //params.put("idPeriodo" , idPeriodo);
         invokeStaticMethod("getListaExecucao", params,   new JsonArrayParser<CombinacaoParametro>(this, callback));
 	}
 	

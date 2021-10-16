@@ -46,7 +46,7 @@ module.exports = function (Combinacaoparametro) {
       'where': { 'and': [{ 'experimentoSimulacaoId': idExperimento }, { 'descricao': null }] },
       //'include': { 'relation': 'valorParametros', 'scope': { 'include': 'parametroRegra' } }
       'include' : 'valorParametros',
-      'limit' : 10000
+      'limit' : 15000
     }
     //console.log('entrou no find');
     Combinacaoparametro.find(filtro, (err,result) => {
@@ -55,6 +55,15 @@ module.exports = function (Combinacaoparametro) {
     });
   };
 
-
+  /**
+  * 
+  * @param {number} idExperimento 
+  * @param {Function(Error, object)} callback
+  */
+  Combinacaoparametro.LimpaDescricao = function(idExperimento, callback) {
+    let sql = "update CombinacaoParametro set descricao = null where experimentoSimulacaoId = " + idExperimento;
+    let ds = Combinacaoparametro.dataSource;
+    ds.connector.query(sql, callback);
+  };
 
 };

@@ -8,10 +8,19 @@
   "properties": {
     "nome": {
       "type": "string"
+    },
+    "saldoAtual": {
+      "type": "number"
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "aplicacaoInstituicaos": {
+      "type": "hasMany",
+      "model": "AplicacaoInstituicao",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }

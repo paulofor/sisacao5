@@ -64,6 +64,11 @@
       "type": "hasMany",
       "model": "ExecucaoSimulacao",
       "foreignKey": "ticker"
+    },
+    "cotacaoIntradayAcaoResultados": {
+      "type": "hasMany",
+      "model": "CotacaoIntradayAcaoResultado",
+      "foreignKey": ""
     }
   },
   "acls": [],
@@ -230,6 +235,12 @@
           "description": ""
         },
         {
+          "arg": "idPeriodo",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
           "arg": "cortePontos",
           "type": "number",
           "required": false,
@@ -255,6 +266,31 @@
         {
           "path": "/melhorSimulacaoPorExperimento",
           "verb": "get"
+        }
+      ]
+    },
+    "MelhorParaValidacao": {
+      "accepts": [
+        {
+          "arg": "idExperimento",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "listaAtivo",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/melhorParaValidacao",
+          "verb": "post"
         }
       ]
     }

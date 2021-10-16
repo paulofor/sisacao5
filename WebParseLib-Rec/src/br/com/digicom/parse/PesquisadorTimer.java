@@ -1,43 +1,41 @@
- package br.com.digicom.parse;
- 
- import br.com.digicom.parse.callback.ICallbackParse;
- import br.com.digicom.parse.callback.IDadosParse;
- import java.util.TimerTask;
- 
- public abstract class PesquisadorTimer extends TimerTask
-   implements IPesquisador
- {
-   private RestricaoTempo restricaoTempo;
-   private ExecutadorParse executadorParse;
- 
-   public PesquisadorTimer()
-   {
-/* 14 */     this.executadorParse = new ExecutadorParse();
-   }
- 
-   public PesquisadorTimer(RestricaoTempo restricaoTempo) {
-/* 18 */     this.restricaoTempo = restricaoTempo;
-/* 19 */     this.executadorParse = new ExecutadorParse();
-   }
- 
-   public void setRestricaoTempo(RestricaoTempo restricaoTempo) {
-/* 23 */     this.restricaoTempo = restricaoTempo;
-   }
- 
-   public void setCallbackParse(ICallbackParse callback) {
-/* 27 */     this.executadorParse.setCallbackParse(callback);
-   }
-   public void setDadosParse(IDadosParse dadosParse) {
-/* 30 */     this.executadorParse.setDadosParse(dadosParse);
-   }
- 
-   public void run() {
-/* 34 */     if (this.restricaoTempo.podeAcessar())
-/* 35 */       this.executadorParse.executa();
-   }
- }
+package br.com.digicom.parse;
 
-/* Location:           D:\Java-Recuperacao\webparse.jar
- * Qualified Name:     br.com.digicom.parse.PesquisadorTimer
- * JD-Core Version:    0.6.0
+import br.com.digicom.parse.callback.ICallbackParse;
+import br.com.digicom.parse.callback.IDadosParse;
+import java.util.TimerTask;
+
+public abstract class PesquisadorTimer extends TimerTask implements IPesquisador {
+	private RestricaoTempo restricaoTempo;
+	private ExecutadorParse executadorParse;
+
+	public PesquisadorTimer() {
+		this.executadorParse = new ExecutadorParse();
+	}
+
+	public PesquisadorTimer(RestricaoTempo restricaoTempo) {
+		this.restricaoTempo = restricaoTempo;
+		this.executadorParse = new ExecutadorParse();
+	}
+
+	public void setRestricaoTempo(RestricaoTempo restricaoTempo) {
+		this.restricaoTempo = restricaoTempo;
+	}
+
+	public void setCallbackParse(ICallbackParse callback) {
+		this.executadorParse.setCallbackParse(callback);
+	}
+
+	public void setDadosParse(IDadosParse dadosParse) {
+		this.executadorParse.setDadosParse(dadosParse);
+	}
+
+	public void run() {
+		if (this.restricaoTempo.podeAcessar())
+			this.executadorParse.executa();
+	}
+}
+
+/*
+ * Location: D:\Java-Recuperacao\webparse.jar Qualified Name:
+ * br.com.digicom.parse.PesquisadorTimer JD-Core Version: 0.6.0
  */

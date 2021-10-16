@@ -4,21 +4,36 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import br.com.digicom.cotacao.handle.CotacaoManipulador;
 import br.com.digicom.lib.dao.DaoException;
 import br.com.digicom.parse.callback.CallbackParseHtml;
 import br.com.digicom.parse.callback.IDadosParse;
 
 public class CallbackCotacaoGoogle  extends CallbackParseHtml implements ICallbackCotacao {
 
+	
+	private CotacaoManipulador dados;
+	
+	// exemplo url: https://arquivos.b3.com.br/apinegocios/ticker/petru216/2020-08-17
+	
+	private String dataReferencia;
+	
+	private Double valor;
+	private String horario;
+	
+	
 	@Override
 	public URL getUrl() throws MalformedURLException {
-		// TODO Auto-generated method stub
-		return null;
+		return new URL("https://arquivos.b3.com.br/apinegocios/ticker/" + dados.getTicker().toLowerCase() + "/" + dados.getAAAA_MM_DD());
 	}
 
 	@Override
 	public void setDados(IDadosParse paramIDadosParse) {
-		// TODO Auto-generated method stub
+		this.dados = (CotacaoManipulador) paramIDadosParse;
 		
 	}
 
@@ -30,13 +45,13 @@ public class CallbackCotacaoGoogle  extends CallbackParseHtml implements ICallba
 
 	@Override
 	public void finalizacaoOk() throws DaoException {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void inicializacao() {
 		// TODO Auto-generated method stub
+		this.setDebug();
 		
 	}
 

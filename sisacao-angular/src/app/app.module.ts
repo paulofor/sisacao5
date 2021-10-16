@@ -99,6 +99,12 @@ import { MelhoresExecucaoPeriodoComponent } from './melhores-execucao-periodo/me
 import { DescricaoFundoImobiliarioComponent } from './descricao-fundo-imobiliario/descricao-fundo-imobiliario.component';
 import { FundoImobiliarioAluguelMelhoresComponent } from './fundo-imobiliario-aluguel-melhores/fundo-imobiliario-aluguel-melhores.component';
 import { DetalheAluguelFundoImobiliarioComponent } from './detalhe-aluguel-fundo-imobiliario/detalhe-aluguel-fundo-imobiliario.component';
+import { AlocacaoRecursosComponent } from './alocacao-recursos/alocacao-recursos.component';
+import { EscolhePeriodoCorrenteExperimentoComponent } from './escolhe-periodo-corrente-experimento/escolhe-periodo-corrente-experimento.component';
+import { TipoAplicacaoListComponent } from './tipo-aplicacao-list/tipo-aplicacao-list.component';
+import { TipoAplicacaoEditComponent } from './tipo-aplicacao-edit/tipo-aplicacao-edit.component';
+import { AlocacaoMovimentacaoEditaComponent } from './alocacao-movimentacao-edita/alocacao-movimentacao-edita.component';
+import { MelhoresValidacaoPeriodoComponent } from './melhores-validacao-periodo/melhores-validacao-periodo.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -171,7 +177,13 @@ registerLocaleData(localePt, 'pt-BR');
     MelhoresExecucaoPeriodoComponent,
     DescricaoFundoImobiliarioComponent,
     FundoImobiliarioAluguelMelhoresComponent,
-    DetalheAluguelFundoImobiliarioComponent
+    DetalheAluguelFundoImobiliarioComponent,
+    AlocacaoRecursosComponent,
+    EscolhePeriodoCorrenteExperimentoComponent,
+    TipoAplicacaoListComponent,
+    TipoAplicacaoEditComponent,
+    AlocacaoMovimentacaoEditaComponent,
+    MelhoresValidacaoPeriodoComponent
   ],
   imports: [
     BrowserModule,
@@ -245,7 +257,10 @@ registerLocaleData(localePt, 'pt-BR');
     OrdemCompraListaEditaComponent,
     EscolhePeriodoParaExperimentoComponent,
     DescricaoFundoImobiliarioComponent,
-    DetalheAluguelFundoImobiliarioComponent
+    DetalheAluguelFundoImobiliarioComponent,
+    EscolhePeriodoCorrenteExperimentoComponent,
+    TipoAplicacaoEditComponent,
+    AlocacaoMovimentacaoEditaComponent
   ],
   bootstrap: [AppComponent]
 })

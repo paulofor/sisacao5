@@ -6,6 +6,33 @@ module.exports = function (Cotacaointradayacao) {
     /**
     * 
     * @param {string} ticker 
+    * @param {number} diaNum 
+    * @param {string} hora 
+    * @param {Function(Error, object)} callback
+    */
+     Cotacaointradayacao.ObtemCotacaoAnterior = function(ticker, diaNum, dataHora, callback) {
+         let filtro = {
+             'limit' : 2,
+             'order' : ['diaNum desc' ,'dataHora desc'],
+             'where' : {
+                 'and' : [
+                    {'ticker' : ticker},
+                    {'diaNum' : diaNum },
+                    {'hora' : dataHora }
+                 ]
+                 
+             }
+        }
+        Cotacaointradayacao.find(filtro, (err,result) => {
+            callback(err,result[1])
+        })
+    };
+  
+
+
+    /**
+    * 
+    * @param {string} ticker 
     * @param {number} quantidade 
     * @param {Function(Error, array)} callback
     */

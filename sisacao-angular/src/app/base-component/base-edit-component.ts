@@ -14,7 +14,7 @@ export class BaseEditComponent implements OnInit{
     
 
   ngOnInit() {
-    this.montaCombos();
+    
     console.log("Data(BaseEdit):", this.data);
     if (this.data.origem) {
       this.origem = this.data.origem;
@@ -27,6 +27,7 @@ export class BaseEditComponent implements OnInit{
       this.item = this.data.item;
       console.log('Item(BaseEdit):', this.item);
     }
+    this.montaCombos();
     this.posItem();
   }
   
@@ -34,7 +35,7 @@ export class BaseEditComponent implements OnInit{
     this.preSubmit();
     console.log('Submit(BaseEdit):' , this.item);
     this.servico.upsert(this.item, (err, obj) => {
-      console.log("Erro:" + err.message);
+      console.log("Erro:" + err);
     }).subscribe((e: any) => {
       console.log(JSON.stringify(e));
       this.closeDialog();

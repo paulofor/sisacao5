@@ -9,9 +9,24 @@ public class PeriodoExperimento extends Model{
 	private Integer id;
 	private int dataNumInicioColeta;
 	
+	private int dataNumInicioValidacao;
+	private int dataNumFinalValidacao;
 	
 	
 	
+	
+	public int getDataNumInicioValidacao() {
+		return dataNumInicioValidacao;
+	}
+	public void setDataNumInicioValidacao(int dataNumInicioValidacao) {
+		this.dataNumInicioValidacao = dataNumInicioValidacao;
+	}
+	public int getDataNumFinalValidacao() {
+		return dataNumFinalValidacao;
+	}
+	public void setDataNumFinalValidacao(int dataNumFinalValidacao) {
+		this.dataNumFinalValidacao = dataNumFinalValidacao;
+	}
 	public int getDataNumInicioColeta() {
 		return dataNumInicioColeta;
 	}

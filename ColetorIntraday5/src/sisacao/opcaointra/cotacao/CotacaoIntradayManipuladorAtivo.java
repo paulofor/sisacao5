@@ -8,10 +8,12 @@ import br.com.digicom.sisacao.app.Loopback;
 import br.com.digicom.sisacao.modelo.Ativo;
 import br.com.digicom.sisacao.modelo.AtivoAcao;
 import br.com.digicom.sisacao.modelo.AtivoImobiliario;
+import br.com.digicom.sisacao.modelo.AtivoIndice;
 import br.com.digicom.sisacao.modelo.AtivoMercadoria;
 import br.com.digicom.sisacao.modelo.AtivoOpcao;
 import br.com.digicom.sisacao.repositorio.RepositorioAcaoBase;
 import br.com.digicom.sisacao.repositorio.RepositorioImobiliarioBase;
+import br.com.digicom.sisacao.repositorio.RepositorioIndiceBase;
 import br.com.digicom.sisacao.repositorio.RepositorioMercadoriaBase;
 import br.com.digicom.sisacao.repositorio.RepositorioOpcaoBase;
 
@@ -27,7 +29,8 @@ public class CotacaoIntradayManipuladorAtivo extends CotacaoManipulador {
 			.createRepository(RepositorioMercadoriaBase.CotacaoIntradayMercadoriaRepository.class);
 	RepositorioImobiliarioBase.CotacaoIntradayImobiliarioRepository repCotacaoImobiliario = adapter
 			.createRepository(RepositorioImobiliarioBase.CotacaoIntradayImobiliarioRepository.class);
-
+	RepositorioIndiceBase.CotacaoIntradayIndiceRepository repCotacaoIndice = adapter
+			.createRepository(RepositorioIndiceBase.CotacaoIntradayIndiceRepository.class);
 	
 
 	private Ativo ativo;
@@ -65,6 +68,18 @@ public class CotacaoIntradayManipuladorAtivo extends CotacaoManipulador {
 		}
 		if (ativo instanceof AtivoMercadoria) {
 			repCotacaoMercadoria.insereValorHorario(ativo.getTicker(), horario, valor, new VoidCallback() {
+				@Override
+				public void onSuccess() {
+					System.out.println("Inseriu dado (" + ativo.getTicker() + ")");
+				}
+				@Override
+				public void onError(Throwable t) {
+					t.printStackTrace();
+				}
+			});
+		}
+		if (ativo instanceof AtivoIndice) {
+			repCotacaoIndice.insereValorHorario(ativo.getTicker(), horario, valor, new VoidCallback() {
 				@Override
 				public void onSuccess() {
 					System.out.println("Inseriu dado (" + ativo.getTicker() + ")");

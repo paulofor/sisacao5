@@ -31,6 +31,10 @@ import { ValorMonitoriaPeriodoTabelaComponent } from '../valor-monitoria-periodo
 import { ValorMonitoriaPeriodoComponent } from '../valor-monitoria-periodo/valor-monitoria-periodo.component';
 import { MelhoresExecucaoPeriodoComponent } from '../melhores-execucao-periodo/melhores-execucao-periodo.component';
 import { FundoImobiliarioAluguelMelhoresComponent } from '../fundo-imobiliario-aluguel-melhores/fundo-imobiliario-aluguel-melhores.component';
+import { AlocacaoRecursosComponent } from '../alocacao-recursos/alocacao-recursos.component';
+import { TipoAplicacaoListComponent } from '../tipo-aplicacao-list/tipo-aplicacao-list.component';
+import { MelhoresValidacaoPeriodoComponent } from '../melhores-validacao-periodo/melhores-validacao-periodo.component';
+
 
 export const routes : Routes = [
     { path: 'home' , component: HomeComponent },
@@ -73,6 +77,12 @@ export const routes : Routes = [
     { path : 'valorMonitoriaPeriodoTabela/:id' , component: ValorMonitoriaPeriodoTabelaComponent },
 
     { path : 'melhoresExecucaoPeriodo/:id' , component: MelhoresExecucaoPeriodoComponent },
+    { path : 'melhoresValidacaoPeriodo/:id' , component: MelhoresValidacaoPeriodoComponent },
+
+
+    { path : 'alocacaoRecursos' , component: AlocacaoRecursosComponent },
+    { path : 'tipoAplicacao' , component: TipoAplicacaoListComponent },
+    
 
     { path: '',          redirectTo: 'home', pathMatch: 'full' }
 ]

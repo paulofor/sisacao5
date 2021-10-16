@@ -26,6 +26,8 @@ public class ExecucaoSimulacaoValidacao extends Model{
 	Integer periodoExperimentoId;
 	String primeiraEntrada = "";
 	String tipo;
+	Integer execucaoSimulacaoId;
+	Integer execucaoSimulacaoValidacaoId;
 	
 	List<Trade> trades = new ArrayList<Trade>();
 	CombinacaoParametro combinacaoParametro = null;
@@ -118,6 +120,10 @@ public class ExecucaoSimulacaoValidacao extends Model{
 			obj.put("ticker", this.ticker);
 			obj.put("combinacaoParametroId", this.combinacaoParametroId);
 			obj.put("experimentoSimulacaoId", this.experimentoSimulacaoId);
+			if (this.execucaoSimulacaoId!=null)
+				obj.put("execucaoSimulacaoId", this.execucaoSimulacaoId);
+			if (this.execucaoSimulacaoValidacaoId!=null)
+				obj.put("execucaoSimulacaoValidacaoId", this.execucaoSimulacaoValidacaoId);
 			obj.put("target", target);
 			obj.put("stop", stop);
 			double resultado = (100*this.target*(this.quantidadeLucro+1)) - (100*this.stop*(this.quantidadePrejuizo+1)) +
@@ -186,6 +192,16 @@ public class ExecucaoSimulacaoValidacao extends Model{
 
 	
 	
+	public Integer getExecucaoSimulacaoId() {
+		return execucaoSimulacaoId;
+	}
+
+
+	public void setExecucaoSimulacaoId(Integer execucaoSimulacaoId) {
+		this.execucaoSimulacaoId = execucaoSimulacaoId;
+	}
+
+
 	public Integer getPeriodoExperimentoId() {
 		return periodoExperimentoId;
 	}
@@ -224,6 +240,16 @@ public class ExecucaoSimulacaoValidacao extends Model{
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+
+	public Integer getExecucaoSimulacaoValidacaoId() {
+		return execucaoSimulacaoValidacaoId;
+	}
+
+
+	public void setExecucaoSimulacaoValidacaoId(Integer execucaoSimulacaoValidacaoId) {
+		this.execucaoSimulacaoValidacaoId = execucaoSimulacaoValidacaoId;
 	}
 	
 	

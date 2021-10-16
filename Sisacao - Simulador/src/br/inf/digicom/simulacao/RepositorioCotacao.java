@@ -25,21 +25,11 @@ public class RepositorioCotacao {
 	public static void carregaAtivos(List<AtivoAcao> listaAtivo) {
 		for (AtivoAcao ativo : listaAtivo) {
 			carregaAtivo(ativo.getTicker());
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 		}
 	}
-	public static void carregaAtivos(List<AtivoAcao> listaAtivo, int diaNumInicioColeta) {
+	public static synchronized void carregaAtivos(List<AtivoAcao> listaAtivo, int diaNumInicioColeta) {
 		for (AtivoAcao ativo : listaAtivo) {
 			carregaAtivo(ativo.getTicker(), diaNumInicioColeta);
-			try {
-				Thread.sleep(TempoSleep.LOOP_CARREGA_ATIVO);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 		}
 	}
 	
@@ -55,7 +45,7 @@ public class RepositorioCotacao {
 		
 	}
 	
-	
+
 	private static synchronized void carregaAtivo(String ticker) {
 		ListCallback<DiaPregao> callback = new ListCallback<DiaPregao>() {
 			@Override
@@ -73,13 +63,17 @@ public class RepositorioCotacao {
 		};
 		repDiaPregao.obtemPorDiaTicker(ticker, 0, callback); 
 	}
+	
+	private static boolean carregaAtivoOk = false;
 	private static synchronized void carregaAtivo(String ticker, final int diaNumInicio) {
+		carregaAtivoOk = false;
 		ListCallback<DiaPregao> callback = new ListCallback<DiaPregao>() {
 			@Override
 			public void onSuccess(List<DiaPregao> lista) {
 				cotacoes.put(ticker, lista);
 				contaLista++;
 				System.out.println("Contagem:" + contaLista + " " + ticker);
+				carregaAtivoOk = true;
 			}
 
 			@Override
@@ -89,6 +83,41 @@ public class RepositorioCotacao {
 			}
 		};
 		repDiaPregao.obtemIntradayTickerPeriodo(ticker, diaNumInicio, callback); 
+		while (!carregaAtivoOk) {
+			try {
+				Thread.sleep(10000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	private static boolean carregaAtivoResultadoOk = false;
+	public static synchronized void carregaAtivoResultado(String ticker, final int diaNumInicio) {
+		carregaAtivoOk = false;
+		ListCallback<DiaPregao> callback = new ListCallback<DiaPregao>() {
+			@Override
+			public void onSuccess(List<DiaPregao> lista) {
+				cotacoes.put(ticker, lista);
+				contaLista++;
+				System.out.println("Contagem:" + contaLista + " " + ticker);
+				carregaAtivoResultadoOk = true;
+			}
+
+			@Override
+			public void onError(Throwable t) {
+				t.printStackTrace();
+				
+			}
+		};
+		repDiaPregao.obtemIntradayResultadoTickerPeriodo(ticker, diaNumInicio, callback); 
+		while (!carregaAtivoResultadoOk) {
+			System.out.println(carregaAtivoResultadoOk);
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public static List<DiaPregao> getCotacao(AtivoAcao ativo) {

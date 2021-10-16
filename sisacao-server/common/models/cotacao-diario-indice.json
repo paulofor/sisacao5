@@ -1,5 +1,5 @@
 {
-  "name": "CotacaoIntradayResultado",
+  "name": "CotacaoDiarioIndice",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -10,23 +10,32 @@
       "type": "string",
       "id": true
     },
-    "valor": {
-      "type": "number"
-    },
-    "dataHoraNegStr": {
-      "type": "string"
-    },
-    "dataHora": {
-      "type": "date",
+    "data": {
+      "type": "string",
       "id": true
     },
-    "dia": {
-      "type": "date"
-    },
-    "tg12St12": {
+    "abertura": {
       "type": "number"
     },
-    "tg13St13": {
+    "maximo": {
+      "type": "number"
+    },
+    "minimo": {
+      "type": "number"
+    },
+    "fechamento": {
+      "type": "number"
+    },
+    "negocios": {
+      "type": "number"
+    },
+    "volume": {
+      "type": "number"
+    },
+    "percentual": {
+      "type": "number"
+    },
+    "diaNum": {
       "type": "number"
     }
   },

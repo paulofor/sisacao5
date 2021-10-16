@@ -63,8 +63,8 @@ public class Trade {
 
 	public void printTrade() {
 		
-		System.out.println("Ent: " + this.precoEntrada + " (" + entrada.getValor() + ")");
-		System.out.println("Sai: " + saida.getValor() + " (" + this.difDias + " dias)");
+		System.out.println("Ent: " + entradaDataPrecoDisplay());
+		System.out.println("Sai: " + saidaDisplay() + " (" + this.difDias + " dias)");
 	}
 	public Integer getQuantidadeDia() {
 		return this.difDias;

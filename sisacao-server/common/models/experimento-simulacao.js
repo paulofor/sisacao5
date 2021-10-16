@@ -364,6 +364,7 @@ module.exports = function(Experimentosimulacao) {
         let filtro = { 
             'where' : {'emExecucao' : 1},
             'include' : [
+                { 'relation' : 'periodoExperimento'},
                 { 'relation' : 'regraSimulacao' , 'scope' : {'include' : 'parametroRegras'} },
                 { 'relation' : 'experimentoSimulacaoPeriodos' , 
                             'scope' : {
@@ -386,6 +387,7 @@ module.exports = function(Experimentosimulacao) {
         let filtro = { 
             'where' : {'emValidacao' : 1},
             'include' : [
+                { 'relation' : 'periodoExperimento'},
                 { 'relation' : 'regraSimulacao' , 'scope' : {'include' : 'parametroRegras'} },
                 { 'relation' : 'experimentoSimulacaoPeriodos' , 
                             'scope' : {
@@ -412,7 +414,7 @@ module.exports = function(Experimentosimulacao) {
         var experimento, melhoresExecucao, combinacaoProcessada, execucaoCriada;
         let filtroExperimento = {
             'where' : {'id' : idExperimento},
-            'include' : 'grupoAcao'
+            'include' : [ 'grupoAcao' , 'periodoExperimento' ]
         }
         Experimentosimulacao.findOne(filtroExperimento, (err,result) => {
             experimento = result;
@@ -423,20 +425,23 @@ module.exports = function(Experimentosimulacao) {
                     {'relation' : 'combinacaoParametro' , 'scope' : {'include' : 'regraSimulacao'}},
                     {'relation' : 'trades' }
                 ],
-                'where' : {'experimentoSimulacaoId' : idExperimento}
+                'where' : { 'and' : [{'experimentoSimulacaoId' : idExperimento},{'periodoExperimentoId' : experimento.periodoExperimentoId}] }
             }
+            console.log('filtro:' , filtro);
             app.models.ExecucaoSimulacao.find(filtro, (err,result) => {
-                //console.log('Erro:' , err);
+                console.log('tamanho:' , result.length);
+                console.log('Erro:' , err);
                 melhoresExecucao = result;
-                let sql = "select count(*) as qtde from CombinacaoParametro " +
-                    " where experimentoSimulacaoId = " + idExperimento +
-                    " and descricao is not null";
+                let sql = "select count(distinct combinacaoParametroId) as qtde from ExecucaoSimulacao " +
+                    " where experimentoSimulacaoId = " + idExperimento + 
+                    " and periodoExperimentoId = " + experimento.periodoExperimentoId;
                 let ds = Experimentosimulacao.dataSource;
                 ds.connector.query(sql, (err,result) => {
                     combinacaoProcessada = result[0].qtde;
                     let sql2 = "select count(*) as qtdeExec from ExecucaoSimulacao " +
                     " inner join CombinacaoParametro on CombinacaoParametro.id = ExecucaoSimulacao.combinacaoParametroId " +
                     " where ExecucaoSimulacao.experimentoSimulacaoId = " + idExperimento + 
+                    " and ExecucaoSimulacao.periodoExperimentoId = " + experimento.periodoExperimentoId +
                     " and descricao is not null ";
                     ds.connector.query(sql2, (err,result2) => {
                         execucaoCriada = result2[0].qtdeExec;
@@ -517,7 +522,8 @@ module.exports = function(Experimentosimulacao) {
 
 
 
-
+   
+  
    
   
 };

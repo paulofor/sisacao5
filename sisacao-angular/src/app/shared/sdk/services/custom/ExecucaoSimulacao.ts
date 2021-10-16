@@ -14,11 +14,13 @@ import { SocketConnection } from '../../sockets/socket.connections';
 import { CombinacaoParametro } from '../../models/CombinacaoParametro';
 import { RegraSimulacao } from '../../models/RegraSimulacao';
 import { AtivoAcao } from '../../models/AtivoAcao';
+import { ExperimentoSimulacao } from '../../models/ExperimentoSimulacao';
 import { Trade } from '../../models/Trade';
 import { ValorMonitoria } from '../../models/ValorMonitoria';
 import { TradeReal } from '../../models/TradeReal';
 import { PeriodoExperimento } from '../../models/PeriodoExperimento';
 import { OrdemCompra } from '../../models/OrdemCompra';
+import { ExecucaoSimulacaoValidacao } from '../../models/ExecucaoSimulacaoValidacao';
 
 
 /**
@@ -117,6 +119,36 @@ export class ExecucaoSimulacaoApi extends BaseLoopBackApi {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/ExecucaoSimulacaos/:id/ativoAcao";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof refresh !== 'undefined' && refresh !== null) _urlParams.refresh = refresh;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * Busca relação experimentoSimulacao de belongsTo.
+   *
+   * @param {any} id ExecucaoSimulacao id
+   *
+   * @param {boolean} refresh 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExecucaoSimulacao` object.)
+   * </em>
+   */
+  public getExperimentoSimulacao(id: any, refresh: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExecucaoSimulacaos/:id/experimentoSimulacao";
     let _routeParams: any = {
       id: id
     };
@@ -517,6 +549,99 @@ export class ExecucaoSimulacaoApi extends BaseLoopBackApi {
     let _method: string = "PUT";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/ExecucaoSimulacaos/:id/ordemCompras/:fk";
+    let _routeParams: any = {
+      id: id,
+      fk: fk
+    };
+    let _postBody: any = {
+      data: data
+    };
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * Localize um item relacionado por ID para execucaoSimulacaoValidacaos.
+   *
+   * @param {any} id ExecucaoSimulacao id
+   *
+   * @param {any} fk Chave estrangeira para execucaoSimulacaoValidacaos
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExecucaoSimulacao` object.)
+   * </em>
+   */
+  public findByIdExecucaoSimulacaoValidacaos(id: any, fk: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExecucaoSimulacaos/:id/execucaoSimulacaoValidacaos/:fk";
+    let _routeParams: any = {
+      id: id,
+      fk: fk
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * Excluir um item relacionado por ID para execucaoSimulacaoValidacaos.
+   *
+   * @param {any} id ExecucaoSimulacao id
+   *
+   * @param {any} fk Chave estrangeira para execucaoSimulacaoValidacaos
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * This method returns no data.
+   */
+  public destroyByIdExecucaoSimulacaoValidacaos(id: any, fk: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "DELETE";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExecucaoSimulacaos/:id/execucaoSimulacaoValidacaos/:fk";
+    let _routeParams: any = {
+      id: id,
+      fk: fk
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * Atualizar um item relacionado por ID para execucaoSimulacaoValidacaos.
+   *
+   * @param {any} id ExecucaoSimulacao id
+   *
+   * @param {any} fk Chave estrangeira para execucaoSimulacaoValidacaos
+   *
+   * @param {object} data Request data.
+   *
+   * This method expects a subset of model properties as request parameters.
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExecucaoSimulacao` object.)
+   * </em>
+   */
+  public updateByIdExecucaoSimulacaoValidacaos(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "PUT";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExecucaoSimulacaos/:id/execucaoSimulacaoValidacaos/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -994,6 +1119,122 @@ export class ExecucaoSimulacaoApi extends BaseLoopBackApi {
   }
 
   /**
+   * execucaoSimulacaoValidacaos consultas de ExecucaoSimulacao.
+   *
+   * @param {any} id ExecucaoSimulacao id
+   *
+   * @param {object} filter 
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExecucaoSimulacao` object.)
+   * </em>
+   */
+  public getExecucaoSimulacaoValidacaos(id: any, filter: LoopBackFilter = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExecucaoSimulacaos/:id/execucaoSimulacaoValidacaos";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof filter !== 'undefined' && filter !== null) _urlParams.filter = filter;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * Cria uma nova instância no execucaoSimulacaoValidacaos deste modelo.
+   *
+   * @param {any} id ExecucaoSimulacao id
+   *
+   * @param {object} data Request data.
+   *
+   * This method expects a subset of model properties as request parameters.
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExecucaoSimulacao` object.)
+   * </em>
+   */
+  public createExecucaoSimulacaoValidacaos(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExecucaoSimulacaos/:id/execucaoSimulacaoValidacaos";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {
+      data: data
+    };
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * Exclui todos os execucaoSimulacaoValidacaos deste modelo.
+   *
+   * @param {any} id ExecucaoSimulacao id
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * This method returns no data.
+   */
+  public deleteExecucaoSimulacaoValidacaos(id: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "DELETE";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExecucaoSimulacaos/:id/execucaoSimulacaoValidacaos";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * execucaoSimulacaoValidacaos contagens de ExecucaoSimulacao.
+   *
+   * @param {any} id ExecucaoSimulacao id
+   *
+   * @param {object} where Criteria to match model instances
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * Data properties:
+   *
+   *  - `count` – `{number}` - 
+   */
+  public countExecucaoSimulacaoValidacaos(id: any, where: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExecucaoSimulacaos/:id/execucaoSimulacaoValidacaos/count";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof where !== 'undefined' && where !== null) _urlParams.where = where;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
    * Patch an existing model instance or insert a new one into the data source.
    *
    * @param {object} data Request data.
@@ -1280,6 +1521,34 @@ export class ExecucaoSimulacaoApi extends BaseLoopBackApi {
   }
 
   /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {number} idPeriodo 
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExecucaoSimulacao` object.)
+   * </em>
+   */
+  public MelhorValidacaoPeriodo(idPeriodo: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExecucaoSimulacaos/melhorValidacaoPeriodo";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof idPeriodo !== 'undefined' && idPeriodo !== null) _urlParams.idPeriodo = idPeriodo;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
    * Cria uma nova instância no trades deste modelo.
    *
    * @param {any} id ExecucaoSimulacao id
@@ -1400,6 +1669,39 @@ export class ExecucaoSimulacaoApi extends BaseLoopBackApi {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/ExecucaoSimulacaos/:id/ordemCompras";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {
+      data: data
+    };
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * Cria uma nova instância no execucaoSimulacaoValidacaos deste modelo.
+   *
+   * @param {any} id ExecucaoSimulacao id
+   *
+   * @param {object} data Request data.
+   *
+   * This method expects a subset of model properties as request parameters.
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExecucaoSimulacao` object.)
+   * </em>
+   */
+  public createManyExecucaoSimulacaoValidacaos(id: any, data: any[] = [], customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExecucaoSimulacaos/:id/execucaoSimulacaoValidacaos";
     let _routeParams: any = {
       id: id
     };

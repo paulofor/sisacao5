@@ -6,9 +6,22 @@ public class CotacaoIntradayIndice extends Model {
 
 	private String ticker;
 	private Double valor;
-	private String dataHoraStr;
+	private String dataHoraNegStr;
 	private String dataHora;
+	private Integer dia;
 
+	public String getDataHoraNegStr() {
+		return dataHoraNegStr;
+	}
+	public void setDataHoraNegStr(String dataHoraNegStr) {
+		this.dataHoraNegStr = dataHoraNegStr;
+	}
+	public Integer getDia() {
+		return dia;
+	}
+	public void setDia(Integer dia) {
+		this.dia = dia;
+	}
 	public String getTicker() {
 		return ticker;
 	}
@@ -21,12 +34,7 @@ public class CotacaoIntradayIndice extends Model {
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
-	public String getDataHoraStr() {
-		return dataHoraStr;
-	}
-	public void setDataHoraStr(String dataHoraStr) {
-		this.dataHoraStr = dataHoraStr;
-	}
+	
 	public String getDataHora() {
 		return dataHora;
 	}

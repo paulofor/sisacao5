@@ -1,0 +1,122 @@
+{
+  "name": "CotacaoIntradayAcaoResultado",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ticker": {
+      "type": "string",
+      "id": true
+    },
+    "valor": {
+      "type": "number"
+    },
+    "hora": {
+      "type": "string",
+      "id": true
+    },
+    "dia": {
+      "type": "date"
+    },
+    "dataHora": {
+      "type": "date"
+    },
+    "diaNum": {
+      "type": "number"
+    },
+    "tg12St12": {
+      "type": "number"
+    },
+    "tg13St13": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {
+    "CriaTickerAno": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "ano",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/criaTickerAno",
+          "verb": "post"
+        }
+      ]
+    },
+    "ObtemProximoHorarioVazio": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "cotacao",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemProximoHorarioVazio",
+          "verb": "get"
+        }
+      ]
+    },
+    "GravaVaziaComAnterior": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/gravaVaziaComAnterior",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

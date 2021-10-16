@@ -9,6 +9,16 @@ public class AtivoImobiliario  extends Ativo{
 	private Integer intraday5;
 	private Integer intraday15;
 	private Integer intraday30;
+	private Integer intraday10;
+	
+	
+	
+	public Integer getIntraday10() {
+		return intraday10;
+	}
+	public void setIntraday10(Integer intraday10) {
+		this.intraday10 = intraday10;
+	}
 	
 	public String getTicker() {
 		return ticker;

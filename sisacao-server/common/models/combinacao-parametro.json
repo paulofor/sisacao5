@@ -125,6 +125,31 @@
           "verb": "post"
         }
       ]
+    },
+    "LimpaDescricao": {
+      "accepts": [
+        {
+          "arg": "idExperimento",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/limpaDescricao",
+          "verb": "post"
+        }
+      ]
     }
   }
 }

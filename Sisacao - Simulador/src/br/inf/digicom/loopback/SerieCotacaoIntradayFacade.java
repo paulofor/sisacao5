@@ -114,7 +114,7 @@ public class SerieCotacaoIntradayFacade {
 		});
 	}
 	public void salvaExecucaoValidacao(ExecucaoPontoEntrada execucao, String ticker, CombinacaoParametro combinacao,
-			IRegraPontoEntrada regra, ExperimentoSimulacao experimento) {
+			IRegraPontoEntrada regra, ExperimentoSimulacao experimento, ExecucaoSimulacao execSim) {
 		// TODO Auto-generated method stub
 		System.out.println(ticker);
 		System.out.println(combinacao);
@@ -126,10 +126,12 @@ public class SerieCotacaoIntradayFacade {
 		exec.setQuantidadePrejuizo(execucao.getSomaPrejuizo());
 		exec.setTarget(regra.getTarget());
 		exec.setStop(regra.getStop());
-		exec.setExperimentoSimulacaoId(combinacao.getExperimentoSimulacaoId());
+		exec.setExperimentoSimulacaoId(experimento.getId());
 		exec.setRegraSimulacaoId(combinacao.getRegraSimulacaoId());
 		exec.setPeriodoExperimentoId(experimento.periodoExperimentoId());
 		exec.setTipo(regra.getTipo());
+		exec.setExperimentoSimulacaoId(experimento.getId());
+		exec.setExecucaoSimulacaoId(execSim.getId());
 		String primeiraEntrada = "";
 		if (execucao.listaTrades().size()>0) {
 			primeiraEntrada = execucao.listaTrades().get(0).entradaDataPrecoDisplay();

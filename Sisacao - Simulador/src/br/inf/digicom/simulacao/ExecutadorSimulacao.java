@@ -27,7 +27,7 @@ public class ExecutadorSimulacao {
 		}
 	}
 
-	private CombinacaoParametro trataCombinacao(CombinacaoParametro combinacao, List<ParametroRegra> parametroRegras) {
+	protected CombinacaoParametro trataCombinacao(CombinacaoParametro combinacao, List<ParametroRegra> parametroRegras) {
 		HashMap<Integer,ParametroRegra> listaParametro = new HashMap<Integer,ParametroRegra>();
 		for (ParametroRegra param : parametroRegras) {
 			listaParametro.put((Integer) param.getId(),param);
@@ -38,7 +38,7 @@ public class ExecutadorSimulacao {
 		return combinacao;
 	}
 	
-	private void executaTicker(String ticker, IRegraPontoEntrada regra, CombinacaoParametro combinacao,ExperimentoSimulacao experimento) {
+	protected void executaTicker(String ticker, IRegraPontoEntrada regra, CombinacaoParametro combinacao,ExperimentoSimulacao experimento) {
 		Map parametros = new HashMap();
 		for (ValorParametro param : combinacao.getValorParametros()) {
 			parametros.put(param.getParametroRegra().getAtributoClasse(),param.getValorParametro());

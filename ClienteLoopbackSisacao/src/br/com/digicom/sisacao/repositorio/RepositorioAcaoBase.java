@@ -6,13 +6,15 @@ import java.util.Map;
 import com.strongloop.android.loopback.ModelRepository;
 import com.strongloop.android.loopback.callbacks.EmptyResponseParser;
 import com.strongloop.android.loopback.callbacks.JsonArrayParser;
+import com.strongloop.android.loopback.callbacks.JsonObjectParser;
 import com.strongloop.android.loopback.callbacks.ListCallback;
+import com.strongloop.android.loopback.callbacks.ObjectCallback;
 import com.strongloop.android.loopback.callbacks.VoidCallback;
 import com.strongloop.android.remoting.adapters.RestContractItem;
 
 import br.com.digicom.sisacao.modelo.AtivoAcao;
 import br.com.digicom.sisacao.modelo.CotacaoIntradayAcao;
-import br.com.digicom.sisacao.modelo.CotacaoIntradayDia;
+import br.com.digicom.sisacao.modelo.CotacaoIntradayAcaoResultado;
 
 public class RepositorioAcaoBase {
 
@@ -47,6 +49,13 @@ public class RepositorioAcaoBase {
 	        params.put("cortePontos", cortePontos);
 	        params.put("qtdeExecucao", qtdeExecucao);
 	        invokeStaticMethod("melhorSimulacaoPorExperimento", params,   new JsonArrayParser<AtivoAcao>(this, callback));
+		}
+		public void melhorParaValidacao(final Integer idExperimento, final ListCallback<AtivoAcao> callback) {
+			RestContractItem contrato = new RestContractItem("AtivoAcaos/melhorParaValidacao","GET");
+			this.getRestAdapter().getContract().addItem(contrato, "AtivoAcao.melhorParaValidacao");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        params.put("idExperimento", idExperimento);
+	        invokeStaticMethod("melhorParaValidacao", params,   new JsonArrayParser<AtivoAcao>(this, callback));
 		}
 		public void atualizaPosDiario(final VoidCallback voidCallback) {
 			RestContractItem contrato = new RestContractItem("AtivoAcaos/atualizaPosDiario","POST");
@@ -89,9 +98,30 @@ public class RepositorioAcaoBase {
 	        params.put("horario", horaNegocio);
 	        invokeStaticMethod("insereValorHorarioAcao", params, new EmptyResponseParser(voidCallback));
 		}
-		/*
-		
-		*/
+	}
+	public static class CotacaoIntradayAcaoResultadoRepository extends ModelRepository<CotacaoIntradayAcaoResultado> {
+		public CotacaoIntradayAcaoResultadoRepository() {
+			super("CotacaoIntradayAcaoResultado", CotacaoIntradayAcaoResultado.class);
+		}
+		@Override
+		protected String verificaNomeUrl(String nome) {
+			return "CotacaoIntradayAcaoResutlados";
+		}
+		public void gravaVaziaComAnterior(String ticker, final ObjectCallback<CotacaoIntradayAcaoResultado> callback) {
+			RestContractItem contrato = new RestContractItem("CotacaoIntradayAcaoResultados/gravaVaziaComAnterior","POST");
+			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayAcaoResultado.gravaVaziaComAnterior");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        params.put("ticker", ticker);
+	        invokeStaticMethod("gravaVaziaComAnterior", params, new JsonObjectParser<CotacaoIntradayAcaoResultado>(this,callback));
+		}
+		public void criaTickerAno(String ticker, Long ano, final VoidCallback voidCallback) {
+			RestContractItem contrato = new RestContractItem("CotacaoIntradayAcaoResultados/criaTickerAno","POST");
+			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayAcaoResultado.criaTickerAno");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        params.put("ticker", ticker);
+	        params.put("ano", ano);
+	        invokeStaticMethod("criaTickerAno", params, new EmptyResponseParser(voidCallback));
+		}
 	}
 
 

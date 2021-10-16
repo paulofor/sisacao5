@@ -36,11 +36,13 @@ public class CallbackBovespa2Html extends CallbackParseHtml implements
 		this.ticker = ticker;
 	}
 
+	/*
 	public void inicioTag(HTML.Tag t, String nomeClasse, String nomeId) {
 		if ("divHorarioMovimentacaoAtivo".equals(nomeId)) {
 			ligaHora = true;
 		}
 	}
+	*/
 	
 	public void handleText(char[] data, int pos) {
 		super.handleText(data, pos);
@@ -62,7 +64,7 @@ public class CallbackBovespa2Html extends CallbackParseHtml implements
 			dado = dado.replaceAll("\\.", "");
 			this.cotacao.setNeg(dado);
 		}
-		if ("Nº de Negócios".equals(dado)) {
+		if ("Nï¿½ de Negï¿½cios".equals(dado)) {
 			ligaNegocio = true;
 		}
 	}

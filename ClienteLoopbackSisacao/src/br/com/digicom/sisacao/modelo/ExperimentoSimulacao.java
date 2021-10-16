@@ -22,9 +22,29 @@ public class ExperimentoSimulacao extends Model{
 	//private int dataFinalNum;
 	
 	private List<ExperimentoSimulacaoPeriodo> experimentoSimulacaoPeriodos;
+	private PeriodoExperimento periodoExperimento = null;
 
+	private boolean validacao = false;
+	
+	public void setValidacao() {
+		validacao = true;
+	}
 	
 	
+
+	public PeriodoExperimento getPeriodoExperimento() {
+		return periodoExperimento;
+	}
+
+
+
+	public void setPeriodoExperimento(Object periodoExperimento) {
+		this.periodoExperimento = new PeriodoExperimento();
+		BeanUtil.setProperties(this.periodoExperimento, (Map<String, ? extends Object>) periodoExperimento, true);
+	}
+
+
+
 	public void setExperimentoSimulacaoPeriodos(List<ExperimentoSimulacaoPeriodo> experimentoSimulacaoPeriodos) {
 		this.experimentoSimulacaoPeriodos = new ArrayList<ExperimentoSimulacaoPeriodo>();
 		for (int i = 0; i < experimentoSimulacaoPeriodos.size(); i++) {
@@ -96,17 +116,37 @@ public class ExperimentoSimulacao extends Model{
 	}
 
 	public int diaInicio() {
-		return this.experimentoSimulacaoPeriodos.get(0).getPeriodoExperimento().getDataNumInicial();
+		if (this.periodoExperimento==null) {
+			throw new RuntimeException("Experimento sem periodo selecionado");
+		}
+		if (this.validacao) {
+			return this.periodoExperimento.getDataNumInicioValidacao();
+		} else {
+			return this.periodoExperimento.getDataNumInicial();
+		}
 	}
 
 	public int diaFinal() {
-		return this.experimentoSimulacaoPeriodos.get(0).getPeriodoExperimento().getDataNumFinal();
+		if (this.periodoExperimento==null) {
+			throw new RuntimeException("Experimento sem periodo selecionado");
+		}
+		if (this.validacao) {
+			return this.periodoExperimento.getDataNumFinalValidacao();
+		} else {
+			return this.periodoExperimento.getDataNumFinal();
+		}
 	}
 	public int diaInicioColeta() {
-		return this.experimentoSimulacaoPeriodos.get(0).getPeriodoExperimento().getDataNumInicioColeta();
+		if (this.periodoExperimento==null) {
+			throw new RuntimeException("Experimento sem periodo selecionado");
+		}
+		return this.periodoExperimento.getDataNumInicioColeta();
 	}
 	public int periodoExperimentoId() {
-		return this.experimentoSimulacaoPeriodos.get(0).getPeriodoExperimento().getId();
+		if (this.periodoExperimento==null) {
+			throw new RuntimeException("Experimento sem periodo selecionado");
+		}
+		return this.periodoExperimento.getId();
 	}
 
 

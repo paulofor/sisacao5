@@ -7,6 +7,7 @@ export interface AtivoIndiceInterface {
   "intraday5"?: number;
   "intraday15"?: number;
   "intraday30"?: number;
+  "intraday10"?: number;
 }
 
 export class AtivoIndice implements AtivoIndiceInterface {
@@ -15,6 +16,7 @@ export class AtivoIndice implements AtivoIndiceInterface {
   "intraday5": number;
   "intraday15": number;
   "intraday30": number;
+  "intraday10": number;
   constructor(data?: AtivoIndiceInterface) {
     Object.assign(this, data);
   }
@@ -66,6 +68,10 @@ export class AtivoIndice implements AtivoIndiceInterface {
         },
         "intraday30": {
           name: 'intraday30',
+          type: 'number'
+        },
+        "intraday10": {
+          name: 'intraday10',
           type: 'number'
         },
       },

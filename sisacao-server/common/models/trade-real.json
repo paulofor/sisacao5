@@ -93,6 +93,11 @@
       "type": "belongsTo",
       "model": "AtivoAcao",
       "foreignKey": "ticker"
+    },
+    "instituicaoFinanceira": {
+      "type": "belongsTo",
+      "model": "InstituicaoFinanceira",
+      "foreignKey": ""
     }
   },
   "acls": [],

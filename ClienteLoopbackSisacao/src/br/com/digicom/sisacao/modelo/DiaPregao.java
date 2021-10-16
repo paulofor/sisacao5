@@ -11,12 +11,24 @@ public class DiaPregao extends Model{
 	
 	private List<CotacaoIntradayAcao> cotacaoIntradayAcaos;
 	private List<CotacaoDiarioAcao> cotacaoDiarioAcaos;
+	private List<CotacaoIntradayAcaoResultado> cotacaoDiarioAcaoResultados;
 	
 	private Integer diaNum;
 	
 	
 	
-	
+	public List<CotacaoIntradayAcaoResultado> getCotacaoIntradayAcaoResultados() {
+		return cotacaoDiarioAcaoResultados;
+	}
+
+	public void setCotacaoIntradayAcaoResultados(List<CotacaoIntradayAcaoResultado> cotacaoDiarioAcaoResultados) {
+		this.cotacaoDiarioAcaoResultados = new ArrayList<CotacaoIntradayAcaoResultado>();
+		for (int i = 0; i < cotacaoDiarioAcaoResultados.size(); i++) {
+			Object objeto = new CotacaoIntradayAcaoResultado();
+			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) cotacaoDiarioAcaoResultados.get(i), true);
+			this.cotacaoDiarioAcaoResultados.add((CotacaoIntradayAcaoResultado) objeto);
+		}
+	}
 
 	public List<CotacaoIntradayAcao> getCotacaoIntradayAcaos() {
 		return cotacaoIntradayAcaos;

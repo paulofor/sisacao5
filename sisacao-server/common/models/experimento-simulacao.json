@@ -72,6 +72,11 @@
       "type": "hasMany",
       "model": "ExperimentoSimulacaoPeriodo",
       "foreignKey": ""
+    },
+    "periodoExperimento": {
+      "type": "belongsTo",
+      "model": "PeriodoExperimento",
+      "foreignKey": ""
     }
   },
   "acls": [],

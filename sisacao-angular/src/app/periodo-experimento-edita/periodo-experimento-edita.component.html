@@ -16,7 +16,30 @@
       <input matInput maxlength="2" #quantidadeMes [(ngModel)]="item.quantidadeMes" name="quantidadeMes" placeholder="Meses" autocomplete="off" />
     </mat-form-field>
 
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #dataNumInicioValidacao [(ngModel)]="item.dataNumInicioValidacao" name="dataNumInicioValidacao" 
+      placeholder="Data Numérica Início Validação (yyyymmdd)" autocomplete="off" />
+    </mat-form-field>
 
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #dataNumFinalValidacao [(ngModel)]="item.dataNumFinalValidacao" name="dataNumFinalValidacao" 
+      placeholder="Data Numérica Final Validação (yyyymmdd)" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="2" #quantidadeMesValidacao [(ngModel)]="item.quantidadeMesValidacao" name="quantidadeMesValidacao" 
+      placeholder="Meses Validação" autocomplete="off" />
+    </mat-form-field>
+    
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="2" #minimoPontoValidacao [(ngModel)]="item.minimoPontoValidacao" name="minimoPontoValidacao" 
+      placeholder="Mínimo de pontos para validação" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="2" #minimoPontoExibicao [(ngModel)]="item.minimoPontoExibicao" name="minimoPontoExibicao" 
+      placeholder="Mínimo de pontos para exibição" autocomplete="off" />
+    </mat-form-field>
   </mat-dialog-content>
 
   <mat-dialog-actions>

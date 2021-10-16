@@ -3,6 +3,9 @@
     <span>{{experimento.codigo}} - {{experimento.quantidadeCombinacao}}</span>
     <span class="dgc-direita {{classeAlerta}}">{{qtdeProcessada}} ({{percentual | number : '1.1-1'}}%)</span>  
   </div>
+  <div class="dgc-painel-header">
+    <span>De: {{experimento.periodoExperimento.dataStrInicial}} até {{experimento.periodoExperimento.dataStrFinal}}</span>
+  </div>
   
   <div class="dgc-painel-principal" *ngIf="lista">
     <div class="dgc-card" *ngFor="let item of lista" >

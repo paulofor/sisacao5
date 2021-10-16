@@ -22,6 +22,7 @@ import br.com.digicom.sisacao.repositorio.RepositorioIndiceBase;
 import br.com.digicom.sisacao.repositorio.RepositorioMercadoriaBase;
 import br.com.digicom.sisacao.repositorio.RepositorioOpcaoBase;
 import sisacao.opcaointra.cotacao.PesquisadorIntradayAtivo;
+import sisacao.opcaointra.cotacao.PesquisadorIntradayAtivoIndice;
 
 public class AgregadorThreadColeta {
 
@@ -89,7 +90,7 @@ public class AgregadorThreadColeta {
 		
 	}
 
-	private void disparaColetoresDiaIndice(final String diaAtual) {
+	public void disparaColetoresDiaIndice(final String diaAtual) {
 		final RestricaoTempo restricao = getRestricaoTempo();
 		repIndice.findAll(new ListCallback<AtivoIndice>() { 
 			@Override
@@ -98,7 +99,7 @@ public class AgregadorThreadColeta {
 			}
 			@Override
 			public void onSuccess(List<AtivoIndice> objects) {
-				System.out.println("Total Acao: " + objects.size());
+				System.out.println("Total Indice: " + objects.size());
 				for (AtivoIndice item : objects) {
 					inicializaAtivo((Ativo)item, diaAtual, restricao);
 				}
@@ -156,7 +157,12 @@ public class AgregadorThreadColeta {
 	
 	private final void inicializaAtivo(Ativo ativo, String diaAtual, RestricaoTempo restricao) {
 		System.out.println("Inicializando: " + ativo.getTicker() + "(" + ativo.minutos() + ")");
-		PesquisadorIntradayAtivo timerThread = new PesquisadorIntradayAtivo();
+		PesquisadorIntradayAtivo timerThread = null;
+		if (ativo instanceof AtivoIndice) {
+			timerThread = new PesquisadorIntradayAtivoIndice();
+		} else {
+			timerThread = new PesquisadorIntradayAtivo();
+		}
 		timerThread.inicializa(ativo, diaAtual, restricao);
 		timer.schedule(timerThread, 0L, ativo.milisegundos());
 		listaThreads.add(timerThread);

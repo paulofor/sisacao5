@@ -21,6 +21,9 @@
     },
     "intraday30": {
       "type": "number"
+    },
+    "intraday10": {
+      "type": "number"
     }
   },
   "validations": [],

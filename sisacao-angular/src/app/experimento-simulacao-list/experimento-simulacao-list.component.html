@@ -16,10 +16,10 @@
               Resultados</button>
               <button class="btn-primary btn" *ngIf="(item.permiteEdicao==0 && item.emExecucao==0)" [routerLink]="['/execucaoSimulacaoPorExperimento' , item.id]" >
               Resultados</button>
-              <button class="btn-success btn" *ngIf="(item.permiteEdicao==0 && item.emValidacaao==1)" [routerLink]="['/execucaoSimulacaoPorExperimento' , item.id]" >
+              <button class="btn-success btn" *ngIf="(item.permiteEdicao==0 && item.emValidacao==1)" [routerLink]="['/execucaoSimulacaoPorExperimento' , item.id]" >
               Validação</button>
-              <button class="btn-primary btn" *ngIf="(item.permiteEdicao==0 && item.emValidacaao==0)" [routerLink]="['/execucaoSimulacaoPorExperimento' , item.id]" >
-              Validaçãop</button>
+              <button class="btn-primary btn" *ngIf="(item.permiteEdicao==0 && item.emValidacao==0)" [routerLink]="['/execucaoSimulacaoPorExperimento' , item.id]" >
+              Validação</button>
           </div>
           <div class="dgc-card-detalhe"> 
             <span>Grupo Ação: {{item.grupoAcao.nome}}</span>
@@ -35,10 +35,11 @@
               </div>
               <div *ngIf="(periodo.concluido==0)">
                 <span>{{periodo.periodoExperimento.dataStrInicial}} até {{periodo.periodoExperimento.dataStrFinal}}</span>
+                <span *ngIf="periodoCorrente(periodo,item)">--> corrente</span>
               </div>
             </div>
           </div>
-
+         
           <div class="dgc-card-detalhe">
             <table>
               <tr *ngFor="let parametro of item.experimentoParametros">
@@ -59,8 +60,9 @@
           </div> 
           <div class="dgc-card-comandos" *ngIf="(item.permiteEdicao==0)">
             <button class="btn-primary btn-sm btn" *ngIf="(item.emExecucao==0)" (click)="executa(item)">Executar</button>
-            <button class="btn-primary btn-sm btn" (click)="dialogo2({'origem' : item })">Períodos</button>
             <button class="btn-primary btn-sm btn" *ngIf="(item.emExecucao==0)" (click)="valida(item)">Validar</button>
+            <button class="btn-primary btn-sm btn" (click)="dialogo2({'origem' : item })">Períodos</button>
+            <button class="btn-primary btn-sm btn" (click)="dialogo3({'item' : item })">Corrente</button>
           </div>
 
       </div>

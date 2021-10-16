@@ -121,6 +121,9 @@ body {
   padding: 8px;
   border-radius: 15px;
  }
+ .dgc-card button{
+  margin-right: 6px;
+ }
  .dgc-card-header {
   line-height: 1.2;
   letter-spacing: 1px;
@@ -129,6 +132,14 @@ body {
   /*text-transform: uppercase;  quando o nome é um objeto ou classe ? */
   margin-bottom: 8px;
   font-weight: 400;
+ }
+ .dgc-card-header button {
+   margin-left: 8px;
+   margin-right: 0px;
+   padding-top: 3px;
+   padding-bottom: 3px;
+   padding-left: 6px;
+   padding-right: 6px;
  }
  .dgc-card-detalhe {
   margin-top: 12px;

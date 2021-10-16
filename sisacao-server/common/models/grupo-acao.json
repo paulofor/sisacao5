@@ -25,5 +25,31 @@
     }
   },
   "acls": [],
-  "methods": {}
+  "methods": {
+    "CriaCotacaoResultado": {
+      "accepts": [
+        {
+          "arg": "idGrupo",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/criaCotacaoResultado",
+          "verb": "post"
+        }
+      ]
+    }
+  }
 }

@@ -188,14 +188,10 @@
     "public": true
   },
   "TipoAplicacao": {
-    "dataSource": "db",
-    "public": true
-  },
-  "InstituicaoFinanceira": {
     "dataSource": "mysqlDS",
     "public": true
   },
-  "CotacaoIntradayResultado": {
+  "InstituicaoFinanceira": {
     "dataSource": "mysqlDS",
     "public": true
   },
@@ -208,6 +204,18 @@
     "public": true
   },
   "ExecucaoSimulacaoValidacao": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "CotacaoIntradayAcaoResultado": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "CotacaoDiarioIndice": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "AplicacaoInstituicao": {
     "dataSource": "mysqlDS",
     "public": true
   }

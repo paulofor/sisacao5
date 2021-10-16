@@ -1,14 +1,21 @@
 /* tslint:disable */
+import {
+  AplicacaoInstituicao
+} from '../index';
 
 declare var Object: any;
 export interface TipoAplicacaoInterface {
   "nome"?: string;
+  "saldoAtual"?: number;
   "id"?: number;
+  aplicacaoInstituicaos?: AplicacaoInstituicao[];
 }
 
 export class TipoAplicacao implements TipoAplicacaoInterface {
   "nome": string;
+  "saldoAtual": number;
   "id": number;
+  aplicacaoInstituicaos: AplicacaoInstituicao[];
   constructor(data?: TipoAplicacaoInterface) {
     Object.assign(this, data);
   }
@@ -46,12 +53,24 @@ export class TipoAplicacao implements TipoAplicacaoInterface {
           name: 'nome',
           type: 'string'
         },
+        "saldoAtual": {
+          name: 'saldoAtual',
+          type: 'number'
+        },
         "id": {
           name: 'id',
           type: 'number'
         },
       },
       relations: {
+        aplicacaoInstituicaos: {
+          name: 'aplicacaoInstituicaos',
+          type: 'AplicacaoInstituicao[]',
+          model: 'AplicacaoInstituicao',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'tipoAplicacaoId'
+        },
       }
     }
   }

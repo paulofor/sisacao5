@@ -4,7 +4,8 @@ import {
   CombinacaoParametro,
   RegraSimulacao,
   AtivoAcao,
-  PeriodoExperimento
+  PeriodoExperimento,
+  ExecucaoSimulacao
 } from '../index';
 
 declare var Object: any;
@@ -14,16 +15,18 @@ export interface ExecucaoSimulacaoValidacaoInterface {
   "quantidadePrejuizo"?: number;
   "target"?: number;
   "stop"?: number;
-  "tipo"?: number;
+  "tipo"?: string;
   "id"?: number;
   "combinacaoParametroId"?: number;
   "regraSimulacaoId"?: number;
   "periodoExperimentoId"?: number;
+  "execucaoSimulacaoId"?: number;
   trades?: Trade[];
   combinacaoParametro?: CombinacaoParametro;
   regraSimulacao?: RegraSimulacao;
   ativoAcao?: AtivoAcao;
   periodoExperimento?: PeriodoExperimento;
+  execucaoSimulacao?: ExecucaoSimulacao;
 }
 
 export class ExecucaoSimulacaoValidacao implements ExecucaoSimulacaoValidacaoInterface {
@@ -32,16 +35,18 @@ export class ExecucaoSimulacaoValidacao implements ExecucaoSimulacaoValidacaoInt
   "quantidadePrejuizo": number;
   "target": number;
   "stop": number;
-  "tipo": number;
+  "tipo": string;
   "id": number;
   "combinacaoParametroId": number;
   "regraSimulacaoId": number;
   "periodoExperimentoId": number;
+  "execucaoSimulacaoId": number;
   trades: Trade[];
   combinacaoParametro: CombinacaoParametro;
   regraSimulacao: RegraSimulacao;
   ativoAcao: AtivoAcao;
   periodoExperimento: PeriodoExperimento;
+  execucaoSimulacao: ExecucaoSimulacao;
   constructor(data?: ExecucaoSimulacaoValidacaoInterface) {
     Object.assign(this, data);
   }
@@ -97,7 +102,7 @@ export class ExecucaoSimulacaoValidacao implements ExecucaoSimulacaoValidacaoInt
         },
         "tipo": {
           name: 'tipo',
-          type: 'number'
+          type: 'string'
         },
         "id": {
           name: 'id',
@@ -113,6 +118,10 @@ export class ExecucaoSimulacaoValidacao implements ExecucaoSimulacaoValidacaoInt
         },
         "periodoExperimentoId": {
           name: 'periodoExperimentoId',
+          type: 'number'
+        },
+        "execucaoSimulacaoId": {
+          name: 'execucaoSimulacaoId',
           type: 'number'
         },
       },
@@ -155,6 +164,14 @@ export class ExecucaoSimulacaoValidacao implements ExecucaoSimulacaoValidacaoInt
           model: 'PeriodoExperimento',
           relationType: 'belongsTo',
                   keyFrom: 'periodoExperimentoId',
+          keyTo: 'id'
+        },
+        execucaoSimulacao: {
+          name: 'execucaoSimulacao',
+          type: 'ExecucaoSimulacao',
+          model: 'ExecucaoSimulacao',
+          relationType: 'belongsTo',
+                  keyFrom: 'execucaoSimulacaoId',
           keyTo: 'id'
         },
       }

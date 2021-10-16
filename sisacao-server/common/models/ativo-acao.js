@@ -5,6 +5,30 @@ var app = require('../../server/server');
 module.exports = function (Ativoacao) {
 
 
+
+
+    /**
+    * 
+    * @param {number} idExperimento 
+    * @param {Function(Error, array)} callback
+    */
+    Ativoacao.MelhorParaValidacao = function(idExperimento, callback) {
+        console.log('Inicio MelhorParaValidacao id#' , idExperimento);
+        app.models.ExperimentoSimulacao.findById(idExperimento, (err,experimento) => {
+            app.models.PeriodoExperimento.findById(experimento.periodoExperimentoId, (err,periodo) => {
+                //console.log('periodo: ' ,periodo);
+                Ativoacao.MelhorSimulacaoPorExperimento(idExperimento,periodo.id, periodo.minimoPontoValidacao,3,(err,res) => {
+                    console.log('Finalizou MelhorParaValidacao');
+                    callback(err,res);
+                })
+            })
+        })
+       
+    };
+
+
+
+
  /**
     * 
     * @param {number} idPeriodo 
@@ -12,7 +36,7 @@ module.exports = function (Ativoacao) {
     * @param {number} qtdeExecucao 
     * @param {Function(Error, array)} callback
     */
-  Ativoacao.MelhorSimulacaoPorExperimento = function(idExperimento, cortePontos, qtdeExecucao, callback) {
+  Ativoacao.MelhorSimulacaoPorExperimento = function(idExperimento, idPeriodo,  cortePontos, qtdeExecucao, callback) {
     /*
     let filtro = {
         'include' : {
@@ -27,9 +51,11 @@ module.exports = function (Ativoacao) {
         'include' : {
             'relation' : 'execucaoSimulacaos' , 'scope' : {
                     'limit' : qtdeExecucao,
-                    'where' : { 'and' : [{'resultado' : { gt : cortePontos }} , {'experimentoSimulacaoId' : idExperimento } ]},
+                    'where' : { 'and' : [{'resultado' : { gt : cortePontos }} , {'experimentoSimulacaoId' : idExperimento } , {'periodoExperimentoId' : idPeriodo} ]},
                     'order' : 'resultado desc',
-                    'include' : {'relation' : 'combinacaoParametro' , 'scope' : {'include' : 'regraSimulacao'}}
+                    'include' : {'relation' : 'combinacaoParametro' , 'scope' : {
+                        'include' : ['regraSimulacao' , {'relation' : 'valorParametros' , 'scope' : {'include' : 'parametroRegra'}}]
+                    }} 
             }
         },
 

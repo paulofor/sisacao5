@@ -6,14 +6,20 @@
   <div *ngIf="listaBase">
       <div class="dgc-card" *ngFor="let item of listaBase">
           <div class="dgc-card-header">
-              <span>De: </span><span>{{item.dataStrInicial}}</span><span>({{item.dataNumInicial}})</span>
+            <span>De: {{item.dataStrInicial}} Até {{item.dataStrFinal}} - {{item.quantidadeMes}} meses</span>
           </div>
-          <div class="dgc-card-header">
-            <span>Até: </span><span>{{item.dataStrFinal}}</span><span>({{item.dataNumFinal}})</span>
+          <div class="dgc-card-detalhe">
+            <span>Coleta: </span><span>({{item.dataNumInicioColeta}})</span>
           </div>
-          <div>
-            <span>Meses:</span><span>{{item.quantidadeMes}}</span>
+          <div class="dgc-card-detalhe">
+            <span>Validação: {{item.dataNumInicioValidacao}} até {{item.dataNumFinalValidacao}} - {{item.quantidadeMesValidacao}} mes(es)</span>
           </div>
+          <div class="dgc-card-detalhe">
+            <span>Pontos - Validação: {{item.minimoPontoValidacao}}  Exibição: {{item.minimoPontoExibicao}}</span>
+          </div>
+          <button class="btn-primary btn-sm btn" (click)="melhores(item)">Melhores</button>
+          <button class="btn-primary btn-sm btn" (click)="monitoradas(item)">Monitoradas</button>
+          <button class="btn-primary btn-sm btn" (click)="validacoes(item)">Validações</button>
           <div *ngIf="(item.permiteEditar==1)" class="dgc-card-comandos">
               <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar</button>
           </div>

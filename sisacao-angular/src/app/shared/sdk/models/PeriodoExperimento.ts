@@ -13,6 +13,11 @@ export interface PeriodoExperimentoInterface {
   "dataNumInicial"?: number;
   "dataNumFinal"?: number;
   "dataNumInicioColeta"?: number;
+  "dataNumInicioValidacao"?: number;
+  "dataNumFinalValidacao"?: number;
+  "quantidadeMesValidacao"?: number;
+  "minimoPontoValidacao"?: number;
+  "minimoPontoExibicao"?: number;
   "id"?: number;
   experimentoSimulacaoPeriodos?: ExperimentoSimulacaoPeriodo[];
 }
@@ -26,6 +31,11 @@ export class PeriodoExperimento implements PeriodoExperimentoInterface {
   "dataNumInicial": number;
   "dataNumFinal": number;
   "dataNumInicioColeta": number;
+  "dataNumInicioValidacao": number;
+  "dataNumFinalValidacao": number;
+  "quantidadeMesValidacao": number;
+  "minimoPontoValidacao": number;
+  "minimoPontoExibicao": number;
   "id": number;
   experimentoSimulacaoPeriodos: ExperimentoSimulacaoPeriodo[];
   constructor(data?: PeriodoExperimentoInterface) {
@@ -91,6 +101,26 @@ export class PeriodoExperimento implements PeriodoExperimentoInterface {
         },
         "dataNumInicioColeta": {
           name: 'dataNumInicioColeta',
+          type: 'number'
+        },
+        "dataNumInicioValidacao": {
+          name: 'dataNumInicioValidacao',
+          type: 'number'
+        },
+        "dataNumFinalValidacao": {
+          name: 'dataNumFinalValidacao',
+          type: 'number'
+        },
+        "quantidadeMesValidacao": {
+          name: 'quantidadeMesValidacao',
+          type: 'number'
+        },
+        "minimoPontoValidacao": {
+          name: 'minimoPontoValidacao',
+          type: 'number'
+        },
+        "minimoPontoExibicao": {
+          name: 'minimoPontoExibicao',
           type: 'number'
         },
         "id": {

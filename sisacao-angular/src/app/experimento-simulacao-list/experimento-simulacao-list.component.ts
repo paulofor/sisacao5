@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { BaseListComponent } from '../base-component/base-list-component';
+import { EscolhePeriodoCorrenteExperimentoComponent } from '../escolhe-periodo-corrente-experimento/escolhe-periodo-corrente-experimento.component';
 import { EscolhePeriodoParaExperimentoComponent } from '../escolhe-periodo-para-experimento/escolhe-periodo-para-experimento.component';
 import { ExperimentoParametroEditComponent } from '../experimento-parametro-edit/experimento-parametro-edit.component';
 import { ExperimentoSimulacaoEditComponent } from '../experimento-simulacao-edit/experimento-simulacao-edit.component';
@@ -31,6 +32,7 @@ export class ExperimentoSimulacaoListComponent  extends BaseListComponent {
         { 'relation' : 'experimentoParametros' , 'scope' : {'include' : 'parametroRegra'}},
         { 'relation' : 'grupoAcao'},
         { 'relation' : 'experimentoSimulacaoPeriodos' , 'scope' : {'include' : 'periodoExperimento'} }
+        //{ 'relation' : 'periodoExperimento'}
       ] 
     }
   }
@@ -42,6 +44,22 @@ export class ExperimentoSimulacaoListComponent  extends BaseListComponent {
     return EscolhePeriodoParaExperimentoComponent;
   }
 
+  
+  dialogo3(dados) {
+    console.log('dialogo3.dados:' , dados);
+    this.dialog.afterAllClosed.subscribe(result => {
+        this.carregaTela();
+    });
+    this.dialog.open(this.getDialogo3(), {
+        width: '800px',
+        data: dados
+    });
+  }
+  getDialogo3() : any { 
+    return EscolhePeriodoCorrenteExperimentoComponent;
+  }
+  
+  
   gerarCombinacao(item) {
     this.geraCombinacaoBtn = true;
     
@@ -75,5 +93,11 @@ export class ExperimentoSimulacaoListComponent  extends BaseListComponent {
       .subscribe((result => {
         this.carregaTela();
       }))
+  }
+
+  periodoCorrente(periodo,item) {
+    //console.log('periodoAtual:' , periodo);
+    //console.log('itemAtual:' , item);
+    return (periodo.periodoExperimentoId==item.periodoExperimentoId);
   }
 }

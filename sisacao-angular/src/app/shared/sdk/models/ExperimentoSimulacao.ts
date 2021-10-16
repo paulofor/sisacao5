@@ -7,6 +7,7 @@ import {
   CombinacaoParametro,
   ValorParametro,
   ExecucaoSimulacao,
+  PeriodoExperimento,
   ExperimentoSimulacaoPeriodo
 } from '../index';
 
@@ -23,6 +24,7 @@ export interface ExperimentoSimulacaoInterface {
   "id"?: number;
   "regraSimulacaoId"?: number;
   "grupoAcaoId"?: number;
+  "periodoExperimentoId"?: number;
   regraSimulacao?: RegraSimulacao;
   experimentoParametros?: ExperimentoParametro[];
   experimentoAcaos?: ExperimentoAcao[];
@@ -30,6 +32,7 @@ export interface ExperimentoSimulacaoInterface {
   combinacaoParametros?: CombinacaoParametro[];
   valorParametros?: ValorParametro[];
   execucaoSimulacaos?: ExecucaoSimulacao[];
+  periodoExperimento?: PeriodoExperimento;
   experimentoSimulacaoPeriodos?: ExperimentoSimulacaoPeriodo[];
 }
 
@@ -45,6 +48,7 @@ export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
   "id": number;
   "regraSimulacaoId": number;
   "grupoAcaoId": number;
+  "periodoExperimentoId": number;
   regraSimulacao: RegraSimulacao;
   experimentoParametros: ExperimentoParametro[];
   experimentoAcaos: ExperimentoAcao[];
@@ -52,6 +56,7 @@ export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
   combinacaoParametros: CombinacaoParametro[];
   valorParametros: ValorParametro[];
   execucaoSimulacaos: ExecucaoSimulacao[];
+  periodoExperimento: PeriodoExperimento;
   experimentoSimulacaoPeriodos: ExperimentoSimulacaoPeriodo[];
   constructor(data?: ExperimentoSimulacaoInterface) {
     Object.assign(this, data);
@@ -130,6 +135,10 @@ export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
           name: 'grupoAcaoId',
           type: 'number'
         },
+        "periodoExperimentoId": {
+          name: 'periodoExperimentoId',
+          type: 'number'
+        },
       },
       relations: {
         regraSimulacao: {
@@ -187,6 +196,14 @@ export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
           relationType: 'hasMany',
                   keyFrom: 'id',
           keyTo: 'experimentoSimulacaoId'
+        },
+        periodoExperimento: {
+          name: 'periodoExperimento',
+          type: 'PeriodoExperimento',
+          model: 'PeriodoExperimento',
+          relationType: 'belongsTo',
+                  keyFrom: 'periodoExperimentoId',
+          keyTo: 'id'
         },
         experimentoSimulacaoPeriodos: {
           name: 'experimentoSimulacaoPeriodos',

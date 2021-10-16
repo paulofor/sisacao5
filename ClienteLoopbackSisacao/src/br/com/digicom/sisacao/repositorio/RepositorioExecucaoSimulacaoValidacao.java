@@ -26,6 +26,7 @@ public class RepositorioExecucaoSimulacaoValidacao extends ModelRepository<Execu
 		this.getRestAdapter().getContract().addItem(contrato, "ExecucaoSimulacaoValidacao.insereExecucaoSimulacaoValidacao");
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("execucao", execucao.jSON());
+        System.out.println("JSON:" + execucao.jSON().toString());
         invokeStaticMethod("insereExecucaoSimulacaoValidacao", params,   new EmptyResponseParser(voidCallback));
         execucao = null;
 	}

@@ -17,7 +17,44 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "tipoAplicacao": {
+      "type": "belongsTo",
+      "model": "TipoAplicacao",
+      "foreignKey": ""
+    },
+    "instituicaoFinanceira": {
+      "type": "belongsTo",
+      "model": "InstituicaoFinanceira",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
-  "methods": {}
+  "methods": {
+    "InsereMovimentacao": {
+      "accepts": [
+        {
+          "arg": "valorAplicado",
+          "type": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saidaa",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/insereMovimentacao",
+          "verb": "post"
+        }
+      ]
+    }
+  }
 }

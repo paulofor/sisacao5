@@ -41,10 +41,12 @@ import { AluguelFundoImobiliario } from '../../models/AluguelFundoImobiliario';
 import { ValorAplicado } from '../../models/ValorAplicado';
 import { TipoAplicacao } from '../../models/TipoAplicacao';
 import { InstituicaoFinanceira } from '../../models/InstituicaoFinanceira';
-import { CotacaoIntradayResultado } from '../../models/CotacaoIntradayResultado';
 import { AtivoIndice } from '../../models/AtivoIndice';
 import { CotacaoIntradayIndice } from '../../models/CotacaoIntradayIndice';
 import { ExecucaoSimulacaoValidacao } from '../../models/ExecucaoSimulacaoValidacao';
+import { CotacaoIntradayAcaoResultado } from '../../models/CotacaoIntradayAcaoResultado';
+import { CotacaoDiarioIndice } from '../../models/CotacaoDiarioIndice';
+import { AplicacaoInstituicao } from '../../models/AplicacaoInstituicao';
 
 export interface Models { [name: string]: any }
 
@@ -93,10 +95,12 @@ export class SDKModels {
     ValorAplicado: ValorAplicado,
     TipoAplicacao: TipoAplicacao,
     InstituicaoFinanceira: InstituicaoFinanceira,
-    CotacaoIntradayResultado: CotacaoIntradayResultado,
     AtivoIndice: AtivoIndice,
     CotacaoIntradayIndice: CotacaoIntradayIndice,
     ExecucaoSimulacaoValidacao: ExecucaoSimulacaoValidacao,
+    CotacaoIntradayAcaoResultado: CotacaoIntradayAcaoResultado,
+    CotacaoDiarioIndice: CotacaoDiarioIndice,
+    AplicacaoInstituicao: AplicacaoInstituicao,
     
   };
 

@@ -1,6 +1,11 @@
 package br.com.digicom.sisacao.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import com.strongloop.android.loopback.Model;
+import com.strongloop.android.remoting.BeanUtil;
 
 public class AtivoAcao extends Ativo{
 
@@ -10,7 +15,19 @@ public class AtivoAcao extends Ativo{
 	private Integer intraday5;
 	private Integer intraday15;
 	private Integer intraday30;
+	private Integer intraday10;
 	
+	private List<ExecucaoSimulacao> execucaoSimulacaos;
+	
+	
+	
+	
+	public Integer getIntraday10() {
+		return intraday10;
+	}
+	public void setIntraday10(Integer intraday10) {
+		this.intraday10 = intraday10;
+	}
 	public String getTicker() {
 		return ticker;
 	}
@@ -40,6 +57,17 @@ public class AtivoAcao extends Ativo{
 	}
 	public void setIntraday30(Integer intraday30) {
 		this.intraday30 = intraday30;
+	}
+	public List<ExecucaoSimulacao> getExecucaoSimulacaos() {
+		return execucaoSimulacaos;
+	}
+	public void setExecucaoSimulacaos(List<ExecucaoSimulacao> execucaoSimulacaos) {
+		this.execucaoSimulacaos = new ArrayList<ExecucaoSimulacao>();
+		for (int i = 0; i < execucaoSimulacaos.size(); i++) {
+			Object objeto = new ExecucaoSimulacao();
+			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) execucaoSimulacaos.get(i), true);
+			this.execucaoSimulacaos.add((ExecucaoSimulacao) objeto);
+		}
 	}
 	
 	

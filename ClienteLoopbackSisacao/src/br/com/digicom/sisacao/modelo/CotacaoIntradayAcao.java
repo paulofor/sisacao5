@@ -4,6 +4,8 @@ import com.strongloop.android.loopback.Model;
 
 public class CotacaoIntradayAcao extends Model {
 
+
+	
 	private String ticker;
 	private Double valor;
 	private String dataHoraNegStr;
@@ -73,5 +75,6 @@ public class CotacaoIntradayAcao extends Model {
 	public String toString() {
 		return this.dataHoraNegStr + ": " + this.valor;
 	}
+
 
 }

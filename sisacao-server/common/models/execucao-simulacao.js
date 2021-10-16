@@ -147,4 +147,23 @@ Execucaosimulacao.InsereExecucaoSimulacao = function(execucao, callback) {
     };
   
 
+     /**
+    * 
+    * @param {number} idPeriodo 
+    * @param {Function(Error, array)} callback
+    */
+      Execucaosimulacao.MelhorValidacaoPeriodo = function(idPeriodo, callback) {
+        app.models.PeriodoExperimento.findById(idPeriodo, (err,result) => {
+            let periodo = result;
+            let filtro = {
+                'where' : { 'and' : [
+                    {'resultado' : { gte : periodo.minimoPontoValidacao }} , 
+                    {'periodoExperimentoId' : idPeriodo} ]
+                },
+                'order' : 'ticker',
+                'include' : ['execucaoSimulacaoValidacaos','experimentoSimulacao']
+            }
+            Execucaosimulacao.find(filtro,callback);
+        })
+    };
 };

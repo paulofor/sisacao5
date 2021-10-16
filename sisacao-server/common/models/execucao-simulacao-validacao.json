@@ -22,7 +22,7 @@
       "type": "number"
     },
     "tipo": {
-      "type": "number"
+      "type": "string"
     }
   },
   "validations": [],
@@ -50,6 +50,11 @@
     "periodoExperimento": {
       "type": "belongsTo",
       "model": "PeriodoExperimento",
+      "foreignKey": ""
+    },
+    "execucaoSimulacao": {
+      "type": "belongsTo",
+      "model": "ExecucaoSimulacao",
       "foreignKey": ""
     }
   },

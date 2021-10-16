@@ -1,4 +1,8 @@
 /* tslint:disable */
+import {
+  TipoAplicacao,
+  InstituicaoFinanceira
+} from '../index';
 
 declare var Object: any;
 export interface ValorAplicadoInterface {
@@ -6,6 +10,10 @@ export interface ValorAplicadoInterface {
   "dataInicio"?: string;
   "dataFinal"?: string;
   "id"?: number;
+  "tipoAplicacaoId"?: number;
+  "instituicaoFinanceiraId"?: number;
+  tipoAplicacao?: TipoAplicacao;
+  instituicaoFinanceira?: InstituicaoFinanceira;
 }
 
 export class ValorAplicado implements ValorAplicadoInterface {
@@ -13,6 +21,10 @@ export class ValorAplicado implements ValorAplicadoInterface {
   "dataInicio": string;
   "dataFinal": string;
   "id": number;
+  "tipoAplicacaoId": number;
+  "instituicaoFinanceiraId": number;
+  tipoAplicacao: TipoAplicacao;
+  instituicaoFinanceira: InstituicaoFinanceira;
   constructor(data?: ValorAplicadoInterface) {
     Object.assign(this, data);
   }
@@ -62,8 +74,32 @@ export class ValorAplicado implements ValorAplicadoInterface {
           name: 'id',
           type: 'number'
         },
+        "tipoAplicacaoId": {
+          name: 'tipoAplicacaoId',
+          type: 'number'
+        },
+        "instituicaoFinanceiraId": {
+          name: 'instituicaoFinanceiraId',
+          type: 'number'
+        },
       },
       relations: {
+        tipoAplicacao: {
+          name: 'tipoAplicacao',
+          type: 'TipoAplicacao',
+          model: 'TipoAplicacao',
+          relationType: 'belongsTo',
+                  keyFrom: 'tipoAplicacaoId',
+          keyTo: 'id'
+        },
+        instituicaoFinanceira: {
+          name: 'instituicaoFinanceira',
+          type: 'InstituicaoFinanceira',
+          model: 'InstituicaoFinanceira',
+          relationType: 'belongsTo',
+                  keyFrom: 'instituicaoFinanceiraId',
+          keyTo: 'id'
+        },
       }
     }
   }

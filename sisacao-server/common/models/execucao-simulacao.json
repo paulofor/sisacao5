@@ -90,6 +90,16 @@
       "type": "belongsTo",
       "model": "PeriodoExperimento",
       "foreignKey": ""
+    },
+    "execucaoSimulacaoValidacaos": {
+      "type": "hasMany",
+      "model": "ExecucaoSimulacaoValidacao",
+      "foreignKey": ""
+    },
+    "experimentoSimulacao": {
+      "type": "belongsTo",
+      "model": "ExperimentoSimulacao",
+      "foreignKey": ""
     }
   },
   "acls": [],
@@ -274,6 +284,31 @@
       "http": [
         {
           "path": "/obtemProximoMonitorar",
+          "verb": "get"
+        }
+      ]
+    },
+    "MelhorValidacaoPeriodo": {
+      "accepts": [
+        {
+          "arg": "idPeriodo",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "melhores",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/melhorValidacaoPeriodo",
           "verb": "get"
         }
       ]

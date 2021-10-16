@@ -1,42 +1,46 @@
 /* tslint:disable */
 
 declare var Object: any;
-export interface CotacaoIntradayResultadoInterface {
+export interface CotacaoIntradayAcaoResultadoInterface {
   "ticker"?: string;
   "valor"?: number;
-  "dataHoraNegStr"?: string;
-  "dataHora"?: Date;
+  "hora"?: string;
   "dia"?: Date;
+  "dataHora"?: Date;
+  "diaNum"?: number;
   "tg12St12"?: number;
   "tg13St13"?: number;
+  "ativoAcaoId"?: string;
 }
 
-export class CotacaoIntradayResultado implements CotacaoIntradayResultadoInterface {
+export class CotacaoIntradayAcaoResultado implements CotacaoIntradayAcaoResultadoInterface {
   "ticker": string;
   "valor": number;
-  "dataHoraNegStr": string;
-  "dataHora": Date;
+  "hora": string;
   "dia": Date;
+  "dataHora": Date;
+  "diaNum": number;
   "tg12St12": number;
   "tg13St13": number;
-  constructor(data?: CotacaoIntradayResultadoInterface) {
+  "ativoAcaoId": string;
+  constructor(data?: CotacaoIntradayAcaoResultadoInterface) {
     Object.assign(this, data);
   }
   /**
    * The name of the model represented by this $resource,
-   * i.e. `CotacaoIntradayResultado`.
+   * i.e. `CotacaoIntradayAcaoResultado`.
    */
   public static getModelName() {
-    return "CotacaoIntradayResultado";
+    return "CotacaoIntradayAcaoResultado";
   }
   /**
   * @method factory
   * @author Jonathan Casarrubias
   * @license MIT
-  * This method creates an instance of CotacaoIntradayResultado for dynamic purposes.
+  * This method creates an instance of CotacaoIntradayAcaoResultado for dynamic purposes.
   **/
-  public static factory(data: CotacaoIntradayResultadoInterface): CotacaoIntradayResultado{
-    return new CotacaoIntradayResultado(data);
+  public static factory(data: CotacaoIntradayAcaoResultadoInterface): CotacaoIntradayAcaoResultado{
+    return new CotacaoIntradayAcaoResultado(data);
   }
   /**
   * @method getModelDefinition
@@ -47,9 +51,9 @@ export class CotacaoIntradayResultado implements CotacaoIntradayResultadoInterfa
   **/
   public static getModelDefinition() {
     return {
-      name: 'CotacaoIntradayResultado',
-      plural: 'CotacaoIntradayResultados',
-      path: 'CotacaoIntradayResultados',
+      name: 'CotacaoIntradayAcaoResultado',
+      plural: 'CotacaoIntradayAcaoResultados',
+      path: 'CotacaoIntradayAcaoResultados',
       idName: 'ticker',
       properties: {
         "ticker": {
@@ -60,17 +64,21 @@ export class CotacaoIntradayResultado implements CotacaoIntradayResultadoInterfa
           name: 'valor',
           type: 'number'
         },
-        "dataHoraNegStr": {
-          name: 'dataHoraNegStr',
+        "hora": {
+          name: 'hora',
           type: 'string'
+        },
+        "dia": {
+          name: 'dia',
+          type: 'Date'
         },
         "dataHora": {
           name: 'dataHora',
           type: 'Date'
         },
-        "dia": {
-          name: 'dia',
-          type: 'Date'
+        "diaNum": {
+          name: 'diaNum',
+          type: 'number'
         },
         "tg12St12": {
           name: 'tg12St12',
@@ -79,6 +87,10 @@ export class CotacaoIntradayResultado implements CotacaoIntradayResultadoInterfa
         "tg13St13": {
           name: 'tg13St13',
           type: 'number'
+        },
+        "ativoAcaoId": {
+          name: 'ativoAcaoId',
+          type: 'string'
         },
       },
       relations: {

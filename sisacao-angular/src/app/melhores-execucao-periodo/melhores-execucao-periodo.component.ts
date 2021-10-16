@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AtivoAcao, AtivoAcaoApi } from '../shared/sdk';
+import { AtivoAcao, AtivoAcaoApi, PeriodoExperimento, PeriodoExperimentoApi } from '../shared/sdk';
 
 @Component({
   selector: 'app-melhores-execucao-periodo',
@@ -11,7 +11,7 @@ export class MelhoresExecucaoPeriodoComponent implements OnInit {
 
   listaMelhores: AtivoAcao[];
 
-  constructor(private srv:AtivoAcaoApi, private router: ActivatedRoute) { }
+  constructor(private srv:AtivoAcaoApi, private router: ActivatedRoute, private srvPeriodo: PeriodoExperimentoApi) { }
 
   ngOnInit() {
     this.carregaMelhores();
@@ -20,11 +20,15 @@ export class MelhoresExecucaoPeriodoComponent implements OnInit {
   carregaMelhores() {
     this.router.params.subscribe((params) => {
       let idPeriodo = params['id'];
-      this.srv.MelhorSimulacaoPorPeriodo(idPeriodo,14,8)
-      .subscribe((result:AtivoAcao[]) => {
-        this.listaMelhores = result;
-        console.log('Melhores:' , this.listaMelhores);
-      })
+      this.srvPeriodo.findById(idPeriodo)
+        .subscribe((periodo:PeriodoExperimento)=> {
+          this.srv.MelhorSimulacaoPorPeriodo(idPeriodo,periodo.minimoPontoExibicao,12)
+          .subscribe((result:AtivoAcao[]) => {
+            this.listaMelhores = result;
+            console.log('Melhores:' , this.listaMelhores);
+          })
+        }) 
+     
     })
     
   }

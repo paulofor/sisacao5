@@ -10,10 +10,12 @@ import com.strongloop.android.loopback.callbacks.VoidCallback;
 import br.com.digicom.sisacao.app.Loopback;
 import br.com.digicom.sisacao.modelo.AtivoAcao;
 import br.com.digicom.sisacao.modelo.CombinacaoParametro;
+import br.com.digicom.sisacao.modelo.ExecucaoSimulacao;
 import br.com.digicom.sisacao.modelo.ExperimentoSimulacao;
 import br.com.digicom.sisacao.repositorio.RepositorioAcaoBase;
 import br.com.digicom.sisacao.repositorio.RepositorioCombinacaoParametro;
 import br.com.digicom.sisacao.repositorio.RepositorioExperimentoSimulacao;
+import br.inf.digicom.TempoSleep;
 import br.inf.digicom.simulacao.ExecutadorSimulacao;
 import br.inf.digicom.simulacao.RepositorioCotacao;
 import br.inf.digicom.simulacao.validacao.ExecutadorSimulacaoValidacao;
@@ -153,15 +155,15 @@ public class ExperimentoSimulacaoFacade {
 			}});
 	}
 
+	private boolean obtemExperimentoValidacaoOk = false;
 	public void obtemExperimentoValidacao() {
-		// TODO Auto-generated method stub
 		repExperimento.obtemParaValidacao( new ObjectCallback<ExperimentoSimulacao>() {
-
 			@Override
 			public void onSuccess(ExperimentoSimulacao experimento) {
-				System.out.println(experimento.getCodigo());
-				experimentoValidacao = experimento;
+				System.out.println("Experimento:" + experimento.getCodigo());
+ 				experimentoValidacao = experimento;
 				carregaMelhorAtivos(experimento);
+				obtemExperimentoValidacaoOk = true;
 			}
 			@Override
 			public void onError(Throwable t) {
@@ -169,38 +171,49 @@ public class ExperimentoSimulacaoFacade {
 			}
 			
 		}); 
+		while (obtemExperimentoValidacaoOk) {
+			try {
+				Thread.sleep(10000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
+	private boolean carregaMelhorAtivosOk = false;
 	public void carregaMelhorAtivos(ExperimentoSimulacao experimento) {
-		repAtivoAcao.melhorSimulacaoPorExperimento(experimento.getId(), 18, 3, new ListCallback<AtivoAcao>() {
+		repAtivoAcao.melhorParaValidacao(experimento.getId(), new ListCallback<AtivoAcao>() {
 			@Override
 			public void onSuccess(List<AtivoAcao> objects) {
+				System.out.println("Ativos Melhores: " + objects.size());
 				listaAtivo = objects;
 				RepositorioCotacao.carregaAtivos(listaAtivo, experimento.diaInicioColeta());
-				carregaCombinacaoValidacao((Integer) experimentoSimulacao.getId());
+				int id = experimento.getId();
+				carregaCombinacaoValidacao(id,objects);
+				carregaMelhorAtivosOk = true;
 			}
 
 			@Override
 			public void onError(Throwable t) {
 				t.printStackTrace();
 			}});
+		while (!carregaMelhorAtivosOk) {
+			try {
+				Thread.sleep(10000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
-	public void carregaCombinacaoValidacao(Integer id) {
-		repCombinacao.getListaExecucao(id, new ListCallback<CombinacaoParametro>() {
-			@Override
-			public void onSuccess(List<CombinacaoParametro> listaCombinacao) {
-				for (CombinacaoParametro combinacao : listaCombinacao) {
-					executadorValidacao.executa(listaAtivo,combinacao,experimentoSimulacao);
-					//salvaDescricaoCombinacao(combinacao);
-				}
-				fechaExperimento(id);
+	public void carregaCombinacaoValidacao(Integer id, List<AtivoAcao> listAtivo) {
+		for (AtivoAcao acao : listaAtivo) {
+			for (ExecucaoSimulacao execucao : acao.getExecucaoSimulacaos()) {
+				CombinacaoParametro combinacao = execucao.getCombinacaoParametro();
+				executadorValidacao.executa(acao,execucao,experimentoValidacao);
+				System.out.println("Finalizou ExeucaoSimulacao #" + execucao.getId());
 			}
-			@Override
-			public void onError(Throwable t) {
-				t.printStackTrace();
-			}
-			
-		});
+		}
+		
 	}
 	
 }

@@ -13,6 +13,7 @@ import { AtivoAcao } from '../../models/AtivoAcao';
 import { SocketConnection } from '../../sockets/socket.connections';
 import { RelGrupoAcao } from '../../models/RelGrupoAcao';
 import { ExecucaoSimulacao } from '../../models/ExecucaoSimulacao';
+import { CotacaoIntradayAcaoResultado } from '../../models/CotacaoIntradayAcaoResultado';
 
 
 /**
@@ -205,6 +206,99 @@ export class AtivoAcaoApi extends BaseLoopBackApi {
     let _method: string = "PUT";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/AtivoAcaos/:id/execucaoSimulacaos/:fk";
+    let _routeParams: any = {
+      id: id,
+      fk: fk
+    };
+    let _postBody: any = {
+      data: data
+    };
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * Localize um item relacionado por ID para cotacaoIntradayAcaoResultados.
+   *
+   * @param {any} id AtivoAcao id
+   *
+   * @param {any} fk Chave estrangeira para cotacaoIntradayAcaoResultados
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `AtivoAcao` object.)
+   * </em>
+   */
+  public findByIdCotacaoIntradayAcaoResultados(id: any, fk: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/AtivoAcaos/:id/cotacaoIntradayAcaoResultados/:fk";
+    let _routeParams: any = {
+      id: id,
+      fk: fk
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * Excluir um item relacionado por ID para cotacaoIntradayAcaoResultados.
+   *
+   * @param {any} id AtivoAcao id
+   *
+   * @param {any} fk Chave estrangeira para cotacaoIntradayAcaoResultados
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * This method returns no data.
+   */
+  public destroyByIdCotacaoIntradayAcaoResultados(id: any, fk: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "DELETE";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/AtivoAcaos/:id/cotacaoIntradayAcaoResultados/:fk";
+    let _routeParams: any = {
+      id: id,
+      fk: fk
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * Atualizar um item relacionado por ID para cotacaoIntradayAcaoResultados.
+   *
+   * @param {any} id AtivoAcao id
+   *
+   * @param {any} fk Chave estrangeira para cotacaoIntradayAcaoResultados
+   *
+   * @param {object} data Request data.
+   *
+   * This method expects a subset of model properties as request parameters.
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `AtivoAcao` object.)
+   * </em>
+   */
+  public updateByIdCotacaoIntradayAcaoResultados(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "PUT";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/AtivoAcaos/:id/cotacaoIntradayAcaoResultados/:fk";
     let _routeParams: any = {
       id: id,
       fk: fk
@@ -450,6 +544,122 @@ export class AtivoAcaoApi extends BaseLoopBackApi {
   }
 
   /**
+   * cotacaoIntradayAcaoResultados consultas de AtivoAcao.
+   *
+   * @param {any} id AtivoAcao id
+   *
+   * @param {object} filter 
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `AtivoAcao` object.)
+   * </em>
+   */
+  public getCotacaoIntradayAcaoResultados(id: any, filter: LoopBackFilter = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/AtivoAcaos/:id/cotacaoIntradayAcaoResultados";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof filter !== 'undefined' && filter !== null) _urlParams.filter = filter;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * Cria uma nova instância no cotacaoIntradayAcaoResultados deste modelo.
+   *
+   * @param {any} id AtivoAcao id
+   *
+   * @param {object} data Request data.
+   *
+   * This method expects a subset of model properties as request parameters.
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `AtivoAcao` object.)
+   * </em>
+   */
+  public createCotacaoIntradayAcaoResultados(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/AtivoAcaos/:id/cotacaoIntradayAcaoResultados";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {
+      data: data
+    };
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * Exclui todos os cotacaoIntradayAcaoResultados deste modelo.
+   *
+   * @param {any} id AtivoAcao id
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * This method returns no data.
+   */
+  public deleteCotacaoIntradayAcaoResultados(id: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "DELETE";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/AtivoAcaos/:id/cotacaoIntradayAcaoResultados";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * cotacaoIntradayAcaoResultados contagens de AtivoAcao.
+   *
+   * @param {any} id AtivoAcao id
+   *
+   * @param {object} where Criteria to match model instances
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * Data properties:
+   *
+   *  - `count` – `{number}` - 
+   */
+  public countCotacaoIntradayAcaoResultados(id: any, where: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/AtivoAcaos/:id/cotacaoIntradayAcaoResultados/count";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof where !== 'undefined' && where !== null) _urlParams.where = where;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
    * Patch an existing model instance or insert a new one into the data source.
    *
    * @param {object} data Request data.
@@ -679,6 +889,8 @@ export class AtivoAcaoApi extends BaseLoopBackApi {
    *
    * @param {number} idExperimento 
    *
+   * @param {number} idPeriodo 
+   *
    * @param {number} cortePontos 
    *
    * @param {number} qtdeExecucao 
@@ -692,7 +904,7 @@ export class AtivoAcaoApi extends BaseLoopBackApi {
    * This usually means the response is a `AtivoAcao` object.)
    * </em>
    */
-  public MelhorSimulacaoPorExperimento(idExperimento: any = {}, cortePontos: any = {}, qtdeExecucao: any = {}, customHeaders?: Function): Observable<any> {
+  public MelhorSimulacaoPorExperimento(idExperimento: any = {}, idPeriodo: any = {}, cortePontos: any = {}, qtdeExecucao: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/AtivoAcaos/melhorSimulacaoPorExperimento";
@@ -700,8 +912,39 @@ export class AtivoAcaoApi extends BaseLoopBackApi {
     let _postBody: any = {};
     let _urlParams: any = {};
     if (typeof idExperimento !== 'undefined' && idExperimento !== null) _urlParams.idExperimento = idExperimento;
+    if (typeof idPeriodo !== 'undefined' && idPeriodo !== null) _urlParams.idPeriodo = idPeriodo;
     if (typeof cortePontos !== 'undefined' && cortePontos !== null) _urlParams.cortePontos = cortePontos;
     if (typeof qtdeExecucao !== 'undefined' && qtdeExecucao !== null) _urlParams.qtdeExecucao = qtdeExecucao;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {object} data Request data.
+   *
+   *  - `idExperimento` – `{number}` - 
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `AtivoAcao` object.)
+   * </em>
+   */
+  public MelhorParaValidacao(idExperimento: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/AtivoAcaos/melhorParaValidacao";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof idExperimento !== 'undefined' && idExperimento !== null) _urlParams.idExperimento = idExperimento;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
@@ -761,6 +1004,39 @@ export class AtivoAcaoApi extends BaseLoopBackApi {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/AtivoAcaos/:id/execucaoSimulacaos";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {
+      data: data
+    };
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * Cria uma nova instância no cotacaoIntradayAcaoResultados deste modelo.
+   *
+   * @param {any} id AtivoAcao id
+   *
+   * @param {object} data Request data.
+   *
+   * This method expects a subset of model properties as request parameters.
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `AtivoAcao` object.)
+   * </em>
+   */
+  public createManyCotacaoIntradayAcaoResultados(id: any, data: any[] = [], customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/AtivoAcaos/:id/cotacaoIntradayAcaoResultados";
     let _routeParams: any = {
       id: id
     };

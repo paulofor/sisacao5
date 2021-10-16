@@ -59,7 +59,7 @@ module.exports = function(Diapregao) {
                 var dataStr =  diaComp + '-' + mesComp + '-' + data.getUTCFullYear()
                 var dataSimples = data.getUTCFullYear() + '-' + mesComp + '-' + diaComp;
                 var dia = new Diapregao({ "diaNum": diaNum, "ano": data.getUTCFullYear(), "mes": data.getUTCMonth() + 1, "dataStr" : dataStr , "data" : dataSimples});
-                console.log('dia: ', JSON.stringify(dia));
+                //console.log('dia: ', JSON.stringify(dia));
                 Diapregao.create(dia);
             }
             data.setDate(data.getDate() + 1);
@@ -114,4 +114,26 @@ module.exports = function(Diapregao) {
         Diapregao.find(filtro,callback);
       };
       
+
+      Diapregao.ObtemIntradayResultadoTickerPeriodo = function(ticker, dataNumInicio, callback) {
+        let filtro = {
+            'include' : 
+            [
+                { 
+                'relation' : 'cotacaoIntradayAcaoResultados',
+                'scope' : 
+                    {'where' : {'ticker' : ticker } , "order" : "dataHora" , "fields" : { valor:true, ticker: true, dataHora: true, dataHoraNegStr: true }} 
+                },
+                { 
+                'relation' : 'cotacaoDiarioAcaos',
+                'scope' : 
+                    {'where' : {'ticker' : ticker }} 
+                }
+            ], 
+            'order' : 'diaNum',
+            'where' : {'diaNum' : { 'gte' : dataNumInicio }}
+        }
+        Diapregao.find(filtro,callback);
+    };
+  
 };

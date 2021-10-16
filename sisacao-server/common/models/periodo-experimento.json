@@ -29,6 +29,21 @@
     },
     "dataNumInicioColeta": {
       "type": "number"
+    },
+    "dataNumInicioValidacao": {
+      "type": "number"
+    },
+    "dataNumFinalValidacao": {
+      "type": "number"
+    },
+    "quantidadeMesValidacao": {
+      "type": "number"
+    },
+    "minimoPontoValidacao": {
+      "type": "number"
+    },
+    "minimoPontoExibicao": {
+      "type": "number"
     }
   },
   "validations": [],
