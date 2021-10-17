@@ -34,6 +34,8 @@ import { FundoImobiliarioAluguelMelhoresComponent } from '../fundo-imobiliario-a
 import { AlocacaoRecursosComponent } from '../alocacao-recursos/alocacao-recursos.component';
 import { TipoAplicacaoListComponent } from '../tipo-aplicacao-list/tipo-aplicacao-list.component';
 import { MelhoresValidacaoPeriodoComponent } from '../melhores-validacao-periodo/melhores-validacao-periodo.component';
+import { AtivoIndiceComponent } from '../ativo-indice/ativo-indice.component';
+import { AtivoIntraIndiceComponent } from '../ativo-intra-indice/ativo-intra-indice.component';
 
 
 export const routes : Routes = [
@@ -43,11 +45,13 @@ export const routes : Routes = [
     { path: 'ativoOpcao' , component: AtivoOpcaoComponent},
     { path: 'ativoMercadoria' , component: AtivoMercadoriaComponent},
     { path: 'ativoImobiliario' , component: AtivoImobiliarioComponent},
+    { path: 'ativoIndice' , component: AtivoIndiceComponent},
 
     { path: 'cotacaoIntraAcao/:id' , component: CotacaoIntraAcaoComponent},
     { path: 'cotacaoIntraOpcao/:id' , component: CotacaoIntraOpcaoComponent},
     { path: 'cotacaoIntraMercadoria/:id' , component: CotacaoIntraMercadoriaComponent},
     { path: 'cotacaoIntraImobiliario/:id' , component: CotacaoIntraImobiliarioComponent},
+    { path: 'cotacaoIntraIndice/:id' , component: AtivoIntraIndiceComponent},
 
     { path: 'cotacaoDiarioAcao/:id' , component : CotacaoDiarioAcaoComponent },
     { path: 'acaoDetalheDia/:ticker/:diaNum' , component: AcaoDetalheDiaComponent },

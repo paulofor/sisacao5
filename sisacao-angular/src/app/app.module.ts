@@ -105,6 +105,9 @@ import { TipoAplicacaoListComponent } from './tipo-aplicacao-list/tipo-aplicacao
 import { TipoAplicacaoEditComponent } from './tipo-aplicacao-edit/tipo-aplicacao-edit.component';
 import { AlocacaoMovimentacaoEditaComponent } from './alocacao-movimentacao-edita/alocacao-movimentacao-edita.component';
 import { MelhoresValidacaoPeriodoComponent } from './melhores-validacao-periodo/melhores-validacao-periodo.component';
+import { AtivoIndiceComponent } from './ativo-indice/ativo-indice.component';
+import { AtivoIndiceEditaComponent } from './ativo-indice-edita/ativo-indice-edita.component';
+import { AtivoIntraIndiceComponent } from './ativo-intra-indice/ativo-intra-indice.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -183,7 +186,10 @@ registerLocaleData(localePt, 'pt-BR');
     TipoAplicacaoListComponent,
     TipoAplicacaoEditComponent,
     AlocacaoMovimentacaoEditaComponent,
-    MelhoresValidacaoPeriodoComponent
+    MelhoresValidacaoPeriodoComponent,
+    AtivoIndiceComponent,
+    AtivoIndiceEditaComponent,
+    AtivoIntraIndiceComponent
   ],
   imports: [
     BrowserModule,
@@ -260,7 +266,8 @@ registerLocaleData(localePt, 'pt-BR');
     DetalheAluguelFundoImobiliarioComponent,
     EscolhePeriodoCorrenteExperimentoComponent,
     TipoAplicacaoEditComponent,
-    AlocacaoMovimentacaoEditaComponent
+    AlocacaoMovimentacaoEditaComponent,
+    AtivoIndiceEditaComponent
   ],
   bootstrap: [AppComponent]
 })
