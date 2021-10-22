@@ -10,7 +10,6 @@ export interface CotacaoIntradayAcaoResultadoInterface {
   "diaNum"?: number;
   "tg12St12"?: number;
   "tg13St13"?: number;
-  "ativoAcaoId"?: string;
 }
 
 export class CotacaoIntradayAcaoResultado implements CotacaoIntradayAcaoResultadoInterface {
@@ -22,7 +21,6 @@ export class CotacaoIntradayAcaoResultado implements CotacaoIntradayAcaoResultad
   "diaNum": number;
   "tg12St12": number;
   "tg13St13": number;
-  "ativoAcaoId": string;
   constructor(data?: CotacaoIntradayAcaoResultadoInterface) {
     Object.assign(this, data);
   }
@@ -87,10 +85,6 @@ export class CotacaoIntradayAcaoResultado implements CotacaoIntradayAcaoResultad
         "tg13St13": {
           name: 'tg13St13',
           type: 'number'
-        },
-        "ativoAcaoId": {
-          name: 'ativoAcaoId',
-          type: 'string'
         },
       },
       relations: {

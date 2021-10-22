@@ -28,6 +28,7 @@ public class PesquisaTrendCompraObj {
 				double valorBaixo = cotacao.getValor() * (1-PERCENTUAL_ALTO);
 				double valorAlto = cotacao.getValor() * (1+PERCENTUAL_BAIXO);
 				int resultado = procuraValor(dias, indDia, indHora, valorBaixo, valorAlto); 
+				cotacao.set
 			}
 			
 		}
@@ -38,19 +39,24 @@ public class PesquisaTrendCompraObj {
 		int saida = 0;
 		int posDia = indDia;
 		int posHora = indHora;
+		CotacaoDiarioAcao diario = null;
 		while (true) {
-			CotacaoDiarioAcao diario = dias.get(indDia).getCotacaoDiarioAcaos().get(0);
-			if (diario==null) {
-				break;
+			if (dias.get(indDia).getCotacaoDiarioAcaos().size()==0) {
+				indDia++;
+			} else {
+				diario = dias.get(indDia++).getCotacaoDiarioAcaos().get(0);
+				if (diario==null) {
+					break;
+				}
+				if (diario.getMinimo() <= valorBaixo) {
+					saida = -1;
+					break;
+				} 
+				if (diario.getMaximo() >= valorAlto) {
+					saida = 1;
+					break;
+				} 
 			}
-			if (diario.getMinimo() <= valorBaixo) {
-				saida = -1;
-				break;
-			} 
-			if (diario.getMaximo() >= valorAlto) {
-				saida = 1;
-				break;
-			} 
 		}
 		return saida;
 	}

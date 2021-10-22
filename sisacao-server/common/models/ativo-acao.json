@@ -51,6 +51,12 @@
     },
     "mediaNegocio3Mes": {
       "type": "number"
+    },
+    "intraday10": {
+      "type": "number"
+    },
+    "possuiIntradayResultado" : {
+      "type": "number"
     }
   },
   "validations": [],
@@ -68,7 +74,7 @@
     "cotacaoIntradayAcaoResultados": {
       "type": "hasMany",
       "model": "CotacaoIntradayAcaoResultado",
-      "foreignKey": ""
+      "foreignKey": "ticker"
     }
   },
   "acls": [],
@@ -290,6 +296,42 @@
       "http": [
         {
           "path": "/melhorParaValidacao",
+          "verb": "post"
+        }
+      ]
+    },
+    "ListaComResultadoMaisRecente": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaComResultadoMaisRecente",
+          "verb": "get"
+        }
+      ]
+    },
+    "VerificaPossuiResultado": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "verificaPossuiResultado",
           "verb": "post"
         }
       ]

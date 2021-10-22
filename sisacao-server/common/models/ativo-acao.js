@@ -4,6 +4,39 @@ var app = require('../../server/server');
 
 module.exports = function (Ativoacao) {
 
+    /**
+    * 
+    * @param {Function(Error, object)} callback
+    */
+     Ativoacao.VerificaPossuiResultado = function(callback) {
+        let sql = "update AtivoAcao " +
+                    " set possuiIntradayResultado = " + 
+                    " (select count(*) from CotacaoIntradayAcaoResultado " + 
+                    " where CotacaoIntradayAcaoResultado.ticker = AtivoAcao.ticker " +
+                    " limit 1)";
+        let ds = Cotacaointradayindice.dataSource;
+        ds.connector.query(sql, callback);
+    };
+
+
+    /**
+    * 
+    * @param {Function(Error, array)} callback
+    */
+    Ativoacao.ListaComResultadoMaisRecente = function(callback) {
+        let filtro = {
+            'where' : {'possuiIntradayResultado' : '1'},
+            'order' : 'ticker',
+            'include' : {   'relation' : 'cotacaoIntradayAcaoResultados' , 
+                            'scope' : {
+                                'order' : 'dataHora desc',
+                                'limit' : 1,
+                                'where' : {'valor' : {'neq':null}}
+                            }
+                        }
+        }
+        Ativoacao.find(filtro,callback);
+    };
 
 
 

@@ -1,15 +1,17 @@
 package br.inf.digicom.desen;
 
-import br.inf.digicom.loopback.ExperimentoSimulacaoFacade;
+import br.inf.digicom.validador.Experimento_ObtemParaValidacao;
 
 public class MontaValidacaoSimulacaoApp {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		System.out.println("Ola Mundo - MontaValidacaoSimulacaoApp");
-		
-		ExperimentoSimulacaoFacade facade = new ExperimentoSimulacaoFacade();
-		facade.obtemExperimentoValidacao();
+		Experimento_ObtemParaValidacao obj = new Experimento_ObtemParaValidacao();
+		obj.executa();
+		System.out.println("Finalizou");
+		System.exit(0);
+		//ExperimentoSimulacaoFacade facade = new ExperimentoSimulacaoFacade();
+		//facade.obtemExperimentoValidacao();
 	}
 
 }

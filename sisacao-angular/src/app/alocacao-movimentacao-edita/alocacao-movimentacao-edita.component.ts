@@ -35,7 +35,7 @@ export class AlocacaoMovimentacaoEditaComponent extends BaseEditComponent {
   onSubmit() {
     this.preSubmit();
     console.log('Submit(BaseEdit):' , this.item);
-    this.item.tipoAplicacaoId = this.origem.id;
+    this.item.tipoAplicacaoId = this.item.id;
     this.servico.InsereMovimentacao(this.item, (err, obj) => {
       console.log("Erro:" + err);
     }).subscribe((e: any) => {

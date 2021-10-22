@@ -21,6 +21,8 @@ export interface AtivoAcaoInterface {
   "min3Mes"?: number;
   "spread3Mes"?: number;
   "mediaNegocio3Mes"?: number;
+  "intraday10"?: number;
+  "possuiIntradayResultado"?: number;
   relGrupoAcaos?: RelGrupoAcao[];
   execucaoSimulacaos?: ExecucaoSimulacao[];
   cotacaoIntradayAcaoResultados?: CotacaoIntradayAcaoResultado[];
@@ -41,6 +43,8 @@ export class AtivoAcao implements AtivoAcaoInterface {
   "min3Mes": number;
   "spread3Mes": number;
   "mediaNegocio3Mes": number;
+  "intraday10": number;
+  "possuiIntradayResultado": number;
   relGrupoAcaos: RelGrupoAcao[];
   execucaoSimulacaos: ExecucaoSimulacao[];
   cotacaoIntradayAcaoResultados: CotacaoIntradayAcaoResultado[];
@@ -133,6 +137,14 @@ export class AtivoAcao implements AtivoAcaoInterface {
           name: 'mediaNegocio3Mes',
           type: 'number'
         },
+        "intraday10": {
+          name: 'intraday10',
+          type: 'number'
+        },
+        "possuiIntradayResultado": {
+          name: 'possuiIntradayResultado',
+          type: 'number'
+        },
       },
       relations: {
         relGrupoAcaos: {
@@ -157,7 +169,7 @@ export class AtivoAcao implements AtivoAcaoInterface {
           model: 'CotacaoIntradayAcaoResultado',
           relationType: 'hasMany',
                   keyFrom: 'ticker',
-          keyTo: 'ativoAcaoId'
+          keyTo: 'ticker'
         },
       }
     }

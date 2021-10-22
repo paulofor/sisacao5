@@ -113,7 +113,7 @@ public class RepositorioCotacao {
 		while (!carregaAtivoResultadoOk) {
 			System.out.println(carregaAtivoResultadoOk);
 			try {
-				Thread.sleep(2000);
+				Thread.sleep(10000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
