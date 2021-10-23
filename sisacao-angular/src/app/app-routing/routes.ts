@@ -36,6 +36,7 @@ import { TipoAplicacaoListComponent } from '../tipo-aplicacao-list/tipo-aplicaca
 import { MelhoresValidacaoPeriodoComponent } from '../melhores-validacao-periodo/melhores-validacao-periodo.component';
 import { AtivoIndiceComponent } from '../ativo-indice/ativo-indice.component';
 import { AtivoIntraIndiceComponent } from '../ativo-intra-indice/ativo-intra-indice.component';
+import { AtivoAcaoResultadoFuturoComponent } from '../ativo-acao-resultado-futuro/ativo-acao-resultado-futuro.component';
 
 
 export const routes : Routes = [
@@ -46,6 +47,8 @@ export const routes : Routes = [
     { path: 'ativoMercadoria' , component: AtivoMercadoriaComponent},
     { path: 'ativoImobiliario' , component: AtivoImobiliarioComponent},
     { path: 'ativoIndice' , component: AtivoIndiceComponent},
+
+    { path: 'ativoAcaoResultadoFuturo' , component: AtivoAcaoResultadoFuturoComponent },
 
     { path: 'cotacaoIntraAcao/:id' , component: CotacaoIntraAcaoComponent},
     { path: 'cotacaoIntraOpcao/:id' , component: CotacaoIntraOpcaoComponent},

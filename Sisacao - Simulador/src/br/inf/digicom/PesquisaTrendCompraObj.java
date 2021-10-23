@@ -28,10 +28,15 @@ public class PesquisaTrendCompraObj {
 				double valorBaixo = cotacao.getValor() * (1-PERCENTUAL_ALTO);
 				double valorAlto = cotacao.getValor() * (1+PERCENTUAL_BAIXO);
 				int resultado = procuraValor(dias, indDia, indHora, valorBaixo, valorAlto); 
-				cotacao.set
+				cotacao.setTg15St15(resultado);
+				cotacao.atualizaTg15St15();
 			}
-			
+			enviaDia(dia);
 		}
+	}
+	
+	private void enviaDia(DiaPregao dia) {
+		System.out.println(dia);
 	}
 
 	private int procuraValor(List<DiaPregao> dias, int indDia, int indHora, double valorBaixo, double valorAlto) {

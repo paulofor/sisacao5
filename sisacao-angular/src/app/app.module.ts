@@ -108,6 +108,7 @@ import { MelhoresValidacaoPeriodoComponent } from './melhores-validacao-periodo/
 import { AtivoIndiceComponent } from './ativo-indice/ativo-indice.component';
 import { AtivoIndiceEditaComponent } from './ativo-indice-edita/ativo-indice-edita.component';
 import { AtivoIntraIndiceComponent } from './ativo-intra-indice/ativo-intra-indice.component';
+import { AtivoAcaoResultadoFuturoComponent } from './ativo-acao-resultado-futuro/ativo-acao-resultado-futuro.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -189,7 +190,8 @@ registerLocaleData(localePt, 'pt-BR');
     MelhoresValidacaoPeriodoComponent,
     AtivoIndiceComponent,
     AtivoIndiceEditaComponent,
-    AtivoIntraIndiceComponent
+    AtivoIntraIndiceComponent,
+    AtivoAcaoResultadoFuturoComponent
   ],
   imports: [
     BrowserModule,

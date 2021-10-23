@@ -55,7 +55,7 @@
     "intraday10": {
       "type": "number"
     },
-    "possuiIntradayResultado" : {
+    "possuiIntradayResultado": {
       "type": "number"
     }
   },

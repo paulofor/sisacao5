@@ -7,6 +7,24 @@ module.exports = function(Cotacaointradayacaoresultado) {
 
     /**
     * 
+    * @param {array} listaCotacao 
+    * @param {Function(Error, object)} callback
+    */
+     Cotacaointradayacaoresultado.AtualizaTargetStopDia = function(listaCotacao, callback) {
+        for (let i=0;i<listaCotacao.length;i++) {
+            let item = listaCotacao[i];
+            console.log('item:' , item);
+            if (item.tg15St15) {
+                console.log('tem 15-15');
+            }
+        }
+        var saida;
+        // TODO
+        callback(null, saida);
+    };
+
+    /**
+    * 
     * @param {string} ticker 
     * @param {Function(Error, object)} callback
     */

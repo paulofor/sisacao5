@@ -13,7 +13,7 @@
 
 
     <mat-form-field class="example-full-width">
-      <mat-select placeholder="Instituição" #regraSimulacaoId [(ngModel)]="item.instituicao" name="instituicaoFinanceiraId">
+      <mat-select placeholder="Instituição" #instituicaoFinanceiraId [(ngModel)]="item.instituicaoFinanceiraId" name="instituicaoFinanceiraId">
         <mat-option *ngFor="let instituicao of listaInstituicao" [value]="instituicao.id">
           {{ instituicao.nome }}
         </mat-option>

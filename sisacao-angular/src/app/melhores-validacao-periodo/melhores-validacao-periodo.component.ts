@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { BaseListComponent } from '../base-component/base-list-component';
-import { ExecucaoSimulacaoApi } from '../shared/sdk';
+import { ExecucaoSimulacaoApi, PeriodoExperimento, PeriodoExperimentoApi } from '../shared/sdk';
 
 @Component({
   selector: 'app-melhores-validacao-periodo',
@@ -11,14 +11,23 @@ import { ExecucaoSimulacaoApi } from '../shared/sdk';
 })
 export class MelhoresValidacaoPeriodoComponent extends BaseListComponent  {
 
-  constructor(private router: ActivatedRoute,protected dialog: MatDialog, protected srv:ExecucaoSimulacaoApi) {
+  periodo: PeriodoExperimento;
+  contaValidado = 0;
+
+  constructor(private router: ActivatedRoute,protected dialog: MatDialog, protected srv:ExecucaoSimulacaoApi, 
+    protected srvPeriodo:PeriodoExperimentoApi) {
     super(dialog, srv);
+    this.contaValidado = 0;
   }
 
 
   carregaTela() {
     this.router.params.subscribe((params) => {
       let idPeriodo = params['id'];
+      this.srvPeriodo.findById(idPeriodo)
+        .subscribe((periodo : PeriodoExperimento) => {
+          this.periodo = periodo;
+        })
       this.srv.MelhorValidacaoPeriodo(idPeriodo)
           .subscribe((result:any[]) => {
             console.log('result: ' , result);
@@ -30,6 +39,7 @@ export class MelhoresValidacaoPeriodoComponent extends BaseListComponent  {
   placarValidacao(item) {
     let placar = '-'
     if (item.execucaoSimulacaoValidacaos.length>0) {
+      this.contaValidado++;
       placar = item.execucaoSimulacaoValidacaos[0].quantidadeLucro + ' x ' + item.execucaoSimulacaoValidacaos[0].quantidadePrejuizo;
     }
     return placar;

@@ -28,6 +28,7 @@ module.exports = function(Valoraplicado) {
                             {'tipoAplicaoId' : valorAplicado.tipoAplicacaoId }] 
                         }}
             app.models.AplicacaoInstituicao.find(filtro, (err,result) => {
+                console.log('result.legnth:' , result.length)
                 if (result.length==0) {
                     let novo = {
                         'instituicaoFinanceiraId' : valorAplicado.instituicaoFinanceiraId,

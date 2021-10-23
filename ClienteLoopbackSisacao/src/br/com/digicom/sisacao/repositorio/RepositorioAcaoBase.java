@@ -1,7 +1,10 @@
 package br.com.digicom.sisacao.repositorio;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import org.json.JSONArray;
 
 import com.strongloop.android.loopback.ModelRepository;
 import com.strongloop.android.loopback.callbacks.EmptyResponseParser;
@@ -121,6 +124,17 @@ public class RepositorioAcaoBase {
 	        params.put("ticker", ticker);
 	        params.put("ano", ano);
 	        invokeStaticMethod("criaTickerAno", params, new EmptyResponseParser(voidCallback));
+		}
+		public void atualizaTargetStopDia(List<CotacaoIntradayAcaoResultado> lista, final VoidCallback voidCallback) {
+			RestContractItem contrato = new RestContractItem("CotacaoIntradayAcaoResultados/atualizaTargetStopDia","PUT");
+			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayAcaoResultado.atualizaTargetStopDia");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        JSONArray listaJson = new JSONArray();
+	        for (CotacaoIntradayAcaoResultado cotacao : lista) {
+	        	listaJson.put(cotacao);
+	        }
+	        params.put("listaCotacao", listaJson);
+	        invokeStaticMethod("atualizaTargetStopDia", params, new EmptyResponseParser(voidCallback));
 		}
 	}
 

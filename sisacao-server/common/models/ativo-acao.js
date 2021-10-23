@@ -11,9 +11,8 @@ module.exports = function (Ativoacao) {
      Ativoacao.VerificaPossuiResultado = function(callback) {
         let sql = "update AtivoAcao " +
                     " set possuiIntradayResultado = " + 
-                    " (select count(*) from CotacaoIntradayAcaoResultado " + 
-                    " where CotacaoIntradayAcaoResultado.ticker = AtivoAcao.ticker " +
-                    " limit 1)";
+                    " (select count(distinct ticker) from CotacaoIntradayAcaoResultado " + 
+                    " where CotacaoIntradayAcaoResultado.ticker = AtivoAcao.ticker ";
         let ds = Cotacaointradayindice.dataSource;
         ds.connector.query(sql, callback);
     };
@@ -50,7 +49,7 @@ module.exports = function (Ativoacao) {
         app.models.ExperimentoSimulacao.findById(idExperimento, (err,experimento) => {
             app.models.PeriodoExperimento.findById(experimento.periodoExperimentoId, (err,periodo) => {
                 //console.log('periodo: ' ,periodo);
-                Ativoacao.MelhorSimulacaoPorExperimento(idExperimento,periodo.id, periodo.minimoPontoValidacao,3,(err,res) => {
+                Ativoacao.MelhorSimulacaoPorExperimento(idExperimento,periodo.id, periodo.minimoPontoValidacao,200,(err,res) => {
                     console.log('Finalizou MelhorParaValidacao');
                     callback(err,res);
                 })

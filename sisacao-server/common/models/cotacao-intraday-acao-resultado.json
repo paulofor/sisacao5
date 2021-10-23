@@ -26,10 +26,13 @@
     "diaNum": {
       "type": "number"
     },
-    "tg12St12": {
+    "tg15St15": {
       "type": "number"
     },
-    "tg13St13": {
+    "compraTg15St10": {
+      "type": "number"
+    },
+    "vendaTg15St10": {
       "type": "number"
     }
   },
@@ -115,6 +118,31 @@
         {
           "path": "/gravaVaziaComAnterior",
           "verb": "post"
+        }
+      ]
+    },
+    "AtualizaTargetStopDia": {
+      "accepts": [
+        {
+          "arg": "listaCotacao",
+          "type": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaTargetStopDia",
+          "verb": "put"
         }
       ]
     }
