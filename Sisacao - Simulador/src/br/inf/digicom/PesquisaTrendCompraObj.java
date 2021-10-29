@@ -6,11 +6,18 @@ import br.com.digicom.sisacao.modelo.CotacaoDiarioAcao;
 import br.com.digicom.sisacao.modelo.CotacaoIntradayAcaoResultado;
 import br.com.digicom.sisacao.modelo.DiaPregao;
 import br.inf.digicom.simulacao.RepositorioCotacao;
+import br.inf.digicom.simulacao.service.CotacaoIntradayAcaoResultadoService;
 
 public class PesquisaTrendCompraObj {
 
 	private double PERCENTUAL_ALTO = 0.15;
 	private double PERCENTUAL_BAIXO = 0.15;
+	
+	private CotacaoIntradayAcaoResultadoService service = null;
+	
+	public PesquisaTrendCompraObj() {
+		service = new CotacaoIntradayAcaoResultadoService();
+	}
 	
 	public void executa(String ticker) {
 		RepositorioCotacao.carregaAtivoResultado(ticker, 20210101);
@@ -36,6 +43,7 @@ public class PesquisaTrendCompraObj {
 	}
 	
 	private void enviaDia(DiaPregao dia) {
+		service.atualizaTargetStopDia(dia.getCotacaoIntradayAcaoResultados());
 		System.out.println(dia);
 	}
 

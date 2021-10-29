@@ -26,13 +26,19 @@ module.exports = function (Ativoacao) {
         let filtro = {
             'where' : {'possuiIntradayResultado' : '1'},
             'order' : 'ticker',
-            'include' : {   'relation' : 'cotacaoIntradayAcaoResultados' , 
+            'include' : [
+                        {   'relation' : 'cotacaoIntradayAcaoResultados' , 
                             'scope' : {
                                 'order' : 'dataHora desc',
                                 'limit' : 1,
                                 'where' : {'valor' : {'neq':null}}
                             }
+                        },
+                        {
+                            'relation' : 'relGrupoAcaos',
+                            'scope' : {'include' : 'grupoAcao'}
                         }
+                    ]
         }
         Ativoacao.find(filtro,callback);
     };
@@ -49,7 +55,7 @@ module.exports = function (Ativoacao) {
         app.models.ExperimentoSimulacao.findById(idExperimento, (err,experimento) => {
             app.models.PeriodoExperimento.findById(experimento.periodoExperimentoId, (err,periodo) => {
                 //console.log('periodo: ' ,periodo);
-                Ativoacao.MelhorSimulacaoPorExperimento(idExperimento,periodo.id, periodo.minimoPontoValidacao,200,(err,res) => {
+                Ativoacao.MelhorSimulacaoPorExperimento(idExperimento,periodo.id, periodo.minimoPontoValidacao,1000,(err,res) => {
                     console.log('Finalizou MelhorParaValidacao');
                     callback(err,res);
                 })
@@ -83,7 +89,7 @@ module.exports = function (Ativoacao) {
         'include' : {
             'relation' : 'execucaoSimulacaos' , 'scope' : {
                     'limit' : qtdeExecucao,
-                    'where' : { 'and' : [{'resultado' : { gt : cortePontos }} , {'experimentoSimulacaoId' : idExperimento } , {'periodoExperimentoId' : idPeriodo} ]},
+                    'where' : { 'and' : [{'resultado' : { gte : cortePontos }} , {'experimentoSimulacaoId' : idExperimento } , {'periodoExperimentoId' : idPeriodo} ]},
                     'order' : 'resultado desc',
                     'include' : {'relation' : 'combinacaoParametro' , 'scope' : {
                         'include' : ['regraSimulacao' , {'relation' : 'valorParametros' , 'scope' : {'include' : 'parametroRegra'}}]

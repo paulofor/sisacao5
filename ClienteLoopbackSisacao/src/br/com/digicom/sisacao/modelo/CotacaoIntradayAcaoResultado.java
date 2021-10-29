@@ -1,5 +1,7 @@
 package br.com.digicom.sisacao.modelo;
 
+import org.json.JSONObject;
+
 import com.strongloop.android.loopback.Model;
 
 public class CotacaoIntradayAcaoResultado extends Model {
@@ -110,6 +112,10 @@ public class CotacaoIntradayAcaoResultado extends Model {
 
 	public String toString() {
 		return this.dataHora + ": " + this.valor;
+	}
+	public JSONObject getJSON() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

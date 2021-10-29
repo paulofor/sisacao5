@@ -131,7 +131,7 @@ public class RepositorioAcaoBase {
 	        Map<String, Object> params = new HashMap<String, Object>();
 	        JSONArray listaJson = new JSONArray();
 	        for (CotacaoIntradayAcaoResultado cotacao : lista) {
-	        	listaJson.put(cotacao);
+	        	listaJson.put(cotacao.getJSON());
 	        }
 	        params.put("listaCotacao", listaJson);
 	        invokeStaticMethod("atualizaTargetStopDia", params, new EmptyResponseParser(voidCallback));

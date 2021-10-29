@@ -12,8 +12,15 @@ module.exports = function(Valoraplicado) {
     */
     Valoraplicado.InsereMovimentacao = function(valorAplicado, callback) {
         console.log('valorAplicado1' , valorAplicado);
+        delete valorAplicado['id'];
+        delete valorAplicado['aplicacaoInstituicaos'];
         Valoraplicado.create(valorAplicado, (err,result) => {
-            console.log('valorAplicado2' , valorAplicado);
+            if (err) {
+                callback(err,null);
+                return;
+            }
+            console.log('err' , err);
+            console.log('result', result);
             console.log(valorAplicado['tipoAplicacaoId'])
             let sqlAplicacaoInstituicao = "update AplicacaoInstituicao set saldoAtual = saldoAtual + " + valorAplicado.valor + 
                     " where instituicaoFinanceiraId = " + valorAplicado.instituicaoFinanceiraId + 
@@ -33,10 +40,12 @@ module.exports = function(Valoraplicado) {
                     let novo = {
                         'instituicaoFinanceiraId' : valorAplicado.instituicaoFinanceiraId,
                         'tipoAplicaoId' : valorAplicado.tipoAplicacaoId,
-                        'saldo' : valorAplicado.valor 
+                        'saldoAtual' : valorAplicado.valor 
                     }
+                    console.log('novo' , novo);
                     app.models.AplicacaoInstituicao.create(novo, (err,result) => {
-
+                        console.log('erro-create:' , err);
+                        console.log('result-create:' , result);
                     })
                 } else {
                     ds.connector.query(sqlAplicacaoInstituicao, (err,result1) => {

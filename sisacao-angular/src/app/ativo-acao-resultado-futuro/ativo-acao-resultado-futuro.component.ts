@@ -25,7 +25,14 @@ export class AtivoAcaoResultadoFuturoComponent extends BaseListComponent  {
       })
   }
 
- 
+  grupos(item) {
+    let saida = '';
+    for (let i=0;i<item.relGrupoAcaos.length;i++) {
+      if (i>0) saida += ', '
+      saida += item.relGrupoAcaos[i].grupoAcao.nome;
+    }
+    return saida;
+  }
  
   /*
   getComponente() {

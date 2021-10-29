@@ -296,7 +296,7 @@
       "http": [
         {
           "path": "/melhorParaValidacao",
-          "verb": "post"
+          "verb": "get"
         }
       ]
     },
