@@ -45,7 +45,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CookieBrowser } from './storage/cookie.browser';
 import { StorageBrowser } from './storage/storage.browser';
 import { SocketBrowser } from './sockets/socket.browser';
-
+import { SocketDriver } from './sockets/socket.driver';
 import { SocketConnection } from './sockets/socket.connections';
 import { RealTime } from './services/core/real.time';
 import { UserApi } from './services/custom/User';
@@ -95,6 +95,8 @@ import { ExecucaoSimulacaoValidacaoApi } from './services/custom/ExecucaoSimulac
 import { CotacaoIntradayAcaoResultadoApi } from './services/custom/CotacaoIntradayAcaoResultado';
 import { CotacaoDiarioIndiceApi } from './services/custom/CotacaoDiarioIndice';
 import { AplicacaoInstituicaoApi } from './services/custom/AplicacaoInstituicao';
+import { AtivoCriptomoedaApi } from './services/custom/AtivoCriptomoeda';
+import { CotacaoIntradayMercadoBitcoinApi } from './services/custom/CotacaoIntradayMercadoBitcoin';
 /**
 * @module SDKBrowserModule
 * @description
@@ -172,9 +174,11 @@ export class SDKBrowserModule {
         CotacaoIntradayAcaoResultadoApi,
         CotacaoDiarioIndiceApi,
         AplicacaoInstituicaoApi,
+        AtivoCriptomoedaApi,
+        CotacaoIntradayMercadoBitcoinApi,
         internalStorageProvider,
-        { provide: SDKStorage, useClass: StorageBrowser }
-
+        { provide: SDKStorage, useClass: StorageBrowser },
+        { provide: SocketDriver, useClass: SocketBrowser }
       ]
     };
   }

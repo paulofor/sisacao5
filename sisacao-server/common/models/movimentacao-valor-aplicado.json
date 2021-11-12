@@ -1,0 +1,66 @@
+{
+  "name": "MovimentacaoValorAplicado",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "valor": {
+      "type": "number"
+    },
+    "data": {
+      "type": "string"
+    },
+    "tipoMovimentacao": {
+      "type": "string"
+    },
+    "saldoAnterior": {
+      "type": "number"
+    },
+    "saldoAtual": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "tipoAplicacao": {
+      "type": "belongsTo",
+      "model": "TipoAplicacao",
+      "foreignKey": ""
+    },
+    "instituicaoFinanceira": {
+      "type": "belongsTo",
+      "model": "InstituicaoFinanceira",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {
+    "InsereMovimentacao": {
+      "accepts": [
+        {
+          "arg": "valorAplicado",
+          "type": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saidaa",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/insereMovimentacao",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

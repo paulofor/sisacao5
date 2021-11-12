@@ -1,0 +1,79 @@
+{
+  "name": "RegraProjecao",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "tipoCompraVenda": {
+      "type": "string"
+    },
+    "target": {
+      "type": "number"
+    },
+    "stop": {
+      "type": "number"
+    },
+    "diaLimite": {
+      "type": "number"
+    },
+    "processando": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "cotacaoIntradayAcaoResultadoValors": {
+      "type": "hasMany",
+      "model": "CotacaoIntradayAcaoResultadoValor",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {
+    "LigaProcessando": {
+      "accepts": [
+        {
+          "arg": "idRegraProjecao",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/ligaProcessando",
+          "verb": "post"
+        }
+      ]
+    },
+    "ObtemProcessando": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "item",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemProcessando",
+          "verb": "get"
+        }
+      ]
+    }
+  }
+}

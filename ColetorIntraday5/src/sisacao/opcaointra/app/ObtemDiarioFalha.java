@@ -10,12 +10,13 @@ public class ObtemDiarioFalha {
 
 	public static void main(String[] args) {
 		TransferidorObj obj = new TransferidorObj();
-		String dia = "10";
-		String mes = "06";
+		String dia = "04";
+		String mes = "01";
 		String ano = "21";
    		obj.main(mes + dia ,ano);
    		ParserDiarioObj objParse = new ParserDiarioObj();
-   		objParse.inicio("20" + ano + mes + dia);
+   		objParse.inicioRecuperacao("20" + ano + mes + dia);
+   		System.out.println("Finalizou");
 	}
 	
 }

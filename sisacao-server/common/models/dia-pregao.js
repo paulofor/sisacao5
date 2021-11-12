@@ -3,7 +3,18 @@
 module.exports = function(Diapregao) {
 
 
-
+    /**
+    * 
+    * @param {Function(Error, array)} callback
+    */
+    Diapregao.ComFalhaDiario = function(callback) {
+        let sql = "select * from DiaPregao " +
+                " where data <= now() and " +
+                " diaNum not in (select diaNum from CotacaoDiarioAcao where ticker = 'AZUL4')";
+        let ds = Diapregao.dataSource;
+        ds.connector.query(sql,callback);
+    };
+  
 
     /**
     * 
@@ -100,7 +111,7 @@ module.exports = function(Diapregao) {
                 { 
                 'relation' : 'cotacaoIntradayAcaos',
                 'scope' : 
-                    {'where' : {'ticker' : ticker } , "order" : "dataHora" , "fields" : { valor:true, ticker: true, dataHora: true, dataHoraNegStr: true }} 
+                    {'where' : {'ticker' : ticker } , "order" : "dataHora" , "fields" : { valor:true, ticker: true, dataHora: true, dataHoraNegStr: true}} 
                 },
                 { 
                 'relation' : 'cotacaoDiarioAcaos',
@@ -122,7 +133,7 @@ module.exports = function(Diapregao) {
                 { 
                 'relation' : 'cotacaoIntradayAcaoResultados',
                 'scope' : 
-                    {'where' : {'ticker' : ticker } , "order" : "dataHora" , "fields" : { valor:true, ticker: true, dataHora: true, dataHoraNegStr: true }} 
+                    {'where' : {'ticker' : ticker } , "order" : "dataHora" } 
                 },
                 { 
                 'relation' : 'cotacaoDiarioAcaos',

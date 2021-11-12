@@ -86,6 +86,7 @@ public class RestAdapter extends Adapter {
 			client = null;
 		} else {
 			client = new HttpClient(url,obtemConfig());
+			
 
 			// TODO: Find way to set these headers globally
 			// client.addHeader("Accept", "application/json");
@@ -208,7 +209,7 @@ public class RestAdapter extends Adapter {
 
 	class AsyncCompletionHandlerWithStatusCorrection extends AsyncCompletionHandlerBase {
 
-		@Override
+		//@Override
 		public STATE onStatusReceived(HttpResponseStatus status) throws Exception {
 			if (status.getStatusCode() == 500) {
 				return STATE.ABORT;
@@ -329,6 +330,7 @@ public class RestAdapter extends Adapter {
 
 			setUserAgent(userAgent);
 			addHeader("Accept", "application/json");
+	
 		}
 
 		private void setUserAgent(String userAgent) {
@@ -347,7 +349,7 @@ public class RestAdapter extends Adapter {
 			}
 
 			BoundRequestBuilder request = prepareRequest(method, baseUrl + path);
-			request.setRequestTimeout(10* 60000);
+			request.setRequestTimeout(600000);
 
 			System.out.println(baseUrl + path + " (" + method + ")");
 
@@ -428,7 +430,7 @@ public class RestAdapter extends Adapter {
 			// request.setProxyServer(proxy);
 
 			if ("GET".equalsIgnoreCase(method)) {
-
+				this.getConfig().getConnectTimeout();
 				request.execute(httpCallback);
 				// get(context, url, headers, null, httpCallback);
 			} else if ("DELETE".equalsIgnoreCase(method)) {

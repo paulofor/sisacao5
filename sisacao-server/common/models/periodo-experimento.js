@@ -3,6 +3,13 @@
 module.exports = function(Periodoexperimento) {
 
 
+  Periodoexperimento.observe('after save', function updateInicioColeta(ctx, next) {
+    Periodoexperimento.CalculaInicioColeta((err,result) => {
+      next();
+    })
+    
+  })
+
  /**
  * 
  * @param {Function(Error, object)} callback

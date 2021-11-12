@@ -109,6 +109,7 @@ import { AtivoIndiceComponent } from './ativo-indice/ativo-indice.component';
 import { AtivoIndiceEditaComponent } from './ativo-indice-edita/ativo-indice-edita.component';
 import { AtivoIntraIndiceComponent } from './ativo-intra-indice/ativo-intra-indice.component';
 import { AtivoAcaoResultadoFuturoComponent } from './ativo-acao-resultado-futuro/ativo-acao-resultado-futuro.component';
+import { PainelPeriodoValidacaoComponent } from './painel-periodo-validacao/painel-periodo-validacao.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -191,7 +192,8 @@ registerLocaleData(localePt, 'pt-BR');
     AtivoIndiceComponent,
     AtivoIndiceEditaComponent,
     AtivoIntraIndiceComponent,
-    AtivoAcaoResultadoFuturoComponent
+    AtivoAcaoResultadoFuturoComponent,
+    PainelPeriodoValidacaoComponent
   ],
   imports: [
     BrowserModule,

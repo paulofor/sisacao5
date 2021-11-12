@@ -7,15 +7,13 @@
   },
   "properties": {
     "ticker": {
-      "type": "string",
-      "id": true
+      "type": "string"
     },
     "valor": {
       "type": "number"
     },
     "hora": {
-      "type": "string",
-      "id": true
+      "type": "string"
     },
     "dia": {
       "type": "date"
@@ -26,18 +24,19 @@
     "diaNum": {
       "type": "number"
     },
-    "tg15St15": {
-      "type": "number"
-    },
-    "compraTg15St10": {
-      "type": "number"
-    },
-    "vendaTg15St10": {
-      "type": "number"
+    "diaHoraNumTicker": {
+      "type": "string",
+      "id": true
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "cotacaoIntradayAcaoResultadoValors": {
+      "type": "hasMany",
+      "model": "CotacaoIntradayAcaoResultadoValor",
+      "foreignKey": "diaHoraNumTicker"
+    }
+  },
   "acls": [],
   "methods": {
     "CriaTickerAno": {
@@ -143,6 +142,37 @@
         {
           "path": "/atualizaTargetStopDia",
           "verb": "put"
+        }
+      ]
+    },
+    "ObtemListaComValor": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "idRegraProjecao",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemListaComValor",
+          "verb": "get"
         }
       ]
     }

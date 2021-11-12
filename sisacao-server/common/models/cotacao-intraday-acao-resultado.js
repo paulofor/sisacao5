@@ -5,22 +5,49 @@ var app = require('../../server/server');
 module.exports = function(Cotacaointradayacaoresultado) {
 
 
+
+    /**
+    * 
+    * @param {string} ticker 
+    * @param {number} idRegraProjecao 
+    * @param {Function(Error, array)} callback
+    */
+    Cotacaointradayacaoresultado.ObtemListaComValor = function(ticker, idRegraProjecao, callback) {
+        let filtro = { 
+                    'where' : {'ticker' : ticker },
+                    'order' : 'dataHora' ,
+                    'include' : {'relation' : 'cotacaoIntradayAcaoResultadoValors'}
+                    };
+        Cotacaointradayacaoresultado.find(filtro,callback);
+    };
+
+
     /**
     * 
     * @param {array} listaCotacao 
     * @param {Function(Error, object)} callback
     */
      Cotacaointradayacaoresultado.AtualizaTargetStopDia = function(listaCotacao, callback) {
+        var ds = Cotacaointradayacaoresultado.dataSource;
+        let cont = 0;
         for (let i=0;i<listaCotacao.length;i++) {
             let item = listaCotacao[i];
             console.log('item:' , item);
+            let sql = '';
             if (item.tg15St15) {
                 console.log('tem 15-15');
-            }
+                sql = "update CotacaoIntradayAcaoResultado set tg15St15 = " + item.tg15St15 + " , " +
+                    " diasTg15St15 = " + item.diasTg15St15 + 
+                    " where ticker='" + item.ticker + "' and diaNum=" + item.diaNum + " and hora = '" + item.hora + "' ";
+            };
+            ds.connector.query(sql, (err,result) => {
+                cont++;
+                if (cont==listaCotacao.length) {
+                    callback(null, cont);
+                }
+                
+            }); 
         }
-        var saida;
-        // TODO
-        callback(null, saida);
     };
 
     /**

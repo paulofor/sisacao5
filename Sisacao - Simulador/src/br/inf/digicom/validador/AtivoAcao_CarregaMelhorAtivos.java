@@ -30,6 +30,7 @@ public class AtivoAcao_CarregaMelhorAtivos extends ExecutorBase{
 				t.printStackTrace();
 			}});
 		while (!concluido) {
+			System.out.println("wait AtivoAcao_CarregaMelhorAtivos");
 			try {
 				Thread.sleep(5000);
 			} catch (InterruptedException e) {

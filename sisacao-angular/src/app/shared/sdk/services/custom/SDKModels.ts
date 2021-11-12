@@ -47,6 +47,8 @@ import { ExecucaoSimulacaoValidacao } from '../../models/ExecucaoSimulacaoValida
 import { CotacaoIntradayAcaoResultado } from '../../models/CotacaoIntradayAcaoResultado';
 import { CotacaoDiarioIndice } from '../../models/CotacaoDiarioIndice';
 import { AplicacaoInstituicao } from '../../models/AplicacaoInstituicao';
+import { AtivoCriptomoeda } from '../../models/AtivoCriptomoeda';
+import { CotacaoIntradayMercadoBitcoin } from '../../models/CotacaoIntradayMercadoBitcoin';
 
 export interface Models { [name: string]: any }
 
@@ -101,6 +103,8 @@ export class SDKModels {
     CotacaoIntradayAcaoResultado: CotacaoIntradayAcaoResultado,
     CotacaoDiarioIndice: CotacaoDiarioIndice,
     AplicacaoInstituicao: AplicacaoInstituicao,
+    AtivoCriptomoeda: AtivoCriptomoeda,
+    CotacaoIntradayMercadoBitcoin: CotacaoIntradayMercadoBitcoin,
     
   };
 

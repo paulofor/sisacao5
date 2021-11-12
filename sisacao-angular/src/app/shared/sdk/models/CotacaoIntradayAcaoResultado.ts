@@ -8,8 +8,12 @@ export interface CotacaoIntradayAcaoResultadoInterface {
   "dia"?: Date;
   "dataHora"?: Date;
   "diaNum"?: number;
-  "tg12St12"?: number;
-  "tg13St13"?: number;
+  "tg15St15"?: number;
+  "compraTg15St10"?: number;
+  "vendaTg15St10"?: number;
+  "diasTg15St15"?: number;
+  "diasCompraTg15St10"?: number;
+  "diasVendaTg15St10"?: number;
 }
 
 export class CotacaoIntradayAcaoResultado implements CotacaoIntradayAcaoResultadoInterface {
@@ -19,8 +23,12 @@ export class CotacaoIntradayAcaoResultado implements CotacaoIntradayAcaoResultad
   "dia": Date;
   "dataHora": Date;
   "diaNum": number;
-  "tg12St12": number;
-  "tg13St13": number;
+  "tg15St15": number;
+  "compraTg15St10": number;
+  "vendaTg15St10": number;
+  "diasTg15St15": number;
+  "diasCompraTg15St10": number;
+  "diasVendaTg15St10": number;
   constructor(data?: CotacaoIntradayAcaoResultadoInterface) {
     Object.assign(this, data);
   }
@@ -78,12 +86,28 @@ export class CotacaoIntradayAcaoResultado implements CotacaoIntradayAcaoResultad
           name: 'diaNum',
           type: 'number'
         },
-        "tg12St12": {
-          name: 'tg12St12',
+        "tg15St15": {
+          name: 'tg15St15',
           type: 'number'
         },
-        "tg13St13": {
-          name: 'tg13St13',
+        "compraTg15St10": {
+          name: 'compraTg15St10',
+          type: 'number'
+        },
+        "vendaTg15St10": {
+          name: 'vendaTg15St10',
+          type: 'number'
+        },
+        "diasTg15St15": {
+          name: 'diasTg15St15',
+          type: 'number'
+        },
+        "diasCompraTg15St10": {
+          name: 'diasCompraTg15St10',
+          type: 'number'
+        },
+        "diasVendaTg15St10": {
+          name: 'diasVendaTg15St10',
           type: 'number'
         },
       },

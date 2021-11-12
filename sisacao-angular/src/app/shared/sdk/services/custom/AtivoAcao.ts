@@ -924,9 +924,7 @@ export class AtivoAcaoApi extends BaseLoopBackApi {
          * (The remote method definition does not provide any description.)
          * </em>
    *
-   * @param {object} data Request data.
-   *
-   *  - `idExperimento` – `{number}` - 
+   * @param {number} idExperimento 
    *
    * @returns {object[]} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -938,7 +936,7 @@ export class AtivoAcaoApi extends BaseLoopBackApi {
    * </em>
    */
   public MelhorParaValidacao(idExperimento: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "POST";
+    let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/AtivoAcaos/melhorParaValidacao";
     let _routeParams: any = {};

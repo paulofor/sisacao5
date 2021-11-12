@@ -1,0 +1,39 @@
+{
+  "name": "CotacaoIntradayAcaoResultadoValor",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ticker": {
+      "type": "string",
+      "id": true
+    },
+    "diaNum": {
+      "type": "number",
+      "id": true
+    },
+    "hora": {
+      "type": "string",
+      "id": true
+    },
+    "resultado": {
+      "type": "number"
+    },
+    "diaHoraNumTicker": {
+      "type": "string"
+    },
+    "dias": {
+      "type": "number"
+    },
+    "regraProjecaoId": {
+      "type": "number",
+      "id": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

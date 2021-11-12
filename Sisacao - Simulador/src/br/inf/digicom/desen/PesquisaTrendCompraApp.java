@@ -10,7 +10,7 @@ public class PesquisaTrendCompraApp {
 		//RepositorioCotacao.carregaAtivoResultado("AZUL4", 20210101);
 		//System.out.println("Chegou aqui");
 		PesquisaTrendCompraObj obj = new PesquisaTrendCompraObj();
-		obj.executa("AZUL4");
+		obj.executa("ABEV3");
 		System.exit(0);
 	}
 

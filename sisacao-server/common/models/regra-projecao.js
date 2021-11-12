@@ -1,0 +1,34 @@
+'use strict';
+
+module.exports = function(Regraprojecao) {
+
+
+/**
+ * 
+ * @param {number} idRegraProjecao 
+ * @param {Function(Error, object)} callback
+ */
+
+ Regraprojecao.ObtemProcessando = function(callback) {
+    let filtro = {'where' : {'processando' : 1} }
+    Regraprojecao.findOne(filtro,callback);
+ };
+  
+
+  /**
+ * 
+ * @param {number} idRegraProjecao 
+ * @param {Function(Error, object)} callback
+ */
+
+  Regraprojecao.LigaProcessando = function(idRegraProjecao, callback) {
+    let sql1 = 'update RegraProjecao set processando = 0';
+    let sql2 = 'update RegraProjecao set processando = 1 where id = ' + idRegraProjecao;
+    let ds = Regraprojecao.dataSource;
+    ds.connector.query(sql1, (err,result) => {
+        if (!err) {
+            ds.connector.query(sql2,callback);
+        }
+    })
+  };
+};

@@ -427,7 +427,7 @@ module.exports = function(Experimentosimulacao) {
                 ],
                 'where' : { 'and' : [{'experimentoSimulacaoId' : idExperimento},{'periodoExperimentoId' : experimento.periodoExperimentoId}] }
             }
-            console.log('filtro:' , filtro);
+            console.log('filtro:' , JSON.stringify(filtro));
             app.models.ExecucaoSimulacao.find(filtro, (err,result) => {
                 console.log('tamanho:' , result.length);
                 console.log('Erro:' , err);

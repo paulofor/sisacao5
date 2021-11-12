@@ -1,0 +1,26 @@
+{
+  "name": "CotacaoIntradayMercadoBitcoin",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ticker": {
+      "type": "string"
+    },
+    "valor": {
+      "type": "number"
+    },
+    "diaNum": {
+      "type": "number"
+    },
+    "dataHora": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

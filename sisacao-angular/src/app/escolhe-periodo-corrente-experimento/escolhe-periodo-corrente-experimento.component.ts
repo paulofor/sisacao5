@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { BaseEditComponent } from '../base-component/base-edit-component';
-import { PeriodoExperimentoApi, ExperimentoSimulacaoPeriodoApi, ExperimentoSimulacaoPeriodo, PeriodoExperimento, ExperimentoSimulacao, ExperimentoSimulacaoApi } from '../shared/sdk';
+import { PeriodoExperimentoApi, ExperimentoSimulacaoPeriodoApi, ExperimentoSimulacaoPeriodo, PeriodoExperimento, ExperimentoSimulacao, ExperimentoSimulacaoApi, CombinacaoParametroApi } from '../shared/sdk';
 
 @Component({
   selector: 'app-escolhe-periodo-corrente-experimento',
@@ -13,7 +13,8 @@ export class EscolhePeriodoCorrenteExperimentoComponent  extends BaseEditCompone
   listaRelPeriodo: ExperimentoSimulacaoPeriodo[];
 
   constructor(protected dialogRef: MatDialogRef<EscolhePeriodoCorrenteExperimentoComponent>
-    , @Inject(MAT_DIALOG_DATA) protected data: any, protected servico: ExperimentoSimulacaoApi, protected srvRel: ExperimentoSimulacaoPeriodoApi
+    , @Inject(MAT_DIALOG_DATA) protected data: any, protected servico: ExperimentoSimulacaoApi, 
+    protected srvRel: ExperimentoSimulacaoPeriodoApi, protected srvCombinacao: CombinacaoParametroApi
   ) {
     super(dialogRef,data,servico);
   }
@@ -42,6 +43,13 @@ export class EscolhePeriodoCorrenteExperimentoComponent  extends BaseEditCompone
     //if (!this.item.dataCriacao) {
     //  this.item.dataCriacao = new Date();
     //}
+  }
+
+  posSubmit() {
+    this.srvCombinacao.LimpaDescricao(this.item.id)
+      .subscribe((result) => {
+        console.log('Limpeza descricao');
+      })
   }
   
   /*

@@ -75,7 +75,7 @@ public class CotacaoDiarioAcao {
 	}
 	
 	public String toString() {
-		return this.diaNum + ": " + this.abertura + " , " + this.maximo + " , " + this.minimo + " , " + this.fechamento;
+		return this.diaNum + ") abe:" + this.abertura + " , max:" + this.maximo + " , min:" + this.minimo + " , fec:" + this.fechamento;
  	}
 	
 	

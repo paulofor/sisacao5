@@ -46,5 +46,7 @@ export * from './ExecucaoSimulacaoValidacao';
 export * from './CotacaoIntradayAcaoResultado';
 export * from './CotacaoDiarioIndice';
 export * from './AplicacaoInstituicao';
+export * from './AtivoCriptomoeda';
+export * from './CotacaoIntradayMercadoBitcoin';
 export * from './BaseModels';
 export * from './FireLoopRef';

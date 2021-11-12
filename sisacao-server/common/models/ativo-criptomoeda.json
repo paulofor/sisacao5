@@ -1,0 +1,30 @@
+{
+  "name": "AtivoCriptomoeda",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ticker": {
+      "type": "string",
+      "id": true
+    },
+    "nome": {
+      "type": "string"
+    },
+    "dataInicial": {
+      "type": "string"
+    },
+    "tipo": {
+      "type": "string"
+    },
+    "intervaloMercadoBitcoin": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -64,6 +64,8 @@ public class DiaPregao extends Model{
 		}
 	}
 	
-	
+	public String toString() {
+		return this.diaNum + "";
+	}
 
 }

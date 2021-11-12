@@ -35,7 +35,12 @@ export class BaseEditComponent implements OnInit{
     this.preSubmit();
     console.log('Submit(BaseEdit):' , this.item);
     this.servico.upsert(this.item, (err, obj) => {
-      console.log("Erro:" + err);
+      if (err) {
+        console.log("ErroUpsert:" + JSON.stringify(err));
+      } else {
+        
+      }
+      this.posSubmit();
     }).subscribe((e: any) => {
       console.log(JSON.stringify(e));
       this.closeDialog();
@@ -58,6 +63,9 @@ export class BaseEditComponent implements OnInit{
     
   }
   posItem() {
+    
+  }
+  posSubmit() {
     
   }
 }

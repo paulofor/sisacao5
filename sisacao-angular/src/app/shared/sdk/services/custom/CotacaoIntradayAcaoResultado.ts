@@ -183,6 +183,36 @@ export class CotacaoIntradayAcaoResultadoApi extends BaseLoopBackApi {
   }
 
   /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {object} data Request data.
+   *
+   *  - `listaCotacao` – `{any}` - 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `CotacaoIntradayAcaoResultado` object.)
+   * </em>
+   */
+  public AtualizaTargetStopDia(listaCotacao: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "PUT";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/CotacaoIntradayAcaoResultados/atualizaTargetStopDia";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof listaCotacao !== 'undefined' && listaCotacao !== null) _urlParams.listaCotacao = listaCotacao;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
    * The name of the model represented by this $resource,
    * i.e. `CotacaoIntradayAcaoResultado`.
    */

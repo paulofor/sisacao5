@@ -23,6 +23,7 @@ public class Experimento_ObtemParaValidacao extends ExecutorBase{
 			}
 		}); 
 		while (!concluido) {
+			System.out.println("wait Experimento_ObtemParaValidacao");
 			try {
 				Thread.sleep(5000);
 			} catch (InterruptedException e) {

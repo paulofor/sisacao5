@@ -1,0 +1,38 @@
+package br.com.digicom.sisacao.modelo;
+
+import com.strongloop.android.loopback.Model;
+
+public class CotacaoIntradayCriptomoeda extends Model{
+	
+	private String ticker;
+	private Double valor;
+	private String dataHora;
+	private Integer diaNum;
+	public String getTicker() {
+		return ticker;
+	}
+	public void setTicker(String ticker) {
+		this.ticker = ticker;
+	}
+	public Double getValor() {
+		return valor;
+	}
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
+	public String getDataHora() {
+		return dataHora;
+	}
+	public void setDataHora(String dataHora) {
+		this.dataHora = dataHora;
+	}
+	public Integer getDiaNum() {
+		return diaNum;
+	}
+	public void setDiaNum(Integer diaNum) {
+		this.diaNum = diaNum;
+	}
+
+	
+	
+}

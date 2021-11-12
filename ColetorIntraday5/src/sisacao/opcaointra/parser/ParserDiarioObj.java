@@ -57,7 +57,20 @@ public class ParserDiarioObj {
 		executaParse(file,dataAAAAMMDD);
 		//}
 	}
-
+	public void inicioRecuperacao(String dataAAAAMMDD) {
+		File[] arquivos = arquivosDia(dataAAAAMMDD);
+		if (arquivos.length==0) {
+			System.out.println("Não tem arquivos de " + dataAAAAMMDD);
+			return;
+		}
+		Arrays.sort(arquivos);
+		listaCotacao = new ArrayList<CotacaoDiarioOld>();
+		File file = arquivos[arquivos.length-2];
+		System.out.println("Arquivo: " + file.getAbsolutePath());
+		executaParseRecuperacao(file,dataAAAAMMDD);
+	}
+	
+	
 	private File[] arquivosDia(String dataAAAAMMDD) {
 		// create new filename filter
 		final String inicioArquivo = "BVBG.086.01_BV000328" + dataAAAAMMDD;
@@ -141,11 +154,11 @@ public class ParserDiarioObj {
 						if ("E".equals(tipo) && eElement.getElementsByTagName("LastPric").item(0)!=null) {
 							contaItem++;
 							CotacaoDiario novo = FabricaVo.criaCotacaoDiario();
-							System.out.println(ticker);
+							//System.out.println(ticker);
 							String fec = eElement.getElementsByTagName("LastPric").item(0).getTextContent();
-							String min = eElement.getElementsByTagName("MinPric").item(0).getTextContent();
 							String max = eElement.getElementsByTagName("MaxPric").item(0).getTextContent();
 							String abe = eElement.getElementsByTagName("FrstPric").item(0).getTextContent();
+							String min = eElement.getElementsByTagName("MinPric").item(0).getTextContent();
 							String neg = eElement.getElementsByTagName("RglrTxsQty").item(0).getTextContent();
 							String vol = eElement.getElementsByTagName("RglrTraddCtrcts").item(0).getTextContent();
 							Node nodePerc = eElement.getElementsByTagName("OscnPctg").item(0);
@@ -165,36 +178,130 @@ public class ParserDiarioObj {
 							if (!mapaAcao.containsKey(novo.getNomeTicker())) {
 								mapaAcao.put(novo.getNomeTicker(), novo);
 							} else {
-								System.out.println("Ticker: " + novo.getNomeTicker());
+								//System.out.println("Ticker: " + novo.getNomeTicker());
 							}
-								
-							
-							/*
-							if (ehAcao(ticker)) {
-								listaAcao.add(novo);
-							}
-							if (ehOpcao(ticker)) {
-								listaOpcao.add(novo);
-							}
-							*/
-							
 							
 						}
 					}
 
 				}
 			}
-			//System.out.println("Ações: " + listaAcao.size());
-			//System.out.println("Opções: " + listaOpcao.size());
-			//System.out.println("Itens: " + contaItem);
-			
 			this.persisteCotacaoAcao();
-			//for (CotacaoDiario cotacao : listaAcao) {
-			//	System.out.println(cotacao);
-			//}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
+	
+	
+	private void executaParseRecuperacao(File inputFile, String data) {
+		Element eElement = null;
+		String ticker = null;
+		String tipo = null;
+		
+		try {
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(inputFile);
+			doc.getDocumentElement().normalize();
+			//System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+			NodeList nList = doc.getElementsByTagName("PricRpt");
+			//System.out.println("----------------------------");
+			//System.out.println("nList.getLength(): " + nList.getLength());
+
+			int contaItem = 0;
+			listaAcao = new ArrayList<CotacaoDiario>();
+			listaOpcao = new ArrayList<CotacaoDiario>();
+			mapaAcao = new HashMap<String,CotacaoDiario>(); 
+			
+			for (int temp = 0; temp < nList.getLength(); temp++) {
+				Node nNode = nList.item(temp);
+				
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+					eElement = (Element) nNode;
+					ticker = eElement.getElementsByTagName("TckrSymb").item(0).getTextContent();
+					NodeList lista = eElement.getElementsByTagName("MktDataStrmId");
+					if (lista.getLength() > 0) {
+
+						tipo = eElement.getElementsByTagName("MktDataStrmId").item(0).getTextContent();
+						if ("E".equals(tipo) && eElement.getElementsByTagName("LastPric").item(0)!=null) {
+							contaItem++;
+							CotacaoDiario novo = FabricaVo.criaCotacaoDiario();
+							//System.out.println(ticker);
+							String fec = null;
+							String max = null;
+							String abe = null;
+							String min = null;
+							String neg = null;
+							String vol = null;
+							
+							try {
+								fec = eElement.getElementsByTagName("LastPric").item(0).getTextContent();
+							} catch (Exception e) {
+								System.out.println("Erro(fec): " + ticker);
+								continue;
+							}
+							try {
+								max = eElement.getElementsByTagName("MaxPric").item(0).getTextContent();
+							} catch (Exception e) {
+								System.out.println("Erro(max): " + ticker);
+								continue;
+							}
+							try {
+								abe = eElement.getElementsByTagName("FrstPric").item(0).getTextContent();
+							} catch (Exception e) {
+								System.out.println("Erro(abe): " + ticker);
+								continue;
+							}
+							try {
+								min = eElement.getElementsByTagName("MinPric").item(0).getTextContent();
+							} catch (Exception e) {
+								System.out.println("Erro(min): " + ticker);
+								continue;
+							}
+							try {
+								neg = eElement.getElementsByTagName("RglrTxsQty").item(0).getTextContent();
+							} catch (Exception e) {
+								System.out.println("Erro(neg): " + ticker);
+								continue;
+							}
+							try {
+								vol = eElement.getElementsByTagName("RglrTraddCtrcts").item(0).getTextContent();
+							} catch (Exception e) {
+								System.out.println("Erro(vol): " + ticker);
+								continue;
+							}
+							Node nodePerc = eElement.getElementsByTagName("OscnPctg").item(0);
+							String perc = (nodePerc!=null ? eElement.getElementsByTagName("OscnPctg").item(0).getTextContent() : "0");
+							
+							novo.setFechamentoOriginal(Float.parseFloat(fec));
+							novo.setAberturaOriginal(Float.parseFloat(abe));
+							novo.setNegocios(Integer.parseInt(neg));
+							novo.setNomeTicker(ticker);
+							novo.setMaximoOriginal(Float.parseFloat(max));
+							novo.setMinimoOriginal(Float.parseFloat(min));
+							novo.setVolume(Float.parseFloat(vol));
+							novo.setData(data);
+							novo.setPercentual(Float.parseFloat(perc));
+							
+							//listaAcao.add(novo);
+							if (!mapaAcao.containsKey(novo.getNomeTicker())) {
+								mapaAcao.put(novo.getNomeTicker(), novo);
+							} else {
+								//System.out.println("Ticker: " + novo.getNomeTicker());
+							}
+							
+						}
+					}
+
+				}
+			}
+			this.persisteCotacaoAcao();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
 
 }

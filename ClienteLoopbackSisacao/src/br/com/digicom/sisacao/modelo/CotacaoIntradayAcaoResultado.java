@@ -1,5 +1,6 @@
 package br.com.digicom.sisacao.modelo;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.strongloop.android.loopback.Model;
@@ -21,12 +22,15 @@ public class CotacaoIntradayAcaoResultado extends Model {
 	
 	private boolean atualizaTg15St15 = false;
 	private Integer tg15St15;
+	private Integer diasTg15St15;
 	
 	private boolean atualizaCompraTg15St10 = false;
 	private Integer compraTg15St10;
+	private Integer diasCompraTg15St10;
 	
 	private boolean atualizaVendaTg15St10 = false;
 	private Integer vendaTg15St10;
+	private Integer diasVendaTg15St10;
 	
 	public void atualizaTg15St15() {
 		atualizaTg15St15 = true;
@@ -114,9 +118,40 @@ public class CotacaoIntradayAcaoResultado extends Model {
 		return this.dataHora + ": " + this.valor;
 	}
 	public JSONObject getJSON() {
-		// TODO Auto-generated method stub
-		return null;
+		JSONObject saida = new JSONObject();
+		try {
+			saida.put("diaNum", this.diaNum);
+			saida.put("hora", this.hora);
+			saida.put("ticker", this.ticker);
+			if (this.atualizaTg15St15) {
+				saida.put("tg15St15", this.tg15St15);
+				saida.put("diasTg15St15", this.diasTg15St15);
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return saida;
 	}
+	public Integer getDiasTg15St15() {
+		return diasTg15St15;
+	}
+	public void setDiasTg15St15(Integer diasTg15St15) {
+		this.diasTg15St15 = diasTg15St15;
+	}
+	public Integer getDiasCompraTg15St10() {
+		return diasCompraTg15St10;
+	}
+	public void setDiasCompraTg15St10(Integer diasCompraTg15St10) {
+		this.diasCompraTg15St10 = diasCompraTg15St10;
+	}
+	public Integer getDiasVendaTg15St10() {
+		return diasVendaTg15St10;
+	}
+	public void setDiasVendaTg15St10(Integer diasVendaTg15St10) {
+		this.diasVendaTg15St10 = diasVendaTg15St10;
+	}
+	
+	
 	
 	
 }

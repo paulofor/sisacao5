@@ -183,10 +183,6 @@
     "dataSource": "mysqlDS",
     "public": true
   },
-  "ValorAplicado": {
-    "dataSource": "mysqlDS",
-    "public": true
-  },
   "TipoAplicacao": {
     "dataSource": "mysqlDS",
     "public": true
@@ -216,6 +212,38 @@
     "public": true
   },
   "AplicacaoInstituicao": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "AtivoCriptomoeda": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "CotacaoIntradayMercadoBitcoin": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "MovimentacaoValorAplicado": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "ValorMesInsituicaoTipo": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "ValorMesInstituicaoTipo": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "ValorMesTipoAplicacao": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "RegraProjecao": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "CotacaoIntradayAcaoResultadoValor": {
     "dataSource": "mysqlDS",
     "public": true
   }

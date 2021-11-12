@@ -1,11 +1,13 @@
 package com.strongloop.android.remoting.adapters;
 
-import com.ning.http.client.AsyncHttpClient;
-import com.ning.http.client.multipart.ByteArrayPart;
-import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
+
+import org.apache.commons.io.IOUtils;
+
+import com.ning.http.client.AsyncHttpClient;
+import com.ning.http.client.multipart.ByteArrayPart;
 
 /**
  * A request parameter that is a (binary) stream.

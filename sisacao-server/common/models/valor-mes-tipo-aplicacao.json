@@ -1,0 +1,26 @@
+{
+  "name": "ValorMesTipoAplicacao",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "dataReferenciaNum": {
+      "type": "number"
+    },
+    "saldo": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "tipoAplicacao": {
+      "type": "belongsTo",
+      "model": "TipoAplicacao",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

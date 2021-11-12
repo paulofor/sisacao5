@@ -17,7 +17,7 @@ public abstract class CallbackParseHtml extends HTMLEditorKit.ParserCallback imp
 	
 	private boolean debug = false;
 
-	private String ultConteudo = null, ultConteudo2 = null, ultConteudo3 = null;
+	private String ultConteudo = null, ultConteudo2 = null, ultConteudo3 = null, ultConteudo4 = null, ultConteudo5 = null;
 	private String ultId = null;
 	private String ultClasse = null, ultClasse2 = null, ultClasse3 = null;
 	private String ultUrl = null, ultUrl2 = null, ultUrl3 = null;
@@ -83,6 +83,12 @@ public abstract class CallbackParseHtml extends HTMLEditorKit.ParserCallback imp
 	protected String getUltConteudo3() {
 		return (ultConteudo3 == null ? "" : ultConteudo3);
 	}
+	protected String getUltConteudo4() {
+		return (ultConteudo4 == null ? "" : ultConteudo4);
+	}
+	protected String getUltConteudo5() {
+		return (ultConteudo5 == null ? "" : ultConteudo5);
+	}
 	
 	protected String getUltConteudoComTexto() {
 		return this.ultConteudoComTexto;
@@ -131,6 +137,8 @@ public abstract class CallbackParseHtml extends HTMLEditorKit.ParserCallback imp
 	String bufferConteudo = null;
 	public void handleText(char[] data, int pos) {
 		String conteudo = String.copyValueOf(data);
+		ultConteudo5 = ultConteudo4;
+		ultConteudo4 = ultConteudo3;
 		ultConteudo3 = ultConteudo2;
 		ultConteudo2 = ultConteudo;
 		ultConteudo = conteudo;

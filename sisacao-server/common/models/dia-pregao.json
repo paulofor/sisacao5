@@ -238,6 +238,24 @@
           "verb": "get"
         }
       ]
+    },
+    "ComFalhaDiario": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/comFalhaDiario",
+          "verb": "get"
+        }
+      ]
     }
   }
 }
