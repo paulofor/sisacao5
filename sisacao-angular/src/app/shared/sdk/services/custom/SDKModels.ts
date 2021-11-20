@@ -38,7 +38,6 @@ import { FundoImobiliario } from '../../models/FundoImobiliario';
 import { CDB } from '../../models/CDB';
 import { RendaFixa } from '../../models/RendaFixa';
 import { AluguelFundoImobiliario } from '../../models/AluguelFundoImobiliario';
-import { ValorAplicado } from '../../models/ValorAplicado';
 import { TipoAplicacao } from '../../models/TipoAplicacao';
 import { InstituicaoFinanceira } from '../../models/InstituicaoFinanceira';
 import { AtivoIndice } from '../../models/AtivoIndice';
@@ -49,6 +48,12 @@ import { CotacaoDiarioIndice } from '../../models/CotacaoDiarioIndice';
 import { AplicacaoInstituicao } from '../../models/AplicacaoInstituicao';
 import { AtivoCriptomoeda } from '../../models/AtivoCriptomoeda';
 import { CotacaoIntradayMercadoBitcoin } from '../../models/CotacaoIntradayMercadoBitcoin';
+import { MovimentacaoValorAplicado } from '../../models/MovimentacaoValorAplicado';
+import { ValorMesInsituicaoTipo } from '../../models/ValorMesInsituicaoTipo';
+import { ValorMesInstituicaoTipo } from '../../models/ValorMesInstituicaoTipo';
+import { ValorMesTipoAplicacao } from '../../models/ValorMesTipoAplicacao';
+import { RegraProjecao } from '../../models/RegraProjecao';
+import { CotacaoIntradayAcaoResultadoValor } from '../../models/CotacaoIntradayAcaoResultadoValor';
 
 export interface Models { [name: string]: any }
 
@@ -94,7 +99,6 @@ export class SDKModels {
     CDB: CDB,
     RendaFixa: RendaFixa,
     AluguelFundoImobiliario: AluguelFundoImobiliario,
-    ValorAplicado: ValorAplicado,
     TipoAplicacao: TipoAplicacao,
     InstituicaoFinanceira: InstituicaoFinanceira,
     AtivoIndice: AtivoIndice,
@@ -105,6 +109,12 @@ export class SDKModels {
     AplicacaoInstituicao: AplicacaoInstituicao,
     AtivoCriptomoeda: AtivoCriptomoeda,
     CotacaoIntradayMercadoBitcoin: CotacaoIntradayMercadoBitcoin,
+    MovimentacaoValorAplicado: MovimentacaoValorAplicado,
+    ValorMesInsituicaoTipo: ValorMesInsituicaoTipo,
+    ValorMesInstituicaoTipo: ValorMesInstituicaoTipo,
+    ValorMesTipoAplicacao: ValorMesTipoAplicacao,
+    RegraProjecao: RegraProjecao,
+    CotacaoIntradayAcaoResultadoValor: CotacaoIntradayAcaoResultadoValor,
     
   };
 

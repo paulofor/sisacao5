@@ -211,6 +211,7 @@ public class ExperimentoSimulacaoFacade {
 				CombinacaoParametro combinacao = execucao.getCombinacaoParametro();
 				executadorValidacao.executa(acao,execucao,experimentoValidacao);
 				System.out.println("Finalizou ExeucaoSimulacao #" + execucao.getId());
+				
 			}
 		}
 		

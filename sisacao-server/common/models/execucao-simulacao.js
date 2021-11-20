@@ -93,6 +93,19 @@ module.exports = function(Execucaosimulacao) {
         }
         Execucaosimulacao.findOne(filtro,callback);
     };
+     /**
+    * 
+    * @param {number} idExecucao 
+    * @param {Function(Error, object)} callback -- IGUAL DE CIMA !!!
+    */
+      Execucaosimulacao.ObtemComRegraParametros = function(idExecucao, callback) {
+        let filtro = {
+            'where' : {'id' : idExecucao},
+            'include' : {'relation' : 'combinacaoParametro' , 'scope' : {
+                'include' : ['regraSimulacao' , {'relation' : 'valorParametros' , 'scope' : {'include' : 'parametroRegra'}}]
+            }}}
+        Execucaosimulacao.findOne(filtro,callback)
+    };
 /**
 * 
 * @param {object} execucao 
@@ -166,4 +179,9 @@ Execucaosimulacao.InsereExecucaoSimulacao = function(execucao, callback) {
             Execucaosimulacao.find(filtro,callback);
         })
     };
+
+
+   
+  
+  
 };

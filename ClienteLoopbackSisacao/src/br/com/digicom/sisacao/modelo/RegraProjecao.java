@@ -1,7 +1,6 @@
 package br.com.digicom.sisacao.modelo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 import com.strongloop.android.loopback.Model;
@@ -15,6 +14,19 @@ public class RegraProjecao extends Model {
 	private Double stop;
 	private Integer diaLimite;
 	private Integer processando;
+	
+	private GrupoAcao grupoAcao;
+	
+	
+	
+	public GrupoAcao getGrupoAcao() {
+		return grupoAcao;
+	}
+	public void setGrupoAcao(HashMap grupoAcao) {
+		this.grupoAcao = new GrupoAcao();;
+		BeanUtil.setProperties(this.grupoAcao, (Map<String, ? extends Object>) grupoAcao, true);
+
+	}
 	public Integer getId() {
 		return id;
 	}

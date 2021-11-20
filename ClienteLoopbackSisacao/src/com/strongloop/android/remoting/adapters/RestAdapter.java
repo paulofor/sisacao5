@@ -15,6 +15,10 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import org.apache.http.conn.params.ConnManagerParams;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 import org.json.JSONException;
 
 import com.ning.http.client.AsyncCompletionHandler;
@@ -337,6 +341,8 @@ public class RestAdapter extends Adapter {
 			addHeader("User-Agent", userAgent);
 		}
 
+		
+	
 		public void request(String method, String path, Map<String, ? extends Object> parameters,
 				ParameterEncoding parameterEncoding, final AsyncCompletionHandler<Response> httpCallback) {
 
@@ -349,8 +355,12 @@ public class RestAdapter extends Adapter {
 			}
 
 			BoundRequestBuilder request = prepareRequest(method, baseUrl + path);
-			request.setRequestTimeout(600000);
+			request.setRequestTimeout(1200000);
 
+			HttpParams httpParams = new BasicHttpParams();
+		    ConnManagerParams.setTimeout(httpParams, 1200000);
+		    HttpConnectionParams.setSoTimeout(httpParams, 1200000);
+		    HttpConnectionParams.setConnectionTimeout(httpParams, 1200000);
 			System.out.println(baseUrl + path + " (" + method + ")");
 
 			String contentType = null;

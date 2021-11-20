@@ -256,6 +256,43 @@
           "verb": "get"
         }
       ]
+    },
+    "ObtemIntradayResultadoValor": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "dataNumInicio",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "idRegraProjecao",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "listaDia",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemIntradayResultadoValor",
+          "verb": "get"
+        }
+      ]
     }
   }
 }

@@ -45,7 +45,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CookieBrowser } from './storage/cookie.browser';
 import { StorageBrowser } from './storage/storage.browser';
 import { SocketBrowser } from './sockets/socket.browser';
-import { SocketDriver } from './sockets/socket.driver';
+
 import { SocketConnection } from './sockets/socket.connections';
 import { RealTime } from './services/core/real.time';
 import { UserApi } from './services/custom/User';
@@ -86,7 +86,6 @@ import { FundoImobiliarioApi } from './services/custom/FundoImobiliario';
 import { CDBApi } from './services/custom/CDB';
 import { RendaFixaApi } from './services/custom/RendaFixa';
 import { AluguelFundoImobiliarioApi } from './services/custom/AluguelFundoImobiliario';
-import { ValorAplicadoApi } from './services/custom/ValorAplicado';
 import { TipoAplicacaoApi } from './services/custom/TipoAplicacao';
 import { InstituicaoFinanceiraApi } from './services/custom/InstituicaoFinanceira';
 import { AtivoIndiceApi } from './services/custom/AtivoIndice';
@@ -97,6 +96,12 @@ import { CotacaoDiarioIndiceApi } from './services/custom/CotacaoDiarioIndice';
 import { AplicacaoInstituicaoApi } from './services/custom/AplicacaoInstituicao';
 import { AtivoCriptomoedaApi } from './services/custom/AtivoCriptomoeda';
 import { CotacaoIntradayMercadoBitcoinApi } from './services/custom/CotacaoIntradayMercadoBitcoin';
+import { MovimentacaoValorAplicadoApi } from './services/custom/MovimentacaoValorAplicado';
+import { ValorMesInsituicaoTipoApi } from './services/custom/ValorMesInsituicaoTipo';
+import { ValorMesInstituicaoTipoApi } from './services/custom/ValorMesInstituicaoTipo';
+import { ValorMesTipoAplicacaoApi } from './services/custom/ValorMesTipoAplicacao';
+import { RegraProjecaoApi } from './services/custom/RegraProjecao';
+import { CotacaoIntradayAcaoResultadoValorApi } from './services/custom/CotacaoIntradayAcaoResultadoValor';
 /**
 * @module SDKBrowserModule
 * @description
@@ -165,7 +170,6 @@ export class SDKBrowserModule {
         CDBApi,
         RendaFixaApi,
         AluguelFundoImobiliarioApi,
-        ValorAplicadoApi,
         TipoAplicacaoApi,
         InstituicaoFinanceiraApi,
         AtivoIndiceApi,
@@ -176,9 +180,14 @@ export class SDKBrowserModule {
         AplicacaoInstituicaoApi,
         AtivoCriptomoedaApi,
         CotacaoIntradayMercadoBitcoinApi,
+        MovimentacaoValorAplicadoApi,
+        ValorMesInsituicaoTipoApi,
+        ValorMesInstituicaoTipoApi,
+        ValorMesTipoAplicacaoApi,
+        RegraProjecaoApi,
+        CotacaoIntradayAcaoResultadoValorApi,
         internalStorageProvider,
-        { provide: SDKStorage, useClass: StorageBrowser },
-        { provide: SocketDriver, useClass: SocketBrowser }
+        { provide: SDKStorage, useClass: StorageBrowser }
       ]
     };
   }

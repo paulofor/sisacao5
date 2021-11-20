@@ -123,10 +123,10 @@ module.exports = function(Diapregao) {
             'where' : {'diaNum' : { 'gte' : dataNumInicio }}
         }
         Diapregao.find(filtro,callback);
-      };
+    };
       
 
-      Diapregao.ObtemIntradayResultadoTickerPeriodo = function(ticker, dataNumInicio, callback) {
+    Diapregao.ObtemIntradayResultadoTickerPeriodo = function(ticker, dataNumInicio, callback) {
         let filtro = {
             'include' : 
             [
@@ -134,6 +134,46 @@ module.exports = function(Diapregao) {
                 'relation' : 'cotacaoIntradayAcaoResultados',
                 'scope' : 
                     {'where' : {'ticker' : ticker } , "order" : "dataHora" } 
+                },
+                { 
+                'relation' : 'cotacaoDiarioAcaos',
+                'scope' : 
+                    {'where' : {'ticker' : ticker }} 
+                }
+            ], 
+            'order' : 'diaNum',
+            'where' : {'diaNum' : { 'gte' : dataNumInicio }}
+        }
+        Diapregao.find(filtro,callback);
+    };
+  
+
+
+    /**
+    * 
+    * @param {string} ticker 
+    * @param {number} dataNumInicio 
+    * @param {number} idRegraProjecao 
+    * @param {Function(Error, array)} callback
+    */
+    Diapregao.ObtemIntradayResultadoValor = function(ticker, dataNumInicio, idRegraProjecao, callback) {
+        let filtro = {
+            'include' : 
+            [
+                { 
+                'relation' : 'cotacaoIntradayAcaoResultados',
+                'scope' : 
+                    {
+                        'where' : {'ticker' : ticker } , 
+                        "order" : "dataHora" ,
+                        'include' : {
+                            'relation' : 'cotacaoIntradayAcaoResultadoValors' ,
+                            'scope' : {
+                                'where' : {'idRegraProjecao' : idRegraProjecao }
+                            }
+                        }
+                    } 
+                    
                 },
                 { 
                 'relation' : 'cotacaoDiarioAcaos',

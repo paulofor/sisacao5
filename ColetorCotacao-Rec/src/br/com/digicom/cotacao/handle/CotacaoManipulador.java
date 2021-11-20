@@ -19,6 +19,9 @@ public class CotacaoManipulador implements IDadosParse {
 		this.data = data;
 		this.ticker = ticker;
 	}
+	public CotacaoManipulador(String data) {
+		this.data = data;
+	}
 	
 	public String getTicker() {
 		return ticker;

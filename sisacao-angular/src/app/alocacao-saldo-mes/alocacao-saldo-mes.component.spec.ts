@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AlocacaoRecursosComponent } from './alocacao-recursos.component';
+import { AlocacaoSaldoMesComponent } from './alocacao-saldo-mes.component';
 
-describe('AlocacaoRecursosComponent', () => {
-  let component: AlocacaoRecursosComponent;
-  let fixture: ComponentFixture<AlocacaoRecursosComponent>;
+describe('AlocacaoSaldoMesComponent', () => {
+  let component: AlocacaoSaldoMesComponent;
+  let fixture: ComponentFixture<AlocacaoSaldoMesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AlocacaoRecursosComponent ]
+      declarations: [ AlocacaoSaldoMesComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AlocacaoRecursosComponent);
+    fixture = TestBed.createComponent(AlocacaoSaldoMesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

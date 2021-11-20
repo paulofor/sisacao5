@@ -6,7 +6,7 @@ import java.util.TimerTask;
 
 public abstract class PesquisadorTimer extends TimerTask implements IPesquisador {
 	private RestricaoTempo restricaoTempo;
-	private ExecutadorParse executadorParse;
+	protected ExecutadorParse executadorParse;
 
 	public PesquisadorTimer() {
 		this.executadorParse = new ExecutadorParse();

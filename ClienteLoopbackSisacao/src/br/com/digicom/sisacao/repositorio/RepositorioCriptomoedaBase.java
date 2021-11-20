@@ -1,7 +1,10 @@
 package br.com.digicom.sisacao.repositorio;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import org.json.JSONArray;
 
 import com.strongloop.android.loopback.ModelRepository;
 import com.strongloop.android.loopback.callbacks.EmptyResponseParser;
@@ -22,7 +25,14 @@ public class RepositorioCriptomoedaBase {
 		}
 		@Override
 		protected String verificaNomeUrl(String nome) {
-			return "AtivoCriptomoeda";
+			return "AtivoCriptomoedas";
+		}
+		public void listaMercadoBitcoin(final ListCallback<AtivoCriptomoeda> callback) {
+			RestContractItem contrato = new RestContractItem("AtivoCriptomoedas/listaMercadoBitcoin","GET");
+			this.getRestAdapter().getContract().addItem(contrato, "AtivoCriptomoeda.listaMercadoBitcoin");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        invokeStaticMethod("listaMercadoBitcoin", params,   new JsonArrayParser<AtivoCriptomoeda>(this, callback));
+			
 		}
 		public void listaColetaIntraday(final ListCallback<AtivoCriptomoeda> callback) {
 			RestContractItem contrato = new RestContractItem("AtivoCriptomoeda/listaColetaIntraday","POST");
@@ -30,6 +40,17 @@ public class RepositorioCriptomoedaBase {
 	        Map<String, Object> params = new HashMap<String, Object>();
 	        invokeStaticMethod("listaColetaIntraday", params,   new JsonArrayParser<AtivoCriptomoeda>(this, callback));
 			
+		}
+		public void insereSeNaoExisteLista(final List<AtivoCriptomoeda> lista, final VoidCallback callback) {
+			RestContractItem contrato = new RestContractItem("AtivoCriptomoedas/insereSeNaoExisteLista","POST");
+			this.getRestAdapter().getContract().addItem(contrato, "AtivoCriptomoeda.insereSeNaoExisteLista");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        JSONArray listaServico = new JSONArray();
+	        for (AtivoCriptomoeda moeda : lista) {
+	        	listaServico.put(moeda.jSON());
+	        }
+	        params.put("lista", listaServico);
+	        invokeStaticMethod("insereSeNaoExisteLista", params,   new EmptyResponseParser(callback));
 		}
 	}
 	

@@ -30,10 +30,39 @@
     "regraProjecaoId": {
       "type": "number",
       "id": true
+    },
+    "dataHoraInsercao": {
+      "type": "date"
     }
   },
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {}
+  "methods": {
+    "InsereLista": {
+      "accepts": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/insereLista",
+          "verb": "post"
+        }
+      ]
+    }
+  }
 }

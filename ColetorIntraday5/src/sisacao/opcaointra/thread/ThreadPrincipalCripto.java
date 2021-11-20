@@ -1,19 +1,15 @@
 package sisacao.opcaointra.thread;
 
-import java.util.List;
-
 import br.com.digicom.lib.dao.DaoException;
 import coletorjava.log.ArquivoLog;
-import coletorjava.modelo.OpcaoSisacao;
-import sisacao.opcaointra.app.FuncoesObj;
 import sisacao.opcaointra.importador.TransferidorObj;
 import sisacao.opcaointra.parser.ParserDiarioObj;
-import timer.AgregadorThreadColeta;
+import timer.AgregadorThreadColetaCripto;
 
 
 public class ThreadPrincipalCripto extends ThreadPaiBase{
 
-	private AgregadorThreadColeta agregador = new AgregadorThreadColeta();
+	private AgregadorThreadColetaCripto agregador = new AgregadorThreadColetaCripto();
 	
 	
 	

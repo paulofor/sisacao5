@@ -1,9 +1,15 @@
 package br.com.digicom.sisacao.modelo;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.strongloop.android.loopback.Model;
+import com.strongloop.android.remoting.BeanUtil;
 
 public class CotacaoIntradayAcaoResultado extends Model {
 
@@ -18,49 +24,25 @@ public class CotacaoIntradayAcaoResultado extends Model {
 	
 	private String dataExtraida;
 	private String horaExtraida;
+	private List<CotacaoIntradayAcaoResultadoValor> cotacaoIntradayAcaoResultadoValors;
+
 	
 	
-	private boolean atualizaTg15St15 = false;
-	private Integer tg15St15;
-	private Integer diasTg15St15;
 	
-	private boolean atualizaCompraTg15St10 = false;
-	private Integer compraTg15St10;
-	private Integer diasCompraTg15St10;
 	
-	private boolean atualizaVendaTg15St10 = false;
-	private Integer vendaTg15St10;
-	private Integer diasVendaTg15St10;
-	
-	public void atualizaTg15St15() {
-		atualizaTg15St15 = true;
+	public List<CotacaoIntradayAcaoResultadoValor> getCotacaoIntradayAcaoResultadoValors() {
+		return cotacaoIntradayAcaoResultadoValors;
 	}
-	public void atualizaCompraTg15St10() {
-		atualizaCompraTg15St10 = true;
-	}
-	public void atualizaVendaTg15St10() {
-		atualizaVendaTg15St10 = true;
+	public void setCotacaoIntradayAcaoResultadoValors(List<HashMap> cotacaoIntradayAcaoResultadoValors) {
+		this.cotacaoIntradayAcaoResultadoValors = new ArrayList<CotacaoIntradayAcaoResultadoValor>();
+		for (int i = 0; i < cotacaoIntradayAcaoResultadoValors.size(); i++) {
+			Object objeto = new RelGrupoAcao();
+			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) cotacaoIntradayAcaoResultadoValors.get(i), true);
+			this.cotacaoIntradayAcaoResultadoValors.add((CotacaoIntradayAcaoResultadoValor) objeto);
+		}
 	}
 	
 	
-	public Integer getTg15St15() {
-		return tg15St15;
-	}
-	public void setTg15St15(Integer tg15St15) {
-		this.tg15St15 = tg15St15;
-	}
-	public Integer getCompraTg15St10() {
-		return compraTg15St10;
-	}
-	public void setCompraTg15St10(Integer compraTg15St10) {
-		this.compraTg15St10 = compraTg15St10;
-	}
-	public Integer getVendaTg15St10() {
-		return vendaTg15St10;
-	}
-	public void setVendaTg15St10(Integer vendaTg15St10) {
-		this.vendaTg15St10 = vendaTg15St10;
-	}
 	public String getHora() {
 		return hora;
 	}
@@ -123,32 +105,10 @@ public class CotacaoIntradayAcaoResultado extends Model {
 			saida.put("diaNum", this.diaNum);
 			saida.put("hora", this.hora);
 			saida.put("ticker", this.ticker);
-			if (this.atualizaTg15St15) {
-				saida.put("tg15St15", this.tg15St15);
-				saida.put("diasTg15St15", this.diasTg15St15);
-			}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		return saida;
-	}
-	public Integer getDiasTg15St15() {
-		return diasTg15St15;
-	}
-	public void setDiasTg15St15(Integer diasTg15St15) {
-		this.diasTg15St15 = diasTg15St15;
-	}
-	public Integer getDiasCompraTg15St10() {
-		return diasCompraTg15St10;
-	}
-	public void setDiasCompraTg15St10(Integer diasCompraTg15St10) {
-		this.diasCompraTg15St10 = diasCompraTg15St10;
-	}
-	public Integer getDiasVendaTg15St10() {
-		return diasVendaTg15St10;
-	}
-	public void setDiasVendaTg15St10(Integer diasVendaTg15St10) {
-		this.diasVendaTg15St10 = diasVendaTg15St10;
 	}
 	
 	

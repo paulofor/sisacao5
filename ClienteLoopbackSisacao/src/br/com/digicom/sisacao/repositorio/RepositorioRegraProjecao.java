@@ -30,7 +30,7 @@ public class RepositorioRegraProjecao extends ModelRepository<RegraProjecao>{
 	}
 	
 	public void obtemProcessando(final ObjectCallback<RegraProjecao> callback) {
-		RestContractItem contrato = new RestContractItem("RegraProjecao/obtemProcessando","GET");
+		RestContractItem contrato = new RestContractItem("RegraProjecaos/obtemProcessando","GET");
 		this.getRestAdapter().getContract().addItem(contrato, "RegraProjecao.obtemProcessando");
         Map<String, Object> params = new HashMap<String, Object>();
         invokeStaticMethod("obtemProcessando", params,   new JsonObjectParser<RegraProjecao>(this, callback));

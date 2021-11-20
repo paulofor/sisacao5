@@ -31,12 +31,13 @@ import { ValorMonitoriaPeriodoTabelaComponent } from '../valor-monitoria-periodo
 import { ValorMonitoriaPeriodoComponent } from '../valor-monitoria-periodo/valor-monitoria-periodo.component';
 import { MelhoresExecucaoPeriodoComponent } from '../melhores-execucao-periodo/melhores-execucao-periodo.component';
 import { FundoImobiliarioAluguelMelhoresComponent } from '../fundo-imobiliario-aluguel-melhores/fundo-imobiliario-aluguel-melhores.component';
-import { AlocacaoRecursosComponent } from '../alocacao-recursos/alocacao-recursos.component';
 import { TipoAplicacaoListComponent } from '../tipo-aplicacao-list/tipo-aplicacao-list.component';
 import { MelhoresValidacaoPeriodoComponent } from '../melhores-validacao-periodo/melhores-validacao-periodo.component';
 import { AtivoIndiceComponent } from '../ativo-indice/ativo-indice.component';
 import { AtivoIntraIndiceComponent } from '../ativo-intra-indice/ativo-intra-indice.component';
 import { AtivoAcaoResultadoFuturoComponent } from '../ativo-acao-resultado-futuro/ativo-acao-resultado-futuro.component';
+import { AlocacaoMovimentacaoComponent } from '../alocacao-movimentacao/alocacao-movimentacao.component';
+import { AlocacaoSaldoMesComponent } from '../alocacao-saldo-mes/alocacao-saldo-mes.component';
 
 
 export const routes : Routes = [
@@ -87,9 +88,11 @@ export const routes : Routes = [
     { path : 'melhoresValidacaoPeriodo/:id' , component: MelhoresValidacaoPeriodoComponent },
 
 
-    { path : 'alocacaoRecursos' , component: AlocacaoRecursosComponent },
+
     { path : 'tipoAplicacao' , component: TipoAplicacaoListComponent },
     
+    { path : 'alocacaoSaldoMes' , component: AlocacaoSaldoMesComponent },
+    { path : 'alocacaoMovimentacao' , component: AlocacaoMovimentacaoComponent } ,
 
     { path: '',          redirectTo: 'home', pathMatch: 'full' }
 ]

@@ -5,10 +5,12 @@ import {
 } from '../index';
 
 declare var Object: any;
-export interface ValorAplicadoInterface {
+export interface MovimentacaoValorAplicadoInterface {
   "valor"?: number;
-  "dataInicio"?: string;
-  "dataFinal"?: string;
+  "data"?: string;
+  "tipoMovimentacao"?: string;
+  "saldoAnterior"?: number;
+  "saldoAtual"?: number;
   "id"?: number;
   "tipoAplicacaoId"?: number;
   "instituicaoFinanceiraId"?: number;
@@ -16,33 +18,35 @@ export interface ValorAplicadoInterface {
   instituicaoFinanceira?: InstituicaoFinanceira;
 }
 
-export class ValorAplicado implements ValorAplicadoInterface {
+export class MovimentacaoValorAplicado implements MovimentacaoValorAplicadoInterface {
   "valor": number;
-  "dataInicio": string;
-  "dataFinal": string;
+  "data": string;
+  "tipoMovimentacao": string;
+  "saldoAnterior": number;
+  "saldoAtual": number;
   "id": number;
   "tipoAplicacaoId": number;
   "instituicaoFinanceiraId": number;
   tipoAplicacao: TipoAplicacao;
   instituicaoFinanceira: InstituicaoFinanceira;
-  constructor(data?: ValorAplicadoInterface) {
+  constructor(data?: MovimentacaoValorAplicadoInterface) {
     Object.assign(this, data);
   }
   /**
    * The name of the model represented by this $resource,
-   * i.e. `ValorAplicado`.
+   * i.e. `MovimentacaoValorAplicado`.
    */
   public static getModelName() {
-    return "ValorAplicado";
+    return "MovimentacaoValorAplicado";
   }
   /**
   * @method factory
   * @author Jonathan Casarrubias
   * @license MIT
-  * This method creates an instance of ValorAplicado for dynamic purposes.
+  * This method creates an instance of MovimentacaoValorAplicado for dynamic purposes.
   **/
-  public static factory(data: ValorAplicadoInterface): ValorAplicado{
-    return new ValorAplicado(data);
+  public static factory(data: MovimentacaoValorAplicadoInterface): MovimentacaoValorAplicado{
+    return new MovimentacaoValorAplicado(data);
   }
   /**
   * @method getModelDefinition
@@ -53,22 +57,30 @@ export class ValorAplicado implements ValorAplicadoInterface {
   **/
   public static getModelDefinition() {
     return {
-      name: 'ValorAplicado',
-      plural: 'ValorAplicados',
-      path: 'ValorAplicados',
+      name: 'MovimentacaoValorAplicado',
+      plural: 'MovimentacaoValorAplicados',
+      path: 'MovimentacaoValorAplicados',
       idName: 'id',
       properties: {
         "valor": {
           name: 'valor',
           type: 'number'
         },
-        "dataInicio": {
-          name: 'dataInicio',
+        "data": {
+          name: 'data',
           type: 'string'
         },
-        "dataFinal": {
-          name: 'dataFinal',
+        "tipoMovimentacao": {
+          name: 'tipoMovimentacao',
           type: 'string'
+        },
+        "saldoAnterior": {
+          name: 'saldoAnterior',
+          type: 'number'
+        },
+        "saldoAtual": {
+          name: 'saldoAtual',
+          type: 'number'
         },
         "id": {
           name: 'id',

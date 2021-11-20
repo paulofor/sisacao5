@@ -1,4 +1,7 @@
 /* tslint:disable */
+import {
+  CotacaoIntradayAcaoResultadoValor
+} from '../index';
 
 declare var Object: any;
 export interface CotacaoIntradayAcaoResultadoInterface {
@@ -8,12 +11,8 @@ export interface CotacaoIntradayAcaoResultadoInterface {
   "dia"?: Date;
   "dataHora"?: Date;
   "diaNum"?: number;
-  "tg15St15"?: number;
-  "compraTg15St10"?: number;
-  "vendaTg15St10"?: number;
-  "diasTg15St15"?: number;
-  "diasCompraTg15St10"?: number;
-  "diasVendaTg15St10"?: number;
+  "diaHoraNumTicker"?: string;
+  cotacaoIntradayAcaoResultadoValors?: CotacaoIntradayAcaoResultadoValor[];
 }
 
 export class CotacaoIntradayAcaoResultado implements CotacaoIntradayAcaoResultadoInterface {
@@ -23,12 +22,8 @@ export class CotacaoIntradayAcaoResultado implements CotacaoIntradayAcaoResultad
   "dia": Date;
   "dataHora": Date;
   "diaNum": number;
-  "tg15St15": number;
-  "compraTg15St10": number;
-  "vendaTg15St10": number;
-  "diasTg15St15": number;
-  "diasCompraTg15St10": number;
-  "diasVendaTg15St10": number;
+  "diaHoraNumTicker": string;
+  cotacaoIntradayAcaoResultadoValors: CotacaoIntradayAcaoResultadoValor[];
   constructor(data?: CotacaoIntradayAcaoResultadoInterface) {
     Object.assign(this, data);
   }
@@ -60,7 +55,7 @@ export class CotacaoIntradayAcaoResultado implements CotacaoIntradayAcaoResultad
       name: 'CotacaoIntradayAcaoResultado',
       plural: 'CotacaoIntradayAcaoResultados',
       path: 'CotacaoIntradayAcaoResultados',
-      idName: 'ticker',
+      idName: 'diaHoraNumTicker',
       properties: {
         "ticker": {
           name: 'ticker',
@@ -86,32 +81,20 @@ export class CotacaoIntradayAcaoResultado implements CotacaoIntradayAcaoResultad
           name: 'diaNum',
           type: 'number'
         },
-        "tg15St15": {
-          name: 'tg15St15',
-          type: 'number'
-        },
-        "compraTg15St10": {
-          name: 'compraTg15St10',
-          type: 'number'
-        },
-        "vendaTg15St10": {
-          name: 'vendaTg15St10',
-          type: 'number'
-        },
-        "diasTg15St15": {
-          name: 'diasTg15St15',
-          type: 'number'
-        },
-        "diasCompraTg15St10": {
-          name: 'diasCompraTg15St10',
-          type: 'number'
-        },
-        "diasVendaTg15St10": {
-          name: 'diasVendaTg15St10',
-          type: 'number'
+        "diaHoraNumTicker": {
+          name: 'diaHoraNumTicker',
+          type: 'string'
         },
       },
       relations: {
+        cotacaoIntradayAcaoResultadoValors: {
+          name: 'cotacaoIntradayAcaoResultadoValors',
+          type: 'CotacaoIntradayAcaoResultadoValor[]',
+          model: 'CotacaoIntradayAcaoResultadoValor',
+          relationType: 'hasMany',
+                  keyFrom: 'diaHoraNumTicker',
+          keyTo: 'diaHoraNumTicker'
+        },
       }
     }
   }

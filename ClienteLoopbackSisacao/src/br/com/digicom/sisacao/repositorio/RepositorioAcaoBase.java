@@ -18,6 +18,7 @@ import com.strongloop.android.remoting.adapters.RestContractItem;
 import br.com.digicom.sisacao.modelo.AtivoAcao;
 import br.com.digicom.sisacao.modelo.CotacaoIntradayAcao;
 import br.com.digicom.sisacao.modelo.CotacaoIntradayAcaoResultado;
+import br.com.digicom.sisacao.modelo.CotacaoIntradayAcaoResultadoValor;
 
 public class RepositorioAcaoBase {
 
@@ -137,6 +138,26 @@ public class RepositorioAcaoBase {
 	        invokeStaticMethod("atualizaTargetStopDia", params, new EmptyResponseParser(voidCallback));
 		}
 	}
+	public static class CotacaoIntradayAcaoResultadoValorRepository extends ModelRepository<CotacaoIntradayAcaoResultadoValor> {
+		public CotacaoIntradayAcaoResultadoValorRepository() {
+			super("CotacaoIntradayAcaoResultadoValor", CotacaoIntradayAcaoResultadoValor.class);
+		}
+		@Override
+		protected String verificaNomeUrl(String nome) {
+			return "CotacaoIntradayAcaoResultadoValors";
+		}
 
+		public void insereLista(List<CotacaoIntradayAcaoResultadoValor> lista, final VoidCallback voidCallback) {
+			RestContractItem contrato = new RestContractItem("CotacaoIntradayAcaoResultados/insereLista","PUT");
+			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayAcaoResultado.insereLista");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        JSONArray listaJson = new JSONArray();
+	        for (CotacaoIntradayAcaoResultadoValor cotacao : lista) {
+	        	listaJson.put(cotacao.getJSON());
+	        }
+	        params.put("lista", listaJson);
+	        invokeStaticMethod("insereLista", params, new EmptyResponseParser(voidCallback));
+		}
+	}
 
 }

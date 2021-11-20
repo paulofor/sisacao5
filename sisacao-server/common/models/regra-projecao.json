@@ -28,6 +28,11 @@
       "type": "hasMany",
       "model": "CotacaoIntradayAcaoResultadoValor",
       "foreignKey": ""
+    },
+    "grupoAcao": {
+      "type": "belongsTo",
+      "model": "GrupoAcao",
+      "foreignKey": ""
     }
   },
   "acls": [],

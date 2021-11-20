@@ -56,7 +56,7 @@ module.exports = function (Ativoacao) {
             console.log('err1' ,  err);
             app.models.PeriodoExperimento.findById(experimento.periodoExperimentoId, (err,periodo) => {
                 console.log('err2' , err);
-                Ativoacao.MelhorSimulacaoPorExperimento(idExperimento,periodo.id, periodo.minimoPontoValidacao,1000,(err,res) => {
+                Ativoacao.MelhorSimulacaoPorExperimentoSimplificada(idExperimento,periodo.id, periodo.minimoPontoValidacao,(err,res) => {
                     console.log('err3' , err);
                     console.log('Finalizou MelhorParaValidacao');
                     callback(err,res);
@@ -66,7 +66,28 @@ module.exports = function (Ativoacao) {
        
     };
 
-
+    Ativoacao.MelhorSimulacaoPorExperimentoSimplificada = function(idExperimento, idPeriodo,  cortePontos, callback) {
+        let filtro = {
+            'include' : {
+                'relation' : 'execucaoSimulacaos' , 'scope' : {
+                        'where' : { 'and' : [{'experimentoSimulacaoId' : idExperimento } , {'periodoExperimentoId' : idPeriodo} , {'resultado' : { gte : cortePontos }}  ]},
+                        'order' : 'resultado desc'
+                        //'include' : {'relation' : 'combinacaoParametro' , 'scope' : {
+                        //    'include' : ['regraSimulacao' , {'relation' : 'valorParametros' , 'scope' : {'include' : 'parametroRegra'}}]
+                        //}} 
+                }
+            },
+        }
+        Ativoacao.find(filtro,(err,result) => {
+            console.log('terminou consulta');
+            let lista = result.filter(function (item)  {
+                let json = JSON.stringify(item);
+                let tam = JSON.parse(json).execucaoSimulacaos.length
+                return (tam > 0);
+            })
+            callback(err,lista);
+        });
+    };
 
 
  /**
@@ -92,13 +113,12 @@ module.exports = function (Ativoacao) {
             'relation' : 'execucaoSimulacaos' , 'scope' : {
                     'limit' : qtdeExecucao,
                     'where' : { 'and' : [{'experimentoSimulacaoId' : idExperimento } , {'periodoExperimentoId' : idPeriodo} , {'resultado' : { gte : cortePontos }}  ]},
-                    'order' : 'resultado desc',
-                    'include' : {'relation' : 'combinacaoParametro' , 'scope' : {
-                        'include' : ['regraSimulacao' , {'relation' : 'valorParametros' , 'scope' : {'include' : 'parametroRegra'}}]
-                    }} 
+                    'order' : 'resultado desc'
+                    //'include' : {'relation' : 'combinacaoParametro' , 'scope' : {
+                    //    'include' : ['regraSimulacao' , {'relation' : 'valorParametros' , 'scope' : {'include' : 'parametroRegra'}}]
+                    //}} 
             }
         },
-
     }
     Ativoacao.find(filtro,(err,result) => {
         console.log('terminou consulta');
@@ -110,7 +130,7 @@ module.exports = function (Ativoacao) {
         callback(err,lista);
     });
     
-};
+    };
 
 
 

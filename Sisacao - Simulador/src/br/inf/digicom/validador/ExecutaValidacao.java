@@ -18,6 +18,11 @@ public class ExecutaValidacao extends ExecutorBase {
 				CombinacaoParametro combinacao = execucao.getCombinacaoParametro();
 				executadorValidacao.executa(acao,execucao,experimento);
 				System.out.println("Finalizou ExecutaValidacao #" + execucao.getId());
+				try {
+					Thread.sleep(10000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		concluido = true;

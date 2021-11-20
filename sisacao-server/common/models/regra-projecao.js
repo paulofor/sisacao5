@@ -10,7 +10,16 @@ module.exports = function(Regraprojecao) {
  */
 
  Regraprojecao.ObtemProcessando = function(callback) {
-    let filtro = {'where' : {'processando' : 1} }
+    let filtro = {
+          'where' : {'processando' : 1} ,
+          'include' : {'relation' : 'grupoAcao' , 'scope' : {
+            'include' : {'relation' : 'relGrupoAcaos' , scope : {
+              'include' : 'ativoAcao'
+              }
+            } 
+            } 
+          }
+        }
     Regraprojecao.findOne(filtro,callback);
  };
   

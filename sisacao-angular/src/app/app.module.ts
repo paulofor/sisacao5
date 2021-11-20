@@ -98,18 +98,21 @@ import { ExecucaoSimulacaoMelhoresPeriodoComponent } from './execucao-simulacao-
 import { MelhoresExecucaoPeriodoComponent } from './melhores-execucao-periodo/melhores-execucao-periodo.component';
 import { DescricaoFundoImobiliarioComponent } from './descricao-fundo-imobiliario/descricao-fundo-imobiliario.component';
 import { FundoImobiliarioAluguelMelhoresComponent } from './fundo-imobiliario-aluguel-melhores/fundo-imobiliario-aluguel-melhores.component';
-import { DetalheAluguelFundoImobiliarioComponent } from './detalhe-aluguel-fundo-imobiliario/detalhe-aluguel-fundo-imobiliario.component';
-import { AlocacaoRecursosComponent } from './alocacao-recursos/alocacao-recursos.component';
+
 import { EscolhePeriodoCorrenteExperimentoComponent } from './escolhe-periodo-corrente-experimento/escolhe-periodo-corrente-experimento.component';
 import { TipoAplicacaoListComponent } from './tipo-aplicacao-list/tipo-aplicacao-list.component';
 import { TipoAplicacaoEditComponent } from './tipo-aplicacao-edit/tipo-aplicacao-edit.component';
-import { AlocacaoMovimentacaoEditaComponent } from './alocacao-movimentacao-edita/alocacao-movimentacao-edita.component';
+
 import { MelhoresValidacaoPeriodoComponent } from './melhores-validacao-periodo/melhores-validacao-periodo.component';
 import { AtivoIndiceComponent } from './ativo-indice/ativo-indice.component';
 import { AtivoIndiceEditaComponent } from './ativo-indice-edita/ativo-indice-edita.component';
 import { AtivoIntraIndiceComponent } from './ativo-intra-indice/ativo-intra-indice.component';
 import { AtivoAcaoResultadoFuturoComponent } from './ativo-acao-resultado-futuro/ativo-acao-resultado-futuro.component';
 import { PainelPeriodoValidacaoComponent } from './painel-periodo-validacao/painel-periodo-validacao.component';
+import { AlocacaoSaldoMesComponent } from './alocacao-saldo-mes/alocacao-saldo-mes.component';
+import { AlocacaoMovimentacaoComponent } from './alocacao-movimentacao/alocacao-movimentacao.component';
+import { AlocacaoSaldoMesEdicaoComponent } from './alocacao-saldo-mes-edicao/alocacao-saldo-mes-edicao.component';
+import { MovimentacaoEditaComponent } from './movimentacao-edita/movimentacao-edita.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -182,18 +185,19 @@ registerLocaleData(localePt, 'pt-BR');
     MelhoresExecucaoPeriodoComponent,
     DescricaoFundoImobiliarioComponent,
     FundoImobiliarioAluguelMelhoresComponent,
-    DetalheAluguelFundoImobiliarioComponent,
-    AlocacaoRecursosComponent,
     EscolhePeriodoCorrenteExperimentoComponent,
     TipoAplicacaoListComponent,
     TipoAplicacaoEditComponent,
-    AlocacaoMovimentacaoEditaComponent,
     MelhoresValidacaoPeriodoComponent,
     AtivoIndiceComponent,
     AtivoIndiceEditaComponent,
     AtivoIntraIndiceComponent,
     AtivoAcaoResultadoFuturoComponent,
-    PainelPeriodoValidacaoComponent
+    PainelPeriodoValidacaoComponent,
+    AlocacaoSaldoMesComponent,
+    AlocacaoMovimentacaoComponent,
+    AlocacaoSaldoMesEdicaoComponent,
+    MovimentacaoEditaComponent
   ],
   imports: [
     BrowserModule,
@@ -267,11 +271,10 @@ registerLocaleData(localePt, 'pt-BR');
     OrdemCompraListaEditaComponent,
     EscolhePeriodoParaExperimentoComponent,
     DescricaoFundoImobiliarioComponent,
-    DetalheAluguelFundoImobiliarioComponent,
     EscolhePeriodoCorrenteExperimentoComponent,
     TipoAplicacaoEditComponent,
-    AlocacaoMovimentacaoEditaComponent,
-    AtivoIndiceEditaComponent
+    AtivoIndiceEditaComponent,
+    MovimentacaoEditaComponent
   ],
   bootstrap: [AppComponent]
 })

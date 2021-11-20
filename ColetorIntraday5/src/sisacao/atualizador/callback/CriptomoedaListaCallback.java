@@ -21,6 +21,7 @@ public class CriptomoedaListaCallback extends CallbackParseHtml{
 	private boolean inicioTabela = false;
 	private int contaColuna = 0;
 	private int contaLinha = 0;
+	private int contaPosicao = 0;
 	
 	private CriptomoedaListaDado dado = null;
 	private AtivoCriptomoeda ativo = null;
@@ -38,6 +39,17 @@ public class CriptomoedaListaCallback extends CallbackParseHtml{
 		super.inicioTagImpl(t, classeNome, idNome);
 		if (this.inicioTabela && t==Tag.TD) {
 			contaColuna++;
+			
+			System.out.println("UltCont: " + this.getUltConteudo());
+			System.out.println("UltCont2: " + this.getUltConteudo2());
+			System.out.println("UltCont3: " + this.getUltConteudo3());
+			System.out.println("UltCont4: " + this.getUltConteudo4());
+			System.out.println("UltCont5: " + this.getUltConteudo5());
+			System.out.println("Linha:" + this.contaLinha);
+			System.out.println("Coluna:" + contaColuna);
+			System.out.println();
+			
+			
 			if (this.contaColuna==4) {
 				if ("Compre".equals(this.getUltConteudo())) {
 					this.ticker = this.getUltConteudo2();
@@ -57,24 +69,22 @@ public class CriptomoedaListaCallback extends CallbackParseHtml{
 				ativo.setTicker(this.ticker);
 			}
 			
-			if (this.contaColuna==5) {
-				this.valor = this.getUltConteudo();
+			
+			if (this.contaColuna==6) {
+				System.out.println("Parei aqui");
 			}
 
-
-			System.out.println("UltCont: " + this.getUltConteudo());
-			System.out.println("UltCont2: " + this.getUltConteudo2());
-			System.out.println("UltCont3: " + this.getUltConteudo3());
-			System.out.println("UltCont4: " + this.getUltConteudo4());
-			System.out.println("UltCont5: " + this.getUltConteudo5());
-			System.out.println("Linha:" + this.contaLinha);
-			System.out.println("Coluna:" + contaColuna);
-			System.out.println();
-
 			
+
+			if (this.contaColuna==8) {
+				this.valor = this.getUltConteudo();
+				ativo.setValorMercado(this.getValor(this.valor));
+				
+			}
 		}
 		if (this.liga && t==Tag.TR) {
 			if (ativo!=null) {
+				ativo.setPosicao(++this.contaPosicao);
 				this.dado.adicionaAtivo(ativo);
 				ativo = null;
 			}
@@ -88,6 +98,13 @@ public class CriptomoedaListaCallback extends CallbackParseHtml{
 		}
 	}
 
+	
+	private double getValor(String numero) {
+		double saida = 0;
+		String numero1 = numero.substring(2);
+		String numero2 = numero1.replaceAll(",","");
+		return saida = Double.parseDouble(numero2);
+	}
 
 
 
@@ -104,9 +121,13 @@ public class CriptomoedaListaCallback extends CallbackParseHtml{
 
 	@Override
 	public void finalizacaoOk() throws DaoException {
+		if (ativo!=null) {
+			ativo.setPosicao(++this.contaPosicao);
+			this.dado.adicionaAtivo(ativo);
+			ativo = null;
+		}
 		System.out.println("Terminou: " + this.dado.getLista().size() + " itens.");
-		
-		
+		this.dado.enviaDados();
 	}
 
 	@Override
