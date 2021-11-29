@@ -54,6 +54,7 @@ import { ValorMesInstituicaoTipo } from '../../models/ValorMesInstituicaoTipo';
 import { ValorMesTipoAplicacao } from '../../models/ValorMesTipoAplicacao';
 import { RegraProjecao } from '../../models/RegraProjecao';
 import { CotacaoIntradayAcaoResultadoValor } from '../../models/CotacaoIntradayAcaoResultadoValor';
+import { ExecucaoSimulacaoMelhoresValidacao } from '../../models/ExecucaoSimulacaoMelhoresValidacao';
 
 export interface Models { [name: string]: any }
 
@@ -115,6 +116,7 @@ export class SDKModels {
     ValorMesTipoAplicacao: ValorMesTipoAplicacao,
     RegraProjecao: RegraProjecao,
     CotacaoIntradayAcaoResultadoValor: CotacaoIntradayAcaoResultadoValor,
+    ExecucaoSimulacaoMelhoresValidacao: ExecucaoSimulacaoMelhoresValidacao,
     
   };
 

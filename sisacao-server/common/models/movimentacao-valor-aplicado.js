@@ -5,12 +5,40 @@ var app = require('../../server/server');
 module.exports = function(Movimentacaovaloraplicado) {
 
 
+    Movimentacaovaloraplicado.InsereMovimentacao = function(valorAplicado, callback) {
+        //console.log('valorAplicado' , valorAplicado);
+        let filtro =    {
+                            'where' : {
+                                'and' : [
+                                            {'instituicaoFinanceiraId':valorAplicado.instituicaoFinanceiraId},
+                                            {'tipoAplicacaoId' : valorAplicado.tipoAplicacaoId}
+                                        ]
+                            } 
+                        }
+        app.models.AplicacaoInstituicao.findOne(filtro, (err,aplicacaoInstituicao) => {
+            //console.log('aplicacaoInstituicao' , aplicacaoInstituicao);
+            valorAplicado.saldoAnterior = aplicacaoInstituicao.saldoAtual;
+            aplicacaoInstituicao.saldoAtual = aplicacaoInstituicao.saldoAtual + valorAplicado.valor;
+            valorAplicado.saldoAtual = aplicacaoInstituicao.saldoAtual;
+            app.models.AplicacaoInstituicao.upsert(aplicacaoInstituicao, (err,result) => {
+                let sql = " Update TipoAplicacao set saldoAtual =  " +
+                          " (select sum(saldoAtual) from AplicacaoInstituicao where tipoAplicacaoId = TipoAplicacao.id) " +
+                          " where id = " + valorAplicado.tipoAplicacaoId;
+                let ds = Movimentacaovaloraplicado.dataSource;
+                ds.connector.query(sql,(err,result) => {
+                    Movimentacaovaloraplicado.create(valorAplicado,callback);
+                })
+            })
+        })
+    }
+
+
     /**
     * 
     * @param {object} valorAplicado 
     * @param {Function(Error, object)} callback
     */
-     Movimentacaovaloraplicado.InsereMovimentacao = function(valoraplicado, callback) {
+     Movimentacaovaloraplicado.InsereMovimentacao2 = function(valorAplicado, callback) {
         console.log('valorAplicado1' , valorAplicado);
         delete valorAplicado['id'];
         delete valorAplicado['aplicacaoInstituicaos'];

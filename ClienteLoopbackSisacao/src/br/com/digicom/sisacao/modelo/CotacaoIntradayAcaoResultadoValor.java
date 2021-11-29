@@ -16,9 +16,17 @@ public class CotacaoIntradayAcaoResultadoValor extends Model{
 	private Integer resultado;
 	private Integer dias;
 	
-	private Integer idRegraProjecao;
+	private Integer regraProjecaoId;
 	private String diaHoraNumTicker;
 	
+	
+	private Double valorEntrada;
+	private Double valorSaida;
+	private Integer diaNumSaida;
+	
+	private String dataHora;
+	private Double valorSuperior;
+	private Double valorInferior;
 	
 	public JSONObject getJSON() {
 		JSONObject saida = new JSONObject();
@@ -28,8 +36,14 @@ public class CotacaoIntradayAcaoResultadoValor extends Model{
 			saida.put("ticker", this.ticker);
 			saida.put("resultado", this.resultado);
 			saida.put("dias", this.dias);
-			saida.put("idRegraProjecao", this.idRegraProjecao);
+			saida.put("regraProjecaoId", this.regraProjecaoId);
 			saida.put("diaHoraNumTicker", this.diaHoraNumTicker);
+			saida.put("valorEntrada", this.valorEntrada);
+			saida.put("valorSaida", this.valorSaida);
+			saida.put("diaNumSaida", this.diaNumSaida);
+			saida.put("dataHora", this.dataHora);
+			saida.put("valorSuperior", this.valorSuperior);
+			saida.put("valorInferior", this.valorInferior);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -38,6 +52,78 @@ public class CotacaoIntradayAcaoResultadoValor extends Model{
 	
 	
 	
+	public String getDataHora() {
+		return dataHora;
+	}
+
+
+
+	public void setDataHora(String dataHora) {
+		this.dataHora = dataHora;
+	}
+
+
+
+	public Double getValorSuperior() {
+		return valorSuperior;
+	}
+
+
+
+	public void setValorSuperior(Double valorSuperior) {
+		this.valorSuperior = valorSuperior;
+	}
+
+
+
+	public Double getValorInferior() {
+		return valorInferior;
+	}
+
+
+
+	public void setValorInferior(Double valorInferior) {
+		this.valorInferior = valorInferior;
+	}
+
+
+
+	public Double getValorEntrada() {
+		return valorEntrada;
+	}
+
+
+
+	public void setValorEntrada(Double valorEntrada) {
+		this.valorEntrada = valorEntrada;
+	}
+
+
+
+	public Double getValorSaida() {
+		return valorSaida;
+	}
+
+
+
+	public void setValorSaida(Double valorSaida) {
+		this.valorSaida = valorSaida;
+	}
+
+
+
+	public Integer getDiaNumSaida() {
+		return diaNumSaida;
+	}
+
+
+
+	public void setDiaNumSaida(Integer diaNumSaida) {
+		this.diaNumSaida = diaNumSaida;
+	}
+
+
+
 	public String getTicker() {
 		return ticker;
 	}
@@ -68,11 +154,11 @@ public class CotacaoIntradayAcaoResultadoValor extends Model{
 	public void setDias(Integer dias) {
 		this.dias = dias;
 	}
-	public Integer getIdRegraProjecao() {
-		return idRegraProjecao;
+	public Integer getRegraProjecaoId() {
+		return regraProjecaoId;
 	}
-	public void setIdRegraProjecao(Integer idRegraProjecao) {
-		this.idRegraProjecao = idRegraProjecao;
+	public void setRegraProjecaoId(Integer regraProjecaoId) {
+		this.regraProjecaoId = regraProjecaoId;
 	}
 	public String getDiaHoraNumTicker() {
 		return diaHoraNumTicker;

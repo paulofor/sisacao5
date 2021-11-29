@@ -28,6 +28,24 @@ export class MovimentacaoEditaComponent extends BaseEditComponent {
   }
 
 
+  onSubmit() {
+    this.preSubmit();
+    console.log('Submit(BaseEdit):' , this.item);
+    this.servico.InsereMovimentacao(this.item, (err, obj) => {
+      if (err) {
+        console.log("ErroUpsert:" + JSON.stringify(err));
+      } else {
+        
+      }
+      this.posSubmit();
+    }).subscribe((e: any) => {
+      console.log(JSON.stringify(e));
+      this.closeDialog();
+    });
+
+  }
+
+
   montaCombos() {
     let filtro = {'order' : 'nome'}
     this.srvInstituicao.find(filtro)

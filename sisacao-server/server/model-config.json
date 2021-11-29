@@ -246,5 +246,9 @@
   "CotacaoIntradayAcaoResultadoValor": {
     "dataSource": "mysqlDS",
     "public": true
+  },
+  "ExecucaoSimulacaoMelhoresValidacao": {
+    "dataSource": "mysqlDS",
+    "public": true
   }
 }

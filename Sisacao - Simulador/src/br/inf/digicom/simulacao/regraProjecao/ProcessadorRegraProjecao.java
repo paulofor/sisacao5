@@ -17,6 +17,14 @@ public class ProcessadorRegraProjecao {
 	private double percentualAlto = 0;
 	CotacaoIntradayResultadoValor_InsereLista insere = new CotacaoIntradayResultadoValor_InsereLista();
 	
+	private double valorEntrada;
+	private double valorSaida;
+	private int diaNumSaida;
+	
+	//private double valorSuperior;
+	//private double valorInferior;
+	//private String dataHora;
+	
 	public void executa(String ticker, RegraProjecao regraProjecao, List<DiaPregao> dias) {
 		// TODO Auto-generated method stub
 		this.regraProjecao = regraProjecao;
@@ -49,16 +57,29 @@ public class ProcessadorRegraProjecao {
 				valor.setDiaNum(cotacao.getDiaNum());
 				valor.setHora(cotacao.getHora());
 				valor.setTicker(cotacao.getTicker());
-				valor.setIdRegraProjecao(this.regraProjecao.getId());
+				valor.setRegraProjecaoId(this.regraProjecao.getId());
 				valor.setDiaHoraNumTicker(cotacao.getDiaNum() + cotacao.getHora() + cotacao.getTicker());
 				if (cotacao.getValor()==null) break;
 				double valorBaixo = cotacao.getValor() * (1-percentualBaixo);
 				double valorAlto = cotacao.getValor() * (1+percentualAlto);
+				this.valorEntrada = cotacao.getValor();
+				
 				System.out.println("Tratando..." + cotacao + " Alto: " + valorAlto + " Baixo: " + valorBaixo);
 				this.contaDia = 0;
 				Integer resultado = procuraValor(dias, indDia, indHora, valorBaixo, valorAlto); 
+				if (resultado == null) resultado = 0;
 				valor.setResultado(resultado);
 				valor.setDias(contaDia);
+				valor.setDiaNumSaida(this.diaNumSaida);
+				valor.setValorEntrada(this.valorEntrada);
+				valor.setValorSaida(this.valorSaida);
+				valor.setValorInferior(valorBaixo);
+				valor.setValorSuperior(valorAlto);
+				valor.setDataHora(cotacao.getDataHora());
+				this.diaNumSaida = 0;
+				this.valorEntrada = 0;
+				this.valorSaida = 0;
+				
 				listaValor.add(valor);
 			}
 			enviaDia(listaValor);
@@ -87,16 +108,22 @@ public class ProcessadorRegraProjecao {
 				System.out.println(diario + " - " + this.contaDia + " dias.");
 				if (diario==null) {
 					saida = 0;
+					this.diaNumSaida = diario.getDiaNum();
+					this.valorSaida = diario.getFechamento();
 					System.out.println("Saiu, sem diario");
 					break;
 				}
 				if (diario.getMinimo()!=null && diario.getMinimo() <= valorBaixo) {
 					saida = -1;
+					this.diaNumSaida = diario.getDiaNum();
+					this.valorSaida = valorBaixo;
 					System.out.println("Saiu, mínimo");
 					break;
 				} 
 				if (diario.getMaximo()!=null && diario.getMaximo() >= valorAlto) {
 					saida = 1;
+					this.diaNumSaida = diario.getDiaNum();
+					this.valorSaida = valorAlto;
 					System.out.println("Saiu, máximo");
 					break;
 				} 

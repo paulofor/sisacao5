@@ -30,7 +30,7 @@ public abstract class PesquisadorTimer extends TimerTask implements IPesquisador
 	}
 
 	public void run() {
-		if (this.restricaoTempo.podeAcessar())
+		if (this.restricaoTempo==null || this.restricaoTempo.podeAcessar())
 			this.executadorParse.executa();
 	}
 }

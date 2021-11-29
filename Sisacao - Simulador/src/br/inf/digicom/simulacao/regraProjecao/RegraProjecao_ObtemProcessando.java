@@ -14,8 +14,12 @@ public class RegraProjecao_ObtemProcessando extends ExecutorRegraProjecao {
 			@Override
 			public void onSuccess(RegraProjecao regra) {
 				System.out.println("Recebi processando: " + regra);
+				DiaPregao_ObtemIntradayResultadoValor processador = new DiaPregao_ObtemIntradayResultadoValor();
 				for (RelGrupoAcao relAcao : regra.getGrupoAcao().getRelGrupoAcaos()) {
-					
+					processador.setDataNumInicio(20210101);
+					processador.setTicker(relAcao.getTicker());
+					processador.setRegraProjecao(regra);
+					processador.executa();
 				}
 				concluido = true;
 			}
@@ -23,7 +27,7 @@ public class RegraProjecao_ObtemProcessando extends ExecutorRegraProjecao {
 			@Override
 			public void onError(Throwable t) {
 				// TODO Auto-generated method stub
-				
+				t.printStackTrace();
 			}
 			
 		});

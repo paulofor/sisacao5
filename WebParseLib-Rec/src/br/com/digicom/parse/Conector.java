@@ -66,9 +66,9 @@ public class Conector extends Thread {
 		if (codigo == 0)
 			return "OK";
 		if (codigo == 1)
-			return "ARQUIVO NÃO ENCONTRADO";
+			return "ARQUIVO Nï¿½O ENCONTRADO";
 		if (codigo == 2)
-			return "SERVIDOR NÃO RESPONDE";
+			return "SERVIDOR Nï¿½O RESPONDE";
 		if (codigo == 10)
 			return "ERRO DESCONHECIDO";
 		return "" + codigo;

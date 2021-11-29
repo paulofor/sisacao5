@@ -17,4 +17,21 @@ module.exports = function(Cotacaointradayacaoresultadovalor) {
             }
         });
     };
+
+
+    /**
+ * 
+ * @param {string} ticker 
+ * @param {number} idRegra 
+ * @param {Function(Error, array)} callback
+ */
+
+  Cotacaointradayacaoresultadovalor.ObtemListaTickerRegra = function(ticker, idRegra, callback) {
+    let filtro = {
+        'where' : { 'and' : [{'ticker' : ticker}, {'regraProjecaoId' : idRegra}]},
+        'order' : ['diaNum' , 'hora']
+    };
+    Cotacaointradayacaoresultadovalor.find(filtro,callback);
+  };
+  
 };

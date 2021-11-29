@@ -1,4 +1,4 @@
-package sisacao.opcaointra.app;
+package sisacao.intraday.coletor.obj;
 
 import java.util.Timer;
 
@@ -6,16 +6,12 @@ import br.com.digicom.lib.dao.DaoException;
 import sisacao.opcaointra.thread.ThreadPaiBase;
 import sisacao.opcaointra.thread.ThreadPrincipalCripto;
 
-public class ObtemCriptoIntradayObj {
+public class ColetorMercadoBitcoinObj {
 
 	private Timer timer;
 	
 	public void executa() throws DaoException {
-		System.out.println("Ola Mundo ! (02-11-2021) ");
 		criaThreadPrincipal();
-		//InicializaConexaoDaoThread();
-		//mudouDia();
-		
 	}
 	
 	public void criaThreadPrincipal() {

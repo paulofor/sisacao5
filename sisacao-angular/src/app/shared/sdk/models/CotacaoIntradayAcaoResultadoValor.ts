@@ -9,6 +9,13 @@ export interface CotacaoIntradayAcaoResultadoValorInterface {
   "diaHoraNumTicker"?: string;
   "dias"?: number;
   "regraProjecaoId"?: number;
+  "dataHoraInsercao"?: Date;
+  "valorSaida"?: number;
+  "valorEntrada"?: number;
+  "diaNumSaida"?: number;
+  "dataHora"?: Date;
+  "valorSuperior"?: number;
+  "valorInferior"?: number;
 }
 
 export class CotacaoIntradayAcaoResultadoValor implements CotacaoIntradayAcaoResultadoValorInterface {
@@ -19,6 +26,13 @@ export class CotacaoIntradayAcaoResultadoValor implements CotacaoIntradayAcaoRes
   "diaHoraNumTicker": string;
   "dias": number;
   "regraProjecaoId": number;
+  "dataHoraInsercao": Date;
+  "valorSaida": number;
+  "valorEntrada": number;
+  "diaNumSaida": number;
+  "dataHora": Date;
+  "valorSuperior": number;
+  "valorInferior": number;
   constructor(data?: CotacaoIntradayAcaoResultadoValorInterface) {
     Object.assign(this, data);
   }
@@ -78,6 +92,34 @@ export class CotacaoIntradayAcaoResultadoValor implements CotacaoIntradayAcaoRes
         },
         "regraProjecaoId": {
           name: 'regraProjecaoId',
+          type: 'number'
+        },
+        "dataHoraInsercao": {
+          name: 'dataHoraInsercao',
+          type: 'Date'
+        },
+        "valorSaida": {
+          name: 'valorSaida',
+          type: 'number'
+        },
+        "valorEntrada": {
+          name: 'valorEntrada',
+          type: 'number'
+        },
+        "diaNumSaida": {
+          name: 'diaNumSaida',
+          type: 'number'
+        },
+        "dataHora": {
+          name: 'dataHora',
+          type: 'Date'
+        },
+        "valorSuperior": {
+          name: 'valorSuperior',
+          type: 'number'
+        },
+        "valorInferior": {
+          name: 'valorInferior',
           type: 'number'
         },
       },

@@ -3,6 +3,7 @@ package sisacao.opcaointra.cotacao;
 import java.util.List;
 
 import br.com.digicom.lib.dao.DaoException;
+import br.com.digicom.parse.ExecutadorParse;
 import br.com.digicom.parse.ExecutadorParseApache2;
 import br.com.digicom.parse.PesquisadorTimer;
 import br.com.digicom.parse.callback.IDadosParse;
@@ -11,10 +12,11 @@ import sisacao.atualizador.callback.CriptomoedaBitcoinCallback;
 
 public class PesquisadorIntradayMercadoBitcoin extends PesquisadorTimer{
 	
-	private ExecutadorParseApache2 execMB;
+	//private ExecutadorParseApache2 execMB;
+	private ExecutadorParse execMB;
 	
 	public PesquisadorIntradayMercadoBitcoin() {
-		this.execMB = new ExecutadorParseApache2();
+		this.execMB = new ExecutadorParse();
 	}
 
 	public void inicializa(List<AtivoCriptomoeda> objects, String diaAtual) {
@@ -37,12 +39,8 @@ public class PesquisadorIntradayMercadoBitcoin extends PesquisadorTimer{
 		return new CotacaoIntradayManipuladorMercadoBitcoin(data);
 	}
 	public void run() {
-		//executadorParse.executa();
-		try {
-			this.execMB.executa();
-		} catch (DaoException e) {
-			e.printStackTrace();
-		}
+		execMB.executa();
+		
 	}
 
 }

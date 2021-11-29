@@ -1,4 +1,6 @@
 
+
+
 <div class="main-content" *ngIf="listaBase">
   <div class="container-fluid">
     <div class="row">
@@ -24,9 +26,9 @@
               <tbody>
                 <tr *ngFor="let item of listaBase">
                   <td>{{item.instituicaoFinanceira.nome }}</td>
-                  <td>{{item.data}}</td>
+                  <td>{{item.data | date : 'dd/MM/yyyy' : 'UTC' }}</td>
                   <td>{{item.valor}}</td>
-                  <td>{{item.tipoAplicacaoNome}}</td>
+                  <td>{{item.tipoAplicacao.nome}}</td>
                   <td>{{item.saldoAnterior}}</td>
                   <td>{{item.saldoAtual}}</td>
                   <td align="right">
@@ -42,3 +44,5 @@
     </div>
   </div>
 </div>
+
+

@@ -148,8 +148,8 @@ public class RepositorioAcaoBase {
 		}
 
 		public void insereLista(List<CotacaoIntradayAcaoResultadoValor> lista, final VoidCallback voidCallback) {
-			RestContractItem contrato = new RestContractItem("CotacaoIntradayAcaoResultados/insereLista","PUT");
-			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayAcaoResultado.insereLista");
+			RestContractItem contrato = new RestContractItem("CotacaoIntradayAcaoResultadoValors/insereLista","POST");
+			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayAcaoResultadoValor.insereLista");
 	        Map<String, Object> params = new HashMap<String, Object>();
 	        JSONArray listaJson = new JSONArray();
 	        for (CotacaoIntradayAcaoResultadoValor cotacao : lista) {

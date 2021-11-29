@@ -53,5 +53,6 @@ export * from './ValorMesInstituicaoTipo';
 export * from './ValorMesTipoAplicacao';
 export * from './RegraProjecao';
 export * from './CotacaoIntradayAcaoResultadoValor';
+export * from './ExecucaoSimulacaoMelhoresValidacao';
 export * from './BaseModels';
 export * from './FireLoopRef';

@@ -1,3 +1,36 @@
-<p>
-  alocacao-saldo-mes works!
-</p>
+
+<div class="main-content" *ngIf="listaBase && listaInstituicao">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Alocação de Recursos</h4>
+          </div>
+          <div class="content table-responsive table-full-width">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th width="10%">Aplicação</th>
+                  <td  width="10%" *ngFor="let banco of listaInstituicao">
+                    {{banco.nome}}
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listaBase">
+                  <td>{{item.nome}}</td>
+                  <td *ngFor="let detalhe of item.aplicacaoInstituicaos">
+                    {{detalhe.saldoAtual}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
