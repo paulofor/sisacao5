@@ -28,6 +28,19 @@ module.exports = function(Cotacaointradayacaoresultadovalor) {
 
   Cotacaointradayacaoresultadovalor.ObtemListaTickerRegra = function(ticker, idRegra, callback) {
     let filtro = {
+        'fields' : { 
+            'ticker' : true, 
+            'diaNum' : true,
+            'hora' : true,
+            'resultado' : true,
+            'dias' : true,
+            'valorSaida' : true,
+            'valorEntrada' : true,
+            'diaNumSaida' : true,
+            'dataHora' : true,
+            'valorSuperior' : true,
+            'valorInferior' : true
+        },
         'where' : { 'and' : [{'ticker' : ticker}, {'regraProjecaoId' : idRegra}]},
         'order' : ['diaNum' , 'hora']
     };

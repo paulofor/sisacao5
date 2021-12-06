@@ -12,17 +12,26 @@
               <thead>
                 <tr>
                   <th width="10%">Aplicação</th>
-                  <td  width="10%" *ngFor="let banco of listaInstituicao">
+                  <th  width="10%" *ngFor="let banco of listaInstituicao">
                     {{banco.nome}}
-                  </td>
+                  </th>
+                  <th width="10%">TOTAL</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let item of listaBase">
                   <td>{{item.nome}}</td>
                   <td *ngFor="let detalhe of item.aplicacaoInstituicaos">
-                    {{detalhe.saldoAtual}}
+                    {{detalhe.saldoAtual | number:'':'pt-BR' }}
                   </td>
+                  <td>{{item.saldoAtual | number:'':'pt-BR'}}</td>
+                </tr>
+                <tr>
+                  <td>Total</td>
+                  <td *ngFor="let banco of listaInstituicao">
+                    {{getSaldoInstituicao(banco) | number:'':'pt-BR'}}
+                  </td>
+                  <td>{{saldoTotal | number:'':'pt-BR' }}</td>
                 </tr>
               </tbody>
             </table>

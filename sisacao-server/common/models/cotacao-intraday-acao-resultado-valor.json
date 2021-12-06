@@ -46,10 +46,10 @@
     "dataHora": {
       "type": "date"
     },
-    "valorSuperior" : {
+    "valorSuperior": {
       "type": "number"
     },
-    "valorInferior" : {
+    "valorInferior": {
       "type": "number"
     }
   },

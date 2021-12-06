@@ -15,6 +15,7 @@ import com.strongloop.android.remoting.adapters.RestContractItem;
 
 import br.com.digicom.sisacao.modelo.AtivoCriptomoeda;
 import br.com.digicom.sisacao.modelo.CotacaoIntradayCriptomoeda;
+import br.com.digicom.sisacao.modelo.CotacaoIntradayFoxbit;
 
 public class RepositorioCriptomoedaBase {
 
@@ -71,5 +72,30 @@ public class RepositorioCriptomoedaBase {
 	        invokeStaticMethod("insereValorHorarioCriptomoeda", params, new EmptyResponseParser(voidCallback));
 		}
 	}
+	
+	
+	public static class CotacaoIntradayFoxbitRepository extends ModelRepository<CotacaoIntradayFoxbit> {
+		
+		public CotacaoIntradayFoxbitRepository() {
+			super("CotacaoIntradayFoxbit", CotacaoIntradayFoxbit.class);
+		}
+		@Override
+		protected String verificaNomeUrl(String nome) {
+			return "CotacaoIntradayFoxbits";
+		}
+
+		public void insereListaFonteFoxbit(final List<CotacaoIntradayFoxbit> lista, final VoidCallback callback) {
+			RestContractItem contrato = new RestContractItem("CotacaoIntradayFoxbits/insereListaFonteFoxbit","POST");
+			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayFoxbit.insereListaFonteFoxbit");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        JSONArray listaServico = new JSONArray();
+	        for (CotacaoIntradayFoxbit moeda : lista) {
+	        	listaServico.put(moeda.getJSON());
+	        }
+	        params.put("lista", listaServico);
+	        invokeStaticMethod("insereListaFonteFoxbit", params,   new EmptyResponseParser(callback));
+		}
+	}
+	
 
 }

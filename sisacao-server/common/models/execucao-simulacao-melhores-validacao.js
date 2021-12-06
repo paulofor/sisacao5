@@ -1,5 +1,7 @@
 'use strict';
 
+var app = require('../../server/server');
+
 module.exports = function(Execucaosimulacaomelhoresvalidacao) {
 
 
@@ -23,9 +25,6 @@ module.exports = function(Execucaosimulacaomelhoresvalidacao) {
             "    stop,  " +
             "    tipo,  " +
             "    experimentoSimulacaoId,  " +
-            "    validacaoQtdeLucro,  " +
-            "    validacaoQtdePrejuizo,  " +
-            "    validacaoDiferenca,  " +
             "    periodoExperimentoId  " +
             "    )  " +
             " select distinct simulacao.id as simulacaoId, " +
@@ -37,21 +36,28 @@ module.exports = function(Execucaosimulacaomelhoresvalidacao) {
             " simulacao.stop as stop, " +
             " simulacao.tipo as tipo, " +
             " simulacao.experimentoSimulacaoId as experimentoSimulacaoId, " +
-            " validacao.quantidadeLucro as validacaoLucro, " +
-            " validacao.quantidadePrejuizo as validacaoPrejuizo, " +
-            " (validacao.quantidadeLucro - validacao.quantidadePrejuizo) as saldoValidacao " +
             " simulacao.periodoExperimentoId " +
             " from ExecucaoSimulacao simulacao " +
-            " left outer join ExecucaoSimulacaoValidacao  validacao on " + 
-            " simulacao.id = validacao.execucaoSimulacaoId " +
             " where simulacao.periodoExperimentoId = " + idPeriodo +
             " and simulacao.resultado >= " + periodo.minimoPontoValidacao;
             console.log('sql: ' , sql);
-            let ds = Execucaosimulacao.dataSource;
+            let ds = Execucaosimulacaomelhoresvalidacao.dataSource;
             ds.connector.query(sql,(err,result) => {
-                console.log('erro', err);
-                console.log('obteve resultado' , result);
-                callback(err,result);
+                let sqlupdate = " update ExecucaoSimulacaoMelhoresValidacao " +
+                                " set validacaoQtdeLucro = ( " +
+                                " select distinct quantidadeLucro from ExecucaoSimulacaoValidacao " +
+                                " where ExecucaoSimulacaoValidacao.execucaoSimulacaoId =  ExecucaoSimulacaoMelhoresValidacao.execucaoSimulacaoId), " +
+                                " validacaoQtdePrejuizo = ( " +
+                                " select distinct quantidadePrejuizo from ExecucaoSimulacaoValidacao  " +
+                                " where ExecucaoSimulacaoValidacao.execucaoSimulacaoId =  ExecucaoSimulacaoMelhoresValidacao.execucaoSimulacaoId) " +
+                                " where periodoExperimentoId = " + idPeriodo; 
+                ds.connector.query(sqlupdate, (err,result) => {
+                    let sqlsaldo =  " update ExecucaoSimulacaoMelhoresValidacao " +
+                                    " set validacaoDiferenca = (validacaoQtdeLucro - validacaoQtdePrejuizo) " +
+                                    " where periodoExperimentoId = " + idPeriodo +
+                                    " and validacaoQtdeLucro is not null";
+                    ds.connector.query(sqlsaldo,callback);
+                })
             });
         });
     };

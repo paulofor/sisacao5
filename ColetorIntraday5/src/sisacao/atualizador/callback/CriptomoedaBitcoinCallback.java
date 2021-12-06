@@ -107,4 +107,10 @@ public class CriptomoedaBitcoinCallback extends CallbackParseJson{
 		return null;
 	}
 
+	@Override
+	public void setString(String resposta) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

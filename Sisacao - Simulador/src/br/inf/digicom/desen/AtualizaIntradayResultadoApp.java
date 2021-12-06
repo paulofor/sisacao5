@@ -19,7 +19,7 @@ public class AtualizaIntradayResultadoApp {
 			int idGrupo = Integer.parseInt(args[0]);
 			AtualizaIntradayResultadoObj obj = new AtualizaIntradayResultadoObj();
 					
-			List<AtivoAcao> lista = obj.executa(idGrupo);
+			List<AtivoAcao> lista = obj.obtemAtivos(idGrupo);
 			System.out.println("Temos " + lista.size() + " ativos");
 			for (AtivoAcao ativo : lista) {
 				while (obj.executaTicker(ativo.getTicker())!=null);

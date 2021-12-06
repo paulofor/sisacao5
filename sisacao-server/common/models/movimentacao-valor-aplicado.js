@@ -18,7 +18,7 @@ module.exports = function(Movimentacaovaloraplicado) {
         app.models.AplicacaoInstituicao.findOne(filtro, (err,aplicacaoInstituicao) => {
             //console.log('aplicacaoInstituicao' , aplicacaoInstituicao);
             valorAplicado.saldoAnterior = aplicacaoInstituicao.saldoAtual;
-            aplicacaoInstituicao.saldoAtual = aplicacaoInstituicao.saldoAtual + valorAplicado.valor;
+            aplicacaoInstituicao.saldoAtual = parseFloat(aplicacaoInstituicao.saldoAtual) + parseFloat(valorAplicado.valor);
             valorAplicado.saldoAtual = aplicacaoInstituicao.saldoAtual;
             app.models.AplicacaoInstituicao.upsert(aplicacaoInstituicao, (err,result) => {
                 let sql = " Update TipoAplicacao set saldoAtual =  " +

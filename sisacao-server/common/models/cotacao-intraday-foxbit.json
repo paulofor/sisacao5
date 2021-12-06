@@ -1,0 +1,64 @@
+{
+  "name": "CotacaoIntradayFoxbit",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ticker": {
+      "type": "string"
+    },
+    "valor": {
+      "type": "number"
+    },
+    "diaNum": {
+      "type": "number"
+    },
+    "dataHora": {
+      "type": "string"
+    },
+    "valorCompra": {
+      "type": "number"
+    },
+    "valorVenda": {
+      "type": "number"
+    },
+    "tickerMoeda": {
+      "type": "string"
+    },
+    "cambio": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {
+    "InsereListaFonteFoxbit": {
+      "accepts": [
+        {
+          "arg": "listaCotacao",
+          "type": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/InsereListaFonteFoxbit",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

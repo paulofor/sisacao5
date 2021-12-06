@@ -22,7 +22,7 @@ public class AtualizaIntradayResultadoObj {
 	
 	private List<AtivoAcao>  resultado = null;
 	
-	public List<AtivoAcao> executa(int idGrupo) {
+	public List<AtivoAcao> obtemAtivos(int idGrupo) {
 		resultado = null;
 		repAcao.listaPorGrupo(idGrupo, new ListCallback<AtivoAcao>() {
 
@@ -59,6 +59,7 @@ public class AtualizaIntradayResultadoObj {
 			@Override
 			public void onSuccess(CotacaoIntradayAcaoResultado object) {
 				retorno = object;
+				System.out.println("Cotacao :" + object);
 				concluido = true;
 				
 			}

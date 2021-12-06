@@ -27,10 +27,10 @@
                 <tr *ngFor="let item of listaBase">
                   <td>{{item.instituicaoFinanceira.nome }}</td>
                   <td>{{item.data | date : 'dd/MM/yyyy' : 'UTC' }}</td>
-                  <td>{{item.valor}}</td>
+                  <td>{{item.valor | number:'':'pt-BR'}}</td>
                   <td>{{item.tipoAplicacao.nome}}</td>
-                  <td>{{item.saldoAnterior}}</td>
-                  <td>{{item.saldoAtual}}</td>
+                  <td>{{item.saldoAnterior | number:'':'pt-BR'}}</td>
+                  <td>{{item.saldoAtual | number:'':'pt-BR'}}</td>
                   <td align="right">
                     <button class="btn btn-primary btn-sm " (click)="edita(item)">Alterar</button>
                   </td>

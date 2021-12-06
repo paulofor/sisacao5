@@ -97,7 +97,7 @@ public class CotacaoIntradayAcaoResultado extends Model {
 	
 
 	public String toString() {
-		return this.dataHora + ": " + this.valor;
+		return "[" + this.dataHora + "] : " + this.valor;
 	}
 	public JSONObject getJSON() {
 		JSONObject saida = new JSONObject();

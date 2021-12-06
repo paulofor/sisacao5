@@ -11,6 +11,7 @@ import { InstituicaoFinanceira, InstituicaoFinanceiraApi, TipoAplicacaoApi } fro
 export class AlocacaoSaldoMesComponent extends BaseListComponent {
 
   listaInstituicao : InstituicaoFinanceira[];
+  saldoTotal: number = 0;
 
   constructor(protected dialog: MatDialog, protected srv:TipoAplicacaoApi, protected srvInstituicao:InstituicaoFinanceiraApi) { 
     super(dialog,srv);
@@ -18,7 +19,7 @@ export class AlocacaoSaldoMesComponent extends BaseListComponent {
 
 
   preCarregaTela() {
-    let filtro = {'order' : 'id'}
+    let filtro = {'order' : 'id' , 'include' : 'aplicacaoInstituicaos'}
     this.srvInstituicao.find(filtro)
     .subscribe((resultado: InstituicaoFinanceira[]) => {
       this.listaInstituicao = resultado;
@@ -26,7 +27,14 @@ export class AlocacaoSaldoMesComponent extends BaseListComponent {
     })
   }
 
-
+  getSaldoInstituicao(item) {
+    let saldoAtual = 0;
+    for (let i=0; i<item.aplicacaoInstituicaos.length; i++) {
+      saldoAtual += item.aplicacaoInstituicaos[i].saldoAtual;
+    }
+    this.saldoTotal += saldoAtual;
+    return saldoAtual;
+  }
 
   getFiltro() {
     return {

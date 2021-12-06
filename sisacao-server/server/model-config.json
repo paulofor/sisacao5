@@ -250,5 +250,9 @@
   "ExecucaoSimulacaoMelhoresValidacao": {
     "dataSource": "mysqlDS",
     "public": true
+  },
+  "CotacaoIntradayFoxbit": {
+    "dataSource": "mysqlDS",
+    "public": true
   }
 }

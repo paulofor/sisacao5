@@ -69,7 +69,7 @@ module.exports = function(Cotacaointradayacaoresultado) {
                     " limit 1 " +
                     " ) " +
                     " where ticker = '" + ticker + "' and diaNum = " + cotacao.diaNum + " and hora = '" + cotacao.hora + "' ";
-                //console.log('sql:' , sql);
+                console.log('sql:' , sql);
                 var ds = Cotacaointradayacaoresultado.dataSource;
                 ds.connector.query(sql, (err,result) => {
                     callback(err,cotacao)
