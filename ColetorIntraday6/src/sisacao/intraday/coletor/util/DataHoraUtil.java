@@ -13,17 +13,17 @@ public class DataHoraUtil {
 	public static String getDataHora() {
 		Calendar now = Calendar.getInstance();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		TimeZone zone = TimeZone.getTimeZone("America/Sao_Paulo");
+		TimeZone zone = TimeZone.getTimeZone("GMT-3");
 		formatter.setTimeZone(zone);
 		Date date = new Date();
 		return formatter.format(date);
 	}
 
 	public static Integer getDiaNum() {
-		
 		Calendar now = Calendar.getInstance();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
-
+		TimeZone zone = TimeZone.getTimeZone("GMT-3");
+		formatter.setTimeZone(zone);
 		Date date = new Date();
 		return Integer.parseInt(formatter.format(date));
 	}

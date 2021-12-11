@@ -36,7 +36,7 @@ public class CotacaoIntradayAcaoResultado extends Model {
 	public void setCotacaoIntradayAcaoResultadoValors(List<HashMap> cotacaoIntradayAcaoResultadoValors) {
 		this.cotacaoIntradayAcaoResultadoValors = new ArrayList<CotacaoIntradayAcaoResultadoValor>();
 		for (int i = 0; i < cotacaoIntradayAcaoResultadoValors.size(); i++) {
-			Object objeto = new RelGrupoAcao();
+			Object objeto = new CotacaoIntradayAcaoResultadoValor();
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) cotacaoIntradayAcaoResultadoValors.get(i), true);
 			this.cotacaoIntradayAcaoResultadoValors.add((CotacaoIntradayAcaoResultadoValor) objeto);
 		}

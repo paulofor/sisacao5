@@ -1,14 +1,19 @@
 /* tslint:disable */
+import {
+  AplicacaoInstituicao
+} from '../index';
 
 declare var Object: any;
 export interface InstituicaoFinanceiraInterface {
   "nome"?: string;
   "id"?: number;
+  aplicacaoInstituicaos?: AplicacaoInstituicao[];
 }
 
 export class InstituicaoFinanceira implements InstituicaoFinanceiraInterface {
   "nome": string;
   "id": number;
+  aplicacaoInstituicaos: AplicacaoInstituicao[];
   constructor(data?: InstituicaoFinanceiraInterface) {
     Object.assign(this, data);
   }
@@ -52,6 +57,14 @@ export class InstituicaoFinanceira implements InstituicaoFinanceiraInterface {
         },
       },
       relations: {
+        aplicacaoInstituicaos: {
+          name: 'aplicacaoInstituicaos',
+          type: 'AplicacaoInstituicao[]',
+          model: 'AplicacaoInstituicao',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'instituicaoFinanceiraId'
+        },
       }
     }
   }

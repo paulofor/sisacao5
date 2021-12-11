@@ -38,6 +38,8 @@ import { AtivoIntraIndiceComponent } from '../ativo-intra-indice/ativo-intra-ind
 import { AtivoAcaoResultadoFuturoComponent } from '../ativo-acao-resultado-futuro/ativo-acao-resultado-futuro.component';
 import { AlocacaoMovimentacaoComponent } from '../alocacao-movimentacao/alocacao-movimentacao.component';
 import { AlocacaoSaldoMesComponent } from '../alocacao-saldo-mes/alocacao-saldo-mes.component';
+import { AtivoCriptomoedaComponent } from '../ativo-criptomoeda/ativo-criptomoeda.component';
+import { CotacaoIntraCriptomoedaComponent } from '../cotacao-intra-criptomoeda/cotacao-intra-criptomoeda.component';
 
 
 export const routes : Routes = [
@@ -48,6 +50,7 @@ export const routes : Routes = [
     { path: 'ativoMercadoria' , component: AtivoMercadoriaComponent},
     { path: 'ativoImobiliario' , component: AtivoImobiliarioComponent},
     { path: 'ativoIndice' , component: AtivoIndiceComponent},
+    { path: 'ativoCriptomoeda' , component: AtivoCriptomoedaComponent},
 
     { path: 'ativoAcaoResultadoFuturo' , component: AtivoAcaoResultadoFuturoComponent },
 
@@ -56,6 +59,7 @@ export const routes : Routes = [
     { path: 'cotacaoIntraMercadoria/:id' , component: CotacaoIntraMercadoriaComponent},
     { path: 'cotacaoIntraImobiliario/:id' , component: CotacaoIntraImobiliarioComponent},
     { path: 'cotacaoIntraIndice/:id' , component: AtivoIntraIndiceComponent},
+    { path: 'cotacaoIntraCriptomoeda/:id' , component: CotacaoIntraCriptomoedaComponent},
 
     { path: 'cotacaoDiarioAcao/:id' , component : CotacaoDiarioAcaoComponent },
     { path: 'acaoDetalheDia/:ticker/:diaNum' , component: AcaoDetalheDiaComponent },

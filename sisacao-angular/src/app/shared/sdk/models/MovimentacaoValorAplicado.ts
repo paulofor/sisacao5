@@ -9,8 +9,6 @@ export interface MovimentacaoValorAplicadoInterface {
   "valor"?: number;
   "data"?: string;
   "tipoMovimentacao"?: string;
-  "saldoAnterior"?: number;
-  "saldoAtual"?: number;
   "id"?: number;
   "tipoAplicacaoId"?: number;
   "instituicaoFinanceiraId"?: number;
@@ -22,8 +20,6 @@ export class MovimentacaoValorAplicado implements MovimentacaoValorAplicadoInter
   "valor": number;
   "data": string;
   "tipoMovimentacao": string;
-  "saldoAnterior": number;
-  "saldoAtual": number;
   "id": number;
   "tipoAplicacaoId": number;
   "instituicaoFinanceiraId": number;
@@ -73,14 +69,6 @@ export class MovimentacaoValorAplicado implements MovimentacaoValorAplicadoInter
         "tipoMovimentacao": {
           name: 'tipoMovimentacao',
           type: 'string'
-        },
-        "saldoAnterior": {
-          name: 'saldoAnterior',
-          type: 'number'
-        },
-        "saldoAtual": {
-          name: 'saldoAtual',
-          type: 'number'
         },
         "id": {
           name: 'id',

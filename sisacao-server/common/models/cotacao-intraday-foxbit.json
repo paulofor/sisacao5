@@ -7,7 +7,8 @@
   },
   "properties": {
     "ticker": {
-      "type": "string"
+      "type": "string",
+      "id": true
     },
     "valor": {
       "type": "number"
@@ -16,7 +17,8 @@
       "type": "number"
     },
     "dataHora": {
-      "type": "string"
+      "type": "string",
+      "id": true
     },
     "valorCompra": {
       "type": "number"

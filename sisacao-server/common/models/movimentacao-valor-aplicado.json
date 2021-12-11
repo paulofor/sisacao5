@@ -14,12 +14,6 @@
     },
     "tipoMovimentacao": {
       "type": "string"
-    },
-    "saldoAnterior": {
-      "type": "number"
-    },
-    "saldoAtual": {
-      "type": "number"
     }
   },
   "validations": [],
@@ -37,18 +31,11 @@
   },
   "acls": [],
   "methods": {
-    "InsereMovimentacao": {
-      "accepts": [
-        {
-          "arg": "valorAplicado",
-          "type": "object",
-          "required": false,
-          "description": ""
-        }
-      ],
+    "RecalcularSaldos": {
+      "accepts": [],
       "returns": [
         {
-          "arg": "saidaa",
+          "arg": "saida",
           "type": "object",
           "root": true,
           "description": ""
@@ -57,7 +44,7 @@
       "description": "",
       "http": [
         {
-          "path": "/insereMovimentacao",
+          "path": "/recalcularSaldos",
           "verb": "post"
         }
       ]

@@ -103,6 +103,7 @@ import { ValorMesTipoAplicacaoApi } from './services/custom/ValorMesTipoAplicaca
 import { RegraProjecaoApi } from './services/custom/RegraProjecao';
 import { CotacaoIntradayAcaoResultadoValorApi } from './services/custom/CotacaoIntradayAcaoResultadoValor';
 import { ExecucaoSimulacaoMelhoresValidacaoApi } from './services/custom/ExecucaoSimulacaoMelhoresValidacao';
+import { CotacaoIntradayFoxbitApi } from './services/custom/CotacaoIntradayFoxbit';
 /**
 * @module SDKBrowserModule
 * @description
@@ -188,6 +189,7 @@ export class SDKBrowserModule {
         RegraProjecaoApi,
         CotacaoIntradayAcaoResultadoValorApi,
         ExecucaoSimulacaoMelhoresValidacaoApi,
+        CotacaoIntradayFoxbitApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
       ]

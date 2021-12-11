@@ -114,6 +114,8 @@ import { AlocacaoMovimentacaoComponent } from './alocacao-movimentacao/alocacao-
 import { AlocacaoSaldoMesEdicaoComponent } from './alocacao-saldo-mes-edicao/alocacao-saldo-mes-edicao.component';
 import { MovimentacaoEditaComponent } from './movimentacao-edita/movimentacao-edita.component';
 import { DetalheAluguelFundoImobiliarioComponent } from './detalhe-aluguel-fundo-imobiliario/detalhe-aluguel-fundo-imobiliario.component';
+import { AtivoCriptomoedaComponent } from './ativo-criptomoeda/ativo-criptomoeda.component';
+import { CotacaoIntraCriptomoedaComponent } from './cotacao-intra-criptomoeda/cotacao-intra-criptomoeda.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -199,7 +201,9 @@ registerLocaleData(localePt, 'pt-BR');
     AlocacaoMovimentacaoComponent,
     AlocacaoSaldoMesEdicaoComponent,
     MovimentacaoEditaComponent,
-    DetalheAluguelFundoImobiliarioComponent
+    DetalheAluguelFundoImobiliarioComponent,
+    AtivoCriptomoedaComponent,
+    CotacaoIntraCriptomoedaComponent
   ],
   imports: [
     BrowserModule,

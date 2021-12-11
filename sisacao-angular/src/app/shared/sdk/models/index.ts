@@ -54,5 +54,6 @@ export * from './ValorMesTipoAplicacao';
 export * from './RegraProjecao';
 export * from './CotacaoIntradayAcaoResultadoValor';
 export * from './ExecucaoSimulacaoMelhoresValidacao';
+export * from './CotacaoIntradayFoxbit';
 export * from './BaseModels';
 export * from './FireLoopRef';

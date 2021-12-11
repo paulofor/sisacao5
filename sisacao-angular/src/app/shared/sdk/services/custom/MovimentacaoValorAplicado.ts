@@ -160,7 +160,7 @@ export class MovimentacaoValorAplicadoApi extends BaseLoopBackApi {
    *
    * @param {object} data Request data.
    *
-   *  - `valorAplicado` – `{object}` - 
+   * This method does not accept any data. Supply an empty object.
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -171,14 +171,13 @@ export class MovimentacaoValorAplicadoApi extends BaseLoopBackApi {
    * This usually means the response is a `MovimentacaoValorAplicado` object.)
    * </em>
    */
-  public InsereMovimentacao(valorAplicado: any = {}, customHeaders?: Function): Observable<any> {
+  public RecalcularSaldos(customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/MovimentacaoValorAplicados/insereMovimentacao";
+    "/MovimentacaoValorAplicados/recalcularSaldos";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (typeof valorAplicado !== 'undefined' && valorAplicado !== null) _urlParams.valorAplicado = valorAplicado;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }

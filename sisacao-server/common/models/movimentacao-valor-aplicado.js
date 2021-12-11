@@ -5,6 +5,26 @@ var app = require('../../server/server');
 module.exports = function(Movimentacaovaloraplicado) {
 
 
+    /**
+    * 
+    * @param {Function(Error, object)} callback
+    */
+    Movimentacaovaloraplicado.RecalcularSaldos = function(callback) {
+        let sql1 = "update AplicacaoInstituicao " +
+                " set saldoAtual = " +
+                " (select coalesce(sum(valor),0) from MovimentacaoValorAplicado " + 
+                " where MovimentacaoValorAplicado.instituicaoFinanceiraId = AplicacaoInstituicao.instituicaoFinanceiraId " + 
+                " and MovimentacaoValorAplicado.tipoAplicacaoId = AplicacaoInstituicao.tipoAplicacaoId)";
+        let sql2 = "update TipoAplicacao " +
+                " set saldoAtual = " +
+                " (select coalesce(sum(valor),0) from MovimentacaoValorAplicado " + 
+                " where TipoAplicacao.id = MovimentacaoValorAplicado.tipoAplicacaoId)";
+        let ds = Movimentacaovaloraplicado.dataSource;
+        ds.connector.query(sql1, (err,result) => {
+            ds.connector.query(sql2, callback)
+        })
+    };
+
     Movimentacaovaloraplicado.InsereMovimentacao = function(valorAplicado, callback) {
         //console.log('valorAplicado' , valorAplicado);
         let filtro =    {

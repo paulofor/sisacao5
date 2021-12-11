@@ -92,7 +92,7 @@ public class RepositorioCriptomoedaBase {
 	        for (CotacaoIntradayFoxbit moeda : lista) {
 	        	listaServico.put(moeda.getJSON());
 	        }
-	        params.put("lista", listaServico);
+	        params.put("listaCotacao", listaServico);
 	        invokeStaticMethod("insereListaFonteFoxbit", params,   new EmptyResponseParser(callback));
 		}
 	}

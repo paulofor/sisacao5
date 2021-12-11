@@ -46,13 +46,13 @@ public class ProcessadorRegraProjecao {
 		List<CotacaoIntradayAcaoResultadoValor> listaValor = new ArrayList();
 		for (int indDia=0;indDia<dias.size();indDia++) {
 			DiaPregao dia = dias.get(indDia);
-			CotacaoIntradayAcaoResultado ultimoDia = dia.getCotacaoIntradayAcaoResultados().get(dia.getCotacaoIntradayAcaoResultados().size() - 1);
-			if (ultimoDia.getCotacaoIntradayAcaoResultadoValors().size()>0) {
-				System.out.println("Pulou " + ultimoDia );
-				continue;
-			}
-			for (int indHora=0;indHora<=dia.getCotacaoIntradayAcaoResultados().size();indHora++) {
+
+			for (int indHora=0;indHora<dia.getCotacaoIntradayAcaoResultados().size();indHora++) {
 				CotacaoIntradayAcaoResultado cotacao = dia.getCotacaoIntradayAcaoResultados().get(indHora);
+				if (cotacao.getCotacaoIntradayAcaoResultadoValors().size()>0) {
+					System.out.println("Pulou " + cotacao);
+					continue;
+				}
 				CotacaoIntradayAcaoResultadoValor valor = new CotacaoIntradayAcaoResultadoValor();
 				valor.setDiaNum(cotacao.getDiaNum());
 				valor.setHora(cotacao.getHora());
@@ -91,6 +91,11 @@ public class ProcessadorRegraProjecao {
 	private void enviaDia(List<CotacaoIntradayAcaoResultadoValor> listaValor) {
 		this.insere.setLista(listaValor);
 		this.insere.executa();
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private Integer procuraValor(List<DiaPregao> dias, int indDia, int indHora, double valorBaixo, double valorAlto) {
@@ -126,6 +131,10 @@ public class ProcessadorRegraProjecao {
 					System.out.println("Saiu, máximo");
 					break;
 				} 
+			} else {
+				saida = null;
+				System.out.println("Saiu, acabou diario");
+				break;
 			}
 			indDia++;
 		}

@@ -17,10 +17,16 @@ public class RegraProjecao_ObtemProcessando extends ExecutorRegraProjecao {
 				DiaPregao_ObtemIntradayResultadoValor processador = new DiaPregao_ObtemIntradayResultadoValor();
 				for (RelGrupoAcao relAcao : regra.getGrupoAcao().getRelGrupoAcaos()) {
 					processador.setDataNumInicio(20210101);
-					processador.setTicker("B3SA3");
-					//processador.setTicker(relAcao.getTicker());
+					//processador.setTicker("B3SA3");
+					processador.setTicker(relAcao.getTicker());
 					processador.setRegraProjecao(regra);
 					processador.executa();
+					try {
+						System.out.println("Sleep:" + relAcao.getTicker());
+						Thread.sleep(30000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
 				concluido = true;
 			}
