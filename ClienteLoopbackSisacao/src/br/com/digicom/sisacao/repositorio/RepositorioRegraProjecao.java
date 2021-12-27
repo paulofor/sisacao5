@@ -35,6 +35,13 @@ public class RepositorioRegraProjecao extends ModelRepository<RegraProjecao>{
         Map<String, Object> params = new HashMap<String, Object>();
         invokeStaticMethod("obtemProcessando", params,   new JsonObjectParser<RegraProjecao>(this, callback));
 	}
-	
+
+	public void obtemPorId(final int id, final ObjectCallback<RegraProjecao> callback) {
+		RestContractItem contrato = new RestContractItem("RegraProjecaos/obtemPorId","GET");
+		this.getRestAdapter().getContract().addItem(contrato, "RegraProjecao.obtemPorId");
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("id",id);
+        invokeStaticMethod("obtemPorId", params,   new JsonObjectParser<RegraProjecao>(this, callback));
+	}
 	
 }

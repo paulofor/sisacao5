@@ -56,6 +56,8 @@ import { RegraProjecao } from '../../models/RegraProjecao';
 import { CotacaoIntradayAcaoResultadoValor } from '../../models/CotacaoIntradayAcaoResultadoValor';
 import { ExecucaoSimulacaoMelhoresValidacao } from '../../models/ExecucaoSimulacaoMelhoresValidacao';
 import { CotacaoIntradayFoxbit } from '../../models/CotacaoIntradayFoxbit';
+import { DatasetAcao } from '../../models/DatasetAcao';
+import { ExemploTreino } from '../../models/ExemploTreino';
 
 export interface Models { [name: string]: any }
 
@@ -119,6 +121,8 @@ export class SDKModels {
     CotacaoIntradayAcaoResultadoValor: CotacaoIntradayAcaoResultadoValor,
     ExecucaoSimulacaoMelhoresValidacao: ExecucaoSimulacaoMelhoresValidacao,
     CotacaoIntradayFoxbit: CotacaoIntradayFoxbit,
+    DatasetAcao: DatasetAcao,
+    ExemploTreino: ExemploTreino,
     
   };
 

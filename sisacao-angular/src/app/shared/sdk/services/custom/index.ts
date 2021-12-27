@@ -55,5 +55,7 @@ export * from './RegraProjecao';
 export * from './CotacaoIntradayAcaoResultadoValor';
 export * from './ExecucaoSimulacaoMelhoresValidacao';
 export * from './CotacaoIntradayFoxbit';
+export * from './DatasetAcao';
+export * from './ExemploTreino';
 export * from './SDKModels';
 export * from './logger.service';

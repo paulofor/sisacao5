@@ -116,6 +116,9 @@ import { MovimentacaoEditaComponent } from './movimentacao-edita/movimentacao-ed
 import { DetalheAluguelFundoImobiliarioComponent } from './detalhe-aluguel-fundo-imobiliario/detalhe-aluguel-fundo-imobiliario.component';
 import { AtivoCriptomoedaComponent } from './ativo-criptomoeda/ativo-criptomoeda.component';
 import { CotacaoIntraCriptomoedaComponent } from './cotacao-intra-criptomoeda/cotacao-intra-criptomoeda.component';
+import { RegraProjecaoListComponent } from './regra-projecao-list/regra-projecao-list.component';
+import { RegraProjecaoEditComponent } from './regra-projecao-edit/regra-projecao-edit.component';
+import { AtivoCriptomoedaFoxbitComponent } from './ativo-criptomoeda-foxbit/ativo-criptomoeda-foxbit.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -203,7 +206,10 @@ registerLocaleData(localePt, 'pt-BR');
     MovimentacaoEditaComponent,
     DetalheAluguelFundoImobiliarioComponent,
     AtivoCriptomoedaComponent,
-    CotacaoIntraCriptomoedaComponent
+    CotacaoIntraCriptomoedaComponent,
+    RegraProjecaoListComponent,
+    RegraProjecaoEditComponent,
+    AtivoCriptomoedaFoxbitComponent
   ],
   imports: [
     BrowserModule,
@@ -280,7 +286,8 @@ registerLocaleData(localePt, 'pt-BR');
     EscolhePeriodoCorrenteExperimentoComponent,
     TipoAplicacaoEditComponent,
     AtivoIndiceEditaComponent,
-    MovimentacaoEditaComponent
+    MovimentacaoEditaComponent,
+    RegraProjecaoEditComponent
   ],
   bootstrap: [AppComponent]
 })

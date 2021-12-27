@@ -2,6 +2,26 @@
 
 module.exports = function(Cotacaointradayacaoresultadovalor) {
 
+
+
+    /**
+    * 
+    * @param {number} idRegra 
+    * @param {number} diaNum 
+    * @param {Function(Error, array)} callback
+    */
+     Cotacaointradayacaoresultadovalor.ObtemPorRegraData = function(idRegra, diaNum, callback) {
+        let sql = "select ticker, resultado, count(*) as qtde " +
+                " from CotacaoIntradayAcaoResultadoValor " +
+                " where regraProjecaoId = "  + idRegra + " and " +
+                " diaNum >= " + diaNum + 
+                " group by ticker, resultado " +
+                " order by ticker, resultado";
+        let ds = Cotacaointradayacaoresultadovalor.dataSource;
+        ds.connector.query(sql, callback);
+    };
+
+
     /**
     *  @param {array} lista 
     * @param {Function(Error, object)} callback

@@ -362,6 +362,43 @@
           "verb": "get"
         }
       ]
+    },
+    "ConsolidadoPorResultado": {
+      "accepts": [
+        {
+          "arg": "idExperimento",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "idPeriodo",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/consolidadoPorResultado",
+          "verb": "get"
+        }
+      ]
     }
   }
 }

@@ -1,0 +1,39 @@
+<h2 *ngIf="item" mat-dialog-title>Regra Projeção</h2>
+
+<form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
+
+  <mat-dialog-content>
+   
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #target [(ngModel)]="item.target" name="target" placeholder="Target" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #stop [(ngModel)]="item.stop" name="stop" placeholder="Stop" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-select #tipoCompraVenda [(ngModel)]="item.tipoCompraVenda" name="tipoCompraVenda" placeholder="Tipo">
+        <mat-option value="CV">Compra/Venda</mat-option>
+        <mat-option value="C">Compra</mat-option>
+        <mat-option value="V">Venda</mat-option>
+         </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Grupo Ação" #grupoAcaoId [(ngModel)]="item.grupoAcaoId" name="grupoAcaoId">
+        <mat-option *ngFor="let grupo of listaGrupoAcao" [value]="grupo.id">
+          {{ grupo.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button>Salvar</button>
+    <button mat-raised-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+
+</form>

@@ -4,6 +4,41 @@ var app = require('../../server/server');
 
 module.exports = function(Execucaosimulacao) {  
 
+
+
+    /**
+    * 
+    * @param {number} idExperimento 
+    * @param {number} idPeriodo 
+    * @param {string} ticker 
+    * @param {Function(Error, array)} callback
+    */
+     Execucaosimulacao.ConsolidadoPorResultado = function(idExperimento, idPeriodo, ticker, callback) {
+        let ds = Execucaosimulacao.dataSource;
+        if (idExperimento && ticker) {
+            let sql = "select resultado, ticker, count(*) as qtde " +
+            " from ExecucaoSimulacao " +
+            " where experimentoSimulacaoId = " + idExperimento +
+            " and ticker = '" + ticker + "' " + 
+            " and periodoExperimentoId = " + idPeriodo + 
+            " group by resultado, ticker " +
+            " order by resultado, ticker";
+            ds.connector.query(sql, callback);
+        }
+        if (idExperimento && !ticker) {
+            let sql = "select resultado, ticker, count(*) as qtde " +
+                " from ExecucaoSimulacao " +
+                " where experimentoSimulacaoId = " + idExperimento +
+                " and periodoExperimentoId = " + idPeriodo + 
+                " group by resultado, ticker " +
+                " order by resultado, ticker";
+            ds.connector.query(sql, callback);
+        }
+    };
+
+
+
+
     /**
     * Faz todos os procedimentos necessários para a criação de um novo item de monitoria
     * @param {number} idExecucao 

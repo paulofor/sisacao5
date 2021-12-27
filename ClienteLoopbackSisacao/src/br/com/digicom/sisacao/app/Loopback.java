@@ -9,5 +9,6 @@ public class Loopback {
 	//public static final String URL_SISACAO = "http://vps-40d69db1.vps.ovh.ca:21046/api";
 	//public static final String URL_SISACAO = "http://vps-40d69db1.vps.ovh.ca:21146/api"; //sisacao2
 	//public static final String URL_SISACAO = "http://vps-40d69db1.vps.ovh.ca:21246/api"; //sisacao3
-	public static final String URL_SISACAO = "http://vps-40d69db1.vps.ovh.ca:21446/api"; //sisacao4
+	//public static final String URL_SISACAO = "http://vps-40d69db1.vps.ovh.ca:21446/api"; //sisacao4
+	public static final String URL_SISACAO = "http://vps-40d69db1.vps.ovh.ca:21646/api"; //sisacao6;
 }

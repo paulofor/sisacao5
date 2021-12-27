@@ -3,6 +3,24 @@
 module.exports = function(Cotacaointradayfoxbit) {
 
 
+
+
+  /**
+  * 
+  * @param {string} ticker 
+  * @param {Function(Error, array)} callback
+  */
+  Cotacaointradayfoxbit.ObtemListaFoxbit = function(ticker, callback) {
+    let filtro = { 
+              'where' : {'and' : [ {'ticker' : ticker} , {'cambio': 'Foxbit'} ] },
+              'order' : 'dataHora asc',
+              'limit' : 2000
+            }
+      Cotacaointradayfoxbit.find(filtro,callback);
+  };
+
+
+
 /**
  * 
  * @param {array} listaCotacao 

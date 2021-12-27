@@ -25,6 +25,17 @@ module.exports = function(Regraprojecao) {
   
 
   /**
+  * 
+  * @param {number} id 
+  * @param {Function(Error, object)} callback
+  */
+  Regraprojecao.ObtemPorId = function(id, callback) {
+    let filtro = { 'where' : {'id' : id } }
+    Regraprojecao.findOne(filtro,callback);
+
+  };
+
+  /**
  * 
  * @param {number} idRegraProjecao 
  * @param {Function(Error, object)} callback

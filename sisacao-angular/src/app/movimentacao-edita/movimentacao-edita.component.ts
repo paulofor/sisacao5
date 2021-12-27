@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { BaseEditComponent } from '../base-component/base-edit-component';
@@ -28,7 +29,7 @@ export class MovimentacaoEditaComponent extends BaseEditComponent {
   }
 
 
-
+  
 
   montaCombos() {
     let filtro = {'order' : 'nome'}

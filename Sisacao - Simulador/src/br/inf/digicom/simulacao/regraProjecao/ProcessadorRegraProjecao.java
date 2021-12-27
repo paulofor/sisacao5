@@ -21,11 +21,13 @@ public class ProcessadorRegraProjecao {
 	private double valorSaida;
 	private int diaNumSaida;
 	
+	private int contaDiaAlteracao = 0;
 	//private double valorSuperior;
 	//private double valorInferior;
 	//private String dataHora;
 	
 	public void executa(String ticker, RegraProjecao regraProjecao, List<DiaPregao> dias) {
+		System.out.println(ticker + " 3.I");
 		// TODO Auto-generated method stub
 		this.regraProjecao = regraProjecao;
 		if ("CV".equals(regraProjecao.getTipoCompraVenda()) || "C".equals(regraProjecao.getTipoCompraVenda())) {
@@ -37,11 +39,13 @@ public class ProcessadorRegraProjecao {
 			this.percentualAlto = regraProjecao.getStop();
 		}
 		processaItem(ticker, dias);
+		System.out.println(ticker + " 3.F");
 	}
 
 		
 		
 	private void processaItem(String ticker, List<DiaPregao> dias) {
+		//System.out.println(ticker + " com " + dias.size() + " dias.");
 		this.contaDia = 0;
 		List<CotacaoIntradayAcaoResultadoValor> listaValor = new ArrayList();
 		for (int indDia=0;indDia<dias.size();indDia++) {
@@ -50,7 +54,7 @@ public class ProcessadorRegraProjecao {
 			for (int indHora=0;indHora<dia.getCotacaoIntradayAcaoResultados().size();indHora++) {
 				CotacaoIntradayAcaoResultado cotacao = dia.getCotacaoIntradayAcaoResultados().get(indHora);
 				if (cotacao.getCotacaoIntradayAcaoResultadoValors().size()>0) {
-					System.out.println("Pulou " + cotacao);
+					//System.out.println("Pulou " + cotacao);
 					continue;
 				}
 				CotacaoIntradayAcaoResultadoValor valor = new CotacaoIntradayAcaoResultadoValor();
@@ -64,7 +68,7 @@ public class ProcessadorRegraProjecao {
 				double valorAlto = cotacao.getValor() * (1+percentualAlto);
 				this.valorEntrada = cotacao.getValor();
 				
-				System.out.println("Tratando..." + cotacao + " Alto: " + valorAlto + " Baixo: " + valorBaixo);
+				//System.out.println("Tratando..." + cotacao + " Alto: " + valorAlto + " Baixo: " + valorBaixo);
 				this.contaDia = 0;
 				Integer resultado = procuraValor(dias, indDia, indHora, valorBaixo, valorAlto); 
 				if (resultado != null) {
@@ -85,10 +89,12 @@ public class ProcessadorRegraProjecao {
 			enviaDia(listaValor);
 			listaValor.clear();
 		}
-		System.out.println("Terminou loop principal");
+		System.out.println("Terminou loop principal (" + ticker + ") - " + this.contaDiaAlteracao + " dias alterados");
 	}
 		
 	private void enviaDia(List<CotacaoIntradayAcaoResultadoValor> listaValor) {
+		if (listaValor.size()==0) return;
+		this.contaDiaAlteracao ++;
 		this.insere.setLista(listaValor);
 		this.insere.executa();
 		try {
@@ -110,10 +116,10 @@ public class ProcessadorRegraProjecao {
 			DiaPregao dia = dias.get(indDia);
 			if (dia.getCotacaoDiarioAcaos().size()>0) {
 				diario = dias.get(indDia).getCotacaoDiarioAcaos().get(0);
-				System.out.println(diario + " - " + this.contaDia + " dias.");
+				//System.out.println(diario + " - " + this.contaDia + " dias.");
 				if (diario==null) {
 					saida = null;
-					System.out.println("Saiu, sem diario");
+					//System.out.println("Saiu, sem diario");
 					break;
 				} else {
 					this.diaNumSaida = diario.getDiaNum();
@@ -122,23 +128,23 @@ public class ProcessadorRegraProjecao {
 				if (diario.getMinimo()!=null && diario.getMinimo() <= valorBaixo) {
 					saida = -1;
 					this.valorSaida = valorBaixo;
-					System.out.println("Saiu, mínimo");
+					//System.out.println("Saiu, mínimo");
 					break;
 				} 
 				if (diario.getMaximo()!=null && diario.getMaximo() >= valorAlto) {
 					saida = 1;
 					this.valorSaida = valorAlto;
-					System.out.println("Saiu, máximo");
+					//System.out.println("Saiu, máximo");
 					break;
 				} 
 			} else {
 				saida = null;
-				System.out.println("Saiu, acabou diario");
+				//System.out.println("Saiu, acabou diario");
 				break;
 			}
 			indDia++;
 		}
-		System.out.println("resultado:" + saida);
+		//System.out.println("resultado:" + saida);
 		return saida;
 	}
 }

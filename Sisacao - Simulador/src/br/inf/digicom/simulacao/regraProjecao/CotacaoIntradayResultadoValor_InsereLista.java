@@ -15,7 +15,7 @@ public class CotacaoIntradayResultadoValor_InsereLista extends ExecutorRegraProj
 
 			@Override
 			public void onSuccess() {
-				System.out.println("Dados enviados");
+				//System.out.println("Dados enviados");
 				concluido = true;
 			}
 
@@ -27,7 +27,7 @@ public class CotacaoIntradayResultadoValor_InsereLista extends ExecutorRegraProj
 	
 		while (!concluido) {
 			try {
-				Thread.sleep(5000);
+				Thread.sleep(Constantes.SLEEP_4_COTACAO_INTRADAY_RESULTADO_VALOR__INSERE_LISTA);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

@@ -19,6 +19,7 @@ export class AtivoCriptomoedaComponent implements OnInit {
 
   carrega() {
     const filtro = { 
+      'order' : 'posicao'
     };
     this.srv.find(filtro)
       .subscribe((resultado: AtivoCriptomoeda[]) => {

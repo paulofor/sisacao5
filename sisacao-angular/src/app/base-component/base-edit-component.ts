@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export class BaseEditComponent implements OnInit{
 
-
+    itemPre: any;
     item: any;
     origem: any;
 
@@ -30,6 +30,8 @@ export class BaseEditComponent implements OnInit{
     this.montaCombos();
     this.posItem();
   }
+
+
   
   onSubmit() {
     this.preSubmit();

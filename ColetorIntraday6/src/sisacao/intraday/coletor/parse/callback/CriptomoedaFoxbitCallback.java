@@ -41,6 +41,7 @@ public class CriptomoedaFoxbitCallback extends CallbackParseJson {
 	@Override
 	public void finalizacaoOk() {
 		System.out.println("Finalizou");
+		double USD = 0;
 		List<CotacaoIntradayFoxbit> listaCotacao = new LinkedList<CotacaoIntradayFoxbit>();
 		JSONArray lista = this.getJsonList();
 		System.out.println(lista);
@@ -60,15 +61,26 @@ public class CriptomoedaFoxbitCallback extends CallbackParseJson {
 				if ("BRLX".equals(item.getString("currency").substring(0,4))) {
 					cotacao.setTicker(item.getString("currency").substring(4));
 				}
+				if ("BRLXUSDT".equals(item.getString("currency"))) {
+					USD = cotacao.getValor();
+				}
 				listaCotacao.add(cotacao);
 				System.out.println(cotacao);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
+		this.criaValorUSD(listaCotacao, USD);
 		dados.setLista(listaCotacao);
 		dados.registra();
 
+	}
+
+	private void criaValorUSD(List<CotacaoIntradayFoxbit> listaCotacao, double USD) {
+		for (CotacaoIntradayFoxbit item : listaCotacao) {
+			item.criaValorDolar(USD);
+		}
+		
 	}
 
 	@Override

@@ -254,5 +254,13 @@
   "CotacaoIntradayFoxbit": {
     "dataSource": "mysqlDS",
     "public": true
+  },
+  "DatasetAcao": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "ExemploTreino": {
+    "dataSource": "mysqlDS",
+    "public": true
   }
 }

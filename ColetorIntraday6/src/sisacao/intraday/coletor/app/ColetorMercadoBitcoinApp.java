@@ -6,8 +6,8 @@ import sisacao.intraday.coletor.obj.ColetorMercadoBitcoinObj;
 public class ColetorMercadoBitcoinApp {
 
 	public static void main(String[] args) {
-		System.out.println("ColetorMercadoBitcoinApp");
-		System.out.println("26-11-2021");
+		System.out.print("ColetorMercadoBitcoinApp");
+		System.out.println("(27-12-2021)");
 		ColetorMercadoBitcoinObj obj = new ColetorMercadoBitcoinObj();
 		
 	}

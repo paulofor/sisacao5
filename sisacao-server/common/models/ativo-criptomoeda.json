@@ -27,6 +27,12 @@
     },
     "posicao": {
       "type": "number"
+    },
+    "foxbit": {
+      "type": "number"
+    },
+    "mercadoBitcoin" : {
+      "type" : "number"
     }
   },
   "validations": [],
@@ -73,6 +79,24 @@
         {
           "path": "/listaMercadoBitcoin",
           "verb": "get"
+        }
+      ]
+    },
+    "AtualizaFoxbit": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaFoxbit",
+          "verb": "post"
         }
       ]
     }

@@ -10,6 +10,7 @@ export interface CotacaoIntradayFoxbitInterface {
   "valorVenda"?: number;
   "tickerMoeda"?: string;
   "cambio"?: string;
+  "valorUSD"?: string;
 }
 
 export class CotacaoIntradayFoxbit implements CotacaoIntradayFoxbitInterface {
@@ -21,6 +22,7 @@ export class CotacaoIntradayFoxbit implements CotacaoIntradayFoxbitInterface {
   "valorVenda": number;
   "tickerMoeda": string;
   "cambio": string;
+  "valorUSD": string;
   constructor(data?: CotacaoIntradayFoxbitInterface) {
     Object.assign(this, data);
   }
@@ -84,6 +86,10 @@ export class CotacaoIntradayFoxbit implements CotacaoIntradayFoxbitInterface {
         },
         "cambio": {
           name: 'cambio',
+          type: 'string'
+        },
+        "valorUSD": {
+          name: 'valorUSD',
           type: 'string'
         },
       },

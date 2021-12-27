@@ -9,24 +9,21 @@ public class RegraProjecao_ObtemProcessando extends ExecutorRegraProjecao {
 
 	public boolean concluido = false;
 	public void executa() {
+		concluido = false;
+		System.out.println("1.I");
 		this.repRegraProjecao.obtemProcessando(new ObjectCallback<RegraProjecao>() {
 
 			@Override
 			public void onSuccess(RegraProjecao regra) {
-				System.out.println("Recebi processando: " + regra);
+
 				DiaPregao_ObtemIntradayResultadoValor processador = new DiaPregao_ObtemIntradayResultadoValor();
 				for (RelGrupoAcao relAcao : regra.getGrupoAcao().getRelGrupoAcaos()) {
+					//System.out.println("Ticker:" + relAcao.getTicker());
 					processador.setDataNumInicio(20210101);
-					//processador.setTicker("B3SA3");
 					processador.setTicker(relAcao.getTicker());
 					processador.setRegraProjecao(regra);
 					processador.executa();
-					try {
-						System.out.println("Sleep:" + relAcao.getTicker());
-						Thread.sleep(30000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+					
 				}
 				concluido = true;
 			}
@@ -40,10 +37,50 @@ public class RegraProjecao_ObtemProcessando extends ExecutorRegraProjecao {
 		});
 		while (!concluido) {
 			try {
-				Thread.sleep(5000);
+				Thread.sleep(Constantes.SLEEP_1_REGRA_PROJECAO__OBTEM_PROCESSANDO);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
+		System.out.println("1.F");
+	}
+	
+	
+	public void executa(Integer idRegraProjecao, Integer idGrupoAcao) {
+		concluido = false;
+		System.out.println("1.I");
+		this.repRegraProjecao.obtemProcessando(new ObjectCallback<RegraProjecao>() {
+
+			@Override
+			public void onSuccess(RegraProjecao regra) {
+
+				DiaPregao_ObtemIntradayResultadoValor processador = new DiaPregao_ObtemIntradayResultadoValor();
+				for (RelGrupoAcao relAcao : regra.getGrupoAcao().getRelGrupoAcaos()) {
+					//System.out.println("Ticker:" + relAcao.getTicker());
+					processador.setDataNumInicio(20210101);
+					processador.setTicker(relAcao.getTicker());
+					processador.setRegraProjecao(regra);
+					processador.executa();
+					
+				}
+				concluido = true;
+			}
+
+			@Override
+			public void onError(Throwable t) {
+				// TODO Auto-generated method stub
+				t.printStackTrace();
+			}
+			
+		});
+		while (!concluido) {
+			try {
+				Thread.sleep(Constantes.SLEEP_1_REGRA_PROJECAO__OBTEM_PROCESSANDO);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		System.out.println("1.F");
+		
 	}
 }

@@ -9,8 +9,7 @@ import br.com.digicom.lib.dao.DaoException;
 import br.com.digicom.parse.log.ArquivoLog;
 import br.com.digicom.parse.log.DatasUtils;
 import br.com.digicom.sisacao.app.Loopback;
-import br.com.digicom.sisacao.modelo.DiaPregao;
-import br.com.digicom.sisacao.repositorio.RepositorioAcaoBase;
+import br.com.digicom.sisacao.repositorio.RepositorioCriptomoedaBase;
 
 public abstract class ThreadPaiBase extends TimerTask {
 
@@ -20,7 +19,7 @@ public abstract class ThreadPaiBase extends TimerTask {
 
 
 	RestAdapter adapter = new RestAdapter(Loopback.URL_SISACAO); 
-	RepositorioAcaoBase.AtivoAcaoRepository repAtivo  = adapter.createRepository(RepositorioAcaoBase.AtivoAcaoRepository.class);
+	RepositorioCriptomoedaBase.AtivoCriptomoedaRepository repCripto  = adapter.createRepository(RepositorioCriptomoedaBase.AtivoCriptomoedaRepository.class);
 
 	public ThreadPaiBase() {
 		// this.locatorPeriodoPregao = new PeriodoPregaoWSLocator();
@@ -39,7 +38,7 @@ public abstract class ThreadPaiBase extends TimerTask {
 				if (this.diaAnterior.length() > 0) {
 					//mudouDia(this.diaAtual, this.diaAnterior, existePregao(diaAnterior));
 					mudouDia(this.diaAtual, this.diaAnterior, true);
-					repAtivo.atualizaPosDiario(new VoidCallback(){
+					repCripto.atualizaFoxbit(new VoidCallback(){
 						@Override
 						public void onSuccess() {
 							//System.out.println("[sucesso] ThreadPaiBase.run: existePregao(diaAnterior):" + existePregao(diaAnterior));

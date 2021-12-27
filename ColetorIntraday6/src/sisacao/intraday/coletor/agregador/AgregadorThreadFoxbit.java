@@ -54,7 +54,7 @@ public class AgregadorThreadFoxbit {
 	
 	private final void inicializaAtivo(String diaAtual) {
 		//System.out.println("Inicializando: " + ativo.getTicker() + "(" + ativo.minutos() + ")");
-		int tempo = 20 * 60 * 1000;
+		int tempo = 10 * 60 * 1000;
 		PesquisadorIntradayFoxbit timerThread = null;
 		timerThread = new PesquisadorIntradayFoxbit();
 		timerThread.inicializa(diaAtual);

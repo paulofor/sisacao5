@@ -9,7 +9,7 @@
   <div *ngIf="listaBase">
       <div class="dgc-card" *ngFor="let item of listaBase">
           <div class="dgc-card-header">
-              <span>{{item.codigo}}</span>
+              <span>(#{{item.id}}) {{item.codigo}}</span>
               <span *ngIf="(item.emExecucao==1)"> - em execução</span>
               <a routerLink="/combinacaoExperimento/{{item.id}}" class="dgc-direita dgc-direita-com-botao">{{item.quantidadeCombinacao}} combinações</a>
               <button class="btn-success btn" *ngIf="(item.permiteEdicao==0 && item.emExecucao==1)" [routerLink]="['/execucaoSimulacaoPorExperimento' , item.id]" >
@@ -34,7 +34,7 @@
                 <span class="dgc-link">{{periodo.periodoExperimento.dataStrInicial}} até {{periodo.periodoExperimento.dataStrFinal}} -> concluído</span>
               </div>
               <div *ngIf="(periodo.concluido==0)">
-                <span>{{periodo.periodoExperimento.dataStrInicial}} até {{periodo.periodoExperimento.dataStrFinal}}</span>
+                <span>{{periodo.periodoExperimento.dataStrInicial}} até {{periodo.periodoExperimento.dataStrFinal}} (#{{periodo.periodoExperimento.id}})</span>
                 <span *ngIf="periodoCorrente(periodo,item)">--> corrente</span>
               </div>
             </div>

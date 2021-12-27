@@ -30,15 +30,18 @@ public class DiaPregao_ObtemIntradayResultadoValor extends ExecutorRegraProjecao
 	
 	public boolean concluido = false;
 	public void executa() {
+		concluido = false;
+		System.out.println(this.ticker + " 2.I");
 		this.repDiaPregao.obtemIntradayResultadoValor(this.ticker, this.dataNumInicio, this.regraProjecao.getId(), new ListCallback<DiaPregao>() {
 
 			@Override
 			public void onSuccess(List<DiaPregao> objects) {
 				// TODO Auto-generated method stub
-				System.out.println(objects.size());
+				//System.out.println(objects.size());
 				ProcessadorRegraProjecao proc = new ProcessadorRegraProjecao();
 				proc.executa(ticker, regraProjecao, objects);
 				concluido = true;
+				//System.out.println("2.concluido (" + ticker + ")");
 			}
 
 			@Override
@@ -52,10 +55,11 @@ public class DiaPregao_ObtemIntradayResultadoValor extends ExecutorRegraProjecao
 		});
 		while (!concluido) {
 			try {
-				Thread.sleep(5000);
+				Thread.sleep(Constantes.SLEEP_2_DIA_PREGAO__OBTEM_INTRADAY_RESULTADO_VALOR);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
+		System.out.println(this.ticker + " 2.F");
 	}
 }

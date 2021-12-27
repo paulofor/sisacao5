@@ -23,7 +23,7 @@ export class AlocacaoMovimentacaoComponent extends BaseListComponent {
   getFiltro() {
     return {
        'include' : ['tipoAplicacao' , 'instituicaoFinanceira'],
-       'order' : ['instituicaoFinanceiraId' , 'data']
+       'order' : ['data']
     }
   }
 

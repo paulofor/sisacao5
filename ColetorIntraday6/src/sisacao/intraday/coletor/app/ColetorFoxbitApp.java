@@ -7,7 +7,7 @@ public class ColetorFoxbitApp {
 
 	public static void main(String[] args) {
 		System.out.println("ColetorFoxbitApp");
-		System.out.println("10-12-2021");
+		System.out.println("25-12-2021");
 		ColetorFoxbitObj obj = new ColetorFoxbitObj();
 		obj.executa();
 

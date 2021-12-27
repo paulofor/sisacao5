@@ -40,6 +40,12 @@ public class RepositorioCriptomoedaBase {
 			this.getRestAdapter().getContract().addItem(contrato, "AtivoCriptomoeda.listaColetaIntraday");
 	        Map<String, Object> params = new HashMap<String, Object>();
 	        invokeStaticMethod("listaColetaIntraday", params,   new JsonArrayParser<AtivoCriptomoeda>(this, callback));
+		}
+		public void atualizaFoxbit(final VoidCallback callback) {
+			RestContractItem contrato = new RestContractItem("AtivoCriptomoeda/atualizaFoxbit","POST");
+			this.getRestAdapter().getContract().addItem(contrato, "AtivoCriptomoeda.atualizaFoxbit");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        invokeStaticMethod("atualizaFoxbit", params,  new EmptyResponseParser(callback));
 			
 		}
 		public void insereSeNaoExisteLista(final List<AtivoCriptomoeda> lista, final VoidCallback callback) {

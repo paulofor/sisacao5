@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Movimentação</h2>
+<h2 mat-dialog-title>Movimentações</h2>
 
 <br>
 <form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
@@ -10,8 +10,10 @@
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <input matInput maxlength="50" #data [(ngModel)]="item.data" name="data" placeholder="data" autocomplete="off" />
+      <input matInput maxlength="50" #data [(ngModel)]="item.data"  name="data" placeholder="data (aaaa-mm-dd)" autocomplete="off" />
     </mat-form-field>
+
+
 
     <mat-form-field class="example-full-width">
       <mat-select placeholder="Insitituição Financeira" #instituicaoFinanceiraId [(ngModel)]="item.instituicaoFinanceiraId" name="instituicaoFinanceiraId">

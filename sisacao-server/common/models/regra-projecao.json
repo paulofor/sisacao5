@@ -79,6 +79,31 @@
           "verb": "get"
         }
       ]
+    },
+    "ObtemPorId": {
+      "accepts": [
+        {
+          "arg": "id",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "item",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "obtemPorId",
+          "verb": "get"
+        }
+      ]
     }
   }
 }

@@ -10,15 +10,19 @@
             <table class="table table-hover table-striped">
               <thead>
                 <tr>
+                  <th width="10%">Posicao</th>
                   <th width="20%">Ticker</th>
                   <th width="20%">Nome</th>
+                  <th width="20%">Foxbit</th>
                   <th width="60%"></th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let item of lista">
+                  <td>{{item.posicao}}</td>
                   <td><a routerLink='/cotacaoIntraCriptomoeda/{{item.ticker}}'>{{item.ticker}}</a></td>
                   <td>{{item.nome}}</td>
+                  <td>{{item.foxbit}}</td>
                   <td></td>
                 </tr>
               </tbody>

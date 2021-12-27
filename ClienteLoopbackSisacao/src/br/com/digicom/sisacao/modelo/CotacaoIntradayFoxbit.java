@@ -17,6 +17,7 @@ public class CotacaoIntradayFoxbit extends Model{
 	private Double valorVenda;
 	private String tickerMoeda;
 	private String cambio;
+	private Double valorUSD;
 	
 	public JSONObject getJSON() {
 		JSONObject saida = new JSONObject();
@@ -29,6 +30,7 @@ public class CotacaoIntradayFoxbit extends Model{
 			saida.put("valorVenda", this.valorVenda);
 			saida.put("tickerMoeda", this.tickerMoeda);
 			saida.put("cambio", this.cambio);
+			saida.put("valorUSD", this.valorUSD);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -92,6 +94,24 @@ public class CotacaoIntradayFoxbit extends Model{
 	}
 	public void setTickerMoeda(String tickerMoeda) {
 		this.tickerMoeda = tickerMoeda;
+	}
+
+
+	
+
+
+	public Double getValorUSD() {
+		return valorUSD;
+	}
+
+
+	public void setValorUSD(Double valorUSD) {
+		this.valorUSD = valorUSD;
+	}
+
+
+	public void criaValorDolar(double usd) {
+		this.setValorUSD(this.valor / usd);
 	}
 
 
