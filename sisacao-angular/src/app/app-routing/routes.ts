@@ -42,6 +42,8 @@ import { AtivoCriptomoedaComponent } from '../ativo-criptomoeda/ativo-criptomoed
 import { CotacaoIntraCriptomoedaComponent } from '../cotacao-intra-criptomoeda/cotacao-intra-criptomoeda.component';
 import { RegraProjecaoListComponent } from '../regra-projecao-list/regra-projecao-list.component';
 import { AtivoCriptomoedaFoxbitComponent } from '../ativo-criptomoeda-foxbit/ativo-criptomoeda-foxbit.component';
+import { ValorMesSaldoListComponent } from '../valor-mes-saldo-list/valor-mes-saldo-list.component';
+import { CotacaoIntraMercadoBitcoinComponent } from '../cotacao-intra-mercado-bitcoin/cotacao-intra-mercado-bitcoin.component';
 
 
 export const routes : Routes = [
@@ -64,6 +66,8 @@ export const routes : Routes = [
     { path: 'cotacaoIntraImobiliario/:id' , component: CotacaoIntraImobiliarioComponent},
     { path: 'cotacaoIntraIndice/:id' , component: AtivoIntraIndiceComponent},
     { path: 'cotacaoIntraCriptomoeda/:id' , component: CotacaoIntraCriptomoedaComponent},
+    { path: 'cotacaoIntraCriptomoedaFoxbit/:id' , component: CotacaoIntraCriptomoedaComponent},
+    { path: 'cotacaoIntraCriptomoedaMercadoBitcoin/:id' , component: CotacaoIntraMercadoBitcoinComponent },
 
     { path: 'cotacaoDiarioAcao/:id' , component : CotacaoDiarioAcaoComponent },
     { path: 'acaoDetalheDia/:ticker/:diaNum' , component: AcaoDetalheDiaComponent },
@@ -101,6 +105,7 @@ export const routes : Routes = [
     
     { path : 'alocacaoSaldoMes' , component: AlocacaoSaldoMesComponent },
     { path : 'alocacaoMovimentacao' , component: AlocacaoMovimentacaoComponent } ,
-
-    { path: '',          redirectTo: 'home', pathMatch: 'full' }
+    { path : 'valorMesSaldo' , component: ValorMesSaldoListComponent },
+    { path: '',  component: HomeComponent  }
+    //{ path: '',          redirectTo: 'home', pathMatch: 'full' }
 ]

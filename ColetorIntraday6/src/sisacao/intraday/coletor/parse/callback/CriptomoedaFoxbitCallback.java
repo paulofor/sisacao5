@@ -56,6 +56,8 @@ public class CriptomoedaFoxbitCallback extends CallbackParseJson {
 				cotacao.setValorVenda(item.getDouble("sellPrice"));
 				cotacao.setTickerMoeda(item.getString("currency"));
 				cotacao.setCambio(item.getString("exchange"));
+				cotacao.setMaximo(item.getDouble("high"));
+				cotacao.setMinimo(item.getDouble("low"));
 				cotacao.setDataHora(DataHoraUtil.getDataHora());
 				cotacao.setDiaNum(DataHoraUtil.getDiaNum());
 				if ("BRLX".equals(item.getString("currency").substring(0,4))) {

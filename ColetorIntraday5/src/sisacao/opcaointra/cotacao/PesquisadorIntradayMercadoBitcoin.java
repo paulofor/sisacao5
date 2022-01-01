@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.com.digicom.lib.dao.DaoException;
 import br.com.digicom.parse.ExecutadorParse;
-import br.com.digicom.parse.ExecutadorParseApache2;
+
 import br.com.digicom.parse.PesquisadorTimer;
 import br.com.digicom.parse.callback.IDadosParse;
 import br.com.digicom.sisacao.modelo.AtivoCriptomoeda;

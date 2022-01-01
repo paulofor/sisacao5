@@ -31,8 +31,8 @@
     "foxbit": {
       "type": "number"
     },
-    "mercadoBitcoin" : {
-      "type" : "number"
+    "mercadoBitcoin": {
+      "type": "number"
     }
   },
   "validations": [],

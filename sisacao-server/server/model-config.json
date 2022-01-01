@@ -227,10 +227,6 @@
     "dataSource": "mysqlDS",
     "public": true
   },
-  "ValorMesInsituicaoTipo": {
-    "dataSource": "mysqlDS",
-    "public": true
-  },
   "ValorMesInstituicaoTipo": {
     "dataSource": "mysqlDS",
     "public": true

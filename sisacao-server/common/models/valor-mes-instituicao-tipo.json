@@ -8,6 +8,9 @@
   "properties": {
     "dataReferenciaNum": {
       "type": "number"
+    },
+    "valor": {
+      "type": "number"
     }
   },
   "validations": [],

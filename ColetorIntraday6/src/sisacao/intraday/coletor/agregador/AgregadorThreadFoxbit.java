@@ -11,7 +11,7 @@ import br.com.digicom.sisacao.app.Loopback;
 import br.com.digicom.sisacao.repositorio.RepositorioCriptomoedaBase;
 import sisacao.intraday.coletor.pesquisador.PesquisadorIntradayFoxbit;
 
-public class AgregadorThreadFoxbit {
+public class AgregadorThreadFoxbit implements AgregadorThread{
 
 	private List<PesquisadorTimer> listaThreads = null;
 	

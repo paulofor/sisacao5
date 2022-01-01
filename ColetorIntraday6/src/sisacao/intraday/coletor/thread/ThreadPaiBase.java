@@ -10,6 +10,7 @@ import br.com.digicom.parse.log.ArquivoLog;
 import br.com.digicom.parse.log.DatasUtils;
 import br.com.digicom.sisacao.app.Loopback;
 import br.com.digicom.sisacao.repositorio.RepositorioCriptomoedaBase;
+import sisacao.intraday.coletor.agregador.AgregadorThread;
 
 public abstract class ThreadPaiBase extends TimerTask {
 
@@ -17,6 +18,7 @@ public abstract class ThreadPaiBase extends TimerTask {
 	private String diaAnterior = null;
 	private boolean existePregao;
 
+	private AgregadorThread agregador = null;
 
 	RestAdapter adapter = new RestAdapter(Loopback.URL_SISACAO); 
 	RepositorioCriptomoedaBase.AtivoCriptomoedaRepository repCripto  = adapter.createRepository(RepositorioCriptomoedaBase.AtivoCriptomoedaRepository.class);
@@ -25,7 +27,10 @@ public abstract class ThreadPaiBase extends TimerTask {
 		// this.locatorPeriodoPregao = new PeriodoPregaoWSLocator();
 		// this.locatorDiaPregao = new DiaPregaoWSLocator();
 		this.diaAtual = "";
+		this.agregador = getAgregador();
 	}
+
+	protected abstract AgregadorThread getAgregador();
 
 	@Override
 	public void run() {
@@ -34,27 +39,15 @@ public abstract class ThreadPaiBase extends TimerTask {
 		if (mudouDia) {
 			System.out.println("[debug] ThreadPaiBase.run: diaAtual:" + diaAtual + ", diaAnterior:" + diaAnterior);
 			try {
-				//this.mudouDiaColetores(diaAtual);
+	
 				if (this.diaAnterior.length() > 0) {
-					//mudouDia(this.diaAtual, this.diaAnterior, existePregao(diaAnterior));
 					mudouDia(this.diaAtual, this.diaAnterior, true);
-					repCripto.atualizaFoxbit(new VoidCallback(){
-						@Override
-						public void onSuccess() {
-							//System.out.println("[sucesso] ThreadPaiBase.run: existePregao(diaAnterior):" + existePregao(diaAnterior));
-							System.out.println("[sucesso] Exit");
-							System.exit(0);
-						}
-
-						@Override
-						public void onError(Throwable t) {
-							//System.out.println("[erro] ThreadPaiBase.run: existePregao(diaAnterior):" + existePregao(diaAnterior));
-							System.out.println("[erro] Exit");
-							System.exit(0);
-						}
-						
-					});
-					
+					try {
+						Thread.sleep(6000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					System.exit(0);
 				} else {
 					this.mudouDiaColetores(diaAtual);
 				}
@@ -63,14 +56,13 @@ public abstract class ThreadPaiBase extends TimerTask {
 				ArquivoLog.getInstancia().salvaLog("Erro ThreadPaiBase" + e);
 				e.printStackTrace();
 			}
-			// verificaMudancaMes();
-			// verificaMudancaAno();
+
 		}
 	}
 
 
 
-	protected abstract void mudouDiaColetores(String novoDia) throws DaoException;
+	
 	protected abstract void mudouDia(String paramString1, String paramString2, boolean paramBoolean)
 			throws DaoException;
 
@@ -96,5 +88,9 @@ public abstract class ThreadPaiBase extends TimerTask {
 		return (dia != null && !dia.getFeriado());
 	}
 	*/
-
+	
+	protected final void mudouDiaColetores(String novoDia) throws DaoException {
+		agregador.limpaColetoresAtual();
+   		agregador.disparaColetoresDia(novoDia);
+	}
 }

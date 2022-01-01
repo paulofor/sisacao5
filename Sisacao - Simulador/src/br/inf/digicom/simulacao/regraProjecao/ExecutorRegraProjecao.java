@@ -18,4 +18,7 @@ public class ExecutorRegraProjecao {
 	protected RepositorioAcaoBase.CotacaoIntradayAcaoResultadoValorRepository repValor = 
 			adapter.createRepository(RepositorioAcaoBase.CotacaoIntradayAcaoResultadoValorRepository.class);
 	
+	protected final RepositorioAcaoBase.AtivoAcaoRepository repAcao = 
+			adapter.createRepository(RepositorioAcaoBase.AtivoAcaoRepository.class);
+	
 }

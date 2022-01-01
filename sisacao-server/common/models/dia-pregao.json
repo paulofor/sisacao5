@@ -293,6 +293,43 @@
           "verb": "get"
         }
       ]
+    },
+    "ObtemIntradayParaDataset": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "dataNumInicio",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "regraProjecaoId",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemIntradayParaDataset",
+          "verb": "get"
+        }
+      ]
     }
   }
 }

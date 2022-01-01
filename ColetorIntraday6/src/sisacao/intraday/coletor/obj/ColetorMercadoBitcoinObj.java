@@ -19,7 +19,7 @@ public class ColetorMercadoBitcoinObj {
 		int ms = 1000 * 60 * 20; // 20 minutos
 		this.timer = new Timer();
 		ThreadPaiBase principal = new ThreadPrincipalMercadoBitcoin();
-		System.out.println("Criou a thread principal (" + (ms/1000) + "segs)");
+		System.out.println("Criou a thread principal ( " + (ms/1000/60) + " min) ");
 		this.timer.schedule(principal, 0L, ms);
 	}
 }

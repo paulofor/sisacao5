@@ -21,7 +21,11 @@ export class CotacaoIntraCriptomoedaComponent implements OnInit {
   carregaIntra() {
     this.router.params.subscribe((params) => {
       this.ticker = params['id'];
-      let filtro = { 'where': { 'ticker': this.ticker }, 'order': 'dataHora DESC' , 'limit' : 600 }
+      let filtro = { 'where': 
+            {'and' : [{ 'ticker': this.ticker }, {'cambio' : 'foxbit'}] }, 
+            'order': 'dataHora DESC' , 
+            'limit' : 600 
+          }
       this.srv.find(filtro)
         .subscribe((result: CotacaoIntradayFoxbit[]) => {
           this.lista = result;

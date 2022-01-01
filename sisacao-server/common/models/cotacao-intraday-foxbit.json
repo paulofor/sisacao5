@@ -34,6 +34,12 @@
     },
     "valorUSD": {
       "type": "string"
+    },
+    "maximo": {
+      "type":"number"
+    },
+    "minimo": {
+      "type":"number"
     }
   },
   "validations": [],

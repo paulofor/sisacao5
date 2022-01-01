@@ -7,6 +7,7 @@ import {
 declare var Object: any;
 export interface ValorMesInstituicaoTipoInterface {
   "dataReferenciaNum"?: number;
+  "valor"?: number;
   "id"?: number;
   "tipoAplicacaoId"?: number;
   "instituicaoFinanceiraId"?: number;
@@ -16,6 +17,7 @@ export interface ValorMesInstituicaoTipoInterface {
 
 export class ValorMesInstituicaoTipo implements ValorMesInstituicaoTipoInterface {
   "dataReferenciaNum": number;
+  "valor": number;
   "id": number;
   "tipoAplicacaoId": number;
   "instituicaoFinanceiraId": number;
@@ -56,6 +58,10 @@ export class ValorMesInstituicaoTipo implements ValorMesInstituicaoTipoInterface
       properties: {
         "dataReferenciaNum": {
           name: 'dataReferenciaNum',
+          type: 'number'
+        },
+        "valor": {
+          name: 'valor',
           type: 'number'
         },
         "id": {

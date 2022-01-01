@@ -6,7 +6,7 @@
 //export const BASE_URL = 'http://sisacao6-env.eba-tg3s28jd.us-east-1.elasticbeanstalk.com'; // aws2 - sisacao6
 //export const BASE_URL = 'http://vps-40d69db1.vps.ovh.ca:21046'; // ovh - sisacao0
 //export const BASE_URL = 'http://vps-40d69db1.vps.ovh.ca:21246'; // ovh - sisacao3
-export const BASE_URL = 'http://vps-40d69db1.vps.ovh.ca:21546'; // ovh - sisacao5
+export const BASE_URL = 'http://vps-40d69db1.vps.ovh.ca:21446'; // ovh - sisacao5
 
 export const API_VERSION = 'api';
 

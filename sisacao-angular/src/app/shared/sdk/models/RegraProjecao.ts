@@ -1,6 +1,5 @@
 /* tslint:disable */
 import {
-  GrupoAcao,
   CotacaoIntradayAcaoResultadoValor
 } from '../index';
 
@@ -11,9 +10,10 @@ export interface RegraProjecaoInterface {
   "stop"?: number;
   "diaLimite"?: number;
   "processando"?: number;
+  "horaReferencia"?: number;
+  "indiceHoraReferencia"?: number;
+  "percentualEntrada"?: number;
   "id"?: number;
-  "grupoAcaoId"?: number;
-  grupoAcao?: GrupoAcao;
   cotacaoIntradayAcaoResultadoValors?: CotacaoIntradayAcaoResultadoValor[];
 }
 
@@ -23,9 +23,10 @@ export class RegraProjecao implements RegraProjecaoInterface {
   "stop": number;
   "diaLimite": number;
   "processando": number;
+  "horaReferencia": number;
+  "indiceHoraReferencia": number;
+  "percentualEntrada": number;
   "id": number;
-  "grupoAcaoId": number;
-  grupoAcao: GrupoAcao;
   cotacaoIntradayAcaoResultadoValors: CotacaoIntradayAcaoResultadoValor[];
   constructor(data?: RegraProjecaoInterface) {
     Object.assign(this, data);
@@ -80,24 +81,24 @@ export class RegraProjecao implements RegraProjecaoInterface {
           name: 'processando',
           type: 'number'
         },
+        "horaReferencia": {
+          name: 'horaReferencia',
+          type: 'number'
+        },
+        "indiceHoraReferencia": {
+          name: 'indiceHoraReferencia',
+          type: 'number'
+        },
+        "percentualEntrada": {
+          name: 'percentualEntrada',
+          type: 'number'
+        },
         "id": {
           name: 'id',
           type: 'number'
         },
-        "grupoAcaoId": {
-          name: 'grupoAcaoId',
-          type: 'number'
-        },
       },
       relations: {
-        grupoAcao: {
-          name: 'grupoAcao',
-          type: 'GrupoAcao',
-          model: 'GrupoAcao',
-          relationType: 'belongsTo',
-                  keyFrom: 'grupoAcaoId',
-          keyTo: 'id'
-        },
         cotacaoIntradayAcaoResultadoValors: {
           name: 'cotacaoIntradayAcaoResultadoValors',
           type: 'CotacaoIntradayAcaoResultadoValor[]',

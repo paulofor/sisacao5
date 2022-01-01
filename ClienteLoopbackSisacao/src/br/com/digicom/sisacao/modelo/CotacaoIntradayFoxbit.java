@@ -18,6 +18,8 @@ public class CotacaoIntradayFoxbit extends Model{
 	private String tickerMoeda;
 	private String cambio;
 	private Double valorUSD;
+	private Double maximo;
+	private Double minimo;
 	
 	public JSONObject getJSON() {
 		JSONObject saida = new JSONObject();
@@ -31,6 +33,8 @@ public class CotacaoIntradayFoxbit extends Model{
 			saida.put("tickerMoeda", this.tickerMoeda);
 			saida.put("cambio", this.cambio);
 			saida.put("valorUSD", this.valorUSD);
+			saida.put("maximo", this.maximo);
+			saida.put("minimo", this.minimo);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -112,6 +116,26 @@ public class CotacaoIntradayFoxbit extends Model{
 
 	public void criaValorDolar(double usd) {
 		this.setValorUSD(this.valor / usd);
+	}
+
+
+	public Double getMaximo() {
+		return maximo;
+	}
+
+
+	public void setMaximo(Double maximo) {
+		this.maximo = maximo;
+	}
+
+
+	public Double getMinimo() {
+		return minimo;
+	}
+
+
+	public void setMinimo(Double minimo) {
+		this.minimo = minimo;
 	}
 
 

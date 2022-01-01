@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Valor Mensal ({{dataReferencia()}})</h2>
+
+<form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
+
+  <mat-dialog-content>
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="50" #valor [(ngModel)]="item.valor" name="valor" placeholder="Valor" autocomplete="off" />
+    </mat-form-field>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button>Salvar</button>
+    <button mat-raised-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+
+</form>

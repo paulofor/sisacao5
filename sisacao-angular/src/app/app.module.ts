@@ -119,6 +119,10 @@ import { CotacaoIntraCriptomoedaComponent } from './cotacao-intra-criptomoeda/co
 import { RegraProjecaoListComponent } from './regra-projecao-list/regra-projecao-list.component';
 import { RegraProjecaoEditComponent } from './regra-projecao-edit/regra-projecao-edit.component';
 import { AtivoCriptomoedaFoxbitComponent } from './ativo-criptomoeda-foxbit/ativo-criptomoeda-foxbit.component';
+import { ValorMesSaldoListComponent } from './valor-mes-saldo-list/valor-mes-saldo-list.component';
+import { ValorMesSaldoEditComponent } from './valor-mes-saldo-edit/valor-mes-saldo-edit.component';
+import { AtivoCriptomoedaEditComponent } from './ativo-criptomoeda-edit/ativo-criptomoeda-edit.component';
+import { CotacaoIntraMercadoBitcoinComponent } from './cotacao-intra-mercado-bitcoin/cotacao-intra-mercado-bitcoin.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -209,7 +213,11 @@ registerLocaleData(localePt, 'pt-BR');
     CotacaoIntraCriptomoedaComponent,
     RegraProjecaoListComponent,
     RegraProjecaoEditComponent,
-    AtivoCriptomoedaFoxbitComponent
+    AtivoCriptomoedaFoxbitComponent,
+    ValorMesSaldoListComponent,
+    ValorMesSaldoEditComponent,
+    AtivoCriptomoedaEditComponent,
+    CotacaoIntraMercadoBitcoinComponent
   ],
   imports: [
     BrowserModule,
@@ -287,7 +295,8 @@ registerLocaleData(localePt, 'pt-BR');
     TipoAplicacaoEditComponent,
     AtivoIndiceEditaComponent,
     MovimentacaoEditaComponent,
-    RegraProjecaoEditComponent
+    RegraProjecaoEditComponent,
+    ValorMesSaldoEditComponent
   ],
   bootstrap: [AppComponent]
 })

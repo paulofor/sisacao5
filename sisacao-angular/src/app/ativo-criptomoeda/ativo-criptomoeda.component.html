@@ -14,15 +14,17 @@
                   <th width="20%">Ticker</th>
                   <th width="20%">Nome</th>
                   <th width="20%">Foxbit</th>
+                  <th width="20%">MB</th>
                   <th width="60%"></th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let item of lista">
                   <td>{{item.posicao}}</td>
-                  <td><a routerLink='/cotacaoIntraCriptomoeda/{{item.ticker}}'>{{item.ticker}}</a></td>
+                  <td>{{item.ticker}}</td>
                   <td>{{item.nome}}</td>
-                  <td>{{item.foxbit}}</td>
+                  <td><a *ngIf="(item.foxbit==1)" routerLink='/cotacaoIntraCriptomoeda/{{item.ticker}}'>Ver</a></td>
+                  <td><a *ngIf="(item.mercadoBitcoin==1)" routerLink='/cotacaoIntraCriptomoedaMercadoBitcoin/{{item.ticker}}'>Ver</a></td>
                   <td></td>
                 </tr>
               </tbody>

@@ -2,7 +2,19 @@
 
 module.exports = function(Diapregao) {
 
-
+    /**
+    * 
+    * @param {string} ticker 
+    * @param {number} dataNumInicio 
+    * @param {number} regraProjecaoId 
+    * @param {Function(Error, array)} callback
+    */
+    Diapregao.ObtemIntradayParaDataset = function(ticker, dataNumInicio, regraProjecaoId, callback) {
+        var lista;
+        // TODO
+        callback(null, lista);
+    };
+  
     /**
     * 
     * @param {Function(Error, array)} callback

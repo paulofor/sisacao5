@@ -48,7 +48,6 @@ export * from './AplicacaoInstituicao';
 export * from './AtivoCriptomoeda';
 export * from './CotacaoIntradayMercadoBitcoin';
 export * from './MovimentacaoValorAplicado';
-export * from './ValorMesInsituicaoTipo';
 export * from './ValorMesInstituicaoTipo';
 export * from './ValorMesTipoAplicacao';
 export * from './RegraProjecao';

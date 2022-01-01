@@ -20,6 +20,15 @@
     },
     "processando": {
       "type": "number"
+    },
+    "horaReferencia": {
+      "type": "number"
+    },
+    "indiceHoraReferencia": {
+      "type": "number"
+    },
+    "percentualEntrada": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -27,11 +36,6 @@
     "cotacaoIntradayAcaoResultadoValors": {
       "type": "hasMany",
       "model": "CotacaoIntradayAcaoResultadoValor",
-      "foreignKey": ""
-    },
-    "grupoAcao": {
-      "type": "belongsTo",
-      "model": "GrupoAcao",
       "foreignKey": ""
     }
   },
@@ -100,7 +104,7 @@
       "description": "",
       "http": [
         {
-          "path": "obtemPorId",
+          "path": "/obtemPorId",
           "verb": "get"
         }
       ]

@@ -12,7 +12,7 @@ public class CriaExemploTreinoAcaoObj {
 	
 	public void executa() {
 		this.calculaParametros();
-		System.out.println(ticker + "Xn = " + this.tamanhoX + " Inicio: " + diaNumInicio);
+		System.out.println(ticker + " Xn=" + this.tamanhoX + " Inicio: " + diaNumInicio);
 	}
 	
 	private void calculaParametros() {

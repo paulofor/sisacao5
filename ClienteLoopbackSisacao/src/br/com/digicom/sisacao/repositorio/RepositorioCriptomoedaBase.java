@@ -16,6 +16,7 @@ import com.strongloop.android.remoting.adapters.RestContractItem;
 import br.com.digicom.sisacao.modelo.AtivoCriptomoeda;
 import br.com.digicom.sisacao.modelo.CotacaoIntradayCriptomoeda;
 import br.com.digicom.sisacao.modelo.CotacaoIntradayFoxbit;
+import br.com.digicom.sisacao.modelo.CotacaoIntradayMercadoBitcoin;
 
 public class RepositorioCriptomoedaBase {
 
@@ -103,5 +104,23 @@ public class RepositorioCriptomoedaBase {
 		}
 	}
 	
+	public static class CotacaoIntradayMercadoBitcoinRepository extends ModelRepository<CotacaoIntradayMercadoBitcoin> {
+		
+		public CotacaoIntradayMercadoBitcoinRepository() {
+			super("CotacaoIntradayMercadoBitcoin", CotacaoIntradayMercadoBitcoin.class);
+		}
+		@Override
+		protected String verificaNomeUrl(String nome) {
+			return "CotacaoIntradayMercadoBitcoins";
+		}
+
+		public void insereItem(final CotacaoIntradayMercadoBitcoin item, final VoidCallback callback) {
+			RestContractItem contrato = new RestContractItem("CotacaoIntradayMercadoBitcoins/insereItem","POST");
+			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayMercadoBitcoin.insereItem");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        params.put("item", item.getJSON());
+	        invokeStaticMethod("insereItem", params,   new EmptyResponseParser(callback));
+		}
+	}
 
 }

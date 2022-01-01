@@ -10,6 +10,7 @@ export interface AtivoCriptomoedaInterface {
   "valorMercado"?: number;
   "posicao"?: number;
   "foxbit"?: number;
+  "mercadoBitcoin"?: number;
 }
 
 export class AtivoCriptomoeda implements AtivoCriptomoedaInterface {
@@ -21,6 +22,7 @@ export class AtivoCriptomoeda implements AtivoCriptomoedaInterface {
   "valorMercado": number;
   "posicao": number;
   "foxbit": number;
+  "mercadoBitcoin": number;
   constructor(data?: AtivoCriptomoedaInterface) {
     Object.assign(this, data);
   }
@@ -84,6 +86,10 @@ export class AtivoCriptomoeda implements AtivoCriptomoedaInterface {
         },
         "foxbit": {
           name: 'foxbit',
+          type: 'number'
+        },
+        "mercadoBitcoin": {
+          name: 'mercadoBitcoin',
           type: 'number'
         },
       },

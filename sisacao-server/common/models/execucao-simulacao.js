@@ -15,25 +15,15 @@ module.exports = function(Execucaosimulacao) {
     */
      Execucaosimulacao.ConsolidadoPorResultado = function(idExperimento, idPeriodo, ticker, callback) {
         let ds = Execucaosimulacao.dataSource;
-        if (idExperimento && ticker) {
-            let sql = "select resultado, ticker, count(*) as qtde " +
+        let sql = "select resultado, ticker, experimentoSimulacaoId, target, stop, count(*) as qtde " +
             " from ExecucaoSimulacao " +
-            " where experimentoSimulacaoId = " + idExperimento +
-            " and ticker = '" + ticker + "' " + 
-            " and periodoExperimentoId = " + idPeriodo + 
-            " group by resultado, ticker " +
-            " order by resultado, ticker";
-            ds.connector.query(sql, callback);
-        }
-        if (idExperimento && !ticker) {
-            let sql = "select resultado, ticker, count(*) as qtde " +
-                " from ExecucaoSimulacao " +
-                " where experimentoSimulacaoId = " + idExperimento +
-                " and periodoExperimentoId = " + idPeriodo + 
-                " group by resultado, ticker " +
-                " order by resultado, ticker";
-            ds.connector.query(sql, callback);
-        }
+            " where periodoExperimentoId = " + idPeriodo +
+            (idExperimento?" experimentoSimulacaoId = " + idExperimento : "") +
+            (ticker?"ticker = " + ticker : "") +
+            " group by resultado, ticker, experimentoSimulacaoId, target, stop " +
+            " order by resultado, ticker, experimentoSimulacaoId, target, stop";
+            ds.connector.query(sql,callback);
+
     };
 
 

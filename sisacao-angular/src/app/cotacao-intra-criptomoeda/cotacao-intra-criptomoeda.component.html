@@ -5,7 +5,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="header">
-            <h4 class="title">Cotações - {{ticker}}</h4>
+            <h4 class="title">Foxbit - {{ticker}}</h4>
             <button mat-raised-button color="primary" (click)="carregaIntra()">Atualiza</button>
           </div>
           <div class="content table-responsive table-full-width">
@@ -13,9 +13,9 @@
               <thead>
                 <tr>
                   <th width="10%">Data Hora</th>
-                  <th width="10%">Valor</th>
-                  <th width="10%">Cambio</th>
-                  <th width="10%">USD$</th>
+                  <th width="15%">Valor</th>
+                  <th width="10%">Min</th>
+                  <th width="10%">Max</th>
                   <th width="10%"></th>
                 </tr>
               </thead>
@@ -23,8 +23,8 @@
                 <tr *ngFor="let item of lista">
                   <td>{{item.dataHora  | date : 'dd/MM/yyyy HH:mm' : 'UTC'}}</td>
                   <td>{{item.valor | number:'1.2-2'}}</td>
-                  <td>{{item.cambio}}</td>
-                  <td>{{item.valorUSD | number:'1.4-4'}}</td>
+                  <td>{{item.minimo | number:'1.2-2'}}</td>
+                  <td>{{item.maximo | number:'1.2-2'}}</td>
                   <td></td>
                 </tr>
               </tbody>
