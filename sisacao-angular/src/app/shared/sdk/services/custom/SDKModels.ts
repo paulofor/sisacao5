@@ -50,7 +50,6 @@ import { AtivoCriptomoeda } from '../../models/AtivoCriptomoeda';
 import { CotacaoIntradayMercadoBitcoin } from '../../models/CotacaoIntradayMercadoBitcoin';
 import { MovimentacaoValorAplicado } from '../../models/MovimentacaoValorAplicado';
 import { ValorMesInstituicaoTipo } from '../../models/ValorMesInstituicaoTipo';
-import { ValorMesTipoAplicacao } from '../../models/ValorMesTipoAplicacao';
 import { RegraProjecao } from '../../models/RegraProjecao';
 import { CotacaoIntradayAcaoResultadoValor } from '../../models/CotacaoIntradayAcaoResultadoValor';
 import { ExecucaoSimulacaoMelhoresValidacao } from '../../models/ExecucaoSimulacaoMelhoresValidacao';
@@ -114,7 +113,6 @@ export class SDKModels {
     CotacaoIntradayMercadoBitcoin: CotacaoIntradayMercadoBitcoin,
     MovimentacaoValorAplicado: MovimentacaoValorAplicado,
     ValorMesInstituicaoTipo: ValorMesInstituicaoTipo,
-    ValorMesTipoAplicacao: ValorMesTipoAplicacao,
     RegraProjecao: RegraProjecao,
     CotacaoIntradayAcaoResultadoValor: CotacaoIntradayAcaoResultadoValor,
     ExecucaoSimulacaoMelhoresValidacao: ExecucaoSimulacaoMelhoresValidacao,

@@ -36,10 +36,10 @@
       "type": "string"
     },
     "maximo": {
-      "type":"number"
+      "type": "number"
     },
     "minimo": {
-      "type":"number"
+      "type": "number"
     }
   },
   "validations": [],

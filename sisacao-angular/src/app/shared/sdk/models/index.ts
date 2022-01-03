@@ -49,7 +49,6 @@ export * from './AtivoCriptomoeda';
 export * from './CotacaoIntradayMercadoBitcoin';
 export * from './MovimentacaoValorAplicado';
 export * from './ValorMesInstituicaoTipo';
-export * from './ValorMesTipoAplicacao';
 export * from './RegraProjecao';
 export * from './CotacaoIntradayAcaoResultadoValor';
 export * from './ExecucaoSimulacaoMelhoresValidacao';

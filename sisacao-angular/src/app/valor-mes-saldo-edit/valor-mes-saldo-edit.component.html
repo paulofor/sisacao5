@@ -7,6 +7,22 @@
       <input matInput maxlength="50" #valor [(ngModel)]="item.valor" name="valor" placeholder="Valor" autocomplete="off" />
     </mat-form-field>
 
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Insitituição Financeira" #instituicaoFinanceiraId [(ngModel)]="item.instituicaoFinanceiraId" name="instituicaoFinanceiraId">
+        <mat-option *ngFor="let item of listaInstituicao" [value]="item.id">
+          {{ item.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Tipo" #tipoAplicacaoId [(ngModel)]="item.tipoAplicacaoId" name="tipoAplicacaoId">
+        <mat-option *ngFor="let item of listaTipo" [value]="item.id">
+          {{ item.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
   </mat-dialog-content>
 
   <mat-dialog-actions>

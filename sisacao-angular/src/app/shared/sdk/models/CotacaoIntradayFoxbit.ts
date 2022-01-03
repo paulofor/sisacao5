@@ -11,6 +11,8 @@ export interface CotacaoIntradayFoxbitInterface {
   "tickerMoeda"?: string;
   "cambio"?: string;
   "valorUSD"?: string;
+  "maximo"?: number;
+  "minimo"?: number;
 }
 
 export class CotacaoIntradayFoxbit implements CotacaoIntradayFoxbitInterface {
@@ -23,6 +25,8 @@ export class CotacaoIntradayFoxbit implements CotacaoIntradayFoxbitInterface {
   "tickerMoeda": string;
   "cambio": string;
   "valorUSD": string;
+  "maximo": number;
+  "minimo": number;
   constructor(data?: CotacaoIntradayFoxbitInterface) {
     Object.assign(this, data);
   }
@@ -91,6 +95,14 @@ export class CotacaoIntradayFoxbit implements CotacaoIntradayFoxbitInterface {
         "valorUSD": {
           name: 'valorUSD',
           type: 'string'
+        },
+        "maximo": {
+          name: 'maximo',
+          type: 'number'
+        },
+        "minimo": {
+          name: 'minimo',
+          type: 'number'
         },
       },
       relations: {

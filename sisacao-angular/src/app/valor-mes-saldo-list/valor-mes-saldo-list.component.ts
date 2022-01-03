@@ -21,7 +21,7 @@ export class ValorMesSaldoListComponent extends BaseListComponent {
   getFiltro() {
     let filtro = {
       'order' : 'nome',
-      'include' : 'instituicaoFinanceira'
+      'include' : { 'relation' : 'valorMesInstituicaoTipos' , 'scope' : { 'include' : 'tipoAplicacao'} }
     }
     return filtro;
   }

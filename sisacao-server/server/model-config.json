@@ -231,10 +231,6 @@
     "dataSource": "mysqlDS",
     "public": true
   },
-  "ValorMesTipoAplicacao": {
-    "dataSource": "mysqlDS",
-    "public": true
-  },
   "RegraProjecao": {
     "dataSource": "mysqlDS",
     "public": true

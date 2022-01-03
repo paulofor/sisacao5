@@ -8,7 +8,7 @@
   "properties": {
     "ticker": {
       "type": "string",
-      "id" : true
+      "id": true
     },
     "valor": {
       "type": "number"
@@ -18,16 +18,16 @@
     },
     "dataHora": {
       "type": "string",
-      "id" : true
+      "id": true
     },
-    "maximo" : {
+    "maximo": {
       "type": "number"
     },
-    "minimo" : {
+    "minimo": {
       "type": "number"
     },
-    "tickerMoeda" : {
-      "type" : "string"
+    "tickerMoeda": {
+      "type": "string"
     }
   },
   "validations": [],

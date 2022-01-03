@@ -6,10 +6,18 @@
   <div *ngIf="listaBase">
       <div class="dgc-card" *ngFor="let item of listaBase">
           <div class="dgc-card-header">
-              <span>{{item.nome}} - {{item.instituicaoFinanceira.nome}}</span>
+              <span>{{item.nome}}</span>
           </div>
-          <div class="dgc-card-comandos">
-              <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar</button>
+          
+          <div class="dgc-card-detalhe">
+            <table>
+              <tr *ngFor="let saldo of item.valorMesInstituicaoTipos">
+                <td width="10%">{{saldo.tipoAplicacao.nome}}</td>
+                <td width="20%">{{saldo.valor | currency:'BRL':true}}</td>
+                <td width="15%"><a (click)="dialogo1({'item' : investimento})">alterar</a></td>
+              </tr>
+            </table>
+    
           </div>
       </div>
   </div>

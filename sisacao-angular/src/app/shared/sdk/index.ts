@@ -98,7 +98,6 @@ import { AtivoCriptomoedaApi } from './services/custom/AtivoCriptomoeda';
 import { CotacaoIntradayMercadoBitcoinApi } from './services/custom/CotacaoIntradayMercadoBitcoin';
 import { MovimentacaoValorAplicadoApi } from './services/custom/MovimentacaoValorAplicado';
 import { ValorMesInstituicaoTipoApi } from './services/custom/ValorMesInstituicaoTipo';
-import { ValorMesTipoAplicacaoApi } from './services/custom/ValorMesTipoAplicacao';
 import { RegraProjecaoApi } from './services/custom/RegraProjecao';
 import { CotacaoIntradayAcaoResultadoValorApi } from './services/custom/CotacaoIntradayAcaoResultadoValor';
 import { ExecucaoSimulacaoMelhoresValidacaoApi } from './services/custom/ExecucaoSimulacaoMelhoresValidacao';
@@ -185,7 +184,6 @@ export class SDKBrowserModule {
         CotacaoIntradayMercadoBitcoinApi,
         MovimentacaoValorAplicadoApi,
         ValorMesInstituicaoTipoApi,
-        ValorMesTipoAplicacaoApi,
         RegraProjecaoApi,
         CotacaoIntradayAcaoResultadoValorApi,
         ExecucaoSimulacaoMelhoresValidacaoApi,

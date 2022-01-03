@@ -43,7 +43,6 @@ export class MovimentacaoEditaComponent extends BaseEditComponent {
         console.log('TipoAplicacao' , result);
         this.listaTipo = result;
     })
-
   }
 
   preSubmit() {

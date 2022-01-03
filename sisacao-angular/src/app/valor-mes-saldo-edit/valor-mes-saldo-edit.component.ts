@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { BaseEditComponent } from '../base-component/base-edit-component';
-import { ValorMesInstituicaoTipoApi, ValorMesInstituicaoTipo } from '../shared/sdk';
+import { ValorMesInstituicaoTipoApi, ValorMesInstituicaoTipo, InstituicaoFinanceira, InstituicaoFinanceiraApi, TipoAplicacao, TipoAplicacaoApi } from '../shared/sdk';
 
 @Component({
   selector: 'app-valor-mes-saldo-edit',
@@ -10,8 +10,13 @@ import { ValorMesInstituicaoTipoApi, ValorMesInstituicaoTipo } from '../shared/s
 })
 export class ValorMesSaldoEditComponent extends BaseEditComponent {
 
+  listaTipo : TipoAplicacao[];
+  listaInstituicao : InstituicaoFinanceira[];
+
+
   constructor(protected dialogRef: MatDialogRef<any>
     , @Inject(MAT_DIALOG_DATA) protected data: any, protected servico: ValorMesInstituicaoTipoApi,
+    protected srvInstituicao:InstituicaoFinanceiraApi, protected srvTipo: TipoAplicacaoApi
   ) {
     super(dialogRef,data,servico)
   }
@@ -31,4 +36,18 @@ export class ValorMesSaldoEditComponent extends BaseEditComponent {
   }
   
 
+
+  montaCombos() {
+    let filtro = {'order' : 'nome'}
+    this.srvInstituicao.find(filtro)
+      .subscribe((result:InstituicaoFinanceira[])=> {
+        console.log('InstituicaoFinanceira' , result);
+        this.listaInstituicao = result;
+    })
+    this.srvTipo.find(filtro)
+      .subscribe((result:TipoAplicacao[])=> {
+        console.log('TipoAplicacao' , result);
+        this.listaTipo = result;
+    })
+  }
 }

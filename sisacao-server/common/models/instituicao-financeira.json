@@ -16,6 +16,11 @@
       "type": "hasMany",
       "model": "AplicacaoInstituicao",
       "foreignKey": ""
+    },
+    "valorMesInstituicaoTipos": {
+      "type": "hasMany",
+      "model": "ValorMesInstituicaoTipo",
+      "foreignKey": ""
     }
   },
   "acls": [],
