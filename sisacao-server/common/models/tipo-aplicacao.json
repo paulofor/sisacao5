@@ -22,5 +22,31 @@
     }
   },
   "acls": [],
-  "methods": {}
+  "methods": {
+    "ObtemComSaldoPorPeriodo": {
+      "accepts": [
+        {
+          "arg": "dataRefNum",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "listaTipo",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemComSaldoPorPeriodo",
+          "verb": "get"
+        }
+      ]
+    }
+  }
 }

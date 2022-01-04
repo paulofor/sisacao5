@@ -11,7 +11,7 @@ import { ValorMesSaldoEditComponent } from '../valor-mes-saldo-edit/valor-mes-sa
 })
 export class ValorMesSaldoListComponent extends BaseListComponent {
 
-
+  total:number
 
   constructor(protected srv:InstituicaoFinanceiraApi, protected dialog: MatDialog) {
     super(dialog, srv);
@@ -21,13 +21,29 @@ export class ValorMesSaldoListComponent extends BaseListComponent {
   getFiltro() {
     let filtro = {
       'order' : 'nome',
-      'include' : { 'relation' : 'valorMesInstituicaoTipos' , 'scope' : { 'include' : 'tipoAplicacao'} }
+      'include' : { 'relation' : 'valorMesInstituicaoTipos' , 
+        'scope' : 
+        { 
+          'include' : 'tipoAplicacao',
+          'where' : { 'dataReferenciaNum' : this.dataReferencia() }
+        }
+         
+      }
     }
     return filtro;
   }
 
 
-  
+  posCarregaLista() {
+    this.total = 0;
+    this.listaBase.forEach((item) => {
+      item.total = 0;
+      item.valorMesInstituicaoTipos.forEach((valor) => {
+        item.total += valor.valor;
+        this.total += valor.valor;
+      })
+    })
+  }
 
   getComponente() {
     return ValorMesSaldoEditComponent;

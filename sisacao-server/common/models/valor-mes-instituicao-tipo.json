@@ -11,6 +11,9 @@
     },
     "valor": {
       "type": "number"
+    },
+    "valorPercentual" : {
+      "type" : "number"
     }
   },
   "validations": [],
