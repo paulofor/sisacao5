@@ -49,6 +49,18 @@ public class RepositorioCriptomoedaBase {
 	        invokeStaticMethod("atualizaFoxbit", params,  new EmptyResponseParser(callback));
 			
 		}
+		public void atualizaMercadoBitcoin(final List<AtivoCriptomoeda> lista, final VoidCallback callback) {
+			RestContractItem contrato = new RestContractItem("AtivoCriptomoeda/atualizaMercadoBitcoin","POST");
+			this.getRestAdapter().getContract().addItem(contrato, "AtivoCriptomoeda.atualizaMercadoBitcoin");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        JSONArray listaServico = new JSONArray();
+	        for (AtivoCriptomoeda moeda : lista) {
+	        	listaServico.put(moeda.jSON());
+	        }
+	        params.put("lista", listaServico);
+	        invokeStaticMethod("atualizaMercadoBitcoin", params,  new EmptyResponseParser(callback));
+			
+		}
 		public void insereSeNaoExisteLista(final List<AtivoCriptomoeda> lista, final VoidCallback callback) {
 			RestContractItem contrato = new RestContractItem("AtivoCriptomoedas/insereSeNaoExisteLista","POST");
 			this.getRestAdapter().getContract().addItem(contrato, "AtivoCriptomoeda.insereSeNaoExisteLista");

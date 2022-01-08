@@ -4,9 +4,7 @@
 //export const BASE_URL = 'http://localhost:21046'; // local
 //export const BASE_URL = 'http://sisacaoserver-env.eba-zf6mgrfp.us-east-1.elasticbeanstalk.com'; // aws1
 //export const BASE_URL = 'http://sisacao6-env.eba-tg3s28jd.us-east-1.elasticbeanstalk.com'; // aws2 - sisacao6
-//export const BASE_URL = 'http://vps-40d69db1.vps.ovh.ca:21046'; // ovh - sisacao0
-//export const BASE_URL = 'http://vps-40d69db1.vps.ovh.ca:21246'; // ovh - sisacao3
-export const BASE_URL = 'http://vps-40d69db1.vps.ovh.ca:21446'; // ovh - sisacao5
+export const BASE_URL = 'http://vps-40d69db1.vps.ovh.ca:22002'; // ovh - sisacao-angular
 
 export const API_VERSION = 'api';
 

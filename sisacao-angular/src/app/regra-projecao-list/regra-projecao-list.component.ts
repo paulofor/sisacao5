@@ -26,7 +26,7 @@ export class RegraProjecaoListComponent extends BaseListComponent {
 
   getFiltro() {
     return {
-      'include' : {'relation' : 'grupoAcao' }
+      'order' : 'codigoRegraProjecao'
     }
   }
 

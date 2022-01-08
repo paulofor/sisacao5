@@ -22,4 +22,20 @@ module.exports = function(Tipoaplicacao) {
     };
   
 
+
+    Tipoaplicacao.observe('after save', function updateInicioColeta(ctx, next) {
+        let sql = "insert into AplicacaoInstituicao (instituicaoFinanceiraId, tipoAplicacaoId, saldoAtual)  " +
+                " select tab.instituicaoFinanceiraId, tab.tipoAplicacaoId, 0 as saldoAtual from " +
+                " ( " +
+                " select InstituicaoFinanceira.id as instituicaoFinanceiraId, " +
+                " TipoAplicacao.id as tipoAplicacaoId " +
+                " from InstituicaoFinanceira, TipoAplicacao) tab " +
+                " left join AplicacaoInstituicao on tab.instituicaoFinanceiraId = AplicacaoInstituicao.instituicaoFinanceiraId " +
+                " and tab.tipoAplicacaoId = AplicacaoInstituicao.tipoAplicacaoId " +
+                " where id is null ";
+        let ds = Tipoaplicacao.dataSource;
+        ds.connector.query(sql,(err,result) => {
+            next();
+        })
+      })
 };

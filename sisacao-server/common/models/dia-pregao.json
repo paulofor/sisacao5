@@ -294,7 +294,7 @@
         }
       ]
     },
-    "ObtemIntradayParaDataset": {
+    "ObtemIntradayResultadoDataset": {
       "accepts": [
         {
           "arg": "ticker",
@@ -304,12 +304,6 @@
         },
         {
           "arg": "dataNumInicio",
-          "type": "number",
-          "required": false,
-          "description": ""
-        },
-        {
-          "arg": "regraProjecaoId",
           "type": "number",
           "required": false,
           "description": ""
@@ -326,7 +320,7 @@
       "description": "",
       "http": [
         {
-          "path": "/obtemIntradayParaDataset",
+          "path": "/obtemIntradayResultadoDataset",
           "verb": "get"
         }
       ]

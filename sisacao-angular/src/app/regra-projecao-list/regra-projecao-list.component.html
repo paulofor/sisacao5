@@ -6,12 +6,17 @@
   </div>
   <div *ngIf="listaBase" class="dgc-painel-principal">
       <div class="dgc-card" *ngFor="let item of listaBase">
-
+          <div class="dgc-card-header">
+            <span>{{item.codigoRegraProjecao}}</span>
+          </div>
           <div class="dgc-card-detalhe">
+              <div>Tipo: {{item.tipoCompraVenda}}</div>
               <div>Target: {{item.target}}</div>
               <div>Stop: {{item.stop}}</div>
-              <div>Tipo: {{item.tipoCompraVenda}}</div>
-              <div>Grupo Ação: {{item.grupoAcao.nome}}</div>
+              <div>Limite Saída: {{item.diaLimite}} dias</div>
+              <div>Dataset:</div>
+              <div>Percentual para entrada:{{item.percentualEntradaDataset}}</div>
+              <div>Posição índice de horário:{{item.indiceHoraReferenciaDataset}}</div>
           </div>
 
 

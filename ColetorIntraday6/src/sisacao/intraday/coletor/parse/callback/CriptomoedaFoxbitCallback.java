@@ -145,4 +145,10 @@ public class CriptomoedaFoxbitCallback extends CallbackParseJson {
 		
 	}
 
+	@Override
+	public void setConcluidoFalse() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

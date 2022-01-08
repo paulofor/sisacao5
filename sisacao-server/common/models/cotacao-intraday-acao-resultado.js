@@ -131,15 +131,20 @@ module.exports = function(Cotacaointradayacaoresultado) {
                let minutoDate = horarios[x].substring(3,5);
                dataHora.setUTCHours(horaDate);
                dataHora.setUTCMinutes(minutoDate);
-               
-               let item = {'ticker' : ticker , 'diaNum' : dia.diaNum , 'hora' : hora, 'dataHora' : dataHora, 'dia' : dia.data};
-               console.log('item' , item);
+               let diaHoraNumTicker = dia.diaNum + hora + ticker;
+               let item = {'ticker' : ticker , 'diaNum' : dia.diaNum , 'hora' : hora, 'dataHora' : dataHora, 'dia' : dia.data , 
+                        'diaHoraNumTicker' : diaHoraNumTicker};
+               //console.log('item' , item);
                Cotacaointradayacaoresultado.create(item, (err,result) => {
                    if (err) return
                })
             }
         }
-        callback(err,result);
+        //let sql = " update CotacaoIntradayAcaoResultado "  +
+        //    " set diaHoraNumTicker = concat(diaNum,hora,ticker) where ticker = '" + ticker + "'";
+        //let ds = Cotacaointradayacaoresultado.dataSource;
+        //ds.connector.query(sql, callback);
+        callback(null,{'concluido' : ticker});
     })
  };
  

@@ -21,14 +21,14 @@
     "processando": {
       "type": "number"
     },
-    "horaReferencia": {
+    "indiceHoraReferenciaDataset": {
       "type": "number"
     },
-    "indiceHoraReferencia": {
+    "percentualEntradaDataset": {
       "type": "number"
     },
-    "percentualEntrada": {
-      "type": "number"
+    "codigoRegraProjecao": {
+      "type": "string"
     }
   },
   "validations": [],

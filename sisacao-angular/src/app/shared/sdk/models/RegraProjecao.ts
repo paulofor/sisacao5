@@ -10,9 +10,9 @@ export interface RegraProjecaoInterface {
   "stop"?: number;
   "diaLimite"?: number;
   "processando"?: number;
-  "horaReferencia"?: number;
-  "indiceHoraReferencia"?: number;
-  "percentualEntrada"?: number;
+  "indiceHoraReferenciaDataset"?: number;
+  "percentualEntradaDataset"?: number;
+  "codigoRegraProjecao"?: string;
   "id"?: number;
   cotacaoIntradayAcaoResultadoValors?: CotacaoIntradayAcaoResultadoValor[];
 }
@@ -23,9 +23,9 @@ export class RegraProjecao implements RegraProjecaoInterface {
   "stop": number;
   "diaLimite": number;
   "processando": number;
-  "horaReferencia": number;
-  "indiceHoraReferencia": number;
-  "percentualEntrada": number;
+  "indiceHoraReferenciaDataset": number;
+  "percentualEntradaDataset": number;
+  "codigoRegraProjecao": string;
   "id": number;
   cotacaoIntradayAcaoResultadoValors: CotacaoIntradayAcaoResultadoValor[];
   constructor(data?: RegraProjecaoInterface) {
@@ -81,17 +81,17 @@ export class RegraProjecao implements RegraProjecaoInterface {
           name: 'processando',
           type: 'number'
         },
-        "horaReferencia": {
-          name: 'horaReferencia',
+        "indiceHoraReferenciaDataset": {
+          name: 'indiceHoraReferenciaDataset',
           type: 'number'
         },
-        "indiceHoraReferencia": {
-          name: 'indiceHoraReferencia',
+        "percentualEntradaDataset": {
+          name: 'percentualEntradaDataset',
           type: 'number'
         },
-        "percentualEntrada": {
-          name: 'percentualEntrada',
-          type: 'number'
+        "codigoRegraProjecao": {
+          name: 'codigoRegraProjecao',
+          type: 'string'
         },
         "id": {
           name: 'id',

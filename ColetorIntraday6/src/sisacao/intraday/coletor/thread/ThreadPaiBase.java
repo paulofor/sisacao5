@@ -39,7 +39,7 @@ public abstract class ThreadPaiBase extends TimerTask {
 		if (mudouDia) {
 			System.out.println("[debug] ThreadPaiBase.run: diaAtual:" + diaAtual + ", diaAnterior:" + diaAnterior);
 			try {
-	
+				this.agregador.limpaColetoresAtual();
 				if (this.diaAnterior.length() > 0) {
 					mudouDia(this.diaAtual, this.diaAnterior, true);
 					try {

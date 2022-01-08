@@ -3,13 +3,17 @@
 <form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
 
   <mat-dialog-content>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #codigoRegraProjecao [(ngModel)]="item.codigoRegraProjecao" name="codigoRegraProjecao" placeholder="Nome" />
+    </mat-form-field>
    
     <mat-form-field class="example-full-width">
-      <input matInput maxlength="10" #target [(ngModel)]="item.target" name="target" placeholder="Target" />
+      <input matInput maxlength="10" #target [(ngModel)]="item.target" name="target" placeholder="Target (0.10 = 10%)" />
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <input matInput maxlength="10" #stop [(ngModel)]="item.stop" name="stop" placeholder="Stop" />
+      <input matInput maxlength="10" #stop [(ngModel)]="item.stop" name="stop" placeholder="Stop (0.10 = 10%)" />
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
@@ -22,12 +26,18 @@
 
 
     <mat-form-field class="example-full-width">
-      <mat-select placeholder="Grupo Ação" #grupoAcaoId [(ngModel)]="item.grupoAcaoId" name="grupoAcaoId">
-        <mat-option *ngFor="let grupo of listaGrupoAcao" [value]="grupo.id">
-          {{ grupo.nome }}
-        </mat-option>
-      </mat-select>
+      <input matInput maxlength="10" #diaLimite [(ngModel)]="item.diaLimite" name="diaLimite" placeholder="Dias limite para saída" />
     </mat-form-field>
+    
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #percentualEntradaDataset [(ngModel)]="item.percentualEntradaDataset" name="percentualEntradaDataset" 
+          placeholder="Datasets: percentual para entrada no dia seguinte" />
+    </mat-form-field> 
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #indiceHoraReferenciaDataset [(ngModel)]="item.indiceHoraReferenciaDataset" name="indiceHoraReferenciaDataset" 
+          placeholder="Datasets: índice do horário tomado como referência para a entrada do dia seguinte (usar valor negativo)" />
+    </mat-form-field> 
 
   </mat-dialog-content>
 

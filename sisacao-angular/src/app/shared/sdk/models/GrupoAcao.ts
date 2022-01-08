@@ -8,6 +8,7 @@ export interface GrupoAcaoInterface {
   "nome"?: string;
   "descricao"?: string;
   "quantidade"?: number;
+  "codigoGrupoAcao"?: string;
   "id"?: number;
   relGrupoAcaos?: RelGrupoAcao[];
 }
@@ -16,6 +17,7 @@ export class GrupoAcao implements GrupoAcaoInterface {
   "nome": string;
   "descricao": string;
   "quantidade": number;
+  "codigoGrupoAcao": string;
   "id": number;
   relGrupoAcaos: RelGrupoAcao[];
   constructor(data?: GrupoAcaoInterface) {
@@ -62,6 +64,10 @@ export class GrupoAcao implements GrupoAcaoInterface {
         "quantidade": {
           name: 'quantidade',
           type: 'number'
+        },
+        "codigoGrupoAcao": {
+          name: 'codigoGrupoAcao',
+          type: 'string'
         },
         "id": {
           name: 'id',

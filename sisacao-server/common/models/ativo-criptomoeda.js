@@ -46,12 +46,36 @@ module.exports = function(Ativocriptomoeda) {
     */
      Ativocriptomoeda.InsereSeNaoExisteLista = function(lista, callback) {
         for (let i=0; i<lista.length; i++) {
-            console.log(lista[i]);
+            //console.log(lista[i]);
             Ativocriptomoeda.upsert(lista[i], (err,result) => {
                 console.log(result);
             }) 
         }
         callback(null,{'total' : lista.length})
+  };
+
+
+ /**
+ * 
+ * @param {array} lista 
+ * @param {Function(Error, object)} callback
+ */
+ Ativocriptomoeda.AtualizaMercadoBitcoin = function(lista, callback) {
+     ds = Ativocriptomoeda.dataSource;
+     let sql0 = 'update AtivoCriptomoeda set mercadoBitcoin = 0';
+     ds.connector.query(sql, (err,result) => {
+        for (let i=0; i<lista.length; i++) {
+            console.log(lista[i]);
+            Ativocriptomoeda.upsert(lista[i], (err,result) => {
+                console.log(result);
+                let sql = "update AtivoCriptomoeda set mercadoBitcoin = 1 where ticker = '" + lista[i].ticker + "'";
+                ds.connector.query(sql, (err,result) => {
+                    
+                })
+            });
+        }
+        callback(null,{'total' : lista.length})
+     })
   };
   
 };

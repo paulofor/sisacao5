@@ -14,6 +14,9 @@
     },
     "quantidade": {
       "type": "number"
+    },
+    "codigoGrupoAcao": {
+      "type": "string"
     }
   },
   "validations": [],

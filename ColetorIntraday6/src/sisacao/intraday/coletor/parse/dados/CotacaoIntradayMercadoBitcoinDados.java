@@ -51,6 +51,7 @@ public class CotacaoIntradayMercadoBitcoinDados implements IDadosParse{
 			@Override
 			public void onSuccess() {
 				System.out.println("Enviado dados: " + cotacao);
+				System.out.println("Number of threads " + Thread.activeCount());
 			}
 
 			@Override
