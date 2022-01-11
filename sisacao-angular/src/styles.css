@@ -92,9 +92,16 @@ body {
   border-radius: 15px;
   margin: 16px;
   font-weight: 100;
-  
-  
+  float: left;
  }
+
+ .dgc-painel-80 dgc-painel {
+   width: 80%
+ }
+ .dgc-painel-20 dgc-painel {
+   width: 20%
+ }
+
  .dgc-painel-header {
    border-bottom: solid 1px #CCC;
    margin-bottom: 18px;

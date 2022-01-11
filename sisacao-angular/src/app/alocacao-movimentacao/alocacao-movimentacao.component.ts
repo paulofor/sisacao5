@@ -16,6 +16,8 @@ export class AlocacaoMovimentacaoComponent extends BaseListComponent {
   }
 
 
+
+
   getComponente() {
     return MovimentacaoEditaComponent;
   }

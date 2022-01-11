@@ -10,7 +10,9 @@
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <input matInput maxlength="50" #data [(ngModel)]="item.data"  name="data" placeholder="data (aaaa-mm-dd)" autocomplete="off" />
+      <input matInput #valor [(ngModel)]="item.data" name="data" placeholder="Data"  [matDatepicker]="stopDate" >
+      <mat-datepicker-toggle matSuffix [for]="stopDate"></mat-datepicker-toggle>
+      <mat-datepicker #stopDate></mat-datepicker>`
     </mat-form-field>
 
 

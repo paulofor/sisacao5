@@ -101,4 +101,55 @@ public class RegraProjecao_ObtemProcessando extends ExecutorRegraProjecao {
 		System.out.println("1.F");
 		
 	}
+
+
+	public void executa(String codigoRegra, String codigoGrupo) {
+		concluido = false;
+		System.out.println("1.I");
+		this.repRegraProjecao.obtemPorCodigo(codigoRegra, new ObjectCallback<RegraProjecao>() {
+
+			@Override
+			public void onSuccess(final RegraProjecao regra) {
+				repAcao.listaPorCodigoGrupo(codigoGrupo, new ListCallback<AtivoAcao>() {
+
+					@Override
+					public void onSuccess(List<AtivoAcao> objects) {
+						// TODO Auto-generated method stub
+						DiaPregao_ObtemIntradayResultadoValor processador = new DiaPregao_ObtemIntradayResultadoValor();
+						for (AtivoAcao acao : objects) {
+							processador.setDataNumInicio(20210101);
+							processador.setTicker(acao.getTicker());
+							processador.setRegraProjecao(regra);
+							processador.executa();
+						}
+						concluido = true;
+					}
+
+					@Override
+					public void onError(Throwable t) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+				});
+				
+			}
+
+			@Override
+			public void onError(Throwable t) {
+				// TODO Auto-generated method stub
+				t.printStackTrace();
+			}
+			
+		});
+		while (!concluido) {
+			try {
+				Thread.sleep(Constantes.SLEEP_1_REGRA_PROJECAO__OBTEM_PROCESSANDO);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		System.out.println("1.F");
+		
+	}
 }

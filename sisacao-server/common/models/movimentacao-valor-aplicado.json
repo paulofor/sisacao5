@@ -10,7 +10,7 @@
       "type": "number"
     },
     "data": {
-      "type": "string"
+      "type": "Date"
     },
     "tipoMovimentacao": {
       "type": "string"

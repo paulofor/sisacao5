@@ -22,6 +22,7 @@ export class AlocacaoSaldoMesComponent extends BaseListComponent {
     this.srvMovimentacao.RecalcularSaldos()
       .subscribe((resultado) => {
         this.carregaTela();
+        this.saldoTotal = 0;
       })
   }
 

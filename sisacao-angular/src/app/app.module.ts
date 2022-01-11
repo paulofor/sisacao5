@@ -123,7 +123,9 @@ import { ValorMesSaldoListComponent } from './valor-mes-saldo-list/valor-mes-sal
 import { ValorMesSaldoEditComponent } from './valor-mes-saldo-edit/valor-mes-saldo-edit.component';
 import { AtivoCriptomoedaEditComponent } from './ativo-criptomoeda-edit/ativo-criptomoeda-edit.component';
 import { CotacaoIntraMercadoBitcoinComponent } from './cotacao-intra-mercado-bitcoin/cotacao-intra-mercado-bitcoin.component';
+import { PainelPatrimonioMesComponent } from './painel-patrimonio-mes/painel-patrimonio-mes.component';
 
+//import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -217,7 +219,8 @@ registerLocaleData(localePt, 'pt-BR');
     ValorMesSaldoListComponent,
     ValorMesSaldoEditComponent,
     AtivoCriptomoedaEditComponent,
-    CotacaoIntraMercadoBitcoinComponent
+    CotacaoIntraMercadoBitcoinComponent,
+    PainelPatrimonioMesComponent,
   ],
   imports: [
     BrowserModule,
@@ -249,6 +252,8 @@ registerLocaleData(localePt, 'pt-BR');
     FormsModule,
     MatButtonModule,
     MatDatepickerModule,
+    MatNativeDateModule,
+    //MatMomentDateModule
   ],
   providers: [
     AtivoAcaoApi,
@@ -263,8 +268,8 @@ registerLocaleData(localePt, 'pt-BR');
     InternalStorage,
     MatNativeDateModule,
     //MatMomentDateModule,
-    { provide: LOCALE_ID, useValue: 'pt-BR' } 
-
+    { provide: LOCALE_ID, useValue: 'pt-BR' } ,
+    //{ provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } }
   ],
   entryComponents : [
     AtivoAcaoEditaComponent,

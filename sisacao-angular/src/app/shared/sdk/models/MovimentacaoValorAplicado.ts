@@ -7,7 +7,7 @@ import {
 declare var Object: any;
 export interface MovimentacaoValorAplicadoInterface {
   "valor"?: number;
-  "data"?: string;
+  "data"?: Date;
   "tipoMovimentacao"?: string;
   "id"?: number;
   "tipoAplicacaoId"?: number;
@@ -18,7 +18,7 @@ export interface MovimentacaoValorAplicadoInterface {
 
 export class MovimentacaoValorAplicado implements MovimentacaoValorAplicadoInterface {
   "valor": number;
-  "data": string;
+  "data": Date;
   "tipoMovimentacao": string;
   "id": number;
   "tipoAplicacaoId": number;
@@ -64,7 +64,7 @@ export class MovimentacaoValorAplicado implements MovimentacaoValorAplicadoInter
         },
         "data": {
           name: 'data',
-          type: 'string'
+          type: 'Date'
         },
         "tipoMovimentacao": {
           name: 'tipoMovimentacao',

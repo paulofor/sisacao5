@@ -11,7 +11,7 @@ module.exports = function(Tipoaplicacao) {
      */
     Tipoaplicacao.ObtemComSaldoPorPeriodo = function(dataRefNum, callback) {
 
-        let sql = " select tipoAplicacaoId, TipoAplicacao.nome, sum(valor) as total, sum(percentualValor) as percentualTotal " +
+        let sql = " select tipoAplicacaoId, TipoAplicacao.nome, sum(valor) as total, sum(valorPercentual) as percentualTotal " +
                 " from ValorMesInstituicaoTipo " +
                 " inner join TipoAplicacao on TipoAplicacao.id = ValorMesInstituicaoTipo.tipoAplicacaoId " +
                 " where dataReferenciaNum = " + dataRefNum +

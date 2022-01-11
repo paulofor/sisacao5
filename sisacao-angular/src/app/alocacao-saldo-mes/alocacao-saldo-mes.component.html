@@ -32,7 +32,7 @@
                   <td *ngFor="let banco of listaInstituicao">
                     {{getSaldoInstituicao(banco) | number:'':'pt-BR'}}
                   </td>
-                  <td>{{getTotalGeral()| number:'':'pt-BR'}}</td>
+                  <td>{{saldoTotal| number:'':'pt-BR'}}</td>
                 </tr>
               </tbody>
             </table>

@@ -6,11 +6,11 @@ public class CotacaoRegraProjecaoValorApp {
 
 	public static void main(String[] args) {
 		System.out.println("Inicialiando CotacaoRegraProjecaoApp");
-		System.out.println("Versao: 30-12-2021");
+		System.out.println("Versao: 11-01-2022");
 		CotacaoRegraProjecaoValorObj obj = new CotacaoRegraProjecaoValorObj();
-		int idRegra = Integer.parseInt(args[0]);
-		int idGrupo = Integer.parseInt(args[1]);
-		obj.executa(idRegra,idGrupo);
+		String codigoRegra = args[0];
+		String codigoGrupo = args[1];
+		obj.executa(codigoRegra,codigoGrupo);
 		System.out.println("Finalizacao");
 		System.exit(0);
 	}

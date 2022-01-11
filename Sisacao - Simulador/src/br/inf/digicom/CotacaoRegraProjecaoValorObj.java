@@ -15,4 +15,11 @@ public class CotacaoRegraProjecaoValorObj {
 		servico.executa(idRegraProjecao,idGrupoAcao);
 		System.out.println("Terminou obj");
 	}
+
+	public void executa(String codigoRegra, String codigoGrupo) {
+		// TODO Auto-generated method stub
+		RegraProjecao_ObtemProcessando servico = new RegraProjecao_ObtemProcessando();
+		servico.executa(codigoRegra,codigoGrupo);
+		System.out.println("Terminou obj");
+	}
 }
