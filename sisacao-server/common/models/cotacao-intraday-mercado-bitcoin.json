@@ -28,6 +28,18 @@
     },
     "tickerMoeda": {
       "type": "string"
+    },
+    "ofertaCompra" : {
+      "type" : "number"
+    },
+    "ofertaVenda" : {
+      "type" : "number"
+    },
+    "volume" : {
+      "type" : "number"
+    },
+    "dataInt" : {
+      "type" : "number"
     }
   },
   "validations": [],

@@ -52,6 +52,10 @@ public class CriptomoedaMercadoBitcoinCallback extends CallbackParseJson {
 				cotacao.setMaximo(json.getJSONObject(0).getDouble("high"));
 				cotacao.setMinimo(json.getJSONObject(0).getDouble("low"));
 				cotacao.setTickerMoeda(json.getJSONObject(0).getString("pair"));
+				cotacao.setOfertaCompra(json.getJSONObject(0).getDouble("buy"));
+				cotacao.setOfertaVenda(json.getJSONObject(0).getDouble("sell"));
+				cotacao.setVolume(json.getJSONObject(0).getDouble("vol"));
+				cotacao.setDataInt(json.getJSONObject(0).getLong("date"));
 				dados.registra(cotacao);
 			}
 		} catch (JSONException e) {

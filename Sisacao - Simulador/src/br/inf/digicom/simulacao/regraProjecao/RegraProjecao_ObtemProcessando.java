@@ -106,11 +106,13 @@ public class RegraProjecao_ObtemProcessando extends ExecutorRegraProjecao {
 	public void executa(String codigoRegra, String codigoGrupo) {
 		concluido = false;
 		System.out.println("1.I");
-		this.repRegraProjecao.obtemPorCodigo(codigoRegra, new ObjectCallback<RegraProjecao>() {
+		this.repRegraProjecao.obtemPorCodigoRegra(codigoRegra, new ObjectCallback<RegraProjecao>() {
 
 			@Override
 			public void onSuccess(final RegraProjecao regra) {
-				repAcao.listaPorCodigoGrupo(codigoGrupo, new ListCallback<AtivoAcao>() {
+				System.out.println("Regra ID: " + regra.getId());
+				System.out.println("NomeGrupo: " + codigoGrupo);
+				repAcao.listaPorNomeGrupo(codigoGrupo, new ListCallback<AtivoAcao>() {
 
 					@Override
 					public void onSuccess(List<AtivoAcao> objects) {

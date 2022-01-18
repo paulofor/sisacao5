@@ -8,7 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.strongloop.android.loopback.RestAdapter;
-import com.strongloop.android.loopback.callbacks.VoidCallback;
+import com.strongloop.android.loopback.callbacks.ObjectCallback;
 
 import br.com.digicom.parse.callback.IDadosParse;
 import br.com.digicom.sisacao.app.Loopback;
@@ -50,19 +50,21 @@ public class AtivosMercadoBitcoinDados  implements IDadosParse{
 		} catch (JSONException e) {
 			e.printStackTrace();
 		};
-		repCripto.atualizaMercadoBitcoin(lista, new VoidCallback() {
+		repCripto.atualizaMercadoBitcoin(lista, new ObjectCallback<AtivoCriptomoeda>() {
 
 			@Override
-			public void onSuccess() {
+			public void onSuccess(AtivoCriptomoeda object) {
 				// TODO Auto-generated method stub
-				
+				System.out.println("Sucessso");
 			}
 
 			@Override
 			public void onError(Throwable t) {
 				// TODO Auto-generated method stub
-				
-			}} );
+				System.out.println("Erro");
+			}
+
+		});
 	}
 
 }

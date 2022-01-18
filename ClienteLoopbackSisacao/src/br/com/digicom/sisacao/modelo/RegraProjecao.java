@@ -14,8 +14,10 @@ public class RegraProjecao extends Model {
 	private Double stop;
 	private Integer diaLimite;
 	private Integer processando;
+	private String codigoRegraProjecao;
 	
 	private GrupoAcao grupoAcao;
+	
 	
 	
 	
@@ -62,6 +64,12 @@ public class RegraProjecao extends Model {
 	}
 	public void setProcessando(Integer processando) {
 		this.processando = processando;
+	}
+	public String getCodigoRegraProjecao() {
+		return codigoRegraProjecao;
+	}
+	public void setCodigoRegraProjecao(String codigoRegraProjecao) {
+		this.codigoRegraProjecao = codigoRegraProjecao;
 	}
 	
 	

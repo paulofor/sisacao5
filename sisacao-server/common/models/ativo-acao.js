@@ -315,4 +315,18 @@ module.exports = function (Ativoacao) {
     };
 
 
+    /**
+    * 
+    * @param {string} nomeGrupo 
+    * @param {Function(Error, array)} callback
+    */
+    Ativoacao.ListaPorNomeGrupo = function(nomeGrupo, callback) {
+        let sql = " select AtivoAcao.* from AtivoAcao " + 
+                " inner join RelGrupoAcao on RelGrupoAcao.ticker = AtivoAcao.ticker " +
+                " inner join GrupoAcao on GrupoAcao.id = RelGrupoAcao.grupoAcaoId " +
+                " where GrupoAcao.nome = '" + nomeGrupo + "' ";
+        let ds = Ativoacao.dataSource;
+        ds.connector.query(sql,callback);
+    };
+
 };

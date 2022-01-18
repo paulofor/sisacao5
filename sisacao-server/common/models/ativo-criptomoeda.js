@@ -61,19 +61,22 @@ module.exports = function(Ativocriptomoeda) {
  * @param {Function(Error, object)} callback
  */
  Ativocriptomoeda.AtualizaMercadoBitcoin = function(lista, callback) {
-     ds = Ativocriptomoeda.dataSource;
+     let ds = Ativocriptomoeda.dataSource;
      let sql0 = 'update AtivoCriptomoeda set mercadoBitcoin = 0';
-     ds.connector.query(sql, (err,result) => {
+     ds.connector.query(sql0, (err,result) => {
+        //console.log('result1', result)
         for (let i=0; i<lista.length; i++) {
-            console.log(lista[i]);
+            //console.log(lista[i]);
             Ativocriptomoeda.upsert(lista[i], (err,result) => {
-                console.log(result);
-                let sql = "update AtivoCriptomoeda set mercadoBitcoin = 1 where ticker = '" + lista[i].ticker + "'";
-                ds.connector.query(sql, (err,result) => {
+                //console.log('Errupsert:' , err);
+                //console.log('Resultupsert:', result);
+                let sql1 = "update AtivoCriptomoeda set mercadoBitcoin = 1 where ticker = '" + lista[i].ticker + "'";
+                ds.connector.query(sql1, (err,result) => {
                     
                 })
             });
         }
+        console.log('vai chamar callback: ' , lista.length);
         callback(null,{'total' : lista.length})
      })
   };

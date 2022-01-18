@@ -9,7 +9,9 @@ import org.json.JSONArray;
 import com.strongloop.android.loopback.ModelRepository;
 import com.strongloop.android.loopback.callbacks.EmptyResponseParser;
 import com.strongloop.android.loopback.callbacks.JsonArrayParser;
+import com.strongloop.android.loopback.callbacks.JsonObjectParser;
 import com.strongloop.android.loopback.callbacks.ListCallback;
+import com.strongloop.android.loopback.callbacks.ObjectCallback;
 import com.strongloop.android.loopback.callbacks.VoidCallback;
 import com.strongloop.android.remoting.adapters.RestContractItem;
 
@@ -49,8 +51,8 @@ public class RepositorioCriptomoedaBase {
 	        invokeStaticMethod("atualizaFoxbit", params,  new EmptyResponseParser(callback));
 			
 		}
-		public void atualizaMercadoBitcoin(final List<AtivoCriptomoeda> lista, final VoidCallback callback) {
-			RestContractItem contrato = new RestContractItem("AtivoCriptomoeda/atualizaMercadoBitcoin","POST");
+		public void atualizaMercadoBitcoin(final List<AtivoCriptomoeda> lista, final ObjectCallback<AtivoCriptomoeda> callback ) {
+			RestContractItem contrato = new RestContractItem("AtivoCriptomoedas/atualizaMercadoBitcoin","POST");
 			this.getRestAdapter().getContract().addItem(contrato, "AtivoCriptomoeda.atualizaMercadoBitcoin");
 	        Map<String, Object> params = new HashMap<String, Object>();
 	        JSONArray listaServico = new JSONArray();
@@ -58,7 +60,7 @@ public class RepositorioCriptomoedaBase {
 	        	listaServico.put(moeda.jSON());
 	        }
 	        params.put("lista", listaServico);
-	        invokeStaticMethod("atualizaMercadoBitcoin", params,  new EmptyResponseParser(callback));
+	        invokeStaticMethod("atualizaMercadoBitcoin", params,  new JsonObjectParser<AtivoCriptomoeda>(this,callback));
 			
 		}
 		public void insereSeNaoExisteLista(final List<AtivoCriptomoeda> lista, final VoidCallback callback) {
@@ -126,12 +128,12 @@ public class RepositorioCriptomoedaBase {
 			return "CotacaoIntradayMercadoBitcoins";
 		}
 
-		public void insereItem(final CotacaoIntradayMercadoBitcoin item, final VoidCallback callback) {
+		public void insereItem(final CotacaoIntradayMercadoBitcoin item, final ObjectCallback<CotacaoIntradayMercadoBitcoin> callback ) {
 			RestContractItem contrato = new RestContractItem("CotacaoIntradayMercadoBitcoins/insereItem","POST");
 			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayMercadoBitcoin.insereItem");
 	        Map<String, Object> params = new HashMap<String, Object>();
 	        params.put("item", item.getJSON());
-	        invokeStaticMethod("insereItem", params,   new EmptyResponseParser(callback));
+	        invokeStaticMethod("insereItem", params,  new JsonObjectParser<CotacaoIntradayMercadoBitcoin>(this,callback));
 		}
 	}
 

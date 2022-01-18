@@ -16,6 +16,10 @@ public class CotacaoIntradayMercadoBitcoin extends Model{
 	private Double maximo;
 	private Double minimo;
 	private String tickerMoeda;
+	private Double ofertaCompra;
+	private Double ofertaVenda;
+	private Long dataInt;
+	private Double volume;
 
 	
 	public JSONObject getJSON() {
@@ -28,6 +32,10 @@ public class CotacaoIntradayMercadoBitcoin extends Model{
 			saida.put("maximo", this.maximo);
 			saida.put("minimo", this.minimo);
 			saida.put("tickerMoeda", this.tickerMoeda);
+			saida.put("ofertaCompra", this.ofertaCompra);
+			saida.put("ofertaVenda", this.ofertaVenda);
+			saida.put("dataInt", this.dataInt);
+			saida.put("volume", this.volume);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -93,6 +101,49 @@ public class CotacaoIntradayMercadoBitcoin extends Model{
 	public void setMinimo(Double minimo) {
 		this.minimo = minimo;
 	}
+
+
+	public Double getOfertaCompra() {
+		return ofertaCompra;
+	}
+
+
+	public void setOfertaCompra(Double ofertaCompra) {
+		this.ofertaCompra = ofertaCompra;
+	}
+
+
+	public Double getOfertaVenda() {
+		return ofertaVenda;
+	}
+
+
+	public void setOfertaVenda(Double ofertaVenda) {
+		this.ofertaVenda = ofertaVenda;
+	}
+
+
+	public Long getDataInt() {
+		return dataInt;
+	}
+
+
+	public void setDataInt(Long dataInt) {
+		this.dataInt = dataInt;
+	}
+
+
+	public Double getVolume() {
+		return volume;
+	}
+
+
+	public void setVolume(Double volume) {
+		this.volume = volume;
+	}
+
+
+
 
 
 	

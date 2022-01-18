@@ -362,6 +362,7 @@ public class RestAdapter extends Adapter {
 		    HttpConnectionParams.setSoTimeout(httpParams, 1200000);
 		    HttpConnectionParams.setConnectionTimeout(httpParams, 1200000);
 			System.out.println(baseUrl + path + " (" + method + ")");
+			System.out.println(parameters);
 
 			String contentType = null;
 			String charset = "utf-8";

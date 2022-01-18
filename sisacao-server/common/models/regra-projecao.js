@@ -35,6 +35,17 @@ module.exports = function(Regraprojecao) {
 
   };
 
+
+  /**
+  * 
+  * @param {string} codigo 
+  * @param {Function(Error, object)} callback
+  */
+  Regraprojecao.ObtemPorCodigoRegra = function(codigo, callback) {
+    let filtro = { 'where' : {'codigoRegraProjecao' : codigo } }
+    Regraprojecao.findOne(filtro,callback);
+  };
+
   /**
  * 
  * @param {number} idRegraProjecao 

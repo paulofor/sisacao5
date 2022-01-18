@@ -108,6 +108,31 @@
           "verb": "get"
         }
       ]
+    },
+    "ObtemPorCodigoRegra": {
+      "accepts": [
+        {
+          "arg": "codigo",
+          "type": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "item",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemPorCodigoRegra",
+          "verb": "get"
+        }
+      ]
     }
   }
 }

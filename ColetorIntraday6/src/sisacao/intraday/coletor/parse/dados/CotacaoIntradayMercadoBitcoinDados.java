@@ -5,7 +5,7 @@ package sisacao.intraday.coletor.parse.dados;
 import org.json.JSONObject;
 
 import com.strongloop.android.loopback.RestAdapter;
-import com.strongloop.android.loopback.callbacks.VoidCallback;
+import com.strongloop.android.loopback.callbacks.ObjectCallback;
 
 import br.com.digicom.parse.callback.IDadosParse;
 import br.com.digicom.sisacao.app.Loopback;
@@ -46,19 +46,21 @@ public class CotacaoIntradayMercadoBitcoinDados implements IDadosParse{
 
 	public void registra(final CotacaoIntradayMercadoBitcoin cotacao) {
 		// TODO Auto-generated method stub
-		repCripto.insereItem(cotacao, new VoidCallback() {
+		repCripto.insereItem(cotacao, new ObjectCallback<CotacaoIntradayMercadoBitcoin>() {
 
 			@Override
-			public void onSuccess() {
-				System.out.println("Enviado dados: " + cotacao);
-				System.out.println("Number of threads " + Thread.activeCount());
+			public void onSuccess(CotacaoIntradayMercadoBitcoin object) {
+				// TODO Auto-generated method stub
+				
 			}
 
 			@Override
 			public void onError(Throwable t) {
-				t.printStackTrace();
-				System.out.println("Erro envio dados");
-			}});
+				// TODO Auto-generated method stub
+				
+			}
+
+		});
 	}
 
 	/*

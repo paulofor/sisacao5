@@ -9,6 +9,10 @@ export interface CotacaoIntradayMercadoBitcoinInterface {
   "maximo"?: number;
   "minimo"?: number;
   "tickerMoeda"?: string;
+  "ofertaCompra"?: number;
+  "ofertaVenda"?: number;
+  "volume"?: number;
+  "dataInt"?: number;
 }
 
 export class CotacaoIntradayMercadoBitcoin implements CotacaoIntradayMercadoBitcoinInterface {
@@ -19,6 +23,10 @@ export class CotacaoIntradayMercadoBitcoin implements CotacaoIntradayMercadoBitc
   "maximo": number;
   "minimo": number;
   "tickerMoeda": string;
+  "ofertaCompra": number;
+  "ofertaVenda": number;
+  "volume": number;
+  "dataInt": number;
   constructor(data?: CotacaoIntradayMercadoBitcoinInterface) {
     Object.assign(this, data);
   }
@@ -79,6 +87,22 @@ export class CotacaoIntradayMercadoBitcoin implements CotacaoIntradayMercadoBitc
         "tickerMoeda": {
           name: 'tickerMoeda',
           type: 'string'
+        },
+        "ofertaCompra": {
+          name: 'ofertaCompra',
+          type: 'number'
+        },
+        "ofertaVenda": {
+          name: 'ofertaVenda',
+          type: 'number'
+        },
+        "volume": {
+          name: 'volume',
+          type: 'number'
+        },
+        "dataInt": {
+          name: 'dataInt',
+          type: 'number'
         },
       },
       relations: {

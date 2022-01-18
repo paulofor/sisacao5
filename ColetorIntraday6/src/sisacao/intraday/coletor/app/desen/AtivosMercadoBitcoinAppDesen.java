@@ -20,9 +20,17 @@ public class AtivosMercadoBitcoinAppDesen {
 		executadorParse.setDadosParse(manipulador);
 		try {
 			executadorParse.executa();
+			System.out.println("Terminou execute");
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Exit");
+		System.exit(0);
 	}
 
 }

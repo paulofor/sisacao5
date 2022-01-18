@@ -159,8 +159,19 @@ public class ParserDiarioObj {
 							String max = eElement.getElementsByTagName("MaxPric").item(0).getTextContent();
 							String abe = eElement.getElementsByTagName("FrstPric").item(0).getTextContent();
 							String min = eElement.getElementsByTagName("MinPric").item(0).getTextContent();
-							String neg = eElement.getElementsByTagName("RglrTxsQty").item(0).getTextContent();
-							String vol = eElement.getElementsByTagName("RglrTraddCtrcts").item(0).getTextContent();
+							String neg = null;
+							try {
+								neg = eElement.getElementsByTagName("RglrTxsQty").item(0).getTextContent();
+							} catch (Exception e) {
+								neg = "0";
+							}
+							String vol = null;
+							try {
+								vol = eElement.getElementsByTagName("RglrTraddCtrcts").item(0).getTextContent();
+							} catch (Exception e) {
+								vol = "0";
+							}
+							
 							Node nodePerc = eElement.getElementsByTagName("OscnPctg").item(0);
 							String perc = (nodePerc!=null ? eElement.getElementsByTagName("OscnPctg").item(0).getTextContent() : "0");
 							

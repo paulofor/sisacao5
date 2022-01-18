@@ -83,12 +83,12 @@ public class RepositorioAcaoBase {
 	        invokeStaticMethod("insereAcaoIndice", params,   new EmptyResponseParser(voidCallback));
 			
 		}
-		public void listaPorCodigoGrupo(String codigoGrupo, ListCallback<AtivoAcao> callback) {
-			RestContractItem contrato = new RestContractItem("AtivoAcaos/listaPorCodigoGrupo","GET");
-			this.getRestAdapter().getContract().addItem(contrato, "AtivoAcao.listaPorCodigoGrupo");
+		public void listaPorNomeGrupo(String codigoGrupo, ListCallback<AtivoAcao> callback) {
+			RestContractItem contrato = new RestContractItem("AtivoAcaos/listaPorNomeGrupo","GET");
+			this.getRestAdapter().getContract().addItem(contrato, "AtivoAcao.listaPorNomeGrupo");
 	        Map<String, Object> params = new HashMap<String, Object>();
-	        params.put("codigoGrupo", codigoGrupo);
-	        invokeStaticMethod("listaPorGrupo", params,   new JsonArrayParser<AtivoAcao>(this, callback));
+	        params.put("nomeGrupo", codigoGrupo);
+	        invokeStaticMethod("listaPorNomeGrupo", params,   new JsonArrayParser<AtivoAcao>(this, callback));
 		}
 		
 	}

@@ -33,4 +33,9 @@ export class CotacaoIntraCriptomoedaComponent implements OnInit {
     })
   }
 
+  obtemData(item) {
+    let data = new Date(item.data);
+    return data;
+  }
+
 }

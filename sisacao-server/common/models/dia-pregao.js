@@ -182,9 +182,9 @@ module.exports = function(Diapregao) {
                         "order" : "dataHora" ,
                         'include' : {
                             'relation' : 'cotacaoIntradayAcaoResultadoValors' ,
-                            'scope' : {
-                                'where' : {'idRegraProjecao' : idRegraProjecao }
-                            }
+                            'scope' :
+                              {'where' : {'regraProjecaoId' : idRegraProjecao }},
+           
                         }
                     } 
                     
@@ -198,6 +198,7 @@ module.exports = function(Diapregao) {
             'order' : 'diaNum',
             'where' : { and : [{'diaNum' : { 'gte' : dataNumInicio }}, {'diaNum': {'lte' : diaNum}} ]}
         }
+        console.log('filtro:' , filtro);
         Diapregao.find(filtro,callback);
     };
   

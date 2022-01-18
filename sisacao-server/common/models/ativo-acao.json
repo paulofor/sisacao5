@@ -335,6 +335,31 @@
           "verb": "post"
         }
       ]
+    },
+    "ListaPorNomeGrupo": {
+      "accepts": [
+        {
+          "arg": "nomeGrupo",
+          "type": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaPorNomeGrupo",
+          "verb": "get"
+        }
+      ]
     }
   }
 }
