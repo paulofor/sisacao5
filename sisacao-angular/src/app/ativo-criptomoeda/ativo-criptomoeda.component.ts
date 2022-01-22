@@ -11,6 +11,9 @@ export class AtivoCriptomoedaComponent implements OnInit {
 
   lista: AtivoCriptomoeda[];
 
+  qtdeMercadoBitcoin;
+  qtdeFoxbit;
+
   constructor(private srv: AtivoCriptomoedaApi, private dialog : MatDialog) { }
 
   ngOnInit() {
@@ -24,9 +27,23 @@ export class AtivoCriptomoedaComponent implements OnInit {
     this.srv.find(filtro)
       .subscribe((resultado: AtivoCriptomoeda[]) => {
         this.lista = resultado;
+        this.contagens();
         console.log('Lista:' , this.lista);
       })
 
+  }
+
+  contagens() {
+    this.qtdeMercadoBitcoin = 0;
+    this.qtdeFoxbit = 0;
+    for (let i=0; i<this.lista.length; i++) {
+      if (this.lista[i].mercadoBitcoin==1) {
+        this.qtdeMercadoBitcoin++;
+      }
+      if (this.lista[i].foxbit==1) {
+        this.qtdeFoxbit++;
+      }
+    }
   }
 
   /*

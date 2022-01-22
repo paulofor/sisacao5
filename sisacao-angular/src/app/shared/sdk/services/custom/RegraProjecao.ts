@@ -306,6 +306,43 @@ export class RegraProjecaoApi extends BaseLoopBackApi {
          * (The remote method definition does not provide any description.)
          * </em>
    *
+   * @param {number} dataNumInicio 
+   *
+   * @param {number} dataNumFinal 
+   *
+   * @param {string} grupoAcao 
+   *
+   * @param {string} codigoRegra 
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `RegraProjecao` object.)
+   * </em>
+   */
+  public TickerPerformance(dataNumInicio: any = {}, dataNumFinal: any = {}, grupoAcao: any = {}, codigoRegra: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/RegraProjecaos/tickerPerformance";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof dataNumInicio !== 'undefined' && dataNumInicio !== null) _urlParams.dataNumInicio = dataNumInicio;
+    if (typeof dataNumFinal !== 'undefined' && dataNumFinal !== null) _urlParams.dataNumFinal = dataNumFinal;
+    if (typeof grupoAcao !== 'undefined' && grupoAcao !== null) _urlParams.grupoAcao = grupoAcao;
+    if (typeof codigoRegra !== 'undefined' && codigoRegra !== null) _urlParams.codigoRegra = codigoRegra;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
    * @param {object} data Request data.
    *
    *  - `idRegraProjecao` – `{number}` - 

@@ -39,6 +39,43 @@
   },
   "acls": [],
   "methods": {
+    "ObtemPorTickerPeriodo": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": true,
+          "descripion": ""
+        },
+        {
+          "arg": "dataNumInicio",
+          "type": "number",
+          "required": true,
+          "descripion": ""
+        },
+        {
+          "arg": "dataNumFinal",
+          "type": "number",
+          "required": true,
+          "descripion": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemPorTickerPeriodo",
+          "verb": "get"
+        }
+      ]
+    },
     "CriaTickerAno": {
       "accepts": [
         {

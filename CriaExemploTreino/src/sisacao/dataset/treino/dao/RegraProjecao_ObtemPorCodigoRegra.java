@@ -28,9 +28,8 @@ public class RegraProjecao_ObtemPorCodigoRegra extends DaoBase {
 			@Override
 			public void onSuccess(RegraProjecao object) {
 				System.out.println("Regra Id: " + object.getId());
+				getComum().setRegraProjecao(object);
 				DiaPregao_ObtemIntradayResultadoDataset exec = new DiaPregao_ObtemIntradayResultadoDataset();
-				exec.setTicker(ticker);
-				exec.setInicioPeriodo(inicioPeriodo);
 				exec.executa();
 			}
 

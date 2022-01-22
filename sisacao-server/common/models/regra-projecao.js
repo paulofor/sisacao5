@@ -35,6 +35,38 @@ module.exports = function(Regraprojecao) {
 
   };
 
+  Regraprojecao.TickerPerformance = function(dataNumInicio, dataNumFinal, grupoAcao, codigoRegra, callback) {
+    let sql = "select CotacaoIntradayAcaoResultado.ticker, count(*) as ticks, " +
+          " (select count(*) " +
+          " from CotacaoIntradayAcaoResultadoValor " +
+          " where diaNum >= " + dataNumInicio + " and diaNum <= " + dataNumFinal + " " +
+          " and regraProjecaoId = 1 " +
+          " and resultado = 1 " +
+          " and CotacaoIntradayAcaoResultadoValor.ticker = CotacaoIntradayAcaoResultado.ticker " +
+          " ) as positivos, " +
+          " (select count(*) " +
+          " from CotacaoIntradayAcaoResultadoValor " +
+          " where diaNum >= " + dataNumInicio + " and diaNum <= " + dataNumFinal + " " +
+          " and regraProjecaoId = 1 " +
+          " and resultado = -1 " +
+          " and CotacaoIntradayAcaoResultadoValor.ticker = CotacaoIntradayAcaoResultado.ticker " +
+          " ) as negativos, " +
+          " (select count(*) " +
+          " from CotacaoIntradayAcaoResultadoValor " +
+          " where diaNum >= " + dataNumInicio + " and diaNum <= " + dataNumFinal + " " +
+          " and regraProjecaoId = 1 " +
+          " and resultado = 0 " +
+          " and CotacaoIntradayAcaoResultadoValor.ticker = CotacaoIntradayAcaoResultado.ticker " +
+          " ) as zero " +
+          " from CotacaoIntradayAcaoResultado " +
+          " inner join RelGrupoAcao on RelGrupoAcao.ticker = CotacaoIntradayAcaoResultado.ticker " +
+          " inner join GrupoAcao on GrupoAcao.id = RelGrupoAcao.grupoAcaoId " +
+          " where diaNum >= " + dataNumInicio + " and diaNum <= " + dataNumFinal + " " +
+          " and GrupoAcao.nome = '" + grupoAcao + "' " +
+          " group by CotacaoIntradayAcaoResultado.ticker" ;
+     let ds = Regraprojecao.dataSource;
+     ds.connector.query(sql,callback);
+  }
 
   /**
   * 

@@ -5,33 +5,25 @@ import java.util.List;
 import com.strongloop.android.loopback.callbacks.ListCallback;
 
 import br.com.digicom.sisacao.modelo.DiaPregao;
+import sisacao.dataset.treino.proc.GeraDataset;
 
 public class DiaPregao_ObtemIntradayResultadoDataset extends DaoBase {
 
-	private String ticker;
-	private int inicioPeriodo;
-
 	
- 	
-	public void setTicker(String ticker) {
-		this.ticker = ticker;
-	}
-
-
-
-	public void setInicioPeriodo(int inicioPeriodo) {
-		this.inicioPeriodo = inicioPeriodo;
-	}
-
 
 
 	@Override
 	public void executa() {
-		repDiaPregao.obtemIntradayResultadoTickerPeriodo(ticker, inicioPeriodo, new ListCallback<DiaPregao>() {
+		repDiaPregao.obtemIntradayResultadoTickerPeriodo(this.getComum().getTicker(), 
+				this.getComum().getInicioPeriodo(), new ListCallback<DiaPregao>() {
 
 			@Override
 			public void onSuccess(List<DiaPregao> objects) {
 				System.out.println("Resultado.Ok: " + objects.size());
+				GeraDataset exec = new GeraDataset();
+				getComum().setListaPregao(objects);
+				exec.setDatasetComum(getComum());
+				exec.executa();
 			}
 			@Override
 			public void onError(Throwable t) {
@@ -39,5 +31,9 @@ public class DiaPregao_ObtemIntradayResultadoDataset extends DaoBase {
 			}
 		});
 	}
+
+
+
+	
 
 }

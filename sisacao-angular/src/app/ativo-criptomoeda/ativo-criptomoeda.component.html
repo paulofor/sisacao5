@@ -5,6 +5,7 @@
         <div class="card">
           <div class="header">
             <h4 class="title">Criptomoedas({{lista.length}})</h4>
+            <div class="dgc-direita" *ngIf="(qtdeMercadoBitcoin && qtdeFoxbit)">MercadoBitcoin:{{qtdeMercadoBitcoin}} - Foxbit:{{qtdeFoxbit}}</div>
           </div>
           <div class="content table-responsive table-full-width">
             <table class="table table-hover table-striped">

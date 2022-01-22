@@ -48,7 +48,8 @@ public abstract class ThreadPaiBase extends TimerTask {
 						e.printStackTrace();
 					}
 					System.out.println("System.exit");
-					System.exit(0);
+					Runtime.getRuntime().halt(0);
+					//System.exit(0);
 				} else {
 					this.mudouDiaColetores(diaAtual);
 				}

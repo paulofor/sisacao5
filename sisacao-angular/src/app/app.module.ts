@@ -124,8 +124,11 @@ import { ValorMesSaldoEditComponent } from './valor-mes-saldo-edit/valor-mes-sal
 import { AtivoCriptomoedaEditComponent } from './ativo-criptomoeda-edit/ativo-criptomoeda-edit.component';
 import { CotacaoIntraMercadoBitcoinComponent } from './cotacao-intra-mercado-bitcoin/cotacao-intra-mercado-bitcoin.component';
 import { PainelPatrimonioMesComponent } from './painel-patrimonio-mes/painel-patrimonio-mes.component';
+import { GraficoAlocacaoComponent } from './grafico-alocacao/grafico-alocacao.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 //import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -221,6 +224,7 @@ registerLocaleData(localePt, 'pt-BR');
     AtivoCriptomoedaEditComponent,
     CotacaoIntraMercadoBitcoinComponent,
     PainelPatrimonioMesComponent,
+    GraficoAlocacaoComponent,
   ],
   imports: [
     BrowserModule,
@@ -253,6 +257,7 @@ registerLocaleData(localePt, 'pt-BR');
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    NgApexchartsModule
     //MatMomentDateModule
   ],
   providers: [

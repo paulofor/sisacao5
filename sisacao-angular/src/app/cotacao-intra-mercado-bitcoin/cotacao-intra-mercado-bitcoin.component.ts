@@ -32,4 +32,9 @@ export class CotacaoIntraMercadoBitcoinComponent implements OnInit {
     })
   }
 
+  getData(item) {
+    var d = new Date(item.dataInt * 1000);
+    return d;
+  }
+
 }

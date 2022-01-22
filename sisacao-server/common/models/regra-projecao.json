@@ -41,6 +41,49 @@
   },
   "acls": [],
   "methods": {
+    "TickerPerformance" : {
+      "accepts" : [
+        {
+          "arg" : "dataNumInicio",
+          "type" : "number",
+          "required" : false,
+          "description" : ""
+        },
+        {
+          "arg" : "dataNumFinal",
+          "type" : "number",
+          "required" : false,
+          "description" : ""
+        },
+        {
+          "arg" : "grupoAcao",
+          "type" : "string",
+          "required" : false,
+          "description" : ""
+        },
+        {
+          "arg" : "codigoRegra",
+          "type" : "string",
+          "required" : false,
+          "description" : ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/tickerPerformance",
+          "verb": "get"
+        }
+      ]
+    },
     "LigaProcessando": {
       "accepts": [
         {

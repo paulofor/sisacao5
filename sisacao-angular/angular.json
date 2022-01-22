@@ -26,7 +26,9 @@
               "src/styles.css",
               "src/assets/css/dgc-painel.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/apexcharts/dist/apexcharts.min.js"
+            ]
           },
           "configurations": {
             "production": {

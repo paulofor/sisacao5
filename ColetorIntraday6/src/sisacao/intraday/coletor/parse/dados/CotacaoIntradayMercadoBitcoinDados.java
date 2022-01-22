@@ -2,6 +2,8 @@ package sisacao.intraday.coletor.parse.dados;
 
 
 
+import java.lang.management.ManagementFactory;
+
 import org.json.JSONObject;
 
 import com.strongloop.android.loopback.RestAdapter;
@@ -51,7 +53,7 @@ public class CotacaoIntradayMercadoBitcoinDados implements IDadosParse{
 			@Override
 			public void onSuccess(CotacaoIntradayMercadoBitcoin object) {
 				// TODO Auto-generated method stub
-				
+				System.out.println("Threads: " + ManagementFactory.getThreadMXBean().getThreadCount());
 			}
 
 			@Override

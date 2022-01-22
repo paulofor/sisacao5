@@ -30,5 +30,26 @@
     }
   },
   "acls": [],
-  "methods": {}
+  "methods": {
+    "TotaisMesCorrente": {
+      "accepts": [
+        
+      ],
+      "returns": [
+        {
+          "arg": "listaTipo",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/totaisMesCorrente",
+          "verb": "get"
+        }
+      ]
+    }
+  }
 }

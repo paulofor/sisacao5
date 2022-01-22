@@ -4,6 +4,7 @@ import com.strongloop.android.loopback.RestAdapter;
 
 import br.com.digicom.sisacao.repositorio.RepositorioDiaPregao;
 import br.com.digicom.sisacao.repositorio.RepositorioRegraProjecao;
+import sisacao.dataset.treino.singleton.DatasetComum;
 
 public abstract class DaoBase {
 	
@@ -13,9 +14,22 @@ public abstract class DaoBase {
 	protected RepositorioDiaPregao repDiaPregao = adapter.createRepository(RepositorioDiaPregao.class);
 	protected RepositorioRegraProjecao repRegraProjecao = adapter.createRepository(RepositorioRegraProjecao.class);
 
+	
+	private DatasetComum comum = null;
+	
+	
+	
 	public abstract void executa();
 	
 	protected void onError(Throwable t) {
 		System.out.println("Erro[" + this + "] : " + t.getMessage());
+	}
+
+	public DatasetComum getComum() {
+		return comum;
+	}
+
+	public void setComum(DatasetComum comum) {
+		this.comum = comum;
 	}
 }
