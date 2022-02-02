@@ -1,0 +1,19 @@
+<div class="dgc-card">
+  <div class="dgc-card-header">
+      <span>{{trade.ticker}}</span>
+  </div>
+  <div class="dgc-card-header">
+    <span *ngIf="listaCotacao">{{listaCotacao[0].valor}}</span>
+  </div>
+  <div id="chart">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [xaxis]="chartOptions.xaxis"
+      [dataLabels]="chartOptions.dataLabels"
+      [grid]="chartOptions.grid"
+      [stroke]="chartOptions.stroke"
+      [title]="chartOptions.title"
+    ></apx-chart>
+  </div>
+</div>

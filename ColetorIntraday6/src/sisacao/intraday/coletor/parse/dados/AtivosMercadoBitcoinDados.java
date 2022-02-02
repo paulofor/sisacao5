@@ -42,10 +42,17 @@ public class AtivosMercadoBitcoinDados  implements IDadosParse{
 				String nome = moedas.getString(i);
 				String desc = descricao.getString(i);
 				System.out.println(nome + " - " + desc);
-				AtivoCriptomoeda ativo = new AtivoCriptomoeda();
-				ativo.setTicker(nome);
-				ativo.setNome(desc);
-				lista.add(ativo);
+				if ((desc.toUpperCase().indexOf("PRECATORIO")==-1) &&
+					(desc.toUpperCase().indexOf("PRECATÓRIO")==-1) &&
+					(desc.toUpperCase().indexOf("CONSORCIO")==-1) &&
+					(desc.toUpperCase().indexOf("CONSÓRCIO")==-1)) {
+					System.out.println("Entrou");
+					AtivoCriptomoeda ativo = new AtivoCriptomoeda();
+					ativo.setTicker(nome);
+					ativo.setNome(desc);
+					lista.add(ativo);	
+				}
+
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();

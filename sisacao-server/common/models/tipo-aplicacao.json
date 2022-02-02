@@ -47,6 +47,26 @@
           "verb": "get"
         }
       ]
+    },
+    "TotaisCorrenteComAporte": {
+      "accepts": [
+        
+      ],
+      "returns": [
+        {
+          "arg": "listaTipo",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/totaisCorrenteComAporte",
+          "verb": "get"
+        }
+      ]
     }
   }
 }

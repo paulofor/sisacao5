@@ -43,7 +43,7 @@ public abstract class ThreadPaiBase extends TimerTask {
 				if (this.diaAnterior.length() > 0) {
 					mudouDia(this.diaAtual, this.diaAnterior, true);
 					try {
-						Thread.sleep(6000);
+						Thread.sleep(120000);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}

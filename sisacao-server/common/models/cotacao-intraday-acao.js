@@ -127,4 +127,33 @@ module.exports = function (Cotacaointradayacao) {
         return [year, month, day].join('-');
     }
 
+
+    Cotacaointradayacao.CotacaoMaisRecente = function(callback) {
+        let ds = Cotacaointradayacao.dataSource;
+        let sql = " (select dataHora, 'Acao' as ativo ,  TIMESTAMPDIFF(MINUTE, dataHora, now()) as tempo from CotacaoIntradayAcao " +
+                " where dataHora = (select max(dataHora) from CotacaoIntradayAcao) " +
+                " limit 1) " +
+                " union all " +
+                " (select dataHora, 'Foxbit' as ativo  , TIMESTAMPDIFF(MINUTE, dataHora, now()) as tempo from CotacaoIntradayFoxbit " +
+                " where dataHora = (select max(dataHora) from CotacaoIntradayFoxbit) " +
+                " limit 1) " +
+                " union all " +
+                " (select dataHora, 'MercadoBitcoin' as ativo ,  TIMESTAMPDIFF(MINUTE, dataHora, now()) as tempo from CotacaoIntradayMercadoBitcoin  " +
+                " where dataHora = (select max(dataHora) from CotacaoIntradayMercadoBitcoin) " +
+                " limit 1) " +
+                " union all " +
+                " (select dataHora, 'Indice' as ativo  ,  TIMESTAMPDIFF(MINUTE, dataHora, now()) as tempo from CotacaoIntradayIndice " +
+                " where dataHora = (select max(dataHora) from CotacaoIntradayIndice) " +
+                " limit 1) " +
+                " union all " +
+                " (select dataHora, 'Imobiliario' as ativo  ,  TIMESTAMPDIFF(MINUTE, dataHora, now()) as tempo from CotacaoIntradayImobiliario " +
+                " where dataHora = (select max(dataHora) from CotacaoIntradayImobiliario) " +
+                " limit 1) " +
+                " union all " +
+                " (select dataHora, 'Mercadoria' as ativo  ,  TIMESTAMPDIFF(MINUTE, dataHora, now()) as tempo from CotacaoIntradayMercadoria " +
+                " where dataHora = (select max(dataHora) from CotacaoIntradayMercadoria) " +
+                " limit 1)";
+        ds.connector.query(sql,callback);
+    }
+
 };

@@ -15,12 +15,26 @@ public class RegraProjecao extends Model {
 	private Integer diaLimite;
 	private Integer processando;
 	private String codigoRegraProjecao;
+	private Double percentualEntradaDataset;
+	private Integer indiceHoraReferenciaDataset;
 	
 	private GrupoAcao grupoAcao;
 	
 	
 	
 	
+	public Double getPercentualEntradaDataset() {
+		return percentualEntradaDataset;
+	}
+	public void setPercentualEntradaDataset(Double percentualEntradaDataset) {
+		this.percentualEntradaDataset = percentualEntradaDataset;
+	}
+	public Integer getIndiceHoraReferenciaDataset() {
+		return indiceHoraReferenciaDataset;
+	}
+	public void setIndiceHoraReferenciaDataset(Integer indiceHoraReferenciaDataset) {
+		this.indiceHoraReferenciaDataset = indiceHoraReferenciaDataset;
+	}
 	public GrupoAcao getGrupoAcao() {
 		return grupoAcao;
 	}

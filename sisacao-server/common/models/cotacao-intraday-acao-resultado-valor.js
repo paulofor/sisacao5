@@ -67,4 +67,30 @@ module.exports = function(Cotacaointradayacaoresultadovalor) {
     Cotacaointradayacaoresultadovalor.find(filtro,callback);
   };
   
+
+  Cotacaointradayacaoresultadovalor.ObtemDatasPorGrupo = function(codigoGrupo, callback) {
+      let sql = " select ticker, RegraProjecao.codigoRegraProjecao, ultimo from " +
+            " (select CotacaoIntradayAcaoResultadoValor.ticker, regraProjecaoId, max(dataHora) as ultimo " +
+            " from CotacaoIntradayAcaoResultadoValor " +
+            " inner join RelGrupoAcao on RelGrupoAcao.ticker = CotacaoIntradayAcaoResultadoValor.ticker " +
+            " inner join GrupoAcao on GrupoAcao.id = RelGrupoAcao.grupoAcaoId " +
+            " where GrupoAcao.nome = '" + codigoGrupo + "' " +
+            " group by ticker, regraProjecaoId " +
+            " order by regraProjecaoId, ticker) as tab " +
+            " inner join RegraProjecao on RegraProjecao.id = tab.regraProjecaoId " +
+            " order by codigoRegraProjecao, ultimo desc ";
+        let ds = Cotacaointradayacaoresultadovalor.dataSource;
+        ds.connector.query(sql, callback);
+    
+  }
+
+
+  Cotacaointradayacaoresultadovalor.ObtemDatasPorGrupoComAtraso = function(codigoGrupo, callback) {
+        let sql = "  ";
+        let ds = Cotacaointradayacaoresultadovalor.dataSource;
+        ds.connector.query(sql, callback);
+  
+    }
+
+
 };

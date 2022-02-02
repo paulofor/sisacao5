@@ -21,6 +21,18 @@ module.exports = function(Tipoaplicacao) {
         ds.connector.query(sql,callback);
     };
   
+    Tipoaplicacao.TotaisCorrenteComAporte = function(callback) {
+        let sql =   " select TipoAplicacao.*, valorTotal " +
+        " from " +
+        " (select tipoAplicacaoId, sum(valor) valorTotal, sum(valorPercentual) percentualTotal " +
+        " from ValorMesInstituicaoTipo " +
+        " where dataReferenciaNum = 202112 " +
+        " group by tipoAplicacaoId " +
+        " order by valorTotal desc) as tab " +
+        " inner join TipoAplicacao on TipoAplicacao.id = tipoAplicacaoId ";
+        let ds = Tipoaplicacao.dataSource;
+        ds.connector.query(sql,callback);
+    }
 
 
     Tipoaplicacao.observe('after save', function updateInicioColeta(ctx, next) {

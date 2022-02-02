@@ -23,7 +23,7 @@ public class ExperimentoMonitoradoLoteApp {
 
 	public static void main(String[] args) {
 
-		System.out.println("Ola Mundo - ExperimentoMonitoradoLoteApp");
+		System.out.println("Ola Mundo - ExperimentoMonitoradoLoteApp (24-01-2022)");
 
 		//int id = 3156573;
 		repExecucaoSimulacao.obtemProximoMonitorar(new ObjectCallback<ExecucaoSimulacao>() {

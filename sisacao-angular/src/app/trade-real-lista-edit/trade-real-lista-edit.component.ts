@@ -24,6 +24,26 @@ export class TradeRealListaEditComponent extends BaseEditComponent {
 
   }
 
+  mudouTarget(item) {
+    console.log('Item Target:' , item.source.value);
+    this.alteraTargetVenda(item.source.value);
+
+  }
+  alteraTargetVenda(percentual) {
+    let valor = this.item.precoEntrada * (1- (percentual/100));
+    this.item.precoTarget = valor.toFixed(2);
+  }
+
+  mudouStop(item) {
+    console.log('Item Stop:' , item.source.value);
+    this.alteraStopVenda(item.source.value);
+  }
+  alteraStopVenda(percentual) {
+    let valor = this.item.precoEntrada * (1+ (percentual/100));
+    this.item.precoStop = valor.toFixed(2);
+    
+  }
+
   posItem() {
     let itemTrade:TradeReal = this.item;
     if (itemTrade.tipo=='C') {

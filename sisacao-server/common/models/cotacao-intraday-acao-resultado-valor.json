@@ -143,6 +143,56 @@
           "verb": "get"
         }
       ]
+    },
+    "ObtemDatasPorGrupo": {
+      "accepts": [
+        {
+          "arg": "codigoGrupo",
+          "type": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemDatasPorGrupo",
+          "verb": "get"
+        }
+      ]
+    },
+    "ObtemDatasPorGrupoComAtraso": {
+      "accepts": [
+        {
+          "arg": "codigoGrupo",
+          "type": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemDatasPorGrupoComAtraso",
+          "verb": "get"
+        }
+      ]
     }
   }
 }

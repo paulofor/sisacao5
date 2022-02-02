@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { BaseEditComponent } from '../base-component/base-edit-component';
+
 import { MelhoresValidacaoPeriodoComponent } from '../melhores-validacao-periodo/melhores-validacao-periodo.component';
 import { InstituicaoFinanceira, InstituicaoFinanceiraApi, MovimentacaoValorAplicado, MovimentacaoValorAplicadoApi, TipoAplicacao, TipoAplicacaoApi } from '../shared/sdk';
 

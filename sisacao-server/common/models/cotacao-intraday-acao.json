@@ -34,6 +34,26 @@
   "relations": {},
   "acls": [],
   "methods": {
+    "CotacaoMaisRecente": {
+      "accepts": [
+       
+      ],
+      "returns": [
+        {
+          "arg": "listaTempo",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/cotacaoMaisRecente",
+          "verb": "get"
+        }
+      ]
+    },
     "InsereValorHorarioAcao": {
       "accepts": [
         {

@@ -126,6 +126,11 @@ import { CotacaoIntraMercadoBitcoinComponent } from './cotacao-intra-mercado-bit
 import { PainelPatrimonioMesComponent } from './painel-patrimonio-mes/painel-patrimonio-mes.component';
 import { GraficoAlocacaoComponent } from './grafico-alocacao/grafico-alocacao.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { GraficoAlocacaoAporteComponent } from './grafico-alocacao-aporte/grafico-alocacao-aporte.component';
+import { RegraProjecaoDatasComponent } from './regra-projecao-datas/regra-projecao-datas.component';
+import { GrupoParaAcaoComponent } from './grupo-para-acao/grupo-para-acao.component';
+import { TradeRealVisualComponent } from './trade-real-visual/trade-real-visual.component';
+import { ItemTradeRealVisualComponent } from './item-trade-real-visual/item-trade-real-visual.component';
 
 //import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
@@ -225,6 +230,11 @@ registerLocaleData(localePt, 'pt-BR');
     CotacaoIntraMercadoBitcoinComponent,
     PainelPatrimonioMesComponent,
     GraficoAlocacaoComponent,
+    GraficoAlocacaoAporteComponent,
+    RegraProjecaoDatasComponent,
+    GrupoParaAcaoComponent,
+    TradeRealVisualComponent,
+    ItemTradeRealVisualComponent,
   ],
   imports: [
     BrowserModule,
@@ -306,7 +316,8 @@ registerLocaleData(localePt, 'pt-BR');
     AtivoIndiceEditaComponent,
     MovimentacaoEditaComponent,
     RegraProjecaoEditComponent,
-    ValorMesSaldoEditComponent
+    ValorMesSaldoEditComponent,
+    GrupoParaAcaoComponent
   ],
   bootstrap: [AppComponent]
 })

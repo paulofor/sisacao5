@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { BaseEditComponent } from '../base-component/base-edit-component';
+
 import { BaseListComponent } from '../base-component/base-list-component';
 import { BaseSelecionaEditComponent } from '../base-component/base-seleciona-component';
 import { AtivoAcao, AtivoAcaoApi, BaseLoopBackApi, RelGrupoAcao, RelGrupoAcaoApi } from '../shared/sdk';

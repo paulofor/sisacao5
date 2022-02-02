@@ -242,6 +242,83 @@ Execucaosimulacao.InsereExecucaoSimulacao = function(execucao, callback) {
         });
     };
 
+
+    Execucaosimulacao.MelhorValidacaoPeriodoFlatPorTicker = function(idPeriodo, limiteTicker, callback) {
+        let listaSaida = [];
+        let ds = Execucaosimulacao.dataSource;
+        app.models.PeriodoExperimento.findById(idPeriodo, (err,result) => {
+            console.log('result:', result )
+            let periodo = result;
+            let sqlTicker = "select distinct ticker from ExecucaoSimulacao simulacao where periodoExperimentoId = " +
+                idPeriodo + " and simulacao.resultado >= " + periodo.minimoPontoValidacao;
+            ds.connector.query(sqlTicker, (err,result2) => {
+                console.log('Ticker:' , result2.length);
+                for (let i=0;i<result2.length;i++) {
+                    let sql2 = "select simulacao.id as simulacaoId, " +
+                    " simulacao.ticker as ticker, " +
+                    " simulacao.resultado as simulacaoResultado, " + 
+                    " simulacao.quantidadeLucro as simulacaoLucro, " +
+                    " simulacao.quantidadePrejuizo as simulacaoPrejuizo, " + 
+                    " simulacao.target as target, " +
+                    " simulacao.stop as stop, " +
+                    " simulacao.tipo as tipo, " +
+                    " simulacao.experimentoSimulacaoId as experimentoSimulacaoId, " +
+                    " validacao.quantidadeLucro as validacaoLucro, " +
+                    " validacao.quantidadePrejuizo as validacaoPrejuizo, " +
+                    " (validacao.quantidadeLucro - validacao.quantidadePrejuizo) as saldoValidacao " +
+                    " from ExecucaoSimulacao simulacao " +
+                    " left outer join ExecucaoSimulacaoValidacao  validacao on " + 
+                    " simulacao.id = validacao.execucaoSimulacaoId " +
+                    " where simulacao.periodoExperimentoId = " + idPeriodo +
+                    " and simulacao.resultado >= " + periodo.minimoPontoValidacao +
+                    " and simulacao.ticker = '" + result2[i].ticker + "' " +
+                    " order by simulacao.resultado desc " +
+                    " limit " + limiteTicker;
+                    ds.connector.query(sql2, (err,result3) => {
+                        listaSaida.concat(result3);
+                        if (i==(result2.length-1)) {
+                            callback(null,listaSaida);
+                        }
+                    })
+                }
+
+            })
+        })
+
+
+
+        /*
+        app.models.PeriodoExperimento.findById(idPeriodo, (err,result) => {
+            console.log('result:', result )
+            let periodo = result;
+            let sql = "select simulacao.id as simulacaoId, " +
+            " simulacao.ticker as ticker, " +
+            " simulacao.resultado as simulacaoResultado, " + 
+            " simulacao.quantidadeLucro as simulacaoLucro, " +
+            " simulacao.quantidadePrejuizo as simulacaoPrejuizo, " + 
+            " simulacao.target as target, " +
+            " simulacao.stop as stop, " +
+            " simulacao.tipo as tipo, " +
+            " simulacao.experimentoSimulacaoId as experimentoSimulacaoId, " +
+            " validacao.quantidadeLucro as validacaoLucro, " +
+            " validacao.quantidadePrejuizo as validacaoPrejuizo, " +
+            " (validacao.quantidadeLucro - validacao.quantidadePrejuizo) as saldoValidacao " +
+            " from ExecucaoSimulacao simulacao " +
+            " left outer join ExecucaoSimulacaoValidacao  validacao on " + 
+            " simulacao.id = validacao.execucaoSimulacaoId " +
+            " where simulacao.periodoExperimentoId = " + idPeriodo +
+            " and simulacao.resultado >= " + periodo.minimoPontoValidacao;
+            console.log('sql: ' , sql);
+            let ds = Execucaosimulacao.dataSource;
+            ds.connector.query(sql,(err,result) => {
+                console.log('erro', err);
+                console.log('obteve resultado' , result);
+                callback(err,result);
+            });
+        });
+        */
+    };
+
    
   
   

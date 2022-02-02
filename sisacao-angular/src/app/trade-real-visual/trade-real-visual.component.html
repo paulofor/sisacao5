@@ -1,0 +1,10 @@
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+      <span>Trades</span>
+  </div>
+  <div *ngIf="listaBase" class="dgc-painel-principal">
+      <div *ngFor="let item of listaBase">
+          <app-item-trade-real-visual [trade]="item"></app-item-trade-real-visual>
+      </div>
+  </div>
+</div>

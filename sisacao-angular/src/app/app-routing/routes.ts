@@ -44,6 +44,8 @@ import { RegraProjecaoListComponent } from '../regra-projecao-list/regra-projeca
 import { AtivoCriptomoedaFoxbitComponent } from '../ativo-criptomoeda-foxbit/ativo-criptomoeda-foxbit.component';
 import { ValorMesSaldoListComponent } from '../valor-mes-saldo-list/valor-mes-saldo-list.component';
 import { CotacaoIntraMercadoBitcoinComponent } from '../cotacao-intra-mercado-bitcoin/cotacao-intra-mercado-bitcoin.component';
+import { RegraProjecaoDatasComponent } from '../regra-projecao-datas/regra-projecao-datas.component';
+import { TradeRealVisualComponent } from '../trade-real-visual/trade-real-visual.component';
 
 
 export const routes : Routes = [
@@ -88,6 +90,8 @@ export const routes : Routes = [
     { path : 'execucaoSimulacaoPorExperimento/:id' , component: ExecucaoSimulacaoPorExperimentoComponent },
 
     { path : 'tradeReal' , component: TradeRealListaComponent },
+    { path : 'tradeRealVisual' , component: TradeRealVisualComponent },
+
     { path : 'ordemCompra' , component: OrdemCompraListaComponent },
     { path : 'periodoExperimento' , component: PeriodoExperimentoListaComponent },
     { path : 'fundoImobiliarioMelhores' , component: FundoImobiliarioMelhoresComponent},
@@ -100,6 +104,7 @@ export const routes : Routes = [
     { path : 'melhoresValidacaoPeriodo/:id' , component: MelhoresValidacaoPeriodoComponent },
 
     { path : 'regraProjecao' , component: RegraProjecaoListComponent },
+    { path : 'regraProjecaoData' , component: RegraProjecaoDatasComponent },
 
     { path : 'tipoAplicacao' , component: TipoAplicacaoListComponent },
     
