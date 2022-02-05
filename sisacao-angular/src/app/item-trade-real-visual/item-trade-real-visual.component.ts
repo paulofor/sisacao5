@@ -36,6 +36,8 @@ export class ItemTradeRealVisualComponent implements OnInit {
 
   dados: any[];
   rotulos: any[];
+  target: any[];
+  stop: any[];
 
   constructor(private srvCotacao:CotacaoIntradayAcaoApi) { }
 
@@ -44,8 +46,25 @@ export class ItemTradeRealVisualComponent implements OnInit {
     
   }
 
+  classeSaldo() {
+    return 'dgc-lucro';
+  }
+
+  getPercentual() {
+    let valorAtual = this.listaCotacao[0].valor;
+    var percentual = (100* (valorAtual - this.trade.precoEntrada) / this.trade.precoEntrada);
+    if (this.trade.tipo && this.trade.tipo=='V') percentual = -1* percentual;
+    return percentual.toFixed(1);
+  }
+  getSaldo() {
+    let valorAtual = this.listaCotacao[0].valor;
+    var saldo = (valorAtual-this.trade.precoEntrada) * this.trade.quantidade;
+    if (this.trade.tipo && this.trade.tipo=='V') saldo = -1* saldo;
+    return saldo;
+  }
+
   carregaPrecoAtual() {
-    this.srvCotacao.AtualPorTicker(this.trade.ticker,16)
+    this.srvCotacao.AtualPorTicker(this.trade.ticker,64)
       .subscribe((result:CotacaoIntradayAcao[]) => {
         this.listaCotacao = result;
         console.log('cotacao:' , this.listaCotacao);

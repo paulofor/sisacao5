@@ -1,9 +1,11 @@
 <div class="dgc-card">
   <div class="dgc-card-header">
       <span>{{trade.ticker}}</span>
+      <span class="dgc-direita {{classeSaldo()}}">{{getPercentual()}} %</span>
   </div>
   <div class="dgc-card-header">
-    <span *ngIf="listaCotacao">{{listaCotacao[0].valor}}</span>
+    <span *ngIf="listaCotacao">{{listaCotacao[0].valor | currency: 'BRL' }}</span>
+    <span class="dgc-direita {{classeSaldo()}}">{{getSaldo()  | currency: 'BRL'}}</span>
   </div>
   <div id="chart">
     <apx-chart

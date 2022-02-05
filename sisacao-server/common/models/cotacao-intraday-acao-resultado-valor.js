@@ -1,5 +1,7 @@
 'use strict';
 
+var app = require('../../server/server');
+
 module.exports = function(Cotacaointradayacaoresultadovalor) {
 
 
@@ -85,12 +87,56 @@ module.exports = function(Cotacaointradayacaoresultadovalor) {
   }
 
 
-  Cotacaointradayacaoresultadovalor.ObtemDatasPorGrupoComAtraso = function(codigoGrupo, callback) {
+    Cotacaointradayacaoresultadovalor.ObtemDatasPorGrupoComAtraso = function (codigoGrupo, callback) {
         let sql = "  ";
         let ds = Cotacaointradayacaoresultadovalor.dataSource;
         ds.connector.query(sql, callback);
-  
+
     }
 
+
+    Cotacaointradayacaoresultadovalor.ObtemResultadoRegraData = function (codigoRegra, diaNumInicial, diaNumFinal, callback) {
+        let filtro = {'where' : {'codigoRegraProjecao' : codigoRegra}}
+        app.models.RegraProjecao.findOne((err,result) => {
+            let sql = "select year(dataHora) as ano, month(dataHora) as mes,ticker, count(*) as total, " +
+                " ( " +
+                " select count(*)   " +
+                " from CotacaoIntradayAcaoResultadoValor C2 " +
+                " where regraProjecaoId = " + result.id +
+                " and year(C2.dataHora) = year(C1.dataHora) " + 
+                " and month(C2.dataHora) = month(C1.dataHora) " +
+                " and C2.ticker = C1.ticker " +
+                " and resultado = 1 " +
+                " and diaNum >= " + diaNumInicial + " and diaNum <= " + diaNumFinal +
+                " ) as lucro, " +
+                " ( " +
+                " select count(*) " +  
+                " from CotacaoIntradayAcaoResultadoValor C2 " +
+                " where regraProjecaoId = " + result.id +
+                " and year(C2.dataHora) = year(C1.dataHora) " + 
+                " and month(C2.dataHora) = month(C1.dataHora) " +
+                " and C2.ticker = C1.ticker " +
+                " and resultado = 0 " +
+                " and diaNum >= " + diaNumInicial + " and diaNum <= " + diaNumFinal +
+                " ) as nulo, " +
+                " ( " +
+                " select count(*) " +  
+                " from CotacaoIntradayAcaoResultadoValor C2 " +
+                " where regraProjecaoId = " + result.id + 
+                " and year(C2.dataHora) = year(C1.dataHora) " + 
+                " and month(C2.dataHora) = month(C1.dataHora) " +
+                " and C2.ticker = C1.ticker " +
+                " and resultado = -1 " +
+                " and diaNum >= " + diaNumInicial + " and diaNum <= " + diaNumFinal +
+                " ) as prejuizo " +
+                " from CotacaoIntradayAcaoResultadoValor C1 " +
+                " where regraProjecaoId = " + result.id + 
+                " and diaNum >= " + diaNumInicial + " and diaNum <= " + diaNumFinal +
+                " group by year(dataHora), month(dataHora),ticker " +
+                " order by year(dataHora), month(dataHora),ticker ";
+            let ds = Cotacaointradayacaoresultadovalor.dataSource;
+            ds.connector.query(sql,callback);
+        })
+    }
 
 };

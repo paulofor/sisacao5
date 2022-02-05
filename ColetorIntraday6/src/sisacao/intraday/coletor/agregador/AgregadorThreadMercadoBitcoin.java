@@ -66,7 +66,7 @@ public class AgregadorThreadMercadoBitcoin implements AgregadorThread{
 	}
 
 	private final void inicializaAtivo(String diaAtual, String ticker) {
-		int tempo = 15 * 60 * 1000;
+		int tempo = 10 * 60 * 1000;
 		PesquisadorIntradayMercadoBitcoin timerThread = null;
 		timerThread = new PesquisadorIntradayMercadoBitcoin(ticker);
 		timerThread.inicializa(diaAtual);

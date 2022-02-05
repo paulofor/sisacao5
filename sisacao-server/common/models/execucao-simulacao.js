@@ -247,12 +247,12 @@ Execucaosimulacao.InsereExecucaoSimulacao = function(execucao, callback) {
         let listaSaida = [];
         let ds = Execucaosimulacao.dataSource;
         app.models.PeriodoExperimento.findById(idPeriodo, (err,result) => {
-            console.log('result:', result )
+            //console.log('result:', result )
             let periodo = result;
             let sqlTicker = "select distinct ticker from ExecucaoSimulacao simulacao where periodoExperimentoId = " +
                 idPeriodo + " and simulacao.resultado >= " + periodo.minimoPontoValidacao;
             ds.connector.query(sqlTicker, (err,result2) => {
-                console.log('Ticker:' , result2.length);
+                //console.log('Ticker:' , result2.length);
                 for (let i=0;i<result2.length;i++) {
                     let sql2 = "select simulacao.id as simulacaoId, " +
                     " simulacao.ticker as ticker, " +
@@ -275,7 +275,9 @@ Execucaosimulacao.InsereExecucaoSimulacao = function(execucao, callback) {
                     " order by simulacao.resultado desc " +
                     " limit " + limiteTicker;
                     ds.connector.query(sql2, (err,result3) => {
-                        listaSaida.concat(result3);
+                        //console.log('Tamanho sublista:' , result3.length);
+                        listaSaida= listaSaida.concat(result3);
+                        //console.log('Tamanho listaSaida:' , listaSaida.length);
                         if (i==(result2.length-1)) {
                             callback(null,listaSaida);
                         }

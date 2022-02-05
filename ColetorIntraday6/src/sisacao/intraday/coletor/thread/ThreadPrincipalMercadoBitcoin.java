@@ -22,9 +22,10 @@ public class ThreadPrincipalMercadoBitcoin extends ThreadPaiBase{
 
 	@Override
 	protected void mudouDia(String paramString1, String paramString2, boolean paramBoolean) throws DaoException {
-		// TODO Auto-generated method stub
 		AtualizaMercadoBitcoinObj obj = new AtualizaMercadoBitcoinObj();
 		obj.executa();
+		this.agregador.limpaColetoresAtual();
+		this.agregador.disparaColetoresDia(null);
 	}
 
 	

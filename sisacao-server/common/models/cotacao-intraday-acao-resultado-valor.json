@@ -57,6 +57,43 @@
   "relations": {},
   "acls": [],
   "methods": {
+    "ObtemResultadoRegraData": {
+      "accepts": [
+        {
+          "arg": "codigoRegra",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "diaNumInicial",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "diaNumFinal",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "dataframe",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemResultadoRegraData",
+          "verb": "get"
+        }
+      ]
+    },
     "InsereLista": {
       "accepts": [
         {
