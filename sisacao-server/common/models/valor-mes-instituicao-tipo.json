@@ -32,9 +32,7 @@
   "acls": [],
   "methods": {
     "TotaisMesCorrente": {
-      "accepts": [
-        
-      ],
+      "accepts": [],
       "returns": [
         {
           "arg": "listaTipo",

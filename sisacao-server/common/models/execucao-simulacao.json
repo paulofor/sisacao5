@@ -104,6 +104,74 @@
   },
   "acls": [],
   "methods": {
+    "TotaisPorCombinacao": {
+      "accepts": [
+        {
+          "arg": "idRegraSimulacao",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "idPeriodo",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/totaisPorCombinacao",
+          "verb": "get"
+        }
+      ]
+    },
+    "ObtemMelhoresPontoEntradaPorTikcer": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "quantidade",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "tipo",
+          "type": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemMelhoresPontoEntradaPorTicker",
+          "verb": "get"
+        }
+      ]
+    },
     "CalculaMaximoMedioGeral": {
       "accepts": [],
       "returns": [
@@ -376,6 +444,12 @@
           "type": "number",
           "required": false,
           "description": ""
+        },
+        {
+          "arg": "tipo",
+          "type": "string",
+          "required": false,
+          "description": ""
         }
       ],
       "returns": [
@@ -391,6 +465,43 @@
         {
           "path": "/melhorValidacaoPeriodoFlatPorTicker",
           "verb": "get"
+        }
+      ]
+    },
+    "MonitorarMelhorValidacaoPeriodoFlatPorTicker": {
+      "accepts": [
+        {
+          "arg": "idPeriodo",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "limitePorTicker",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "tipo",
+          "type": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/monitorarMelhorValidacaoPeriodoFlatPorTicker",
+          "verb": "post"
         }
       ]
     },

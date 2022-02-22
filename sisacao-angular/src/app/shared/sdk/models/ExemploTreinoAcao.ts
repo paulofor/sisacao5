@@ -1,40 +1,38 @@
 /* tslint:disable */
 
 declare var Object: any;
-export interface ExemploTreinoInterface {
+export interface ExemploTreinoAcaoInterface {
   "ticker"?: string;
-  "campoX"?: number;
-  "campoY"?: string;
+  "campoX"?: string;
+  "campoY"?: number;
   "diaNumInicio"?: number;
   "diaNumPrevisao"?: number;
-  "id"?: number;
 }
 
-export class ExemploTreino implements ExemploTreinoInterface {
+export class ExemploTreinoAcao implements ExemploTreinoAcaoInterface {
   "ticker": string;
-  "campoX": number;
-  "campoY": string;
+  "campoX": string;
+  "campoY": number;
   "diaNumInicio": number;
   "diaNumPrevisao": number;
-  "id": number;
-  constructor(data?: ExemploTreinoInterface) {
+  constructor(data?: ExemploTreinoAcaoInterface) {
     Object.assign(this, data);
   }
   /**
    * The name of the model represented by this $resource,
-   * i.e. `ExemploTreino`.
+   * i.e. `ExemploTreinoAcao`.
    */
   public static getModelName() {
-    return "ExemploTreino";
+    return "ExemploTreinoAcao";
   }
   /**
   * @method factory
   * @author Jonathan Casarrubias
   * @license MIT
-  * This method creates an instance of ExemploTreino for dynamic purposes.
+  * This method creates an instance of ExemploTreinoAcao for dynamic purposes.
   **/
-  public static factory(data: ExemploTreinoInterface): ExemploTreino{
-    return new ExemploTreino(data);
+  public static factory(data: ExemploTreinoAcaoInterface): ExemploTreinoAcao{
+    return new ExemploTreinoAcao(data);
   }
   /**
   * @method getModelDefinition
@@ -45,10 +43,10 @@ export class ExemploTreino implements ExemploTreinoInterface {
   **/
   public static getModelDefinition() {
     return {
-      name: 'ExemploTreino',
-      plural: 'ExemploTreinos',
-      path: 'ExemploTreinos',
-      idName: 'id',
+      name: 'ExemploTreinoAcao',
+      plural: 'ExemploTreinoAcaos',
+      path: 'ExemploTreinoAcaos',
+      idName: 'ticker',
       properties: {
         "ticker": {
           name: 'ticker',
@@ -56,11 +54,11 @@ export class ExemploTreino implements ExemploTreinoInterface {
         },
         "campoX": {
           name: 'campoX',
-          type: 'number'
+          type: 'string'
         },
         "campoY": {
           name: 'campoY',
-          type: 'string'
+          type: 'number'
         },
         "diaNumInicio": {
           name: 'diaNumInicio',
@@ -68,10 +66,6 @@ export class ExemploTreino implements ExemploTreinoInterface {
         },
         "diaNumPrevisao": {
           name: 'diaNumPrevisao',
-          type: 'number'
-        },
-        "id": {
-          name: 'id',
           type: 'number'
         },
       },

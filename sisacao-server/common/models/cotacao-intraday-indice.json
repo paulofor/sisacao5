@@ -64,6 +64,37 @@
           "verb": "post"
         }
       ]
+    },
+    "AtualIndicePorTicker": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "quantidade",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualIndicePorTicker",
+          "verb": "get"
+        }
+      ]
     }
   }
 }

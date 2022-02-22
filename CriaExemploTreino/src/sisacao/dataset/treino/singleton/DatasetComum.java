@@ -11,6 +11,7 @@ public class DatasetComum {
 	private int inicioPeriodo = 0;
 	private String ticker = null;
 	private List<DiaPregao> listaPregao;
+	private int quantidadeDias;
 
 	public RegraProjecao getRegraProjecao() {
 		return regraProjecao;
@@ -44,6 +45,12 @@ public class DatasetComum {
 		this.listaPregao = listaPregao;
 	}
 
+	public void setQuantidadeDias(int qtdeDias) {
+		this.quantidadeDias = qtdeDias;
+	}
+	public int getQuantidadeDias() {
+		return this.quantidadeDias;
+	}
 	
 	
 	

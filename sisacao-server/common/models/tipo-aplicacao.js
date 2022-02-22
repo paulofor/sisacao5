@@ -4,6 +4,8 @@ module.exports = function(Tipoaplicacao) {
 
 
 
+
+
     /**
      * 
      * @param {number} dataRefNum 
@@ -26,7 +28,7 @@ module.exports = function(Tipoaplicacao) {
         " from " +
         " (select tipoAplicacaoId, sum(valor) valorTotal, sum(valorPercentual) percentualTotal " +
         " from ValorMesInstituicaoTipo " +
-        " where dataReferenciaNum = 202112 " +
+        " where dataReferenciaNum =  DATE_FORMAT(DATE_SUB(now(),interval 1 month),'%Y%m')  " +
         " group by tipoAplicacaoId " +
         " order by valorTotal desc) as tab " +
         " inner join TipoAplicacao on TipoAplicacao.id = tipoAplicacaoId ";
@@ -50,4 +52,31 @@ module.exports = function(Tipoaplicacao) {
             next();
         })
       })
+
+
+    Tipoaplicacao.TotaisPorMes = function(callback) {
+        let ds = Tipoaplicacao.dataSource;
+        let sql = "select nome, valorAtual, valorMesAnterior, ((valorAtual- aporte- valorMesAnterior) / valorMesAnterior * 100) as percentual, " +
+            " (valorAtual - valorMesAnterior - aporte) as diferenca, aporte " +
+            " from  " +
+            " ( " +
+            " select ta.nome, " +
+            " (select sum(valor) from ValorMesInstituicaoTipo valor " +
+            " where valor.tipoAplicacaoId = ta.id " +
+            " and valor.dataReferenciaNum = date_format(date_sub(now(),interval 1 month), '%Y%m') " +
+            " ) valorAtual, " +
+            " (select sum(valor) from ValorMesInstituicaoTipo valor " +
+            " where valor.tipoAplicacaoId = ta.id " +
+            " and valor.dataReferenciaNum = date_format(date_sub(now(),interval 2 month), '%Y%m') " +
+            " ) valorMesAnterior, " +
+            " (select coalesce(sum(valor),0) from MovimentacaoValorAplicado mov " +
+            " where mov.tipoAplicacaoId = ta.id " +
+            " and month(mov.data) = month(date_sub(now(),interval 1 month)) " +
+            " and year(mov.data) = year(date_sub(now(),interval 1 month)) " +
+            " ) aporte " +
+            " from TipoAplicacao as ta " +
+            " ) as tab" + 
+            " order by valorAtual desc ";
+        ds.connector.query(sql,callback);
+    } 
 };

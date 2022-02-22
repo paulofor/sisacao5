@@ -1,25 +1,27 @@
 {
-  "name": "ExemploTreino",
+  "name": "RegraProjecaoTotalMes",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "ticker": {
-      "type": "string"
+    "anoMesNum": {
+      "type": "number",
+      "id": true
     },
-    "campoX": {
+    "quantidadeLucro": {
       "type": "number"
     },
-    "campoY": {
-      "type": "string"
-    },
-    "diaNumInicio": {
+    "quantidadePrejuizo": {
       "type": "number"
     },
-    "diaNumPrevisao": {
+    "quantidade": {
       "type": "number"
+    },
+    "regraProjecaoId": {
+      "type": "number",
+      "id": true
     }
   },
   "validations": [],

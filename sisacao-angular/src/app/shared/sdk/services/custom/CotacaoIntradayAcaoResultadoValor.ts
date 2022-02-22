@@ -96,6 +96,40 @@ export class CotacaoIntradayAcaoResultadoValorApi extends BaseLoopBackApi {
          * (The remote method definition does not provide any description.)
          * </em>
    *
+   * @param {string} codigoRegra 
+   *
+   * @param {number} diaNumInicial 
+   *
+   * @param {number} diaNumFinal 
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `CotacaoIntradayAcaoResultadoValor` object.)
+   * </em>
+   */
+  public ObtemResultadoRegraData(codigoRegra: any = {}, diaNumInicial: any = {}, diaNumFinal: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/CotacaoIntradayAcaoResultadoValors/obtemResultadoRegraData";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof codigoRegra !== 'undefined' && codigoRegra !== null) _urlParams.codigoRegra = codigoRegra;
+    if (typeof diaNumInicial !== 'undefined' && diaNumInicial !== null) _urlParams.diaNumInicial = diaNumInicial;
+    if (typeof diaNumFinal !== 'undefined' && diaNumFinal !== null) _urlParams.diaNumFinal = diaNumFinal;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
    * @param {object} data Request data.
    *
    *  - `lista` – `{any}` - 

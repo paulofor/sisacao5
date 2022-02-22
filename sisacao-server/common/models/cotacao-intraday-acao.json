@@ -35,9 +35,7 @@
   "acls": [],
   "methods": {
     "CotacaoMaisRecente": {
-      "accepts": [
-       
-      ],
+      "accepts": [],
       "returns": [
         {
           "arg": "listaTempo",

@@ -2,26 +2,30 @@ package br.com.digicom.sisacao.modelo;
 
 import com.strongloop.android.loopback.Model;
 
-public class ExemploTreino extends Model{
+public class ExemploTreinoAcao extends Model{
 	
 	private String ticker;
-	private Integer datasetAcaoId;
+	//private Integer datasetAcaoId;
 	private String campoX;
 	private String campoY;
 	private Integer diaNumInicio;
 	private Integer diaNumPrevisao;
+	private Integer regraProjecaoId;
+	
 	public String getTicker() {
 		return ticker;
 	}
 	public void setTicker(String ticker) {
 		this.ticker = ticker;
 	}
+	/*
 	public Integer getDatasetAcaoId() {
 		return datasetAcaoId;
 	}
 	public void setDatasetAcaoId(Integer datasetAcaoId) {
 		this.datasetAcaoId = datasetAcaoId;
 	}
+	*/
 	public String getCampoX() {
 		return campoX;
 	}
@@ -45,6 +49,12 @@ public class ExemploTreino extends Model{
 	}
 	public void setDiaNumPrevisao(Integer diaNumPrevisao) {
 		this.diaNumPrevisao = diaNumPrevisao;
+	}
+	public void setRegraProjecaoId(Integer id) {
+		this.regraProjecaoId = id;
+	}
+	public Integer getRegraProjecaoId() {
+		return this.regraProjecaoId;
 	}
 	
 	

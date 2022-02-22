@@ -19,6 +19,11 @@
       "type": "hasMany",
       "model": "AplicacaoInstituicao",
       "foreignKey": ""
+    },
+    "valorMesInstituicaoTipos": {
+      "type": "hasMany",
+      "model": "ValorMesInstituicaoTipo",
+      "foreignKey": ""
     }
   },
   "acls": [],
@@ -49,9 +54,7 @@
       ]
     },
     "TotaisCorrenteComAporte": {
-      "accepts": [
-        
-      ],
+      "accepts": [],
       "returns": [
         {
           "arg": "listaTipo",
@@ -64,6 +67,24 @@
       "http": [
         {
           "path": "/totaisCorrenteComAporte",
+          "verb": "get"
+        }
+      ]
+    },
+    "TotaisPorMes": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "listaTipo",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/totaisPorMes",
           "verb": "get"
         }
       ]

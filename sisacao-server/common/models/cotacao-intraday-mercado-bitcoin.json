@@ -29,17 +29,17 @@
     "tickerMoeda": {
       "type": "string"
     },
-    "ofertaCompra" : {
-      "type" : "number"
+    "ofertaCompra": {
+      "type": "number"
     },
-    "ofertaVenda" : {
-      "type" : "number"
+    "ofertaVenda": {
+      "type": "number"
     },
-    "volume" : {
-      "type" : "number"
+    "volume": {
+      "type": "number"
     },
-    "dataInt" : {
-      "type" : "number"
+    "dataInt": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -68,6 +68,31 @@
         {
           "path": "/insereItem",
           "verb": "post"
+        }
+      ]
+    },
+    "FechamentosPorDiaNum": {
+      "accepts": [
+        {
+          "arg": "diaNum",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/fechamentosPorDiaNum",
+          "verb": "get"
         }
       ]
     }

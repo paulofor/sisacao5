@@ -30,6 +30,7 @@ public class RegraProjecao_ObtemPorCodigoRegra extends DaoBase {
 				System.out.println("Regra Id: " + object.getId());
 				getComum().setRegraProjecao(object);
 				DiaPregao_ObtemIntradayResultadoDataset exec = new DiaPregao_ObtemIntradayResultadoDataset();
+				exec.setComum(getComum());
 				exec.executa();
 			}
 

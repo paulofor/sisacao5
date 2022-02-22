@@ -29,6 +29,12 @@
     },
     "codigoRegraProjecao": {
       "type": "string"
+    },
+    "diaNumMaisAntigo": {
+      "type": "number"
+    },
+    "quantidadeTicker": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -37,35 +43,58 @@
       "type": "hasMany",
       "model": "CotacaoIntradayAcaoResultadoValor",
       "foreignKey": ""
+    },
+    "regraProjecaoTotalMes": {
+      "type": "hasMany",
+      "model": "RegraProjecaoTotalMes",
+      "foreignKey": ""
     }
   },
   "acls": [],
   "methods": {
-    "TickerPerformance" : {
-      "accepts" : [
+    "AtualizaDadosRegraProjecao": {
+      "accepts": [],
+      "returns": [
         {
-          "arg" : "dataNumInicio",
-          "type" : "number",
-          "required" : false,
-          "description" : ""
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaDadosRegraProjecao",
+          "verb": "post"
+        }
+      ]
+    },
+    "TickerPerformance": {
+      "accepts": [
+        {
+          "arg": "dataNumInicio",
+          "type": "number",
+          "required": false,
+          "description": ""
         },
         {
-          "arg" : "dataNumFinal",
-          "type" : "number",
-          "required" : false,
-          "description" : ""
+          "arg": "dataNumFinal",
+          "type": "number",
+          "required": false,
+          "description": ""
         },
         {
-          "arg" : "grupoAcao",
-          "type" : "string",
-          "required" : false,
-          "description" : ""
+          "arg": "grupoAcao",
+          "type": "string",
+          "required": false,
+          "description": ""
         },
         {
-          "arg" : "codigoRegra",
-          "type" : "string",
-          "required" : false,
-          "description" : ""
+          "arg": "codigoRegra",
+          "type": "string",
+          "required": false,
+          "description": ""
         }
       ],
       "returns": [

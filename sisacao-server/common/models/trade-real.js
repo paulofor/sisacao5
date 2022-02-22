@@ -114,4 +114,60 @@ module.exports = function(Tradereal) {
             callback(err,result[0]);
         });
     };
+
+
+    Tradereal.SituacaoAtual = function(callback) {
+        let sql = "select sum(lucro) as valor " +
+            " from " +
+            " ( " +
+            " select valorEntrada, valorSaida, posicao, ((valorSaida - valorEntrada) * posicao) as lucro " +
+            " from  " +
+            " ( " +
+            " select (precoEntrada * quantidade) valorEntrada,  " +
+            " (precoAtual * quantidade) valorSaida ,  " +
+            " case " +
+            " when tipo='C' then 1  " +
+            " else -1  " +
+            " end as posicao " +
+            " from " +
+            " ( " +
+            " select ticker, precoEntrada, quantidade, tipo,  " +
+            " (select valor from CotacaoIntradayAcao " +
+            " where CotacaoIntradayAcao.ticker = TradeReal.ticker  " +
+            " order by dataHora desc " +
+            " limit 1 " +
+            " ) precoAtual " +
+            " from TradeReal where  " +
+            " posicaoAtual <> 0 " +
+            " ) as tab  " +
+            " ) as tab2 " +
+            " ) as tab3";
+        let ds = Tradereal.dataSource;
+        ds.connector.query(sql, (err,result) => {
+            callback(err, result[0]);
+        })
+    }
+
+    Tradereal.RiscoAtual = function(callback) {
+        let sql = "select sum(lucro) as valor " +
+            " from " +
+            " ( " +
+            " select ticker, ((precoStop - precoEntrada) * quantidade) * posicao as lucro " +
+            " from " +
+            " ( " +
+            " select ticker, precoEntrada, quantidade, tipo, precotarget, precoStop, " +
+            " case " +
+            " when tipo='C' then 1 " + 
+            " else -1 " +
+            " end as posicao " +
+            " from TradeReal " +
+            " where posicaoAtual <> 0 " +
+            " ) as tab1 " +
+            " ) as tab2";
+
+        let ds = Tradereal.dataSource;
+        ds.connector.query(sql, (err,result) => {
+            callback(err, result[0]);
+        }) 
+    }
 };

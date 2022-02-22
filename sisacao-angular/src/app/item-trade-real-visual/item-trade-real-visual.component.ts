@@ -1,4 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from "@angular/core";
+import { DISABLED } from "@angular/forms/src/model";
+
+
 
 import {
   ChartComponent,
@@ -10,6 +13,9 @@ import {
   ApexStroke,
   ApexGrid
 } from "ng-apexcharts";
+import { Subscription, interval } from "rxjs";
+import { PERCENTUAL_AVISO } from "../constantes/base.url";
+
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -20,7 +26,7 @@ export type ChartOptions = {
   stroke: ApexStroke;
   title: ApexTitleSubtitle;
 };
-import { CotacaoIntradayAcao, CotacaoIntradayAcaoApi, Trade, TradeReal } from '../shared/sdk';
+import { CotacaoIntradayAcao, CotacaoIntradayAcaoApi, ExecucaoSimulacaoApi, Trade, TradeReal } from '../shared/sdk';
 
 @Component({
   selector: 'app-item-trade-real-visual',
@@ -28,6 +34,8 @@ import { CotacaoIntradayAcao, CotacaoIntradayAcaoApi, Trade, TradeReal } from '.
   styleUrls: ['./item-trade-real-visual.component.css']
 })
 export class ItemTradeRealVisualComponent implements OnInit {
+
+  private updateSubscription: Subscription;
 
   @Input() trade: any;
   listaCotacao: CotacaoIntradayAcao[];
@@ -39,15 +47,69 @@ export class ItemTradeRealVisualComponent implements OnInit {
   target: any[];
   stop: any[];
 
-  constructor(private srvCotacao:CotacaoIntradayAcaoApi) { }
+  entradas: any[];
+  dados_entrada1: any[];
+  dados_entrada2: any[];
+
+  constructor(private srvCotacao:CotacaoIntradayAcaoApi, private srvExecucaoSimulacao : ExecucaoSimulacaoApi) { }
+
+  DIAS = 5;
+
 
   ngOnInit() {
-    this.carregaPrecoAtual()
+    //this.carregaEntrada();
+    this.carregaPrecoAtual();
+    this.updateSubscription = interval(300000)
+    .subscribe((val) => { 
+      this.carregaPrecoAtual()
+    });
+  }
+
+  getPercentualTargetTrade() {
+    return ((this.trade.precoTarget - this.trade.precoEntrada) / this.trade.precoEntrada) * 100;
+  }
+  getPercentualStopTrade() {
+    return ((this.trade.precoStop - this.trade.precoEntrada) / this.trade.precoEntrada) * 100;
+  }
+
+  getPercentualTarget() {
+    let valor = this.listaCotacao[0].valor;
+    return ((this.trade.precoTarget - valor) / valor) * 100;
+  }
+  getPercentualStop() {
+    let valor = this.listaCotacao[0].valor;
+    return ((this.trade.precoStop - valor) / valor) * 100;
+  }
+
+  getDataHoraUlt() {
     
+    let valor:string = this.listaCotacao[0].dataHora.toString();
+    //console.log('DataHora' + valor);
+    return "(" + valor.substring(11,16) + ")";
+  }
+  
+  verificaMarcaTexto(valorPerc,valor):string {
+    let perc =  ((valorPerc - valor) / valor) * 100;
+    if (perc<=PERCENTUAL_AVISO && perc>=(PERCENTUAL_AVISO*-1)) {
+      return "dgc-marcatexto"
+    } else {
+      return "";
+    }
+  }
+
+  carregaEntrada() {
+    this.srvExecucaoSimulacao.ObtemMelhoresPontoEntradaPorTikcer(this.trade.ticker,3,this.trade.tipo)
+      .subscribe((result:any[]) => {
+        console.log('Entradas' , result);
+        this.entradas = result;
+        this.carregaPrecoAtual()
+      })
   }
 
   classeSaldo() {
-    return 'dgc-lucro';
+    if ((this.getSaldo()) > 0) return 'dgc-lucro';
+    if ((this.getSaldo()) < 0) return 'dgc-prejuizo';
+    return '';
   }
 
   getPercentual() {
@@ -64,15 +126,22 @@ export class ItemTradeRealVisualComponent implements OnInit {
   }
 
   carregaPrecoAtual() {
-    this.srvCotacao.AtualPorTicker(this.trade.ticker,64)
+    let pontos = 32 * this.DIAS;
+    this.srvCotacao.AtualPorTicker(this.trade.ticker,pontos)
       .subscribe((result:CotacaoIntradayAcao[]) => {
         this.listaCotacao = result;
-        console.log('cotacao:' , this.listaCotacao);
+        //console.log('entrada-cotacao' , this.entradas);
+        //console.log('cotacao:' , this.listaCotacao);
         this.dados = new Array();
         this.rotulos = new Array();
+        //this.dados_entrada1 = new Array();
+        //this.dados_entrada2 = new Array();
         for (let x=this.listaCotacao.length-1;x>=0;x--) {
           this.dados.push(this.listaCotacao[x].valor);
-          this.rotulos.push(this.listaCotacao[x].dataHora);
+          //this.rotulos.push(this.listaCotacao[x].dataHora);
+          this.rotulos.push(x);
+          //this.dados_entrada1.push(this.entradas[0].precoEntrada);
+          //this.dados_entrada2.push(this.entradas[1].precoEntrada);
         }
         this.montaGrafico();
       })
@@ -82,12 +151,13 @@ export class ItemTradeRealVisualComponent implements OnInit {
     this.chartOptions = {
       series: [
         {
-          name: "Desktops",
+          name: "Preço",
           data: this.dados
         }
+        
       ],
       chart: {
-        height: 350,
+        height: 280,
         type: "line",
         zoom: {
           enabled: false
@@ -110,12 +180,14 @@ export class ItemTradeRealVisualComponent implements OnInit {
         }
       },
       xaxis: {
-        categories: []
+        categories: this.rotulos
       }
     };
   }
 
 }
+
+
 
 
 

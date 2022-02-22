@@ -16,7 +16,7 @@
               <tr *ngFor="let saldo of item.valorMesInstituicaoTipos">
                 <td width="10%">{{saldo.tipoAplicacao.nome}}</td>
                 <td width="20%">{{saldo.valor | currency:'BRL':true}}</td>
-                <td width="15%"><a (click)="dialogo1({'item' : investimento})">alterar</a></td>
+                <td width="15%"><a (click)="edita(saldo)">alterar</a></td>
               </tr>
             </table>
     

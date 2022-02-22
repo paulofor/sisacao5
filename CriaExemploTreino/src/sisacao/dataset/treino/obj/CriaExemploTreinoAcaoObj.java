@@ -14,11 +14,15 @@ public class CriaExemploTreinoAcaoObj {
 	private final Integer OBSERVACAO_DIA = 15;	
 	
 	
-	public void executa() {
+	public void executa(String codigoRegra, int qtdeDias) {
 		DatasetComum comum = new DatasetComum();
 		RegraProjecao_ObtemPorCodigoRegra exec = new RegraProjecao_ObtemPorCodigoRegra();
+		comum.setTicker(ticker);
+		comum.setInicioPeriodo(diaNumInicio);
+		comum.setQuantidadeDias(qtdeDias);
 		exec.setComum(comum);
-		
+		exec.setCodigoRegra(codigoRegra);
+		exec.executa();
 		/*
 		this.calculaParametros();
 		System.out.println(ticker + " Xn=" + this.tamanhoX + " Inicio: " + diaNumInicio);

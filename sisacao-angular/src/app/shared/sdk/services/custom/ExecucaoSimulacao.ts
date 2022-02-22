@@ -1301,6 +1301,71 @@ export class ExecucaoSimulacaoApi extends BaseLoopBackApi {
          * (The remote method definition does not provide any description.)
          * </em>
    *
+   * @param {number} idRegraSimulacao 
+   *
+   * @param {number} idPeriodo 
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExecucaoSimulacao` object.)
+   * </em>
+   */
+  public TotaisPorCombinacao(idRegraSimulacao: any, idPeriodo: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExecucaoSimulacaos/totaisPorCombinacao";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof idRegraSimulacao !== 'undefined' && idRegraSimulacao !== null) _urlParams.idRegraSimulacao = idRegraSimulacao;
+    if (typeof idPeriodo !== 'undefined' && idPeriodo !== null) _urlParams.idPeriodo = idPeriodo;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {string} ticker 
+   *
+   * @param {number} quantidade 
+   *
+   * @param {string} tipo 
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExecucaoSimulacao` object.)
+   * </em>
+   */
+  public ObtemMelhoresPontoEntradaPorTikcer(ticker: any = {}, quantidade: any = {}, tipo: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExecucaoSimulacaos/obtemMelhoresPontoEntradaPorTicker";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof ticker !== 'undefined' && ticker !== null) _urlParams.ticker = ticker;
+    if (typeof quantidade !== 'undefined' && quantidade !== null) _urlParams.quantidade = quantidade;
+    if (typeof tipo !== 'undefined' && tipo !== null) _urlParams.tipo = tipo;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
    * @param {object} data Request data.
    *
    * This method does not accept any data. Supply an empty object.
@@ -1600,6 +1665,76 @@ export class ExecucaoSimulacaoApi extends BaseLoopBackApi {
     let _postBody: any = {};
     let _urlParams: any = {};
     if (typeof idPeriodo !== 'undefined' && idPeriodo !== null) _urlParams.idPeriodo = idPeriodo;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {number} idPeriodo 
+   *
+   * @param {number} limitePorTicker 
+   *
+   * @param {string} tipo 
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExecucaoSimulacao` object.)
+   * </em>
+   */
+  public MelhorValidacaoPeriodoFlatPorTicker(idPeriodo: any = {}, limitePorTicker: any = {}, tipo: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExecucaoSimulacaos/melhorValidacaoPeriodoFlatPorTicker";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof idPeriodo !== 'undefined' && idPeriodo !== null) _urlParams.idPeriodo = idPeriodo;
+    if (typeof limitePorTicker !== 'undefined' && limitePorTicker !== null) _urlParams.limitePorTicker = limitePorTicker;
+    if (typeof tipo !== 'undefined' && tipo !== null) _urlParams.tipo = tipo;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {object} data Request data.
+   *
+   *  - `idPeriodo` – `{number}` - 
+   *
+   *  - `limitePorTicker` – `{number}` - 
+   *
+   *  - `tipo` – `{string}` - 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExecucaoSimulacao` object.)
+   * </em>
+   */
+  public MonitorarMelhorValidacaoPeriodoFlatPorTicker(idPeriodo: any = {}, limitePorTicker: any = {}, tipo: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExecucaoSimulacaos/monitorarMelhorValidacaoPeriodoFlatPorTicker";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof idPeriodo !== 'undefined' && idPeriodo !== null) _urlParams.idPeriodo = idPeriodo;
+    if (typeof limitePorTicker !== 'undefined' && limitePorTicker !== null) _urlParams.limitePorTicker = limitePorTicker;
+    if (typeof tipo !== 'undefined' && tipo !== null) _urlParams.tipo = tipo;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }

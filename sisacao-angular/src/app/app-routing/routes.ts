@@ -46,6 +46,8 @@ import { ValorMesSaldoListComponent } from '../valor-mes-saldo-list/valor-mes-sa
 import { CotacaoIntraMercadoBitcoinComponent } from '../cotacao-intra-mercado-bitcoin/cotacao-intra-mercado-bitcoin.component';
 import { RegraProjecaoDatasComponent } from '../regra-projecao-datas/regra-projecao-datas.component';
 import { TradeRealVisualComponent } from '../trade-real-visual/trade-real-visual.component';
+import { PatrimonioEvolucaoMensalComponent } from '../patrimonio-evolucao-mensal/patrimonio-evolucao-mensal.component';
+import { QuadroComparaStopComponent } from '../quadro-compara-stop/quadro-compara-stop.component';
 
 
 export const routes : Routes = [
@@ -111,6 +113,10 @@ export const routes : Routes = [
     { path : 'alocacaoSaldoMes' , component: AlocacaoSaldoMesComponent },
     { path : 'alocacaoMovimentacao' , component: AlocacaoMovimentacaoComponent } ,
     { path : 'valorMesSaldo' , component: ValorMesSaldoListComponent },
+    { path : 'patrimonioEvolucaoMensal' , component : PatrimonioEvolucaoMensalComponent },
+
+    { path : 'quadroComparaStop/:target/:tipo' , component : QuadroComparaStopComponent },
+
     { path: '',  component: HomeComponent  }
     //{ path: '',          redirectTo: 'home', pathMatch: 'full' }
 ]

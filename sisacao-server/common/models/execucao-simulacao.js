@@ -51,6 +51,22 @@ module.exports = function(Execucaosimulacao) {
     };
   
 
+    Execucaosimulacao.ObtemMelhoresPontoEntradaPorTikcer = function(ticker,quantidade, tipo, callback) {
+        let ordem = '';
+        if (tipo=='C') ordem = 'asc'
+        else ordem = 'desc'
+        let sql = "select ExecucaoSimulacao.*, PeriodoExperimento.dataNumFinal " +
+                " from ExecucaoSimulacao  " +
+                " inner join PeriodoExperimento on PeriodoExperimento.id = ExecucaoSimulacao.periodoExperimentoId " +
+                " where ticker = '" + ticker + "' " +
+                " and tipo = '" + tipo + "'" +
+                " and precoEntrada is not null " +
+                " and monitorar = 1 " +
+                " order by PeriodoExperimento.dataNumFinal, resultado desc, precoEntrada  " + ordem +
+                " limit " + quantidade;
+        let ds = Execucaosimulacao.dataSource;
+        ds.connector.query(sql,callback);
+    }
 
     /**
     * 
@@ -93,6 +109,7 @@ module.exports = function(Execucaosimulacao) {
                             }
                         ] 
                     }
+
         Execucaosimulacao.find(filtro,callback);
     };
   
@@ -243,16 +260,18 @@ Execucaosimulacao.InsereExecucaoSimulacao = function(execucao, callback) {
     };
 
 
-    Execucaosimulacao.MelhorValidacaoPeriodoFlatPorTicker = function(idPeriodo, limiteTicker, callback) {
+    Execucaosimulacao.MelhorValidacaoPeriodoFlatPorTicker = function(idPeriodo, limiteTicker, tipo, callback) {
         let listaSaida = [];
         let ds = Execucaosimulacao.dataSource;
         app.models.PeriodoExperimento.findById(idPeriodo, (err,result) => {
             //console.log('result:', result )
             let periodo = result;
             let sqlTicker = "select distinct ticker from ExecucaoSimulacao simulacao where periodoExperimentoId = " +
-                idPeriodo + " and simulacao.resultado >= " + periodo.minimoPontoValidacao;
+                idPeriodo + " and simulacao.resultado >= " + periodo.minimoPontoValidacao + " and tipo ='" + tipo + "'";
+            
             ds.connector.query(sqlTicker, (err,result2) => {
                 //console.log('Ticker:' , result2.length);
+                let cont = 1;
                 for (let i=0;i<result2.length;i++) {
                     let sql2 = "select simulacao.id as simulacaoId, " +
                     " simulacao.ticker as ticker, " +
@@ -262,6 +281,7 @@ Execucaosimulacao.InsereExecucaoSimulacao = function(execucao, callback) {
                     " simulacao.target as target, " +
                     " simulacao.stop as stop, " +
                     " simulacao.tipo as tipo, " +
+                    " simulacao.monitorar as monitorar, " +
                     " simulacao.experimentoSimulacaoId as experimentoSimulacaoId, " +
                     " validacao.quantidadeLucro as validacaoLucro, " +
                     " validacao.quantidadePrejuizo as validacaoPrejuizo, " +
@@ -278,7 +298,7 @@ Execucaosimulacao.InsereExecucaoSimulacao = function(execucao, callback) {
                         //console.log('Tamanho sublista:' , result3.length);
                         listaSaida= listaSaida.concat(result3);
                         //console.log('Tamanho listaSaida:' , listaSaida.length);
-                        if (i==(result2.length-1)) {
+                        if (cont++==(result2.length)) {
                             callback(null,listaSaida);
                         }
                     })
@@ -286,7 +306,50 @@ Execucaosimulacao.InsereExecucaoSimulacao = function(execucao, callback) {
 
             })
         })
+    }
 
+    Execucaosimulacao.MonitorarMelhorValidacaoPeriodoFlatPorTicker = function(idPeriodo,limitePorTicker,tipo, callback) {
+        console.log('iniciou execucao');
+        let sqlLimpeza = "update ExecucaoSimulacao set monitorar = 0 where periodoExperimentoId = " + idPeriodo +
+            " and tipo = '" + tipo + "'";
+        let ds = Execucaosimulacao.dataSource;
+        ds.connector.query(sqlLimpeza, (err,result) => {
+            Execucaosimulacao.MelhorValidacaoPeriodoFlatPorTicker(idPeriodo,limitePorTicker,tipo, (err,result) => {
+                var where = "(" + result[0].simulacaoId;
+                console.log('Tamanho: ' , result.length);
+                let cont =2;
+                for (let i=1;i<result.length;i++) {
+                    where += "," + result[i].simulacaoId;
+                    /*
+                    let sqlUpdate = "update ExecucaoSimulacao set monitorar = 1 where id = " + result[i].simulacaoId;
+                    console.log('sqlUpdate:', sqlUpdate , '[' , i , ']');
+                    ds.connector.query(sqlUpdate, (err,result) => {
+                       console.log('err:' , err , '[' , i , ']');
+                    })
+                    */
+                    if (cont++==(result.length)) {
+                        where += ')'
+                        let sqlUpdate = "update ExecucaoSimulacao set monitorar = 1 where id in " + where;
+                        console.log('sqlUpdate' , sqlUpdate);
+                        ds.connector.query(sqlUpdate, callback);
+                    }
+                }
+               
+            })
+        })
+        
+    }
+
+    Execucaosimulacao.TotaisPorCombinacao = function(idRegraSimulacao,idPeriodo, callback) {
+        let ds = Execucaosimulacao.dataSource;
+        let sql = "SELECT C.id, C.descricao, sum(E.quantidadeLucro) lucro, sum(E.quantidadePrejuizo) prejuizo " + 
+                    " FROM ExecucaoSimulacao E " +
+                    " inner join CombinacaoParametro C on C.id = E.combinacaoParametroId " +
+                    " where E.periodoExperimentoId = " + idPeriodo +  
+                    " and E.regraSimulacaoId = " + idRegraSimulacao +
+                    " group by C.id, C.descricao";
+        ds.connector.query(sql,callback);
+    }
 
 
         /*
@@ -319,7 +382,7 @@ Execucaosimulacao.InsereExecucaoSimulacao = function(execucao, callback) {
             });
         });
         */
-    };
+ 
 
    
   

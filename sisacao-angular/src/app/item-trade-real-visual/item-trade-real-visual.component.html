@@ -1,11 +1,13 @@
-<div class="dgc-card">
+<div class="dgc-card" *ngIf="listaCotacao" >
   <div class="dgc-card-header">
       <span>{{trade.ticker}}</span>
       <span class="dgc-direita {{classeSaldo()}}">{{getPercentual()}} %</span>
+     
   </div>
   <div class="dgc-card-header">
-    <span *ngIf="listaCotacao">{{listaCotacao[0].valor | currency: 'BRL' }}</span>
-    <span class="dgc-direita {{classeSaldo()}}">{{getSaldo()  | currency: 'BRL'}}</span>
+    <span class="dgc-valor dgc-destaque">{{listaCotacao[0].valor | currency: 'BRL' }}</span>
+    <span >{{getDataHoraUlt()}}</span>
+    <span class="dgc-direita {{classeSaldo()}}" >{{getSaldo()  | currency: 'BRL'}}</span> 
   </div>
   <div id="chart">
     <apx-chart
@@ -17,5 +19,15 @@
       [stroke]="chartOptions.stroke"
       [title]="chartOptions.title"
     ></apx-chart>
+  </div>
+  <div >
+    <span  class="{{verificaMarcaTexto(trade.precoTarget,listaCotacao[0].valor)}}">
+      Target {{getPercentualTargetTrade() | number: '1.0-0'}}%: {{trade.precoTarget | currency : 'BRL'}} ({{getPercentualTarget() | number: '1.1-1'}}%)
+    </span>
+  </div>
+  <div >
+    <span class="{{verificaMarcaTexto(trade.precoStop,listaCotacao[0].valor)}}">
+      Stop {{getPercentualStopTrade() | number: '1.0-0'}}%: {{trade.precoStop | currency : 'BRL'}} ({{getPercentualStop() | number: '1.1-1'}}%)
+    </span>
   </div>
 </div>

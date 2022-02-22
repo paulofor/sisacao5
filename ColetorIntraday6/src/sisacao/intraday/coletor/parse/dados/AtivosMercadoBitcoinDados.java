@@ -34,41 +34,49 @@ public class AtivosMercadoBitcoinDados  implements IDadosParse{
 	@Override
 	public void setJson(JSONObject json) {
 		// TODO Auto-generated method stub
+		int contaFora = 0;
 		List<AtivoCriptomoeda> lista = new LinkedList<AtivoCriptomoeda>();
+		JSONArray moedas = null;
 		try {
-			JSONArray moedas = json.getJSONArray("base-currency");
+			moedas = json.getJSONArray("base-currency");
 			JSONArray descricao = json.getJSONArray("description");
 			for (int i=0;i<moedas.length();i++) {
 				String nome = moedas.getString(i);
 				String desc = descricao.getString(i);
-				System.out.println(nome + " - " + desc);
+				System.out.println(i + "-" + nome + " - " + desc);
 				if ((desc.toUpperCase().indexOf("PRECATORIO")==-1) &&
 					(desc.toUpperCase().indexOf("PRECATÓRIO")==-1) &&
 					(desc.toUpperCase().indexOf("CONSORCIO")==-1) &&
 					(desc.toUpperCase().indexOf("CONSÓRCIO")==-1)) {
-					System.out.println("Entrou");
 					AtivoCriptomoeda ativo = new AtivoCriptomoeda();
 					ativo.setTicker(nome);
 					ativo.setNome(desc);
 					lista.add(ativo);	
+				} else {
+					contaFora++;
 				}
 
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		};
+		final int tamLista = lista.size();
+		final int totalFora = contaFora;
+		System.out.println("Total moedas:" + moedas.length());
 		repCripto.atualizaMercadoBitcoin(lista, new ObjectCallback<AtivoCriptomoeda>() {
 
 			@Override
 			public void onSuccess(AtivoCriptomoeda object) {
 				// TODO Auto-generated method stub
-				System.out.println("Sucessso");
+				System.out.println("Sucessso, " + tamLista + " ativos (fora:" + totalFora + ")");
+				System.exit(0);
 			}
 
 			@Override
 			public void onError(Throwable t) {
 				// TODO Auto-generated method stub
 				System.out.println("Erro");
+				System.exit(0);
 			}
 
 		});

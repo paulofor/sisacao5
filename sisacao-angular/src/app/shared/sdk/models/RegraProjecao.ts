@@ -1,6 +1,7 @@
 /* tslint:disable */
 import {
-  CotacaoIntradayAcaoResultadoValor
+  CotacaoIntradayAcaoResultadoValor,
+  RegraProjecaoTotalMes
 } from '../index';
 
 declare var Object: any;
@@ -13,8 +14,11 @@ export interface RegraProjecaoInterface {
   "indiceHoraReferenciaDataset"?: number;
   "percentualEntradaDataset"?: number;
   "codigoRegraProjecao"?: string;
+  "diaNumMaisAntigo"?: number;
+  "quantidadeTicker"?: number;
   "id"?: number;
   cotacaoIntradayAcaoResultadoValors?: CotacaoIntradayAcaoResultadoValor[];
+  regraProjecaoTotalMes?: RegraProjecaoTotalMes[];
 }
 
 export class RegraProjecao implements RegraProjecaoInterface {
@@ -26,8 +30,11 @@ export class RegraProjecao implements RegraProjecaoInterface {
   "indiceHoraReferenciaDataset": number;
   "percentualEntradaDataset": number;
   "codigoRegraProjecao": string;
+  "diaNumMaisAntigo": number;
+  "quantidadeTicker": number;
   "id": number;
   cotacaoIntradayAcaoResultadoValors: CotacaoIntradayAcaoResultadoValor[];
+  regraProjecaoTotalMes: RegraProjecaoTotalMes[];
   constructor(data?: RegraProjecaoInterface) {
     Object.assign(this, data);
   }
@@ -93,6 +100,14 @@ export class RegraProjecao implements RegraProjecaoInterface {
           name: 'codigoRegraProjecao',
           type: 'string'
         },
+        "diaNumMaisAntigo": {
+          name: 'diaNumMaisAntigo',
+          type: 'number'
+        },
+        "quantidadeTicker": {
+          name: 'quantidadeTicker',
+          type: 'number'
+        },
         "id": {
           name: 'id',
           type: 'number'
@@ -103,6 +118,14 @@ export class RegraProjecao implements RegraProjecaoInterface {
           name: 'cotacaoIntradayAcaoResultadoValors',
           type: 'CotacaoIntradayAcaoResultadoValor[]',
           model: 'CotacaoIntradayAcaoResultadoValor',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'regraProjecaoId'
+        },
+        regraProjecaoTotalMes: {
+          name: 'regraProjecaoTotalMes',
+          type: 'RegraProjecaoTotalMes[]',
+          model: 'RegraProjecaoTotalMes',
           relationType: 'hasMany',
                   keyFrom: 'id',
           keyTo: 'regraProjecaoId'

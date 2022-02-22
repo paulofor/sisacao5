@@ -131,6 +131,9 @@ import { RegraProjecaoDatasComponent } from './regra-projecao-datas/regra-projec
 import { GrupoParaAcaoComponent } from './grupo-para-acao/grupo-para-acao.component';
 import { TradeRealVisualComponent } from './trade-real-visual/trade-real-visual.component';
 import { ItemTradeRealVisualComponent } from './item-trade-real-visual/item-trade-real-visual.component';
+import { PatrimonioEvolucaoMensalComponent } from './patrimonio-evolucao-mensal/patrimonio-evolucao-mensal.component';
+import { QuadroComparaStopComponent } from './quadro-compara-stop/quadro-compara-stop.component';
+import { ItemVisualIndiceComponent } from './item-visual-indice/item-visual-indice.component';
 
 //import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
@@ -235,6 +238,9 @@ registerLocaleData(localePt, 'pt-BR');
     GrupoParaAcaoComponent,
     TradeRealVisualComponent,
     ItemTradeRealVisualComponent,
+    PatrimonioEvolucaoMensalComponent,
+    QuadroComparaStopComponent,
+    ItemVisualIndiceComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 /* tslint:disable */
 import {
-  AplicacaoInstituicao
+  AplicacaoInstituicao,
+  ValorMesInstituicaoTipo
 } from '../index';
 
 declare var Object: any;
@@ -9,6 +10,7 @@ export interface TipoAplicacaoInterface {
   "saldoAtual"?: number;
   "id"?: number;
   aplicacaoInstituicaos?: AplicacaoInstituicao[];
+  valorMesInstituicaoTipos?: ValorMesInstituicaoTipo[];
 }
 
 export class TipoAplicacao implements TipoAplicacaoInterface {
@@ -16,6 +18,7 @@ export class TipoAplicacao implements TipoAplicacaoInterface {
   "saldoAtual": number;
   "id": number;
   aplicacaoInstituicaos: AplicacaoInstituicao[];
+  valorMesInstituicaoTipos: ValorMesInstituicaoTipo[];
   constructor(data?: TipoAplicacaoInterface) {
     Object.assign(this, data);
   }
@@ -67,6 +70,14 @@ export class TipoAplicacao implements TipoAplicacaoInterface {
           name: 'aplicacaoInstituicaos',
           type: 'AplicacaoInstituicao[]',
           model: 'AplicacaoInstituicao',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'tipoAplicacaoId'
+        },
+        valorMesInstituicaoTipos: {
+          name: 'valorMesInstituicaoTipos',
+          type: 'ValorMesInstituicaoTipo[]',
+          model: 'ValorMesInstituicaoTipo',
           relationType: 'hasMany',
                   keyFrom: 'id',
           keyTo: 'tipoAplicacaoId'

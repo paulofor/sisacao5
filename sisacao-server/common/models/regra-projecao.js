@@ -94,4 +94,47 @@ module.exports = function(Regraprojecao) {
         }
     })
   };
+
+  Regraprojecao.AtualizaDadosRegraProjecao = function(callback) {
+    // Atualização de RegraProjecaoTotalMes
+    let ds = Regraprojecao.dataSource;
+    let sqlDelete = "delete from RegraProjecaoTotalMes"; 
+    let sqlInsert = " insert into RegraProjecaoTotalMes (anoMesNum, regraProjecaoId, quantidadeLucro, quantidadePrejuizo, quantidade) " +
+        " select C1.anoMesNum,C1.regraProjecaoId, " +
+        " (select count(*) from CotacaoIntradayAcaoResultadoValor C2  " +
+        " where resultado = 1 and C1.regraProjecaoId = C2.regraProjecaoId " +
+        " and  C1.anoMesNum = C2.anoMesNum) as lucro, " +
+        " (select count(*) from CotacaoIntradayAcaoResultadoValor C2 " + 
+        " where resultado = -1 and C1.regraProjecaoId = C2.regraProjecaoId " +
+        " and  C1.anoMesNum = C2.anoMesNum) as prejuizo, " +
+        " (select count(*) from CotacaoIntradayAcaoResultadoValor C2 " + 
+        " where C1.regraProjecaoId = C2.regraProjecaoId " +
+        " and  C1.anoMesNum = C2.anoMesNum) as quantidade " +
+        " from CotacaoIntradayAcaoResultadoValor C1 " +
+        " group by C1.anoMesNum,C1.regraProjecaoId";
+     
+      
+      let sql2 = " update RegraProjecao " +
+            " set " +
+            " diaNumMaisAntigo =  " +
+            " ( " +
+            " select max(diaNum) from CotacaoIntradayAcaoResultadoValor as C " +
+            " where C.regraProjecaoId = RegraProjecao.id " +
+            " ), " +
+            " quantidadeTicker = " + 
+            " ( " +
+            " select count(distinct ticker) from CotacaoIntradayAcaoResultadoValor as C " +
+            " where C.regraProjecaoId = RegraProjecao.id " +
+            " ) ";
+      
+      ds.connector.query(sqlDelete, (err,resutl) => {
+        console.log('err1' , err);
+        ds.connector.query(sqlInsert, (err, result) => {
+          console.log('err2' , err);
+          ds.connector.query(sql2, callback);
+        })
+      });
+  }
+
+
 };

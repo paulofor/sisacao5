@@ -19,7 +19,7 @@ public class DiaPregao_ObtemIntradayResultadoDataset extends DaoBase {
 
 			@Override
 			public void onSuccess(List<DiaPregao> objects) {
-				System.out.println("Resultado.Ok: " + objects.size());
+				System.out.println("Resultado.Ok: " + objects.size() + " dias");
 				GeraDataset exec = new GeraDataset();
 				getComum().setListaPregao(objects);
 				exec.setDatasetComum(getComum());

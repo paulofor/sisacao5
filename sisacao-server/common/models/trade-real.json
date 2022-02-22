@@ -187,6 +187,42 @@
           "verb": "post"
         }
       ]
+    },
+    "SituacaoAtual": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "number",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/situacaoAtual",
+          "verb": "get"
+        }
+      ]
+    },
+    "RiscoAtual": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "number",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/riscoAtual",
+          "verb": "get"
+        }
+      ]
     }
   }
 }

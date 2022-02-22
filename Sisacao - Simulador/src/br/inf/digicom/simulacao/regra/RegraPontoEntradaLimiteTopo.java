@@ -53,7 +53,7 @@ public class RegraPontoEntradaLimiteTopo implements IRegraPontoEntrada, IRegraCo
 	}
 
 	public double getPontoEntrada(int indDia, List<DiaPregao> dias) {
-		if (indDia - diaInicial <= diasMin) {
+		if (indDia - diaInicial <= diasMin ) {
 			return 0;
 		} else {
 			valores = new ArrayList<Double>();

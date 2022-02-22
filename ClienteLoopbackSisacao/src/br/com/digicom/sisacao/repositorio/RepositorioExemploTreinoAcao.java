@@ -2,16 +2,16 @@ package br.com.digicom.sisacao.repositorio;
 
 import com.strongloop.android.loopback.ModelRepository;
 
-import br.com.digicom.sisacao.modelo.ExemploTreino;
+import br.com.digicom.sisacao.modelo.ExemploTreinoAcao;
 
-public class RepositorioExemploTreino extends ModelRepository<ExemploTreino>{
+public class RepositorioExemploTreinoAcao extends ModelRepository<ExemploTreinoAcao>{
 
-	public RepositorioExemploTreino() {
-		super("ExemploTreino", ExemploTreino.class);
+	public RepositorioExemploTreinoAcao() {
+		super("ExemploTreinoAcao", ExemploTreinoAcao.class);
 	}
 	@Override
 	protected String verificaNomeUrl(String nome) {
-		return "ExemploTreinos";
+		return "ExemploTreinoAcaos";
 	}
 	
 	/*

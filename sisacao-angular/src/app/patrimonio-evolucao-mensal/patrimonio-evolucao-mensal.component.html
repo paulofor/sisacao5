@@ -1,0 +1,39 @@
+
+<div class="main-content" *ngIf="listaBase">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+          Patrimonio Mes
+          </div>
+          <div class="content table-responsive table-full-width">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th width="10%">Aplicação</th>
+                  <th width="10%">Mês Anterior</th>
+                  <th width="10%">Aportes</th>
+                  <th width="10%">Diferença</th>
+                  <th width="10%">Mês Corrente</th>
+                  <th width="10%">Percentual</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listaBase">
+                  <td>{{item.nome}}</td>
+                  <td>{{item.valorMesAnterior | number : '1.2-2'}}</td>
+                  <td>{{item.aporte | number : '1.2-2'}}</td>
+                  <td>{{item.diferenca | number : '1.2-2'}}</td>
+                  <td>{{item.valorAtual | number : '1.2-2'}}</td>
+                  <td>{{item.percentual | number : '1.2-2'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -15,4 +15,14 @@ module.exports = function (Cotacaointradayindice) {
         let ds = Cotacaointradayindice.dataSource;
         ds.connector.query(sql, callback);
   };
+
+
+  Cotacaointradayindice.AtualIndicePorTicker = function(ticker, quantidade, callback) {
+    let ds = Cotacaointradayindice.dataSource;
+    let sql = "select CotacaoIntradayIndice.* from CotacaoIntradayIndice "  +
+            " where ticker = '" + ticker + "' " +
+            " order by dataHora desc " +
+            " limit " + quantidade;
+    ds.connector.query(sql,callback);
+};
 };
