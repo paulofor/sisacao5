@@ -39,6 +39,7 @@ public class ListaClubeFIICallback extends CallbackParseHtml {
 			contaItem++;
 			if (contaItem==1) {
 				nomeFundo = conteudo;
+				System.out.println("Fundo:" + nomeFundo);
 			}
 			if (contaItem==8) {
 				segmentoFundo = conteudo;

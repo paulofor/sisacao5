@@ -9,6 +9,7 @@ import br.com.digicom.sisacao.modelo.CombinacaoParametro;
 import br.com.digicom.sisacao.modelo.ExecucaoSimulacao;
 import br.com.digicom.sisacao.modelo.ExperimentoSimulacao;
 import br.com.digicom.sisacao.repositorio.RepositorioExecucaoSimulacao;
+import br.inf.digicom.Constantes;
 import br.inf.digicom.simulacao.ExecutadorSimulacao;
 import br.inf.digicom.simulacao.IRegraPontoEntrada;
 import br.inf.digicom.simulacao.regra.FabricaRegra;
@@ -17,7 +18,7 @@ import br.inf.digicom.simulacao.trade.ExecucaoPontoEntrada;
 public class ExecutadorSimulacaoValidacao extends ExecutadorSimulacao{
 	
 	private ExecucaoSimulacao execucaoCorrente = null;
-	RestAdapter adapter = new RestAdapter(Loopback.URL_SISACAO); 
+	RestAdapter adapter = new RestAdapter(Constantes.UrlLoopback); 
 	RepositorioExecucaoSimulacao rep = adapter.createRepository(RepositorioExecucaoSimulacao.class);
 	
 	protected void salvaExecucao(ExecucaoPontoEntrada execucao, String ticker, CombinacaoParametro combinacao, IRegraPontoEntrada regra, ExperimentoSimulacao experimento)  {

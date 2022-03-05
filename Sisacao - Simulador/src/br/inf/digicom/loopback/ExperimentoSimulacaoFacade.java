@@ -15,6 +15,7 @@ import br.com.digicom.sisacao.modelo.ExperimentoSimulacao;
 import br.com.digicom.sisacao.repositorio.RepositorioAcaoBase;
 import br.com.digicom.sisacao.repositorio.RepositorioCombinacaoParametro;
 import br.com.digicom.sisacao.repositorio.RepositorioExperimentoSimulacao;
+import br.inf.digicom.Constantes;
 import br.inf.digicom.TempoSleep;
 import br.inf.digicom.simulacao.ExecutadorSimulacao;
 import br.inf.digicom.simulacao.RepositorioCotacao;
@@ -22,7 +23,7 @@ import br.inf.digicom.simulacao.validacao.ExecutadorSimulacaoValidacao;
 
 public class ExperimentoSimulacaoFacade {
 
-	RestAdapter adapter = new RestAdapter(Loopback.URL_SISACAO); 
+	RestAdapter adapter = new RestAdapter(Constantes.UrlLoopback); 
 	
 	RepositorioCombinacaoParametro repCombinacao = adapter.createRepository(RepositorioCombinacaoParametro.class);
 	RepositorioExperimentoSimulacao repExperimento = adapter.createRepository(RepositorioExperimentoSimulacao.class);

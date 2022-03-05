@@ -44,6 +44,7 @@ public class AluguelFIIDado implements IDadosParse{
 	}
 
 	public void finaliza() {
+		System.out.println("Vai enviar servidor");
 		FundoImobiliarioFacade.insereListaAluguelPorItem(this.listaAluguel);
 	}
 }

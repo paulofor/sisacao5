@@ -11,6 +11,8 @@ export interface AtivoCriptomoedaInterface {
   "posicao"?: number;
   "foxbit"?: number;
   "mercadoBitcoin"?: number;
+  "acompanhaFoxbit"?: number;
+  "acompanhaMercadoBitcoin"?: number;
 }
 
 export class AtivoCriptomoeda implements AtivoCriptomoedaInterface {
@@ -23,6 +25,8 @@ export class AtivoCriptomoeda implements AtivoCriptomoedaInterface {
   "posicao": number;
   "foxbit": number;
   "mercadoBitcoin": number;
+  "acompanhaFoxbit": number;
+  "acompanhaMercadoBitcoin": number;
   constructor(data?: AtivoCriptomoedaInterface) {
     Object.assign(this, data);
   }
@@ -90,6 +94,14 @@ export class AtivoCriptomoeda implements AtivoCriptomoedaInterface {
         },
         "mercadoBitcoin": {
           name: 'mercadoBitcoin',
+          type: 'number'
+        },
+        "acompanhaFoxbit": {
+          name: 'acompanhaFoxbit',
+          type: 'number'
+        },
+        "acompanhaMercadoBitcoin": {
+          name: 'acompanhaMercadoBitcoin',
           type: 'number'
         },
       },

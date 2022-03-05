@@ -10,6 +10,7 @@ import br.com.digicom.sisacao.app.Loopback;
 import br.com.digicom.sisacao.modelo.ExecucaoSimulacao;
 import br.com.digicom.sisacao.repositorio.RepositorioExecucaoSimulacao;
 import br.com.digicom.sisacao.repositorio.RepositorioValorMonitoria;
+import br.inf.digicom.Constantes;
 import br.inf.digicom.TempoSleep;
 import br.inf.digicom.simulacao.IRegraPontoEntrada;
 import br.inf.digicom.simulacao.RepositorioCotacao;
@@ -20,7 +21,7 @@ import br.inf.digicom.simulacao.regra.IRegraVenda;
 
 public class ExperimentoMonitoradoFacade {
 	
-	RestAdapter adapter = new RestAdapter(Loopback.URL_SISACAO); 
+	RestAdapter adapter = new RestAdapter(Constantes.UrlLoopback); 
 	RepositorioExecucaoSimulacao repExecucaoSimulacao = adapter.createRepository(RepositorioExecucaoSimulacao.class);
 	RepositorioValorMonitoria repValorMonitoria = adapter.createRepository(RepositorioValorMonitoria.class);
 	

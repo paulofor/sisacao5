@@ -6,13 +6,17 @@ import com.strongloop.android.loopback.RestAdapter;
 import com.strongloop.android.loopback.callbacks.ListCallback;
 import com.strongloop.android.loopback.callbacks.ObjectCallback;
 
+import br.com.digicom.lib.dao.DaoException;
 import br.com.digicom.parse.ExecutadorParse;
+import br.com.digicom.parse.ExecutadorParseApache2;
+import br.com.digicom.parse.ExecutadorParseApache3;
 import br.com.digicom.parse.callback.ICallbackParse;
 import br.com.digicom.sisacao.app.Loopback;
 import br.com.digicom.sisacao.modelo.AluguelFundoImobiliario;
 import br.com.digicom.sisacao.modelo.FundoImobiliario;
 import br.com.digicom.sisacao.repositorio.RepositorioAluguelFundoImobiliario;
 import br.com.digicom.sisacao.repositorio.RepositorioFundoImobiliario;
+import sisacao.fii.app.desen.ObtemAluguelFundoImob;
 import sisacao.fii.parser.callback.AluguelFIIBrasilDetalheCallback;
 import sisacao.fii.parser.callback.ListaClubeFIICallback;
 import sisacao.fii.parser.callback.ListaClubeFIIDetalheCallback;
@@ -21,9 +25,11 @@ import sisacao.fii.parser.dado.FundoImobiliarioDado;
 
 public class FundoImobiliarioFacade {
 
-	static RestAdapter adapter = new RestAdapter(Loopback.URL_SISACAO);
+	
+	static RestAdapter adapter = new RestAdapter(Constante.LoopbackUrl);
 	static RepositorioFundoImobiliario repFundoImobiliario = adapter.createRepository(RepositorioFundoImobiliario.class);
 	static RepositorioAluguelFundoImobiliario repAluguelFundoImobiliario = adapter.createRepository(RepositorioAluguelFundoImobiliario.class);
+	
 
 
 	
@@ -51,8 +57,8 @@ public class FundoImobiliarioFacade {
 	}
 	
 	
-	public void obtemListaFundo() {
-		ExecutadorParse exec = new ExecutadorParse();
+	public void obtemListaFundo() throws DaoException {
+		ExecutadorParseApache3 exec = new ExecutadorParseApache3();
 		ICallbackParse callback = new ListaClubeFIICallback();
 		FundoImobiliarioDado dado = new FundoImobiliarioDado();
 		callback.setDados(dado);
@@ -81,7 +87,12 @@ public class FundoImobiliarioFacade {
 		this.repFundoImobiliario.listaCompleta((new ListCallback<FundoImobiliario>() {
 			@Override
 			public void onSuccess(List<FundoImobiliario> lista) {
-				trataAluguel(lista);
+				try {
+					trataAluguel(lista);
+				} catch (DaoException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			@Override
 			public void onError(Throwable t) {
@@ -90,7 +101,7 @@ public class FundoImobiliarioFacade {
 			}
 		}));
 	}
-	public static void trataAluguel(List<FundoImobiliario> lista) {
+	public static void trataAluguel(List<FundoImobiliario> lista) throws DaoException {
 		try {
 			//chamaDetalheAluguel(lista.get(0));
 			FundoImobiliario fundoTeste = new FundoImobiliario();
@@ -107,8 +118,8 @@ public class FundoImobiliarioFacade {
 			e.printStackTrace();
 		}
 	}
-	private static void chamaDetalheAluguel(FundoImobiliario fundo) {
-		ExecutadorParse exec = new ExecutadorParse();
+	private static void chamaDetalheAluguel(FundoImobiliario fundo) throws DaoException {
+		ExecutadorParseApache3 exec = new ExecutadorParseApache3();
 		ICallbackParse callback = new AluguelFIIBrasilDetalheCallback();
 		AluguelFIIDado dado = new AluguelFIIDado();
 		dado.setFundo(fundo);

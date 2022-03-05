@@ -32,10 +32,10 @@ module.exports = function(Cotacaointradayacaoresultado) {
         let cont = 0;
         for (let i=0;i<listaCotacao.length;i++) {
             let item = listaCotacao[i];
-            console.log('item:' , item);
+            //console.log('item:' , item);
             let sql = '';
             if (item.tg15St15) {
-                console.log('tem 15-15');
+                //console.log('tem 15-15');
                 sql = "update CotacaoIntradayAcaoResultado set tg15St15 = " + item.tg15St15 + " , " +
                     " diasTg15St15 = " + item.diasTg15St15 + 
                     " where ticker='" + item.ticker + "' and diaNum=" + item.diaNum + " and hora = '" + item.hora + "' ";
@@ -69,13 +69,13 @@ module.exports = function(Cotacaointradayacaoresultado) {
                     " limit 1 " +
                     " ) " +
                     " where ticker = '" + ticker + "' and diaNum = " + cotacao.diaNum + " and hora = '" + cotacao.hora + "' ";
-                console.log('sql:' , sql);
+                //console.log('sql:' , sql);
                 var ds = Cotacaointradayacaoresultado.dataSource;
                 ds.connector.query(sql, (err,result) => {
                     callback(err,cotacao)
                 });    
             } else {
-                console.log('nao tem');
+                //console.log('nao tem');
                 callback(null,null);
             }
            
@@ -117,7 +117,7 @@ module.exports = function(Cotacaointradayacaoresultado) {
  */
 
  Cotacaointradayacaoresultado.CriaTickerAno = function(ticker, ano, callback) {
-    console.log('entrou aqui' + ano);
+    //console.log('entrou aqui' + ano);
     let filtroAno = { 'where' : {'ano' : ano}}
     let horarios = ['10:40:00' , '11:00:00' , '11:30:00' , '12:00:00' , '12:30:00' , '13:00:00' , '13:30:00' , '14:00:00' , '14:30:00' ,
                     '15:00:00' , '15:30:00' , '16:00:00' , '16:30:00' , '17:30:00' , '18:00:00'];
@@ -148,5 +148,17 @@ module.exports = function(Cotacaointradayacaoresultado) {
     })
  };
  
+ Cotacaointradayacaoresultado.DataInicialTickerRegra = function(ticker, idRegra, callback) {
+    let ds = Cotacaointradayacaoresultado.dataSource;
+    let sql = "select C1.* " +
+            " from CotacaoIntradayAcaoResultado C1 " +
+            " where C1.ticker = '" + ticker + "' " +
+            " and C1.dataHora not in (select C2.dataHora from CotacaoIntradayAcaoResultadoValor C2 " +
+            " where C2.ticker = '" + ticker + "' and C2.regraProjecaoId = " + idRegra + ") " +
+            " order by C1.dataHora limit 1";
+    ds.connector.query(sql, (err,result) => {
+        callback(err,result[0]);
+    });
+ }
 
 };

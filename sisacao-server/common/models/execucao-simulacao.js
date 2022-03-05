@@ -351,6 +351,19 @@ Execucaosimulacao.InsereExecucaoSimulacao = function(execucao, callback) {
         ds.connector.query(sql,callback);
     }
 
+    Execucaosimulacao.TotaisPorParametroRegra = function(idRegraSimulacao,idPeriodo, callback) {
+        let ds = Execucaosimulacao.dataSource;
+        let sql = "SELECT P.nome, V.valorParametro, sum(E.quantidadeLucro) soma_lucro, sum(E.quantidadePrejuizo) soma_prejuizo,  " +
+            " avg(E.quantidadeLucro) media_lucro, avg(E.quantidadePrejuizo) media_prejuizo " +
+            " FROM ExecucaoSimulacao E " +
+            " inner join CombinacaoParametro C on C.id = E.combinacaoParametroId " +
+            " inner join ValorParametro V on C.id = V.combinacaoParametroId " +
+            " inner join ParametroRegra P on P.id = V.parametroRegraId " +
+            " where E.periodoExperimentoId = " + idPeriodo +
+            " and E.regraSimulacaoId = " + idRegraSimulacao +
+            " group by P.nome, V.valorParametro ";
+        ds.connector.query(sql,callback);
+    }
 
         /*
         app.models.PeriodoExperimento.findById(idPeriodo, (err,result) => {

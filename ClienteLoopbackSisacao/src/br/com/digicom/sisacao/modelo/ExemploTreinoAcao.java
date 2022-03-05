@@ -1,5 +1,8 @@
 package br.com.digicom.sisacao.modelo;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.strongloop.android.loopback.Model;
 
 public class ExemploTreinoAcao extends Model{
@@ -11,6 +14,24 @@ public class ExemploTreinoAcao extends Model{
 	private Integer diaNumInicio;
 	private Integer diaNumPrevisao;
 	private Integer regraProjecaoId;
+	
+	
+	
+	public JSONObject getJSON() {
+		JSONObject obj = new JSONObject();
+		try {
+			obj.put("ticker", ticker);
+			obj.put("campoX", campoX);
+			obj.put("campoY", campoY);
+			obj.put("diaNumInicio", diaNumInicio);
+			obj.put("diaNumPrevisao", diaNumPrevisao);
+			obj.put("regraProjecaoId", regraProjecaoId);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return obj;
+	}
+	
 	
 	public String getTicker() {
 		return ticker;
@@ -56,6 +77,7 @@ public class ExemploTreinoAcao extends Model{
 	public Integer getRegraProjecaoId() {
 		return this.regraProjecaoId;
 	}
+	
 	
 	
 	

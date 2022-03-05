@@ -56,6 +56,37 @@
   },
   "acls": [],
   "methods": {
+    "LigaMonitoradoPeriodo": {
+      "accepts": [
+        {
+          "arg": "idPeriodo",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "limitePorTicker",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/ligaMonitoradoPeriodo",
+          "verb": "post"
+        }
+      ]
+    },
     "ObtemPeriodoParaExecucao": {
       "accepts": [
         {

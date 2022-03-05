@@ -48,7 +48,7 @@ module.exports = function(Ativocriptomoeda) {
         for (let i=0; i<lista.length; i++) {
             //console.log(lista[i]);
             Ativocriptomoeda.upsert(lista[i], (err,result) => {
-                console.log(result);
+                //console.log(result);
             }) 
         }
         callback(null,{'total' : lista.length})

@@ -85,15 +85,16 @@ public class AluguelFIIBrasilDetalheCallback extends CallbackParseHtml{
 			if ("column-6".equals(this.getUltClasse().trim())) {
 				// Cotação
 				//System.out.println("cotacao: " + conteudo);
-				cotacao = conteudo;
+				//cotacao = conteudo;
 			}
 			if ("column-7".equals(this.getUltClasse().trim())) {
 				// Tipo
 				//System.out.println("tipo: " + conteudo);
-				tipo = conteudo;
+				cotacao = conteudo;
 			}
 			if ("column-8".equals(this.getUltClasse().trim())) {
 				// Mês
+				tipo = conteudo;
 				//System.out.println("Rendimento: " + conteudo);
 			}
 			if ("column-9".equals(this.getUltClasse().trim())) {
@@ -107,10 +108,11 @@ public class AluguelFIIBrasilDetalheCallback extends CallbackParseHtml{
 			if ("column-11".equals(this.getUltClasse().trim())) {
 				// M
 				//System.out.println("Rendimento: " + conteudo);
+				this.finalizaAluguel();
 			}
 			if ("column-12".equals(this.getUltClasse().trim())) {
-				//System.out.println("Final: " + conteudo);
-				//this.finalizaAluguel();
+				System.out.println("Final: " + conteudo);
+				
 			}
 			//System.out.println();
 		}
@@ -165,7 +167,7 @@ public class AluguelFIIBrasilDetalheCallback extends CallbackParseHtml{
 
 	@Override
 	public void finalizacaoOk() throws DaoException {
-		// TODO Auto-generated method stub
+
 		aluguelDado.finaliza();
 	}
 

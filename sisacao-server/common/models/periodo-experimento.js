@@ -42,4 +42,32 @@ module.exports = function(Periodoexperimento) {
     })
   };
   
+
+  Periodoexperimento.LigaMonitoradoPeriodo = function(idPeriodo, limitePorTicker, callback) {
+    let ds = Periodoexperimento.dataSource;
+    Periodoexperimento.findById(idPeriodo, (err1,result1) => {
+      let periodo = result1;
+      let sqlDesliga = "update ExecucaoSimulacao set monitorar = 0 where periodoExperimentoId = " + idPeriodo;
+      ds.connector.query(sqlDesliga, (err2, result2) => {
+        let sqlTicker = "select distinct ticker from ExecucaoSimulacao where resultado >= " + periodo.minimoPontoValidacao +
+          " and periodoExperimentoId = " + idPeriodo;
+        ds.connector.query(sqlTicker, (err3,result3) => {
+          let conta = 0
+          for (let i=0; i<result3.length; i++) {
+            let sqlMelhores = "update ExecucaoSimulacao set monitorar = 1 " +
+              " where id in (select id from ExecucaoSimulacao where idPeridodoExperimento = " + idPeriodo + " and " +
+              " ticker = '" + result3[i].ticker + "' order by result desc limit " + limitePorTicker + " ) ";
+            ds.connector.query(sqlMelhores, (err4,result4) => {
+              console.log(result3[i].ticker);
+              console.log('Err' , err4);
+              if (++conta==result3.length) {
+                callback(null,{'result' : 'ok'})
+              }
+            })
+          }
+        })
+
+      })
+    })
+  }
 };

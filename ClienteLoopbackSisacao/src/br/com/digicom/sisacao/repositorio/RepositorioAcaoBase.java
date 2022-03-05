@@ -145,6 +145,14 @@ public class RepositorioAcaoBase {
 	        params.put("listaCotacao", listaJson);
 	        invokeStaticMethod("atualizaTargetStopDia", params, new EmptyResponseParser(voidCallback));
 		}
+		public void dataInicialTickerRegra(String ticker, long idRegra, final ObjectCallback<CotacaoIntradayAcaoResultado> callback ) {
+			RestContractItem contrato = new RestContractItem("CotacaoIntradayAcaoResultados/dataInicialTickerRegra","GET");
+			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayAcaoResultado.dataInicialTickerRegra");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        params.put("ticker", ticker);
+	        params.put("idRegra", idRegra);
+	        invokeStaticMethod("dataInicialTickerRegra", params,   new JsonObjectParser<CotacaoIntradayAcaoResultado>(this, callback));
+		}
 	}
 	public static class CotacaoIntradayAcaoResultadoValorRepository extends ModelRepository<CotacaoIntradayAcaoResultadoValor> {
 		public CotacaoIntradayAcaoResultadoValorRepository() {

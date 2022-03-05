@@ -308,7 +308,12 @@ public  class CotacaoDiarioRegraColecaoImpl  extends CotacaoDiarioRegraColecao {
 		dao.setConexao(conexao);
 		Collection<CotacaoDiario> listaCotacao = this.getListaEntradaItem();
 		for (CotacaoDiario cotacao : listaCotacao) {
-			dao.insereDiarioAcao(cotacao);
+			try {
+				dao.insereDiarioAcao(cotacao);
+			} catch(DaoException e) {
+				e.printStackTrace();
+			}
+			
 		}
 		conexao.fechaConexao();
 	}

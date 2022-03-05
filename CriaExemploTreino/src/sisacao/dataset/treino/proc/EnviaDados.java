@@ -1,17 +1,12 @@
 package sisacao.dataset.treino.proc;
 
-import com.strongloop.android.loopback.RestAdapter;
-
 import br.com.digicom.sisacao.modelo.ExemploTreinoAcao;
 import br.com.digicom.sisacao.modelo.RegraProjecao;
-import br.com.digicom.sisacao.repositorio.RepositorioExemploTreinoAcao;
+import sisacao.dataset.treino.dao.ExemploTreinoAcao_InsereExemplo;
 
 public class EnviaDados {
 
-	private String URL_SISACAO_DATASET = "http://vps-40d69db1.vps.ovh.ca:22005/api";
-	
-	private RestAdapter adapter = new RestAdapter(URL_SISACAO_DATASET); 
-	protected RepositorioExemploTreinoAcao rep = adapter.createRepository(RepositorioExemploTreinoAcao.class);
+	private ExemploTreinoAcao_InsereExemplo dao = new ExemploTreinoAcao_InsereExemplo();
 	
 	
 	public void enviaDia(String ticker, RegraProjecao regraProjecao, DadosTreino dadoTreino) {
@@ -22,5 +17,7 @@ public class EnviaDados {
 		exemplo.setRegraProjecaoId(regraProjecao.getId());
 		exemplo.setDiaNumInicio(dadoTreino.getDiaNumInicio());
 		exemplo.setDiaNumPrevisao(dadoTreino.getDiaNumPrevisao());
+		dao.setDado(exemplo);
+		dao.executa();
 	}
 }

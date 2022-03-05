@@ -11,11 +11,12 @@ import br.com.digicom.sisacao.app.Loopback;
 import br.com.digicom.sisacao.modelo.AtivoAcao;
 import br.com.digicom.sisacao.modelo.DiaPregao;
 import br.com.digicom.sisacao.repositorio.RepositorioDiaPregao;
+import br.inf.digicom.Constantes;
 import br.inf.digicom.TempoSleep;
 
 public class RepositorioCotacaoResultadoValor {
 	
-	private static RestAdapter adapter = new RestAdapter(Loopback.URL_SISACAO); 
+	private static RestAdapter adapter = new RestAdapter(Constantes.UrlLoopback); 
 	
 	private static Map<String,List<DiaPregao>> cotacoes = new HashMap<String,List<DiaPregao>>();
 	private static RepositorioDiaPregao repDiaPregao = adapter.createRepository(RepositorioDiaPregao.class);

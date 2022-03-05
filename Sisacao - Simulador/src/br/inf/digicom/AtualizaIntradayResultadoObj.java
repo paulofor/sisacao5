@@ -16,7 +16,7 @@ import br.com.digicom.sisacao.repositorio.RepositorioAcaoBase.CotacaoIntradayAca
 public class AtualizaIntradayResultadoObj {
 
 	
-	RestAdapter adapter = new RestAdapter(Loopback.URL_SISACAO); 
+	RestAdapter adapter = new RestAdapter(Constantes.UrlLoopback); 
 	RepositorioAcaoBase.AtivoAcaoRepository repAcao = adapter.createRepository(RepositorioAcaoBase.AtivoAcaoRepository.class);
 	CotacaoIntradayAcaoResultadoRepository repIntraResult = adapter.createRepository(CotacaoIntradayAcaoResultadoRepository.class);
 	

@@ -13,6 +13,8 @@ import br.com.digicom.sisacao.modelo.RelGrupoAcao;
 public class RegraProjecao_ObtemProcessando extends ExecutorRegraProjecao {
 
 	public boolean concluido = false;
+	
+	/*
 	public void executa() {
 		concluido = false;
 		System.out.println("1.I");
@@ -22,11 +24,10 @@ public class RegraProjecao_ObtemProcessando extends ExecutorRegraProjecao {
 			public void onSuccess(RegraProjecao regra) {
 
 				
-				DiaPregao_ObtemIntradayResultadoValor processador = new DiaPregao_ObtemIntradayResultadoValor();
+				//DiaPregao_ObtemIntradayResultadoValor processador = new DiaPregao_ObtemIntradayResultadoValor();
+				CotacaoIntradayAcaoResultado_DataInicialTickerRegra processador = new CotacaoIntradayAcaoResultado_DataInicialTickerRegra();
 				for (RelGrupoAcao relAcao : regra.getGrupoAcao().getRelGrupoAcaos()) {
-					//System.out.println("Ticker:" + relAcao.getTicker());
-					processador.setDataNumInicio(20210101);
-					processador.setTicker(relAcao.getTicker());
+					processador.setRelGrupoAcao(relAcao);
 					processador.setRegraProjecao(regra);
 					processador.executa();
 					
@@ -50,7 +51,7 @@ public class RegraProjecao_ObtemProcessando extends ExecutorRegraProjecao {
 		}
 		System.out.println("1.F");
 	}
-	
+	*/
 	
 	public void executa(Integer idRegraProjecao, Integer idGrupoAcao) {
 		concluido = false;
@@ -116,11 +117,10 @@ public class RegraProjecao_ObtemProcessando extends ExecutorRegraProjecao {
 
 					@Override
 					public void onSuccess(List<AtivoAcao> objects) {
-						// TODO Auto-generated method stub
-						DiaPregao_ObtemIntradayResultadoValor processador = new DiaPregao_ObtemIntradayResultadoValor();
+						// DiaPregao_ObtemIntradayResultadoValor processador = new DiaPregao_ObtemIntradayResultadoValor();
+						CotacaoIntradayAcaoResultado_DataInicialTickerRegra processador = new CotacaoIntradayAcaoResultado_DataInicialTickerRegra();
 						for (AtivoAcao acao : objects) {
-							processador.setDataNumInicio(20210101);
-							processador.setTicker(acao.getTicker());
+							processador.setTicker(acao);
 							processador.setRegraProjecao(regra);
 							processador.executa();
 						}

@@ -98,20 +98,18 @@ module.exports = function(Regraprojecao) {
   Regraprojecao.AtualizaDadosRegraProjecao = function(callback) {
     // Atualização de RegraProjecaoTotalMes
     let ds = Regraprojecao.dataSource;
-    let sqlDelete = "delete from RegraProjecaoTotalMes"; 
+    let sqlDelete = "delete from RegraProjecaoTotalMes where anoMesNum >= 202107 "; 
     let sqlInsert = " insert into RegraProjecaoTotalMes (anoMesNum, regraProjecaoId, quantidadeLucro, quantidadePrejuizo, quantidade) " +
-        " select C1.anoMesNum,C1.regraProjecaoId, " +
-        " (select count(*) from CotacaoIntradayAcaoResultadoValor C2  " +
-        " where resultado = 1 and C1.regraProjecaoId = C2.regraProjecaoId " +
-        " and  C1.anoMesNum = C2.anoMesNum) as lucro, " +
-        " (select count(*) from CotacaoIntradayAcaoResultadoValor C2 " + 
-        " where resultado = -1 and C1.regraProjecaoId = C2.regraProjecaoId " +
-        " and  C1.anoMesNum = C2.anoMesNum) as prejuizo, " +
-        " (select count(*) from CotacaoIntradayAcaoResultadoValor C2 " + 
-        " where C1.regraProjecaoId = C2.regraProjecaoId " +
-        " and  C1.anoMesNum = C2.anoMesNum) as quantidade " +
-        " from CotacaoIntradayAcaoResultadoValor C1 " +
-        " group by C1.anoMesNum,C1.regraProjecaoId";
+            " select  C1.anoMesNum,C1.regraProjecaoId," +  
+            " (select count(*) from CotacaoIntradayAcaoResultadoValor C2  " +
+            " where C1.anoMesNum = C2.anoMesNum  and  C1.regraProjecaoId = C2.regraProjecaoId and resultado=1) as lucro, " +
+            " (select count(*) from CotacaoIntradayAcaoResultadoValor C2  " +
+            " where C1.anoMesNum = C2.anoMesNum  and  C1.regraProjecaoId = C2.regraProjecaoId and resultado=-1) as prejuizo, " +
+            " (select count(*) from CotacaoIntradayAcaoResultadoValor C2  " +
+            " where C1.anoMesNum = C2.anoMesNum  and  C1.regraProjecaoId = C2.regraProjecaoId ) as quantidade " +
+            " from CotacaoIntradayAcaoResultadoValor C1 " +
+            " where C1.diaNum >= 20210701 " +
+            " group by C1.anoMesNum,C1.regraProjecaoId";
      
       
       let sql2 = " update RegraProjecao " +

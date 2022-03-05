@@ -32,11 +32,14 @@ module.exports = function(Cotacaointradayacaoresultadovalor) {
         let conta = 0;
         lista.forEach((item) => {
             item.dataHoraInsercao = new Date();
-            Cotacaointradayacaoresultadovalor.create(item);
-            conta++;
-            if (conta==lista.length) {
-                callback(null, { 'result': 'ok' });
-            }
+            Cotacaointradayacaoresultadovalor.create(item, (err,result) => {
+                //console.log('Err:' , err);
+                conta++;
+                if (conta==lista.length) {
+                    callback(null, { 'result': 'ok' });
+                }
+            });
+           
         });
     };
 
@@ -99,7 +102,7 @@ module.exports = function(Cotacaointradayacaoresultadovalor) {
         let filtro = {'where' : {'codigoRegraProjecao' : codigoRegra}}
         //console.log('codigoRegra:' , codigoRegra);
         app.models.RegraProjecao.findOne(filtro,(err,result) => {
-            //console.log('regra:',result);
+            console.log('regra:',result);
             let sql = "select year(dataHora) as ano, month(dataHora) as mes,ticker, count(*) as total, " +
                 " ( " +
                 " select count(*)   " +
@@ -203,7 +206,7 @@ module.exports = function(Cotacaointradayacaoresultadovalor) {
                 " and diaNum >= " + diaNumInicial + " and diaNum <= " + diaNumFinal +
                 " group by year(dataHora), month(dataHora),ticker " +
                 " order by year(dataHora), month(dataHora),ticker ";
-            //console.log(sql);
+            console.log(sql);
             let ds = Cotacaointradayacaoresultadovalor.dataSource;
             ds.connector.query(sql,callback);
         })

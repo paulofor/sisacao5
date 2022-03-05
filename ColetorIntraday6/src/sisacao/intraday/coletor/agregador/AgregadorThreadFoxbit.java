@@ -10,13 +10,14 @@ import br.com.digicom.parse.PesquisadorTimer;
 import br.com.digicom.sisacao.app.Loopback;
 import br.com.digicom.sisacao.repositorio.RepositorioCriptomoedaBase;
 import sisacao.intraday.coletor.pesquisador.PesquisadorIntradayFoxbit;
+import sisacao.intraday.coletor.thread.ThreadPaiBase;
 
 public class AgregadorThreadFoxbit implements AgregadorThread{
 
 	private List<PesquisadorTimer> listaThreads = null;
 	
 	
-	RestAdapter adapter = new RestAdapter(Loopback.URL_SISACAO);
+	RestAdapter adapter = new RestAdapter(ThreadPaiBase.LoopBackUrl);
 	RepositorioCriptomoedaBase.AtivoCriptomoedaRepository repCriptomoeda = 
 			adapter.createRepository(RepositorioCriptomoedaBase.AtivoCriptomoedaRepository.class);
 		

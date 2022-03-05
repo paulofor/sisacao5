@@ -13,7 +13,7 @@ public class DiaPregao_ObtemIntradayResultadoDataset extends DaoBase {
 
 
 	@Override
-	public void executa() {
+	public void executaImpl() {
 		repDiaPregao.obtemIntradayResultadoTickerPeriodo(this.getComum().getTicker(), 
 				this.getComum().getInicioPeriodo(), new ListCallback<DiaPregao>() {
 
@@ -24,6 +24,8 @@ public class DiaPregao_ObtemIntradayResultadoDataset extends DaoBase {
 				getComum().setListaPregao(objects);
 				exec.setDatasetComum(getComum());
 				exec.executa();
+				setConcluido();
+				
 			}
 			@Override
 			public void onError(Throwable t) {

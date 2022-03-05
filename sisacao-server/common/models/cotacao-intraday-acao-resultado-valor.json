@@ -51,6 +51,9 @@
     },
     "valorInferior": {
       "type": "number"
+    },
+    "anoMesNum" : {
+      "type": "number"
     }
   },
   "validations": [],

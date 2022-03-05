@@ -27,6 +27,7 @@ public class CotacaoIntradayAcaoResultadoValor extends Model{
 	private String dataHora;
 	private Double valorSuperior;
 	private Double valorInferior;
+	private Integer anoMesNum;
 	
 	public JSONObject getJSON() {
 		JSONObject saida = new JSONObject();
@@ -44,6 +45,7 @@ public class CotacaoIntradayAcaoResultadoValor extends Model{
 			saida.put("dataHora", this.dataHora);
 			saida.put("valorSuperior", this.valorSuperior);
 			saida.put("valorInferior", this.valorInferior);
+			saida.put("anoMesNum", this.anoMesNum);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -165,6 +167,18 @@ public class CotacaoIntradayAcaoResultadoValor extends Model{
 	}
 	public void setDiaHoraNumTicker(String diaHoraNumTicker) {
 		this.diaHoraNumTicker = diaHoraNumTicker;
+	}
+
+
+
+	public Integer getAnoMesNum() {
+		return anoMesNum;
+	}
+
+
+
+	public void setAnoMesNum(Integer anoMesNum) {
+		this.anoMesNum = anoMesNum;
 	}
 	
 	

@@ -134,6 +134,9 @@ import { ItemTradeRealVisualComponent } from './item-trade-real-visual/item-trad
 import { PatrimonioEvolucaoMensalComponent } from './patrimonio-evolucao-mensal/patrimonio-evolucao-mensal.component';
 import { QuadroComparaStopComponent } from './quadro-compara-stop/quadro-compara-stop.component';
 import { ItemVisualIndiceComponent } from './item-visual-indice/item-visual-indice.component';
+import { QuadroComparaStopGeralComponent } from './quadro-compara-stop-geral/quadro-compara-stop-geral.component';
+import { QuadroComparaStopItemComponent } from './quadro-compara-stop-item/quadro-compara-stop-item.component';
+import { CotacaoIntradayResultadoAcaoComponent } from './cotacao-intraday-resultado-acao/cotacao-intraday-resultado-acao.component';
 
 //import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
@@ -241,6 +244,9 @@ registerLocaleData(localePt, 'pt-BR');
     PatrimonioEvolucaoMensalComponent,
     QuadroComparaStopComponent,
     ItemVisualIndiceComponent,
+    QuadroComparaStopGeralComponent,
+    QuadroComparaStopItemComponent,
+    CotacaoIntradayResultadoAcaoComponent,
   ],
   imports: [
     BrowserModule,
@@ -323,7 +329,8 @@ registerLocaleData(localePt, 'pt-BR');
     MovimentacaoEditaComponent,
     RegraProjecaoEditComponent,
     ValorMesSaldoEditComponent,
-    GrupoParaAcaoComponent
+    GrupoParaAcaoComponent,
+    DetalheAluguelFundoImobiliarioComponent
   ],
   bootstrap: [AppComponent]
 })

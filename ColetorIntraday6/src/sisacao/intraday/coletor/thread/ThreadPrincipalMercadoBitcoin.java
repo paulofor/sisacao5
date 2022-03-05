@@ -14,7 +14,7 @@ public class ThreadPrincipalMercadoBitcoin extends ThreadPaiBase{
 
 	private AgregadorThread agregador = new AgregadorThreadMercadoBitcoin();
 
-	RestAdapter adapter = new RestAdapter(Loopback.URL_SISACAO);
+	RestAdapter adapter = new RestAdapter(ThreadPaiBase.LoopBackUrl);
 	RepositorioCriptomoedaBase.AtivoCriptomoedaRepository repCriptomoeda = 
 			adapter.createRepository(RepositorioCriptomoedaBase.AtivoCriptomoedaRepository.class);
 	

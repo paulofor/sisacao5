@@ -13,6 +13,8 @@ import br.com.digicom.sisacao.repositorio.RepositorioCriptomoedaBase;
 import sisacao.intraday.coletor.agregador.AgregadorThread;
 
 public abstract class ThreadPaiBase extends TimerTask {
+	
+	public static String LoopBackUrl = "";
 
 	private String diaAtual = null;
 	private String diaAnterior = null;
@@ -20,7 +22,7 @@ public abstract class ThreadPaiBase extends TimerTask {
 
 	private AgregadorThread agregador = null;
 
-	RestAdapter adapter = new RestAdapter(Loopback.URL_SISACAO); 
+	RestAdapter adapter = new RestAdapter(LoopBackUrl); 
 	RepositorioCriptomoedaBase.AtivoCriptomoedaRepository repCripto  = adapter.createRepository(RepositorioCriptomoedaBase.AtivoCriptomoedaRepository.class);
 
 	public ThreadPaiBase() {

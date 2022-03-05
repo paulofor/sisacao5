@@ -1,9 +1,14 @@
 package br.inf.digicom.desen;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.Properties;
 
 import br.com.digicom.sisacao.modelo.AtivoAcao;
 import br.inf.digicom.AtualizaIntradayResultadoObj;
+import br.inf.digicom.Constantes;
 
 public class AtualizaIntradayResultadoApp {
 
@@ -16,6 +21,7 @@ public class AtualizaIntradayResultadoApp {
 	public static void main(String[] args) {
 		
 		try {
+			carregaProp();
 			int idGrupo = Integer.parseInt(args[0]);
 			AtualizaIntradayResultadoObj obj = new AtualizaIntradayResultadoObj();
 					
@@ -30,6 +36,14 @@ public class AtualizaIntradayResultadoApp {
 		System.exit(0);
 		
 
+	}
+	
+	private static void carregaProp() throws IOException {
+		System.out.println("Dir:" + System.getProperty("user.dir"));
+		InputStream input = new FileInputStream("AtualizaIntradayResultado.config");
+		Properties prop = new Properties();
+        prop.load(input);
+        Constantes.UrlLoopback = prop.getProperty("loopback.url");
 	}
 
 }

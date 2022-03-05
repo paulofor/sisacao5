@@ -20,11 +20,42 @@
       "type": "number"
     },
     "diaNumPrevisao": {
-      "type": "number"
+      "type": "number",
+      "id": true
+    },
+    "regraProjecaoId" : {
+      "type": "number",
+      "id": true
     }
   },
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {}
+  "methods": {
+    "InsereExemplo": {
+      "accepts": [
+        {
+          "arg" : "exemplo",
+          "type" : "object" ,
+          "required" : true,
+          "description" : ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/insereExemplo",
+          "verb": "post"
+        }
+      ]
+    }
+  }
 }

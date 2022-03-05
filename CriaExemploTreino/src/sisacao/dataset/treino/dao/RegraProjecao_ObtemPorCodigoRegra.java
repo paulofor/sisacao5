@@ -22,7 +22,7 @@ public class RegraProjecao_ObtemPorCodigoRegra extends DaoBase {
 
 
 	@Override
-	public void executa() {
+	public void executaImpl() {
 		repRegraProjecao.obtemPorCodigoRegra(codigoRegra, new ObjectCallback<RegraProjecao>() {
 
 			@Override
@@ -32,6 +32,7 @@ public class RegraProjecao_ObtemPorCodigoRegra extends DaoBase {
 				DiaPregao_ObtemIntradayResultadoDataset exec = new DiaPregao_ObtemIntradayResultadoDataset();
 				exec.setComum(getComum());
 				exec.executa();
+				setConcluido();
 			}
 
 			@Override

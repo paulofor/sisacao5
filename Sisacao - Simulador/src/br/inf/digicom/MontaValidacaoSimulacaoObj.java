@@ -12,7 +12,7 @@ import br.com.digicom.sisacao.repositorio.RepositorioExperimentoSimulacao;
 public class MontaValidacaoSimulacaoObj {
 
 	
-	RestAdapter adapter = new RestAdapter(Loopback.URL_SISACAO); 
+	RestAdapter adapter = new RestAdapter(Constantes.UrlLoopback); 
 	
 	RepositorioCombinacaoParametro repCombinacao = adapter.createRepository(RepositorioCombinacaoParametro.class);
 	RepositorioExperimentoSimulacao repExperimento = adapter.createRepository(RepositorioExperimentoSimulacao.class);

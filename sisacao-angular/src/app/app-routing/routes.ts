@@ -48,6 +48,8 @@ import { RegraProjecaoDatasComponent } from '../regra-projecao-datas/regra-proje
 import { TradeRealVisualComponent } from '../trade-real-visual/trade-real-visual.component';
 import { PatrimonioEvolucaoMensalComponent } from '../patrimonio-evolucao-mensal/patrimonio-evolucao-mensal.component';
 import { QuadroComparaStopComponent } from '../quadro-compara-stop/quadro-compara-stop.component';
+import { QuadroComparaStopGeralComponent } from '../quadro-compara-stop-geral/quadro-compara-stop-geral.component';
+import { CotacaoIntradayResultadoAcaoComponent } from '../cotacao-intraday-resultado-acao/cotacao-intraday-resultado-acao.component';
 
 
 export const routes : Routes = [
@@ -116,6 +118,9 @@ export const routes : Routes = [
     { path : 'patrimonioEvolucaoMensal' , component : PatrimonioEvolucaoMensalComponent },
 
     { path : 'quadroComparaStop/:target/:tipo' , component : QuadroComparaStopComponent },
+    { path : 'quadroComparaStopGeral/:tipo' , component: QuadroComparaStopGeralComponent },
+
+    { path : 'cotacaoIntradayResultadoAcao' , component: CotacaoIntradayResultadoAcaoComponent },
 
     { path: '',  component: HomeComponent  }
     //{ path: '',          redirectTo: 'home', pathMatch: 'full' }

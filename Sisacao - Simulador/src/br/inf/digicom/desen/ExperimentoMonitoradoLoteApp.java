@@ -11,12 +11,13 @@ import br.com.digicom.sisacao.modelo.DiaPregao;
 import br.com.digicom.sisacao.modelo.ExecucaoSimulacao;
 import br.com.digicom.sisacao.repositorio.RepositorioDiaPregao;
 import br.com.digicom.sisacao.repositorio.RepositorioExecucaoSimulacao;
+import br.inf.digicom.Constantes;
 import br.inf.digicom.TempoSleep;
 import br.inf.digicom.monitor.ExperimentoMonitoradoFacade;
 
 public class ExperimentoMonitoradoLoteApp {
 
-	static RestAdapter adapter = new RestAdapter(Loopback.URL_SISACAO);
+	static RestAdapter adapter = new RestAdapter(Constantes.UrlLoopback);
 	static RepositorioExecucaoSimulacao repExecucaoSimulacao = adapter
 			.createRepository(RepositorioExecucaoSimulacao.class);
 	static RepositorioDiaPregao repDiaPregao = adapter.createRepository(RepositorioDiaPregao.class);

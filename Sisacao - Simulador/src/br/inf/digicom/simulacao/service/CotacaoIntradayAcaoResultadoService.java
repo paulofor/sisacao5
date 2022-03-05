@@ -8,11 +8,12 @@ import com.strongloop.android.loopback.callbacks.VoidCallback;
 import br.com.digicom.sisacao.app.Loopback;
 import br.com.digicom.sisacao.modelo.CotacaoIntradayAcaoResultado;
 import br.com.digicom.sisacao.repositorio.RepositorioAcaoBase.CotacaoIntradayAcaoResultadoRepository;
+import br.inf.digicom.Constantes;
 
 public class CotacaoIntradayAcaoResultadoService {
 
 	
-	RestAdapter adapter = new RestAdapter(Loopback.URL_SISACAO); 
+	RestAdapter adapter = new RestAdapter(Constantes.UrlLoopback); 
 	CotacaoIntradayAcaoResultadoRepository rep = adapter.createRepository(CotacaoIntradayAcaoResultadoRepository.class);
 	
 	private boolean atualizaTargetStopDiaOk = false;

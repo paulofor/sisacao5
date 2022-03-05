@@ -18,6 +18,7 @@ public class GeraDataset {
 	private ProcuraPontoSaida procuraPontoSaida = null;
 	private DadosTreino dadosTreino = null;
 	private EnviaDados enviaDados = null;
+	private String ticker = null;
 	
 	public void setDatasetComum(DatasetComum valor) {
 		this.comum = valor;
@@ -25,12 +26,13 @@ public class GeraDataset {
 
 	public void executa() {
 		this.dias = this.comum.getListaPregao();
+		this.ticker = this.comum.getTicker();
 		this.regraProjecao = this.comum.getRegraProjecao();
 		procuraPontoSaida = new ProcuraPontoSaida(this.regraProjecao);
-		processaDias();
 		this.dadosTreino = new DadosTreino();
 		this.dadosTreino.setQuantidadeDia(this.comum.getQuantidadeDias());
 		this.enviaDados = new EnviaDados();
+		processaDias();
 	}
 	
 	private void processaDias() {
@@ -46,11 +48,12 @@ public class GeraDataset {
 				if (valorEntrada >= cotacaoSeguinte.getMinimo() && valorEntrada <= cotacaoSeguinte.getMaximo()) {
 					int diaReferencia = indDia+2;
 					int result = this.procuraPontoSaida.procuraValor(dias,diaReferencia,0,valorEntrada);
-					dadosTreino.calcula(dias, indDia, result);
+					dadosTreino.calcula(dias, indDia, result, this.procuraPontoSaida);
 				} else {
-					dadosTreino.calcula(dias, indDia, 0);
+					dadosTreino.calcula(dias, indDia,  this.procuraPontoSaida);
 				}
 			} 
+			this.enviaDados.enviaDia(ticker, regraProjecao, dadosTreino);
 		}
 	}
 	

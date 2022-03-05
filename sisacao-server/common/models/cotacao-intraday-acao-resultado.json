@@ -132,6 +132,37 @@
         }
       ]
     },
+    "DataInicialTickerRegra": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "idRegra",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "cotacao",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/dataInicialTickerRegra",
+          "verb": "get"
+        }
+      ]
+    },
     "GravaVaziaComAnterior": {
       "accepts": [
         {

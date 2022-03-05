@@ -135,6 +135,37 @@
         }
       ]
     },
+    "TotaisPorParametroRegra": {
+      "accepts": [
+        {
+          "arg": "idRegraSimulacao",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "idPeriodo",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/totaisPorParametroRegra",
+          "verb": "get"
+        }
+      ]
+    },
     "ObtemMelhoresPontoEntradaPorTikcer": {
       "accepts": [
         {

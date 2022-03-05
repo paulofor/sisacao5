@@ -198,7 +198,7 @@ module.exports = function(Diapregao) {
             'order' : 'diaNum',
             'where' : { and : [{'diaNum' : { 'gte' : dataNumInicio }}, {'diaNum': {'lte' : diaNum}} ]}
         }
-        console.log('filtro:' , filtro);
+        //console.log('filtro:' , filtro);
         Diapregao.find(filtro,callback);
     };
   

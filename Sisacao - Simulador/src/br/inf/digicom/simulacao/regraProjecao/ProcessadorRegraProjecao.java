@@ -57,9 +57,14 @@ public class ProcessadorRegraProjecao {
 		List<CotacaoIntradayAcaoResultadoValor> listaValor = new ArrayList();
 		for (int indDia=0;indDia<dias.size();indDia++) {
 			DiaPregao dia = dias.get(indDia);
-
+			//System.out.println("Dia:" + dia.getDiaNum());
+			//if (dia.getDiaNum()==20210514) {
+			//	System.out.println("Chegou");
+			//}
 			for (int indHora=0;indHora<dia.getCotacaoIntradayAcaoResultados().size();indHora++) {
 				CotacaoIntradayAcaoResultado cotacao = dia.getCotacaoIntradayAcaoResultados().get(indHora);
+				//System.out.println("Hora:" + cotacao.getDataHora());
+				//System.out.println("Valor: " + cotacao.getCotacaoIntradayAcaoResultadoValors().size());
 				if (cotacao.getCotacaoIntradayAcaoResultadoValors().size()>0) {
 					//System.out.println("Pulou " + cotacao);
 					continue;
@@ -70,6 +75,10 @@ public class ProcessadorRegraProjecao {
 				valor.setTicker(cotacao.getTicker());
 				valor.setRegraProjecaoId(this.regraProjecao.getId());
 				valor.setDiaHoraNumTicker(cotacao.getDiaNum() + cotacao.getHora() + cotacao.getTicker());
+				// AAAAMM
+				// 012345
+				String anoMes = cotacao.getDiaNum().toString().substring(0,6);
+				valor.setAnoMesNum(Integer.parseInt(anoMes));
 				if (cotacao.getValor()==null) break;
 				double valorBaixo = cotacao.getValor() * (1-percentualBaixo);
 				double valorAlto = cotacao.getValor() * (1+percentualAlto);
@@ -105,7 +114,7 @@ public class ProcessadorRegraProjecao {
 		this.insere.setLista(listaValor);
 		this.insere.executa();
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -125,6 +134,7 @@ public class ProcessadorRegraProjecao {
 				diario = dias.get(indDia).getCotacaoDiarioAcaos().get(0);
 				//System.out.println(diario + " - " + this.contaDia + " dias.");
 				if (diario==null) {
+					
 					saida = null;
 					//System.out.println("Saiu, sem diario");
 					break;
@@ -145,6 +155,11 @@ public class ProcessadorRegraProjecao {
 					break;
 				} 
 			} else {
+				if (dia.getDiaNum()==20210610) {
+					System.out.println("*** Pulou 20210610");
+					continue;
+				}
+				System.out.println("Dia sem cotacao diario: " + dia.getDiaNum());
 				saida = null;
 				//System.out.println("Saiu, acabou diario");
 				break;

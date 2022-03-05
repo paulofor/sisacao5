@@ -6,11 +6,12 @@ import com.strongloop.android.loopback.callbacks.ObjectCallback;
 import br.com.digicom.sisacao.app.Loopback;
 import br.com.digicom.sisacao.modelo.DiaPregao;
 import br.com.digicom.sisacao.repositorio.RepositorioDiaPregao;
+import br.inf.digicom.Constantes;
 import br.inf.digicom.monitor.ExperimentoMonitoradoFacade;
 
 public class ExperimentoMonitoradoApp {
 
-	static RestAdapter adapter = new RestAdapter(Loopback.URL_SISACAO); 
+	static RestAdapter adapter = new RestAdapter(Constantes.UrlLoopback); 
 	static RepositorioDiaPregao repExecucaoSimulacao = adapter.createRepository(RepositorioDiaPregao.class);
 	
 	public static void main(String[] args) {

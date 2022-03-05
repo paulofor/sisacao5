@@ -11,6 +11,7 @@ import br.com.digicom.sisacao.modelo.ExperimentoSimulacao;
 import br.com.digicom.sisacao.repositorio.RepositorioDiaPregao;
 import br.com.digicom.sisacao.repositorio.RepositorioExecucaoSimulacao;
 import br.com.digicom.sisacao.repositorio.RepositorioExecucaoSimulacaoValidacao;
+import br.inf.digicom.Constantes;
 import br.inf.digicom.TempoSleep;
 import br.inf.digicom.simulacao.IRegraPontoEntrada;
 import br.inf.digicom.simulacao.trade.ExecucaoPontoEntrada;
@@ -18,7 +19,7 @@ import br.inf.digicom.simulacao.trade.Trade;
 
 public class SerieCotacaoIntradayFacade {
 	
-	RestAdapter adapter = new RestAdapter(Loopback.URL_SISACAO); 
+	RestAdapter adapter = new RestAdapter(Constantes.UrlLoopback); 
 	
 	RepositorioDiaPregao repDiaPregao = adapter.createRepository(RepositorioDiaPregao.class);
 	RepositorioExecucaoSimulacao repExecucaoSimulacao = adapter.createRepository(RepositorioExecucaoSimulacao.class);
