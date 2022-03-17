@@ -258,5 +258,9 @@
   "RegraProjecaoTotalMes": {
     "dataSource": "mysqlKingDS2",
     "public": true
+  },
+  "PontoEntradaTrade": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
   }
 }

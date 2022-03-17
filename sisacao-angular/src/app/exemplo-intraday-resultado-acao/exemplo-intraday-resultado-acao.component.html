@@ -1,0 +1,51 @@
+
+<div class="main-content" >
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            
+            <form (ngSubmit)="onSubmit()">
+
+              <mat-form-field class="example-full-width">
+                <input matInput maxlength="10" [(ngModel)]="ticker" placeholder="Ticker" [ngModelOptions]="{standalone: true}"/>
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <input matInput maxlength="10" [(ngModel)]="data" placeholder="Data (Num)" [ngModelOptions]="{standalone: true}"/>
+              </mat-form-field>
+              <button mat-raised-button>OK</button>
+            </form>
+            
+          </div>
+          <div class="content" *ngIf="listaBase && listaValor && diaPrevisao">
+            <p>Data Previsão: {{exemplo.diaNumPrevisao}}</p>
+            <p>Data Inicio Bloco: {{exemplo.diaNumInicio}}</p>
+            <p>Y: {{exemplo.campoY}}</p>
+            <p>{{diaPrevisao.diaNum}}: Min: {{diaPrevisao.minimo}} - Max: {{diaPrevisao.maximo}} 
+              --> Entrada: {{exemplo.valorEntrada}} , Ref: {{exemplo.valorReferencia}} </p>
+          </div>
+          <div class="content table-responsive table-full-width">
+            <table *ngIf="listaBase && listaValor" class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th width="15%">Hora</th>
+                  <th width="25%">Cotação</th>
+                  <th width="25%">Valor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listaBase; let i=index">
+                  <td>{{item.dataHora |  date : 'dd/MM/yyyy HH:mm' : 'UTC'}}</td>
+                  <td>{{item.valor | number: '1.2-2'}}</td>
+                  <td>{{getValor(i)}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

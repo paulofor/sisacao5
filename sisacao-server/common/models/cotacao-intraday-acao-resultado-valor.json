@@ -52,8 +52,14 @@
     "valorInferior": {
       "type": "number"
     },
-    "anoMesNum" : {
+    "anoMesNum": {
       "type": "number"
+    },
+    "lucro" : {
+      "type" : "number"
+    },
+    "prejuizo" : {
+      "type" : "number"
     }
   },
   "validations": [],
@@ -230,6 +236,49 @@
       "http": [
         {
           "path": "/obtemDatasPorGrupoComAtraso",
+          "verb": "get"
+        }
+      ]
+    },
+    "ObtemDatasPorDataGrupoLimite": {
+      "accepts": [
+        {
+          "arg": "diaInicioNum",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "diaFinalNum",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "grupoAcaoId",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "limiteDiaRegra",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemDatasPorDataGrupoLimite",
           "verb": "get"
         }
       ]

@@ -32,6 +32,8 @@ module.exports = function(Cotacaointradayacaoresultadovalor) {
         let conta = 0;
         lista.forEach((item) => {
             item.dataHoraInsercao = new Date();
+            item.lucro = (item.resultado==1?1:0);
+            item.prejuizo = (item.resultado==-1?1:0);
             Cotacaointradayacaoresultadovalor.create(item, (err,result) => {
                 //console.log('Err:' , err);
                 conta++;
@@ -212,4 +214,30 @@ module.exports = function(Cotacaointradayacaoresultadovalor) {
         })
     }
 
+
+    Cotacaointradayacaoresultadovalor.ObtemDatasPorDataGrupoLimite = function(diaNumInicial,diaNumFinal,grupoAcaoId,limiteDiaRegra,callback) {
+        let sql = "select  " +
+            " CotacaoIntradayAcaoResultadoValor.anoMesNum,  " +
+            " CotacaoIntradayAcaoResultadoValor.ticker,  " +
+            " RegraProjecao.codigoRegraProjecao, " +
+            " RegraProjecao.target,  " +
+            " RegraProjecao.stop,  " +
+            " sum(lucro) as totalLucro,  " +
+            " sum(prejuizo) as totalPrejuizo,  " +
+            " avg(dias) as mediaDias  " +
+            " from CotacaoIntradayAcaoResultadoValor  " +
+            " inner join RegraProjecao on RegraProjecao.id = CotacaoIntradayAcaoResultadoValor.regraProjecaoId  " +
+            " inner join RelGrupoAcao on RelGrupoAcao.ticker = CotacaoIntradayAcaoResultadoValor.ticker  " +
+            " where RegraProjecao.diaLimite = " + limiteDiaRegra + " and RelGrupoAcao.grupoAcaoId = " + grupoAcaoId + 
+            " and CotacaoIntradayAcaoResultadoValor.diaNum >= " + diaNumInicial + " and " +
+            " CotacaoIntradayAcaoResultadoValor.diaNum <= " + diaNumFinal +
+            " group by   " +
+            " CotacaoIntradayAcaoResultadoValor.anoMesNum,  " +
+            " CotacaoIntradayAcaoResultadoValor.ticker,  " +
+            " RegraProjecao.codigoRegraProjecao, " +
+            " RegraProjecao.target,  " +
+            " RegraProjecao.stop  ";
+        let ds = Cotacaointradayacaoresultadovalor.dataSource;
+        ds.connector.query(sql,callback);
+    }
 };

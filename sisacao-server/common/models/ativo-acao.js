@@ -200,7 +200,28 @@ module.exports = function (Ativoacao) {
         ds.connector.query(sql,callback);
     };
   
-
+    Ativoacao.SimulacaoComMonitor = function(idPeriodo, callback) {
+        let filtro = {
+            'include' : [
+                        {   'relation' : 'execucaoSimulacaos' , 
+                            'scope' : {
+                                'where' : { and : [
+                                    {'periodoExperimentoId' : idPeriodo},
+                                    {'monitorar' : 1}
+                                ]}
+                            }
+                        },
+                    ]
+        }
+        Ativoacao.find(filtro,(err,result) => {
+            let lista = result.filter(function (item)  {
+                let json = JSON.stringify(item);
+                let tam = JSON.parse(json).execucaoSimulacaos.length
+                return (tam > 0);
+            })
+            callback(err,lista);
+        });
+    }
 
     /**
      * 
@@ -268,6 +289,9 @@ module.exports = function (Ativoacao) {
         app.models.ExecucaoSimulacao.CalculaMaximoMedioGeral((err,result) => {
 
         })
+        app.models.TradeReal.AtualizaLucroPrejuizo((err,result) => {
+            
+        });
         //app.models.ExperimentoSimulacao.ProcessaPermiteEdicaoExperimento((err,result) => {
         //})
 

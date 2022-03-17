@@ -56,5 +56,6 @@ export * from './CotacaoIntradayFoxbit';
 export * from './DatasetAcao';
 export * from './ExemploTreinoAcao';
 export * from './RegraProjecaoTotalMes';
+export * from './PontoEntradaTrade';
 export * from './SDKModels';
 export * from './logger.service';

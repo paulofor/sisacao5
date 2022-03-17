@@ -170,4 +170,44 @@ module.exports = function(Tradereal) {
             callback(err, result[0]);
         }) 
     }
+
+    Tradereal.ResultadoPorMes= function(meses, callback) {
+        let sql = " select distinct ano, mes, " +
+            " ( " +
+            " select coalesce(sum(lucroPrejuizo),0) " +
+            " from TradeReal " +
+            " where year(dataSaida) = ano and month(dataSaida) = mes " +
+            " ) as lucroPrejuizo " +
+            " from DiaPregao " +
+            " where diaNum >= 20210101 " +
+            " and data < now() " +
+            " order by ano desc, mes desc " +
+            " limit " + meses;
+        let ds = Tradereal.dataSource;
+        //console.log(sql);
+        ds.connector.query(sql, (err,result) => {
+            callback(err, result);
+        }) 
+    }
+
+    Tradereal.AtualizaLucroPrejuizo = function(callback) {
+        let sql = "update TradeReal " +
+            " set lucroPrejuizo = ((precoEntrada - precoSaida) * quantidade ) * posicaoOperacao " +
+            " where lucroPrejuizo is null " +
+            " and posicaoAtual = 0 ";
+        let ds = Tradereal.dataSource;
+        ds.connector.query(sql,callback);
+        
+    }
+
+
+    Tradereal.observe('before save', function updateInicioColeta(ctx, next) {
+        let sqlPosicaoOpercao
+        if (ctx.instance) {
+           ctx.instance.posicaoOpercao = (ctx.instance.tipo=='V'?-1:1);
+        } else {
+            ctx.data.posicaoOpercao = (ctx.data.tipo=='V'?-1:1);
+        }
+        next();
+      })
 };

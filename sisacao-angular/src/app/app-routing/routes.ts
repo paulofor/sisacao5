@@ -50,6 +50,8 @@ import { PatrimonioEvolucaoMensalComponent } from '../patrimonio-evolucao-mensal
 import { QuadroComparaStopComponent } from '../quadro-compara-stop/quadro-compara-stop.component';
 import { QuadroComparaStopGeralComponent } from '../quadro-compara-stop-geral/quadro-compara-stop-geral.component';
 import { CotacaoIntradayResultadoAcaoComponent } from '../cotacao-intraday-resultado-acao/cotacao-intraday-resultado-acao.component';
+import { ExemploIntradayResultadoAcaoComponent } from '../exemplo-intraday-resultado-acao/exemplo-intraday-resultado-acao.component';
+import { ResumoTradeRealComponent } from '../resumo-trade-real/resumo-trade-real.component';
 
 
 export const routes : Routes = [
@@ -118,9 +120,12 @@ export const routes : Routes = [
     { path : 'patrimonioEvolucaoMensal' , component : PatrimonioEvolucaoMensalComponent },
 
     { path : 'quadroComparaStop/:target/:tipo' , component : QuadroComparaStopComponent },
-    { path : 'quadroComparaStopGeral/:tipo' , component: QuadroComparaStopGeralComponent },
+    { path : 'quadroComparaStopGeral/:tipo' , component: QuadroComparaStopComponent },
 
     { path : 'cotacaoIntradayResultadoAcao' , component: CotacaoIntradayResultadoAcaoComponent },
+    { path : 'exemploIntradayResultadoAcao' , component: ExemploIntradayResultadoAcaoComponent },
+
+    { path : 'resumoTradeReal' , component: ResumoTradeRealComponent },
 
     { path: '',  component: HomeComponent  }
     //{ path: '',          redirectTo: 'home', pathMatch: 'full' }

@@ -123,6 +123,7 @@ public class RegraProjecao_ObtemProcessando extends ExecutorRegraProjecao {
 							processador.setTicker(acao);
 							processador.setRegraProjecao(regra);
 							processador.executa();
+							System.out.println("Memoria Atual:" + ((Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())/1000000));
 						}
 						concluido = true;
 					}

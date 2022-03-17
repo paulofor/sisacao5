@@ -14,7 +14,8 @@ public class ExemploTreinoAcao extends Model{
 	private Integer diaNumInicio;
 	private Integer diaNumPrevisao;
 	private Integer regraProjecaoId;
-	
+	private Double valorEntrada;
+	private Double valorReferencia;
 	
 	
 	public JSONObject getJSON() {
@@ -26,6 +27,8 @@ public class ExemploTreinoAcao extends Model{
 			obj.put("diaNumInicio", diaNumInicio);
 			obj.put("diaNumPrevisao", diaNumPrevisao);
 			obj.put("regraProjecaoId", regraProjecaoId);
+			obj.put("valorEntrada", valorEntrada);
+			obj.put("valorReferencia", valorReferencia);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -76,6 +79,17 @@ public class ExemploTreinoAcao extends Model{
 	}
 	public Integer getRegraProjecaoId() {
 		return this.regraProjecaoId;
+	}
+
+
+	public void setValorEntrada(double valorEntrada) {
+		this.valorEntrada = valorEntrada;
+	}
+
+
+	public void setValorReferencia(double valorReferencia) {
+		this.valorReferencia = valorReferencia;
+		
 	}
 	
 	

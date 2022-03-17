@@ -34,11 +34,11 @@
     "mercadoBitcoin": {
       "type": "number"
     },
-    "acompanhaFoxbit" : {
+    "acompanhaFoxbit": {
       "type": "number"
     },
-    "acompanhaMercadoBitcoin" : {
-      "type" : "number"
+    "acompanhaMercadoBitcoin": {
+      "type": "number"
     }
   },
   "validations": [],

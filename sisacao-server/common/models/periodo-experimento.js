@@ -52,22 +52,23 @@ module.exports = function(Periodoexperimento) {
         let sqlTicker = "select distinct ticker from ExecucaoSimulacao where resultado >= " + periodo.minimoPontoValidacao +
           " and periodoExperimentoId = " + idPeriodo;
         ds.connector.query(sqlTicker, (err3,result3) => {
-          let conta = 0
-          for (let i=0; i<result3.length; i++) {
-            let sqlMelhores = "update ExecucaoSimulacao set monitorar = 1 " +
-              " where id in (select id from ExecucaoSimulacao where idPeridodoExperimento = " + idPeriodo + " and " +
-              " ticker = '" + result3[i].ticker + "' order by result desc limit " + limitePorTicker + " ) ";
+          result3.forEach((itemAcao) => {
+            var sqlMelhores = "select id from ExecucaoSimulacao where periodoExperimentoId = " + idPeriodo + " and " +
+              " ticker = '" + itemAcao.ticker + "' order by resultado desc limit " + limitePorTicker;
+            //console.log('sqlMelhores:' , sqlMelhores);
             ds.connector.query(sqlMelhores, (err4,result4) => {
-              console.log(result3[i].ticker);
-              console.log('Err' , err4);
-              if (++conta==result3.length) {
-                callback(null,{'result' : 'ok'})
-              }
+              result4.forEach((idUpdate) => {
+                var sqlUpdate = "update ExecucaoSimulacao set monitorar = 1 where id = " + idUpdate.id;
+                //console.log('sqlUpdate:' , sqlUpdate);
+                ds.connector.query(sqlUpdate, (err5,result5) => {
+                  //console.log('err5' , err5);
+                })
+              })
             })
-          }
+          })
         })
-
       })
+      callback(null,{'result' : 'ok'})
     })
   }
 };

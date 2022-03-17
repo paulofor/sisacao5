@@ -80,6 +80,9 @@
     },
     "tipo": {
       "type": "string"
+    },
+    "posicaoOperacao": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -221,6 +224,49 @@
         {
           "path": "/riscoAtual",
           "verb": "get"
+        }
+      ]
+    },
+    "ResultadoPorMes": {
+      "accepts": [
+        {
+          "arg": "meses",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/resultadoPorMes",
+          "verb": "get"
+        }
+      ]
+    },
+    "AtualizaLucroPrejuizo": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaLucroPrejuizo",
+          "verb": "post"
         }
       ]
     }

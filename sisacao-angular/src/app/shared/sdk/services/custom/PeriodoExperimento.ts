@@ -306,6 +306,39 @@ export class PeriodoExperimentoApi extends BaseLoopBackApi {
          * (The remote method definition does not provide any description.)
          * </em>
    *
+   * @param {object} data Request data.
+   *
+   *  - `idPeriodo` – `{number}` - 
+   *
+   *  - `limitePorTicker` – `{number}` - 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `PeriodoExperimento` object.)
+   * </em>
+   */
+  public LigaMonitoradoPeriodo(idPeriodo: any = {}, limitePorTicker: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/PeriodoExperimentos/ligaMonitoradoPeriodo";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof idPeriodo !== 'undefined' && idPeriodo !== null) _urlParams.idPeriodo = idPeriodo;
+    if (typeof limitePorTicker !== 'undefined' && limitePorTicker !== null) _urlParams.limitePorTicker = limitePorTicker;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
    * @param {number} idExperimento 
    *
    * @returns {object} An empty reference that will be

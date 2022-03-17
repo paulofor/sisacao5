@@ -7,6 +7,9 @@ export interface ExemploTreinoAcaoInterface {
   "campoY"?: number;
   "diaNumInicio"?: number;
   "diaNumPrevisao"?: number;
+  "regraProjecaoId"?: number;
+  "valorEntrada"?: number;
+  "valorReferencia"?: number;
 }
 
 export class ExemploTreinoAcao implements ExemploTreinoAcaoInterface {
@@ -15,6 +18,9 @@ export class ExemploTreinoAcao implements ExemploTreinoAcaoInterface {
   "campoY": number;
   "diaNumInicio": number;
   "diaNumPrevisao": number;
+  "regraProjecaoId": number;
+  "valorEntrada": number;
+  "valorReferencia": number;
   constructor(data?: ExemploTreinoAcaoInterface) {
     Object.assign(this, data);
   }
@@ -66,6 +72,18 @@ export class ExemploTreinoAcao implements ExemploTreinoAcaoInterface {
         },
         "diaNumPrevisao": {
           name: 'diaNumPrevisao',
+          type: 'number'
+        },
+        "regraProjecaoId": {
+          name: 'regraProjecaoId',
+          type: 'number'
+        },
+        "valorEntrada": {
+          name: 'valorEntrada',
+          type: 'number'
+        },
+        "valorReferencia": {
+          name: 'valorReferencia',
           type: 'number'
         },
       },

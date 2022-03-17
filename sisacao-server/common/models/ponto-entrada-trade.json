@@ -1,0 +1,32 @@
+{
+  "name": "PontoEntradaTrade",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ticker": {
+      "type": "string"
+    },
+    "diaNum": {
+      "type": "number"
+    },
+    "valorLimite" : {
+      "type" : "number"
+    },
+    "dataHoraGeracao" : {
+      "type" : "string"
+    },
+    "executado" : {
+      "type" : "number"
+    },
+    "tipo" : {
+      "type" : "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

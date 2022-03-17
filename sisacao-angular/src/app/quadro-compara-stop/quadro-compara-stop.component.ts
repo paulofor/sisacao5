@@ -14,13 +14,17 @@ export class QuadroComparaStopComponent  extends BaseListComponent {
   target = 0.15;
   tipo = 'C';
 
+  exibeLoading : boolean = false;
+
   constructor(protected dialog: MatDialog, protected srv:RegraProjecaoApi, private router: ActivatedRoute) { 
     super(dialog,srv);
   }
 
   atualiza() {
+    this.exibeLoading = true;
     this.srv.AtualizaDadosRegraProjecao()
       .subscribe((result) => {
+        this.exibeLoading = false;
         this.carregaTela();
       })
   }
@@ -33,16 +37,16 @@ export class QuadroComparaStopComponent  extends BaseListComponent {
   }
  
   saldo(item,posicao) {
-    let lucro = item.regraProjecaoTotalMes[posicao].quantidadeLucro * (1+item.target);
-    let prejuizo = item.regraProjecaoTotalMes[posicao].quantidadePrejuizo * (1-item.stop)
+    let lucro = item.regraProjecaoTotalMes[posicao].quantidadeLucro * (item.target);
+    let prejuizo = item.regraProjecaoTotalMes[posicao].quantidadePrejuizo * (item.stop);
     return (lucro-prejuizo).toFixed(0);
   }
 
 
   getFiltro() {
     return {
-      'where' : { 'and' : [{'target' : this.target},{'tipoCompraVenda' : this.tipo }] },
-      'order' : 'stop',
+      'where' : { 'and' : [{'diaLimite' : 260},{'tipoCompraVenda' : this.tipo }] },
+      'order' : ['stop','target'],
       'include' : { 
         'relation' : 'regraProjecaoTotalMes' , 
         'scope' : {

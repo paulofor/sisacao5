@@ -29,6 +29,7 @@ public class CotacaoIntradayAcaoResultadoValor extends Model{
 	private Double valorInferior;
 	private Integer anoMesNum;
 	
+	
 	public JSONObject getJSON() {
 		JSONObject saida = new JSONObject();
 		try {

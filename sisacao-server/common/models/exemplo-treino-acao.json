@@ -23,9 +23,15 @@
       "type": "number",
       "id": true
     },
-    "regraProjecaoId" : {
+    "regraProjecaoId": {
       "type": "number",
       "id": true
+    },
+    "valorEntrada" : {
+      "type" : "number"
+    },
+    "valorReferencia" : {
+      "type" : "number"
     }
   },
   "validations": [],
@@ -35,10 +41,10 @@
     "InsereExemplo": {
       "accepts": [
         {
-          "arg" : "exemplo",
-          "type" : "object" ,
-          "required" : true,
-          "description" : ""
+          "arg": "exemplo",
+          "type": "object",
+          "required": true,
+          "description": ""
         }
       ],
       "returns": [

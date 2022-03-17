@@ -274,6 +274,43 @@ export class CotacaoIntradayAcaoResultadoValorApi extends BaseLoopBackApi {
   }
 
   /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {number} diaInicioNum 
+   *
+   * @param {number} diaFinalNum 
+   *
+   * @param {number} grupoAcaoId 
+   *
+   * @param {number} limiteDiaRegra 
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `CotacaoIntradayAcaoResultadoValor` object.)
+   * </em>
+   */
+  public ObtemDatasPorDataGrupoLimite(diaInicioNum: any, diaFinalNum: any, grupoAcaoId: any, limiteDiaRegra: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/CotacaoIntradayAcaoResultadoValors/obtemDatasPorDataGrupoLimite";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof diaInicioNum !== 'undefined' && diaInicioNum !== null) _urlParams.diaInicioNum = diaInicioNum;
+    if (typeof diaFinalNum !== 'undefined' && diaFinalNum !== null) _urlParams.diaFinalNum = diaFinalNum;
+    if (typeof grupoAcaoId !== 'undefined' && grupoAcaoId !== null) _urlParams.grupoAcaoId = grupoAcaoId;
+    if (typeof limiteDiaRegra !== 'undefined' && limiteDiaRegra !== null) _urlParams.limiteDiaRegra = limiteDiaRegra;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
    * The name of the model represented by this $resource,
    * i.e. `CotacaoIntradayAcaoResultadoValor`.
    */

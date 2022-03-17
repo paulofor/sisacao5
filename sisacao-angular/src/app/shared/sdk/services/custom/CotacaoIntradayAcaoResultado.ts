@@ -401,6 +401,37 @@ export class CotacaoIntradayAcaoResultadoApi extends BaseLoopBackApi {
          * (The remote method definition does not provide any description.)
          * </em>
    *
+   * @param {string} ticker 
+   *
+   * @param {number} idRegra 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `CotacaoIntradayAcaoResultado` object.)
+   * </em>
+   */
+  public DataInicialTickerRegra(ticker: any = {}, idRegra: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/CotacaoIntradayAcaoResultados/dataInicialTickerRegra";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof ticker !== 'undefined' && ticker !== null) _urlParams.ticker = ticker;
+    if (typeof idRegra !== 'undefined' && idRegra !== null) _urlParams.idRegra = idRegra;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
    * @param {object} data Request data.
    *
    *  - `ticker` – `{string}` - 

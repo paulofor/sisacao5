@@ -336,6 +336,31 @@
         }
       ]
     },
+    "SimulacaoComMonitor": {
+      "accepts": [
+        {
+          "arg": "idPeriodo",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/simulacaoComMonitor",
+          "verb": "get"
+        }
+      ]
+    },
     "ListaPorNomeGrupo": {
       "accepts": [
         {

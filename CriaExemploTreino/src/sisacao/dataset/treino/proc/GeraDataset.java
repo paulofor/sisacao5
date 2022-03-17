@@ -53,7 +53,7 @@ public class GeraDataset {
 					dadosTreino.calcula(dias, indDia,  this.procuraPontoSaida);
 				}
 			} 
-			this.enviaDados.enviaDia(ticker, regraProjecao, dadosTreino);
+			this.enviaDados.enviaDia(ticker, regraProjecao, dadosTreino, valorEntrada, cotacaoDia.getValor() );
 		}
 	}
 	

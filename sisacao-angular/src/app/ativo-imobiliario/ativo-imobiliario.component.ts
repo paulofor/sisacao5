@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AtivoImobiliarioApi, AtivoImobiliario } from '../shared/sdk';
+import { AtivoImobiliarioApi, AtivoImobiliario, FundoImobiliario, FundoImobiliarioApi } from '../shared/sdk';
 import { MatDialog } from '@angular/material';
 import { AtivoImobiliarioEditaComponent } from '../ativo-imobiliario-edita/ativo-imobiliario-edita.component';
 
@@ -10,9 +10,9 @@ import { AtivoImobiliarioEditaComponent } from '../ativo-imobiliario-edita/ativo
 })
 export class AtivoImobiliarioComponent implements OnInit {
 
-  lista: AtivoImobiliario[];
+  lista: FundoImobiliario[];
 
-  constructor(private srv: AtivoImobiliarioApi, private dialog : MatDialog) { }
+  constructor(private srv: FundoImobiliarioApi, private dialog : MatDialog) { }
 
   ngOnInit() {
     this.carrega();
@@ -22,7 +22,7 @@ export class AtivoImobiliarioComponent implements OnInit {
     const filtro = { 
     };
     this.srv.find(filtro)
-      .subscribe((resultado: AtivoImobiliario[]) => {
+      .subscribe((resultado: FundoImobiliario[]) => {
         this.lista = resultado;
         console.log('Lista:' , this.lista);
       })

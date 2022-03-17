@@ -169,8 +169,8 @@ module.exports = function(Diapregao) {
     Diapregao.ObtemIntradayResultadoValor = function(ticker, dataNumInicio, idRegraProjecao, callback) {
         var data = new Date();
         var diaComp = (data.getDate()<10?'0' + data.getDate(): '' + data.getDate());
-        var mesComp = (data.getUTCMonth()+1)<10?'0' + (data.getUTCMonth()+1): '' + (data.getUTCMonth()+1);
-        var diaNum = Number(data.getUTCFullYear() + mesComp + diaComp);
+        var mesComp = (data.getMonth()+1)<10?'0' + (data.getMonth()+1): '' + (data.getMonth()+1);
+        var diaNum = Number(data.getFullYear() + mesComp + diaComp) -1;
         let filtro = {
             'include' : 
             [

@@ -1,15 +1,17 @@
 <div class="main-content" *ngIf="listaBase">
       <div class="card">
         <div class="header">
-          <h4 class="title">Target - {{target * 100}} %</h4>
+          <h4 class="title"></h4>
+          <img *ngIf="exibeLoading" src="assets/img/aguardando.gif" width="200" height="60">
           <button mat-raised-button color="primary" (click)="atualiza()">Atualiza</button>
         </div>
         <div class="content table-responsive table-full-width">
           <table class="table table-hover table-striped">
             <thead>
               <tr>
-                <th>Stop</th>
                 <th>Regra</th>
+                <th>Target</th>
+                <th>Stop</th>
                 <th>Dia Mais Antigo</th>
                 <th>Quantidade Ticker</th>
                 <th>{{listaBase[0].regraProjecaoTotalMes[0].anoMesNum}} qtde </th>
@@ -28,22 +30,23 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of listaBase">
-                <td>{{(item.stop * 100) | number: '1.0-0'}}%</td>
                 <td>{{item.codigoRegraProjecao}}</td>
+                <td>{{(item.target * 100) | number: '1.0-0'}}%</td>
+                <td>{{(item.stop * 100) | number: '1.0-0'}}%</td>
                 <td>{{item.diaNumMaisAntigo}}</td>
                 <td>{{(item.quantidadeTicker?item.quantidadeTicker:'')}}</td>
                 <td>{{(item.regraProjecaoTotalMes.length>0?item.regraProjecaoTotalMes[0].quantidade:'')}}</td>
                 <td>{{(item.regraProjecaoTotalMes.length>0?item.regraProjecaoTotalMes[0].quantidadeLucro:'')}}</td>
                 <td>{{(item.regraProjecaoTotalMes.length>0?item.regraProjecaoTotalMes[0].quantidadePrejuizo:'')}}</td>
-                <td>{{(item.regraProjecaoTotalMes.length>0?saldo(item,0):'')}}</td>
+                <td><b>{{(item.regraProjecaoTotalMes.length>0?saldo(item,0):'')}}</b></td>
                 <td>{{(item.regraProjecaoTotalMes.length>0?item.regraProjecaoTotalMes[1].quantidade:'')}}</td>
                 <td>{{(item.regraProjecaoTotalMes.length>0?item.regraProjecaoTotalMes[1].quantidadeLucro:'')}}</td>
                 <td>{{(item.regraProjecaoTotalMes.length>0?item.regraProjecaoTotalMes[1].quantidadePrejuizo:'')}}</td>
-                <td>{{(item.regraProjecaoTotalMes.length>0?saldo(item,1):'')}}</td>
+                <td><b>{{(item.regraProjecaoTotalMes.length>0?saldo(item,1):'')}}</b></td>
                 <td>{{(item.regraProjecaoTotalMes.length>0?item.regraProjecaoTotalMes[2].quantidade:'')}}</td>
                 <td>{{(item.regraProjecaoTotalMes.length>0?item.regraProjecaoTotalMes[2].quantidadeLucro:'')}}</td>
                 <td>{{(item.regraProjecaoTotalMes.length>0?item.regraProjecaoTotalMes[2].quantidadePrejuizo:'')}}</td>
-                <td>{{(item.regraProjecaoTotalMes.length>0?saldo(item,2):'')}}</td>
+                <td><b>{{(item.regraProjecaoTotalMes.length>0?saldo(item,2):'')}}</b></td>
               </tr>
             </tbody>
           </table>

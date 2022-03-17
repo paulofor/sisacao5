@@ -27,7 +27,7 @@ export class CotacaoIntradayResultadoAcaoComponent implements OnInit {
             {'ticker' : this.ticker} , 
             {'diaNum' : {'lte' : this.data }} 
           ] ,
-          'order' : 'dataHora desc',
+          'order' : 'dataHora asc',
           'limit' : 80
         }
     };

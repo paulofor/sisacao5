@@ -57,6 +57,7 @@ import { CotacaoIntradayFoxbit } from '../../models/CotacaoIntradayFoxbit';
 import { DatasetAcao } from '../../models/DatasetAcao';
 import { ExemploTreinoAcao } from '../../models/ExemploTreinoAcao';
 import { RegraProjecaoTotalMes } from '../../models/RegraProjecaoTotalMes';
+import { PontoEntradaTrade } from '../../models/PontoEntradaTrade';
 
 export interface Models { [name: string]: any }
 
@@ -121,6 +122,7 @@ export class SDKModels {
     DatasetAcao: DatasetAcao,
     ExemploTreinoAcao: ExemploTreinoAcao,
     RegraProjecaoTotalMes: RegraProjecaoTotalMes,
+    PontoEntradaTrade: PontoEntradaTrade,
     
   };
 

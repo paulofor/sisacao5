@@ -17,6 +17,8 @@ export interface CotacaoIntradayAcaoResultadoValorInterface {
   "valorSuperior"?: number;
   "valorInferior"?: number;
   "anoMesNum"?: number;
+  "lucro"?: number;
+  "prejuizo"?: number;
 }
 
 export class CotacaoIntradayAcaoResultadoValor implements CotacaoIntradayAcaoResultadoValorInterface {
@@ -35,6 +37,8 @@ export class CotacaoIntradayAcaoResultadoValor implements CotacaoIntradayAcaoRes
   "valorSuperior": number;
   "valorInferior": number;
   "anoMesNum": number;
+  "lucro": number;
+  "prejuizo": number;
   constructor(data?: CotacaoIntradayAcaoResultadoValorInterface) {
     Object.assign(this, data);
   }
@@ -126,6 +130,14 @@ export class CotacaoIntradayAcaoResultadoValor implements CotacaoIntradayAcaoRes
         },
         "anoMesNum": {
           name: 'anoMesNum',
+          type: 'number'
+        },
+        "lucro": {
+          name: 'lucro',
+          type: 'number'
+        },
+        "prejuizo": {
+          name: 'prejuizo',
           type: 'number'
         },
       },

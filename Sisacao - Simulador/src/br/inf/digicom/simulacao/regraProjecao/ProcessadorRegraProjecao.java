@@ -157,6 +157,7 @@ public class ProcessadorRegraProjecao {
 			} else {
 				if (dia.getDiaNum()==20210610) {
 					System.out.println("*** Pulou 20210610");
+					indDia++;
 					continue;
 				}
 				System.out.println("Dia sem cotacao diario: " + dia.getDiaNum());
@@ -166,6 +167,11 @@ public class ProcessadorRegraProjecao {
 			}
 			indDia++;
 		}
+		if ((saida!=null) && (saida==0) && (this.contaDia < this.regraProjecao.getDiaLimite())) {
+			saida = null;
+		}
+			
+		
 		//System.out.println("resultado:" + saida);
 		return saida;
 	}

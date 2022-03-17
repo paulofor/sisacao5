@@ -137,6 +137,9 @@ import { ItemVisualIndiceComponent } from './item-visual-indice/item-visual-indi
 import { QuadroComparaStopGeralComponent } from './quadro-compara-stop-geral/quadro-compara-stop-geral.component';
 import { QuadroComparaStopItemComponent } from './quadro-compara-stop-item/quadro-compara-stop-item.component';
 import { CotacaoIntradayResultadoAcaoComponent } from './cotacao-intraday-resultado-acao/cotacao-intraday-resultado-acao.component';
+import { ImobiliarioGeralComponent } from './imobiliario-geral/imobiliario-geral.component';
+import { ExemploIntradayResultadoAcaoComponent } from './exemplo-intraday-resultado-acao/exemplo-intraday-resultado-acao.component';
+import { ResumoTradeRealComponent } from './resumo-trade-real/resumo-trade-real.component';
 
 //import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
@@ -247,6 +250,9 @@ registerLocaleData(localePt, 'pt-BR');
     QuadroComparaStopGeralComponent,
     QuadroComparaStopItemComponent,
     CotacaoIntradayResultadoAcaoComponent,
+    ImobiliarioGeralComponent,
+    ExemploIntradayResultadoAcaoComponent,
+    ResumoTradeRealComponent,
   ],
   imports: [
     BrowserModule,
