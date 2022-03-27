@@ -10,6 +10,11 @@ export interface ExemploTreinoAcaoInterface {
   "regraProjecaoId"?: number;
   "valorEntrada"?: number;
   "valorReferencia"?: number;
+  "valorSaida"?: number;
+  "limiteSuperior"?: number;
+  "limiteInferior"?: number;
+  "diaNumSaida"?: number;
+  "resultado"?: number;
 }
 
 export class ExemploTreinoAcao implements ExemploTreinoAcaoInterface {
@@ -21,6 +26,11 @@ export class ExemploTreinoAcao implements ExemploTreinoAcaoInterface {
   "regraProjecaoId": number;
   "valorEntrada": number;
   "valorReferencia": number;
+  "valorSaida": number;
+  "limiteSuperior": number;
+  "limiteInferior": number;
+  "diaNumSaida": number;
+  "resultado": number;
   constructor(data?: ExemploTreinoAcaoInterface) {
     Object.assign(this, data);
   }
@@ -84,6 +94,26 @@ export class ExemploTreinoAcao implements ExemploTreinoAcaoInterface {
         },
         "valorReferencia": {
           name: 'valorReferencia',
+          type: 'number'
+        },
+        "valorSaida": {
+          name: 'valorSaida',
+          type: 'number'
+        },
+        "limiteSuperior": {
+          name: 'limiteSuperior',
+          type: 'number'
+        },
+        "limiteInferior": {
+          name: 'limiteInferior',
+          type: 'number'
+        },
+        "diaNumSaida": {
+          name: 'diaNumSaida',
+          type: 'number'
+        },
+        "resultado": {
+          name: 'resultado',
           type: 'number'
         },
       },

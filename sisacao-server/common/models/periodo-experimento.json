@@ -129,6 +129,24 @@
           "verb": "post"
         }
       ]
+    },
+    "ListaComDetalhe": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaComDetalhe",
+          "verb": "get"
+        }
+      ]
     }
   }
 }

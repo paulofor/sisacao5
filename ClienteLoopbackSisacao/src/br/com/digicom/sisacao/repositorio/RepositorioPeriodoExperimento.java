@@ -29,4 +29,6 @@ public class RepositorioPeriodoExperimento  extends ModelRepository<PeriodoExper
         invokeStaticMethod("obtemPeriodoParaExecucao", params,   new JsonObjectParser<PeriodoExperimento>(this, callback));
 	}
 	
+	
+	
 }

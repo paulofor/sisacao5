@@ -16,7 +16,11 @@ public class ExemploTreinoAcao extends Model{
 	private Integer regraProjecaoId;
 	private Double valorEntrada;
 	private Double valorReferencia;
-	
+	private Double limiteSuperior;
+	private Double limiteInferior;
+	private Double valorSaida;
+	private Integer diaNumSaida;
+	private Integer resultado;
 	
 	public JSONObject getJSON() {
 		JSONObject obj = new JSONObject();
@@ -29,6 +33,11 @@ public class ExemploTreinoAcao extends Model{
 			obj.put("regraProjecaoId", regraProjecaoId);
 			obj.put("valorEntrada", valorEntrada);
 			obj.put("valorReferencia", valorReferencia);
+			obj.put("limiteSuperior", limiteSuperior);
+			obj.put("limiteInferior", limiteInferior);
+			obj.put("valorSaida", valorSaida);
+			obj.put("diaNumSaida", diaNumSaida);
+			obj.put("resultado", resultado);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -36,6 +45,66 @@ public class ExemploTreinoAcao extends Model{
 	}
 	
 	
+	public Double getValorEntrada() {
+		return valorEntrada;
+	}
+
+
+	public void setValorEntrada(Double valorEntrada) {
+		this.valorEntrada = valorEntrada;
+	}
+
+
+	public Double getValorReferencia() {
+		return valorReferencia;
+	}
+
+
+	public void setValorReferencia(Double valorReferencia) {
+		this.valorReferencia = valorReferencia;
+	}
+
+
+	public Double getLimiteSuperior() {
+		return limiteSuperior;
+	}
+
+
+	public void setLimiteSuperior(Double limiteSuperior) {
+		this.limiteSuperior = limiteSuperior;
+	}
+
+
+	public Double getLimiteInferior() {
+		return limiteInferior;
+	}
+
+
+	public void setLimiteInferior(Double limiteInferior) {
+		this.limiteInferior = limiteInferior;
+	}
+
+
+	public Double getValorSaida() {
+		return valorSaida;
+	}
+
+
+	public void setValorSaida(Double valorSaida) {
+		this.valorSaida = valorSaida;
+	}
+
+
+	public Integer getDiaNumSaida() {
+		return diaNumSaida;
+	}
+
+
+	public void setDiaNumSaida(Integer diaNumSaida) {
+		this.diaNumSaida = diaNumSaida;
+	}
+
+
 	public String getTicker() {
 		return ticker;
 	}
@@ -91,6 +160,22 @@ public class ExemploTreinoAcao extends Model{
 		this.valorReferencia = valorReferencia;
 		
 	}
+
+
+	public Integer getResultado() {
+		return resultado;
+	}
+
+
+	public void setResultado(Integer resultado) {
+		this.resultado = resultado;
+	}
+
+
+	
+
+
+	
 	
 	
 	

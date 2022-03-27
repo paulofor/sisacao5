@@ -140,6 +140,7 @@ import { CotacaoIntradayResultadoAcaoComponent } from './cotacao-intraday-result
 import { ImobiliarioGeralComponent } from './imobiliario-geral/imobiliario-geral.component';
 import { ExemploIntradayResultadoAcaoComponent } from './exemplo-intraday-resultado-acao/exemplo-intraday-resultado-acao.component';
 import { ResumoTradeRealComponent } from './resumo-trade-real/resumo-trade-real.component';
+import { GraficoTradeMensalComponent } from './grafico-trade-mensal/grafico-trade-mensal.component';
 
 //import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
@@ -253,6 +254,7 @@ registerLocaleData(localePt, 'pt-BR');
     ImobiliarioGeralComponent,
     ExemploIntradayResultadoAcaoComponent,
     ResumoTradeRealComponent,
+    GraficoTradeMensalComponent,
   ],
   imports: [
     BrowserModule,

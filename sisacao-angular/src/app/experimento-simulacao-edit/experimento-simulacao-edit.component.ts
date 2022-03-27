@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import * as moment from 'moment';
 import { BaseEditComponent } from '../base-component/base-edit-component';
 import { ExperimentoSimulacao, ExperimentoSimulacaoApi, GrupoAcao, GrupoAcaoApi, RegraSimulacao, RegraSimulacaoApi } from '../shared/sdk';
 
@@ -42,7 +43,9 @@ export class ExperimentoSimulacaoEditComponent extends BaseEditComponent {
     delete this.item['grupoAcao'];
     delete this.item['regraSimulacao'];
     if (!this.item.dataCriacao) {
-      this.item.dataCriacao = new Date();
+      this.item.dataCriacao = (moment(new Date())).format('YYYY-MM-DD HH:mm:ss')
+    } else {
+      this.item.dataCriacao = (moment(this.item.dataCriacao)).format('YYYY-MM-DD HH:mm:ss')
     }
   }
 

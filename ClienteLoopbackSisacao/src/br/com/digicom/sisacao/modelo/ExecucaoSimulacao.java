@@ -29,6 +29,8 @@ public class ExecucaoSimulacao extends Model{
 	
 	List<Trade> trades = new ArrayList<Trade>();
 	CombinacaoParametro combinacaoParametro = null;
+	RegraSimulacao regraSimulacao = null;
+	ExperimentoSimulacao experimentoSimulacao = null;
 	
 	final int PESO_ZERADAS_PADRAO = 2;
 	final int PESO_ZERADAS_8MESES = 3;
@@ -51,7 +53,26 @@ public class ExecucaoSimulacao extends Model{
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	public ExperimentoSimulacao getExperimentoSimulacao() {
+		return experimentoSimulacao;
+	}
 
+
+	public void setExperimentoSimulacao(Object experimentoSimulacao) {
+		this.experimentoSimulacao = new ExperimentoSimulacao();;
+		BeanUtil.setProperties(this.experimentoSimulacao, (Map<String, ? extends Object>) experimentoSimulacao, true);
+	}
+
+	public RegraSimulacao getRegraSimulacao() {
+		return regraSimulacao;
+	}
+
+
+	public void setRegraSimulacao(Object regraSimulacao) {
+		this.regraSimulacao = new RegraSimulacao();;
+		BeanUtil.setProperties(this.regraSimulacao, (Map<String, ? extends Object>) regraSimulacao, true);
+	}
 
 	public CombinacaoParametro getCombinacaoParametro() {
 		return combinacaoParametro;

@@ -19,6 +19,7 @@
     "password": "Sisacao005%",
     "name": "mysqlKingDS2",
     "user": "lojadigicom35",
-    "connector": "mysql"
+    "connector": "mysql",
+    "connectTimeout": 300000
   }
 }

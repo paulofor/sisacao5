@@ -16,6 +16,9 @@ export class ExemploIntradayResultadoAcaoComponent implements OnInit {
   listaBase:CotacaoIntradayAcaoResultado[];
   diaPrevisao:CotacaoDiarioAcao;
 
+  diaSaida: CotacaoDiarioAcao;
+  limiteSaida : any;
+
   constructor(private srv :ExemploTreinoAcaoApi, 
       private srvCotacao :CotacaoIntradayAcaoResultadoApi, private srvDiario:CotacaoDiarioAcaoApi) { }
 
@@ -25,9 +28,11 @@ export class ExemploIntradayResultadoAcaoComponent implements OnInit {
 
   onSubmit() {
     this.carregaExemplo();
-    this.carregaIntraday();
     this.carregaDiario();
   }
+
+
+
 
   getValor(posicao) {
     if (posicao<=this.listaValor.length)
@@ -52,6 +57,28 @@ export class ExemploIntradayResultadoAcaoComponent implements OnInit {
       })
   }
 
+  carregaDiarioSaida() {
+    let filtro = {
+      'where' : {
+        'and' : [
+          {'ticker' : this.ticker},
+          {'diaNum' : this.exemplo.diaNumSaida}
+        ]
+      }
+    }
+    this.srvDiario.findOne(filtro)
+      .subscribe((result:CotacaoDiarioAcao) => {
+        this.diaSaida = result;
+        console.log('Dia Saída:', this.diaSaida);
+      })
+  }
+  carregaLimiteDiario() {
+    this.srvDiario.LimitesPeriodo(this.ticker,this.exemplo.diaNumPrevisao,this.exemplo.diaNumSaida)
+      .subscribe((result) => {
+        console.log('Limites:' , result);
+        this.limiteSaida = result;
+      })
+  }
 
   carregaExemplo() {
     let filtro = {
@@ -68,6 +95,11 @@ export class ExemploIntradayResultadoAcaoComponent implements OnInit {
         this.exemplo = result;
         this.listaValor = this.exemplo.campoX.split(',');
         console.log('listaValor:' , this.listaValor);
+        this.carregaIntraday();
+        if (this.exemplo.diaNumSaida) {
+          this.carregaDiarioSaida();
+          this.carregaLimiteDiario();
+        }
       })
   }
   carregaIntraday() {
@@ -75,7 +107,7 @@ export class ExemploIntradayResultadoAcaoComponent implements OnInit {
         'where' : {
           'and' : [ 
             {'ticker' : this.ticker} , 
-            {'diaNum' : {'lte' : this.data }} 
+            {'diaNum' : {'gte' : this.exemplo.diaNumInicio }} 
           ] ,
           'order' : 'dataHora asc',
           'limit' : 80

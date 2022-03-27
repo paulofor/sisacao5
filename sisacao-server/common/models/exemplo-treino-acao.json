@@ -32,6 +32,21 @@
     },
     "valorReferencia" : {
       "type" : "number"
+    },
+    "valorSaida" : {
+      "type" : "number"
+    },
+    "limiteSuperior" : {
+      "type" : "number"
+    },
+    "limiteInferior" : {
+      "type" : "number"
+    },
+    "diaNumSaida" : {
+      "type" : "number"
+    },
+    "resultado" : {
+      "type" : "number"
     }
   },
   "validations": [],

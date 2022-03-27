@@ -20,6 +20,18 @@ public class GeraDataset {
 	private EnviaDados enviaDados = null;
 	private String ticker = null;
 	
+	private long diaEntradaNum;
+	
+	
+	
+	public long getDiaEntradaNum() {
+		return diaEntradaNum;
+	}
+
+	public void setDiaEntradaNum(long diaEntradaNum) {
+		this.diaEntradaNum = diaEntradaNum;
+	}
+
 	public void setDatasetComum(DatasetComum valor) {
 		this.comum = valor;
 	}
@@ -36,24 +48,24 @@ public class GeraDataset {
 	}
 	
 	private void processaDias() {
-		int indiceDia = dias.get(0).getCotacaoIntradayAcaoResultados().size() + this.regraProjecao.getIndiceHoraReferenciaDataset();
+		int indiceDia = dias.get(0).getCotacaoIntradayAcaoResultados().size() + this.regraProjecao.getIndiceHoraReferenciaDataset() - 1;
 		for (int indDia=this.comum.getQuantidadeDias();indDia<dias.size();indDia++) {
-			DiaPregao dia = dias.get(indDia);
-			CotacaoIntradayAcaoResultado cotacaoDia = 
-					dia.getCotacaoIntradayAcaoResultados().get(indiceDia);
-			this.valorEntrada = cotacaoDia.getValor() * (1 - this.regraProjecao.getPercentualEntradaDataset());
-			DiaPregao diaSeguinte = getDiaSeguinte(indDia);
-			if (diaSeguinte!=null) {
-				CotacaoDiarioAcao cotacaoSeguinte = diaSeguinte.getCotacaoDiarioAcaos().get(0);
-				if (valorEntrada >= cotacaoSeguinte.getMinimo() && valorEntrada <= cotacaoSeguinte.getMaximo()) {
-					int diaReferencia = indDia+2;
-					int result = this.procuraPontoSaida.procuraValor(dias,diaReferencia,0,valorEntrada);
-					dadosTreino.calcula(dias, indDia, result, this.procuraPontoSaida);
-				} else {
-					dadosTreino.calcula(dias, indDia,  this.procuraPontoSaida);
-				}
-			} 
-			this.enviaDados.enviaDia(ticker, regraProjecao, dadosTreino, valorEntrada, cotacaoDia.getValor() );
+			DiaPregao diaOperacao = dias.get(indDia);
+			DiaPregao diaAnterior = dias.get(indDia-1);
+			CotacaoIntradayAcaoResultado cotacaoDiaAnterior = diaAnterior.getCotacaoIntradayAcaoResultados().get(indiceDia);
+			this.valorEntrada = cotacaoDiaAnterior.getValor() * (1 + this.regraProjecao.getPercentualEntradaDataset()); // Venda
+			CotacaoDiarioAcao cotacaoOperacao = diaOperacao.getCotacaoDiarioAcaos().get(0);
+			if (valorEntrada >= cotacaoOperacao.getMinimo() && valorEntrada <= cotacaoOperacao.getMaximo()) {
+				int diaReferencia = indDia+1;
+				int result = this.procuraPontoSaida.procuraValor(dias,diaReferencia,0,valorEntrada);
+				dadosTreino.calcula(dias, indDia, result, this.procuraPontoSaida);
+				this.enviaDados.enviaDia(ticker, regraProjecao, dadosTreino, procuraPontoSaida,valorEntrada, cotacaoDiaAnterior.getValor() );
+			} else {
+				dadosTreino.calcula(dias, indDia,  this.procuraPontoSaida);
+				this.enviaDados.enviaDia(ticker, regraProjecao, dadosTreino, null,valorEntrada, cotacaoDiaAnterior.getValor() );
+
+			}
+			
 		}
 	}
 	

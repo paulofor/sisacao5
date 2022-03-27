@@ -192,7 +192,7 @@ module.exports = function(Tradereal) {
 
     Tradereal.AtualizaLucroPrejuizo = function(callback) {
         let sql = "update TradeReal " +
-            " set lucroPrejuizo = ((precoEntrada - precoSaida) * quantidade ) * posicaoOperacao " +
+            " set lucroPrejuizo = ((precoSaida - precoEntrada) * quantidade ) * posicaoOperacao " +
             " where lucroPrejuizo is null " +
             " and posicaoAtual = 0 ";
         let ds = Tradereal.dataSource;

@@ -1,5 +1,5 @@
 
-<div class="main-content" >
+<div class="main-content"  >
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
@@ -18,12 +18,21 @@
             </form>
             
           </div>
-          <div class="content" *ngIf="listaBase && listaValor && diaPrevisao">
+          <div class="content" *ngIf="listaBase && listaValor && diaPrevisao && exemplo">
             <p>Data Previsão: {{exemplo.diaNumPrevisao}}</p>
             <p>Data Inicio Bloco: {{exemplo.diaNumInicio}}</p>
             <p>Y: {{exemplo.campoY}}</p>
             <p>{{diaPrevisao.diaNum}}: Min: {{diaPrevisao.minimo}} - Max: {{diaPrevisao.maximo}} 
               --> Entrada: {{exemplo.valorEntrada}} , Ref: {{exemplo.valorReferencia}} </p>
+          </div>
+          <div class="content" *ngIf="limiteSaida && listaBase && listaValor && diaPrevisao && diaSaida && exemplo && exemplo.diaNumSaida">
+            <p>Limites Saída: {{exemplo.limiteInferior}} e {{exemplo.limiteSuperior}}</p>
+            <p>Data Saída: {{exemplo.diaNumSaida}} 
+              --> Abe:{{diaSaida.abertura}} , Min:{{diaSaida.minimo}}, Max:{{diaSaida.maximo}}, Fec:{{diaSaida.fechamento}}</p>
+            <p>Valor Saída: {{exemplo.valorSaida}}
+            --> Limites Período: {{limiteSaida.minimo}} e {{limiteSaida.maximo}}
+            </p>
+            <p>Resultado: {{exemplo.resultado}}</p>
           </div>
           <div class="content table-responsive table-full-width">
             <table *ngIf="listaBase && listaValor" class="table table-hover table-striped">

@@ -3,6 +3,25 @@
 module.exports = function(Periodoexperimento) {
 
 
+
+  Periodoexperimento.ListaComDetalhe = function(callback) {
+    let sql = "SELECT *, " +
+        " (select count(*) from ExecucaoSimulacao where ExecucaoSimulacao.periodoExperimentoId = PeriodoExperimento.id " +
+        " and tipo = 'C' and monitorar=1) as quantidadeCompra, " +
+        " (select count(*) from ExecucaoSimulacao where ExecucaoSimulacao.periodoExperimentoId = PeriodoExperimento.id " +
+        " and tipo = 'V' and monitorar=1) as quantidadeVenda , " +
+        " (select count(distinct ticker) from ExecucaoSimulacao where ExecucaoSimulacao.periodoExperimentoId = PeriodoExperimento.id " +
+        " and tipo = 'C' and monitorar=1) as tickerCompra, " +
+        " (select count(distinct ticker) from ExecucaoSimulacao where ExecucaoSimulacao.periodoExperimentoId = PeriodoExperimento.id " +
+        " and tipo = 'V' and monitorar=1) as tickerVenda " +
+        " FROM PeriodoExperimento " +
+        " order by dataNumFinal desc";
+    let ds = Periodoexperimento.dataSource;
+    ds.connector.query(sql,callback);
+  }
+
+
+
   Periodoexperimento.observe('after save', function updateInicioColeta(ctx, next) {
     Periodoexperimento.CalculaInicioColeta((err,result) => {
       next();

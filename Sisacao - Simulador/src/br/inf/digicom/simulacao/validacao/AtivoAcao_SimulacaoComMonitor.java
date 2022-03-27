@@ -9,28 +9,33 @@ import br.inf.digicom.loopback.DaoBase;
 
 public class AtivoAcao_SimulacaoComMonitor extends DaoBase{
 
-	private Integer idPeriodo;
+
 	
 	
 	@Override
 	protected void executaImpl() {
-		this.repAcao.simulacaoComMonitor(idPeriodo, new ListCallback<AtivoAcao>() {
+		this.repAcao.simulacaoComMonitor(getComum().getPeriodo().getId(), new ListCallback<AtivoAcao>() {
 
 			@Override
 			public void onSuccess(List<AtivoAcao> objects) {
 				for (AtivoAcao acao : objects) {
 					System.out.println("Ticker: " + acao.getTicker());
+					getComum().setAtivoAcao(acao);
+					executaProximo();
+					
 				}
 			}
 
 			@Override
 			public void onError(Throwable t) {
-				// TODO Auto-generated method stub
-				
+				onErrorBase(t);
 			}});
 	}
 
-	public void setIdPeriodo(Integer id) {
-		this.idPeriodo = id;
+	@Override
+	protected DaoBase getProximo() {
+		return new DiaPregao_ObtemIntradayTickerPeriodo();
 	}
+
+
 }

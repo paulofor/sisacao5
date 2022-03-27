@@ -24,11 +24,16 @@ export class PeriodoExperimentoListaComponent  extends BaseListComponent {
     return PeriodoExperimentoEditaComponent;
   }
 
-  getFiltro() {
-    return {
-      'order' : 'dataNumFinal desc'
-    }
-  }
+  carregaTela() {
+    this.srv.ListaComDetalhe()
+    .subscribe((result:any[]) => {
+        console.log('result: ' , result);
+        this.listaBase = result;
+        this.posCarregaLista();
+    })
+ }
+
+  
 
   melhores(item){
     this.router.navigate(['melhoresExecucaoPeriodo' , item.id]);
@@ -40,6 +45,13 @@ export class PeriodoExperimentoListaComponent  extends BaseListComponent {
 
   validacoes(item) {
     this.router.navigate(['melhoresValidacaoPeriodo', item.id])
+  }
+
+  criaMonitorada(item){
+    this.srv.LigaMonitoradoPeriodo(item.id,10)
+      .subscribe((result) => {
+        
+      })
   }
 
 }

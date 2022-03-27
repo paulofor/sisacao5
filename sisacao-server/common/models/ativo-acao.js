@@ -156,7 +156,7 @@ module.exports = function (Ativoacao) {
             'include' : {
                 'relation' : 'execucaoSimulacaos' , 'scope' : {
                         'limit' : qtdeExecucao,
-                        'where' : { 'and' : [{'resultado' : { gt : cortePontos }} , {'periodoExperimentoId' : idPeriodo } ]},
+                        'where' : { 'and' : [{'resultado' : { gte : cortePontos }} , {'periodoExperimentoId' : idPeriodo } ]},
                         'order' : 'resultado desc',
                         'include' : {'relation' : 'combinacaoParametro' , 'scope' : {'include' : 'regraSimulacao'}}
                 }
@@ -207,8 +207,24 @@ module.exports = function (Ativoacao) {
                             'scope' : {
                                 'where' : { and : [
                                     {'periodoExperimentoId' : idPeriodo},
-                                    {'monitorar' : 1}
-                                ]}
+                                    {'monitorar' : 1},
+
+                                ]},
+                                'include' : [
+                                    {
+                                        'relation': 'combinacaoParametro',
+                                        'scope' : {
+                                            'include' : {
+                                                'relation' : 'valorParametros',
+                                                'scope' : {
+                                                    'include' : 'parametroRegra'
+                                                }
+                                            }
+                                        }
+                                    },
+                                    'experimentoSimulacao',
+                                    'regraSimulacao'
+                                ]
                             }
                         },
                     ]

@@ -17,14 +17,18 @@ public class DadosTreino {
 	private DiaPregao diaInicio;
 	private int diaNumSaida;
 	private double valorSaida;
-	
+	private int resultado;
 
 	
 	public String getSaidaX() {
 		return saidaX;
 	}
 	public String getSaidaY() {
-		return saidaY;
+		if (resultado==1) return "1";
+		else return "0";
+	}
+	public Integer getResultado() {
+		return resultado;
 	}
 	private void calcula(List<DiaPregao> dias, int indDia, int result) {
 		// TODO Auto-generated method stub
@@ -43,7 +47,7 @@ public class DadosTreino {
 			}
 		}
 		this.saidaX = this.saidaX.substring(1);
-		this.saidaY = "" + result;
+		this.resultado = result;
 		System.out.println("Calculou aqui");
 	}
 	public void setQuantidadeDia(int quantidadeDias) {
@@ -66,5 +70,6 @@ public class DadosTreino {
 		this.valorSaida = 0;
 		this.calcula(dias, indDia, 0);
 	}
+	
 	
 }

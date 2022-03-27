@@ -17,9 +17,16 @@
           <div class="dgc-card-detalhe">
             <span>Pontos - Validação: {{item.minimoPontoValidacao}}  Exibição: {{item.minimoPontoExibicao}}</span>
           </div>
+          <div class="dgc-card-detalhe">
+            <span>Monitoria: Compra: {{item.tickerCompra}} ativos, {{item.quantidadeCompra}} simulações.</span>
+          </div>
+          <div class="dgc-card-detalhe">
+            <span>Monitoria: Venda: {{item.tickerVenda}} ativos, {{item.quantidadeVenda}} simulações.</span>
+          </div>
           <button class="btn-primary btn-sm btn" (click)="melhores(item)">Melhores</button>
           <button class="btn-primary btn-sm btn" (click)="monitoradas(item)">Monitoradas</button>
           <button class="btn-primary btn-sm btn" (click)="validacoes(item)">Validações</button>
+          <button class="btn-sm btn" (click)="criaMonitorada(item)">Criar Monitoradas</button>
           <div *ngIf="(item.permiteEditar==1)" class="dgc-card-comandos">
               <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar</button>
           </div>

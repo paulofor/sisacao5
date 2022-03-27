@@ -42,5 +42,43 @@
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {}
+  "methods": {
+    "LimitesPeriodo": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "diaNumInicioEntra",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "diaFinalNaoEntra",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/limitesPeriodo",
+          "verb": "post"
+        }
+      ]
+    }
+  }
 }

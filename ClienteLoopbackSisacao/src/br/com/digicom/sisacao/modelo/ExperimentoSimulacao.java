@@ -36,7 +36,9 @@ public class ExperimentoSimulacao extends Model{
 		return periodoExperimento;
 	}
 
-
+	public void setPeriodoExperimentoObj(PeriodoExperimento periodoExperimento) {
+		this.periodoExperimento = periodoExperimento;
+	}
 
 	public void setPeriodoExperimento(Object periodoExperimento) {
 		this.periodoExperimento = new PeriodoExperimento();

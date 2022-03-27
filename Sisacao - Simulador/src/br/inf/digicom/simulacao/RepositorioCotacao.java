@@ -23,6 +23,14 @@ public class RepositorioCotacao {
 	
 	private static int contaLista = 0;
 	
+	public static void limpa() {
+		cotacoes.clear();
+	}
+	public static void setCarga(String ticker, List<DiaPregao> listaDia) {
+		cotacoes.put(ticker, listaDia);
+	}
+	
+	
 	public static void carregaAtivos(List<AtivoAcao> listaAtivo) {
 		for (AtivoAcao ativo : listaAtivo) {
 			carregaAtivo(ativo.getTicker());

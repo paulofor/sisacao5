@@ -66,7 +66,7 @@ public class ProcuraPontoSaida {
 		int posDia = indDia;
 		int posHora = indHora;
 		CotacaoDiarioAcao diario = null;
-		while (indDia<dias.size() && contaDia < diaLimite) {
+		while (indDia<dias.size() && contaDia < this.regraProjecao.getDiaLimite()) {
 			contaDia++;
 			DiaPregao dia = dias.get(indDia);
 			if (dia.getCotacaoDiarioAcaos().size()>0) {

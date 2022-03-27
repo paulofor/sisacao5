@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TradeRealApi } from '../shared/sdk';
+import { TradeReal, TradeRealApi } from '../shared/sdk';
 
 @Component({
   selector: 'app-resumo-trade-real',
@@ -9,6 +9,7 @@ import { TradeRealApi } from '../shared/sdk';
 export class ResumoTradeRealComponent implements OnInit {
 
   listaResumoTrade: any[];
+  listaTrade:TradeReal[];
 
   valor1Mes:number;
   valor3Meses: number;
@@ -31,7 +32,31 @@ export class ResumoTradeRealComponent implements OnInit {
   }
 
   carregaListaTrade() {
+    let filtro = {
+      'order' : 'dataSaida desc',
+      'where' : {'dataSaida' : {'neq' : null}}
+    }
+    this.srv.find(filtro)
+      .subscribe((resultado:TradeReal[]) => {
+        console.log('ListaTrade:' , resultado);
+        this.listaTrade = resultado;
+      })
+  }
 
+  total() {
+    let total = 0;
+    for (let i=0;i<this.listaTrade.length;i++) {
+      total+= this.listaTrade[i].lucroPrejuizo;
+    }
+    return total
+  }
+
+  soma(meses) {
+    let total = 0;
+    for (let i=0;i<this.listaResumoTrade.length && i<meses;i++) {
+      total+= this.listaResumoTrade[i].lucroPrejuizo;
+    }
+    return total
   }
 
 }

@@ -92,6 +92,42 @@ export class CotacaoDiarioAcaoApi extends BaseLoopBackApi {
   }
 
   /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {object} data Request data.
+   *
+   *  - `ticker` – `{string}` - 
+   *
+   *  - `diaNumInicioEntra` – `{number}` - 
+   *
+   *  - `diaFinalNaoEntra` – `{number}` - 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `CotacaoDiarioAcao` object.)
+   * </em>
+   */
+  public LimitesPeriodo(ticker: any, diaNumInicioEntra: any, diaFinalNaoEntra: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/CotacaoDiarioAcaos/limitesPeriodo";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof ticker !== 'undefined' && ticker !== null) _urlParams.ticker = ticker;
+    if (typeof diaNumInicioEntra !== 'undefined' && diaNumInicioEntra !== null) _urlParams.diaNumInicioEntra = diaNumInicioEntra;
+    if (typeof diaFinalNaoEntra !== 'undefined' && diaFinalNaoEntra !== null) _urlParams.diaFinalNaoEntra = diaFinalNaoEntra;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
    * The name of the model represented by this $resource,
    * i.e. `CotacaoDiarioAcao`.
    */

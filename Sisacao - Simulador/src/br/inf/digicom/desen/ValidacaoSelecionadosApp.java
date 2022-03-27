@@ -12,20 +12,19 @@ public class ValidacaoSelecionadosApp {
 
 	
 	
-	
-
 	public static void main(String[] args) {
-		
+		System.out.println("Inicialiando ValidacaoSelecionadosApp");
+		System.out.println("Versao: 24-03-2022");
 		try {
 			carregaProp();
 			ValidacaoSelecionadosObj obj = new ValidacaoSelecionadosObj();
-			obj.executa();
+			obj.executa(11);
+			System.out.println("Finalizacao");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.exit(0);
 		
-
+		System.exit(0);
 	}
 	
 	private static void carregaProp() throws IOException {
