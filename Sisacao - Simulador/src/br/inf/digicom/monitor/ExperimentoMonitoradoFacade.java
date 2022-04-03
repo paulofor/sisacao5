@@ -6,8 +6,8 @@ import com.strongloop.android.loopback.RestAdapter;
 import com.strongloop.android.loopback.callbacks.ListCallback;
 import com.strongloop.android.loopback.callbacks.VoidCallback;
 
-import br.com.digicom.sisacao.app.Loopback;
 import br.com.digicom.sisacao.modelo.ExecucaoSimulacao;
+import br.com.digicom.sisacao.modelo.RegraSimulacao;
 import br.com.digicom.sisacao.repositorio.RepositorioExecucaoSimulacao;
 import br.com.digicom.sisacao.repositorio.RepositorioValorMonitoria;
 import br.inf.digicom.Constantes;
@@ -34,7 +34,8 @@ public class ExperimentoMonitoradoFacade {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		repValorMonitoria.insereMonitoria(execucao, dataNum, execucao.getPrecoEntrada(), new VoidCallback() {
+		repValorMonitoria.insereMonitoria(execucao, dataNum, execucao.getPrecoEntrada(), execucao.getTipo(), 
+					execucao.getPeriodoExperimentoId(), new VoidCallback() {
 			@Override
 			public void onSuccess() {
 				System.out.println("Atualizou");
@@ -61,7 +62,8 @@ public class ExperimentoMonitoradoFacade {
 				cont = 0;
 				for (ExecucaoSimulacao execucao : listaExecucao) {
 					System.out.println(execucao.getTicker() + ":" + execucao.getPrecoEntrada());
-					repValorMonitoria.insereMonitoria(execucao, dataNum, execucao.getPrecoEntrada(), new VoidCallback() {
+					repValorMonitoria.insereMonitoria(execucao, dataNum, execucao.getPrecoEntrada(), 
+							execucao.getTipo(), execucao.getPeriodoExperimentoId(), new VoidCallback() {
 						@Override
 						public void onSuccess() {
 							System.out.println("Atualizou");
@@ -95,7 +97,11 @@ public class ExperimentoMonitoradoFacade {
 	
 	private void trataExecucaoMonitor(ExecucaoSimulacao execucao, int dataNum) {
 		RepositorioCotacao.carregaPorTicker(execucao.getTicker());
-		IRegraPontoEntrada regra = FabricaRegra.criaRegra(execucao.getCombinacaoParametro().getRegraSimulacao());
+		RegraSimulacao regraObj = execucao.getCombinacaoParametro().getRegraSimulacao();
+		if (regraObj==null) {
+			regraObj = execucao.getRegraSimulacao();
+		}
+		IRegraPontoEntrada regra = FabricaRegra.criaRegra(regraObj);
 		try {
 			Thread.sleep(TempoSleep.TRATA_EXECUCAO_MONITOR);
 		} catch (InterruptedException e) {

@@ -3,9 +3,10 @@ package br.inf.digicom.simulacao.validacao;
 import com.strongloop.android.loopback.callbacks.ObjectCallback;
 
 import br.com.digicom.sisacao.modelo.PeriodoExperimento;
-import br.inf.digicom.loopback.DaoBase;
+import br.inf.digicom.loopback.DaoBaseApp;
+import br.inf.digicom.loopback.DatasetComum;
 
-public class PeriodoExperimento_findById extends DaoBase{
+public class PeriodoExperimento_findById extends DaoBaseApp{
 
 	private Integer idPeriodo;
 	
@@ -15,11 +16,12 @@ public class PeriodoExperimento_findById extends DaoBase{
 	
 	@Override
 	protected void executaImpl() {
+		final DatasetComum ds = (DatasetComum) getComum();
 		this.repPeriodo.findById(idPeriodo, new ObjectCallback<PeriodoExperimento>() {
 
 			@Override
 			public void onSuccess(PeriodoExperimento object) {
-				getComum().setPeriodo(object);
+				ds.setPeriodo(object);
 				executaProximo();
 			}
 
@@ -33,7 +35,7 @@ public class PeriodoExperimento_findById extends DaoBase{
 	}
 
 	@Override
-	protected DaoBase getProximo() {
+	protected DaoBaseApp getProximo() {
 		return new AtivoAcao_SimulacaoComMonitor();
 	}
 

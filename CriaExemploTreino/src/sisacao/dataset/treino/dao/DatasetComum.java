@@ -1,17 +1,29 @@
-package sisacao.dataset.treino.singleton;
+package sisacao.dataset.treino.dao;
 
 import java.util.List;
 
 import br.com.digicom.sisacao.modelo.DiaPregao;
 import br.com.digicom.sisacao.modelo.RegraProjecao;
+import br.inf.digicom.loopback.IDatasetComum;
 
-public class DatasetComum {
+public class DatasetComum implements IDatasetComum {
 	
 	private RegraProjecao regraProjecao = null;
 	private int inicioPeriodo = 0;
 	private String ticker = null;
 	private List<DiaPregao> listaPregao;
-	private int quantidadeDias;
+	private String codigoRegra;
+	private int quantidadeDiasX = 0;
+	
+	
+
+	public int getQuantidadeDiasX() {
+		return quantidadeDiasX;
+	}
+
+	public void setQuantidadeDiasX(int quantidadeDiasX) {
+		this.quantidadeDiasX = quantidadeDiasX;
+	}
 
 	public RegraProjecao getRegraProjecao() {
 		return regraProjecao;
@@ -45,11 +57,13 @@ public class DatasetComum {
 		this.listaPregao = listaPregao;
 	}
 
-	public void setQuantidadeDias(int qtdeDias) {
-		this.quantidadeDias = qtdeDias;
+	
+
+	public void setCodigoRegra(String codigoRegra) {
+		this.codigoRegra = codigoRegra;
 	}
-	public int getQuantidadeDias() {
-		return this.quantidadeDias;
+	public String getCodigoRegra() {
+		return this.codigoRegra;
 	}
 	
 	

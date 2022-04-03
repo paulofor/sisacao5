@@ -72,6 +72,24 @@
     },
     "mediaPercentualAluguel6": {
       "type": "number"
+    },
+    "maximo12m": {
+      "type": "number"
+    },
+    "maximo24m": {
+      "type": "number"
+    },
+    "minimo12m": {
+      "type": "number"
+    },
+    "minimo24m": {
+      "type": "number"
+    },
+    "variacao12m": {
+      "type": "number"
+    },
+    "variacao24m": {
+      "type": "number"
     }
   },
   "validations": [],

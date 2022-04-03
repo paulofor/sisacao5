@@ -17,6 +17,8 @@ export interface ValorMonitoriaInterface {
   "contaTrade"?: number;
   "contaTradeLucro"?: number;
   "contaTradePrejuizo"?: number;
+  "periodoExperimentoId"?: number;
+  "tipo"?: string;
   "id"?: number;
   "execucaoSimulacaoId"?: number;
   execucaoSimulacao?: ExecucaoSimulacao;
@@ -35,6 +37,8 @@ export class ValorMonitoria implements ValorMonitoriaInterface {
   "contaTrade": number;
   "contaTradeLucro": number;
   "contaTradePrejuizo": number;
+  "periodoExperimentoId": number;
+  "tipo": string;
   "id": number;
   "execucaoSimulacaoId": number;
   execucaoSimulacao: ExecucaoSimulacao;
@@ -118,6 +122,14 @@ export class ValorMonitoria implements ValorMonitoriaInterface {
         "contaTradePrejuizo": {
           name: 'contaTradePrejuizo',
           type: 'number'
+        },
+        "periodoExperimentoId": {
+          name: 'periodoExperimentoId',
+          type: 'number'
+        },
+        "tipo": {
+          name: 'tipo',
+          type: 'string'
         },
         "id": {
           name: 'id',

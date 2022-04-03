@@ -45,6 +45,7 @@ public class ExecutadorSimulacaoValidacao extends ExecutadorSimulacao{
 		while (!concluido) {
 			try {
 				Thread.sleep(2000);
+				System.out.println(this.getClass().getSimpleName() + " esperando também");
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

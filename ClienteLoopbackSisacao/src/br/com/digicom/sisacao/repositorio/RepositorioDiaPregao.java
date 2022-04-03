@@ -68,4 +68,12 @@ public class RepositorioDiaPregao extends ModelRepository<DiaPregao>{
 	        params.put("idRegraProjecao", idRegraProjecao);
 	        invokeStaticMethod("obtemIntradayResultadoValor", params,   new JsonArrayParser<DiaPregao>(this, callback));
 		}
+		public synchronized void proximoParaValidador(String ticker, long idPeriodo, final ListCallback<DiaPregao> callback ) {
+			RestContractItem contrato = new RestContractItem("DiaPregaos/proximoParaValidador","GET");
+			this.getRestAdapter().getContract().addItem(contrato, "DiaPregao.proximoParaValidador");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        params.put("ticker", ticker);
+	        params.put("idPeriodo", idPeriodo);
+	        invokeStaticMethod("proximoParaValidador", params,   new JsonArrayParser<DiaPregao>(this, callback));
+		}
 }

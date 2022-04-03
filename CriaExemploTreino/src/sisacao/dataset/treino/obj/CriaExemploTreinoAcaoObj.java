@@ -1,8 +1,8 @@
 package sisacao.dataset.treino.obj;
 
-import sisacao.dataset.treino.dao.DiaPregao_ObtemIntradayResultadoDataset;
+import br.inf.digicom.loopback.IDatasetComum;
+import sisacao.dataset.treino.dao.DatasetComum;
 import sisacao.dataset.treino.dao.RegraProjecao_ObtemPorCodigoRegra;
-import sisacao.dataset.treino.singleton.DatasetComum;
 
 public class CriaExemploTreinoAcaoObj {
 
@@ -19,19 +19,11 @@ public class CriaExemploTreinoAcaoObj {
 		RegraProjecao_ObtemPorCodigoRegra exec = new RegraProjecao_ObtemPorCodigoRegra();
 		comum.setTicker(ticker);
 		comum.setInicioPeriodo(diaNumInicio);
-		comum.setQuantidadeDias(qtdeDias);
+		comum.setCodigoRegra(codigoRegra);
+		comum.setQuantidadeDiasX(3);
 		exec.setComum(comum);
-		exec.setCodigoRegra(codigoRegra);
 		exec.executa();
-		/*
-		this.calculaParametros();
-		System.out.println(ticker + " Xn=" + this.tamanhoX + " Inicio: " + diaNumInicio);
-		DiaPregao_ObtemIntradayResultadoDataset exec = new DiaPregao_ObtemIntradayResultadoDataset();
-		exec.setComum(comum);
-		exec.setTicker(ticker);
-		exec.setInicioPeriodo(20210101);
-		exec.executa();
-		*/
+	
 	}
 	
 	/*

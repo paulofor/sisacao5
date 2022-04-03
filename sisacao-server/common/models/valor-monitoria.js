@@ -4,7 +4,11 @@ var app = require('../../server/server');
 
 module.exports = function(Valormonitoria) {
 
-
+    Valormonitoria.AtualizaPontoEntradaPorDia = function(diaNum,callback) {
+        ds = Valormonitoria.dataSource;
+        let sql = ""
+        ds.connector.query(sql,callback);
+    }
 
     /**
     * 
@@ -190,7 +194,7 @@ module.exports = function(Valormonitoria) {
      * @param {Function(Error, object)} callback
      */
 
-    Valormonitoria.InsereMonitoria = function(execucao, diaNum, preco, callback) {
+    Valormonitoria.InsereMonitoria = function(execucao, diaNum, preco, tipo, periodoExperimentoId, callback) {
         //console.log(" ****** ");
         let sql = "update ExecucaoSimulacao set precoEntrada = " + preco +
             ", dataNumEntrada = " + diaNum + " where id = " + execucao.id;
@@ -205,7 +209,9 @@ module.exports = function(Valormonitoria) {
                 'valorEntrada' : preco,
                 'execucaoSimulacaoId' : execucao.id,
                 'diaNumEntrada' : diaNum,
-                'situacao' : '' 
+                'situacao' : '' ,
+                'tipo' : tipo,
+                'periodoExperimentoId' : periodoExperimentoId
              }
              Valormonitoria.create(novo, (err,result) => {
                 Valormonitoria.TrataSituacao(execucao.id, (err,result) => {

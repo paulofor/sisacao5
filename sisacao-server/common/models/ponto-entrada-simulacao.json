@@ -1,0 +1,69 @@
+{
+  "name": "PontoEntradaSimulacao",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ticker": {
+      "type": "string"
+    },
+    "periodoExperimentoId": {
+      "type": "number"
+    },
+    "diaNum": {
+      "type": "number"
+    },
+    "tipo": {
+      "type": "string"
+    },
+    "valor": {
+      "type": "number"
+    },
+    "valorLimite" : {
+      "type" : "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {
+    "PreparaProximoDia": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/preparaProximoDia",
+          "verb": "post"
+        }
+      ]
+    },
+    "SituacaoAtual": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/situacaoAtual",
+          "verb": "get"
+        }
+      ]
+    }
+  }
+}

@@ -59,47 +59,56 @@ public class ProcuraPontoSaida {
 	
 	
 	public Integer procuraValor(List<DiaPregao> dias, int indDia, int indHora, double precoEntrada) {
-		calculaVariaveis(precoEntrada);
-		int contaDia = 0;
-		boolean finalizou = false;
 		Integer saida = 0;
-		int posDia = indDia;
-		int posHora = indHora;
-		CotacaoDiarioAcao diario = null;
-		while (indDia<dias.size() && contaDia < this.regraProjecao.getDiaLimite()) {
-			contaDia++;
-			DiaPregao dia = dias.get(indDia);
-			if (dia.getCotacaoDiarioAcaos().size()>0) {
-				diario = dias.get(indDia).getCotacaoDiarioAcaos().get(0);
-				//System.out.println(diario + " - " + this.contaDia + " dias.");
-				if (diario==null) {
-					saida = null;
-					//System.out.println("Saiu, sem diario");
-					break;
+		try {
+			calculaVariaveis(precoEntrada);
+			int contaDia = 0;
+			boolean finalizou = false;
+	
+			int posDia = indDia;
+			int posHora = indHora;
+			CotacaoDiarioAcao diario = null;
+			while (indDia<dias.size() && contaDia < this.regraProjecao.getDiaLimite()) {
+				contaDia++;
+				DiaPregao dia = dias.get(indDia);
+				if (dia.getDiaNum()==20210610) break;
+				if (dia.getCotacaoDiarioAcaos().size()>0) {
+					diario = dias.get(indDia).getCotacaoDiarioAcaos().get(0);
+					//System.out.println(diario + " - " + this.contaDia + " dias.");
+					if (diario==null) {
+						saida = null;
+						//System.out.println("Saiu, sem diario");
+						break;
+					} else {
+						this.diaNumSaida = diario.getDiaNum();
+						this.valorSaida = (diario.getFechamento()!=null?diario.getFechamento():0);
+					}
+					if (diario.getMinimo()!=null && diario.getMinimo() <= limiteBaixo) {
+						saida = this.sinalBaixo;
+						this.valorSaida = limiteBaixo;
+						//System.out.println("Saiu, mínimo");
+						break;
+					} 
+					if (diario.getMaximo()!=null && diario.getMaximo() >= limiteAlto) {
+						saida = this.sinalAlto;
+						this.valorSaida = limiteAlto;
+						//System.out.println("Saiu, máximo");
+						break;
+					} 
 				} else {
-					this.diaNumSaida = diario.getDiaNum();
-					this.valorSaida = (diario.getFechamento()!=null?diario.getFechamento():0);
+					saida = null;
+					//System.out.println("Saiu, acabou diario");
+					break;
 				}
-				if (diario.getMinimo()!=null && diario.getMinimo() <= limiteBaixo) {
-					saida = this.sinalBaixo;
-					this.valorSaida = limiteBaixo;
-					//System.out.println("Saiu, mínimo");
-					break;
-				} 
-				if (diario.getMaximo()!=null && diario.getMaximo() >= limiteAlto) {
-					saida = this.sinalAlto;
-					this.valorSaida = limiteAlto;
-					//System.out.println("Saiu, máximo");
-					break;
-				} 
-			} else {
-				saida = null;
-				//System.out.println("Saiu, acabou diario");
-				break;
+				indDia++;
 			}
-			indDia++;
+			//System.out.println("resultado:" + saida);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.exit(-2);
 		}
-		//System.out.println("resultado:" + saida);
 		return saida;
+		
 	}
 }

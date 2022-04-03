@@ -55,11 +55,11 @@
     "anoMesNum": {
       "type": "number"
     },
-    "lucro" : {
-      "type" : "number"
+    "lucro": {
+      "type": "number"
     },
-    "prejuizo" : {
-      "type" : "number"
+    "prejuizo": {
+      "type": "number"
     }
   },
   "validations": [],

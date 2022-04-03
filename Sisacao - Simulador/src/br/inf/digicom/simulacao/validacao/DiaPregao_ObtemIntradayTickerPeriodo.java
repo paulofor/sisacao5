@@ -5,19 +5,21 @@ import java.util.List;
 import com.strongloop.android.loopback.callbacks.ListCallback;
 
 import br.com.digicom.sisacao.modelo.DiaPregao;
-import br.inf.digicom.loopback.DaoBase;
+import br.inf.digicom.loopback.DaoBaseApp;
+import br.inf.digicom.loopback.DatasetComum;
 
-public class DiaPregao_ObtemIntradayTickerPeriodo extends DaoBase {
+public class DiaPregao_ObtemIntradayTickerPeriodo extends DaoBaseApp {
 
 	@Override
 	protected void executaImpl() {
-		String ticker = getComum().getAtivoAcao().getTicker();
-		int inicioPeriodo = getComum().getPeriodo().getDataNumInicioColeta();
+		final DatasetComum ds = (DatasetComum) getComum();
+		String ticker = ds.getAtivoAcao().getTicker();
+		int inicioPeriodo = ds.getPeriodo().getDataNumInicioColeta();
 		this.repDiaPregao.obtemIntradayTickerPeriodo(ticker, inicioPeriodo, new ListCallback<DiaPregao>() {
 
 			@Override
 			public void onSuccess(List<DiaPregao> objects) {
-				getComum().setListaDiaPregao(objects);
+				ds.setListaDiaPregao(objects);
 				executaProximo();
 			}
 
@@ -30,8 +32,8 @@ public class DiaPregao_ObtemIntradayTickerPeriodo extends DaoBase {
 	}
 
 	@Override
-	protected DaoBase getProximo() {
-		return new ValidadorExperimentoDaoBase();
+	protected DaoBaseApp getProximo() {
+		return new DiaPregao_ProximoParaValidador();
 	}
 
 }

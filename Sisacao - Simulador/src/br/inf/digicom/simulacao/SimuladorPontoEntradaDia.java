@@ -28,9 +28,18 @@ public class SimuladorPontoEntradaDia {
 		regra.setParametros(parametros);
 		int indDia = 0;
 		int indHora = 0;
-		while (dias.get(indDia).getDiaNum() < dia) {
-			indDia++;
+		try {
+			while (dias.get(indDia).getDiaNum() < dia) {
+				indDia++;
+			}
+		} catch (Exception e ) {
+			System.out.println("indDia:" + indDia);
+			System.out.println("dia:" + dia);
+			System.out.println("dias.size()" + dias.size());
+			System.out.println("dias.get(indDia):" + dias.get(indDia));
+			System.exit(-1);
 		}
+		
 		regra.setDiaInicial(0);
 		Double pontoEntrada = regra.getPontoEntrada(indDia - 1, dias);
 		return pontoEntrada;

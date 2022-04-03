@@ -15,6 +15,7 @@ export interface ExemploTreinoAcaoInterface {
   "limiteInferior"?: number;
   "diaNumSaida"?: number;
   "resultado"?: number;
+  "campoXOriginal"?: string;
 }
 
 export class ExemploTreinoAcao implements ExemploTreinoAcaoInterface {
@@ -31,6 +32,7 @@ export class ExemploTreinoAcao implements ExemploTreinoAcaoInterface {
   "limiteInferior": number;
   "diaNumSaida": number;
   "resultado": number;
+  "campoXOriginal": string;
   constructor(data?: ExemploTreinoAcaoInterface) {
     Object.assign(this, data);
   }
@@ -115,6 +117,10 @@ export class ExemploTreinoAcao implements ExemploTreinoAcaoInterface {
         "resultado": {
           name: 'resultado',
           type: 'number'
+        },
+        "campoXOriginal": {
+          name: 'campoXOriginal',
+          type: 'string'
         },
       },
       relations: {

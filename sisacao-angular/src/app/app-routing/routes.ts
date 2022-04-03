@@ -52,6 +52,7 @@ import { QuadroComparaStopGeralComponent } from '../quadro-compara-stop-geral/qu
 import { CotacaoIntradayResultadoAcaoComponent } from '../cotacao-intraday-resultado-acao/cotacao-intraday-resultado-acao.component';
 import { ExemploIntradayResultadoAcaoComponent } from '../exemplo-intraday-resultado-acao/exemplo-intraday-resultado-acao.component';
 import { ResumoTradeRealComponent } from '../resumo-trade-real/resumo-trade-real.component';
+import { PontoEntradaSimulacaoDiaComponent } from '../ponto-entrada-simulacao-dia/ponto-entrada-simulacao-dia.component';
 
 
 export const routes : Routes = [
@@ -126,6 +127,7 @@ export const routes : Routes = [
     { path : 'exemploIntradayResultadoAcao' , component: ExemploIntradayResultadoAcaoComponent },
 
     { path : 'resumoTradeReal' , component: ResumoTradeRealComponent },
+    { path : 'pontoEntradaSimulacaoDia' , component: PontoEntradaSimulacaoDiaComponent },
 
     { path: '',  component: HomeComponent  }
     //{ path: '',          redirectTo: 'home', pathMatch: 'full' }

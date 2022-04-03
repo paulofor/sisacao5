@@ -24,7 +24,7 @@ public class ObtemDadosFundoImob {
 	
 	private static void carregaProp() throws IOException {
 		System.out.println("Dir:" + System.getProperty("user.dir"));
-		InputStream input = new FileInputStream("ObtemAluguelFundoImob.config");
+		InputStream input = new FileInputStream("FundoImob.config");
 		Properties prop = new Properties();
         prop.load(input);
         Constante.LoopbackUrl = prop.getProperty("loopback.url");

@@ -3,8 +3,9 @@ package sisacao.dataset.treino.dao;
 import com.strongloop.android.loopback.callbacks.VoidCallback;
 
 import br.com.digicom.sisacao.modelo.ExemploTreinoAcao;
+import br.inf.digicom.loopback.DaoBase;
 
-public class ExemploTreinoAcao_InsereExemplo extends DaoBase {
+public class ExemploTreinoAcao_InsereExemplo extends DaoBaseApp {
 
 	private ExemploTreinoAcao dado;
 	
@@ -29,6 +30,12 @@ public class ExemploTreinoAcao_InsereExemplo extends DaoBase {
 	public void setDado(ExemploTreinoAcao exemplo) {
 		// TODO Auto-generated method stub
 		this.dado = exemplo;
+	}
+
+	@Override
+	protected DaoBase getProximo() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

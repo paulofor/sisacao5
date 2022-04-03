@@ -5,22 +5,26 @@ import java.util.List;
 import com.strongloop.android.loopback.callbacks.ListCallback;
 
 import br.com.digicom.sisacao.modelo.AtivoAcao;
-import br.inf.digicom.loopback.DaoBase;
+import br.inf.digicom.loopback.DaoBaseApp;
+import br.inf.digicom.loopback.DatasetComum;
+import br.inf.digicom.simulacao.RepositorioCotacao;
 
-public class AtivoAcao_SimulacaoComMonitor extends DaoBase{
+public class AtivoAcao_SimulacaoComMonitor extends DaoBaseApp{
 
 
 	
 	
 	@Override
 	protected void executaImpl() {
-		this.repAcao.simulacaoComMonitor(getComum().getPeriodo().getId(), new ListCallback<AtivoAcao>() {
+		final DatasetComum ds = (DatasetComum) getComum();
+		this.repAcao.simulacaoComMonitor(ds.getPeriodo().getId(), new ListCallback<AtivoAcao>() {
 
 			@Override
 			public void onSuccess(List<AtivoAcao> objects) {
 				for (AtivoAcao acao : objects) {
+					RepositorioCotacao.limpa();
 					System.out.println("Ticker: " + acao.getTicker());
-					getComum().setAtivoAcao(acao);
+					ds.setAtivoAcao(acao);
 					executaProximo();
 					
 				}
@@ -33,7 +37,7 @@ public class AtivoAcao_SimulacaoComMonitor extends DaoBase{
 	}
 
 	@Override
-	protected DaoBase getProximo() {
+	protected DaoBaseApp getProximo() {
 		return new DiaPregao_ObtemIntradayTickerPeriodo();
 	}
 

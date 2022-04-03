@@ -20,6 +20,7 @@ import sisacao.fii.app.desen.ObtemAluguelFundoImob;
 import sisacao.fii.parser.callback.AluguelFIIBrasilDetalheCallback;
 import sisacao.fii.parser.callback.ListaClubeFIICallback;
 import sisacao.fii.parser.callback.ListaClubeFIIDetalheCallback;
+import sisacao.fii.parser.callback.ListaFIIBrasilCallback;
 import sisacao.fii.parser.dado.AluguelFIIDado;
 import sisacao.fii.parser.dado.FundoImobiliarioDado;
 
@@ -59,7 +60,7 @@ public class FundoImobiliarioFacade {
 	
 	public void obtemListaFundo() throws DaoException {
 		ExecutadorParseApache3 exec = new ExecutadorParseApache3();
-		ICallbackParse callback = new ListaClubeFIICallback();
+		ICallbackParse callback = new ListaFIIBrasilCallback();
 		FundoImobiliarioDado dado = new FundoImobiliarioDado();
 		callback.setDados(dado);
 		exec.setCallbackParse(callback);

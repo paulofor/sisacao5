@@ -106,6 +106,7 @@ import { DatasetAcaoApi } from './services/custom/DatasetAcao';
 import { ExemploTreinoAcaoApi } from './services/custom/ExemploTreinoAcao';
 import { RegraProjecaoTotalMesApi } from './services/custom/RegraProjecaoTotalMes';
 import { PontoEntradaTradeApi } from './services/custom/PontoEntradaTrade';
+import { PontoEntradaSimulacaoApi } from './services/custom/PontoEntradaSimulacao';
 /**
 * @module SDKBrowserModule
 * @description
@@ -194,8 +195,10 @@ export class SDKBrowserModule {
         ExemploTreinoAcaoApi,
         RegraProjecaoTotalMesApi,
         PontoEntradaTradeApi,
+        PontoEntradaSimulacaoApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
+     
       ]
     };
   }

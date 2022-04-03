@@ -6,12 +6,23 @@ import br.com.digicom.sisacao.modelo.AtivoAcao;
 import br.com.digicom.sisacao.modelo.DiaPregao;
 import br.com.digicom.sisacao.modelo.PeriodoExperimento;
 
-public class DatasetComum {
+public class DatasetComum implements IDatasetComum {
 	
 	private PeriodoExperimento periodo;
 	private AtivoAcao ativoAcao;
 	private List<DiaPregao> listaDiaPregao;
+	private List<DiaPregao> diaValidacao;
 	
+	
+	
+
+	public List<DiaPregao> getDiaValidacao() {
+		return diaValidacao;
+	}
+
+	public void setDiaValidacao(List<DiaPregao> diaValidacao) {
+		this.diaValidacao = diaValidacao;
+	}
 
 	public PeriodoExperimento getPeriodo() {
 		return periodo;
@@ -36,6 +47,8 @@ public class DatasetComum {
 	public void setListaDiaPregao(List<DiaPregao> listaDiaPregao) {
 		this.listaDiaPregao = listaDiaPregao;
 	}
+
+	
 
 	
 

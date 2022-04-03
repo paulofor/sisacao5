@@ -262,5 +262,9 @@
   "PontoEntradaTrade": {
     "dataSource": "mysqlKingDS2",
     "public": true
+  },
+  "PontoEntradaSimulacao": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
   }
 }

@@ -1,0 +1,39 @@
+
+<div class="main-content" *ngIf="listaBase">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Compras ({{listaBase.length}})</h4>
+          </div>
+          <div class="content table-responsive table-full-width">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th width="15%">Ticker</th>
+                  <th>Votantes</th>
+                  <th>Votos</th>
+                  <th>Valor Compra</th>
+                  <th>Preço Atual</th>
+                  <th>Diferença</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listaBase">
+                  <td>{{item.ticker}}</td>
+                  <td>{{item.votantes}}</td>
+                  <td>{{item.votos}}</td>
+                  <td>{{item.valor | number : '1.2-2'}}</td>
+                  <td>{{item.atual | number : '1.2-2'}}</td>
+                  <td>{{item.diferenca | number : '1.1-1'}}%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

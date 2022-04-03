@@ -19,6 +19,8 @@ export class ExemploIntradayResultadoAcaoComponent implements OnInit {
   diaSaida: CotacaoDiarioAcao;
   limiteSaida : any;
 
+  processando = false;
+
   constructor(private srv :ExemploTreinoAcaoApi, 
       private srvCotacao :CotacaoIntradayAcaoResultadoApi, private srvDiario:CotacaoDiarioAcaoApi) { }
 
@@ -27,11 +29,26 @@ export class ExemploIntradayResultadoAcaoComponent implements OnInit {
 
 
   onSubmit() {
+    this.processando = true;
+    this.listaBase = null;
     this.carregaExemplo();
     this.carregaDiario();
   }
 
-
+  entrou() {
+    if (this.exemplo.valorEntrada>= this.diaPrevisao.minimo && this.exemplo.valorEntrada<= this.diaPrevisao.maximo) {
+      return 'dgc-azul'
+    } else {
+      return '';
+    }
+  }
+  periodo() {
+    if (this.exemplo.valorSaida < this.limiteSaida.minimo || this.exemplo.valorSaida > this.limiteSaida.maximo) {
+      return 'dgc-verde'
+    } else {
+      return 'dgc-vermelho'
+    }
+  }
 
 
   getValor(posicao) {

@@ -12,6 +12,14 @@ public class ValidacaoSelecionadosObj {
 		exec.setIdPeriodo(i);
 		exec.setComum(ds);
 		exec.executa();
+		while (!exec.getConcluido()) {
+			try {
+				Thread.sleep(120000);
+				System.out.println(exec.getClass().getSimpleName() + " não terminou...");
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 }

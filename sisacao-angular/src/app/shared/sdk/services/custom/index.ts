@@ -57,5 +57,6 @@ export * from './DatasetAcao';
 export * from './ExemploTreinoAcao';
 export * from './RegraProjecaoTotalMes';
 export * from './PontoEntradaTrade';
+export * from './PontoEntradaSimulacao';
 export * from './SDKModels';
 export * from './logger.service';

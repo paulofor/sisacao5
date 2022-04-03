@@ -12,17 +12,17 @@
     "diaNum": {
       "type": "number"
     },
-    "valorLimite" : {
-      "type" : "number"
+    "valorLimite": {
+      "type": "number"
     },
-    "dataHoraGeracao" : {
-      "type" : "string"
+    "dataHoraGeracao": {
+      "type": "string"
     },
-    "executado" : {
-      "type" : "number"
+    "executado": {
+      "type": "number"
     },
-    "tipo" : {
-      "type" : "string"
+    "tipo": {
+      "type": "string"
     }
   },
   "validations": [],

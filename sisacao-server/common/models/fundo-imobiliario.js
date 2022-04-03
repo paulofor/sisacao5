@@ -39,25 +39,25 @@ module.exports = function (Fundoimobiliario) {
         let sqlAluguel3 = " update FundoImobiliario " +
                     " set totalAluguel3 = ( " +
                     " select sum(valor) from AluguelFundoImobiliario " +
-                    " where ticker = FundoImobiliario.ticker " +
+                    " where ticker = FundoImobiliario.ticker and tipo='Rendimento' " +
                     " and dataPagamento >= (select DATE_SUB(now(), INTERVAL 3 month)) " +
                     ") "; 
         let sqlAluguel6 = " update FundoImobiliario " +
                     " set totalAluguel6 = ( " +
                     " select sum(valor) from AluguelFundoImobiliario " +
-                    " where ticker = FundoImobiliario.ticker " +
+                    " where ticker = FundoImobiliario.ticker and tipo='Rendimento' " +
                     " and dataPagamento >= (select DATE_SUB(now(), INTERVAL 6 month)) " +
                     ") "; 
         let sqlPercMedia3 = " update FundoImobiliario " +
                     " set mediaPercentualAluguel3 = ( " +
                     " select avg(percentual) from AluguelFundoImobiliario " +
-                    " where ticker = FundoImobiliario.ticker " +
+                    " where ticker = FundoImobiliario.ticker and tipo='Rendimento' " +
                     " and dataPagamento >= (select DATE_SUB(now(), INTERVAL 3 month)) " +
                     ") "; 
         let sqlPercMedia6 = " update FundoImobiliario " +
                     " set mediaPercentualAluguel6 = ( " +
                     " select avg(percentual) from AluguelFundoImobiliario " +
-                    " where ticker = FundoImobiliario.ticker " +
+                    " where ticker = FundoImobiliario.ticker and tipo='Rendimento' " +
                     " and dataPagamento >= (select DATE_SUB(now(), INTERVAL 6 month)) " +
                     ") "; 
         var ds = Fundoimobiliario.dataSource;
@@ -179,6 +179,32 @@ module.exports = function (Fundoimobiliario) {
         let sqlPercentual = "update FundoImobiliario " +
             " set percentual6 = ((precoAtual - preco6) / preco6) * 100, " +
             " percentual12 = ((precoAtual - preco12) / preco12) * 100"
+
+        let sqlMaximoMinimo = "update FundoImobiliario " +
+                " set " +
+                " maximo12m = ( " +
+                " select max(maximo) from CotacaoDiarioAcao  " +
+                " where FundoImobiliario.ticker = CotacaoDiarioAcao.ticker " +
+                " and data >=  DATE_SUB(now(), INTERVAL 12 month) " +
+                " ), " +
+                " minimo12m = ( " +
+                " select min(minimo) from CotacaoDiarioAcao  " +
+                " where FundoImobiliario.ticker = CotacaoDiarioAcao.ticker " +
+                " and data >=  DATE_SUB(now(), INTERVAL 12 month) " +
+                " ), " +
+                " maximo24m = ( " +
+                " select max(maximo) from CotacaoDiarioAcao  " +
+                " where FundoImobiliario.ticker = CotacaoDiarioAcao.ticker " +
+                " and data >=  DATE_SUB(now(), INTERVAL 24 month) " +
+                " ), " +
+                " minimo24m = ( " +
+                " select min(minimo) from CotacaoDiarioAcao  " +
+                " where FundoImobiliario.ticker = CotacaoDiarioAcao.ticker " +
+                " and data >=  DATE_SUB(now(), INTERVAL 24 month) " +
+                ")";
+        let sqlVariacao = "update FundoImobiliario " +
+                " set variacao12m = (maximo12m - minimo12m) / maximo12m * 100," +
+                " variacao24m = (maximo24m - minimo24m) / maximo24m * 100";
         
         var ds = Fundoimobiliario.dataSource;
         ds.connector.query(sqlMediaNegocio1, (err1, result1) => {
@@ -187,6 +213,11 @@ module.exports = function (Fundoimobiliario) {
         })
         ds.connector.query(sqlMediaNegocio4, (err1, result1) => {
         })
+        ds.connector.query(sqlMaximoMinimo, (err,result) => {
+            ds.connector.query(sqlVariacao, (err,result) => {
+                
+            })
+        })
         ds.connector.query(sqlPrecoAtual, (err,result) => {
             ds.connector.query(sqlPreco6, (err,result) => {
                 ds.connector.query(sqlPreco12, (err,result) => {
@@ -194,6 +225,7 @@ module.exports = function (Fundoimobiliario) {
                 })
             })
         })
+       
         
     };
   

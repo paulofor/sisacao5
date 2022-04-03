@@ -5,6 +5,13 @@ var app = require('../../server/server');
 module.exports = function(Diapregao) {
 
    
+    Diapregao.ProximoParaValidador = function(tickerm,idPeriodo,callback) {
+        let sql = "select * from DiaPregao where data >= '2022-03-01' and data <= now() order by data";
+        let ds = Diapregao.dataSource;
+        ds.connector.query(sql,callback);
+    }
+
+
     /**
     * 
     * @param {Function(Error, array)} callback

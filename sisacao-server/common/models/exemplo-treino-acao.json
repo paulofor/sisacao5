@@ -27,26 +27,29 @@
       "type": "number",
       "id": true
     },
-    "valorEntrada" : {
-      "type" : "number"
+    "valorEntrada": {
+      "type": "number"
     },
-    "valorReferencia" : {
-      "type" : "number"
+    "valorReferencia": {
+      "type": "number"
     },
-    "valorSaida" : {
-      "type" : "number"
+    "valorSaida": {
+      "type": "number"
     },
-    "limiteSuperior" : {
-      "type" : "number"
+    "limiteSuperior": {
+      "type": "number"
     },
-    "limiteInferior" : {
-      "type" : "number"
+    "limiteInferior": {
+      "type": "number"
     },
-    "diaNumSaida" : {
-      "type" : "number"
+    "diaNumSaida": {
+      "type": "number"
     },
-    "resultado" : {
-      "type" : "number"
+    "resultado": {
+      "type": "number"
+    },
+    "campoXOriginal": {
+      "type": "string"
     }
   },
   "validations": [],

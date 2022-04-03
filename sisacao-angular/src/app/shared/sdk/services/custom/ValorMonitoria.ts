@@ -135,6 +135,10 @@ export class ValorMonitoriaApi extends BaseLoopBackApi {
    *
    *  - `preco` – `{number}` - 
    *
+   *  - `tipo` – `{string}` - 
+   *
+   *  - `periodoExperimentoId` – `{number}` - 
+   *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
    *   from the server.
@@ -144,7 +148,7 @@ export class ValorMonitoriaApi extends BaseLoopBackApi {
    * This usually means the response is a `ValorMonitoria` object.)
    * </em>
    */
-  public InsereMonitoria(execucao: any = {}, diaNum: any = {}, preco: any = {}, customHeaders?: Function): Observable<any> {
+  public InsereMonitoria(execucao: any = {}, diaNum: any = {}, preco: any = {}, tipo: any = {}, periodoExperimentoId: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/ValorMonitoria/insereMonitoria";
@@ -154,6 +158,8 @@ export class ValorMonitoriaApi extends BaseLoopBackApi {
     if (typeof execucao !== 'undefined' && execucao !== null) _urlParams.execucao = execucao;
     if (typeof diaNum !== 'undefined' && diaNum !== null) _urlParams.diaNum = diaNum;
     if (typeof preco !== 'undefined' && preco !== null) _urlParams.preco = preco;
+    if (typeof tipo !== 'undefined' && tipo !== null) _urlParams.tipo = tipo;
+    if (typeof periodoExperimentoId !== 'undefined' && periodoExperimentoId !== null) _urlParams.periodoExperimentoId = periodoExperimentoId;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
@@ -212,6 +218,36 @@ export class ValorMonitoriaApi extends BaseLoopBackApi {
     let _postBody: any = {};
     let _urlParams: any = {};
     if (typeof idExecucao !== 'undefined' && idExecucao !== null) _urlParams.idExecucao = idExecucao;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {object} data Request data.
+   *
+   *  - `diaNum` – `{number}` - 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ValorMonitoria` object.)
+   * </em>
+   */
+  public AtualizaPontoEntradaPorDia(diaNum: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ValorMonitoria/atualizaPontoEntradaPorDia";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof diaNum !== 'undefined' && diaNum !== null) _urlParams.diaNum = diaNum;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }

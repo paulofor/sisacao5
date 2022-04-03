@@ -27,6 +27,12 @@ export interface FundoImobiliarioInterface {
   "totalAluguel6"?: number;
   "mediaPercentualAluguel3"?: number;
   "mediaPercentualAluguel6"?: number;
+  "maximo12m"?: number;
+  "maximo24m"?: number;
+  "minimo12m"?: number;
+  "minimo24m"?: number;
+  "variacao12m"?: number;
+  "variacao24m"?: number;
   aluguelFundoImobiliarios?: AluguelFundoImobiliario[];
 }
 
@@ -53,6 +59,12 @@ export class FundoImobiliario implements FundoImobiliarioInterface {
   "totalAluguel6": number;
   "mediaPercentualAluguel3": number;
   "mediaPercentualAluguel6": number;
+  "maximo12m": number;
+  "maximo24m": number;
+  "minimo12m": number;
+  "minimo24m": number;
+  "variacao12m": number;
+  "variacao24m": number;
   aluguelFundoImobiliarios: AluguelFundoImobiliario[];
   constructor(data?: FundoImobiliarioInterface) {
     Object.assign(this, data);
@@ -173,6 +185,30 @@ export class FundoImobiliario implements FundoImobiliarioInterface {
         },
         "mediaPercentualAluguel6": {
           name: 'mediaPercentualAluguel6',
+          type: 'number'
+        },
+        "maximo12m": {
+          name: 'maximo12m',
+          type: 'number'
+        },
+        "maximo24m": {
+          name: 'maximo24m',
+          type: 'number'
+        },
+        "minimo12m": {
+          name: 'minimo12m',
+          type: 'number'
+        },
+        "minimo24m": {
+          name: 'minimo24m',
+          type: 'number'
+        },
+        "variacao12m": {
+          name: 'variacao12m',
+          type: 'number'
+        },
+        "variacao24m": {
+          name: 'variacao24m',
           type: 'number'
         },
       },

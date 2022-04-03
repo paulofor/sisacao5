@@ -58,6 +58,7 @@ import { DatasetAcao } from '../../models/DatasetAcao';
 import { ExemploTreinoAcao } from '../../models/ExemploTreinoAcao';
 import { RegraProjecaoTotalMes } from '../../models/RegraProjecaoTotalMes';
 import { PontoEntradaTrade } from '../../models/PontoEntradaTrade';
+import { PontoEntradaSimulacao } from '../../models/PontoEntradaSimulacao';
 
 export interface Models { [name: string]: any }
 
@@ -123,6 +124,7 @@ export class SDKModels {
     ExemploTreinoAcao: ExemploTreinoAcao,
     RegraProjecaoTotalMes: RegraProjecaoTotalMes,
     PontoEntradaTrade: PontoEntradaTrade,
+    PontoEntradaSimulacao: PontoEntradaSimulacao,
     
   };
 
