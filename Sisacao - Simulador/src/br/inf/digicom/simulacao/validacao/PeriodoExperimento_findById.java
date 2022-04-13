@@ -8,16 +8,12 @@ import br.inf.digicom.loopback.DatasetComum;
 
 public class PeriodoExperimento_findById extends DaoBaseApp{
 
-	private Integer idPeriodo;
 	
-	public void setIdPeriodo(int idPeriodo) {
-		this.idPeriodo = idPeriodo;
-	}
 	
 	@Override
 	protected void executaImpl() {
 		final DatasetComum ds = (DatasetComum) getComum();
-		this.repPeriodo.findById(idPeriodo, new ObjectCallback<PeriodoExperimento>() {
+		this.repPeriodo.findById(ds.getIdPeriodo(), new ObjectCallback<PeriodoExperimento>() {
 
 			@Override
 			public void onSuccess(PeriodoExperimento object) {

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AtivoImobiliarioApi, AtivoImobiliario, FundoImobiliario, FundoImobiliarioApi } from '../shared/sdk';
 import { MatDialog } from '@angular/material';
 import { AtivoImobiliarioEditaComponent } from '../ativo-imobiliario-edita/ativo-imobiliario-edita.component';
+import { DescricaoFundoImobiliarioComponent } from '../descricao-fundo-imobiliario/descricao-fundo-imobiliario.component';
+import { DetalheAluguelFundoImobiliarioComponent } from '../detalhe-aluguel-fundo-imobiliario/detalhe-aluguel-fundo-imobiliario.component';
+
 
 @Component({
   selector: 'app-ativo-imobiliario',
@@ -41,4 +44,27 @@ export class AtivoImobiliarioComponent implements OnInit {
     });
   }
 
+
+  abreExplicacao(itemCorrente) {
+    this.dialog.open(DescricaoFundoImobiliarioComponent, {
+      width: '600px',
+      height: '400px',
+      data: {
+        item: itemCorrente
+      }
+    });
+  }
+
+  abreAluguel(itemCorrente) {
+    this.dialog.open(DetalheAluguelFundoImobiliarioComponent, {
+      width: '900px',
+      height: '600px',
+      data: {
+        item: itemCorrente
+      }
+    });
+  }
+
 }
+
+

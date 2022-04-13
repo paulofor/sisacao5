@@ -13,6 +13,7 @@ export class ExemploIntradayResultadoAcaoComponent implements OnInit {
 
   exemplo:ExemploTreinoAcao;
   listaValor:string[];
+  listaValorOriginal:string[];
   listaBase:CotacaoIntradayAcaoResultado[];
   diaPrevisao:CotacaoDiarioAcao;
 
@@ -56,6 +57,19 @@ export class ExemploIntradayResultadoAcaoComponent implements OnInit {
       return this.listaValor[posicao];
     else  
       return "-";
+  }
+  getValorOriginal(posicao) {
+    if (posicao<=this.listaValorOriginal.length)
+      return this.listaValorOriginal[posicao];
+    else  
+      return "-";
+  }
+  getValorCalculado(posicao) {
+    if (posicao<this.listaValorOriginal.length) {
+      return (Number(this.listaValorOriginal[posicao]) / Number(this.listaValor[posicao])).toFixed(2);
+    } else {  
+      return "-";
+    }
   }
 
   carregaDiario() {
@@ -111,6 +125,7 @@ export class ExemploIntradayResultadoAcaoComponent implements OnInit {
         console.log('exemplo:' , result);
         this.exemplo = result;
         this.listaValor = this.exemplo.campoX.split(',');
+        this.listaValorOriginal = this.exemplo.campoXOriginal.split(',');
         console.log('listaValor:' , this.listaValor);
         this.carregaIntraday();
         if (this.exemplo.diaNumSaida) {

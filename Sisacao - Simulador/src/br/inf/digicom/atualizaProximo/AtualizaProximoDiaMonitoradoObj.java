@@ -1,7 +1,8 @@
 package br.inf.digicom.atualizaProximo;
 
+import br.inf.digicom.loopback.DaoBase;
+import br.inf.digicom.loopback.DaoBaseApp;
 import br.inf.digicom.loopback.DatasetComum;
-import br.inf.digicom.simulacao.validacao.PeriodoExperimento_findById;
 
 public class AtualizaProximoDiaMonitoradoObj {
 
@@ -9,7 +10,7 @@ public class AtualizaProximoDiaMonitoradoObj {
 		AtualizaProximoPeriodoExperimento exec = new AtualizaProximoPeriodoExperimento();
 		
 		DatasetComum ds = new DatasetComum();
-		exec.setIdPeriodo(i);
+		ds.setIdPeriodo(i);
 		exec.setComum(ds);
 		exec.executa();
 		while (!exec.getConcluido()) {
@@ -21,5 +22,7 @@ public class AtualizaProximoDiaMonitoradoObj {
 			}
 		}
 	}
+
+	
 
 }

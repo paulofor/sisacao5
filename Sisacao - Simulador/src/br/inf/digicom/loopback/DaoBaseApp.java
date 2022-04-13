@@ -26,6 +26,16 @@ public abstract class DaoBaseApp extends DaoBase {
 			adapter.createRepository(RepositorioAcaoBase.AtivoAcaoRepository.class);
 	protected RepositorioPontoEntradaSimulacao repPontoEntrada = adapter.createRepository(RepositorioPontoEntradaSimulacao.class);
 	
+	@Override
+	protected long getTempo() {
+		return 60000;
+	}
+
+	@Override
+	protected final IDatasetComum criaDataSet() {
+		return new DatasetComum();
+	}
+	
 	
 
 }

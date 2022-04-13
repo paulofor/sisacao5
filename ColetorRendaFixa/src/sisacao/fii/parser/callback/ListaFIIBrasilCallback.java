@@ -38,15 +38,13 @@ public class ListaFIIBrasilCallback extends CallbackParseHtml{
 	public void handleEndTag(Tag t, int pos) {
 		super.handleEndTag(t, pos);
 		if (t==HTML.Tag.TD) {
-			System.out.println("Final de coluna");
-			System.out.println("UltConteudo:" + this.getUltConteudo());
-			System.out.println("UltClasse:" + this.getUltClasse());
-			System.out.println();
+
 			if ("column-1".equals(this.getUltClasse())) {
 				this.tickerFundo = this.getUltConteudo();
 			}
 			if ("column-2".equals(this.getUltClasse())) {
 				this.nomeFundo = this.getUltConteudo();
+				System.out.println(tickerFundo + " - " + nomeFundo);
 				this.dado.addFundo(tickerFundo, nomeFundo, "", "");
 			}
 		}
@@ -68,7 +66,8 @@ public class ListaFIIBrasilCallback extends CallbackParseHtml{
 
 	@Override
 	public void finalizacaoOk() throws DaoException {
-		FundoImobiliarioFacade.trataLista(this.dado.getLista());
+		//FundoImobiliarioFacade.trataLista(this.dado.getLista());
+		this.dado.salvaLista();
 	}
 
 	@Override

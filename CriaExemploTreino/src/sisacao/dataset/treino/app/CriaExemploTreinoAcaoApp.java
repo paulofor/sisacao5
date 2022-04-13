@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import br.inf.digicom.loopback.comum.DaoBaseComum;
 import sisacao.dataset.treino.obj.CriaExemploTreinoAcaoObj;
 
 public class CriaExemploTreinoAcaoApp {
@@ -21,6 +22,7 @@ public class CriaExemploTreinoAcaoApp {
 			int qtdeDias = 3;
 			CriaExemploTreinoAcaoObj obj = new CriaExemploTreinoAcaoObj();
 			obj.executa(codigoRegra, qtdeDias);
+			System.exit(0);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -33,5 +35,6 @@ public class CriaExemploTreinoAcaoApp {
 		Properties prop = new Properties();
         prop.load(input);
         UrlLoopback = prop.getProperty("loopback.url");
+        DaoBaseComum.setUrl(UrlLoopback);
 	}
 }

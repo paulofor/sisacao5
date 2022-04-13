@@ -211,7 +211,8 @@ module.exports = function(Valormonitoria) {
                 'diaNumEntrada' : diaNum,
                 'situacao' : '' ,
                 'tipo' : tipo,
-                'periodoExperimentoId' : periodoExperimentoId
+                'periodoExperimentoId' : periodoExperimentoId,
+                'dataInsercao' : new Date()
              }
              Valormonitoria.create(novo, (err,result) => {
                 Valormonitoria.TrataSituacao(execucao.id, (err,result) => {

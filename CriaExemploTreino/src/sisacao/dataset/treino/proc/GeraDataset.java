@@ -2,16 +2,19 @@ package sisacao.dataset.treino.proc;
 
 import java.util.List;
 
-import br.com.digicom.sisacao.modelo.CotacaoDiarioAcao;
 import br.com.digicom.sisacao.modelo.CotacaoIntradayAcaoResultado;
 import br.com.digicom.sisacao.modelo.DiaPregao;
 import br.com.digicom.sisacao.modelo.RegraProjecao;
+import br.inf.digicom.loopback.DaoBase;
+import br.inf.digicom.loopback.DummyDaoBase;
+import sisacao.dataset.treino.dao.DaoBaseApp;
 import sisacao.dataset.treino.dao.DatasetComum;
 
-public class GeraDataset {
+public class GeraDataset extends DaoBaseApp {
 	
-	private DatasetComum comum;
+	private DummyDaoBase dummy = null;
 	
+
 	private List<DiaPregao> dias = null;
 	private double valorEntrada = 0;
 	private RegraProjecao regraProjecao;
@@ -22,7 +25,10 @@ public class GeraDataset {
 	
 	private long diaEntradaNum;
 	
-	
+	public GeraDataset() {
+		super();
+		this.dummy = new DummyDaoBase();
+	}
 	
 	public long getDiaEntradaNum() {
 		return diaEntradaNum;
@@ -32,28 +38,29 @@ public class GeraDataset {
 		this.diaEntradaNum = diaEntradaNum;
 	}
 
-	public void setDatasetComum(DatasetComum valor) {
-		this.comum = valor;
-	}
+	
 
-	public void executa() {
-		this.dias = this.comum.getListaPregao();
-		this.ticker = this.comum.getTicker();
-		this.regraProjecao = this.comum.getRegraProjecao();
+	private void executaItem() {
+		DatasetComum comum = (DatasetComum) getComum();
+		this.dias = comum.getListaPregao();
+		this.ticker = comum.getAtivoAcaoCorrente().getTicker();
+		this.regraProjecao = comum.getRegraProjecao();
 		procuraPontoSaida = new ProcuraPontoSaida(this.regraProjecao);
 		this.dadosTreino = new DadosTreino();
-		this.dadosTreino.setQuantidadeDia(this.comum.getQuantidadeDiasX());
+		this.dadosTreino.setQuantidadeDia(comum.getQuantidadeDiasX());
 		this.enviaDados = new EnviaDados();
 		processaDias();
+		System.out.println(" !!!!  final de execução !!!!");
 	}
 	
 	private void processaDias() {
+		DatasetComum comum = (DatasetComum) getComum();
 		int diaReferencia = 0;
 		CotacaoIntradayAcaoResultado cotacaoDiaAnterior = null;
 		try {
 			
 			int indiceDia = dias.get(0).getCotacaoIntradayAcaoResultados().size() + this.regraProjecao.getIndiceHoraReferenciaDataset() - 1;
-			for (int indDia=this.comum.getQuantidadeDiasX();indDia<dias.size();indDia++) {
+			for (int indDia=comum.getQuantidadeDiasX();indDia<(dias.size()-10);indDia++) {
 				DiaPregao diaOperacao = dias.get(indDia);
 				DiaPregao diaAnterior = dias.get(indDia-1);
 				cotacaoDiaAnterior = diaAnterior.getCotacaoIntradayAcaoResultados().get(indiceDia);
@@ -65,7 +72,7 @@ public class GeraDataset {
 					diaReferencia = indDia+1;
 					Integer result = this.procuraPontoSaida.procuraValor(dias,diaReferencia,0,valorEntrada);
 					if (result!=null) {
-						dadosTreino.calcula(dias, indDia, result, this.procuraPontoSaida);
+						dadosTreino.calcula(dias, indDia, result, this.procuraPontoSaida, cotacaoDiaAnterior.getValor());
 						this.enviaDados.enviaDia(ticker, regraProjecao, dadosTreino, procuraPontoSaida,valorEntrada, cotacaoDiaAnterior.getValor() );
 					} else {
 						DiaPregao atual = dias.get(diaReferencia);
@@ -73,7 +80,7 @@ public class GeraDataset {
 						System.out.println("");
 					}
 				} else {
-					dadosTreino.calcula(dias, indDia,  this.procuraPontoSaida);
+					dadosTreino.calcula(dias, indDia,  this.procuraPontoSaida, cotacaoDiaAnterior.getValor());
 					this.enviaDados.enviaDia(ticker, regraProjecao, dadosTreino, null,valorEntrada, cotacaoDiaAnterior.getValor() );
 
 				}
@@ -117,6 +124,18 @@ public class GeraDataset {
 		} else {
 			return null;
 		}
+	}
+
+	@Override
+	protected void executaImpl() {
+		// TODO Auto-generated method stub
+		executaItem();
+		executaProximo();
+	}
+
+	@Override
+	protected DaoBase getProximo() {
+		return dummy;
 	}
 	
 	

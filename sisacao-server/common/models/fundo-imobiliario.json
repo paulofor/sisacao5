@@ -127,6 +127,26 @@
         }
       ]
     },
+    "RegistraDiario": {
+      "accepts": [
+        
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/registraDiario",
+          "verb": "post"
+        }
+      ]
+    },
     "AtualizaMetricaFundoImobiliario": {
       "accepts": [],
       "returns": [

@@ -2,18 +2,30 @@ package sisacao.dataset.treino.dao;
 
 import java.util.List;
 
+import br.com.digicom.sisacao.modelo.AtivoAcao;
 import br.com.digicom.sisacao.modelo.DiaPregao;
 import br.com.digicom.sisacao.modelo.RegraProjecao;
 import br.inf.digicom.loopback.IDatasetComum;
+import br.inf.digicom.loopback.comum.ativoacao.AtivoAcao_ListaPorNomeGrupoDS;
+import br.inf.digicom.loopback.comum.regraprojecao.RegraProjecao_ObtemPorCodigoRegraDS;
 
-public class DatasetComum implements IDatasetComum {
+public class DatasetComum implements IDatasetComum ,
+								AtivoAcao_ListaPorNomeGrupoDS,
+								RegraProjecao_ObtemPorCodigoRegraDS
+			{
 	
 	private RegraProjecao regraProjecao = null;
 	private int inicioPeriodo = 0;
-	private String ticker = null;
+	//private String ticker = null;
 	private List<DiaPregao> listaPregao;
-	private String codigoRegra;
+	private String codigoRegraProjecao;
 	private int quantidadeDiasX = 0;
+	//private String codigoGrupo;
+	private AtivoAcao ativoAcao = null;
+	private String codigoGrupoAcao = null;
+	
+
+	
 	
 	
 
@@ -41,13 +53,7 @@ public class DatasetComum implements IDatasetComum {
 		this.inicioPeriodo = inicioPeriodo;
 	}
 
-	public String getTicker() {
-		return ticker;
-	}
-
-	public void setTicker(String ticker) {
-		this.ticker = ticker;
-	}
+	
 
 	public List<DiaPregao> getListaPregao() {
 		return listaPregao;
@@ -59,11 +65,36 @@ public class DatasetComum implements IDatasetComum {
 
 	
 
-	public void setCodigoRegra(String codigoRegra) {
-		this.codigoRegra = codigoRegra;
+
+
+	@Override
+	public void setAtivoAcaoCorrente(AtivoAcao item) {
+		this.ativoAcao = item;
 	}
-	public String getCodigoRegra() {
-		return this.codigoRegra;
+
+	@Override
+	public AtivoAcao getAtivoAcaoCorrente() {
+		return this.ativoAcao;
+	}
+
+	@Override
+	public void setCodigoGrupoAcao(String codigo) {
+		this.codigoGrupoAcao = codigo;
+	}
+
+	@Override
+	public String getCodigoGrupoAcao() {
+		return this.codigoGrupoAcao;
+	}
+
+	@Override
+	public String getCodigoRegraProjecao() {
+		return this.codigoRegraProjecao;
+	}
+
+	@Override
+	public void setCodigoRegraProjecao(String codigoRegra) {
+		this.codigoRegraProjecao = codigoRegra;
 	}
 	
 	

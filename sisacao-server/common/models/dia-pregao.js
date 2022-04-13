@@ -44,6 +44,22 @@ module.exports = function(Diapregao) {
         ds.connector.query(sql,callback);
     };
 
+    Diapregao.ObtemAnteriorB3 = function(callback) {
+        var data = new Date();
+        data.setUTCMinutes(0);
+        data.setUTCHours(0);
+        data.setUTCSeconds(0);
+        data.setUTCMilliseconds(0);
+        //console.log(data);
+        let filtro = { 
+            "where" : 
+                {"data" : {"lt": data } },
+            "order" : "data desc" 
+        }
+        Diapregao.findOne(filtro, callback);
+    }
+
+
     /**
     * 
     * @param {Function(Error, object)} callback
@@ -55,10 +71,31 @@ module.exports = function(Diapregao) {
         data.setUTCSeconds(0);
         data.setUTCMilliseconds(0);
         //console.log(data);
+        let filtro = { 
+            "where" : {"data" : {"gte": data } },
+            "order" : "data" 
+        }
+        Diapregao.findOne(filtro, callback);
+    };
+
+    Diapregao.ObtemProximoB3 = function(callback) {
+        Diapregao.ObtemProximoAntesMeiaNoite(5,callback); 
+    };
+  
+    Diapregao.ObtemProximoAntesMeiaNoite = function(horas,callback) {
+        var data = new Date();
+        data.setDate(data.getDate()-1);
+        data.setHours(data.getHours() - (data.getTimezoneOffset()/60) + horas);
+        //data.setUTCMinutes(0);
+        //data.setUTCHours(0);
+        //data.setUTCSeconds(0);
+        //data.setUTCMilliseconds(0);
+        console.log('data:' , data);
+        console.log(data);
         let filtro = { "where" : {"data" : {"gte": data } } }
         Diapregao.findOne(filtro, callback);
     };
-  
+
 
     /**
     * 

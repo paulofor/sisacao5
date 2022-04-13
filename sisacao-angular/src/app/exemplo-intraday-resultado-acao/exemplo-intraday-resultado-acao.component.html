@@ -48,6 +48,8 @@
                   <th width="15%">Hora</th>
                   <th width="25%">Cotação</th>
                   <th width="25%">Valor</th>
+                  <th width="25%">Original</th>
+                  <th width="25%">Caclulado</th>
                 </tr>
               </thead>
               <tbody>
@@ -55,6 +57,8 @@
                   <td>{{item.dataHora |  date : 'dd/MM/yyyy HH:mm' : 'UTC'}}</td>
                   <td>{{item.valor | number: '1.2-2'}}</td>
                   <td>{{getValor(i)}}</td>
+                  <td>{{getValorOriginal(i)}}</td>
+                  <td>{{getValorCalculado(i)}}</td>
                 </tr>
               </tbody>
             </table>

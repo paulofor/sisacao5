@@ -1,21 +1,19 @@
 package br.inf.digicom;
 
+import br.inf.digicom.simulacao.regraProjecao.DatasetRegraProjecao;
 import br.inf.digicom.simulacao.regraProjecao.RegraProjecao_ObtemProcessando;
 
 public class CotacaoRegraProjecaoValorObj {
 
 	
 	
-	public void executa(Integer idRegraProjecao, Integer idGrupoAcao) {
-		RegraProjecao_ObtemProcessando servico = new RegraProjecao_ObtemProcessando();
-		servico.executa(idRegraProjecao,idGrupoAcao);
-		System.out.println("Terminou obj");
-	}
-
 	public void executa(String codigoRegra, String codigoGrupo) {
-		// TODO Auto-generated method stub
+		DatasetRegraProjecao ds = new DatasetRegraProjecao();
+		ds.setCodigoRegra(codigoRegra);
+		ds.setCodigoGrupo(codigoGrupo);
 		RegraProjecao_ObtemProcessando servico = new RegraProjecao_ObtemProcessando();
-		servico.executa(codigoRegra,codigoGrupo);
+		servico.setComum(ds);
+		servico.executa();
 		System.out.println("Terminou obj");
 	}
 }

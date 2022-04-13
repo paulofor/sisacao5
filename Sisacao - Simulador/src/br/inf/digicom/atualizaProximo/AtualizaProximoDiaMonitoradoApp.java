@@ -13,10 +13,11 @@ public class AtualizaProximoDiaMonitoradoApp {
 	
 	public static void main(String[] args) {
 		System.out.println("Inicialiando ValidacaoSelecionadosApp");
-		System.out.println("Versao: 24-03-2022");
+		System.out.println("Versao: 06-04-2022");
 		try {
 			carregaProp();
 			AtualizaProximoDiaMonitoradoObj obj = new AtualizaProximoDiaMonitoradoObj();
+			//obj.setId(11);
 			obj.executa(11);
 			System.out.println("Finalizacao");
 		} catch (Exception e) {

@@ -9,49 +9,17 @@ import com.strongloop.android.loopback.callbacks.ListCallback;
 import br.com.digicom.sisacao.modelo.AtivoAcao;
 import br.com.digicom.sisacao.modelo.RegraProjecao;
 import br.com.digicom.sisacao.modelo.RelGrupoAcao;
+import br.inf.digicom.loopback.DaoBase;
 
 public class RegraProjecao_ObtemProcessando extends ExecutorRegraProjecao {
 
+	
+	
+	
+	
+	
 	public boolean concluido = false;
 	
-	/*
-	public void executa() {
-		concluido = false;
-		System.out.println("1.I");
-		this.repRegraProjecao.obtemProcessando(new ObjectCallback<RegraProjecao>() {
-
-			@Override
-			public void onSuccess(RegraProjecao regra) {
-
-				
-				//DiaPregao_ObtemIntradayResultadoValor processador = new DiaPregao_ObtemIntradayResultadoValor();
-				CotacaoIntradayAcaoResultado_DataInicialTickerRegra processador = new CotacaoIntradayAcaoResultado_DataInicialTickerRegra();
-				for (RelGrupoAcao relAcao : regra.getGrupoAcao().getRelGrupoAcaos()) {
-					processador.setRelGrupoAcao(relAcao);
-					processador.setRegraProjecao(regra);
-					processador.executa();
-					
-				}
-				concluido = true;
-			}
-
-			@Override
-			public void onError(Throwable t) {
-				// TODO Auto-generated method stub
-				t.printStackTrace();
-			}
-			
-		});
-		while (!concluido) {
-			try {
-				Thread.sleep(Constantes.SLEEP_1_REGRA_PROJECAO__OBTEM_PROCESSANDO);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		System.out.println("1.F");
-	}
-	*/
 	
 	public void executa(Integer idRegraProjecao, Integer idGrupoAcao) {
 		concluido = false;
@@ -103,6 +71,22 @@ public class RegraProjecao_ObtemProcessando extends ExecutorRegraProjecao {
 		
 	}
 
+	@Override
+	protected void executaImpl() {
+		final DatasetRegraProjecao ds = (DatasetRegraProjecao) getComum();
+		this.repRegraProjecao.obtemPorCodigoRegra(ds.getCodigoRegra(), new ObjectCallback<RegraProjecao>() {
+			@Override
+			public void onSuccess(RegraProjecao object) {
+				ds.setRegraProjecao(object);
+				executaProximo();
+			}
+			@Override
+			public void onError(Throwable t) {
+				onErrorBase(t);
+			}
+		});
+	}
+	
 
 	public void executa(String codigoRegra, String codigoGrupo) {
 		concluido = false;
@@ -154,5 +138,15 @@ public class RegraProjecao_ObtemProcessando extends ExecutorRegraProjecao {
 		}
 		System.out.println("1.F");
 		
+	}
+
+
+	
+
+
+	@Override
+	protected DaoBase getProximo() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

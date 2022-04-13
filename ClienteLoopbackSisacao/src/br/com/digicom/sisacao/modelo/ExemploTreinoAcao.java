@@ -11,6 +11,7 @@ public class ExemploTreinoAcao extends Model{
 	//private Integer datasetAcaoId;
 	private String campoX;
 	private String campoY;
+	private String campoXOriginal;
 	private Integer diaNumInicio;
 	private Integer diaNumPrevisao;
 	private Integer regraProjecaoId;
@@ -27,6 +28,7 @@ public class ExemploTreinoAcao extends Model{
 		try {
 			obj.put("ticker", ticker);
 			obj.put("campoX", campoX);
+			obj.put("campoXOriginal", campoXOriginal);
 			obj.put("campoY", campoY);
 			obj.put("diaNumInicio", diaNumInicio);
 			obj.put("diaNumPrevisao", diaNumPrevisao);
@@ -169,6 +171,16 @@ public class ExemploTreinoAcao extends Model{
 
 	public void setResultado(Integer resultado) {
 		this.resultado = resultado;
+	}
+
+
+	public String getCampoXOriginal() {
+		return campoXOriginal;
+	}
+
+
+	public void setCampoXOriginal(String campoXOriginal) {
+		this.campoXOriginal = campoXOriginal;
 	}
 
 

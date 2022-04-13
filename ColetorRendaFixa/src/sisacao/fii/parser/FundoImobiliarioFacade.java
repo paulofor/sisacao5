@@ -38,7 +38,12 @@ public class FundoImobiliarioFacade {
 		try {
 			for (FundoImobiliario fundo : lista) {
 				Thread.sleep(5000);
-				chamaDetalhe(fundo);
+				try {
+					chamaDetalhe(fundo);
+				} catch (DaoException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			Thread.sleep(3 * 60000);
 			System.exit(0);
@@ -46,8 +51,9 @@ public class FundoImobiliarioFacade {
 			e.printStackTrace();
 		}
 	}
-	private static void chamaDetalhe(FundoImobiliario fundo) {
-		ExecutadorParse exec = new ExecutadorParse();
+	private static void chamaDetalhe(FundoImobiliario fundo) throws DaoException {
+		//ExecutadorParse exec = new ExecutadorParse();
+		ExecutadorParseApache3 exec = new ExecutadorParseApache3();
 		ICallbackParse callback = new ListaClubeFIIDetalheCallback();
 		FundoImobiliarioDado dado = new FundoImobiliarioDado();
 		dado.setFundo(fundo);
@@ -106,8 +112,8 @@ public class FundoImobiliarioFacade {
 		try {
 			//chamaDetalheAluguel(lista.get(0));
 			FundoImobiliario fundoTeste = new FundoImobiliario();
-			fundoTeste.setTicker("HABT11");
-			chamaDetalheAluguel(fundoTeste);
+			//fundoTeste.setTicker("HABT11");
+			//chamaDetalheAluguel(fundoTeste);
 			for (FundoImobiliario fundo : lista) {
 				Thread.sleep(5000);
 				chamaDetalheAluguel(fundo);

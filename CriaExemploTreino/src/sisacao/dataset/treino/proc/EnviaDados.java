@@ -12,6 +12,7 @@ public class EnviaDados {
 	public void enviaDia(String ticker, RegraProjecao regraProjecao, DadosTreino dadoTreino, ProcuraPontoSaida procSaida, double valorEntrada, double valorReferencia) {
 		ExemploTreinoAcao exemplo = new ExemploTreinoAcao();
 		exemplo.setCampoX(dadoTreino.getSaidaX());
+		exemplo.setCampoXOriginal(dadoTreino.getSaidaXOriginal());
 		exemplo.setCampoY(dadoTreino.getSaidaY());
 		exemplo.setResultado(dadoTreino.getResultado());
 		exemplo.setTicker(ticker);
@@ -30,6 +31,11 @@ public class EnviaDados {
 		
 		//exemplo.setLimiteSuperior(dadoTreino.)
 		dao.setDado(exemplo);
-		dao.executa();
+		dao.executaImpl();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }

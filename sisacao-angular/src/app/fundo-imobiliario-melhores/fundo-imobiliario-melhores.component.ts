@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { BaseListComponent } from '../base-component/base-list-component';
 import { DescricaoFundoImobiliarioComponent } from '../descricao-fundo-imobiliario/descricao-fundo-imobiliario.component';
+import { DetalheAluguelFundoImobiliarioComponent } from '../detalhe-aluguel-fundo-imobiliario/detalhe-aluguel-fundo-imobiliario.component';
 import { FundoImobiliarioApi } from '../shared/sdk';
 
 @Component({
@@ -25,11 +26,20 @@ export class FundoImobiliarioMelhoresComponent extends BaseListComponent {
 
 
   }
-
   abreExplicacao(itemCorrente) {
     this.dialog.open(DescricaoFundoImobiliarioComponent, {
       width: '600px',
       height: '400px',
+      data: {
+        item: itemCorrente
+      }
+    });
+  }
+
+  abreAluguel(itemCorrente) {
+    this.dialog.open(DetalheAluguelFundoImobiliarioComponent, {
+      width: '900px',
+      height: '600px',
       data: {
         item: itemCorrente
       }

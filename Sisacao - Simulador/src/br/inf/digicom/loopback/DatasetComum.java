@@ -12,7 +12,7 @@ public class DatasetComum implements IDatasetComum {
 	private AtivoAcao ativoAcao;
 	private List<DiaPregao> listaDiaPregao;
 	private List<DiaPregao> diaValidacao;
-	
+	private int idPeriodo;
 	
 	
 
@@ -47,6 +47,16 @@ public class DatasetComum implements IDatasetComum {
 	public void setListaDiaPregao(List<DiaPregao> listaDiaPregao) {
 		this.listaDiaPregao = listaDiaPregao;
 	}
+
+	public int getIdPeriodo() {
+		return idPeriodo;
+	}
+
+	public void setIdPeriodo(int idPeriodo) {
+		this.idPeriodo = idPeriodo;
+	}
+
+	
 
 	
 

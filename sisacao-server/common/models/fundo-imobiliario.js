@@ -1,5 +1,9 @@
 'use strict';
 
+
+var app = require('../../server/server');
+
+
 module.exports = function (Fundoimobiliario) {
 
 
@@ -96,13 +100,16 @@ module.exports = function (Fundoimobiliario) {
     * @param {Function(Error, array)} callback
     */
     Fundoimobiliario.Melhores6M = function(quantidade, callback) {
-        let sql = " SELECT * FROM FundoImobiliario " +
-                " where mediaNegocio1 >= 250 " +
-                //" and percentual12 > 0 " +
-                " order by percentual6 desc " +
-                " limit " + quantidade;
-                var ds = Fundoimobiliario.dataSource;
-        ds.connector.query(sql, callback)
+        app.models.DiaPregao.ObtemAnteriorB3((err,result) => {
+            let sql = " SELECT * FROM FundoImobiliario " +
+            " where dataAtual = '" + result.dataDbStr + "' " +
+            " and mediaNegocio1 >= 50 " +
+            //" and percentual12 > 0 " +
+            " order by percentual6 desc " +
+            " limit " + quantidade;
+            var ds = Fundoimobiliario.dataSource;
+            ds.connector.query(sql, callback)
+        })
     };
 
 
@@ -112,11 +119,16 @@ module.exports = function (Fundoimobiliario) {
     * @param {Function(Error, array)} callback
     */
     Fundoimobiliario.MelhoresAluguel = function(quantidade, callback) {
-        let sql = " SELECT * FROM FundoImobiliario " +
-        " order by mediaPercentualAluguel6 desc " +
-        " limit " + quantidade;
-        var ds = Fundoimobiliario.dataSource;
-        ds.connector.query(sql, callback)
+        app.models.DiaPregao.ObtemAnteriorB3((err,result) => {
+            let sql = " SELECT * FROM FundoImobiliario " +
+            " where dataAtual = '" + result.dataDbStr + "' " +
+            " order by mediaPercentualAluguel6 desc " +
+            " limit " + quantidade;
+            //console.log('sql:' , sql)
+            var ds = Fundoimobiliario.dataSource;
+            ds.connector.query(sql, callback)
+        })
+       
     };
   
 
@@ -133,7 +145,18 @@ module.exports = function (Fundoimobiliario) {
         })
     };
 
+
+    Fundoimobiliario.RegistraDiario = function(callback) {
+        let sql = "insert into FundoImobiliarioDiario " +
+            " select * from FundoImobiliario " + 
+            " where dataAtual = (select date_sub(date(now()),interval 1 day))";
+        let ds = Fundoimobiliario.dataSource;
+        ds.connector.query(sql,callback);
+    }
+
+
     /**
+     * 
     * 
     * @param {Function(Error, object)} callback
     */
@@ -156,6 +179,12 @@ module.exports = function (Fundoimobiliario) {
             " where ticker = FundoImobiliario.ticker " +
             " and data >= (select DATE_SUB(now(), INTERVAL 4 month)) " +
             ") ";
+        let sqlDataAtual = "update FundoImobiliario " +
+            " set dataAtual = ( " +
+            " select data from CotacaoDiarioAcao " +
+            " where CotacaoDiarioAcao.ticker = FundoImobiliario.ticker " + 
+            " order by data desc " +
+            " limit 1)";
         let sqlPrecoAtual = "update FundoImobiliario " +
             " set precoAtual = ( " +
             " select fechamento from CotacaoDiarioAcao " +
@@ -208,23 +237,31 @@ module.exports = function (Fundoimobiliario) {
         
         var ds = Fundoimobiliario.dataSource;
         ds.connector.query(sqlMediaNegocio1, (err1, result1) => {
-        })
-        ds.connector.query(sqlMediaNegocio3, (err1, result1) => {
-        })
-        ds.connector.query(sqlMediaNegocio4, (err1, result1) => {
-        })
-        ds.connector.query(sqlMaximoMinimo, (err,result) => {
-            ds.connector.query(sqlVariacao, (err,result) => {
-                
-            })
-        })
-        ds.connector.query(sqlPrecoAtual, (err,result) => {
-            ds.connector.query(sqlPreco6, (err,result) => {
-                ds.connector.query(sqlPreco12, (err,result) => {
-                    ds.connector.query(sqlPercentual, callback)
+            ds.connector.query(sqlMediaNegocio3, (err1, result1) => {
+                ds.connector.query(sqlMediaNegocio4, (err1, result1) => {
+                    ds.connector.query(sqlMaximoMinimo, (err,result) => {
+                        ds.connector.query(sqlVariacao, (err,result) => {
+                            ds.connector.query(sqlDataAtual, (err,result) => {
+                                ds.connector.query(sqlPrecoAtual, (err,result) => {
+                                    ds.connector.query(sqlPreco6, (err,result) => {
+                                        ds.connector.query(sqlPreco12, (err,result) => {
+                                            ds.connector.query(sqlPercentual, (err,callback) => {
+                                                Fundoimobiliario.RegistraDiario(callback);
+                                            })
+                                        })
+                                    })
+                                })
+                            })
+                        })
+                    })
                 })
             })
         })
+       
+       
+       
+       
+       
        
         
     };

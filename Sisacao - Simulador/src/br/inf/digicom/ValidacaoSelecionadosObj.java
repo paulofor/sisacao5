@@ -9,7 +9,7 @@ public class ValidacaoSelecionadosObj {
 		PeriodoExperimento_findById exec = new PeriodoExperimento_findById();
 		
 		DatasetComum ds = new DatasetComum();
-		exec.setIdPeriodo(i);
+		ds.setIdPeriodo(i);
 		exec.setComum(ds);
 		exec.executa();
 		while (!exec.getConcluido()) {

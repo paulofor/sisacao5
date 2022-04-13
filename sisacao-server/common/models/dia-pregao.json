@@ -21,6 +21,9 @@
     },
     "data": {
       "type": "date"
+    },
+    "dataDbStr" : {
+      "type" : "string"
     }
   },
   "validations": [],
@@ -148,6 +151,67 @@
       "http": [
         {
           "path": "/obtemProximo",
+          "verb": "get"
+        }
+      ]
+    },
+    "ObtemProximoB3": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "dia",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemProximoB3",
+          "verb": "get"
+        }
+      ]
+    },
+    "ObtemAnteriorB3": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "dia",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemAnteriorB3",
+          "verb": "get"
+        }
+      ]
+    },
+    "ObtemProximoAntesMeiaNoite": {
+      "accepts": [
+        {
+          "arg": "horas",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "dia",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemProximoAntesMeiaNoite",
           "verb": "get"
         }
       ]

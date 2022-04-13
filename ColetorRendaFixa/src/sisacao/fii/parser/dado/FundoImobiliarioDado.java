@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import br.com.digicom.parse.callback.IDadosParse;
 import br.com.digicom.sisacao.modelo.FundoImobiliario;
+import sisacao.fii.parser.FundoImobiliarioFacade;
 
 public class FundoImobiliarioDado implements IDadosParse{
 	
@@ -35,6 +36,17 @@ public class FundoImobiliarioDado implements IDadosParse{
 		
 	}
 	
+	public void salvaLista() {
+		FundoImobiliarioFacade face = new FundoImobiliarioFacade();
+		for (FundoImobiliario fundo: this.listaFundo) {
+			face.salvaItemBasico(fundo);
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	
 	public void addFundo(String ticker, String nome, String segmento, String administrador) {

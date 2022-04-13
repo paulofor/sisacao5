@@ -25,9 +25,10 @@ public class AtivoAcao_SimulacaoComMonitor extends DaoBaseApp{
 					RepositorioCotacao.limpa();
 					System.out.println("Ticker: " + acao.getTicker());
 					ds.setAtivoAcao(acao);
-					executaProximo();
-					
+					executaProximoSemFinalizar();
 				}
+				finalizar();
+				
 			}
 
 			@Override

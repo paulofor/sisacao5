@@ -142,6 +142,9 @@ import { ExemploIntradayResultadoAcaoComponent } from './exemplo-intraday-result
 import { ResumoTradeRealComponent } from './resumo-trade-real/resumo-trade-real.component';
 import { GraficoTradeMensalComponent } from './grafico-trade-mensal/grafico-trade-mensal.component';
 import { PontoEntradaSimulacaoDiaComponent } from './ponto-entrada-simulacao-dia/ponto-entrada-simulacao-dia.component';
+import { FundoImobiliarioMelhoresValorizacaoComponent } from './fundo-imobiliario-melhores-valorizacao/fundo-imobiliario-melhores-valorizacao.component';
+import { FundoImobiliarioMelhoresRendimentoComponent } from './fundo-imobiliario-melhores-rendimento/fundo-imobiliario-melhores-rendimento.component';
+import { TradeNovoSimulacaoComponent } from './trade-novo-simulacao/trade-novo-simulacao.component';
 
 //import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
@@ -257,6 +260,9 @@ registerLocaleData(localePt, 'pt-BR');
     ResumoTradeRealComponent,
     GraficoTradeMensalComponent,
     PontoEntradaSimulacaoDiaComponent,
+    FundoImobiliarioMelhoresValorizacaoComponent,
+    FundoImobiliarioMelhoresRendimentoComponent,
+    TradeNovoSimulacaoComponent,
   ],
   imports: [
     BrowserModule,
@@ -340,7 +346,8 @@ registerLocaleData(localePt, 'pt-BR');
     RegraProjecaoEditComponent,
     ValorMesSaldoEditComponent,
     GrupoParaAcaoComponent,
-    DetalheAluguelFundoImobiliarioComponent
+    DetalheAluguelFundoImobiliarioComponent,
+    TradeNovoSimulacaoComponent
   ],
   bootstrap: [AppComponent]
 })

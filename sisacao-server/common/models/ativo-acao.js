@@ -192,6 +192,7 @@ module.exports = function (Ativoacao) {
     * @param {Function(Error, array)} callback
     */
     Ativoacao.ListaPorGrupo = function(idGrupo, callback) {
+        
         let sql = "select AtivoAcao.* from AtivoAcao " +
                 " inner join RelGrupoAcao on AtivoAcao.ticker = RelGrupoAcao.ticker " +
                 " where RelGrupoAcao.grupoAcaoId =  " + idGrupo + 
@@ -361,12 +362,17 @@ module.exports = function (Ativoacao) {
     * @param {Function(Error, array)} callback
     */
     Ativoacao.ListaPorNomeGrupo = function(nomeGrupo, callback) {
+        console.log('iniciou ListaPorNomeGrupo');
         let sql = " select AtivoAcao.* from AtivoAcao " + 
                 " inner join RelGrupoAcao on RelGrupoAcao.ticker = AtivoAcao.ticker " +
                 " inner join GrupoAcao on GrupoAcao.id = RelGrupoAcao.grupoAcaoId " +
                 " where GrupoAcao.nome = '" + nomeGrupo + "' ";
         let ds = Ativoacao.dataSource;
-        ds.connector.query(sql,callback);
+        ds.connector.query(sql,(err,result) => {
+            console.log('terminou ListaPorNomeGrupo');
+            console.log('erro:' , err);
+            callback(err,result);
+        });
     };
 
 };

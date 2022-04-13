@@ -15,7 +15,7 @@ public class DiaPregao_ObtemProximo extends DiaPregao_ProximoParaValidador {
 	protected void executaImpl() {
 		final DatasetComum ds = (DatasetComum) getComum();
 
-		this.repDiaPregao.obtemProximo(new ObjectCallback<DiaPregao>() {
+		this.repDiaPregao.obtemProximoB3(new ObjectCallback<DiaPregao>() {
 
 			@Override
 			public void onSuccess(DiaPregao object) {

@@ -44,6 +44,12 @@ export class TradeRealListaEditComponent extends BaseEditComponent {
     
   }
 
+  calcularEntrada() {
+    console.log('precoEntrada:' , this.item.precoEntrada);
+    console.log('quantidade' , this.item.quantidade);
+    this.item.custoEntrada = this.item.precoEntrada * this.item.quantidade;
+  }
+
   posItem() {
     let itemTrade:TradeReal = this.item;
     if (itemTrade.tipo=='C') {

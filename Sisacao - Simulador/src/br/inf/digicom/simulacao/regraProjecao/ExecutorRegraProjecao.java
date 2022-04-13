@@ -2,14 +2,14 @@ package br.inf.digicom.simulacao.regraProjecao;
 
 import com.strongloop.android.loopback.RestAdapter;
 
-import br.com.digicom.sisacao.app.Loopback;
-import br.com.digicom.sisacao.modelo.CotacaoIntradayAcaoResultadoValor;
 import br.com.digicom.sisacao.repositorio.RepositorioAcaoBase;
 import br.com.digicom.sisacao.repositorio.RepositorioDiaPregao;
 import br.com.digicom.sisacao.repositorio.RepositorioRegraProjecao;
 import br.inf.digicom.desen.CotacaoRegraProjecaoValorApp;
+import br.inf.digicom.loopback.DaoBase;
+import br.inf.digicom.loopback.IDatasetComum;
 
-public class ExecutorRegraProjecao {
+public abstract class ExecutorRegraProjecao extends DaoBase{
 
 	
 	RestAdapter adapter = new RestAdapter(CotacaoRegraProjecaoValorApp.UrlLoopback); 
@@ -24,5 +24,19 @@ public class ExecutorRegraProjecao {
 	
 	protected RepositorioAcaoBase.CotacaoIntradayAcaoResultadoRepository repResultado = 
 			adapter.createRepository(RepositorioAcaoBase.CotacaoIntradayAcaoResultadoRepository.class);
+
+	@Override
+	protected long getTempo() {
+		return 0;
+	}
+
+	
+
+	@Override
+	protected IDatasetComum criaDataSet() {
+		return new DatasetRegraProjecao();
+	}
+
+	
 	
 }
