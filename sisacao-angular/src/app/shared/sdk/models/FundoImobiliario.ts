@@ -33,6 +33,7 @@ export interface FundoImobiliarioInterface {
   "minimo24m"?: number;
   "variacao12m"?: number;
   "variacao24m"?: number;
+  "dataAtual"?: Date;
   aluguelFundoImobiliarios?: AluguelFundoImobiliario[];
 }
 
@@ -65,6 +66,7 @@ export class FundoImobiliario implements FundoImobiliarioInterface {
   "minimo24m": number;
   "variacao12m": number;
   "variacao24m": number;
+  "dataAtual": Date;
   aluguelFundoImobiliarios: AluguelFundoImobiliario[];
   constructor(data?: FundoImobiliarioInterface) {
     Object.assign(this, data);
@@ -210,6 +212,10 @@ export class FundoImobiliario implements FundoImobiliarioInterface {
         "variacao24m": {
           name: 'variacao24m',
           type: 'number'
+        },
+        "dataAtual": {
+          name: 'dataAtual',
+          type: 'Date'
         },
       },
       relations: {

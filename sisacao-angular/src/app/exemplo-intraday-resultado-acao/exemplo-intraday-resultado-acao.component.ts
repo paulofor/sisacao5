@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CotacaoDiarioAcao, CotacaoDiarioAcaoApi, CotacaoIntradayAcaoResultado, CotacaoIntradayAcaoResultadoApi, ExemploTreinoAcao, ExemploTreinoAcaoApi } from '../shared/sdk';
+import { CotacaoDiarioAcao, CotacaoDiarioAcaoApi, CotacaoIntradayAcaoResultado, CotacaoIntradayAcaoResultadoApi, ExemploTreinoAcao, ExemploTreinoAcaoApi, RegraProjecao, RegraProjecaoApi, RegraSimulacao } from '../shared/sdk';
 
 @Component({
   selector: 'app-exemplo-intraday-resultado-acao',
@@ -19,13 +19,18 @@ export class ExemploIntradayResultadoAcaoComponent implements OnInit {
 
   diaSaida: CotacaoDiarioAcao;
   limiteSaida : any;
+  regraProjecaoId : number;
 
   processando = false;
 
+  listaRegra: RegraProjecao[];
+
   constructor(private srv :ExemploTreinoAcaoApi, 
-      private srvCotacao :CotacaoIntradayAcaoResultadoApi, private srvDiario:CotacaoDiarioAcaoApi) { }
+      private srvCotacao :CotacaoIntradayAcaoResultadoApi, private srvDiario:CotacaoDiarioAcaoApi, 
+      private srvRegra: RegraProjecaoApi) { }
 
   ngOnInit() {
+    this.montaRegraProjecao();
   }
 
 
@@ -36,6 +41,16 @@ export class ExemploIntradayResultadoAcaoComponent implements OnInit {
     this.carregaDiario();
   }
 
+  montaRegraProjecao() {
+    this.srvRegra.find({'order' : 'codigoRegraProjecao'})
+      .subscribe((result:RegraProjecao[]) => {
+        this.listaRegra = result;
+      });
+   
+  }
+
+
+
   entrou() {
     if (this.exemplo.valorEntrada>= this.diaPrevisao.minimo && this.exemplo.valorEntrada<= this.diaPrevisao.maximo) {
       return 'dgc-azul'
@@ -43,6 +58,16 @@ export class ExemploIntradayResultadoAcaoComponent implements OnInit {
       return '';
     }
   }
+
+  mensagemEntrou() {
+    if (this.exemplo.valorEntrada>= this.diaPrevisao.minimo && this.exemplo.valorEntrada<= this.diaPrevisao.maximo) {
+      return '--> entrou'
+    } else {
+      return '--> não entrou';
+    }
+  }
+
+
   periodo() {
     if (this.exemplo.valorSaida < this.limiteSaida.minimo || this.exemplo.valorSaida > this.limiteSaida.maximo) {
       return 'dgc-verde'
@@ -116,14 +141,15 @@ export class ExemploIntradayResultadoAcaoComponent implements OnInit {
         'where' : {
           'and' : [ 
             {'ticker' : this.ticker} , 
-            {'diaNumPrevisao' : this.data }
+            {'diaNumPrevisao' : this.data },
+            {'regraProjecaoId' : this.regraProjecaoId }
           ] 
         }
     };
-    this.srv.findOne(filtro)
-      .subscribe((result:ExemploTreinoAcao) => {
+    this.srv.find(filtro)
+      .subscribe((result:ExemploTreinoAcao[]) => {
         console.log('exemplo:' , result);
-        this.exemplo = result;
+        this.exemplo = result[0];
         this.listaValor = this.exemplo.campoX.split(',');
         this.listaValorOriginal = this.exemplo.campoXOriginal.split(',');
         console.log('listaValor:' , this.listaValor);

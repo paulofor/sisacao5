@@ -5,7 +5,7 @@ var app = require('../../server/server');
 module.exports = function(Pontoentradasimulacao) {
 
     Pontoentradasimulacao.PreparaProximoDia = function(callback) {
-
+        //console.log('PreparaProximoDia');
         app.models.DiaPregao.ObtemProximoB3((err,result) => {
             let sql = "insert into PontoEntradaSimulacao (ticker, diaNum, periodoExperimentoId, tipo, valor, valorLimite, votantes, votos, execucaoSimulacaoId) " +
 
@@ -62,8 +62,9 @@ module.exports = function(Pontoentradasimulacao) {
                 " where soma = 0 " +
                 
                 ") as duplo ";
+            //console.log('Montou o sql');
             let ds = Pontoentradasimulacao.dataSource;
-            console.log(sql);
+            //console.log(sql);
             ds.connector.query(sql,callback);
         })
     }

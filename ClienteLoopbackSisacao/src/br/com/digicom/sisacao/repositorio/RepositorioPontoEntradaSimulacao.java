@@ -22,7 +22,7 @@ public class RepositorioPontoEntradaSimulacao extends ModelRepository<PontoEntra
 	
 	
 	public void preparaProximoDia(final VoidCallback callback ) {
-		RestContractItem contrato = new RestContractItem("PontoEntradaSimulacaos/preparaProximoDia","GET");
+		RestContractItem contrato = new RestContractItem("PontoEntradaSimulacaos/preparaProximoDia","POST");
 		this.getRestAdapter().getContract().addItem(contrato, "PontoEntradaSimulacao.preparaProximoDia");
         Map<String, Object> params = new HashMap<String, Object>();
         invokeStaticMethod("preparaProximoDia", params,   new EmptyResponseParser(callback));

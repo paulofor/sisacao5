@@ -236,17 +236,29 @@ module.exports = function (Fundoimobiliario) {
                 " variacao24m = (maximo24m - minimo24m) / maximo24m * 100";
         
         var ds = Fundoimobiliario.dataSource;
-        ds.connector.query(sqlMediaNegocio1, (err1, result1) => {
-            ds.connector.query(sqlMediaNegocio3, (err1, result1) => {
-                ds.connector.query(sqlMediaNegocio4, (err1, result1) => {
-                    ds.connector.query(sqlMaximoMinimo, (err,result) => {
-                        ds.connector.query(sqlVariacao, (err,result) => {
-                            ds.connector.query(sqlDataAtual, (err,result) => {
-                                ds.connector.query(sqlPrecoAtual, (err,result) => {
-                                    ds.connector.query(sqlPreco6, (err,result) => {
-                                        ds.connector.query(sqlPreco12, (err,result) => {
-                                            ds.connector.query(sqlPercentual, (err,callback) => {
-                                                Fundoimobiliario.RegistraDiario(callback);
+        Fundoimobiliario.AtualizaDiarioFII((err,result) => {
+            ds.connector.query(sqlMediaNegocio1, (err1, result1) => {
+                console.log('err1' , err1);
+                ds.connector.query(sqlMediaNegocio3, (err2, result1) => {
+                    console.log('err2' , err2);
+                    ds.connector.query(sqlMediaNegocio4, (err3, result1) => {
+                        console.log('err3' , err3);
+                        ds.connector.query(sqlMaximoMinimo, (err4,result) => {
+                            console.log('err4' , err4);
+                            ds.connector.query(sqlVariacao, (err5,result) => {
+                                console.log('err5' , err5);
+                                ds.connector.query(sqlDataAtual, (err6,result) => {
+                                    console.log('err6' , err6);
+                                    ds.connector.query(sqlPrecoAtual, (err7,result) => {
+                                        console.log('err7' , err7);
+                                        ds.connector.query(sqlPreco6, (err8,result) => {
+                                            console.log('err8' , err8);
+                                            ds.connector.query(sqlPreco12, (err9,result) => {
+                                                console.log('err9' , err9);
+                                                ds.connector.query(sqlPercentual, (err10,result) => {
+                                                    console.log('err10' , err10);
+                                                    Fundoimobiliario.RegistraDiario(callback);
+                                                })
                                             })
                                         })
                                     })
@@ -256,6 +268,7 @@ module.exports = function (Fundoimobiliario) {
                     })
                 })
             })
+    
         })
        
        

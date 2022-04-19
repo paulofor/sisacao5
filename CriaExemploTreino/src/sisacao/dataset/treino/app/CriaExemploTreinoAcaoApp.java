@@ -15,11 +15,11 @@ public class CriaExemploTreinoAcaoApp {
 	
 	public static void main(String[] args) {
 		System.out.print("CriaExemploTreinoAcaoApp");
-		System.out.println(" (30-12-2021)");
+		System.out.println(" (14-04-2022)");
 		try {
 			carregaProp();
-			String codigoRegra = "t15s10v";
-			int qtdeDias = 3;
+			String codigoRegra = "t11s17c";
+			int qtdeDias = 120;
 			CriaExemploTreinoAcaoObj obj = new CriaExemploTreinoAcaoObj();
 			obj.executa(codigoRegra, qtdeDias);
 			System.exit(0);

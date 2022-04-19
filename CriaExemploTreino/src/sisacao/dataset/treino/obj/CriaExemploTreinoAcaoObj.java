@@ -20,7 +20,7 @@ public class CriaExemploTreinoAcaoObj {
 		comum.setCodigoGrupoAcao(grupoAcao);
 		comum.setInicioPeriodo(diaNumInicio);
 		comum.setCodigoRegraProjecao(codigoRegra);
-		comum.setQuantidadeDiasX(3);
+		comum.setQuantidadeDiasX(qtdeDias);
 		exec.setComum(comum);
 		trataProximo();
 		exec.executa();

@@ -2,12 +2,41 @@ package br.inf.digicom.simulacao.regraProjecao;
 
 import com.strongloop.android.loopback.callbacks.ObjectCallback;
 
-import br.com.digicom.sisacao.modelo.AtivoAcao;
 import br.com.digicom.sisacao.modelo.CotacaoIntradayAcaoResultado;
-import br.com.digicom.sisacao.modelo.RegraProjecao;
+import br.inf.digicom.loopback.DaoBase;
 
 public class CotacaoIntradayAcaoResultado_DataInicialTickerRegra extends ExecutorRegraProjecao {
+	
+	
 
+	@Override
+	protected void executaImpl() {
+		final DatasetRegraProjecao ds = (DatasetRegraProjecao) getComum();
+		String ticker = ds.getAtivoAcaoCorrente().getTicker();
+		long idRegra = ds.getRegraProjecao().getId();
+		repResultado.dataInicialTickerRegra(ticker, idRegra,  new ObjectCallback<CotacaoIntradayAcaoResultado>() {
+
+			@Override
+			public void onSuccess(CotacaoIntradayAcaoResultado resultado) {
+				System.out.println("** Data Inicial = " + resultado.getDiaNum());
+				ds.setDataInicial(resultado);
+				executaProximo();
+			}
+
+			@Override
+			public void onError(Throwable t) {
+				onErrorBase(t);
+			}});
+	}
+
+	@Override
+	protected DaoBase getProximo() {
+		return new br.inf.digicom.loopback.comum.diapregao.DiaPregao_ObtemIntradayResultadoValor();
+	}
+
+	
+	/*
+	
 	AtivoAcao ticker;
 	RegraProjecao regraProjecao;
 	
@@ -52,4 +81,7 @@ public class CotacaoIntradayAcaoResultado_DataInicialTickerRegra extends Executo
 			}
 		}
 	}
+	*/
+
+	
 }

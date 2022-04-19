@@ -22,7 +22,7 @@ public class PontoEntradaSimulacao_PreparaProximoDia extends DaoBaseApp {
 
 			@Override
 			public void onSuccess() {
-				dummy.executaProximo();
+				finalizar();
 			}
 
 			@Override

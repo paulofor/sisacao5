@@ -36,6 +36,7 @@ export class EscolhePeriodoCorrenteExperimentoComponent  extends BaseEditCompone
   }
 
   preSubmit() {
+    console.log('item:' , this.item);
     delete this.item['periodoExperimento'];
     delete this.item['experimentoParametros'];
     delete this.item['experimentoSimulacaoPeriodos'];

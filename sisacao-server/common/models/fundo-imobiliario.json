@@ -90,6 +90,9 @@
     },
     "variacao24m": {
       "type": "number"
+    },
+    "dataAtual" : {
+      "type" : "date"
     }
   },
   "validations": [],

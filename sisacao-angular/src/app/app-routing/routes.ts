@@ -53,6 +53,7 @@ import { CotacaoIntradayResultadoAcaoComponent } from '../cotacao-intraday-resul
 import { ExemploIntradayResultadoAcaoComponent } from '../exemplo-intraday-resultado-acao/exemplo-intraday-resultado-acao.component';
 import { ResumoTradeRealComponent } from '../resumo-trade-real/resumo-trade-real.component';
 import { PontoEntradaSimulacaoDiaComponent } from '../ponto-entrada-simulacao-dia/ponto-entrada-simulacao-dia.component';
+import { FundoImobiliarioMelhorEstabilidadeComponent } from '../fundo-imobiliario-melhor-estabilidade/fundo-imobiliario-melhor-estabilidade.component';
 
 
 export const routes : Routes = [
@@ -103,6 +104,7 @@ export const routes : Routes = [
     { path : 'periodoExperimento' , component: PeriodoExperimentoListaComponent },
     { path : 'fundoImobiliarioMelhores' , component: FundoImobiliarioMelhoresComponent},
     { path : 'fundoImobiliarioAluguelMelhores' , component: FundoImobiliarioAluguelMelhoresComponent},
+    { path : 'fundoImobiliarioMelhorEstabilidade' , component: FundoImobiliarioMelhorEstabilidadeComponent },
 
     { path : 'valorMonitoriaPeriodo/:id' , component : ValorMonitoriaPeriodoComponent },
     { path : 'valorMonitoriaPeriodoTabela/:id' , component: ValorMonitoriaPeriodoTabelaComponent },

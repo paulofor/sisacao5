@@ -27,7 +27,7 @@ public abstract class ExecutorRegraProjecao extends DaoBase{
 
 	@Override
 	protected long getTempo() {
-		return 0;
+		return 2000;
 	}
 
 	

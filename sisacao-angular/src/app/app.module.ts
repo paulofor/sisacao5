@@ -145,6 +145,7 @@ import { PontoEntradaSimulacaoDiaComponent } from './ponto-entrada-simulacao-dia
 import { FundoImobiliarioMelhoresValorizacaoComponent } from './fundo-imobiliario-melhores-valorizacao/fundo-imobiliario-melhores-valorizacao.component';
 import { FundoImobiliarioMelhoresRendimentoComponent } from './fundo-imobiliario-melhores-rendimento/fundo-imobiliario-melhores-rendimento.component';
 import { TradeNovoSimulacaoComponent } from './trade-novo-simulacao/trade-novo-simulacao.component';
+import { FundoImobiliarioMelhorEstabilidadeComponent } from './fundo-imobiliario-melhor-estabilidade/fundo-imobiliario-melhor-estabilidade.component';
 
 //import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
@@ -263,6 +264,7 @@ registerLocaleData(localePt, 'pt-BR');
     FundoImobiliarioMelhoresValorizacaoComponent,
     FundoImobiliarioMelhoresRendimentoComponent,
     TradeNovoSimulacaoComponent,
+    FundoImobiliarioMelhorEstabilidadeComponent,
   ],
   imports: [
     BrowserModule,

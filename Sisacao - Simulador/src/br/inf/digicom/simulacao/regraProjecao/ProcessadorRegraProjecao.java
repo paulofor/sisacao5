@@ -8,8 +8,13 @@ import br.com.digicom.sisacao.modelo.CotacaoIntradayAcaoResultado;
 import br.com.digicom.sisacao.modelo.CotacaoIntradayAcaoResultadoValor;
 import br.com.digicom.sisacao.modelo.DiaPregao;
 import br.com.digicom.sisacao.modelo.RegraProjecao;
+import br.inf.digicom.loopback.DaoBase;
+import br.inf.digicom.loopback.DummyDaoBase;
 
-public class ProcessadorRegraProjecao {
+public class ProcessadorRegraProjecao extends ExecutorRegraProjecao{
+
+	private DummyDaoBase dummy = null;
+	
 	
 	private int contaDia = 0;
 	private RegraProjecao regraProjecao = null;
@@ -25,13 +30,32 @@ public class ProcessadorRegraProjecao {
 	private int sinalBaixo = 0;
 	
 	private int contaDiaAlteracao = 0;
-	//private double valorSuperior;
-	//private double valorInferior;
-	//private String dataHora;
+
 	
-	public void executa(String ticker, RegraProjecao regraProjecao, List<DiaPregao> dias) {
-		System.out.println(ticker + " 3.I");
-		// TODO Auto-generated method stub
+	
+	public ProcessadorRegraProjecao() {
+		this.dummy = new DummyDaoBase();
+	}
+	
+	
+	@Override
+	protected void executaImpl() {
+		System.out.println("  EXECUTADOR !!! ");
+		DatasetRegraProjecao ds = (DatasetRegraProjecao) getComum();
+		String ticker = ds.getAtivoAcaoCorrente().getTicker();
+		executa(ticker,ds.getRegraProjecao(),ds.getListaCotacaoResultado());
+		executaProximo();
+		
+	}
+
+	@Override
+	protected DaoBase getProximo() {
+		return dummy;
+	}
+	
+	
+	
+	private void executa(String ticker, RegraProjecao regraProjecao, List<DiaPregao> dias) {
 		this.regraProjecao = regraProjecao;
 		if ("CV".equals(regraProjecao.getTipoCompraVenda()) || "C".equals(regraProjecao.getTipoCompraVenda())) {
 			this.percentualAlto = regraProjecao.getTarget();
@@ -66,7 +90,7 @@ public class ProcessadorRegraProjecao {
 				//System.out.println("Hora:" + cotacao.getDataHora());
 				//System.out.println("Valor: " + cotacao.getCotacaoIntradayAcaoResultadoValors().size());
 				if (cotacao.getCotacaoIntradayAcaoResultadoValors().size()>0) {
-					//System.out.println("Pulou " + cotacao);
+					System.out.println("Pulou " + cotacao);
 					continue;
 				}
 				CotacaoIntradayAcaoResultadoValor valor = new CotacaoIntradayAcaoResultadoValor();
@@ -114,7 +138,7 @@ public class ProcessadorRegraProjecao {
 		this.insere.setLista(listaValor);
 		this.insere.executa();
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -175,4 +199,10 @@ public class ProcessadorRegraProjecao {
 		//System.out.println("resultado:" + saida);
 		return saida;
 	}
+
+
+
+	
+
+	
 }

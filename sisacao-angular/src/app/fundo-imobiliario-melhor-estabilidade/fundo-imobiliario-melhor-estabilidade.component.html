@@ -1,0 +1,53 @@
+<div class="main-content" *ngIf="listaBase">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Imobiliários Estabilidade</h4>
+          </div>
+          <div class="content table-responsive table-full-width">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th width="3%">Pos</th>
+                  <th width="5%">Ticker</th>
+                  <th width="20%">Nome</th>
+                  <th width="5%">Variação 12</th>
+                  <th width="5%">Perc6</th>
+                  <th width="5%">Perc12</th>
+                  <th width="5%">Neg1</th>
+                  <th width="8%">Atual</th>
+                  <th width="8%">Data</th>
+                  <th width="5%">Méd Aluguel 6</th>
+                  <th width="10%"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listaBase; let i = index">
+                  <td>{{i+1}}</td>
+                  <td>{{item.ticker }}</td>
+                  <td>{{item.nome }}</td>
+                  <td>{{item.variacao24m | number: '1.1-1'}}</td>
+                  <td>{{item.percentual6 | number: '1.1-1'}}</td>
+                  <td>{{item.percentual12 | number: '1.1-1'}}</td>
+                  <td>{{item.mediaNegocio1 | number: '1.0-0'}}</td>
+                  <td>{{item.precoAtual | number: '1.2-2'}}</td>
+                  <td>{{item.dataAtual | date: 'dd/MM/yyyy' : 'UTC' }}</td>
+                  <td>{{item.mediaPercentualAluguel6 | number: '1.2-2'}}</td>
+                  <td align="right">
+                    <a style="margin-left: 8px; margin-right: 8px;" routerLink="/cotacaoDiarioAcao/{{item.ticker}}">diario</a>
+                    <button type="button" (click)="abreAluguel(item)">$</button>
+                    <button type="button" (click)="abreExplicacao(item)">?</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
