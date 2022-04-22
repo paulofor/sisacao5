@@ -26,7 +26,10 @@
           </div>
 
           <div class="content"  *ngIf="processando && !(listaBase && listaValor && diaPrevisao && exemplo)">
-            Processando...
+            <img src="assets/img/aguardando.gif" width="200" height="60">
+          </div>
+          <div class="content"  *ngIf="listaVaziaBol">
+            Nenhum Dado Encontrado
           </div>
 
 
@@ -34,14 +37,17 @@
             <p>Data Previsão: {{exemplo.diaNumPrevisao}}</p>
             <p>Data Inicio Bloco: {{exemplo.diaNumInicio}}</p>
             <p>Y: {{exemplo.campoY}}</p>
-            <p>Ref: {{exemplo.valorReferencia}}, Entrada: {{exemplo.valorEntrada}}</p>
+            <p>Ref: {{exemplo.valorReferencia}}, Entrada: {{exemplo.valorEntrada}} ({{percentualEntrada() | number: '1.1-1'}}%)</p>
             <p class="{{entrou()}}">{{diaPrevisao.diaNum}}: Min: {{diaPrevisao.minimo}} - Max: {{diaPrevisao.maximo}} {{mensagemEntrou()}}</p>
           </div>
           <div class="content" *ngIf="limiteSaida && listaBase && listaValor && diaPrevisao && diaSaida && exemplo && exemplo.diaNumSaida">
-            <p>Limites Saída: {{exemplo.limiteInferior}} e {{exemplo.limiteSuperior}}</p>
+            <p>Limites Saída: {{exemplo.limiteInferior}} e {{exemplo.limiteSuperior}}
+              ({{percentualSaidaMinimo() | number: '1.1-1'}}%) ({{percentualSaidaMaximo() | number: '1.1-1'}}%)
+            </p> 
             <p class="{{periodo()}}">
               Valor Saída: {{exemplo.valorSaida}}
-            --> Limites Período: {{limiteSaida.minimo}} e {{limiteSaida.maximo}}
+            --> Limites Período: {{limiteSaida.minimo}} e {{limiteSaida.maximo}} 
+              ({{percentualMinimo() | number: '1.1-1'}}%) ({{percentualMaximo() | number: '1.1-1'}}%)
             </p>
             <p>Data Saída: {{exemplo.diaNumSaida}} 
               --> Abe:{{diaSaida.abertura}} , Min:{{diaSaida.minimo}}, Max:{{diaSaida.maximo}}, Fec:{{diaSaida.fechamento}}</p>

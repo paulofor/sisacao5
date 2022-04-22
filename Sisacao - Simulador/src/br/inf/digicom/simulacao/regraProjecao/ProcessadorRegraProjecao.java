@@ -179,11 +179,13 @@ public class ProcessadorRegraProjecao extends ExecutorRegraProjecao{
 					break;
 				} 
 			} else {
+				/*
 				if (dia.getDiaNum()==20210610) {
 					System.out.println("*** Pulou 20210610");
 					indDia++;
 					continue;
 				}
+				*/
 				System.out.println("Dia sem cotacao diario: " + dia.getDiaNum());
 				saida = null;
 				//System.out.println("Saiu, acabou diario");

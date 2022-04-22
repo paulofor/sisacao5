@@ -3,6 +3,19 @@
 module.exports = function(Regraprojecao) {
 
 
+
+  Regraprojecao.EmDataSet = function(callback) {
+    let sql = "select * from RegraProjecao " +
+      " where id in " +
+      " ( " +
+      " select distinct regraProjecaoId " +
+      " from ExemploTreinoAcao " +
+      " ) order by codigoRegraProjecao ";
+    let ds = Regraprojecao.dataSource;
+    ds.connector.query(sql,callback);
+  }
+
+
 /**
  * 
  * @param {number} idRegraProjecao 
@@ -98,7 +111,7 @@ module.exports = function(Regraprojecao) {
   Regraprojecao.AtualizaDadosRegraProjecao = function(callback) {
     // Atualização de RegraProjecaoTotalMes
     let ds = Regraprojecao.dataSource;
-    let sqlDelete = "delete from RegraProjecaoTotalMes where anoMesNum >= 202107 "; 
+    let sqlDelete = "delete from RegraProjecaoTotalMes"; 
     let sqlInsert = " insert into RegraProjecaoTotalMes (anoMesNum, regraProjecaoId, quantidadeLucro, quantidadePrejuizo, quantidade) " +
             " select  C1.anoMesNum,C1.regraProjecaoId," +  
             " (select count(*) from CotacaoIntradayAcaoResultadoValor C2  " +

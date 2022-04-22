@@ -21,6 +21,25 @@ export class EscolhePeriodoCorrenteExperimentoComponent  extends BaseEditCompone
   }
 
 
+
+  onSubmit() {
+    this.preSubmit();
+    console.log('Submit(BaseEdit):' , this.item);
+    this.servico.AlteraPeriodoCorrente(this.item, (err, obj) => {
+      if (err) {
+        console.log("ErroUpsert:" + JSON.stringify(err));
+      } else {
+        
+      }
+      this.posSubmit();
+    }).subscribe((e: any) => {
+      console.log(JSON.stringify(e));
+      this.closeDialog();
+    });
+
+  }
+
+
   montaCombos() {
     let filtro = {
       'where' : {'experimentoSimulacaoId' : this.item.id },

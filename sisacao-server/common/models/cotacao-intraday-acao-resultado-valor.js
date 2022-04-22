@@ -100,18 +100,112 @@ module.exports = function(Cotacaointradayacaoresultadovalor) {
     }
 
 
+    /*
+select * ,
+(select count(*)    
+from CotacaoIntradayAcaoResultadoValor C2  
+where regraProjecaoId = 20 and 
+year(C2.dataHora) = C1.ano  and 
+month(C2.dataHora) = C1.mes  and 
+C2.ticker = C1.ticker  and 
+resultado = 1  and 
+diaNum >= 20210401 and diaNum <= 20220331 ) as lucro,
+
+(select count(*)    
+from CotacaoIntradayAcaoResultadoValor C2  
+where regraProjecaoId = 20 and 
+year(C2.dataHora) = C1.ano  and 
+month(C2.dataHora) = C1.mes  and 
+C2.ticker = C1.ticker  and 
+resultado = 1  and 
+diaNum >= 20210401 and diaNum <= 20220331 ) as lucro,  
+(select count(*)  
+from CotacaoIntradayAcaoResultadoValor C2  
+where regraProjecaoId = 20 and 
+year(C2.dataHora) = C1.ano  and 
+month(C2.dataHora) = C1.mes  and 
+C2.ticker = C1.ticker  and 
+resultado = 0  and 
+diaNum >= 20210401 and diaNum <= 20220331 ) as nulo,  
+(select count(*) from CotacaoIntradayAcaoResultadoValor C2  
+where regraProjecaoId = 20 and 
+year(C2.dataHora) = C1.ano  and 
+month(C2.dataHora) = C1.mes  and  
+C2.ticker = C1.ticker  and 
+resultado = -1  and 
+diaNum >= 20210401 and diaNum <= 20220331 ) as prejuizo,  
+(select max(valorEntrada)  from CotacaoIntradayAcaoResultadoValor C2  
+where regraProjecaoId = 20 and 
+year(C2.dataHora) = C1.ano  and 
+month(C2.dataHora) = C1.mes  and  
+C2.ticker = C1.ticker  and 
+diaNum >= 20210401 and diaNum <= 20220331 ) as maximo,  
+(select min(valorEntrada)  from CotacaoIntradayAcaoResultadoValor C2  
+where regraProjecaoId = 20 and 
+year(C2.dataHora) = C1.ano  and 
+month(C2.dataHora) = C1.mes  and 
+C2.ticker = C1.ticker  and 
+diaNum >= 20210401 and diaNum <= 20220331 ) as minimo,  
+(select avg(valorEntrada)  from CotacaoIntradayAcaoResultadoValor C2  
+where regraProjecaoId = 20 and 
+year(C2.dataHora) = C1.ano  and 
+month(C2.dataHora) = C1.mes  and 
+C2.ticker = C1.ticker  and 
+diaNum >= 20210401 and diaNum <= 20220331 ) as medio,  
+(select max(valorEntrada)  from CotacaoIntradayAcaoResultadoValor C2  
+where regraProjecaoId = 20 and 
+year(C2.dataHora) = C1.ano  and 
+month(C2.dataHora) = C1.mes  and  
+C2.ticker = C1.ticker  and 
+diaNum >= 20210401 and diaNum <= 20220331 and resultado = 1  ) as maximo_lucro,  
+(select min(valorEntrada)  from CotacaoIntradayAcaoResultadoValor C2  
+where regraProjecaoId = 20 and 
+year(C2.dataHora) = C1.ano  and 
+month(C2.dataHora) = C1.mes  and 
+C2.ticker = C1.ticker  and 
+diaNum >= 20210401 and diaNum <= 20220331 and resultado = 1  ) as minimo_lucro,  
+(select max(valorEntrada)  from CotacaoIntradayAcaoResultadoValor C2  
+where regraProjecaoId = 20 and 
+year(C2.dataHora) = C1.ano  and 
+month(C2.dataHora) = C1.mes  and 
+C2.ticker = C1.ticker  and 
+diaNum >= 20210401 and diaNum <= 20220331 and resultado = -1  ) as maximo_prejuizo,  
+(select min(valorEntrada)  from CotacaoIntradayAcaoResultadoValor C2  
+where regraProjecaoId = 20 and 
+year(C2.dataHora) = C1.ano  and 
+month(C2.dataHora) = C1.mes  and 
+C2.ticker = C1.ticker  and 
+diaNum >= 20210401 and diaNum <= 20220331 and resultado = -1  ) as minimo_prejuizo  
+
+from
+(select 
+year(dataHora) as ano, 
+month(dataHora) as mes,
+ticker, 
+count(*) as total
+from CotacaoIntradayAcaoResultadoValor   
+where regraProjecaoId = 20 and diaNum >= 20210401 and diaNum <= 20220331 
+group by year(dataHora), month(dataHora),ticker  
+order by year(dataHora), month(dataHora),ticker) C1
+
+
+    */
+
+
     Cotacaointradayacaoresultadovalor.ObtemResultadoRegraData = function (codigoRegra, diaNumInicial, diaNumFinal, callback) {
         let filtro = {'where' : {'codigoRegraProjecao' : codigoRegra}}
         //console.log('codigoRegra:' , codigoRegra);
         app.models.RegraProjecao.findOne(filtro,(err,result) => {
             console.log('regra:',result);
-            let sql = "select year(dataHora) as ano, month(dataHora) as mes,ticker, count(*) as total, " +
+            let sql =
+                " select C1.* ," +
+
                 " ( " +
                 " select count(*)   " +
                 " from CotacaoIntradayAcaoResultadoValor C2 " +
                 " where regraProjecaoId = " + result.id +
-                " and year(C2.dataHora) = year(C1.dataHora) " + 
-                " and month(C2.dataHora) = month(C1.dataHora) " +
+                " and year(C2.dataHora) = C1.ano" + 
+                " and month(C2.dataHora) = C1.mes " +
                 " and C2.ticker = C1.ticker " +
                 " and resultado = 1 " +
                 " and diaNum >= " + diaNumInicial + " and diaNum <= " + diaNumFinal +
@@ -120,8 +214,8 @@ module.exports = function(Cotacaointradayacaoresultadovalor) {
                 " select count(*) " +  
                 " from CotacaoIntradayAcaoResultadoValor C2 " +
                 " where regraProjecaoId = " + result.id +
-                " and year(C2.dataHora) = year(C1.dataHora) " + 
-                " and month(C2.dataHora) = month(C1.dataHora) " +
+                " and year(C2.dataHora) = C1.ano" + 
+                " and month(C2.dataHora) = C1.mes " +
                 " and C2.ticker = C1.ticker " +
                 " and resultado = 0 " +
                 " and diaNum >= " + diaNumInicial + " and diaNum <= " + diaNumFinal +
@@ -130,8 +224,8 @@ module.exports = function(Cotacaointradayacaoresultadovalor) {
                 " select count(*) " +  
                 " from CotacaoIntradayAcaoResultadoValor C2 " +
                 " where regraProjecaoId = " + result.id + 
-                " and year(C2.dataHora) = year(C1.dataHora) " + 
-                " and month(C2.dataHora) = month(C1.dataHora) " +
+                " and year(C2.dataHora) = C1.ano" + 
+                " and month(C2.dataHora) = C1.mes " +
                 " and C2.ticker = C1.ticker " +
                 " and resultado = -1 " +
                 " and diaNum >= " + diaNumInicial + " and diaNum <= " + diaNumFinal +
@@ -140,8 +234,8 @@ module.exports = function(Cotacaointradayacaoresultadovalor) {
                 " select max(valorEntrada) " +  
                 " from CotacaoIntradayAcaoResultadoValor C2 " +
                 " where regraProjecaoId = " + result.id + 
-                " and year(C2.dataHora) = year(C1.dataHora) " + 
-                " and month(C2.dataHora) = month(C1.dataHora) " +
+                " and year(C2.dataHora) = C1.ano" + 
+                " and month(C2.dataHora) = C1.mes " +
                 " and C2.ticker = C1.ticker " +
                 " and diaNum >= " + diaNumInicial + " and diaNum <= " + diaNumFinal +
                 " ) as maximo, " +
@@ -149,8 +243,8 @@ module.exports = function(Cotacaointradayacaoresultadovalor) {
                 " select min(valorEntrada) " +  
                 " from CotacaoIntradayAcaoResultadoValor C2 " +
                 " where regraProjecaoId = " + result.id + 
-                " and year(C2.dataHora) = year(C1.dataHora) " + 
-                " and month(C2.dataHora) = month(C1.dataHora) " +
+                " and year(C2.dataHora) = C1.ano" + 
+                " and month(C2.dataHora) = C1.mes " +
                 " and C2.ticker = C1.ticker " +
                 " and diaNum >= " + diaNumInicial + " and diaNum <= " + diaNumFinal +
                 " ) as minimo, " +
@@ -158,8 +252,8 @@ module.exports = function(Cotacaointradayacaoresultadovalor) {
                 " select avg(valorEntrada) " +  
                 " from CotacaoIntradayAcaoResultadoValor C2 " +
                 " where regraProjecaoId = " + result.id + 
-                " and year(C2.dataHora) = year(C1.dataHora) " + 
-                " and month(C2.dataHora) = month(C1.dataHora) " +
+                " and year(C2.dataHora) = C1.ano" + 
+                " and month(C2.dataHora) = C1.mes " +
                 " and C2.ticker = C1.ticker " +
                 " and diaNum >= " + diaNumInicial + " and diaNum <= " + diaNumFinal +
                 " ) as medio, " +
@@ -167,8 +261,8 @@ module.exports = function(Cotacaointradayacaoresultadovalor) {
                 " select max(valorEntrada) " +  
                 " from CotacaoIntradayAcaoResultadoValor C2 " +
                 " where regraProjecaoId = " + result.id + 
-                " and year(C2.dataHora) = year(C1.dataHora) " + 
-                " and month(C2.dataHora) = month(C1.dataHora) " +
+                " and year(C2.dataHora) = C1.ano" + 
+                " and month(C2.dataHora) = C1.mes " +
                 " and C2.ticker = C1.ticker " +
                 " and diaNum >= " + diaNumInicial + " and diaNum <= " + diaNumFinal +
                 " and resultado = 1 " +
@@ -177,8 +271,8 @@ module.exports = function(Cotacaointradayacaoresultadovalor) {
                 " select min(valorEntrada) " +  
                 " from CotacaoIntradayAcaoResultadoValor C2 " +
                 " where regraProjecaoId = " + result.id + 
-                " and year(C2.dataHora) = year(C1.dataHora) " + 
-                " and month(C2.dataHora) = month(C1.dataHora) " +
+                " and year(C2.dataHora) = C1.ano" + 
+                " and month(C2.dataHora) = C1.mes " +
                 " and C2.ticker = C1.ticker " +
                 " and diaNum >= " + diaNumInicial + " and diaNum <= " + diaNumFinal +
                 " and resultado = 1 " +
@@ -187,8 +281,8 @@ module.exports = function(Cotacaointradayacaoresultadovalor) {
                 " select max(valorEntrada) " +  
                 " from CotacaoIntradayAcaoResultadoValor C2 " +
                 " where regraProjecaoId = " + result.id + 
-                " and year(C2.dataHora) = year(C1.dataHora) " + 
-                " and month(C2.dataHora) = month(C1.dataHora) " +
+                " and year(C2.dataHora) = C1.ano" + 
+                " and month(C2.dataHora) = C1.mes " +
                 " and C2.ticker = C1.ticker " +
                 " and diaNum >= " + diaNumInicial + " and diaNum <= " + diaNumFinal +
                 " and resultado = -1 " +
@@ -197,17 +291,26 @@ module.exports = function(Cotacaointradayacaoresultadovalor) {
                 " select min(valorEntrada) " +  
                 " from CotacaoIntradayAcaoResultadoValor C2 " +
                 " where regraProjecaoId = " + result.id + 
-                " and year(C2.dataHora) = year(C1.dataHora) " + 
-                " and month(C2.dataHora) = month(C1.dataHora) " +
+                " and year(C2.dataHora) = C1.ano" + 
+                " and month(C2.dataHora) = C1.mes " +
                 " and C2.ticker = C1.ticker " +
                 " and diaNum >= " + diaNumInicial + " and diaNum <= " + diaNumFinal +
                 " and resultado = -1 " +
                 " ) as minimo_prejuizo " +
-                " from CotacaoIntradayAcaoResultadoValor C1 " +
+                " from " +
+
+                " (select year(dataHora) as ano, month(dataHora) as mes,ticker, count(*) as total " +
+                " from CotacaoIntradayAcaoResultadoValor  " +
                 " where regraProjecaoId = " + result.id + 
                 " and diaNum >= " + diaNumInicial + " and diaNum <= " + diaNumFinal +
                 " group by year(dataHora), month(dataHora),ticker " +
-                " order by year(dataHora), month(dataHora),ticker ";
+                " order by year(dataHora), month(dataHora),ticker) C1 ";
+
+
+ 
+
+
+
             console.log(sql);
             let ds = Cotacaointradayacaoresultadovalor.dataSource;
             ds.connector.query(sql,callback);

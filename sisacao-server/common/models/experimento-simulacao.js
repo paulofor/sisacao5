@@ -329,7 +329,13 @@ module.exports = function(Experimentosimulacao) {
         
     });
 
-
+    Experimentosimulacao.AlteraPeriodoCorrente = function(experimento, callback) {
+        //console.log('Experimento:' , experimento);
+        let sql = "update ExperimentoSimulacao set periodoExperimentoId = " + experimento.periodoExperimentoId + 
+            " where id = " + experimento.id;
+        let ds = Experimentosimulacao.dataSource;
+        ds.connector.query(sql,callback);
+    }
 
 
     /**

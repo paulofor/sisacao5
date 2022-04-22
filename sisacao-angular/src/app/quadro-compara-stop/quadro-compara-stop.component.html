@@ -9,6 +9,7 @@
           <table class="table table-hover table-striped">
             <thead>
               <tr>
+                <!--<th>#</th>-->
                 <th>Regra</th>
                 <th>Target</th>
                 <th>Stop</th>
@@ -30,6 +31,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of listaBase">
+                <!--<td>{{item.id}}</td>-->
                 <td>{{item.codigoRegraProjecao}}</td>
                 <td>{{(item.target * 100) | number: '1.0-0'}}%</td>
                 <td>{{(item.stop * 100) | number: '1.0-0'}}%</td>

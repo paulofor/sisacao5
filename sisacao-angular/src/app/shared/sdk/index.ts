@@ -198,7 +198,7 @@ export class SDKBrowserModule {
         PontoEntradaSimulacaoApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
-
+ 
       ]
     };
   }

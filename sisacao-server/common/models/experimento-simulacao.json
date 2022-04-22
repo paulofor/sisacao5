@@ -10,7 +10,7 @@
       "type": "string"
     },
     "dataCriacao": {
-      "type": "string"
+      "type": "date"
     },
     "dataExecucao": {
       "type": "string"
@@ -81,6 +81,31 @@
   },
   "acls": [],
   "methods": {
+    "AlteraPeriodoCorrente": {
+      "accepts": [
+        {
+          "arg": "experimento",
+          "type": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/alteraPeriodoCorrente",
+          "verb": "post"
+        }
+      ]
+    },
     "GerarCombinacoes": {
       "accepts": [
         {

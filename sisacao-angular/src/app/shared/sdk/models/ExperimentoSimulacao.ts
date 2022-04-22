@@ -14,7 +14,7 @@ import {
 declare var Object: any;
 export interface ExperimentoSimulacaoInterface {
   "codigo"?: string;
-  "dataCriacao"?: string;
+  "dataCriacao"?: Date;
   "dataExecucao"?: string;
   "quantidadeCombinacao"?: number;
   "posicaoExecucao"?: number;
@@ -38,7 +38,7 @@ export interface ExperimentoSimulacaoInterface {
 
 export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
   "codigo": string;
-  "dataCriacao": string;
+  "dataCriacao": Date;
   "dataExecucao": string;
   "quantidadeCombinacao": number;
   "posicaoExecucao": number;
@@ -97,7 +97,7 @@ export class ExperimentoSimulacao implements ExperimentoSimulacaoInterface {
         },
         "dataCriacao": {
           name: 'dataCriacao',
-          type: 'string'
+          type: 'Date'
         },
         "dataExecucao": {
           name: 'dataExecucao',

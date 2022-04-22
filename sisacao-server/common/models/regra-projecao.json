@@ -52,6 +52,24 @@
   },
   "acls": [],
   "methods": {
+    "EmDataSet": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/emDataSet",
+          "verb": "get"
+        }
+      ]
+    },
     "AtualizaDadosRegraProjecao": {
       "accepts": [],
       "returns": [

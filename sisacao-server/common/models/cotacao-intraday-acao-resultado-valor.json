@@ -190,6 +190,37 @@
         }
       ]
     },
+    "TempoMedioTickerPorRegraData": {
+      "accepts": [
+        {
+          "arg": "idRegra",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "diaNum",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/tempoMedioTickerPorRegraData",
+          "verb": "get"
+        }
+      ]
+    },
     "ObtemDatasPorGrupo": {
       "accepts": [
         {

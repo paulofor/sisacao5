@@ -22,6 +22,7 @@ export class ExemploIntradayResultadoAcaoComponent implements OnInit {
   regraProjecaoId : number;
 
   processando = false;
+  listaVaziaBol = false;
 
   listaRegra: RegraProjecao[];
 
@@ -35,6 +36,7 @@ export class ExemploIntradayResultadoAcaoComponent implements OnInit {
 
 
   onSubmit() {
+    this.listaVaziaBol = false;
     this.processando = true;
     this.listaBase = null;
     this.carregaExemplo();
@@ -42,7 +44,7 @@ export class ExemploIntradayResultadoAcaoComponent implements OnInit {
   }
 
   montaRegraProjecao() {
-    this.srvRegra.find({'order' : 'codigoRegraProjecao'})
+    this.srvRegra.EmDataSet()
       .subscribe((result:RegraProjecao[]) => {
         this.listaRegra = result;
       });
@@ -76,6 +78,22 @@ export class ExemploIntradayResultadoAcaoComponent implements OnInit {
     }
   }
 
+  percentualSaidaMinimo() {
+    return (this.exemplo.limiteInferior - this.exemplo.valorEntrada) / this.exemplo.valorEntrada * 100;
+  }
+  percentualSaidaMaximo(){
+    return (this.exemplo.limiteSuperior - this.exemplo.valorEntrada) / this.exemplo.valorEntrada * 100;
+  }
+
+  percentualMinimo() {
+    return (this.limiteSaida.minimo - this.exemplo.valorEntrada) / this.exemplo.valorEntrada * 100;
+  }
+  percentualMaximo(){
+    return (this.limiteSaida.maximo - this.exemplo.valorEntrada) / this.exemplo.valorEntrada * 100;
+  }
+  percentualEntrada() {
+    return (this.exemplo.valorEntrada - this.exemplo.valorReferencia) / this.exemplo.valorReferencia * 100;
+  }
 
   getValor(posicao) {
     if (posicao<=this.listaValor.length)
@@ -146,9 +164,11 @@ export class ExemploIntradayResultadoAcaoComponent implements OnInit {
           ] 
         }
     };
+    console.log('filtro:' , filtro);
     this.srv.find(filtro)
       .subscribe((result:ExemploTreinoAcao[]) => {
         console.log('exemplo:' , result);
+        if (result.length==0) this.listaVazia();
         this.exemplo = result[0];
         this.listaValor = this.exemplo.campoX.split(',');
         this.listaValorOriginal = this.exemplo.campoXOriginal.split(',');
@@ -165,11 +185,11 @@ export class ExemploIntradayResultadoAcaoComponent implements OnInit {
         'where' : {
           'and' : [ 
             {'ticker' : this.ticker} , 
-            {'diaNum' : {'gte' : this.exemplo.diaNumInicio }} 
+            {'diaNum' : {'gte' : this.exemplo.diaNumInicio }} ,
+            {'diaNum' : {'lte' : this.exemplo.diaNumSaida }}
           ] ,
-          'order' : 'dataHora asc',
-          'limit' : 80
-        }
+        },
+        'order' : 'dataHora asc'
     };
     this.srvCotacao.find(filtro)
       .subscribe((result:CotacaoIntradayAcaoResultado[]) => {
@@ -178,5 +198,10 @@ export class ExemploIntradayResultadoAcaoComponent implements OnInit {
       })
   }
 
+
+  listaVazia() {
+    this.listaVaziaBol = true;
+    this.processando = false;
+  }
 
 }
