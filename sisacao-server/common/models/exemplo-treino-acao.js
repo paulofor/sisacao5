@@ -10,4 +10,10 @@ module.exports = function(Exemplotreinoacao) {
             callback(null,exemplo);
         });
     }
+
+    Exemplotreinoacao.ObtemParaTeste = function(callback) {
+        let sql = "select campoX, campoY from ExemploTreinoAcao limit 3";
+        let ds = Exemplotreinoacao.dataSource;
+        ds.connector.query(sql,callback);
+    }
 };
