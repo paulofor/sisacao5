@@ -21,8 +21,8 @@
     "valor": {
       "type": "number"
     },
-    "valorLimite" : {
-      "type" : "number"
+    "valorLimite": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -44,24 +44,6 @@
         {
           "path": "/preparaProximoDia",
           "verb": "post"
-        }
-      ]
-    },
-    "SituacaoAtual": {
-      "accepts": [],
-      "returns": [
-        {
-          "arg": "saida",
-          "type": "array",
-          "root": true,
-          "description": ""
-        }
-      ],
-      "description": "",
-      "http": [
-        {
-          "path": "/situacaoAtual",
-          "verb": "get"
         }
       ]
     }

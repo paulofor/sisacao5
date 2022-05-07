@@ -14,11 +14,11 @@ public class ValidacaoSelecionadosApp {
 	
 	public static void main(String[] args) {
 		System.out.println("Inicialiando ValidacaoSelecionadosApp");
-		System.out.println("Versao: 24-03-2022");
+		System.out.println("Versao: 27-04-2022");
 		try {
 			carregaProp();
 			ValidacaoSelecionadosObj obj = new ValidacaoSelecionadosObj();
-			obj.executa(11);
+			obj.executa(Integer.parseInt(args[0]));
 			System.out.println("Finalizacao");
 		} catch (Exception e) {
 			e.printStackTrace();

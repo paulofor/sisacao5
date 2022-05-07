@@ -70,7 +70,7 @@ module.exports = function(Pontoentradasimulacao) {
     }
 
 
-    Pontoentradasimulacao.SituacaoAtual = function(callback) {
+    Pontoentradasimulacao.SituacaoAtual = function(tipo, callback) {
         app.models.DiaPregao.ObtemProximoB3((err,result) => {
             let sql = "select *, " +
                 " 100 * ((atual-valor) / atual) as diferenca " + 
@@ -80,8 +80,8 @@ module.exports = function(Pontoentradasimulacao) {
                 " (select valor from CotacaoIntradayAcao c where c.ticker = p.ticker order by dataHora desc limit 1) atual , " +
                 " (select dataHora from CotacaoIntradayAcao c where c.ticker = p.ticker order by dataHora desc limit 1) dataHora " +
                 " FROM lojadigicom35.PontoEntradaSimulacao p " +
-                " where diaNum = " + result.diaNum +
-                " ) as compra " +
+                " where diaNum = " + result.diaNum + " and tipo = '" + tipo + "' " +
+                " ) as entrada " +
                 " order by diferenca";
             let ds = Pontoentradasimulacao.dataSource;
             ds.connector.query(sql,callback);

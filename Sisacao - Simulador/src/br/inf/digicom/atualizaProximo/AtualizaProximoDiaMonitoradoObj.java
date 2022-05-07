@@ -30,7 +30,7 @@ public class AtualizaProximoDiaMonitoradoObj {
 		System.out.println("Iniciando proximo dia");
 		PontoEntradaSimulacao_PreparaProximoDia exec2 = new PontoEntradaSimulacao_PreparaProximoDia();
 		exec2.executa();
-		System.out.println("Finalizando proximo dia");
+		System.out.println("Finalizando PontoEntradaSimulacao_PreparaProximoDia");
 		
 	}
 

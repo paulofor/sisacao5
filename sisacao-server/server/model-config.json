@@ -266,5 +266,13 @@
   "PontoEntradaSimulacao": {
     "dataSource": "mysqlKingDS2",
     "public": true
+  },
+  "ExemploTreinoAcaoEntrada": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "ExemploTreinoAcaoSaida": {
+    "dataSource": "mysqlDS",
+    "public": true
   }
 }

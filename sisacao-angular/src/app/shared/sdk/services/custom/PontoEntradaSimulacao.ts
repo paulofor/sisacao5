@@ -125,6 +125,8 @@ export class PontoEntradaSimulacaoApi extends BaseLoopBackApi {
          * (The remote method definition does not provide any description.)
          * </em>
    *
+   * @param {string} tipo 
+   *
    * @returns {object[]} An empty reference that will be
    *   populated with the actual data once the response is returned
    *   from the server.
@@ -134,13 +136,14 @@ export class PontoEntradaSimulacaoApi extends BaseLoopBackApi {
    * This usually means the response is a `PontoEntradaSimulacao` object.)
    * </em>
    */
-  public SituacaoAtual(customHeaders?: Function): Observable<any> {
+  public SituacaoAtual(tipo: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/PontoEntradaSimulacaos/situacaoAtual";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
+    if (typeof tipo !== 'undefined' && tipo !== null) _urlParams.tipo = tipo;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }

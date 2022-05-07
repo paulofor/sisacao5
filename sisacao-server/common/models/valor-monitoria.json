@@ -42,11 +42,11 @@
     "contaTradePrejuizo": {
       "type": "number"
     },
-    "periodoExperimentoId" : {
-      "type" : "number"
+    "periodoExperimentoId": {
+      "type": "number"
     },
-    "tipo" : {
-      "type" : "string"
+    "tipo": {
+      "type": "string"
     }
   },
   "validations": [],

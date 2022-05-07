@@ -22,6 +22,7 @@ public class PontoEntradaSimulacao_PreparaProximoDia extends DaoBaseApp {
 
 			@Override
 			public void onSuccess() {
+				System.out.println("PontoEntradaSimulacao_PreparaProximoDia com sucesso");
 				finalizar();
 			}
 

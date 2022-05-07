@@ -1,0 +1,41 @@
+{
+  "name": "ExemploTreinoAcaoSaida",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ticker": {
+      "type": "string"
+    },
+    "campoY": {
+      "type": "string"
+    },
+    "diaNumSaida": {
+      "type": "number"
+    },
+    "valorSaida": {
+      "type": "number"
+    },
+    "valorEntrada": {
+      "type": "number"
+    },
+    "diaNumEntrada": {
+      "type": "number"
+    },
+    "limiteSuperior": {
+      "type": "number"
+    },
+    "limiteInferior": {
+      "type": "number"
+    },
+    "resultado": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

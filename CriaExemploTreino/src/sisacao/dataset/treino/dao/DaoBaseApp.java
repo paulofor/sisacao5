@@ -5,6 +5,7 @@ import com.strongloop.android.loopback.RestAdapter;
 import br.com.digicom.sisacao.repositorio.RepositorioAcaoBase;
 import br.com.digicom.sisacao.repositorio.RepositorioDiaPregao;
 import br.com.digicom.sisacao.repositorio.RepositorioExemploTreinoAcao;
+import br.com.digicom.sisacao.repositorio.RepositorioExemploTreinoAcaoEntrada;
 import br.com.digicom.sisacao.repositorio.RepositorioRegraProjecao;
 import br.inf.digicom.loopback.DaoBase;
 import br.inf.digicom.loopback.IDatasetComum;
@@ -21,7 +22,9 @@ public abstract class DaoBaseApp extends DaoBase{
 	
 	protected RepositorioExemploTreinoAcao repExemploTreino = adapter.createRepository(RepositorioExemploTreinoAcao.class);
 	
-	
+	protected RepositorioExemploTreinoAcaoEntrada repExemploTreinoEntrada 
+			= adapter.createRepository(RepositorioExemploTreinoAcaoEntrada.class);
+
 	@Override
 	protected long getTempo() {
 		return 300000;

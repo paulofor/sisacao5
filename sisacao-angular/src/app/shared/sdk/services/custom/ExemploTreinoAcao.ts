@@ -96,6 +96,40 @@ export class ExemploTreinoAcaoApi extends BaseLoopBackApi {
          * (The remote method definition does not provide any description.)
          * </em>
    *
+   * @param {number} diaNum 
+   *
+   * @param {string} codigoGrupoAcao 
+   *
+   * @param {string} codigoRegraProjecao 
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExemploTreinoAcao` object.)
+   * </em>
+   */
+  public ObtemPorDia(diaNum: any, codigoGrupoAcao: any, codigoRegraProjecao: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExemploTreinoAcaos/obtemPorDia";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof diaNum !== 'undefined' && diaNum !== null) _urlParams.diaNum = diaNum;
+    if (typeof codigoGrupoAcao !== 'undefined' && codigoGrupoAcao !== null) _urlParams.codigoGrupoAcao = codigoGrupoAcao;
+    if (typeof codigoRegraProjecao !== 'undefined' && codigoRegraProjecao !== null) _urlParams.codigoRegraProjecao = codigoRegraProjecao;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
    * @param {object} data Request data.
    *
    *  - `exemplo` – `{object}` - 
@@ -117,6 +151,99 @@ export class ExemploTreinoAcaoApi extends BaseLoopBackApi {
     let _postBody: any = {};
     let _urlParams: any = {};
     if (typeof exemplo !== 'undefined' && exemplo !== null) _urlParams.exemplo = exemplo;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {number} idPeriodo 
+   *
+   * @param {string} codigoGrupoAcao 
+   *
+   * @param {string} codigoRegraProjecao 
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExemploTreinoAcao` object.)
+   * </em>
+   */
+  public ObtemConjuntoTreino(idPeriodo: any, codigoGrupoAcao: any, codigoRegraProjecao: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExemploTreinoAcaos/obtemConjuntoTreino";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof idPeriodo !== 'undefined' && idPeriodo !== null) _urlParams.idPeriodo = idPeriodo;
+    if (typeof codigoGrupoAcao !== 'undefined' && codigoGrupoAcao !== null) _urlParams.codigoGrupoAcao = codigoGrupoAcao;
+    if (typeof codigoRegraProjecao !== 'undefined' && codigoRegraProjecao !== null) _urlParams.codigoRegraProjecao = codigoRegraProjecao;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {number} idPeriodo 
+   *
+   * @param {string} codigoGrupoAcao 
+   *
+   * @param {string} codigoRegraProjecao 
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExemploTreinoAcao` object.)
+   * </em>
+   */
+  public ObtemConjuntoDesenvolvimento(idPeriodo: any, codigoGrupoAcao: any, codigoRegraProjecao: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExemploTreinoAcaos/obtemConjuntoDesenvolvimento";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof idPeriodo !== 'undefined' && idPeriodo !== null) _urlParams.idPeriodo = idPeriodo;
+    if (typeof codigoGrupoAcao !== 'undefined' && codigoGrupoAcao !== null) _urlParams.codigoGrupoAcao = codigoGrupoAcao;
+    if (typeof codigoRegraProjecao !== 'undefined' && codigoRegraProjecao !== null) _urlParams.codigoRegraProjecao = codigoRegraProjecao;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExemploTreinoAcao` object.)
+   * </em>
+   */
+  public ObtemParaTeste(customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExemploTreinoAcaos/obtemParaTeste";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }

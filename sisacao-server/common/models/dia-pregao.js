@@ -6,9 +6,12 @@ module.exports = function(Diapregao) {
 
    
     Diapregao.ProximoParaValidador = function(tickerm,idPeriodo,callback) {
-        let sql = "select * from DiaPregao where data >= '2022-03-01' and data <= now() order by data";
-        let ds = Diapregao.dataSource;
-        ds.connector.query(sql,callback);
+        app.models.PeriodoExperimento.findById(idPeriodo, (err,periodo) => {
+            let sql = "select * from DiaPregao where diaNum >= " + periodo.dataNumInicioValidacao + " and data <= now() order by data";
+            let ds = Diapregao.dataSource;
+            ds.connector.query(sql,callback);
+        })
+     
     }
 
 
@@ -200,7 +203,63 @@ module.exports = function(Diapregao) {
         }
         Diapregao.find(filtro,callback);
     };
+
+
+    Diapregao.ObtemIntradayResultadoTickerPeriodoQuantidade = function(ticker, qtdeDia, dataNumFinal, callback) {
+        var data = new Date();
+        var diaComp = (data.getDate()<10?'0' + data.getDate(): '' + data.getDate());
+        var mesComp = (data.getUTCMonth()+1)<10?'0' + (data.getUTCMonth()+1): '' + (data.getUTCMonth()+1);
+        var diaNum = Number(data.getUTCFullYear() + mesComp + diaComp);
+        let filtro = {
+            'include' : 
+            [
+                { 
+                'relation' : 'cotacaoIntradayAcaoResultados',
+                'scope' : 
+                    {'where' : {'ticker' : ticker } , "order" : "dataHora" } 
+                },
+                { 
+                'relation' : 'cotacaoDiarioAcaos',
+                'scope' : 
+                    {'where' : {'ticker' : ticker }} 
+                }
+            ], 
+            'order' : 'diaNum desc',
+            'limit' : qtdeDia,
+            'where' : {'diaNum': {'lte' : dataNumFinal}} 
+        }
+        Diapregao.find(filtro, (err,result) => {
+            callback(err,result.reverse())
+        });
+    };
   
+    Diapregao.ObtemIntradayResultadoTickerQuantidade = function(ticker, qtdeDia, callback) {
+        var data = new Date();
+        var diaComp = (data.getDate()<10?'0' + data.getDate(): '' + data.getDate());
+        var mesComp = (data.getUTCMonth()+1)<10?'0' + (data.getUTCMonth()+1): '' + (data.getUTCMonth()+1);
+        var diaNum = Number(data.getUTCFullYear() + mesComp + diaComp);
+         let filtro = {
+            'include' : 
+            [
+                { 
+                'relation' : 'cotacaoIntradayAcaoResultados',
+                'scope' : 
+                    {'where' : {'ticker' : ticker } , "order" : "dataHora" } 
+                },
+                { 
+                'relation' : 'cotacaoDiarioAcaos',
+                'scope' : 
+                    {'where' : {'ticker' : ticker }} 
+                }
+            ], 
+            'order' : 'diaNum desc',
+            'limit' : qtdeDia,
+            'where' : {'diaNum': {'lte' : diaNum}} 
+        }
+        Diapregao.find(filtro, (err,result) => {
+            callback(err,result.reverse())
+        });
+    };
 
 
     /**

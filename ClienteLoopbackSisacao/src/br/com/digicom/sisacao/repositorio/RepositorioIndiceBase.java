@@ -23,6 +23,13 @@ public class RepositorioIndiceBase {
 		protected String verificaNomeUrl(String nome) {
 			return "AtivoIndices";
 		}
+		public void ListaNaoBovespa(final ListCallback<AtivoIndice> callback) {
+			RestContractItem contrato = new RestContractItem("AtivoIndices/listaNaoBovespa","GET");
+			this.getRestAdapter().getContract().addItem(contrato, "AtivoIndice.listaNaoBovespa");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        invokeStaticMethod("listaNaoBovespa", params,   new JsonArrayParser<AtivoIndice>(this, callback));
+			
+		}
 		/*
 		public void listaColetaIntraday(final ListCallback<AtivoIndice> callback) {
 			RestContractItem contrato = new RestContractItem("AtivoIndices/listaColetaIntraday","POST");

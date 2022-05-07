@@ -54,6 +54,7 @@ import { ExemploIntradayResultadoAcaoComponent } from '../exemplo-intraday-resul
 import { ResumoTradeRealComponent } from '../resumo-trade-real/resumo-trade-real.component';
 import { PontoEntradaSimulacaoDiaComponent } from '../ponto-entrada-simulacao-dia/ponto-entrada-simulacao-dia.component';
 import { FundoImobiliarioMelhorEstabilidadeComponent } from '../fundo-imobiliario-melhor-estabilidade/fundo-imobiliario-melhor-estabilidade.component';
+import { PontoEntradaSimulacaoDiaVendaComponent } from '../ponto-entrada-simulacao-dia-venda/ponto-entrada-simulacao-dia-venda.component';
 
 
 export const routes : Routes = [
@@ -130,6 +131,7 @@ export const routes : Routes = [
 
     { path : 'resumoTradeReal' , component: ResumoTradeRealComponent },
     { path : 'pontoEntradaSimulacaoDia' , component: PontoEntradaSimulacaoDiaComponent },
+    { path : 'pontoEntradaSimulacaoDiaVenda' , component: PontoEntradaSimulacaoDiaVendaComponent },
 
     { path: '',  component: HomeComponent  }
     //{ path: '',          redirectTo: 'home', pathMatch: 'full' }

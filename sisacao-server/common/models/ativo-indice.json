@@ -29,5 +29,24 @@
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {}
+  "methods": {
+    "ListaNaoBovespa": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaNaoBovespa",
+          "verb": "get"
+        }
+      ]
+    }
+  }
 }

@@ -76,4 +76,24 @@ public class RepositorioDiaPregao extends ModelRepository<DiaPregao>{
 	        params.put("idPeriodo", idPeriodo);
 	        invokeStaticMethod("proximoParaValidador", params,   new JsonArrayParser<DiaPregao>(this, callback));
 		}
+		
+		
+		
+		public synchronized void obtemIntradayResultadoTickerQuantidade(String ticker, int qtdeDia, final ListCallback<DiaPregao> callback ) {
+			RestContractItem contrato = new RestContractItem("DiaPregaos/obtemIntradayResultadoTickerQuantidade","GET");
+			this.getRestAdapter().getContract().addItem(contrato, "DiaPregao.obtemIntradayResultadoTickerQuantidade");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        params.put("ticker", ticker);
+	        params.put("qtdeDia", qtdeDia);
+	        invokeStaticMethod("obtemIntradayResultadoTickerQuantidade", params,   new JsonArrayParser<DiaPregao>(this, callback));
+		}
+		public synchronized void obtemIntradayResultadoTickerPeriodoQuantidade(String ticker, int qtdeDia, int dataNumFinal, final ListCallback<DiaPregao> callback ) {
+			RestContractItem contrato = new RestContractItem("DiaPregaos/obtemIntradayResultadoTickerPeriodoQuantidade","GET");
+			this.getRestAdapter().getContract().addItem(contrato, "DiaPregao.obtemIntradayResultadoTickerPeriodoQuantidade");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        params.put("ticker", ticker);
+	        params.put("qtdeDia", qtdeDia);
+	        params.put("dataNumFinal", dataNumFinal);
+	        invokeStaticMethod("obtemIntradayResultadoTickerPeriodoQuantidade", params,   new JsonArrayParser<DiaPregao>(this, callback));
+		}
 }

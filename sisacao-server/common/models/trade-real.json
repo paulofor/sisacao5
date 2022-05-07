@@ -105,6 +105,24 @@
   },
   "acls": [],
   "methods": {
+    "SituacaoAtual": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "number",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/situacaoAtual",
+          "verb": "get"
+        }
+      ]
+    },
     "CalculaEstimativa": {
       "accepts": [
         {
@@ -188,24 +206,6 @@
         {
           "path": "/atualizaDiaAberto",
           "verb": "post"
-        }
-      ]
-    },
-    "SituacaoAtual": {
-      "accepts": [],
-      "returns": [
-        {
-          "arg": "saida",
-          "type": "number",
-          "root": true,
-          "description": ""
-        }
-      ],
-      "description": "",
-      "http": [
-        {
-          "path": "/situacaoAtual",
-          "verb": "get"
         }
       ]
     },

@@ -56,6 +56,43 @@
   "relations": {},
   "acls": [],
   "methods": {
+    "ObtemPorDia": {
+      "accepts": [
+        {
+          "arg": "diaNum",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "codigoGrupoAcao",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "codigoRegraProjecao",
+          "type": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemPorDia",
+          "verb": "get"
+        }
+      ]
+    },
     "InsereExemplo": {
       "accepts": [
         {
@@ -81,10 +118,82 @@
         }
       ]
     },
-    "ObtemParaTeste": {
+    "ObtemConjuntoTreino": {
       "accepts": [
-       
+        {
+          "arg": "idPeriodo",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "codigoGrupoAcao",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "codigoRegraProjecao",
+          "type": "string",
+          "required": true,
+          "description": ""
+        }
       ],
+      "returns": [
+        {
+          "arg": "conjunto",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemConjuntoTreino",
+          "verb": "get"
+        }
+      ]
+    },
+    "ObtemConjuntoDesenvolvimento": {
+      "accepts": [
+        {
+          "arg": "idPeriodo",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "codigoGrupoAcao",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "codigoRegraProjecao",
+          "type": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "conjunto",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemConjuntoDesenvolvimento",
+          "verb": "get"
+        }
+      ]
+    },
+    "ObtemParaTeste": {
+      "accepts": [],
       "returns": [
         {
           "arg": "resultado",
