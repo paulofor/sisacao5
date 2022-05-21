@@ -58,6 +58,14 @@ public class RepositorioIndiceBase {
 	        params.put("horario", horaNegocio);
 	        invokeStaticMethod("insereValorHorarioIndice", params, new EmptyResponseParser(voidCallback));
 		}
+		public void insereValor(String ticker, Double valor, final VoidCallback voidCallback) {
+			RestContractItem contrato = new RestContractItem("CotacaoIntradayIndices/insereValorIndice","POST");
+			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayIndice.insereValorIndice");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        params.put("ticker", ticker);
+	        params.put("valor", valor);
+	        invokeStaticMethod("insereValorIndice", params, new EmptyResponseParser(voidCallback));
+		}
 	}
 
 }

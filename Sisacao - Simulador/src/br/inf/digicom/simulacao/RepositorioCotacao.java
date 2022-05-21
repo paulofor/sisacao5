@@ -133,6 +133,7 @@ public class RepositorioCotacao {
 		return cotacoes.get(ativo.getTicker());
 	}
 	public static List<DiaPregao> getCotacao(String ticker) {
+		System.out.println("Repositorio:" + ticker + " Valores:" + cotacoes.get(ticker));
 		return cotacoes.get(ticker);
 	}
 	

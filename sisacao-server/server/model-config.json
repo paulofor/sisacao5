@@ -268,11 +268,11 @@
     "public": true
   },
   "ExemploTreinoAcaoEntrada": {
-    "dataSource": "mysqlDS",
+    "dataSource": "mysqlKingDS2",
     "public": true
   },
   "ExemploTreinoAcaoSaida": {
-    "dataSource": "mysqlDS",
+    "dataSource": "mysqlKingDS2",
     "public": true
   }
 }

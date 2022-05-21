@@ -49,6 +49,11 @@ public class ExecutadorSimulacao {
 		} else {
 			simulacao = new SimuladorPontoEntradaDia();
 		}
+		try {
+			Thread.sleep(120000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		ExecucaoPontoEntrada execucao = simulacao.executa(RepositorioCotacao.getCotacao(ticker),parametros, regra, experimento.diaInicio(), experimento.diaFinal());
 		salvaExecucao(execucao,ticker,combinacao, regra, experimento);
 		parametros = null;

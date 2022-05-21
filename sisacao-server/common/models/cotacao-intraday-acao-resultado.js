@@ -57,7 +57,7 @@ module.exports = function(Cotacaointradayacaoresultado) {
     */
      Cotacaointradayacaoresultado.GravaVaziaComAnterior = function(ticker, callback) {
         Cotacaointradayacaoresultado.ObtemProximoHorarioVazio(ticker, (err, cotacao) => {
-            //console.log('cotacao: ' , cotacao);
+            console.log('cotacao: ' , cotacao);
             if(cotacao) {
                 let sql = " update CotacaoIntradayAcaoResultado " +
                     " set valor = " + 
@@ -69,13 +69,13 @@ module.exports = function(Cotacaointradayacaoresultado) {
                     " limit 1 " +
                     " ) " +
                     " where ticker = '" + ticker + "' and diaNum = " + cotacao.diaNum + " and hora = '" + cotacao.hora + "' ";
-                //console.log('sql:' , sql);
+                console.log('sql:' , sql);
                 var ds = Cotacaointradayacaoresultado.dataSource;
                 ds.connector.query(sql, (err,result) => {
                     callback(err,cotacao)
                 });    
             } else {
-                //console.log('nao tem');
+                console.log('nao tem');
                 callback(null,null);
             }
            

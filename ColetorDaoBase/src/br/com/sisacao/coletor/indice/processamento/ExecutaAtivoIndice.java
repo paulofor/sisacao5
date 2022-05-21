@@ -14,7 +14,9 @@ import br.inf.digicom.loopback.DummyDaoBase;
 public class ExecutaAtivoIndice extends ColetorIndiceDaoBase {
 	
 	private DummyDaoBase dummy = null;
-
+	ExecutadorParse executador =  new ExecutadorParse();
+	YahooDadosParse dados = new YahooDadosParse();
+	YahooCallbackHtml callback = new YahooCallbackHtml();
 	
 	public ExecutaAtivoIndice() {
 		this.dummy = new DummyDaoBase();
@@ -31,9 +33,7 @@ public class ExecutaAtivoIndice extends ColetorIndiceDaoBase {
 		final DatasetColetorIndice ds = (DatasetColetorIndice) getComum();
 		AtivoIndice indice = ds.getAtivoIndiceCorrente();
 		System.out.println("Indice: " + indice.getTicker());
-		ExecutadorParse executador = new ExecutadorParse();
-		YahooDadosParse dados = new YahooDadosParse();
-		YahooCallbackHtml callback = new YahooCallbackHtml();
+		dados.setDataset(ds);
 		dados.setAtivoIndice(indice);
 		executador.setCallbackParse(callback);
 		executador.setDadosParse(dados);

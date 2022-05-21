@@ -1,0 +1,69 @@
+{
+  "name": "CtrlFin_Conta",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "mysql": {
+      "table": "conta1"
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true
+    },
+    "ativo": {
+      "type": "string"
+    },
+    "fonte": {
+      "type": "string"
+    },
+    "aplicacao": {
+      "type": "string"
+    },
+    "descricao": {
+      "type": "string"
+    },
+    "mensal": {
+      "type": "string"
+    },
+    "precoMes": {
+      "type": "number"
+    },
+    "nomeCripto": {
+      "type": "string"
+    },
+    "ignoraSaldo": {
+      "type": "string"
+    },
+    "nomeCelular": {
+      "type": "string"
+    },
+    "pessoal": {
+      "type": "string"
+    },
+    "movimentacaoCelular": {
+      "type": "string"
+    },
+    "projecaoProporcional": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {
+    "TesteAtualizacao": {
+      "accepts": [],
+      "returns": [],
+      "description": "",
+      "http": [
+        {
+          "path": "/testeAtualizacao",
+          "verb": "get"
+        }
+      ]
+    }
+  }
+}

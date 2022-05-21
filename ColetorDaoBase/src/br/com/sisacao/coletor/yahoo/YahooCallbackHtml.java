@@ -18,6 +18,12 @@ public class YahooCallbackHtml extends CallbackParseHtml{
 		if ("sp500".equals(dados.getAtivoIndice().getTicker())) {
 			return new URL("https://finance.yahoo.com/quote/%5EGSPC/");
 		}
+		if ("dow".equals(dados.getAtivoIndice().getTicker())) {
+			return new URL("https://finance.yahoo.com/quote/%5EDJI/");
+		}
+		if ("nasdaq".equals(dados.getAtivoIndice().getTicker())) {
+			return new URL("https://finance.yahoo.com/quote/NQ%3DF/");
+		}
 		return null;
 	}
 
@@ -46,6 +52,7 @@ public class YahooCallbackHtml extends CallbackParseHtml{
 	@Override
 	public void finalizacaoOk() throws DaoException {
 		System.out.println("Valor: " + this.valor);
+		this.dados.enviaValor(valor);
 	}
 
 	@Override

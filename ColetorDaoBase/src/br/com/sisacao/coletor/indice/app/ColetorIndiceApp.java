@@ -10,7 +10,7 @@ import br.inf.digicom.loopback.comum.DaoBaseComum;
 
 public class ColetorIndiceApp {
 
-public static String UrlLoopback = "";
+	public static String UrlLoopback = "";
 	
 	public static void main(String[] args) {
 		System.out.println("Inicialiando ColetorIndiceApp");

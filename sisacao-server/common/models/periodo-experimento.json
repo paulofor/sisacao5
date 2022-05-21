@@ -44,6 +44,9 @@
     },
     "minimoPontoExibicao": {
       "type": "number"
+    },
+    "correnteValidador" : {
+      "type": "number"
     }
   },
   "validations": [],
@@ -56,6 +59,51 @@
   },
   "acls": [],
   "methods": {
+    "ObtemCorrenteValidador": {
+      "accepts": [
+       
+      ],
+      "returns": [
+        {
+          "arg": "periodo",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemCorrenteValidador",
+          "verb": "get"
+        }
+      ]
+    },
+    "LigaCorrenteValidador": {
+      "accepts": [
+        {
+          "arg": "idPeriodo",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "periodo",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/ligaCorrenteValidador",
+          "verb": "post"
+        }
+      ]
+    },
     "LigaMonitoradoPeriodo": {
       "accepts": [
         {

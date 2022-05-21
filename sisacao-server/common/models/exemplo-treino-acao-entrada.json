@@ -61,6 +61,49 @@
           "verb": "post"
         }
       ]
+    },
+    "ListaSemResultado": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "regraId",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "qtdeDias",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "posicaoReferencia",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaSemResultado",
+          "verb": "get"
+        }
+      ]
     }
   }
 }

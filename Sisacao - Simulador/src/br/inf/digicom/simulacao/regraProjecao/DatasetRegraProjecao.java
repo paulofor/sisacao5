@@ -64,7 +64,7 @@ public class DatasetRegraProjecao implements IDatasetComum ,
 		this.listaCotacaoResultado = listaCotacao;
 	}
 	@Override
-	public int getDataInicioNum() {
+	public int getDataNumInicio() {
 		//return this.dataInicial.getDiaNum();
 		return 20210101;
 	}

@@ -7,11 +7,14 @@ import br.com.digicom.sisacao.modelo.DiaPregao;
 import br.com.digicom.sisacao.modelo.RegraProjecao;
 import br.inf.digicom.loopback.IDatasetComum;
 import br.inf.digicom.loopback.comum.ativoacao.AtivoAcao_ListaPorNomeGrupoDS;
+import br.inf.digicom.loopback.comum.diapregao.DiaPregao_ObtemIntradayResultadoValorDS;
 import br.inf.digicom.loopback.comum.regraprojecao.RegraProjecao_ObtemPorCodigoRegraDS;
 
 public class DatasetComum implements IDatasetComum ,
 								AtivoAcao_ListaPorNomeGrupoDS,
 								RegraProjecao_ObtemPorCodigoRegraDS
+								
+							
 			{
 	
 	private RegraProjecao regraProjecao = null;
@@ -24,8 +27,8 @@ public class DatasetComum implements IDatasetComum ,
 	private AtivoAcao ativoAcao = null;
 	private String codigoGrupoAcao = null;
 	
-
-	
+	private List<DiaPregao> listaCotacaoResultado;
+	private int dataInicioNum;
 	
 	
 
@@ -96,6 +99,24 @@ public class DatasetComum implements IDatasetComum ,
 	public void setCodigoRegraProjecao(String codigoRegra) {
 		this.codigoRegraProjecao = codigoRegra;
 	}
+
+	public List<DiaPregao> getListaCotacaoResultado() {
+		return listaCotacaoResultado;
+	}
+
+	public void setListaCotacaoResultado(List<DiaPregao> listaCotacaoResultado) {
+		this.listaCotacaoResultado = listaCotacaoResultado;
+	}
+
+	public int getDataInicioNum() {
+		return dataInicioNum;
+	}
+
+	public void setDataInicioNum(int dataInicioNum) {
+		this.dataInicioNum = dataInicioNum;
+	}
+
+	
 	
 	
 	

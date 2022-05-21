@@ -14,11 +14,11 @@ public class InsereExemploTreinoAcaoEntradaApp {
 	
 	public static void main(String[] args) {
 		System.out.print("InsereExemploTreinoAcaoEntradaApp");
-		System.out.println(" (04-05-2022)");
+		System.out.println(" (12-05-2022)");
 		try {
 			carregaProp();
-			int posicaoEntrada = -2;
-			int qtdeDias = 3;
+			int posicaoEntrada = 0;
+			int qtdeDias = 120;
 			String codigoGrupoAcao = "Neg-100";
 			InsereExemploTreinoAcaoEntradaObj obj = new InsereExemploTreinoAcaoEntradaObj();
 			obj.executa(posicaoEntrada, qtdeDias, codigoGrupoAcao);

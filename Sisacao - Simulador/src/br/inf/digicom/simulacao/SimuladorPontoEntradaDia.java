@@ -35,8 +35,9 @@ public class SimuladorPontoEntradaDia {
 		} catch (Exception e ) {
 			System.out.println("indDia:" + indDia);
 			System.out.println("dia:" + dia);
-			System.out.println("dias.size()" + dias.size());
-			System.out.println("dias.get(indDia):" + dias.get(indDia));
+			e.printStackTrace();
+			//System.out.println("dias.size()" + dias.size());
+			//System.out.println("dias.get(indDia):" + dias.get(indDia));
 			System.exit(-1);
 		}
 		

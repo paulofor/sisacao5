@@ -22,6 +22,16 @@ public class RepositorioDiaPregao extends ModelRepository<DiaPregao>{
 		protected String verificaNomeUrl(String nome) {
 			return "DiaPregao";
 		}
+		
+		public synchronized void listaDataPeriodo(int diaNumInicio, int diaNumFinal, final ListCallback<DiaPregao> callback ) {
+			RestContractItem contrato = new RestContractItem("DiaPregaos/listaDataPeriodo","GET");
+			this.getRestAdapter().getContract().addItem(contrato, "DiaPregao.listaDataPeriodo");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        params.put("diaNumInicio", diaNumInicio);
+	        params.put("diaNumFinal", diaNumFinal);
+	        invokeStaticMethod("listaDataPeriodo", params,   new JsonArrayParser<DiaPregao>(this, callback));
+		}
+		
 		public synchronized void obtemPorDiaTicker(String ticker, int dias, final ListCallback<DiaPregao> callback ) {
 			RestContractItem contrato = new RestContractItem("DiaPregaos/obtemIntradayPorTicker","GET");
 			this.getRestAdapter().getContract().addItem(contrato, "DiaPregao.obtemIntradayPorTicker");
@@ -79,13 +89,13 @@ public class RepositorioDiaPregao extends ModelRepository<DiaPregao>{
 		
 		
 		
-		public synchronized void obtemIntradayResultadoTickerQuantidade(String ticker, int qtdeDia, final ListCallback<DiaPregao> callback ) {
-			RestContractItem contrato = new RestContractItem("DiaPregaos/obtemIntradayResultadoTickerQuantidade","GET");
-			this.getRestAdapter().getContract().addItem(contrato, "DiaPregao.obtemIntradayResultadoTickerQuantidade");
+		public synchronized void obtemIntradayResultadoTickerQuantidadeB3(String ticker, int qtdeDia, final ListCallback<DiaPregao> callback ) {
+			RestContractItem contrato = new RestContractItem("DiaPregaos/obtemIntradayResultadoTickerQuantidadeB3","GET");
+			this.getRestAdapter().getContract().addItem(contrato, "DiaPregao.obtemIntradayResultadoTickerQuantidadeB3");
 	        Map<String, Object> params = new HashMap<String, Object>();
 	        params.put("ticker", ticker);
 	        params.put("qtdeDia", qtdeDia);
-	        invokeStaticMethod("obtemIntradayResultadoTickerQuantidade", params,   new JsonArrayParser<DiaPregao>(this, callback));
+	        invokeStaticMethod("obtemIntradayResultadoTickerQuantidadeB3", params,   new JsonArrayParser<DiaPregao>(this, callback));
 		}
 		public synchronized void obtemIntradayResultadoTickerPeriodoQuantidade(String ticker, int qtdeDia, int dataNumFinal, final ListCallback<DiaPregao> callback ) {
 			RestContractItem contrato = new RestContractItem("DiaPregaos/obtemIntradayResultadoTickerPeriodoQuantidade","GET");
@@ -95,5 +105,14 @@ public class RepositorioDiaPregao extends ModelRepository<DiaPregao>{
 	        params.put("qtdeDia", qtdeDia);
 	        params.put("dataNumFinal", dataNumFinal);
 	        invokeStaticMethod("obtemIntradayResultadoTickerPeriodoQuantidade", params,   new JsonArrayParser<DiaPregao>(this, callback));
+		}
+		
+		public synchronized void obtemIntradayResultadoTickerAteFinal(String ticker, int dataNumInicio, final ListCallback<DiaPregao> callback ) {
+			RestContractItem contrato = new RestContractItem("DiaPregaos/obtemIntradayResultadoTickerAteFinal","GET");
+			this.getRestAdapter().getContract().addItem(contrato, "DiaPregao.obtemIntradayResultadoTickerAteFinal");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        params.put("ticker", ticker);
+	        params.put("dataNumInicio", dataNumInicio);
+	        invokeStaticMethod("obtemIntradayResultadoTickerAteFinal", params,   new JsonArrayParser<DiaPregao>(this, callback));
 		}
 }

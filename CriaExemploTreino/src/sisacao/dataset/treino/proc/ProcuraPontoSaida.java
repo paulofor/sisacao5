@@ -40,6 +40,14 @@ public class ProcuraPontoSaida {
 		tipoCompra = !"V".equals(regraProjecao.getTipoCompraVenda());
 	}
 	
+	public ProcuraPontoSaida() {
+		super();
+	}
+	public void setRegra(RegraProjecao regra) {
+		this.regraProjecao = regra;
+		tipoCompra = !"V".equals(regraProjecao.getTipoCompraVenda());
+	}
+	
 	private void calculaVariaveis(double precoEntrada) {
 		if (this.tipoCompra) {
 			limiteBaixo = precoEntrada * (1-this.regraProjecao.getStop()); 

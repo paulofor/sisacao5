@@ -28,6 +28,37 @@
   "relations": {},
   "acls": [],
   "methods": {
+    "InsereValorIndice": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "valor",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/insereValorIndice",
+          "verb": "post"
+        }
+      ]
+    },
     "InsereValorHorarioIndice": {
       "accepts": [
         {

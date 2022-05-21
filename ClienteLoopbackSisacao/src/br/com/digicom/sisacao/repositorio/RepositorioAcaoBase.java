@@ -32,7 +32,7 @@ public class RepositorioAcaoBase {
 			return "AtivoAcaos";
 		}
 		public void listaColetaIntraday(final ListCallback<AtivoAcao> callback) {
-			RestContractItem contrato = new RestContractItem("AtivoAcaos/listaColetaIntraday","POST");
+			RestContractItem contrato = new RestContractItem("AtivoAcaos/listaColetaIntraday","GET");
 			this.getRestAdapter().getContract().addItem(contrato, "AtivoAcao.listaColetaIntraday");
 	        Map<String, Object> params = new HashMap<String, Object>();
 	        invokeStaticMethod("listaColetaIntraday", params,   new JsonArrayParser<AtivoAcao>(this, callback));

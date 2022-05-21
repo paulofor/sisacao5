@@ -181,9 +181,7 @@ module.exports = function (Ativoacao) {
      */
 
     Ativoacao.ListaColetaIntraday = function (callback) {
-        var lista;
-        // TODO
-        callback(null, lista);
+        Ativoacao.find({}, callback);
     };
 
     /**

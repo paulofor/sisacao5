@@ -278,6 +278,37 @@
         }
       ]
     },
+    "ObtemIntradayResultadoTickerAteFinal": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "dataNumInicio",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemIntradayResultadoTickerAteFinal",
+          "verb": "get"
+        }
+      ]
+    },
     "ObtemIntradayTickerPeriodo": {
       "accepts": [
         {
@@ -373,6 +404,37 @@
       "http": [
         {
           "path": "/obtemIntradayResultadoTickerPeriodoQuantidade",
+          "verb": "get"
+        }
+      ]
+    },
+    "ObtemIntradayResultadoTickerQuantidadeB3": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "qtdeDia",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemIntradayResultadoTickerQuantidadeB3",
           "verb": "get"
         }
       ]
@@ -521,6 +583,37 @@
       "http": [
         {
           "path": "/proximoParaValidador",
+          "verb": "get"
+        }
+      ]
+    },
+    "ListaDataPeriodo": {
+      "accepts": [
+        {
+          "arg": "diaNumInicio",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "diaNumFinal",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaDataPeriodo",
           "verb": "get"
         }
       ]

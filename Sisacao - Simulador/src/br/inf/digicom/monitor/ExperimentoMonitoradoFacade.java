@@ -113,6 +113,11 @@ public class ExperimentoMonitoradoFacade {
 		} else {
 			 simulador = new SimuladorPontoEntradaDia();
 		}
+		try {
+			Thread.sleep(10000); // tempo para carregar o RepositorioCotacao
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		Double preco = simulador.precoEntrada(RepositorioCotacao.getCotacao(execucao.getTicker()), execucao.getCombinacaoParametro(), regra, dataNum);
 		execucao.setPrecoEntrada(preco);
 	}

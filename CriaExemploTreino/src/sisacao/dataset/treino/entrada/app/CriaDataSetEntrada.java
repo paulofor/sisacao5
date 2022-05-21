@@ -5,51 +5,62 @@ import java.util.List;
 import br.com.digicom.sisacao.modelo.CotacaoIntradayAcaoResultado;
 import br.com.digicom.sisacao.modelo.DiaPregao;
 import br.inf.digicom.loopback.DaoBase;
+import br.inf.digicom.loopback.DummyDaoBase;
 import sisacao.dataset.treino.dao.DaoBaseApp;
-import sisacao.dataset.treino.dao.DatasetComum;
-import sisacao.dataset.treino.entrada.dao.DatasetExemploEntrada;
-import sisacao.dataset.treino.proc.DadosTreino;
-import sisacao.dataset.treino.proc.EnviaDados;
+import sisacao.dataset.treino.dao.DatasetExemplo;
 
 public class CriaDataSetEntrada extends DaoBaseApp {
 
 	private List<DiaPregao> dias = null;
 	private String ticker = null;
-	private DadosTreinoX dadosTreino = null;
-	private EnviaDados enviaDados = null;
+	private DadosTreinoX dadosTreino = new DadosTreinoX();;
+	private EnviaDadosX enviaDados = new EnviaDadosX();;
+	private DummyDaoBase dummy = null;
+	
+	public CriaDataSetEntrada() {
+		super();
+		this.dummy = new DummyDaoBase();
+	}
 	
 	@Override
 	protected void executaImpl() {
 
-		DatasetExemploEntrada comum = (DatasetExemploEntrada) getComum();
+		DatasetExemplo comum = (DatasetExemplo) getComum();
 		this.dias = comum.getListaCotacaoResultado();
 		this.ticker = comum.getAtivoAcaoCorrente().getTicker();
-		this.dadosTreino = new DadosTreinoX();
 		this.dadosTreino.setQtdeDia(comum.getQtdeDia());
-		this.enviaDados = new EnviaDados();
 		processaDias();
 		System.out.println(" !!!!  final de execução !!!!");
+		this.executaProximo();
 	}
 	
 	
 	private void processaDias() {
-		DatasetExemploEntrada comum = (DatasetExemploEntrada) getComum();
-		int diaReferencia = 0;
-		CotacaoIntradayAcaoResultado cotacaoDiaAnterior = null;
-		DiaPregao diaOperacao = ;
+		DatasetExemplo comum = (DatasetExemplo) getComum();
+		
+		CotacaoIntradayAcaoResultado cotacaoDiaReferencia = null;
+		DiaPregao diaPrevisao = null; 
+		DiaPregao diaReferencia = null; 
+		int indiceDia = 0;
 		try {
+			diaPrevisao = dias.get(dias.size()-1);
+			diaReferencia = dias.get(dias.size()-2);
+			indiceDia = dias.get(0).getCotacaoIntradayAcaoResultados().size() + comum.getPosicaoDia() - 1;
+			cotacaoDiaReferencia = diaReferencia.getCotacaoIntradayAcaoResultados().get(indiceDia);
 			
-			
+			dadosTreino.calcula(dias, cotacaoDiaReferencia.getValor());
+			enviaDados.enviaDia(comum.getAtivoAcaoCorrente().getTicker(), dadosTreino, cotacaoDiaReferencia.getValor(), comum.getQtdeDia(), comum.getPosicaoDia());
+
 				
 		} catch (Exception e) {
 			System.out.println("Ticker: " + this.ticker);
-			System.out.println("this.procuraPontoSaida:" + this.procuraPontoSaida);
-			System.out.println("diaReferencia:" + diaReferencia);
-			System.out.println("valorEntrada:" + valorEntrada);
-			System.out.println("cotacaoDiaAnterior:" + cotacaoDiaAnterior);
-			System.out.println("Dia Operação:" + diaOperacao.getDiaNum());
-			for (CotacaoIntradayAcaoResultado cot: diaOperacao.getCotacaoIntradayAcaoResultados()) {
-				System.out.println(cot);
+			System.out.println("Indice Referencia: " + indiceDia);
+			System.out.println("Data Previsao:" + diaPrevisao.getDiaNum());
+			System.out.println("cotacaoDiaAnterior:" + cotacaoDiaReferencia);
+			System.out.println("Data Referencia:" + diaReferencia.getDiaNum());
+			int i = 0;
+			for (CotacaoIntradayAcaoResultado cot: diaReferencia.getCotacaoIntradayAcaoResultados()) {
+				System.out.println((i++) + " " +cot);
 			}
 			e.printStackTrace();
 			System.exit(-1);
@@ -59,8 +70,7 @@ public class CriaDataSetEntrada extends DaoBaseApp {
 
 	@Override
 	protected DaoBase getProximo() {
-		// TODO Auto-generated method stub
-		return null;
+		return dummy;
 	}
 
 }

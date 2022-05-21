@@ -39,9 +39,10 @@ public class DadosTreinoX {
 		return this.diaInicio.getDiaNum();
 	}
 
-	private void calcula(List<DiaPregao> dias, int indDiaPrevisao, double valorReferencia) {
-		this.diaPrevisao = dias.get(indDiaPrevisao+1);
-		int inicio = indDiaPrevisao - qtdeDia;
+	public void calcula(List<DiaPregao> dias, double valorReferencia) {
+		int indDiaPrevisao = dias.size() - 1;
+		this.diaPrevisao = dias.get(indDiaPrevisao);
+		int inicio = 0;
 		this.diaInicio = dias.get(inicio);
 		this.saidaXOriginal = "";
 		this.saidaX = "";

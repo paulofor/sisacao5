@@ -1,0 +1,23 @@
+{
+  "name": "GerProj_ObjetivoResultado",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "mysql": {
+      "table": "ObjetivoResultado"
+    }
+  },
+  "properties": {
+    "ondeVaiLevar": {
+      "type": "string"
+    },
+    "ondeLevou": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

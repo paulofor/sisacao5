@@ -1,0 +1,205 @@
+{
+  "name": "GerProj_ProjetoPmbok",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "mysql": {
+      "table": "projeto_pmbok"
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "mysql": {
+        "columnName": "id_projeto_pmbok"
+      }
+    },
+    "nome": {
+      "type": "string"
+    },
+    "quantidadeIteracao": {
+      "type": "number",
+      "mysql": {
+        "columnName": "quantidade_iteracao"
+      }
+    },
+    "ativo": {
+      "type": "string"
+    },
+    "apelido": {
+      "type": "string"
+    },
+    "tempoAlocadoSemana": {
+      "type": "string",
+      "mysql": {
+        "columnName": "tempo_alocado_semana"
+      }
+    },
+    "objetivo": {
+      "type": "string"
+    },
+    "resultado": {
+      "type": "string"
+    },
+    "crenca": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "grupoProjeto": {
+      "type": "belongsTo",
+      "model": "GerProj_GrupoProjeto",
+      "foreignKey": ""
+    },
+    "mercadoEscalaProjetos": {
+      "type": "hasMany",
+      "model": "MercadoEscalaProjeto",
+      "foreignKey": ""
+    },
+    "oportunidadeMacroeconomicaProjetos": {
+      "type": "hasMany",
+      "model": "OportunidadeMacroeconomicaProjeto",
+      "foreignKey": ""
+    },
+    "rendaPassivaProjetos": {
+      "type": "hasMany",
+      "model": "RendaPassivaProjeto",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {
+    "TempoAno": {
+      "accepts": [
+        {
+          "arg": "ano",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/tempoAno",
+          "verb": "get"
+        }
+      ]
+    },
+    "TempoMes": {
+      "accepts": [
+        {
+          "arg": "mes",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "ano",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/tempoMes",
+          "verb": "get"
+        }
+      ]
+    },
+    "TempoDia": {
+      "accepts": [
+        {
+          "arg": "dia",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "mes",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "ano",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/tempoDia",
+          "verb": "get"
+        }
+      ]
+    },
+    "DetalheDia": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/detalheDia",
+          "verb": "get"
+        }
+      ]
+    },
+    "ProgramacaoSemanal": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/programacaoSemanal",
+          "verb": "get"
+        }
+      ]
+    }
+  }
+}

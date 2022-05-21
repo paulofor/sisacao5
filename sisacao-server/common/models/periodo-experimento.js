@@ -3,6 +3,21 @@
 module.exports = function(Periodoexperimento) {
 
 
+  Periodoexperimento.LigaCorrenteValidador = function(idPeriodo,callback) {
+    let sqlLimpa = "update PeriodoExperimento set correnteValidador = 0";
+    let sqlLiga = "update PeriodoExperimento set correnteValidador = 1 where id=" + idPeriodo;
+    let ds = Periodoexperimento.dataSource;
+    ds.connector.query(sqlLimpa, (err,result) => {
+      ds.connector.query(sqlLiga,callback);
+    })
+  }
+
+  Periodoexperimento.ObtemCorrenteValidador = function(callback) {
+    let filtro = {'where' : {'correnteValidador' : '1'}};
+    Periodoexperimento.findOne(filtro,callback);
+  }
+
+
 
   Periodoexperimento.ListaComDetalhe = function(callback) {
     let sql = "SELECT *, " +

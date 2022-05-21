@@ -18,7 +18,7 @@ public class AtualizaProximoDiaMonitoradoApp {
 			carregaProp();
 			AtualizaProximoDiaMonitoradoObj obj = new AtualizaProximoDiaMonitoradoObj();
 			//obj.setId(11);
-			obj.executa(11);
+			obj.executa(12);
 			System.out.println("Finalizacao");
 		} catch (Exception e) {
 			e.printStackTrace();

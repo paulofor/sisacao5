@@ -16,6 +16,13 @@ module.exports = function (Cotacaointradayindice) {
         ds.connector.query(sql, callback);
   };
 
+  Cotacaointradayindice.InsereValorIndice = function (ticker, valor, callback) {
+    let sql = "insert into CotacaoIntradayIndice (ticker,dataHora,valor, dia) " +
+        "values ('" + ticker + "' , now(), " + valor + ", now())"
+    let ds = Cotacaointradayindice.dataSource;
+    ds.connector.query(sql, callback);
+};
+
 
   Cotacaointradayindice.AtualIndicePorTicker = function(ticker, quantidade, callback) {
     let ds = Cotacaointradayindice.dataSource;

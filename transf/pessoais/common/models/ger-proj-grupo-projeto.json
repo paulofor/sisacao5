@@ -1,0 +1,26 @@
+{
+  "name": "GerProj_GrupoProjeto",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "mysql": {
+      "table": "GrupoProjeto"
+    }
+  },
+  "properties": {
+    "nome": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "objetivoResultado": {
+      "type": "belongsTo",
+      "model": "GerProj_ObjetivoResultado",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

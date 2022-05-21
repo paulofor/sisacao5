@@ -1,0 +1,94 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db"
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "DiaSemana": {
+    "dataSource": "gerProjDS",
+    "public": true
+  },
+  "CtrlFin_Conta": {
+    "dataSource": "ctrlFinDS",
+    "public": true
+  },
+  "GerProj_ProjetoPmbok": {
+    "dataSource": "gerProjDS",
+    "public": true
+  },
+  "GerProj_GrupoProjeto": {
+    "dataSource": "gerProjDS",
+    "public": true
+  },
+  "GerProj_ObjetivoResultado": {
+    "dataSource": "gerProjDS",
+    "public": true
+  },
+  "GerProj_SistemaCrenca": {
+    "dataSource": "gerProjDS",
+    "public": true
+  },
+  "RendaPassiva": {
+    "dataSource": "gerProjDS",
+    "public": true
+  },
+  "MercadoEscala": {
+    "dataSource": "gerProjDS",
+    "public": true
+  },
+  "OportunidadeMacroeconomica": {
+    "dataSource": "gerProjDS",
+    "public": true
+  },
+  "RendaPassivaProjeto": {
+    "dataSource": "gerProjDS",
+    "public": true
+  },
+  "MercadoEscalaProjeto": {
+    "dataSource": "gerProjDS",
+    "public": true
+  },
+  "OportunidadeMacroeconomicaProjeto": {
+    "dataSource": "gerProjDS",
+    "public": true
+  },
+  "PossibilidadeReceita": {
+    "dataSource": "gerProjDS",
+    "public": true
+  },
+  "PossibilidadeReceitaProjeto": {
+    "dataSource": "gerProjDS",
+    "public": true
+  }
+}

@@ -28,6 +28,30 @@ module.exports = function(Diapregao) {
     };
   
 
+    Diapregao.ObtemIntradayResultadoTickerAteFinal = function(ticker, diaNumInicio, callback) {
+        Diapregao.ObtemProximoB3((err,result) => {
+            let filtro = {
+                'include' : 
+                [
+                    { 
+                    'relation' : 'cotacaoIntradayAcaos',
+                    'scope' : 
+                        {'where' : {'ticker' : ticker } , "order" : "dataHora" , "fields" : { valor:true, ticker: true, dataHora: true, dataHoraNegStr: true}} 
+                    },
+                    { 
+                    'relation' : 'cotacaoDiarioAcaos',
+                    'scope' : 
+                        {'where' : {'ticker' : ticker }} 
+                    }
+                ], 
+                'order' : 'diaNum',
+                'where' : { and : [{'diaNum' : { 'gte' : diaNumInicio }}, {'diaNum': {'lte' : diaNum}} ]}
+            }
+            Diapregao.find(filtro,callback);
+        });
+    }
+
+
     /**
     * 
     * @param {number} idExecucao 
@@ -261,6 +285,43 @@ module.exports = function(Diapregao) {
         });
     };
 
+    Diapregao.ObtemIntradayResultadoTickerQuantidadeB3 = function(ticker, qtdeDia, callback) {
+        Diapregao.ObtemProximoB3((err,result) => {
+            let filtro = {
+                'include' : 
+                [
+                    { 
+                    'relation' : 'cotacaoIntradayAcaoResultados',
+                    'scope' : 
+                        {'where' : {'ticker' : ticker } , "order" : "dataHora" } 
+                    },
+                    { 
+                    'relation' : 'cotacaoDiarioAcaos',
+                    'scope' : 
+                        {'where' : {'ticker' : ticker }} 
+                    }
+                ], 
+                'order' : 'diaNum desc',
+                'limit' : qtdeDia + 1,
+                'where' : {'diaNum': {'lte' : result.diaNum}} 
+            }
+            Diapregao.find(filtro, (err,result) => {
+                callback(err,result.reverse())
+            });
+        })
+       
+    };
+
+    Diapregao.ListaDataPeriodo = function(diaNumInicio,diaNumFinal, callback) {
+        let filtro = {
+            'where' : {'and' : [
+                {'diaNum' : {'gte' : diaNumInicio}},
+                {'diaNum' : {'lte' : diaNumFinal }}
+            ]},
+            'order' : 'diaNum'
+        }
+        Diapregao.find(filtro,callback);
+    }
 
     /**
     * 
