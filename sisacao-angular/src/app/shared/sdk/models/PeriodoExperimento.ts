@@ -18,6 +18,7 @@ export interface PeriodoExperimentoInterface {
   "quantidadeMesValidacao"?: number;
   "minimoPontoValidacao"?: number;
   "minimoPontoExibicao"?: number;
+  "correnteValidador"?: number;
   "id"?: number;
   experimentoSimulacaoPeriodos?: ExperimentoSimulacaoPeriodo[];
 }
@@ -36,6 +37,7 @@ export class PeriodoExperimento implements PeriodoExperimentoInterface {
   "quantidadeMesValidacao": number;
   "minimoPontoValidacao": number;
   "minimoPontoExibicao": number;
+  "correnteValidador": number;
   "id": number;
   experimentoSimulacaoPeriodos: ExperimentoSimulacaoPeriodo[];
   constructor(data?: PeriodoExperimentoInterface) {
@@ -121,6 +123,10 @@ export class PeriodoExperimento implements PeriodoExperimentoInterface {
         },
         "minimoPontoExibicao": {
           name: 'minimoPontoExibicao',
+          type: 'number'
+        },
+        "correnteValidador": {
+          name: 'correnteValidador',
           type: 'number'
         },
         "id": {

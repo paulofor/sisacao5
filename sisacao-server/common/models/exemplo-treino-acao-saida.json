@@ -32,10 +32,76 @@
     },
     "resultado": {
       "type": "number"
+    },
+    "regraProjecaoId": {
+      "type": "number"
     }
   },
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {}
+  "methods": {
+    "InsereExemploSaida": {
+      "accepts": [
+        {
+          "arg": "exemplo",
+          "type": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/insereExemploSaida",
+          "verb": "post"
+        }
+      ]
+    },
+    "ObtemComEntrada": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "diaNumPrevisao",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "regraProjecaoId",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemComEntrada",
+          "verb": "get"
+        }
+      ]
+    }
+  }
 }

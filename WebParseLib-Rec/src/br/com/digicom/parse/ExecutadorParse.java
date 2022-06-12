@@ -1,5 +1,6 @@
 package br.com.digicom.parse;
 
+import java.lang.management.ManagementFactory;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -29,7 +30,13 @@ public class ExecutadorParse {
 	private ICallbackParse callbackParse;
 	private IDadosParse dadosParse;
 
+	protected void printThreads(String mensagem) {
+		System.out.println("Threads " + this + " [" + mensagem + "] : " + ManagementFactory.getThreadMXBean().getThreadCount());
+	}
+	
+	
 	public void executa() {
+		//this.printThreads("Inicio ExecutadorParse");
 		try {
 			this.callbackParse.setDados(this.dadosParse);
 			do {
@@ -127,6 +134,8 @@ public class ExecutadorParse {
 			this.callbackParse.finalizacaoErro();
 		}
 		ArquivoLog.getInstancia().salvaLog("Final executador");
+		//this.printThreads("Final ExecutadorParse");
+		//System.out.println("Final executador");
 	}
 
 	private void executaParse(Conector conector) throws SAXException, ParserConfigurationException, InterruptedException, ExecutadorParseException {

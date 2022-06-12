@@ -29,6 +29,7 @@ public class CallbackCotacaoB3Json extends CallbackParseJson  {
 
 	@Override
 	public URL getUrl() throws MalformedURLException {
+		String data = dados.getAAAA_MM_DD();
 		return new URL("https://arquivos.b3.com.br/apinegocios/ticker/" + dados.getTicker().toLowerCase() + "/" + dados.getAAAA_MM_DD());
 	}
 

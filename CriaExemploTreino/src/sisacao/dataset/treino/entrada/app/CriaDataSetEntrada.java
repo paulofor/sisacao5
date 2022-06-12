@@ -39,23 +39,21 @@ public class CriaDataSetEntrada extends DaoBaseApp {
 		DatasetExemplo comum = (DatasetExemplo) getComum();
 		
 		CotacaoIntradayAcaoResultado cotacaoDiaReferencia = null;
-		DiaPregao diaPrevisao = null; 
 		DiaPregao diaReferencia = null; 
 		int indiceDia = 0;
 		try {
-			diaPrevisao = dias.get(dias.size()-1);
 			diaReferencia = dias.get(dias.size()-2);
-			indiceDia = dias.get(0).getCotacaoIntradayAcaoResultados().size() + comum.getPosicaoDia() - 1;
+			indiceDia = dias.get(0).getCotacaoIntradayAcaoResultados().size() + comum.getPosicaoEntrada() - 1;
 			cotacaoDiaReferencia = diaReferencia.getCotacaoIntradayAcaoResultados().get(indiceDia);
 			
 			dadosTreino.calcula(dias, cotacaoDiaReferencia.getValor());
-			enviaDados.enviaDia(comum.getAtivoAcaoCorrente().getTicker(), dadosTreino, cotacaoDiaReferencia.getValor(), comum.getQtdeDia(), comum.getPosicaoDia());
+			enviaDados.enviaDia(comum.getAtivoAcaoCorrente().getTicker(), dadosTreino, cotacaoDiaReferencia.getValor(), comum.getQtdeDia(), comum.getPosicaoEntrada());
 
 				
 		} catch (Exception e) {
 			System.out.println("Ticker: " + this.ticker);
 			System.out.println("Indice Referencia: " + indiceDia);
-			System.out.println("Data Previsao:" + diaPrevisao.getDiaNum());
+			//System.out.println("Data Previsao:" + comum.);
 			System.out.println("cotacaoDiaAnterior:" + cotacaoDiaReferencia);
 			System.out.println("Data Referencia:" + diaReferencia.getDiaNum());
 			int i = 0;

@@ -8,7 +8,7 @@
   "properties": {
     "ticker": {
       "type": "string",
-      "id" : true
+      "id": true
     },
     "campoX": {
       "type": "string"
@@ -18,7 +18,7 @@
     },
     "diaNumPrevisao": {
       "type": "number",
-      "id" : true
+      "id": true
     },
     "campoXOriginal": {
       "type": "string"
@@ -37,6 +37,37 @@
   "relations": {},
   "acls": [],
   "methods": {
+    "ObtemPorDiaTicker": {
+      "accepts": [
+        {
+          "arg": "diaNum",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemPorDiaTicker",
+          "verb": "get"
+        }
+      ]
+    },
     "InsereExemploEntrada": {
       "accepts": [
         {

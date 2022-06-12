@@ -6,6 +6,7 @@ import br.inf.digicom.loopback.comum.diapregao.DiaPregao_ObtemIntradayResultadoT
 import br.inf.digicom.loopback.comum.regraprojecao.RegraProjecao_ObtemPorCodigoRegra;
 import sisacao.dataset.treino.dao.DatasetExemplo;
 import sisacao.dataset.treino.entrada.periodo.app.CriaDataSetSaida;
+import sisacao.dataset.treino.saida.dao.ExemploTreinoAcaoEntrada_ListaSemResultado;
 
 public class InsereExemploTreinoAcaoSaidaObj {
 
@@ -23,7 +24,8 @@ public class InsereExemploTreinoAcaoSaidaObj {
 
 	private void trataProximo() {
 		DaoBaseComum.setProximo(RegraProjecao_ObtemPorCodigoRegra.NOME, new AtivoAcao_ListaPorNomeGrupo());
-		DaoBaseComum.setProximo(AtivoAcao_ListaPorNomeGrupo.NOME, new DiaPregao_ObtemIntradayResultadoTickerAteFinal());
+		DaoBaseComum.setProximo(AtivoAcao_ListaPorNomeGrupo.NOME, new ExemploTreinoAcaoEntrada_ListaSemResultado());
+		//DaoBaseComum.setProximo(ExemploTreinoAcaoEntrada_ListaSemResultado.NOME, new DiaPregao_ObtemIntradayResultadoTickerAteFinal());
 		DaoBaseComum.setProximo(DiaPregao_ObtemIntradayResultadoTickerAteFinal.NOME, new CriaDataSetSaida());
 	}
 }

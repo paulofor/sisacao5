@@ -1,0 +1,76 @@
+{
+  "name": "PrevisaoRede",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ticker": {
+      "type": "string"
+    },
+    "diaNumPrevisao": {
+      "type": "number"
+    },
+    "valorPrevisao": {
+      "type": "number"
+    },
+    "redeId": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "redeNeural": {
+      "type": "belongsTo",
+      "model": "RedeNeural",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {
+    "RecebePrevisao": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "diaNumPrevisao",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "redeId",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/recebePrevisao",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

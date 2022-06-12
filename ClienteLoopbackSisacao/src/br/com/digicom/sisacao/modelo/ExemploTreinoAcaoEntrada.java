@@ -81,7 +81,9 @@ public class ExemploTreinoAcaoEntrada extends Model{
 	public void setValorReferencia(Double valorReferencia) {
 		this.valorReferencia = valorReferencia;
 	}
-
+	public void setValorReferencia(Integer valorReferencia) {
+		this.valorReferencia = new Double(valorReferencia);
+	}
 	public Integer getQtdeDias() {
 		return qtdeDias;
 	}

@@ -16,7 +16,7 @@ public class DadosTreinoY {
 	private DiaPregao diaPrevisao;
 	
 	public void calcula(List<DiaPregao> dias, Integer result, ProcuraPontoSaida procuraPontoSaida,	double valorReferencia) {
-
+		this.resultado = result;
 		this.diaNumSaida = procuraPontoSaida.getDiaNumSaida();
 		this.valorSaida = procuraPontoSaida.getValorSaida();
 		this.diaPrevisao = dias.get(0);

@@ -31,7 +31,7 @@ public class EnviaDadosY {
 		dao.setDado(exemplo);
 		dao.executaImpl();
 		try {
-			Thread.sleep(15000);
+			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

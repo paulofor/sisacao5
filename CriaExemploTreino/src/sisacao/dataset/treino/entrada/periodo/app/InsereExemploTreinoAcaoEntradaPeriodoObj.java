@@ -11,7 +11,7 @@ public class InsereExemploTreinoAcaoEntradaPeriodoObj {
 
 	public void executa(int posicaoEntrada, int qtdeDias,String codigo, int diaNumInicio, int diaNumFinal) {
 		DatasetExemplo ds = new DatasetExemplo();
-		ds.setPosicaoDia(posicaoEntrada);
+		ds.setPosicaoEntrada(posicaoEntrada);
 		ds.setQtdeDia(qtdeDias);
 		ds.setCodigoGrupoAcao(codigo);
 		ds.setDiaNumInicio(diaNumInicio);

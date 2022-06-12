@@ -1,39 +1,96 @@
 package br.com.sisacao.coletor.ativo.processamento;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import br.com.digicom.sisacao.modelo.AtivoAcao;
 import br.com.sisacao.coletor.ativo.daobase.DatasetColetorAcao;
 import br.inf.digicom.loopback.DaoBase;
 import br.inf.digicom.loopback.DaoBaseRecorrenteTempoPadrao;
+import br.inf.digicom.loopback.DummyDaoBase;
 import br.inf.digicom.loopback.IDatasetComum;
 
 public class TrataListaAtivoAcao extends DaoBaseRecorrenteTempoPadrao {
 
 
+	private final int TAMANHO_CLUSTER = 3;
+	private DummyDaoBase dummy = null;
 	
 	
+	public TrataListaAtivoAcao() {
+		this.dummy = new DummyDaoBase();
+	}
 	
 	@Override
 	protected long getTempo() {
-		return 5000;
+		return 1000;
 	}
 
 	
 	
 	@Override
 	protected DaoBase getProximo() {
-		return new ExecutaAtivoAcao();
+		return this.dummy;
 	}
 
 
 	@Override
 	protected void executaPrincipal() {
+		System.out.println(this + " precisa ser único");
 		final DatasetColetorAcao ds = (DatasetColetorAcao) getComum();
-		for (AtivoAcao corrente : ds.getListaAtivoAcao()) {
-			ds.setAtivoAcaoCorrente(corrente);
-			executaProximoSemFinalizar();
+		int ind = 0;
+		Runtime.getRuntime().gc(); 
+		List<DaoBase> lista = null;
+		this.printThreads("Parte 1");
+		while (ind<ds.getListaAtivoAcao().size()) {
+			this.printThreads("Parte 2");
+			lista = montaLista(ind);
+			this.printThreads("Parte 3");
+			ind = ind + TAMANHO_CLUSTER;
+			executaEmThread(lista);
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			break;
 		}
+		for (Object item : lista) {
+			item = null;
+		}
+		this.printThreads("Parte 5");
+		
+
+		//for (AtivoAcao corrente : ds.getListaAtivoAcao()) {
+		//	ds.setAtivoAcaoCorrente(corrente);
+		//	executaProximoSemFinalizar();
+		//}
+		//this.finalizar();
 	}
 
+	private List<DaoBase> montaLista(int indice) {
+		List<DaoBase> saida = new LinkedList<DaoBase>();
+		for (int i=indice;i<indice+TAMANHO_CLUSTER; i++) {
+			AtivoAcao ativo = getAtivo(i);
+			if (ativo!=null) {
+				DaoBase dao = new ExecutaAtivoAcao(ativo);
+				saida.add(dao);
+			}
+		}
+		return saida;
+	}
+	
+	
+	
+	
+	private AtivoAcao getAtivo(int indice) {
+		DatasetColetorAcao ds = (DatasetColetorAcao) getComum();
+		if (indice < ds.getListaAtivoAcao().size()) {
+			return ds.getListaAtivoAcao().get(indice);
+		} else {
+			return null;
+		}
+	}
 
 	@Override
 	protected IDatasetComum criaDataSet() {

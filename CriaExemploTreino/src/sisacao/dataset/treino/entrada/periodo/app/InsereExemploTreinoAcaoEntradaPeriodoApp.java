@@ -14,14 +14,14 @@ public class InsereExemploTreinoAcaoEntradaPeriodoApp {
 	
 	public static void main(String[] args) {
 		System.out.print("InsereExemploTreinoAcaoEntradaApp");
-		System.out.println(" (12-05-2022)");
+		System.out.println(" (10-06-2022)");
 		try {
 			carregaProp();
 			int posicaoEntrada = 0;
 			int qtdeDias = 120;
 			String codigoGrupoAcao = "Neg-100";
-			int diaNumInicio = 20220304;
-			int diaNumFinal = 20220513;
+			int diaNumInicio = Integer.parseInt(args[0]);
+			int diaNumFinal = 20220531;
 			InsereExemploTreinoAcaoEntradaPeriodoObj obj = new InsereExemploTreinoAcaoEntradaPeriodoObj();
 			obj.executa(posicaoEntrada, qtdeDias, codigoGrupoAcao, diaNumInicio, diaNumFinal);
 			System.exit(0);

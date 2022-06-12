@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CotacaoDiarioAcao, CotacaoDiarioAcaoApi, CotacaoIntradayAcaoResultado, CotacaoIntradayAcaoResultadoApi, ExemploTreinoAcao, ExemploTreinoAcaoApi, RegraProjecao, RegraProjecaoApi, RegraSimulacao } from '../shared/sdk';
+import { CotacaoDiarioAcao, CotacaoDiarioAcaoApi, CotacaoIntradayAcaoResultado, CotacaoIntradayAcaoResultadoApi, ExemploTreinoAcao, ExemploTreinoAcaoApi, ExemploTreinoAcaoSaidaApi, RegraProjecao, RegraProjecaoApi, RegraSimulacao } from '../shared/sdk';
 
 @Component({
   selector: 'app-exemplo-intraday-resultado-acao',
@@ -11,7 +11,7 @@ export class ExemploIntradayResultadoAcaoComponent implements OnInit {
   ticker = ''
   data = ''
 
-  exemplo:ExemploTreinoAcao;
+  exemplo:any;
   listaValor:string[];
   listaValorOriginal:string[];
   listaBase:CotacaoIntradayAcaoResultado[];

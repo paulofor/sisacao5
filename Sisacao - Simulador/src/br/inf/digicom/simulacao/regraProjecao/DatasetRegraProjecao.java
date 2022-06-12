@@ -63,15 +63,23 @@ public class DatasetRegraProjecao implements IDatasetComum ,
 	public void setListaCotacaoResultado(List<DiaPregao> listaCotacao) {
 		this.listaCotacaoResultado = listaCotacao;
 	}
-	@Override
-	public int getDataNumInicio() {
-		//return this.dataInicial.getDiaNum();
-		return 20210101;
-	}
+	
 	
 	public List<DiaPregao> getListaCotacaoResultado() {
-		return this.listaCotacaoResultado;
+		return listaCotacaoResultado;
 	}
+	@Override
+	public int getDiaNumInicio() {
+		return 20210101;
+	}
+	@Override
+	public int getTamanhoAmostra() {
+		return 0;
+	}
+
+	
+	
+
 	
 
 }

@@ -97,22 +97,23 @@ public class RepositorioDiaPregao extends ModelRepository<DiaPregao>{
 	        params.put("qtdeDia", qtdeDia);
 	        invokeStaticMethod("obtemIntradayResultadoTickerQuantidadeB3", params,   new JsonArrayParser<DiaPregao>(this, callback));
 		}
-		public synchronized void obtemIntradayResultadoTickerPeriodoQuantidade(String ticker, int qtdeDia, int dataNumFinal, final ListCallback<DiaPregao> callback ) {
+		public synchronized void obtemIntradayResultadoTickerPeriodoQuantidade(String ticker, int qtdeDia, int diaNumPrevisao, final ListCallback<DiaPregao> callback ) {
 			RestContractItem contrato = new RestContractItem("DiaPregaos/obtemIntradayResultadoTickerPeriodoQuantidade","GET");
 			this.getRestAdapter().getContract().addItem(contrato, "DiaPregao.obtemIntradayResultadoTickerPeriodoQuantidade");
 	        Map<String, Object> params = new HashMap<String, Object>();
 	        params.put("ticker", ticker);
 	        params.put("qtdeDia", qtdeDia);
-	        params.put("dataNumFinal", dataNumFinal);
+	        params.put("diaNumPrevisao", diaNumPrevisao);
 	        invokeStaticMethod("obtemIntradayResultadoTickerPeriodoQuantidade", params,   new JsonArrayParser<DiaPregao>(this, callback));
 		}
 		
-		public synchronized void obtemIntradayResultadoTickerAteFinal(String ticker, int dataNumInicio, final ListCallback<DiaPregao> callback ) {
+		public synchronized void obtemIntradayResultadoTickerAteFinal(String ticker, int dataNumInicio, int tamanhoAmostra, final ListCallback<DiaPregao> callback ) {
 			RestContractItem contrato = new RestContractItem("DiaPregaos/obtemIntradayResultadoTickerAteFinal","GET");
 			this.getRestAdapter().getContract().addItem(contrato, "DiaPregao.obtemIntradayResultadoTickerAteFinal");
 	        Map<String, Object> params = new HashMap<String, Object>();
 	        params.put("ticker", ticker);
 	        params.put("dataNumInicio", dataNumInicio);
+	        params.put("tamanhoAmostra", tamanhoAmostra);
 	        invokeStaticMethod("obtemIntradayResultadoTickerAteFinal", params,   new JsonArrayParser<DiaPregao>(this, callback));
 		}
 }

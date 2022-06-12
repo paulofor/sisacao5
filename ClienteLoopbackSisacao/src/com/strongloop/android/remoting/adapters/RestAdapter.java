@@ -4,6 +4,7 @@ package com.strongloop.android.remoting.adapters;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.management.ManagementFactory;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
@@ -53,6 +54,13 @@ public class RestAdapter extends Adapter {
 		this.contract = new RestContract();
 	}
 
+	public void liberaConexao() {
+		//this.printThreads("inicio libera");
+		client.close();
+		client = null;
+		//this.printThreads("final libera");
+	}
+	
 	/**
 	 * Gets this adapter's {@link RestContract}, a custom contract for
 	 * fine-grained route configuration.
@@ -86,15 +94,18 @@ public class RestAdapter extends Adapter {
 
 	@Override
 	public void connect(String url) {
+		this.printThreads("inicio connect");
 		if (url == null) {
 			client = null;
 		} else {
+			//this.printThreads("antes do client");
 			client = new HttpClient(url,obtemConfig());
-			
+			//this.printThreads("depois do client");
 
 			// TODO: Find way to set these headers globally
 			// client.addHeader("Accept", "application/json");
 		}
+		this.printThreads("final connect");
 	}
 
 	@Override
@@ -234,7 +245,7 @@ public class RestAdapter extends Adapter {
 		public Response onCompleted(Response response) throws Exception {
 			try {
 				String responseBody = response.getResponseBody();
-				Log.getLogger().info("Success (string): " + response);
+				//Log.getLogger().info("Success (string): " + response);
 				//System.out.println("Resposta Servidor: " + response);
 				callback.onSuccess(responseBody);
 			} catch (Throwable t) {
@@ -304,6 +315,11 @@ public class RestAdapter extends Adapter {
 
 	public static class HttpClient extends AsyncHttpClient {
 
+		
+		private static void printThreads(String mensagem) {
+			System.out.println("HttpClient [" + mensagem + "] : " + ManagementFactory.getThreadMXBean().getThreadCount());
+		}
+		
 		private Map<String, String> headers = new HashMap<>();
 
 		private static String getVersionName() {
@@ -348,6 +364,7 @@ public class RestAdapter extends Adapter {
 
 			// TODO: Test extensively to make sure this URI works in tandem with
 			// the Android one
+			printThreads("inicio request");
 			if (path != null) {
 				if (path.startsWith("/")) {
 					path = path.substring(1);
@@ -457,6 +474,7 @@ public class RestAdapter extends Adapter {
 				throw new IllegalArgumentException(
 						"Illegal method: " + method + ". Only GET, POST, PUT, DELETE supported.");
 			}
+			printThreads("final request");
 		}
 
 		private BoundRequestBuilder prepareRequest(String method, String url) {

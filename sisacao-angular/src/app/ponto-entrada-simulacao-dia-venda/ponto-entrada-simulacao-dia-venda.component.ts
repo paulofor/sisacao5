@@ -39,11 +39,11 @@ export class PontoEntradaSimulacaoDiaVendaComponent  extends BaseListComponent{
   }
 
   carregaLista() {
-    this.srv.SituacaoAtual("V")
-    .subscribe((result:any[]) => {
-        console.log('SituacaoAtual: ' , result);
-        this.listaBase = result;
-    })
+    //this.srv.SituacaoAtual("V")
+    //.subscribe((result:any[]) => {
+    //    console.log('SituacaoAtual: ' , result);
+    //    his.listaBase = result;
+    //})
   }
 
  

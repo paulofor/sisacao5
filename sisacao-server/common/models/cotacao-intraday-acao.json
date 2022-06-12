@@ -89,37 +89,6 @@
         }
       ]
     },
-    "ObtemPorDiaTicker": {
-      "accepts": [
-        {
-          "arg": "dia",
-          "type": "string",
-          "required": true,
-          "description": ""
-        },
-        {
-          "arg": "ticker",
-          "type": "string",
-          "required": true,
-          "description": ""
-        }
-      ],
-      "returns": [
-        {
-          "arg": "cotacao",
-          "type": "array",
-          "root": true,
-          "description": ""
-        }
-      ],
-      "description": "",
-      "http": [
-        {
-          "path": "/obtemPorDiaTicker",
-          "verb": "get"
-        }
-      ]
-    },
     "ListaMaisRecente": {
       "accepts": [],
       "returns": [

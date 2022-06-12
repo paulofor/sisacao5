@@ -47,14 +47,18 @@ public class DadosTreinoX {
 		this.saidaXOriginal = "";
 		this.saidaX = "";
 		int contaX = 0;
+		int somaQtde = 0;
 		for (int i=inicio;i<indDiaPrevisao;i++) {
 			DiaPregao diaCorrente = dias.get(i);
+			//System.out.print("Dia Atual: " + diaCorrente.getDiaNum() + " Qtde:" + diaCorrente.getCotacaoIntradayAcaoResultados().size());
 			for (int x=0; x<diaCorrente.getCotacaoIntradayAcaoResultados().size();x++) {
 				CotacaoIntradayAcaoResultado cotacao = diaCorrente.getCotacaoIntradayAcaoResultados().get(x);
 				this.saidaXOriginal += ", " + cotacao.getValor();
 				this.saidaX += ", " + String.format("%.6f", (cotacao.getValor()) / valorReferencia).replace(',', '.');
+				somaQtde++;
 				contaX++;
 			}
+			//System.out.println("Total:" + somaQtde);
 		}
 		this.saidaXOriginal = this.saidaXOriginal.substring(1);
 		this.saidaX = this.saidaX.substring(1);

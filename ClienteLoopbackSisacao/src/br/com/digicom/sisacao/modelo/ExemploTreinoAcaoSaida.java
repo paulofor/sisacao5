@@ -72,7 +72,9 @@ public class ExemploTreinoAcaoSaida extends Model{
 	public Double getValorSaida() {
 		return valorSaida;
 	}
-
+	public void setValorSaida(Integer valor) {
+		this.valorSaida = new Double(valorSaida);
+	}
 	public void setValorSaida(Double valorSaida) {
 		this.valorSaida = valorSaida;
 	}
@@ -80,7 +82,9 @@ public class ExemploTreinoAcaoSaida extends Model{
 	public Double getValorEntrada() {
 		return valorEntrada;
 	}
-
+	public void setValorEntrada(Integer valorEntrada) {
+		this.valorEntrada = new Double(valorEntrada);
+	}
 	public void setValorEntrada(Double valorEntrada) {
 		this.valorEntrada = valorEntrada;
 	}
@@ -96,7 +100,9 @@ public class ExemploTreinoAcaoSaida extends Model{
 	public Double getLimiteSuperior() {
 		return limiteSuperior;
 	}
-
+	public void setLimiteSuperior(Integer limiteSuperior) {
+		this.limiteSuperior = new Double(limiteSuperior);
+	}
 	public void setLimiteSuperior(Double limiteSuperior) {
 		this.limiteSuperior = limiteSuperior;
 	}
@@ -104,7 +110,9 @@ public class ExemploTreinoAcaoSaida extends Model{
 	public Double getLimiteInferior() {
 		return limiteInferior;
 	}
-
+	public void setLimiteInferior(Integer limiteInferior) {
+		this.limiteInferior = new Double(limiteInferior);
+	}
 	public void setLimiteInferior(Double limiteInferior) {
 		this.limiteInferior = limiteInferior;
 	}

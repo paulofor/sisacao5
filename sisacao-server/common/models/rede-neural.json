@@ -1,0 +1,23 @@
+{
+  "name": "RedeNeural",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "estrutura": {
+      "type": "string"
+    },
+    "compilacao": {
+      "type": "string"
+    },
+    "fitTreinamento": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

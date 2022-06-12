@@ -102,6 +102,39 @@ export class CotacaoIntradayIndiceApi extends BaseLoopBackApi {
    *
    *  - `valor` – `{number}` - 
    *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `CotacaoIntradayIndice` object.)
+   * </em>
+   */
+  public InsereValorIndice(ticker: any = {}, valor: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/CotacaoIntradayIndices/insereValorIndice";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof ticker !== 'undefined' && ticker !== null) _urlParams.ticker = ticker;
+    if (typeof valor !== 'undefined' && valor !== null) _urlParams.valor = valor;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {object} data Request data.
+   *
+   *  - `ticker` – `{string}` - 
+   *
+   *  - `valor` – `{number}` - 
+   *
    *  - `horario` – `{string}` - 
    *
    * @returns {object} An empty reference that will be

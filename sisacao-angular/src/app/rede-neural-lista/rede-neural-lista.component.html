@@ -1,0 +1,28 @@
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+      <span>Redes Neurais</span>
+      <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita()">novo</button>
+  </div>
+  <div *ngIf="listaBase">
+      <div class="dgc-card" *ngFor="let item of listaBase">
+          <div class="dgc-card-header">
+            <span>(#{{item.id}})</span>
+          </div>
+          <div class="dgc-card-detalhe">
+            <span>Estrutura</span>
+            <pre>{{item.estrutura}}</pre>
+          </div>
+          <div class="dgc-card-detalhe">
+            <span>Compilação</span>
+            <pre>{{item.compilacao}}</pre>
+          </div>
+          <div class="dgc-card-detalhe">
+            <span>Fit Treino</span>
+            <pre>{{item.fitTreinamento}}</pre>
+          </div>
+          <div  class="dgc-card-comandos">
+              <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar</button>
+          </div>
+      </div>
+  </div>
+</div>

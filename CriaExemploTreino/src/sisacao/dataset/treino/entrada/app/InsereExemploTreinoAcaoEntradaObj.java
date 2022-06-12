@@ -9,7 +9,7 @@ public class InsereExemploTreinoAcaoEntradaObj {
 
 	public void executa(int posicaoEntrada, int qtdeDias,String codigo) {
 		DatasetExemplo ds = new DatasetExemplo();
-		ds.setPosicaoDia(posicaoEntrada);
+		ds.setPosicaoEntrada(posicaoEntrada);
 		ds.setQtdeDia(qtdeDias);
 		ds.setCodigoGrupoAcao(codigo);
 		AtivoAcao_ListaPorNomeGrupo exec = new AtivoAcao_ListaPorNomeGrupo();

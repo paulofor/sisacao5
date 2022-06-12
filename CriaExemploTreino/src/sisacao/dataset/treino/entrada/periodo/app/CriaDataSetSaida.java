@@ -15,7 +15,6 @@ import sisacao.dataset.treino.proc.ProcuraPontoSaida;
 public class CriaDataSetSaida extends DaoBaseApp{
 
 	private List<DiaPregao> dias = null;
-	private String ticker = null;
 	private DadosTreinoY dadosTreino = new DadosTreinoY();;
 	private EnviaDadosY enviaDados = new EnviaDadosY();;
 	private DummyDaoBase dummy = null;
@@ -31,9 +30,21 @@ public class CriaDataSetSaida extends DaoBaseApp{
 	
 	@Override
 	protected void executaImpl() {
-	
-		processaDias();
-		this.executaProximo();
+		DatasetExemplo ds = (DatasetExemplo) getComum();
+		this.dias = ds.getListaCotacaoResultado();
+		System.out.println("Amostra dia: " + this.dias.size());
+		if (dias.size()<ds.getRegraProjecao().getDiaLimite()) {
+			if (dias.size()==0) {
+				this.finalizar();
+			} else {
+				this.executaProximo();
+			}
+			
+		} else {
+			processaDias();
+			this.executaProximo();
+		}
+		
 	}
 
 	private void processaDias() {
@@ -47,11 +58,13 @@ public class CriaDataSetSaida extends DaoBaseApp{
 		diaOperacao = dias.get(0);
 		if ("V".equals(regra.getTipoCompraVenda())) {
 			this.valorEntrada = valorReferencia * (1 + regra.getPercentualEntradaDataset()); // Venda
-			if (valorEntrada >= obtemMinimo(diaOperacao) && valorEntrada <= obtemMaximo(diaOperacao)) {
+			double minimo = obtemMinimo(diaOperacao);
+			double maximo = obtemMaximo(diaOperacao);
+			if (valorEntrada >= minimo && valorEntrada <= maximo) {
 				Integer result = this.procuraPontoSaida.procuraValor(dias,diaReferencia,0,valorEntrada);
 				if (result!=null) {
 					dadosTreino.calcula(dias, result, this.procuraPontoSaida, valorReferencia);
-					this.enviaDados.enviaDia(ticker, regra, dadosTreino, procuraPontoSaida,valorEntrada, valorReferencia );
+					this.enviaDados.enviaDia(entrada.getTicker(), regra, dadosTreino, procuraPontoSaida,valorEntrada, valorReferencia );
 				} else {
 					DiaPregao atual = dias.get(diaReferencia);
 					System.out.println("Dia sem saída:" + atual);
@@ -59,17 +72,19 @@ public class CriaDataSetSaida extends DaoBaseApp{
 				}
 			} else {
 				dadosTreino.calcula(dias, this.procuraPontoSaida, valorReferencia);
-				this.enviaDados.enviaDia(ticker, regra, dadosTreino, null,valorEntrada, valorReferencia);
+				this.enviaDados.enviaDia(entrada.getTicker(), regra, dadosTreino, null,valorEntrada, valorReferencia);
 
 			}
 		} else {
 			this.valorEntrada = valorReferencia * (1 - regra.getPercentualEntradaDataset()); // Compra
-			if (valorEntrada >= obtemMinimo(diaOperacao) && valorEntrada <= obtemMaximo(diaOperacao)) {
+			double minimo = obtemMinimo(diaOperacao);
+			double maximo = obtemMaximo(diaOperacao);
+			if (valorEntrada >= minimo && valorEntrada <= maximo) {
 
 				Integer result = this.procuraPontoSaida.procuraValor(dias,diaReferencia,0,valorEntrada);
 				if (result!=null) {
 					dadosTreino.calcula(dias, result, this.procuraPontoSaida, valorReferencia);
-					this.enviaDados.enviaDia(ticker, regra, dadosTreino, procuraPontoSaida,valorEntrada, valorReferencia );
+					this.enviaDados.enviaDia(entrada.getTicker(), regra, dadosTreino, procuraPontoSaida,valorEntrada, valorReferencia );
 				} else {
 					DiaPregao atual = dias.get(diaReferencia);
 					System.out.println("Dia sem saída:" + atual);
@@ -77,7 +92,7 @@ public class CriaDataSetSaida extends DaoBaseApp{
 				}
 			} else {
 				dadosTreino.calcula(dias, this.procuraPontoSaida, valorReferencia);
-				this.enviaDados.enviaDia(ticker, regra, dadosTreino, null,valorEntrada, valorReferencia );
+				this.enviaDados.enviaDia(entrada.getTicker(), regra, dadosTreino, null,valorEntrada, valorReferencia );
 
 			}
 		}

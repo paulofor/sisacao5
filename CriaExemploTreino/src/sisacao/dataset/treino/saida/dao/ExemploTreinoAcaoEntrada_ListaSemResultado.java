@@ -6,9 +6,9 @@ import com.strongloop.android.loopback.callbacks.ListCallback;
 
 import br.com.digicom.sisacao.modelo.ExemploTreinoAcaoEntrada;
 import br.inf.digicom.loopback.DaoBase;
+import br.inf.digicom.loopback.comum.diapregao.DiaPregao_ObtemIntradayResultadoTickerAteFinal;
 import sisacao.dataset.treino.dao.DaoBaseApp;
 import sisacao.dataset.treino.dao.DatasetExemplo;
-import sisacao.dataset.treino.entrada.periodo.app.CriaDataSetSaida;
 
 public class ExemploTreinoAcaoEntrada_ListaSemResultado extends DaoBaseApp {
 
@@ -27,7 +27,7 @@ public class ExemploTreinoAcaoEntrada_ListaSemResultado extends DaoBaseApp {
 		String ticker = ds.getAtivoAcaoCorrente().getTicker();
 		int regraId = ds.getRegraProjecao().getId();
 		int qtdeDias = ds.getQtdeDia();
-		int posicaoReferencia = ds.getPosicaoDia();
+		int posicaoReferencia = ds.getPosicaoEntrada();
 		this.repExemploTreinoEntrada.listaSemResultado(ticker, regraId, qtdeDias, posicaoReferencia, new ListCallback<ExemploTreinoAcaoEntrada>() {
 			@Override
 			public void onError(Throwable t) {
@@ -37,6 +37,7 @@ public class ExemploTreinoAcaoEntrada_ListaSemResultado extends DaoBaseApp {
 			public void onSuccess(List<ExemploTreinoAcaoEntrada> objects) {
 				for (ExemploTreinoAcaoEntrada entrada : objects) {
 					ds.setExemploTreinoAcaoEntrada(entrada);
+					ds.setDiaNumInicio(entrada.getDiaNumPrevisao());
 					executaProximoSemFinalizar();
 				}
 				finalizar();
@@ -50,7 +51,7 @@ public class ExemploTreinoAcaoEntrada_ListaSemResultado extends DaoBaseApp {
 
 	@Override
 	protected DaoBase getProximo() {
-		return new CriaDataSetSaida();
+		return new DiaPregao_ObtemIntradayResultadoTickerAteFinal();
 	}
 
 	

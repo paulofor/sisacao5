@@ -7,12 +7,12 @@ import com.strongloop.android.loopback.callbacks.ListCallback;
 
 import br.com.digicom.sisacao.modelo.AtivoAcao;
 import br.com.digicom.sisacao.repositorio.RepositorioAcaoBase;
+import br.com.sisacao.coletor.ativo.daobase.ColetorAcaoDaoBase;
 import br.com.sisacao.coletor.ativo.daobase.DatasetColetorAcao;
 import br.com.sisacao.coletor.ativo.processamento.TrataListaAtivoAcao;
-import br.com.sisacao.coletor.indice.daobase.ColetorIndiceDaoBase;
 import br.inf.digicom.loopback.DaoBase;
 
-public class AtivoAcao_ListaColetaIntraday extends ColetorIndiceDaoBase{
+public class AtivoAcao_ListaColetaIntraday extends ColetorAcaoDaoBase{
 
 	
 	
@@ -21,15 +21,14 @@ public class AtivoAcao_ListaColetaIntraday extends ColetorIndiceDaoBase{
 	protected final RepositorioAcaoBase.AtivoAcaoRepository rep = 
 			adapterItem.createRepository(RepositorioAcaoBase.AtivoAcaoRepository.class);
 	
+	TrataListaAtivoAcao proximo = new TrataListaAtivoAcao();
+			
+	
 	
 
 	@Override
-	protected long getTempo() {
-		return 5000;
-	}
-
-	@Override
 	protected void executaImpl() {
+		System.out.println(this + " único ?");
 		final DatasetColetorAcao ds = (DatasetColetorAcao) getComum();
 		this.rep.listaColetaIntraday(new ListCallback<AtivoAcao>() {
 			@Override
@@ -47,7 +46,7 @@ public class AtivoAcao_ListaColetaIntraday extends ColetorIndiceDaoBase{
 
 	@Override
 	protected DaoBase getProximo() {
-		return new TrataListaAtivoAcao();
+		return proximo;
 	}
 	
 	

@@ -2,6 +2,8 @@
 
 package com.strongloop.android.loopback;
 
+import java.lang.management.ManagementFactory;
+
 /**
  * An extension to the vanilla
  * {@link com.strongloop.android.remoting.adapters.RestAdapter} to make working
@@ -109,4 +111,7 @@ public class RestAdapter extends com.strongloop.android.remoting.adapters.RestAd
 	private String loadAccessToken() {
 		return accessToken;
 	}
+	
+	
+	
 }

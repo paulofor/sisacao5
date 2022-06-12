@@ -49,6 +49,7 @@ public class ParserJsonTh extends ParserThread{
 			System.out.println("Finalizacao de ParserThread Erro");
 			this.callback.finalizacaoErro();
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("Erro Parser *** : " + e);
 			this.callback.finalizacaoErro();
 		} finally {

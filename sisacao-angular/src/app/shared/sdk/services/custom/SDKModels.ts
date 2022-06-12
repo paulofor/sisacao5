@@ -59,6 +59,10 @@ import { ExemploTreinoAcao } from '../../models/ExemploTreinoAcao';
 import { RegraProjecaoTotalMes } from '../../models/RegraProjecaoTotalMes';
 import { PontoEntradaTrade } from '../../models/PontoEntradaTrade';
 import { PontoEntradaSimulacao } from '../../models/PontoEntradaSimulacao';
+import { ExemploTreinoAcaoEntrada } from '../../models/ExemploTreinoAcaoEntrada';
+import { ExemploTreinoAcaoSaida } from '../../models/ExemploTreinoAcaoSaida';
+import { PrevisaoRede } from '../../models/PrevisaoRede';
+import { RedeNeural } from '../../models/RedeNeural';
 
 export interface Models { [name: string]: any }
 
@@ -125,6 +129,10 @@ export class SDKModels {
     RegraProjecaoTotalMes: RegraProjecaoTotalMes,
     PontoEntradaTrade: PontoEntradaTrade,
     PontoEntradaSimulacao: PontoEntradaSimulacao,
+    ExemploTreinoAcaoEntrada: ExemploTreinoAcaoEntrada,
+    ExemploTreinoAcaoSaida: ExemploTreinoAcaoSaida,
+    PrevisaoRede: PrevisaoRede,
+    RedeNeural: RedeNeural,
     
   };
 

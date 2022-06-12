@@ -55,6 +55,9 @@ import { ResumoTradeRealComponent } from '../resumo-trade-real/resumo-trade-real
 import { PontoEntradaSimulacaoDiaComponent } from '../ponto-entrada-simulacao-dia/ponto-entrada-simulacao-dia.component';
 import { FundoImobiliarioMelhorEstabilidadeComponent } from '../fundo-imobiliario-melhor-estabilidade/fundo-imobiliario-melhor-estabilidade.component';
 import { PontoEntradaSimulacaoDiaVendaComponent } from '../ponto-entrada-simulacao-dia-venda/ponto-entrada-simulacao-dia-venda.component';
+import { ExemploIntradayResultadoAcaoSaidaComponent } from '../exemplo-intraday-resultado-acao-saida/exemplo-intraday-resultado-acao-saida.component';
+import { ExemploEntradaListaComponent } from '../exemplo-entrada-lista/exemplo-entrada-lista.component';
+import { RedeNeuralListaComponent } from '../rede-neural-lista/rede-neural-lista.component';
 
 
 export const routes : Routes = [
@@ -128,10 +131,13 @@ export const routes : Routes = [
 
     { path : 'cotacaoIntradayResultadoAcao' , component: CotacaoIntradayResultadoAcaoComponent },
     { path : 'exemploIntradayResultadoAcao' , component: ExemploIntradayResultadoAcaoComponent },
+    { path : 'exemploIntradayResultadoAcaoSaida' , component: ExemploIntradayResultadoAcaoSaidaComponent },
 
     { path : 'resumoTradeReal' , component: ResumoTradeRealComponent },
     { path : 'pontoEntradaSimulacaoDia' , component: PontoEntradaSimulacaoDiaComponent },
     { path : 'pontoEntradaSimulacaoDiaVenda' , component: PontoEntradaSimulacaoDiaVendaComponent },
+    { path : 'exemploEntradaLista' , component: ExemploEntradaListaComponent },
+    { path : 'redeNeuralLista' , component: RedeNeuralListaComponent },
 
     { path: '',  component: HomeComponent  }
     //{ path: '',          redirectTo: 'home', pathMatch: 'full' }

@@ -107,6 +107,10 @@ import { ExemploTreinoAcaoApi } from './services/custom/ExemploTreinoAcao';
 import { RegraProjecaoTotalMesApi } from './services/custom/RegraProjecaoTotalMes';
 import { PontoEntradaTradeApi } from './services/custom/PontoEntradaTrade';
 import { PontoEntradaSimulacaoApi } from './services/custom/PontoEntradaSimulacao';
+import { ExemploTreinoAcaoEntradaApi } from './services/custom/ExemploTreinoAcaoEntrada';
+import { ExemploTreinoAcaoSaidaApi } from './services/custom/ExemploTreinoAcaoSaida';
+import { PrevisaoRedeApi } from './services/custom/PrevisaoRede';
+import { RedeNeuralApi } from './services/custom/RedeNeural';
 /**
 * @module SDKBrowserModule
 * @description
@@ -196,9 +200,12 @@ export class SDKBrowserModule {
         RegraProjecaoTotalMesApi,
         PontoEntradaTradeApi,
         PontoEntradaSimulacaoApi,
+        ExemploTreinoAcaoEntradaApi,
+        ExemploTreinoAcaoSaidaApi,
+        PrevisaoRedeApi,
+        RedeNeuralApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
-
       ]
     };
   }

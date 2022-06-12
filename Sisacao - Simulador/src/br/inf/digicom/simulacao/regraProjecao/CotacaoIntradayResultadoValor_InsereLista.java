@@ -29,6 +29,8 @@ public class CotacaoIntradayResultadoValor_InsereLista  extends ExecutorRegraPro
 	}
 	@Override
 	protected void executaImpl() {
+		System.out.println("Chegou no InsereLista");
+		/*
 		this.repValor.insereLista(listaValor, new VoidCallback() {
 			@Override
 			public void onSuccess() {
@@ -39,6 +41,7 @@ public class CotacaoIntradayResultadoValor_InsereLista  extends ExecutorRegraPro
 			public void onError(Throwable t) {
 				onErrorBase(t);
 			}});
+		*/
 	}
 
 	@Override

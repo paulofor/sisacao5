@@ -2,6 +2,7 @@
 
 package com.strongloop.android.remoting.adapters;
 
+import java.lang.management.ManagementFactory;
 import java.util.Map;
 
 import org.json.JSONArray;
@@ -16,6 +17,11 @@ import org.json.JSONTokener;
  */
 public abstract class Adapter {
 
+	
+	protected void printThreads(String mensagem) {
+		System.out.println("Threads " + this + " [" + mensagem + "] : " + ManagementFactory.getThreadMXBean().getThreadCount());
+	}
+	
     /**
      * A callback receiving the HTTP response body in the binary
      * form.
@@ -157,9 +163,12 @@ public abstract class Adapter {
      * @param url The URL to connect to.
      */
     public Adapter(String url) {
+    	//this.printThreads("1");
         if (url != null) {
+        	//this.printThreads("2" + url);
             connect(url);
         }
+        //this.printThreads("3");
     }
 
     /**

@@ -147,6 +147,10 @@ import { FundoImobiliarioMelhoresRendimentoComponent } from './fundo-imobiliario
 import { TradeNovoSimulacaoComponent } from './trade-novo-simulacao/trade-novo-simulacao.component';
 import { FundoImobiliarioMelhorEstabilidadeComponent } from './fundo-imobiliario-melhor-estabilidade/fundo-imobiliario-melhor-estabilidade.component';
 import { PontoEntradaSimulacaoDiaVendaComponent } from './ponto-entrada-simulacao-dia-venda/ponto-entrada-simulacao-dia-venda.component';
+import { ExemploIntradayResultadoAcaoSaidaComponent } from './exemplo-intraday-resultado-acao-saida/exemplo-intraday-resultado-acao-saida.component';
+import { ExemploEntradaListaComponent } from './exemplo-entrada-lista/exemplo-entrada-lista.component';
+import { RedeNeuralListaComponent } from './rede-neural-lista/rede-neural-lista.component';
+import { RedeNeuralEditaComponent } from './rede-neural-edita/rede-neural-edita.component';
 
 //import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
@@ -267,6 +271,10 @@ registerLocaleData(localePt, 'pt-BR');
     TradeNovoSimulacaoComponent,
     FundoImobiliarioMelhorEstabilidadeComponent,
     PontoEntradaSimulacaoDiaVendaComponent,
+    ExemploIntradayResultadoAcaoSaidaComponent,
+    ExemploEntradaListaComponent,
+    RedeNeuralListaComponent,
+    RedeNeuralEditaComponent,
   ],
   imports: [
     BrowserModule,
@@ -351,7 +359,8 @@ registerLocaleData(localePt, 'pt-BR');
     ValorMesSaldoEditComponent,
     GrupoParaAcaoComponent,
     DetalheAluguelFundoImobiliarioComponent,
-    TradeNovoSimulacaoComponent
+    TradeNovoSimulacaoComponent,
+    RedeNeuralEditaComponent
   ],
   bootstrap: [AppComponent]
 })

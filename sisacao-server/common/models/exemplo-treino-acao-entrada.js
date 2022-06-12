@@ -4,14 +4,33 @@ module.exports = function(Exemplotreinoacaoentrada) {
 
 
     Exemplotreinoacaoentrada.InsereExemploEntrada = function(exemplo,callback)  {
-        console.log('exemplo-entrada: ' , exemplo);
+        //console.log('exemplo-entrada: ' , exemplo);
         Exemplotreinoacaoentrada.create(exemplo, (err,result) => {
-            console.log('Err:' , err);
-            console.log('Result:' , result);
+            //console.log('Err:' , err);
+            //console.log('Result:' , result);
             callback(null,exemplo);
         });
     }
 
+    Exemplotreinoacaoentrada.ObtemPorDiaTicker = function(diaNum,ticker, callback){
+        let sql = "select campoX , ticker, diaNumPrevisao from ExemploTreinoAcaoEntrada " +
+            " where diaNumPrevisao = " + diaNum + " and " +
+            " ticker = '" + ticker + "'"
+        let ds = Exemplotreinoacaoentrada.dataSource;
+        ds.connector.query(sql, (err,result) => {
+            callback(err,result);
+        })
+    }
+
+    Exemplotreinoacaoentrada.ObtemPorDia = function(diaNum,callback){
+        let sql = "select campoX , ticker, diaNumPrevisao from ExemploTreinoAcaoEntrada " +
+            " where diaNumPrevisao = " + diaNum 
+            
+        let ds = Exemplotreinoacaoentrada.dataSource;
+        ds.connector.query(sql, (err,result) => {
+            callback(err,result);
+        })
+    }
 
     /*
 select 
@@ -38,7 +57,7 @@ where tab.tickerSaida is null
 
 
 
-    Exemplotreinoacaoentrada.ListaSemResultado = function(ticker,regraId,qtdeDias,posicaoReferencia) {
+    Exemplotreinoacaoentrada.ListaSemResultado = function(ticker,regraId,qtdeDias,posicaoReferencia, callback) {
         let sql = " select * from " +
             " ( " +
             " select " + 

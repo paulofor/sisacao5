@@ -28,15 +28,16 @@ module.exports = function(Diapregao) {
     };
   
 
-    Diapregao.ObtemIntradayResultadoTickerAteFinal = function(ticker, diaNumInicio, callback) {
-        Diapregao.ObtemProximoB3((err,result) => {
+    Diapregao.ObtemIntradayResultadoTickerAteFinal = function(ticker, diaNumInicio, tamanhoAmostra, callback) {
+        Diapregao.ObtemProximo((err,result) => {
             let filtro = {
+                'limit' : tamanhoAmostra,
                 'include' : 
                 [
                     { 
-                    'relation' : 'cotacaoIntradayAcaos',
+                    'relation' : 'cotacaoIntradayAcaoResultados',
                     'scope' : 
-                        {'where' : {'ticker' : ticker } , "order" : "dataHora" , "fields" : { valor:true, ticker: true, dataHora: true, dataHoraNegStr: true}} 
+                        {'where' : {'ticker' : ticker } , "order" : "dataHora" } 
                     },
                     { 
                     'relation' : 'cotacaoDiarioAcaos',
@@ -45,7 +46,7 @@ module.exports = function(Diapregao) {
                     }
                 ], 
                 'order' : 'diaNum',
-                'where' : { and : [{'diaNum' : { 'gte' : diaNumInicio }}, {'diaNum': {'lte' : diaNum}} ]}
+                'where' : { and : [{'diaNum' : { 'gte' : diaNumInicio }}, {'diaNum': {'lt' : result.diaNum}} ]}
             }
             Diapregao.find(filtro,callback);
         });
@@ -202,6 +203,18 @@ module.exports = function(Diapregao) {
         Diapregao.find(filtro,callback);
     };
       
+    Diapregao.ExemploTreinoEntradaMaisRecente = function(qtde, callback) {
+        let sql = "select dia.*, count(*) quantidadeAcao " +
+                " from DiaPregao dia " +
+                " inner join ExemploTreinoAcaoEntrada as exemplo on exemplo.diaNumPrevisao = dia.diaNum " +
+                " group by dia.diaNum " +
+                " order by dia.diaNum desc " +
+                " limit " + qtde;
+        let ds = Diapregao.dataSource;
+        ds.connector.query(sql,callback);
+    }
+
+
 
     Diapregao.ObtemIntradayResultadoTickerPeriodo = function(ticker, dataNumInicio, callback) {
         var data = new Date();
@@ -229,7 +242,7 @@ module.exports = function(Diapregao) {
     };
 
 
-    Diapregao.ObtemIntradayResultadoTickerPeriodoQuantidade = function(ticker, qtdeDia, dataNumFinal, callback) {
+    Diapregao.ObtemIntradayResultadoTickerPeriodoQuantidade = function(ticker, qtdeDia, diaNumPrevisao, callback) {
         var data = new Date();
         var diaComp = (data.getDate()<10?'0' + data.getDate(): '' + data.getDate());
         var mesComp = (data.getUTCMonth()+1)<10?'0' + (data.getUTCMonth()+1): '' + (data.getUTCMonth()+1);
@@ -249,8 +262,8 @@ module.exports = function(Diapregao) {
                 }
             ], 
             'order' : 'diaNum desc',
-            'limit' : qtdeDia,
-            'where' : {'diaNum': {'lte' : dataNumFinal}} 
+            'limit' : qtdeDia + 1,
+            'where' : {'diaNum': {'lte' : diaNumPrevisao}} 
         }
         Diapregao.find(filtro, (err,result) => {
             callback(err,result.reverse())

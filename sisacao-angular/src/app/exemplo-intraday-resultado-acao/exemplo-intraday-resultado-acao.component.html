@@ -37,11 +37,11 @@
             <p>Data Previsão: {{exemplo.diaNumPrevisao}}</p>
             <p>Data Inicio Bloco: {{exemplo.diaNumInicio}}</p>
             <p>Y: {{exemplo.campoY}}</p>
-            <p>Ref: {{exemplo.valorReferencia}}, Entrada: {{exemplo.valorEntrada}} ({{percentualEntrada() | number: '1.1-1'}}%)</p>
+            <p>Ref: {{exemplo.valorReferencia}}, Entrada: {{exemplo.valorEntrada | number: '1.2-2' }} ({{percentualEntrada() | number: '1.1-1'}}%)</p>
             <p class="{{entrou()}}">{{diaPrevisao.diaNum}}: Min: {{diaPrevisao.minimo}} - Max: {{diaPrevisao.maximo}} {{mensagemEntrou()}}</p>
           </div>
           <div class="content" *ngIf="limiteSaida && listaBase && listaValor && diaPrevisao && diaSaida && exemplo && exemplo.diaNumSaida">
-            <p>Limites Saída: {{exemplo.limiteInferior}} e {{exemplo.limiteSuperior}}
+            <p>Target/Stop: {{exemplo.limiteInferior  | number: '1.2-2'}} e {{exemplo.limiteSuperior  | number: '1.2-2'}}
               ({{percentualSaidaMinimo() | number: '1.1-1'}}%) ({{percentualSaidaMaximo() | number: '1.1-1'}}%)
             </p> 
             <p class="{{periodo()}}">

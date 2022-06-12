@@ -157,37 +157,6 @@ export class CotacaoIntradayAcaoApi extends BaseLoopBackApi {
          * (The remote method definition does not provide any description.)
          * </em>
    *
-   * @param {string} dia 
-   *
-   * @param {string} ticker 
-   *
-   * @returns {object[]} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `CotacaoIntradayAcao` object.)
-   * </em>
-   */
-  public ObtemPorDiaTicker(dia: any, ticker: any, customHeaders?: Function): Observable<any> {
-    let _method: string = "GET";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/CotacaoIntradayAcaos/obtemPorDiaTicker";
-    let _routeParams: any = {};
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    if (typeof dia !== 'undefined' && dia !== null) _urlParams.dia = dia;
-    if (typeof ticker !== 'undefined' && ticker !== null) _urlParams.ticker = ticker;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * <em>
-         * (The remote method definition does not provide any description.)
-         * </em>
-   *
    * @returns {object[]} An empty reference that will be
    *   populated with the actual data once the response is returned
    *   from the server.

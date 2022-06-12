@@ -1,44 +1,52 @@
 package br.com.sisacao.coletor.ativo.loopback;
 
-import com.strongloop.android.loopback.RestAdapter;
 import com.strongloop.android.loopback.callbacks.VoidCallback;
 
 import br.com.digicom.sisacao.repositorio.RepositorioAcaoBase;
-import br.com.digicom.sisacao.repositorio.RepositorioIndiceBase;
-import br.com.sisacao.coletor.indice.daobase.ColetorIndiceDaoBase;
-import br.com.sisacao.coletor.indice.daobase.DatasetColetorIndice;
+import br.com.sisacao.coletor.ativo.daobase.ColetorAcaoDaoBase;
+import br.com.sisacao.coletor.ativo.daobase.DatasetColetorAcao;
 
-public class CotacaoIntradayAcao_InsereValorHorario extends ColetorIndiceDaoBase{
+public class CotacaoIntradayAcao_InsereValorHorario extends ColetorAcaoDaoBase{
 
 	
 	
-	RestAdapter adapterItem = new RestAdapter(urlLoopback);
-	protected final RepositorioAcaoBase.CotacaoIntradayAcaoRepository rep = 
-			adapterItem.createRepository(RepositorioAcaoBase.CotacaoIntradayAcaoRepository.class);
+	//RestAdapter adapterItem = null;
+	//protected RepositorioAcaoBase.CotacaoIntradayAcaoRepository rep = null; 
 	
-	@Override
-	protected long getTempo() {
-		return 5000;
+	public CotacaoIntradayAcao_InsereValorHorario() {
+		super();
+		//adapterItem = new RestAdapter(urlLoopback);
+		//rep = adapterItem.createRepository(RepositorioAcaoBase.CotacaoIntradayAcaoRepository.class);
 	}
+	
+	
+	
 	@Override
 	protected void executaImpl() {
-		DatasetColetorIndice ds = (DatasetColetorIndice) getComum();
-		String ticker = ds.getCotacaoIntradayIndice().getTicker();
-		Double valor = ds.getCotacaoIntradayIndice().getValor();
-		String horaNegocio = ds.getCotacaoIntradayIndice().getDataHoraNegStr();
+		SisacaoAdaptador th = new SisacaoAdaptador();
+		RepositorioAcaoBase.CotacaoIntradayAcaoRepository rep = th.getRep();
+		//RepositorioAcaoBase.CotacaoIntradayAcaoRepository rep = SisacaoAdaptador.getRep();
+		DatasetColetorAcao ds = (DatasetColetorAcao) getComum();
+		String ticker = ds.getAtivoAcaoCorrente().getTicker();
+		Double valor = ds.getCotacaoIntradayAcao().getValor();
+		String horaNegocio = ds.getCotacaoIntradayAcao().getDataHoraNegStr();
+		System.out.println("Chamada para inserir " + ticker + ":" + valor);
+		/*
 		rep.insereValorHorario(ticker, horaNegocio, valor, new VoidCallback() {
-
 			@Override
 			public void onSuccess() {
 				System.out.println("Inseriu");
 				finalizar();
-				//finalize();
 			}
 
 			@Override
 			public void onError(Throwable t) {
 				onErrorBase(t);
 			}});
-		
+		finalizar();
+		adapterItem.liberaConexao();
+		*/
+		th.liberaConexao();
 	}
+		
 }

@@ -40,8 +40,14 @@ public class DatasetExemplo implements IDatasetComum,
 	
 
 
-	
+	public int getDiaNumPrevisao() {
+		return this.diaPregaoCorrente.getDiaNum();
+	}
 
+	public int getTamanhoAmostra() {
+		return this.regraProjecao.getDiaLimite();
+	}
+	
 	public RegraProjecao getRegraProjecao() {
 		return regraProjecao;
 	}

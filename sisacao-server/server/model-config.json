@@ -274,5 +274,13 @@
   "ExemploTreinoAcaoSaida": {
     "dataSource": "mysqlKingDS2",
     "public": true
+  },
+  "PrevisaoRede": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "RedeNeural": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
   }
 }
