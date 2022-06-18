@@ -3,6 +3,46 @@
 module.exports = function(Exemplotreinoacaosaida) {
 
 
+
+    /*
+select *, (100*(qtdeSaida/qtdeEntrada)) as percentual,
+(select count(*) from ExemploTreinoAcaoSaida saida 
+where saida.regraProjecaoId = tab.regraProjecaoId
+and saida.campoY=0) as classe0,
+(select count(*) from ExemploTreinoAcaoSaida saida 
+where saida.regraProjecaoId = tab.regraProjecaoId
+and saida.campoY=1) as classe1  
+from
+(
+select regraProjecaoId , codigoRegraProjecao, count(*) as qtdeSaida,
+(select count(*) from ExemploTreinoAcaoEntrada) as qtdeEntrada
+from ExemploTreinoAcaoSaida
+inner join RegraProjecao on RegraProjecao.id = ExemploTreinoAcaoSaida.regraProjecaoId
+group by regraProjecaoId, codigoRegraProjecao
+) as tab
+    */
+    Exemplotreinoacaosaida.ResumoPorRegra = function(callback) {
+        let sql = " select *, (100*(qtdeSaida/qtdeEntrada)) as percentual, " +
+            " (select count(*) from ExemploTreinoAcaoSaida saida  " +
+            " where saida.regraProjecaoId = tab.regraProjecaoId " +
+            " and saida.campoY=0) as classe0, " +
+            " (select count(*) from ExemploTreinoAcaoSaida saida " + 
+            " where saida.regraProjecaoId = tab.regraProjecaoId " +
+            " and saida.campoY=1) as classe1  " +
+            " from " +
+            " ( " +
+            " select regraProjecaoId , codigoRegraProjecao, count(*) as qtdeSaida, " +
+            " (select count(*) from ExemploTreinoAcaoEntrada) as qtdeEntrada " +
+            " from ExemploTreinoAcaoSaida " +
+            " inner join RegraProjecao on RegraProjecao.id = ExemploTreinoAcaoSaida.regraProjecaoId " +
+            " group by regraProjecaoId, codigoRegraProjecao " +
+            " ) as tab";
+        let ds = Exemplotreinoacaosaida.dataSource;
+        ds.connector.query(sql,callback);
+    }
+
+
+
     Exemplotreinoacaosaida.InsereExemploSaida = function(exemplo,callback)  {
         console.log('exemplo-saida: ' , exemplo);
         Exemplotreinoacaosaida.create(exemplo, (err,result) => {

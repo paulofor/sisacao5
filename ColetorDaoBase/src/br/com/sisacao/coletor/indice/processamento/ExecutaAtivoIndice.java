@@ -23,10 +23,7 @@ public class ExecutaAtivoIndice extends ColetorIndiceDaoBase {
 	}
 	
 	
-	@Override
-	protected long getTempo() {
-		return 5000;
-	}
+	
 
 	@Override
 	protected void executaImpl() {

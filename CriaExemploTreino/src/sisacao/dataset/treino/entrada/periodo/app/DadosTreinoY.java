@@ -27,6 +27,7 @@ public class DadosTreinoY {
 		this.diaNumSaida = 0;
 		this.valorSaida = 0;
 		this.diaPrevisao = dias.get(0);
+		this.resultado = 0;
 	}
 
 	public int getDiaNumSaida() {

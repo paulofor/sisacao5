@@ -23,7 +23,7 @@ public class CotacaoIntradayAcao_InsereValorHorario extends ColetorAcaoDaoBase{
 	
 	@Override
 	protected void executaImpl() {
-		SisacaoAdaptador th = new SisacaoAdaptador();
+		final SisacaoAdaptador th = new SisacaoAdaptador();
 		RepositorioAcaoBase.CotacaoIntradayAcaoRepository rep = th.getRep();
 		//RepositorioAcaoBase.CotacaoIntradayAcaoRepository rep = SisacaoAdaptador.getRep();
 		DatasetColetorAcao ds = (DatasetColetorAcao) getComum();
@@ -31,11 +31,11 @@ public class CotacaoIntradayAcao_InsereValorHorario extends ColetorAcaoDaoBase{
 		Double valor = ds.getCotacaoIntradayAcao().getValor();
 		String horaNegocio = ds.getCotacaoIntradayAcao().getDataHoraNegStr();
 		System.out.println("Chamada para inserir " + ticker + ":" + valor);
-		/*
+		
 		rep.insereValorHorario(ticker, horaNegocio, valor, new VoidCallback() {
 			@Override
 			public void onSuccess() {
-				System.out.println("Inseriu");
+				//System.out.println("Inseriu");
 				finalizar();
 			}
 
@@ -43,10 +43,8 @@ public class CotacaoIntradayAcao_InsereValorHorario extends ColetorAcaoDaoBase{
 			public void onError(Throwable t) {
 				onErrorBase(t);
 			}});
-		finalizar();
-		adapterItem.liberaConexao();
-		*/
-		th.liberaConexao();
+				
+		//th.liberaConexao();
 	}
 		
 }

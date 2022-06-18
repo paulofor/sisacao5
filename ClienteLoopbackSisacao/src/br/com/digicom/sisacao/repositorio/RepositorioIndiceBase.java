@@ -10,6 +10,7 @@ import com.strongloop.android.loopback.callbacks.ListCallback;
 import com.strongloop.android.loopback.callbacks.VoidCallback;
 import com.strongloop.android.remoting.adapters.RestContractItem;
 
+import br.com.digicom.sisacao.modelo.AtivoAcao;
 import br.com.digicom.sisacao.modelo.AtivoIndice;
 import br.com.digicom.sisacao.modelo.CotacaoIntradayIndice;
 
@@ -30,15 +31,14 @@ public class RepositorioIndiceBase {
 	        invokeStaticMethod("listaNaoBovespa", params,   new JsonArrayParser<AtivoIndice>(this, callback));
 			
 		}
-		/*
+
 		public void listaColetaIntraday(final ListCallback<AtivoIndice> callback) {
-			RestContractItem contrato = new RestContractItem("AtivoIndices/listaColetaIntraday","POST");
+			RestContractItem contrato = new RestContractItem("AtivoIndices/listaNaoBovespa","GET");
 			this.getRestAdapter().getContract().addItem(contrato, "AtivoIndice.listaColetaIntraday");
 	        Map<String, Object> params = new HashMap<String, Object>();
 	        invokeStaticMethod("listaColetaIntraday", params,   new JsonArrayParser<AtivoIndice>(this, callback));
-			
 		}
-		*/
+		
 	}
 	
 	public static class CotacaoIntradayIndiceRepository extends ModelRepository<CotacaoIntradayIndice> {
@@ -59,7 +59,7 @@ public class RepositorioIndiceBase {
 	        invokeStaticMethod("insereValorHorarioIndice", params, new EmptyResponseParser(voidCallback));
 		}
 		public void insereValor(String ticker, Double valor, final VoidCallback voidCallback) {
-			RestContractItem contrato = new RestContractItem("CotacaoIntradayIndices/insereValorIndice","POST");
+			RestContractItem contrato = new RestContractItem("CotacaoIntradayIndices/insereValorIndiceDes","POST");
 			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayIndice.insereValorIndice");
 	        Map<String, Object> params = new HashMap<String, Object>();
 	        params.put("ticker", ticker);

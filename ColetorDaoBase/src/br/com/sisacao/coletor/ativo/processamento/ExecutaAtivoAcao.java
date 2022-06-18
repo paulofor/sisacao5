@@ -40,7 +40,7 @@ public class ExecutaAtivoAcao extends ColetorAcaoDaoBase {
 		executador.setCallbackParse(callback);
 		executador.setDadosParse(dados);
 		executador.executa();
-		//this.finalizar();
+		this.finalizar();
 	}
 
 

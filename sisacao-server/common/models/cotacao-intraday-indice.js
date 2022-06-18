@@ -15,13 +15,21 @@ module.exports = function (Cotacaointradayindice) {
         let ds = Cotacaointradayindice.dataSource;
         ds.connector.query(sql, callback);
   };
+ 
+
 
   Cotacaointradayindice.InsereValorIndice = function (ticker, valor, callback) {
     let sql = "insert into CotacaoIntradayIndice (ticker,dataHora,valor, dia) " +
         "values ('" + ticker + "' , now(), " + valor + ", now())"
     let ds = Cotacaointradayindice.dataSource;
     ds.connector.query(sql, callback);
-};
+  };
+  Cotacaointradayindice.InsereValorIndiceDes = function (ticker, valor, callback) {
+    let sql = "insert into CotacaoIntradayIndiceDes (ticker,dataHora,valor, dia) " +
+        "values ('" + ticker + "' , now(), " + valor + ", now())"
+    let ds = Cotacaointradayindice.dataSource;
+    ds.connector.query(sql, callback);
+  };
 
 
   Cotacaointradayindice.AtualIndicePorTicker = function(ticker, quantidade, callback) {

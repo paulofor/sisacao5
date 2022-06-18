@@ -55,10 +55,9 @@ public class RestAdapter extends Adapter {
 	}
 
 	public void liberaConexao() {
-		//this.printThreads("inicio libera");
-		client.close();
-		client = null;
-		//this.printThreads("final libera");
+		//client.close();
+		//client = null;
+
 	}
 	
 	/**
@@ -94,7 +93,6 @@ public class RestAdapter extends Adapter {
 
 	@Override
 	public void connect(String url) {
-		this.printThreads("inicio connect");
 		if (url == null) {
 			client = null;
 		} else {
@@ -105,7 +103,6 @@ public class RestAdapter extends Adapter {
 			// TODO: Find way to set these headers globally
 			// client.addHeader("Accept", "application/json");
 		}
-		this.printThreads("final connect");
 	}
 
 	@Override
@@ -313,16 +310,14 @@ public class RestAdapter extends Adapter {
 		FORM_URL, JSON, FORM_MULTIPART
 	}
 
-	public static class HttpClient extends AsyncHttpClient {
+	public class HttpClient extends AsyncHttpClient {
 
 		
-		private static void printThreads(String mensagem) {
-			System.out.println("HttpClient [" + mensagem + "] : " + ManagementFactory.getThreadMXBean().getThreadCount());
-		}
+		
 		
 		private Map<String, String> headers = new HashMap<>();
 
-		private static String getVersionName() {
+		private String getVersionName() {
 			String appVersion = null;
 			// TODO: Find reasonable way to set this
 			return (appVersion != null) ? appVersion : "";
@@ -332,6 +327,7 @@ public class RestAdapter extends Adapter {
 
 		public HttpClient(String baseUrl, AsyncHttpClientConfig config) {
 			super(config);
+			
 			if (baseUrl == null) {
 				throw new IllegalArgumentException("The baseUrl cannot be null");
 			}
@@ -364,7 +360,7 @@ public class RestAdapter extends Adapter {
 
 			// TODO: Test extensively to make sure this URI works in tandem with
 			// the Android one
-			printThreads("inicio request");
+
 			if (path != null) {
 				if (path.startsWith("/")) {
 					path = path.substring(1);
@@ -474,7 +470,7 @@ public class RestAdapter extends Adapter {
 				throw new IllegalArgumentException(
 						"Illegal method: " + method + ". Only GET, POST, PUT, DELETE supported.");
 			}
-			printThreads("final request");
+
 		}
 
 		private BoundRequestBuilder prepareRequest(String method, String url) {

@@ -6,12 +6,12 @@ import java.util.List;
 
 import br.com.digicom.lib.dao.DaoException;
 import br.com.digicom.parse.callback.CallbackParseHtml;
-
 import br.com.digicom.parse.callback.IDadosParse;
+import br.com.sisacao.coletor.indice.processamento.IndiceDadosParse;
 
 public class YahooCallbackHtml extends CallbackParseHtml{
 	
-	private YahooDadosParse dados = null;
+	private IndiceDadosParse dados = null;
 
 	@Override
 	public URL getUrl() throws MalformedURLException {
@@ -40,7 +40,7 @@ public class YahooCallbackHtml extends CallbackParseHtml{
 	
 	@Override
 	public void setDados(IDadosParse paramIDadosParse) {
-		this.dados = (YahooDadosParse) paramIDadosParse;
+		this.dados = (IndiceDadosParse) paramIDadosParse;
 	}
 
 	@Override

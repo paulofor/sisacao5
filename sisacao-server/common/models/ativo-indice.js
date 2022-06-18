@@ -7,4 +7,11 @@ module.exports = function(Ativoindice) {
         let ds = Ativoindice.dataSource;
         ds.connector.query(sql,callback);
     }
+
+
+    Ativoindice.ListaColetaIntraday = function(callback) {
+        let sql = "select * from AtivoIndice ";
+        let ds = Ativoindice.dataSource;
+        ds.connector.query(sql,callback);
+    }
 };

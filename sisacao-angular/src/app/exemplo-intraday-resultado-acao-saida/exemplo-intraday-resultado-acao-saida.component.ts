@@ -193,7 +193,7 @@ export class ExemploIntradayResultadoAcaoSaidaComponent implements OnInit {
           'and' : [ 
             {'ticker' : this.ticker} , 
             {'diaNum' : {'gte' : this.exemplo.diaNumInicio }} ,
-            {'diaNum' : {'lte' : this.exemplo.diaNumSaida }}
+            {'diaNum' : {'lte' : this.exemplo.diaNumPrevisao }}
           ] ,
         },
         'order' : 'dataHora asc'

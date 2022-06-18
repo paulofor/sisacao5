@@ -13,7 +13,7 @@ import br.inf.digicom.loopback.IDatasetComum;
 public class TrataListaAtivoAcao extends DaoBaseRecorrenteTempoPadrao {
 
 
-	private final int TAMANHO_CLUSTER = 3;
+	private final int TAMANHO_CLUSTER = 5;
 	private DummyDaoBase dummy = null;
 	
 	
@@ -36,16 +36,13 @@ public class TrataListaAtivoAcao extends DaoBaseRecorrenteTempoPadrao {
 
 	@Override
 	protected void executaPrincipal() {
-		System.out.println(this + " precisa ser único");
+		//System.out.println(this + " precisa ser único");
 		final DatasetColetorAcao ds = (DatasetColetorAcao) getComum();
 		int ind = 0;
 		Runtime.getRuntime().gc(); 
 		List<DaoBase> lista = null;
-		this.printThreads("Parte 1");
 		while (ind<ds.getListaAtivoAcao().size()) {
-			this.printThreads("Parte 2");
 			lista = montaLista(ind);
-			this.printThreads("Parte 3");
 			ind = ind + TAMANHO_CLUSTER;
 			executaEmThread(lista);
 			try {
@@ -53,14 +50,11 @@ public class TrataListaAtivoAcao extends DaoBaseRecorrenteTempoPadrao {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			break;
+			//break;
 		}
 		for (Object item : lista) {
 			item = null;
 		}
-		this.printThreads("Parte 5");
-		
-
 		//for (AtivoAcao corrente : ds.getListaAtivoAcao()) {
 		//	ds.setAtivoAcaoCorrente(corrente);
 		//	executaProximoSemFinalizar();

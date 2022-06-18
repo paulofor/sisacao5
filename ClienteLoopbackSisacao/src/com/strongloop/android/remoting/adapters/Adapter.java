@@ -18,9 +18,6 @@ import org.json.JSONTokener;
 public abstract class Adapter {
 
 	
-	protected void printThreads(String mensagem) {
-		System.out.println("Threads " + this + " [" + mensagem + "] : " + ManagementFactory.getThreadMXBean().getThreadCount());
-	}
 	
     /**
      * A callback receiving the HTTP response body in the binary

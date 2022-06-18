@@ -45,7 +45,7 @@ public class B3DadosParse implements IDadosParse {
 		 Calendar now = Calendar.getInstance();
 		 String data = colocaZeroEsquerda(now.get(1)) + "-" + 
 		        colocaZeroEsquerda(now.get(2) + 1) + "-" + 
-		        colocaZeroEsquerda(now.get(5)-1);
+		        colocaZeroEsquerda(now.get(5));
 		 return data;
 	}
 	private static String colocaZeroEsquerda(int num) {

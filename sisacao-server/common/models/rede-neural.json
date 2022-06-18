@@ -19,5 +19,25 @@
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {}
+  "methods": {
+    "ObtemListaTreino": {
+      "accepts": [
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemListaTreino",
+          "verb": "get"
+        }
+      ]
+    }
+  }
 }

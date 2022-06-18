@@ -66,6 +66,26 @@
         }
       ]
     },
+    "ResumoPorRegra": {
+      "accepts": [
+       
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/resumoPorRegra",
+          "verb": "get"
+        }
+      ]
+    },
     "ObtemComEntrada": {
       "accepts": [
         {

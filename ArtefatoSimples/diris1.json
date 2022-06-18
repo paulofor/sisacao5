@@ -1,0 +1,10 @@
+{
+    "dominio" : "d5h" ,
+    "sandbox" : "d4q0b8f" ,
+    "dominio_producao" : "hive_d4q" ,
+    "base_dados" : "hive" ,
+    "script" : "rotina-principal-fluxo1",
+    "tabelas" : [
+        {"arquivo_sql" : "sql\\opr_cred_sum.sql" , "tabela" : "opr_cred_sum", "ordenada" : true ,  "coalesce" : 20 }, 
+    ]
+}

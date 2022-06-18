@@ -5,13 +5,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import br.com.sisacao.coletor.indice.app.ColetorIndiceObj;
 import br.inf.digicom.loopback.comum.DaoBaseComum;
+import br.inf.digicom.loopback.util.MonitoraThread;
 
 public class ColetorIntradayAtivoApp {
 public static String UrlLoopback = "";
 	
 	public static void main(String[] args) {
+		
+		MonitoraThread monitora = new MonitoraThread();
+		monitora.inicializa(60);
+		
 		System.out.println("Inicialiando ColetorIntradayAtivoApp");
 		System.out.println("Versao: 21-05-2022");
 		try {

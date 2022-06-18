@@ -58,6 +58,7 @@ import { PontoEntradaSimulacaoDiaVendaComponent } from '../ponto-entrada-simulac
 import { ExemploIntradayResultadoAcaoSaidaComponent } from '../exemplo-intraday-resultado-acao-saida/exemplo-intraday-resultado-acao-saida.component';
 import { ExemploEntradaListaComponent } from '../exemplo-entrada-lista/exemplo-entrada-lista.component';
 import { RedeNeuralListaComponent } from '../rede-neural-lista/rede-neural-lista.component';
+import { ExemploSaidaResumoComponent } from '../exemplo-saida-resumo/exemplo-saida-resumo.component';
 
 
 export const routes : Routes = [
@@ -138,6 +139,8 @@ export const routes : Routes = [
     { path : 'pontoEntradaSimulacaoDiaVenda' , component: PontoEntradaSimulacaoDiaVendaComponent },
     { path : 'exemploEntradaLista' , component: ExemploEntradaListaComponent },
     { path : 'redeNeuralLista' , component: RedeNeuralListaComponent },
+
+    { path : 'exemploSaidaResumo' , component: ExemploSaidaResumoComponent },
 
     { path: '',  component: HomeComponent  }
     //{ path: '',          redirectTo: 'home', pathMatch: 'full' }
