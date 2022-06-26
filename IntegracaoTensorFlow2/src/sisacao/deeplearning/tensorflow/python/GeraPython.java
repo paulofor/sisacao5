@@ -24,6 +24,7 @@ public class GeraPython extends DaoAplicacao {
 		DatasetTreinoRede ds = (DatasetTreinoRede) getComum();
 		RedeNeural rede = ds.getRedeCorrente();
 		NotebookTreinoTensorFlow obj = new NotebookTreinoTensorFlow();
+		obj.setRedeNeural(rede);
 		obj.geraNotebook("treino" + rede.getId());
 		finalizar();
 	}

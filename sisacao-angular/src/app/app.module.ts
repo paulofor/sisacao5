@@ -152,6 +152,8 @@ import { ExemploEntradaListaComponent } from './exemplo-entrada-lista/exemplo-en
 import { RedeNeuralListaComponent } from './rede-neural-lista/rede-neural-lista.component';
 import { RedeNeuralEditaComponent } from './rede-neural-edita/rede-neural-edita.component';
 import { ExemploSaidaResumoComponent } from './exemplo-saida-resumo/exemplo-saida-resumo.component';
+import { PrevisaoRedeListaDiaComponent } from './previsao-rede-lista-dia/previsao-rede-lista-dia.component';
+import { PrevisaoRedeItemDiaComponent } from './previsao-rede-item-dia/previsao-rede-item-dia.component';
 
 //import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
@@ -277,6 +279,8 @@ registerLocaleData(localePt, 'pt-BR');
     RedeNeuralListaComponent,
     RedeNeuralEditaComponent,
     ExemploSaidaResumoComponent,
+    PrevisaoRedeListaDiaComponent,
+    PrevisaoRedeItemDiaComponent,
   ],
   imports: [
     BrowserModule,

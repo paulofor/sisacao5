@@ -1,0 +1,13 @@
+<div class="dgc-painel" *ngIf="listaBase">
+
+  <div class="dgc-painel-header">
+    <span>Previsão Dia {{listaBase[0].previsaoRedes[0].diaNumPrevisao}}</span>
+  </div>
+
+  <div>
+    <div *ngFor="let item of listaBase">
+      <app-previsao-rede-item-dia [rede]="item"></app-previsao-rede-item-dia>
+    </div>
+  </div>
+
+</div>

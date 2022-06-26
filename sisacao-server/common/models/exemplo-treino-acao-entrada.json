@@ -68,6 +68,51 @@
         }
       ]
     },
+    "ObtemPorDia": {
+      "accepts": [
+        {
+          "arg": "diaNum",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemPorDia",
+          "verb": "get"
+        }
+      ]
+    },
+    "ObtemProximoDia": {
+      "accepts": [
+        
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemProximoDia",
+          "verb": "get"
+        }
+      ]
+    },
     "InsereExemploEntrada": {
       "accepts": [
         {

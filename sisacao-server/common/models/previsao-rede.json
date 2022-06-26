@@ -15,7 +15,7 @@
     "valorPrevisao": {
       "type": "number"
     },
-    "redeId": {
+    "redeNeuralId": {
       "type": "number"
     }
   },

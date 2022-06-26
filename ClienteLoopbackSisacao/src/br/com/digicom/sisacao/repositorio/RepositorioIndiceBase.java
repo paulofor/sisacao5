@@ -33,7 +33,7 @@ public class RepositorioIndiceBase {
 		}
 
 		public void listaColetaIntraday(final ListCallback<AtivoIndice> callback) {
-			RestContractItem contrato = new RestContractItem("AtivoIndices/listaNaoBovespa","GET");
+			RestContractItem contrato = new RestContractItem("AtivoIndices/listaColetaIntraday","GET");
 			this.getRestAdapter().getContract().addItem(contrato, "AtivoIndice.listaColetaIntraday");
 	        Map<String, Object> params = new HashMap<String, Object>();
 	        invokeStaticMethod("listaColetaIntraday", params,   new JsonArrayParser<AtivoIndice>(this, callback));

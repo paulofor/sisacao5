@@ -1,5 +1,8 @@
 'use strict';
 
+var app = require('../../server/server');
+
+
 module.exports = function(Exemplotreinoacaoentrada) {
 
 
@@ -30,6 +33,19 @@ module.exports = function(Exemplotreinoacaoentrada) {
         ds.connector.query(sql, (err,result) => {
             callback(err,result);
         })
+    }
+
+    Exemplotreinoacaoentrada.ObtemProximoDia = function(callback){
+        app.models.DiaPregao.ObtemProximoB3((err,result) => {
+            let sql = "select campoX , ticker, diaNumPrevisao from ExemploTreinoAcaoEntrada " +
+            " where diaNumPrevisao = " + result.diaNum 
+            console.log(sql)
+            let ds = Exemplotreinoacaoentrada.dataSource;
+            ds.connector.query(sql, (err,result) => {
+                callback(err,result);
+            })
+        })
+       
     }
 
     /*

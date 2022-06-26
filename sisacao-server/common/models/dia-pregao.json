@@ -191,6 +191,24 @@
         }
       ]
     },
+    "ObtemAtualB3": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "dia",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemAtualB3",
+          "verb": "get"
+        }
+      ]
+    },
     "ObtemProximoAntesMeiaNoite": {
       "accepts": [
         {

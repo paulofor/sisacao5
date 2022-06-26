@@ -8,9 +8,8 @@ export interface PrevisaoRedeInterface {
   "ticker"?: string;
   "diaNumPrevisao"?: number;
   "valorPrevisao"?: number;
-  "redeId"?: number;
-  "id"?: number;
   "redeNeuralId"?: number;
+  "id"?: number;
   redeNeural?: RedeNeural;
 }
 
@@ -18,9 +17,8 @@ export class PrevisaoRede implements PrevisaoRedeInterface {
   "ticker": string;
   "diaNumPrevisao": number;
   "valorPrevisao": number;
-  "redeId": number;
-  "id": number;
   "redeNeuralId": number;
+  "id": number;
   redeNeural: RedeNeural;
   constructor(data?: PrevisaoRedeInterface) {
     Object.assign(this, data);
@@ -67,16 +65,12 @@ export class PrevisaoRede implements PrevisaoRedeInterface {
           name: 'valorPrevisao',
           type: 'number'
         },
-        "redeId": {
-          name: 'redeId',
+        "redeNeuralId": {
+          name: 'redeNeuralId',
           type: 'number'
         },
         "id": {
           name: 'id',
-          type: 'number'
-        },
-        "redeNeuralId": {
-          name: 'redeNeuralId',
           type: 'number'
         },
       },

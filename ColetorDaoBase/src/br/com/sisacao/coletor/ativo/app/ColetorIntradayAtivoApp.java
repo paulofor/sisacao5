@@ -13,11 +13,11 @@ public static String UrlLoopback = "";
 	
 	public static void main(String[] args) {
 		
-		MonitoraThread monitora = new MonitoraThread();
-		monitora.inicializa(60);
+		//MonitoraThread monitora = new MonitoraThread();
+		//monitora.inicializa(60);
 		
 		System.out.println("Inicialiando ColetorIntradayAtivoApp");
-		System.out.println("Versao: 21-05-2022");
+		System.out.println("Versao: 20-06-2022");
 		try {
 			carregaProp();
 			preparaComum();

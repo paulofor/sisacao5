@@ -17,12 +17,35 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "previsaoRedes": {
+      "type": "hasMany",
+      "model": "PrevisaoRede",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {
-    "ObtemListaTreino": {
-      "accepts": [
+    "ListaExecucaoPrevisao" : {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
       ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaExecucaoPrevisao",
+          "verb": "get"
+        }
+      ]
+    },
+    "ObtemListaTreino": {
+      "accepts": [],
       "returns": [
         {
           "arg": "saida",
@@ -35,6 +58,24 @@
       "http": [
         {
           "path": "/obtemListaTreino",
+          "verb": "get"
+        }
+      ]
+    },
+    "ListaPrevisaoDia": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaPrevisaoDia",
           "verb": "get"
         }
       ]

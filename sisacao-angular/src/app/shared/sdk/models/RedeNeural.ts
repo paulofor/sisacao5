@@ -1,4 +1,7 @@
 /* tslint:disable */
+import {
+  PrevisaoRede
+} from '../index';
 
 declare var Object: any;
 export interface RedeNeuralInterface {
@@ -6,6 +9,7 @@ export interface RedeNeuralInterface {
   "compilacao"?: string;
   "fitTreinamento"?: string;
   "id"?: number;
+  previsaoRedes?: PrevisaoRede[];
 }
 
 export class RedeNeural implements RedeNeuralInterface {
@@ -13,6 +17,7 @@ export class RedeNeural implements RedeNeuralInterface {
   "compilacao": string;
   "fitTreinamento": string;
   "id": number;
+  previsaoRedes: PrevisaoRede[];
   constructor(data?: RedeNeuralInterface) {
     Object.assign(this, data);
   }
@@ -64,6 +69,14 @@ export class RedeNeural implements RedeNeuralInterface {
         },
       },
       relations: {
+        previsaoRedes: {
+          name: 'previsaoRedes',
+          type: 'PrevisaoRede[]',
+          model: 'PrevisaoRede',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'redeNeuralId'
+        },
       }
     }
   }

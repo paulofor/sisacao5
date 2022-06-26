@@ -32,6 +32,13 @@ public abstract class NotebookObj {
 		return propJson;
 	}
 
+	protected void insereCelula(JSONArray notebook, CelulaNotebook celula) {
+		JSONArray celulas = celula.getJSON();
+		for (int i=0; i<celulas.length(); i++) {
+			JSONObject item = (JSONObject) celulas.get(i);
+			notebook.put(item);
+		}
+	}
 	
 	public void setPropriedades(String nomeArquivo) throws FileNotFoundException  {
 		File file = new File(nomeArquivo + ".json");

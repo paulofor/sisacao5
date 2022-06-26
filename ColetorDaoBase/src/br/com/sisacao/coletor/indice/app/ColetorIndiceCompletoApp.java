@@ -16,13 +16,13 @@ public class ColetorIndiceCompletoApp {
 	public static void main(String[] args) {
 		
 		
-		MonitoraThread monitora = new MonitoraThread();
-		monitora.inicializa(60);
+		//MonitoraThread monitora = new MonitoraThread();
+		//monitora.inicializa(60);
 		
 		
 		
 		System.out.println("Inicialiando ColetorIndiceCompletoApp");
-		System.out.println("Versao: 16-06-2022");
+		System.out.println("Versao: 20-06-2022");
 		try {
 			carregaProp();
 			preparaComum();

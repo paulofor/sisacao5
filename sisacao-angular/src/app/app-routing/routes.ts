@@ -59,6 +59,7 @@ import { ExemploIntradayResultadoAcaoSaidaComponent } from '../exemplo-intraday-
 import { ExemploEntradaListaComponent } from '../exemplo-entrada-lista/exemplo-entrada-lista.component';
 import { RedeNeuralListaComponent } from '../rede-neural-lista/rede-neural-lista.component';
 import { ExemploSaidaResumoComponent } from '../exemplo-saida-resumo/exemplo-saida-resumo.component';
+import { PrevisaoRedeListaDiaComponent } from '../previsao-rede-lista-dia/previsao-rede-lista-dia.component';
 
 
 export const routes : Routes = [
@@ -141,6 +142,8 @@ export const routes : Routes = [
     { path : 'redeNeuralLista' , component: RedeNeuralListaComponent },
 
     { path : 'exemploSaidaResumo' , component: ExemploSaidaResumoComponent },
+
+    { path : 'previsaoRedeListaDia' , component: PrevisaoRedeListaDiaComponent },
 
     { path: '',  component: HomeComponent  }
     //{ path: '',          redirectTo: 'home', pathMatch: 'full' }

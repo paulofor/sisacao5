@@ -1,0 +1,12 @@
+<div class="dgc-card" *ngIf="listaPrevisao" >
+  <div class="dgc-card-header">
+      <span>{{rede.id}}</span>
+  </div>
+  
+  <div>
+    <span  *ngFor="let previsao of listaPrevisao">
+        {{previsao.ticker}}: {{previsao.valorPrevisao | number: '1.2-2'}}  ; 
+    </span>
+  </div>
+  
+</div>

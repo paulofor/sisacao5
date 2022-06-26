@@ -67,9 +67,7 @@
       ]
     },
     "ResumoPorRegra": {
-      "accepts": [
-       
-      ],
+      "accepts": [],
       "returns": [
         {
           "arg": "resultado",
