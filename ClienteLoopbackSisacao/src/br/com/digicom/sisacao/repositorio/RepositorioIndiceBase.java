@@ -32,11 +32,11 @@ public class RepositorioIndiceBase {
 			
 		}
 
-		public void listaColetaIntraday(final ListCallback<AtivoIndice> callback) {
-			RestContractItem contrato = new RestContractItem("AtivoIndices/listaColetaIntraday","GET");
-			this.getRestAdapter().getContract().addItem(contrato, "AtivoIndice.listaColetaIntraday");
+		public void listaColetaIntradayIndice(final ListCallback<AtivoIndice> callback) {
+			RestContractItem contrato = new RestContractItem("AtivoIndices/listaColetaIntradayIndice","GET");
+			this.getRestAdapter().getContract().addItem(contrato, "AtivoIndice.listaColetaIntradayIndice");
 	        Map<String, Object> params = new HashMap<String, Object>();
-	        invokeStaticMethod("listaColetaIntraday", params,   new JsonArrayParser<AtivoIndice>(this, callback));
+	        invokeStaticMethod("listaColetaIntradayIndice", params,   new JsonArrayParser<AtivoIndice>(this, callback));
 		}
 		
 	}
@@ -59,7 +59,7 @@ public class RepositorioIndiceBase {
 	        invokeStaticMethod("insereValorHorarioIndice", params, new EmptyResponseParser(voidCallback));
 		}
 		public void insereValor(String ticker, Double valor, final VoidCallback voidCallback) {
-			RestContractItem contrato = new RestContractItem("CotacaoIntradayIndices/insereValorIndiceDes","POST");
+			RestContractItem contrato = new RestContractItem("CotacaoIntradayIndices/insereValorIndice","POST");
 			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayIndice.insereValorIndice");
 	        Map<String, Object> params = new HashMap<String, Object>();
 	        params.put("ticker", ticker);

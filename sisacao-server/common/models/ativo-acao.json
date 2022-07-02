@@ -367,6 +367,26 @@
           "verb": "get"
         }
       ]
+    },
+    "ListaColetaIntraday": {
+      "accepts": [
+       
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaColetaIntraday",
+          "verb": "get"
+        }
+      ]
     }
   }
 }

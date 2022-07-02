@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { BaseListComponent } from '../base-component/base-list-component';
-import { RedeNeuralApi } from '../shared/sdk';
+import { RedeNeuralApi, TreinoRedeApi } from '../shared/sdk';
 
 @Component({
   selector: 'app-previsao-rede-lista-dia',
@@ -11,20 +11,40 @@ import { RedeNeuralApi } from '../shared/sdk';
 })
 export class PrevisaoRedeListaDiaComponent  extends BaseListComponent {
 
-  constructor(protected dialog: MatDialog, protected srv:RedeNeuralApi,public router: Router) { 
-    super(dialog,srv)
+  
+
+  constructor(protected dialog: MatDialog, public srvTreino: TreinoRedeApi, public router: Router) { 
+    super(dialog,srvTreino)
   }
 
+  carregaTela() {
+    this.srvTreino.ListaPrevisaoDiaTreino()
+        .subscribe((result:any[]) => {
+            console.log('listaBase: ' , result);
+            this.listaBase = result;
+            this.posCarregaLista();
+        })
+  }
  
-
+  /*
   carregaTela() {
     this.srv.ListaPrevisaoDia()
     .subscribe((result:any[]) => {
-        console.log('result: ' , result);
+        console.log('rede: ' , result);
         this.listaBase = result;
-        this.posCarregaLista();
-    })
- }
+        this.srvTreino.ListaPrevisaoDiaTreino()
+        .subscribe((result:any[]) => {
+            console.log('treino: ' , result);
+            this.listaBase = this.listaBase.concat(result);
+            this.posCarregaLista();
+            console.log('listaBase: ' , this.listaBase);
+        })
+        
+    });
+  }
+  */
+  
+
 
   
 

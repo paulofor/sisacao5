@@ -4,6 +4,8 @@ import com.strongloop.android.loopback.Model;
 
 public class CotacaoIntradayMercadoria extends Model {
 
+	private String dataHoraNegStr;
+	
 	private String ticker;
 	private Double valor;
 	private String dataHoraStr;
@@ -45,6 +47,12 @@ public class CotacaoIntradayMercadoria extends Model {
 	}
 	public void setIntervalo(Long intervalo) {
 		this.intervalo = intervalo;
+	}
+	public String getDataHoraNegStr() {
+		return dataHoraNegStr;
+	}
+	public void setDataHoraNegStr(String dataHoraNegStr) {
+		this.dataHoraNegStr = dataHoraNegStr;
 	}
 
 

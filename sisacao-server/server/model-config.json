@@ -282,5 +282,17 @@
   "RedeNeural": {
     "dataSource": "mysqlKingDS2",
     "public": true
+  },
+  "PeriodoTreinoRede": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "TipoExemploTreino": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "TreinoRede": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
   }
 }

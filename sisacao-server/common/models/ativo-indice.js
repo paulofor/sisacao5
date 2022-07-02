@@ -9,7 +9,7 @@ module.exports = function(Ativoindice) {
     }
 
 
-    Ativoindice.ListaColetaIntraday = function(callback) {
+    Ativoindice.ListaColetaIntradayIndice = function(callback) {
         let sql = "select * from AtivoIndice ";
         let ds = Ativoindice.dataSource;
         ds.connector.query(sql,callback);

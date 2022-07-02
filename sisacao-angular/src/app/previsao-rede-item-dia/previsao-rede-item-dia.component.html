@@ -1,11 +1,15 @@
 <div class="dgc-card" *ngIf="listaPrevisao" >
   <div class="dgc-card-header">
-      <span>{{rede.id}}</span>
+      <span *ngIf="!rede.grupoAcaoId">{{rede.id}}</span>
+      <span *ngIf="rede.grupoAcaoId">Treino Rede #{{rede.id}}</span>
   </div>
   
   <div>
     <span  *ngFor="let previsao of listaPrevisao">
-        {{previsao.ticker}}: {{previsao.valorPrevisao | number: '1.2-2'}}  ; 
+        {{previsao.ticker}}: {{previsao.valorPrevisao | number: '1.2-2'}} 
+        <span class="dgc-link" *ngIf='(previsao.valorPrevisao > 0.5)' (click)="telaCompra(previsao)">
+          ({{previsao.precoEntrada | number: '1.2-2'}})
+        </span> ; 
     </span>
   </div>
   

@@ -17,7 +17,7 @@ import br.com.digicom.parse.callback.IDadosParse;
 
 public class CallbackCotacaoB3Json extends CallbackParseJson  {
 
-	private B3DadosParse dados;
+	private B3DadosParseBase dados;
 	
 	// exemplo url: https://arquivos.b3.com.br/apinegocios/ticker/petru216/2020-08-17
 	
@@ -35,7 +35,7 @@ public class CallbackCotacaoB3Json extends CallbackParseJson  {
 
 	@Override
 	public void setDados(IDadosParse paramIDadosParse) {
-		this.dados = (B3DadosParse) paramIDadosParse;
+		this.dados = (B3DadosParseBase) paramIDadosParse;
 		
 	}
 

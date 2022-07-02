@@ -68,35 +68,8 @@
         }
       ]
     },
-    "ObtemPorDia": {
-      "accepts": [
-        {
-          "arg": "diaNum",
-          "type": "number",
-          "required": true,
-          "description": ""
-        }
-      ],
-      "returns": [
-        {
-          "arg": "resultado",
-          "type": "object",
-          "root": true,
-          "description": ""
-        }
-      ],
-      "description": "",
-      "http": [
-        {
-          "path": "/obtemPorDia",
-          "verb": "get"
-        }
-      ]
-    },
     "ObtemProximoDia": {
-      "accepts": [
-        
-      ],
+      "accepts": [],
       "returns": [
         {
           "arg": "resultado",

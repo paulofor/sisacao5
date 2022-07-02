@@ -26,5 +26,24 @@
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {}
+  "methods": {
+    "ListaColetaIntradayMercadoria": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaColetaIntradayMercadoria",
+          "verb": "get"
+        }
+      ]
+    }
+  }
 }

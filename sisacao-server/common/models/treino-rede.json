@@ -1,0 +1,107 @@
+{
+  "name": "TreinoRede",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ativoPrevisao": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "grupoAcao": {
+      "type": "belongsTo",
+      "model": "GrupoAcao",
+      "foreignKey": ""
+    },
+    "periodoTreinoRede": {
+      "type": "belongsTo",
+      "model": "PeriodoTreinoRede",
+      "foreignKey": ""
+    },
+    "tipoExemploTreino": {
+      "type": "belongsTo",
+      "model": "TipoExemploTreino",
+      "foreignKey": ""
+    },
+    "regraProjecao": {
+      "type": "belongsTo",
+      "model": "RegraProjecao",
+      "foreignKey": ""
+    },
+    "redeNeural": {
+      "type": "belongsTo",
+      "model": "RedeNeural",
+      "foreignKey": ""
+    },
+    "previsaoRedes": {
+      "type": "hasMany",
+      "model": "PrevisaoRede",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {
+    "ObtemListaParaTreino": {
+      "accepts": [
+       
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemListaParaTreino",
+          "verb": "get"
+        }
+      ]
+    },
+    "ObtemListaParaPrevisao": {
+      "accepts": [
+       
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemListaParaPrevisao",
+          "verb": "get"
+        }
+      ]
+    },
+    "ListaPrevisaoDiaTreino": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaPrevisaoDiaTreino",
+          "verb": "get"
+        }
+      ]
+    }
+  }
+}

@@ -73,34 +73,11 @@ module.exports = function(Diapregao) {
     };
 
     Diapregao.ObtemAnteriorB3 = function(callback) {
-        var data = new Date();
-        data.setUTCMinutes(0);
-        data.setUTCHours(0);
-        data.setUTCSeconds(0);
-        data.setUTCMilliseconds(0);
-        //console.log(data);
-        let filtro = { 
-            "where" : 
-                {"data" : {"lt": data } },
-            "order" : "data desc" 
-        }
-        Diapregao.findOne(filtro, callback);
+        Diapregao.ObtemProximoAntesMeiaNoite(-48+5,callback); 
     }
 
     Diapregao.ObtemAtualB3 = function(callback) {
-        var data = new Date();
-        data.setUTCMinutes(0);
-        data.setUTCHours(0);
-        data.setUTCSeconds(0);
-        data.setUTCMilliseconds(0);
-        //console.log(data);
-        let filtro = { 
-            "where" : 
-                {"data" : {"lte": data } },
-            "order" : "data desc",
-            "limit" : 1 
-        }
-        Diapregao.findOne(filtro, callback);
+        Diapregao.ObtemProximoAntesMeiaNoite(-24+5,callback);
     }
 
     /**

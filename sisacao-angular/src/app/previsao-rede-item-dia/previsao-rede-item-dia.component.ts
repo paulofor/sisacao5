@@ -1,4 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { PrevisaoRede } from '../shared/sdk';
+import { TradeNovoSimulacaoComponent } from '../trade-novo-simulacao/trade-novo-simulacao.component';
+import { TradeRealListaEditComponent } from '../trade-real-lista-edit/trade-real-lista-edit.component';
 
 @Component({
   selector: 'app-previsao-rede-item-dia',
@@ -11,10 +15,35 @@ export class PrevisaoRedeItemDiaComponent implements OnInit {
   listaPrevisao: any[]
   @Input() rede: any;
   
-  constructor() { }
+  constructor(protected dialog: MatDialog) { }
 
   ngOnInit() {
     this.listaPrevisao = this.rede.previsaoRedes
   }
 
+  edita(edicao?) {
+    this.dialog.afterAllClosed.subscribe(result => {
+        //this.carregaTela();
+    });
+    this.dialog.open(this.getComponente(), {
+        width: '800px',
+        data: {
+            item: edicao
+        }
+    });
+  }
+
+
+  getComponente() {
+    return TradeRealListaEditComponent;
+  }
+
+  telaCompra(item:PrevisaoRede) {
+    this.dialog.open(TradeNovoSimulacaoComponent, {
+      width: '900px',
+      data: {
+          origem: item
+      }
+    });
+  }
 }

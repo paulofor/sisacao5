@@ -92,6 +92,11 @@
       "model": "ExecucaoSimulacao",
       "foreignKey": ""
     },
+    "previsaoRede": {
+      "type": "belongsTo",
+      "model": "PrevisaoRede",
+      "foreignKey": ""
+    },
     "ativoAcao": {
       "type": "belongsTo",
       "model": "AtivoAcao",

@@ -15,8 +15,20 @@
     "valorPrevisao": {
       "type": "number"
     },
+    "precoEntrada": {
+      "type": "number"
+    },
+    "precoReferencia": {
+      "type": "number"
+    },
     "redeNeuralId": {
       "type": "number"
+    },
+    "treinoRedeId": {
+      "type": "number"
+    },
+    "tipoCompraVenda" : {
+      "type": "string"
     }
   },
   "validations": [],
@@ -24,6 +36,11 @@
     "redeNeural": {
       "type": "belongsTo",
       "model": "RedeNeural",
+      "foreignKey": ""
+    },
+    "treinoRede": {
+      "type": "belongsTo",
+      "model": "TreinoRede",
       "foreignKey": ""
     }
   },
@@ -55,6 +72,7 @@
           "root": true,
           "description": ""
         }
+        
       ],
       "returns": [
         {
@@ -68,6 +86,67 @@
       "http": [
         {
           "path": "/recebePrevisao",
+          "verb": "post"
+        }
+      ]
+    },
+    "RecebePrevisaoTreino": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "diaNumPrevisao",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "treinoRedeId",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "valorEntrada",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "valorReferencia",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "tipoCompraVenda",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/recebePrevisaoTreino",
           "verb": "post"
         }
       ]

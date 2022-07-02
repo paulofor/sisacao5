@@ -1,0 +1,26 @@
+{
+  "name": "PeriodoTreinoRede",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "diaNumInicioTreino": {
+      "type": "number"
+    },
+    "diaNumFinalTreino": {
+      "type": "number"
+    },
+    "diaNumInicioValidacao": {
+      "type": "number"
+    },
+    "diaNumFinalValidacao": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

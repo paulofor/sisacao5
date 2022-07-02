@@ -24,12 +24,12 @@ public class RepositorioMercadoriaBase {
 		protected String verificaNomeUrl(String nome) {
 			return "AtivoMercadoria";
 		}
-		public void listaColetaIntraday(final ListCallback<AtivoMercadoria> callback) {
-			RestContractItem contrato = new RestContractItem("AtivoMercadoria/listaColetaIntraday","POST");
-			this.getRestAdapter().getContract().addItem(contrato, "AtivoMercadoria.listaColetaIntraday");
+		
+		public void listaColetaIntradayMercadoria(ListCallback<AtivoMercadoria> listCallback) {
+			RestContractItem contrato = new RestContractItem("AtivoMercadoria/listaColetaIntradayMercadoria","GET");
+			this.getRestAdapter().getContract().addItem(contrato, "AtivoMercadoria.listaColetaIntradayMercadoria");
 	        Map<String, Object> params = new HashMap<String, Object>();
-	        invokeStaticMethod("listaColetaIntraday", params,   new JsonArrayParser<AtivoMercadoria>(this, callback));
-			
+	        invokeStaticMethod("listaColetaIntradayMercadoria", params,   new JsonArrayParser<AtivoMercadoria>(this, listCallback));
 		}
 	}
 	

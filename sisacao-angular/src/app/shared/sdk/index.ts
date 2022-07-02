@@ -111,6 +111,9 @@ import { ExemploTreinoAcaoEntradaApi } from './services/custom/ExemploTreinoAcao
 import { ExemploTreinoAcaoSaidaApi } from './services/custom/ExemploTreinoAcaoSaida';
 import { PrevisaoRedeApi } from './services/custom/PrevisaoRede';
 import { RedeNeuralApi } from './services/custom/RedeNeural';
+import { PeriodoTreinoRedeApi } from './services/custom/PeriodoTreinoRede';
+import { TipoExemploTreinoApi } from './services/custom/TipoExemploTreino';
+import { TreinoRedeApi } from './services/custom/TreinoRede';
 /**
 * @module SDKBrowserModule
 * @description
@@ -204,8 +207,12 @@ export class SDKBrowserModule {
         ExemploTreinoAcaoSaidaApi,
         PrevisaoRedeApi,
         RedeNeuralApi,
+        PeriodoTreinoRedeApi,
+        TipoExemploTreinoApi,
+        TreinoRedeApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
+
       ]
     };
   }

@@ -188,6 +188,37 @@
         }
       ]
     },
+    "ListaPrecoEntradaPrevisaoProximoB3": {
+      "accepts": [
+        {
+          "arg": "idRegra",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "idGrupo",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaPrecoEntradaPrevisaoProximoB3",
+          "verb": "get"
+        }
+      ]
+    },
     "AtualizaTargetStopDia": {
       "accepts": [
         {

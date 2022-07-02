@@ -154,6 +154,11 @@ import { RedeNeuralEditaComponent } from './rede-neural-edita/rede-neural-edita.
 import { ExemploSaidaResumoComponent } from './exemplo-saida-resumo/exemplo-saida-resumo.component';
 import { PrevisaoRedeListaDiaComponent } from './previsao-rede-lista-dia/previsao-rede-lista-dia.component';
 import { PrevisaoRedeItemDiaComponent } from './previsao-rede-item-dia/previsao-rede-item-dia.component';
+import { PeriodoTreinoRedeListaComponent } from './periodo-treino-rede-lista/periodo-treino-rede-lista.component';
+import { PeriodoTreinoRedeEditaComponent } from './periodo-treino-rede-edita/periodo-treino-rede-edita.component';
+import { TreinoRedeListaComponent } from './treino-rede-lista/treino-rede-lista.component';
+import { TreinoRedeEditaComponent } from './treino-rede-edita/treino-rede-edita.component';
+import { PrevisaoTreinoRedeItemDiaComponent } from './previsao-treino-rede-item-dia/previsao-treino-rede-item-dia.component';
 
 //import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
@@ -281,6 +286,11 @@ registerLocaleData(localePt, 'pt-BR');
     ExemploSaidaResumoComponent,
     PrevisaoRedeListaDiaComponent,
     PrevisaoRedeItemDiaComponent,
+    PeriodoTreinoRedeListaComponent,
+    PeriodoTreinoRedeEditaComponent,
+    TreinoRedeListaComponent,
+    TreinoRedeEditaComponent,
+    PrevisaoTreinoRedeItemDiaComponent,
   ],
   imports: [
     BrowserModule,
@@ -366,7 +376,9 @@ registerLocaleData(localePt, 'pt-BR');
     GrupoParaAcaoComponent,
     DetalheAluguelFundoImobiliarioComponent,
     TradeNovoSimulacaoComponent,
-    RedeNeuralEditaComponent
+    RedeNeuralEditaComponent,
+    PeriodoTreinoRedeEditaComponent,
+    TreinoRedeEditaComponent
   ],
   bootstrap: [AppComponent]
 })

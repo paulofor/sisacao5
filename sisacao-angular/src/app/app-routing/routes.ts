@@ -60,6 +60,8 @@ import { ExemploEntradaListaComponent } from '../exemplo-entrada-lista/exemplo-e
 import { RedeNeuralListaComponent } from '../rede-neural-lista/rede-neural-lista.component';
 import { ExemploSaidaResumoComponent } from '../exemplo-saida-resumo/exemplo-saida-resumo.component';
 import { PrevisaoRedeListaDiaComponent } from '../previsao-rede-lista-dia/previsao-rede-lista-dia.component';
+import { TreinoRedeListaComponent } from '../treino-rede-lista/treino-rede-lista.component';
+import { PeriodoTreinoRedeListaComponent } from '../periodo-treino-rede-lista/periodo-treino-rede-lista.component';
 
 
 export const routes : Routes = [
@@ -144,6 +146,8 @@ export const routes : Routes = [
     { path : 'exemploSaidaResumo' , component: ExemploSaidaResumoComponent },
 
     { path : 'previsaoRedeListaDia' , component: PrevisaoRedeListaDiaComponent },
+    { path : 'treinoRedeLista' , component: TreinoRedeListaComponent },
+    { path : 'periodoTreinoRedeLista' , component: PeriodoTreinoRedeListaComponent },
 
     { path: '',  component: HomeComponent  }
     //{ path: '',          redirectTo: 'home', pathMatch: 'full' }

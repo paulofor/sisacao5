@@ -120,6 +120,55 @@
           "verb": "get"
         }
       ]
+    },
+    "ListaParaTreino": {
+      "accepts": [
+        {
+          "arg": "diaNumInicio",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "diaNumFinal",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "idGrupoAcao",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "idRegraProjecao",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "idTipoExemplo",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaParaTreino",
+          "verb": "get"
+        }
+      ]
     }
   }
 }

@@ -1,0 +1,37 @@
+<h2 *ngIf="item" mat-dialog-title>Período Experimento</h2>
+
+<form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
+
+  <mat-dialog-content>
+   
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #diaNumInicioTreino [(ngModel)]="item.diaNumInicioTreino" name="diaNumInicioTreino" 
+      placeholder="Data Numérica Início Treino (yyyymmdd)" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #diaNumFinalTreino [(ngModel)]="item.diaNumFinalTreino" name="diaNumFinalTreino" 
+      placeholder="Data Numérica Final Treino (yyyymmdd)" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #diaNumInicioValidacao [(ngModel)]="item.diaNumInicioValidacao" name="diaNumInicioValidacao" 
+      placeholder="Data Numérica Início Validação (yyyymmdd)" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #diaNumFinalValidacao [(ngModel)]="item.diaNumFinalValidacao" name="diaNumFinalValidacao" 
+      placeholder="Data Numérica Final Validação (yyyymmdd)" autocomplete="off" />
+    </mat-form-field>
+
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button>Salvar</button>
+    <button mat-raised-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+
+</form>
+

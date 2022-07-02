@@ -10,7 +10,7 @@ import br.com.sisacao.coletor.ativo.daobase.DatasetColetorAcao;
 import br.com.sisacao.coletor.ativo.loopback.CotacaoIntradayAcao_InsereValorHorario;
 import br.inf.digicom.loopback.DaoBase;
 
-public class B3DadosParse implements IDadosParse {
+public class B3DadosParse extends B3DadosParseBase implements IDadosParse {
 
 	
 
@@ -41,17 +41,7 @@ public class B3DadosParse implements IDadosParse {
 	public String getTicker() {
 		return this.ds.getAtivoAcaoCorrente().getTicker();
 	}
-	public String getAAAA_MM_DD() {
-		 Calendar now = Calendar.getInstance();
-		 String data = colocaZeroEsquerda(now.get(1)) + "-" + 
-		        colocaZeroEsquerda(now.get(2) + 1) + "-" + 
-		        colocaZeroEsquerda(now.get(5));
-		 return data;
-	}
-	private static String colocaZeroEsquerda(int num) {
-		if (num > 9) return "" + num;
-		      return "0" + num;
-	}
+	
 	public void enviaValor(Double valor, String horario) {
 		this.cotacao.setDataHoraNegStr(horario);
 		this.cotacao.setValor(valor);

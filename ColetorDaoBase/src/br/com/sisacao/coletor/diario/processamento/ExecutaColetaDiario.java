@@ -14,7 +14,7 @@ public class ExecutaColetaDiario extends  ColetorDiarioDaoBase{
 		// AAAAMMDD
 		// 01234567
 		String mesDia = dataAnterior.substring(4, 6) + dataAnterior.substring(6);
-		String ano = dataAnterior.substring(0,4);
+		String ano = dataAnterior.substring(2,4);
 		TransferidorObj obj = new TransferidorObj();
    		obj.main(mesDia,ano);
    		
@@ -22,7 +22,7 @@ public class ExecutaColetaDiario extends  ColetorDiarioDaoBase{
    		ParserDiarioObj objParse = new ParserDiarioObj();
    		objParse.inicio("20" + ano + mesDia);
    		
-		
+		finalizar();
 	}
 
 }

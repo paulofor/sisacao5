@@ -4,7 +4,31 @@ var app = require('../../server/server');
 
 module.exports = function(Cotacaointradayacaoresultado) {
 
+    Cotacaointradayacaoresultado.ListaPrecoEntradaPrevisaoProximoB3 = function(idRegra, idGrupo, callback) {
+        let ds = Cotacaointradayacaoresultado.dataSource;
+        app.models.RegraProjecao.findById(idRegra, (err,regra) => {
+            console.log('regra:' , regra);
+            let percentual = 1;
+             if (regra.tipoCompraVenda=='V') {
+                percentual = (1 + regra.percentualEntradaDataset) 
+            } else {
+                percentual = (1 - regra.percentualEntradaDataset) 
+            }
+            app.models.DiaPregao.ObtemAtualB3((err,dia) => {
+                console.log('dia:' , dia);
 
+                let sql = " select CotacaoIntradayAcaoResultado.ticker, valor valorReferencia, (valor * " + percentual + ") valorEntrada " +
+                    " from CotacaoIntradayAcaoResultado " +
+                    " inner join RelGrupoAcao on RelGrupoAcao.ticker = CotacaoIntradayAcaoResultado.ticker " +
+                    " where diaNum = " + dia.diaNum +
+                    " and posicaoDia = 0 " +
+                    " and RelGrupoAcao.grupoAcaoId = " + idGrupo;
+                console.log('sql:' , sql);
+                ds.connector.query(sql,callback);
+            })
+        })
+      
+    }
 
     /**
     * 

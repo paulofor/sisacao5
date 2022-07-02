@@ -1,6 +1,7 @@
 /* tslint:disable */
 import {
-  RedeNeural
+  RedeNeural,
+  TreinoRede
 } from '../index';
 
 declare var Object: any;
@@ -8,18 +9,28 @@ export interface PrevisaoRedeInterface {
   "ticker"?: string;
   "diaNumPrevisao"?: number;
   "valorPrevisao"?: number;
+  "precoEntrada"?: number;
+  "precoReferencia"?: number;
   "redeNeuralId"?: number;
+  "treinoRedeId"?: number;
+  "tipoCompraVenda"?: string;
   "id"?: number;
   redeNeural?: RedeNeural;
+  treinoRede?: TreinoRede;
 }
 
 export class PrevisaoRede implements PrevisaoRedeInterface {
   "ticker": string;
   "diaNumPrevisao": number;
   "valorPrevisao": number;
+  "precoEntrada": number;
+  "precoReferencia": number;
   "redeNeuralId": number;
+  "treinoRedeId": number;
+  "tipoCompraVenda": string;
   "id": number;
   redeNeural: RedeNeural;
+  treinoRede: TreinoRede;
   constructor(data?: PrevisaoRedeInterface) {
     Object.assign(this, data);
   }
@@ -65,9 +76,25 @@ export class PrevisaoRede implements PrevisaoRedeInterface {
           name: 'valorPrevisao',
           type: 'number'
         },
+        "precoEntrada": {
+          name: 'precoEntrada',
+          type: 'number'
+        },
+        "precoReferencia": {
+          name: 'precoReferencia',
+          type: 'number'
+        },
         "redeNeuralId": {
           name: 'redeNeuralId',
           type: 'number'
+        },
+        "treinoRedeId": {
+          name: 'treinoRedeId',
+          type: 'number'
+        },
+        "tipoCompraVenda": {
+          name: 'tipoCompraVenda',
+          type: 'string'
         },
         "id": {
           name: 'id',
@@ -81,6 +108,14 @@ export class PrevisaoRede implements PrevisaoRedeInterface {
           model: 'RedeNeural',
           relationType: 'belongsTo',
                   keyFrom: 'redeNeuralId',
+          keyTo: 'id'
+        },
+        treinoRede: {
+          name: 'treinoRede',
+          type: 'TreinoRede',
+          model: 'TreinoRede',
+          relationType: 'belongsTo',
+                  keyFrom: 'treinoRedeId',
           keyTo: 'id'
         },
       }

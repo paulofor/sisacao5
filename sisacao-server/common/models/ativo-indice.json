@@ -30,7 +30,7 @@
   "relations": {},
   "acls": [],
   "methods": {
-    "ListaColetaIntraday": {
+    "ListaColetaIntradayIndice": {
       "accepts": [],
       "returns": [
         {
@@ -43,7 +43,7 @@
       "description": "",
       "http": [
         {
-          "path": "/listaColetaIntraday",
+          "path": "/listaColetaIntradayIndice",
           "verb": "get"
         }
       ]

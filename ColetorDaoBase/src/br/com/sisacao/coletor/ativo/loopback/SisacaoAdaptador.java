@@ -4,6 +4,7 @@ import com.strongloop.android.loopback.RestAdapter;
 
 import br.com.digicom.sisacao.repositorio.RepositorioAcaoBase;
 import br.com.digicom.sisacao.repositorio.RepositorioIndiceBase;
+import br.com.digicom.sisacao.repositorio.RepositorioMercadoriaBase;
 import br.inf.digicom.loopback.comum.DaoBaseComum;
 
 public class SisacaoAdaptador {
@@ -15,7 +16,8 @@ public class SisacaoAdaptador {
 	RepositorioIndiceBase.CotacaoIntradayIndiceRepository repIndice = 
 			adapterItem.createRepository(RepositorioIndiceBase.CotacaoIntradayIndiceRepository.class);
 	
-	
+	RepositorioMercadoriaBase.CotacaoIntradayMercadoriaRepository repMercadoria = 
+			adapterItem.createRepository(RepositorioMercadoriaBase.CotacaoIntradayMercadoriaRepository.class);
 	
 	
 	public RepositorioAcaoBase.CotacaoIntradayAcaoRepository getRep() {
@@ -24,7 +26,9 @@ public class SisacaoAdaptador {
 	public RepositorioIndiceBase.CotacaoIntradayIndiceRepository getRepIndice() {
 		return repIndice;
 	}
-	
+	public RepositorioMercadoriaBase.CotacaoIntradayMercadoriaRepository getRepMercadoria() {
+		return repMercadoria;
+	}
 	/*
 	public void liberaConexao() {
 		//adapterItem.liberaConexao();

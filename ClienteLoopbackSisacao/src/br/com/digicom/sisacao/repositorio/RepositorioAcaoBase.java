@@ -109,7 +109,7 @@ public class RepositorioAcaoBase {
 			return "CotacaoIntradayAcaos";
 		}
 		public void insereValorHorario(String ticker, String horaNegocio, Double valor, final VoidCallback voidCallback) {
-			RestContractItem contrato = new RestContractItem("CotacaoIntradayAcaos/insereValorHorarioAcaoDes","POST");
+			RestContractItem contrato = new RestContractItem("CotacaoIntradayAcaos/insereValorHorarioAcao","POST");
 			this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayAcao.insereValorHorarioAcao");
 	        Map<String, Object> params = new HashMap<String, Object>();
 	        params.put("ticker", ticker);

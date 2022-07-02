@@ -1,8 +1,6 @@
 package sisacao.deeplearning.tensorflow.python;
 
-import java.io.FileNotFoundException;
-
-import br.com.digicom.sisacao.modelo.RedeNeural;
+import br.com.digicom.sisacao.modelo.TreinoRede;
 import br.inf.digicom.loopback.DaoBase;
 import br.inf.digicom.loopback.DummyDaoBase;
 import sisacao.deeplearning.tensorflow.jupyter.NotebookTreinoTensorFlow;
@@ -22,10 +20,10 @@ public class GeraPython extends DaoAplicacao {
 	@Override
 	protected void executaImpl() {
 		DatasetTreinoRede ds = (DatasetTreinoRede) getComum();
-		RedeNeural rede = ds.getRedeCorrente();
+		TreinoRede treinoRede = ds.getTreinoRedeCorrente();
 		NotebookTreinoTensorFlow obj = new NotebookTreinoTensorFlow();
-		obj.setRedeNeural(rede);
-		obj.geraNotebook("treino" + rede.getId());
+		obj.setTreinoRede(treinoRede);
+		obj.geraNotebook("treino_rede" + treinoRede.getId());
 		finalizar();
 	}
 

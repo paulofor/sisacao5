@@ -63,6 +63,9 @@ import { ExemploTreinoAcaoEntrada } from '../../models/ExemploTreinoAcaoEntrada'
 import { ExemploTreinoAcaoSaida } from '../../models/ExemploTreinoAcaoSaida';
 import { PrevisaoRede } from '../../models/PrevisaoRede';
 import { RedeNeural } from '../../models/RedeNeural';
+import { PeriodoTreinoRede } from '../../models/PeriodoTreinoRede';
+import { TipoExemploTreino } from '../../models/TipoExemploTreino';
+import { TreinoRede } from '../../models/TreinoRede';
 
 export interface Models { [name: string]: any }
 
@@ -133,6 +136,9 @@ export class SDKModels {
     ExemploTreinoAcaoSaida: ExemploTreinoAcaoSaida,
     PrevisaoRede: PrevisaoRede,
     RedeNeural: RedeNeural,
+    PeriodoTreinoRede: PeriodoTreinoRede,
+    TipoExemploTreino: TipoExemploTreino,
+    TreinoRede: TreinoRede,
     
   };
 

@@ -30,7 +30,7 @@ public class AtivoIndice_ListaColetaIntraday extends ColetorIndiceDaoBase{
 	protected void executaImpl() {
 		
 		final DatasetColetorIndice ds = (DatasetColetorIndice) getComum();
-		this.rep.listaColetaIntraday(new ListCallback<AtivoIndice>() {
+		this.rep.listaColetaIntradayIndice(new ListCallback<AtivoIndice>() {
 			@Override
 			public void onSuccess(List<AtivoIndice> objects) {
 				ds.setListaAtivoIndice(objects);

@@ -2,7 +2,8 @@
 import {
   ExecucaoSimulacao,
   AtivoAcao,
-  InstituicaoFinanceira
+  InstituicaoFinanceira,
+  PrevisaoRede
 } from '../index';
 
 declare var Object: any;
@@ -36,9 +37,11 @@ export interface TradeRealInterface {
   "id"?: number;
   "execucaoSimulacaoId"?: number;
   "instituicaoFinanceiraId"?: number;
+  "previsaoRedeId"?: number;
   execucaoSimulacao?: ExecucaoSimulacao;
   ativoAcao?: AtivoAcao;
   instituicaoFinanceira?: InstituicaoFinanceira;
+  previsaoRede?: PrevisaoRede;
 }
 
 export class TradeReal implements TradeRealInterface {
@@ -71,9 +74,11 @@ export class TradeReal implements TradeRealInterface {
   "id": number;
   "execucaoSimulacaoId": number;
   "instituicaoFinanceiraId": number;
+  "previsaoRedeId": number;
   execucaoSimulacao: ExecucaoSimulacao;
   ativoAcao: AtivoAcao;
   instituicaoFinanceira: InstituicaoFinanceira;
+  previsaoRede: PrevisaoRede;
   constructor(data?: TradeRealInterface) {
     Object.assign(this, data);
   }
@@ -223,6 +228,10 @@ export class TradeReal implements TradeRealInterface {
           name: 'instituicaoFinanceiraId',
           type: 'number'
         },
+        "previsaoRedeId": {
+          name: 'previsaoRedeId',
+          type: 'number'
+        },
       },
       relations: {
         execucaoSimulacao: {
@@ -247,6 +256,14 @@ export class TradeReal implements TradeRealInterface {
           model: 'InstituicaoFinanceira',
           relationType: 'belongsTo',
                   keyFrom: 'instituicaoFinanceiraId',
+          keyTo: 'id'
+        },
+        previsaoRede: {
+          name: 'previsaoRede',
+          type: 'PrevisaoRede',
+          model: 'PrevisaoRede',
+          relationType: 'belongsTo',
+                  keyFrom: 'previsaoRedeId',
           keyTo: 'id'
         },
       }

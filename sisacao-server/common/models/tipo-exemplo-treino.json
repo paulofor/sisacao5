@@ -1,0 +1,20 @@
+{
+  "name": "TipoExemploTreino",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "qtdeDias": {
+      "type": "number"
+    },
+    "posicaoReferencia": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

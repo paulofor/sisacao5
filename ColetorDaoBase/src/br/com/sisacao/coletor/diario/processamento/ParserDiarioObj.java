@@ -17,11 +17,11 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import br.com.digicom.lib.dao.DaoException;
-import coletorjava.modelo.CotacaoDiario;
-import coletorjava.modelo.FabricaVo;
-import coletorjava.regracolecao.CotacaoDiarioRegraColecao;
-import coletorjava.regracolecao.FabricaRegra;
-import sisacao.opcaointra.cotacao.CotacaoDiarioOld;
+import br.com.sisacao.coletor.diario.legado.CotacaoDiario;
+import br.com.sisacao.coletor.diario.legado.CotacaoDiarioOld;
+import br.com.sisacao.coletor.diario.legado.CotacaoDiarioRegraColecao;
+import br.com.sisacao.coletor.diario.legado.CotacaoDiarioRegraColecaoImpl;
+import br.com.sisacao.coletor.diario.legado.CotacaoDiarioVo;
 
 public class ParserDiarioObj {
 
@@ -38,7 +38,7 @@ public class ParserDiarioObj {
 	static CotacaoDiarioRegraColecao cotacaoDiarioRegra;
 	
 	public ParserDiarioObj() {
-		cotacaoDiarioRegra = FabricaRegra.getInstancia().getCotacaoDiarioRegraColecao();
+		cotacaoDiarioRegra = new CotacaoDiarioRegraColecaoImpl();
 	}
 	
 	
@@ -152,7 +152,7 @@ public class ParserDiarioObj {
 						tipo = eElement.getElementsByTagName("MktDataStrmId").item(0).getTextContent();
 						if ("E".equals(tipo) && eElement.getElementsByTagName("LastPric").item(0)!=null) {
 							contaItem++;
-							CotacaoDiario novo = FabricaVo.criaCotacaoDiario();
+							CotacaoDiario novo = new CotacaoDiarioVo();
 							//System.out.println(ticker);
 							String fec = eElement.getElementsByTagName("LastPric").item(0).getTextContent();
 							String max = eElement.getElementsByTagName("MaxPric").item(0).getTextContent();
@@ -236,7 +236,7 @@ public class ParserDiarioObj {
 						tipo = eElement.getElementsByTagName("MktDataStrmId").item(0).getTextContent();
 						if ("E".equals(tipo) && eElement.getElementsByTagName("LastPric").item(0)!=null) {
 							contaItem++;
-							CotacaoDiario novo = FabricaVo.criaCotacaoDiario();
+							CotacaoDiario novo = new CotacaoDiarioVo();
 							//System.out.println(ticker);
 							String fec = null;
 							String max = null;

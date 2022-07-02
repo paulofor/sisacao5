@@ -62,5 +62,8 @@ export * from './ExemploTreinoAcaoEntrada';
 export * from './ExemploTreinoAcaoSaida';
 export * from './PrevisaoRede';
 export * from './RedeNeural';
+export * from './PeriodoTreinoRede';
+export * from './TipoExemploTreino';
+export * from './TreinoRede';
 export * from './BaseModels';
 export * from './FireLoopRef';

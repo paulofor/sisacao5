@@ -1,5 +1,8 @@
 'use strict';
 
+
+var app = require('../../server/server');
+
 module.exports = function(Exemplotreinoacaosaida) {
 
 
@@ -41,7 +44,40 @@ group by regraProjecaoId, codigoRegraProjecao
         ds.connector.query(sql,callback);
     }
 
+/*
+select campoX, campoX
+from ExemploTreinoAcaoSaida saida
+inner join ExemploTreinoAcaoEntrada entrada 
+on entrada.diaNumPrevisao = saida.diaNumPrevisao and entrada.ticker = saida.ticker
+inner join RelGrupoAcao on RelGrupoAcao.ticker = saida.ticker 
+where entrada.diaNumPrevisao >= 20220101 and 
+entrada.diaNumPrevisao <= 20220131 and
+saida.regraProjecaoId = 30 and
+entrada.qtdeDias = 120 and
+entrada.posicaoReferencia = 0 and
+RelGrupoAcao.grupoAcaoId  = 12
+*/
 
+    Exemplotreinoacaosaida.ListaParaTreino = function(diaNumInicio,diaNumFinal,idGrupoAcao,idRegraProjecao,idTipoExemplo, callback) {
+        let filtro = {}
+        app.models.TipoExemploTreino.findById(idTipoExemplo, (err,tipo) => {
+            console.log(tipo);
+            let sql = "select campoX, campoY " +
+                " from ExemploTreinoAcaoSaida saida " +
+                " inner join ExemploTreinoAcaoEntrada entrada " +
+                " on entrada.diaNumPrevisao = saida.diaNumPrevisao and entrada.ticker = saida.ticker " +
+                " inner join RelGrupoAcao on RelGrupoAcao.ticker = saida.ticker " +
+                " where entrada.diaNumPrevisao >= " + diaNumInicio + " and " + 
+                " entrada.diaNumPrevisao <= " + diaNumFinal + " and " +
+                " saida.regraProjecaoId = " + idRegraProjecao + " and " +
+                " entrada.qtdeDias = " +  tipo.qtdeDias + " and " +
+                " entrada.posicaoReferencia = " + tipo.posicaoReferencia + " and " +
+                " RelGrupoAcao.grupoAcaoId  = " + idGrupoAcao
+            console.log(sql)
+            let ds = Exemplotreinoacaosaida.dataSource;
+            ds.connector.query(sql,callback);
+        })
+    }
 
     Exemplotreinoacaosaida.InsereExemploSaida = function(exemplo,callback)  {
         console.log('exemplo-saida: ' , exemplo);

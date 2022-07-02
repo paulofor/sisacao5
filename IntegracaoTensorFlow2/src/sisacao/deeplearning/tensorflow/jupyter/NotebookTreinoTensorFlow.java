@@ -2,17 +2,22 @@ package sisacao.deeplearning.tensorflow.jupyter;
 
 import org.json.JSONArray;
 
-import br.com.digicom.sisacao.modelo.RedeNeural;
+import br.com.digicom.sisacao.modelo.TreinoRede;
 
 public class NotebookTreinoTensorFlow extends NotebookObj {
 
-	private RedeNeural rede = null;
+	private TreinoRede treinoRede;
 	
-	public void setRedeNeural(RedeNeural rede) {
-		this.rede = rede;
+	
+	
+	public TreinoRede getTreinoRede() {
+		return treinoRede;
 	}
-	
-	
+
+	public void setTreinoRede(TreinoRede treinoRede) {
+		this.treinoRede = treinoRede;
+	}
+
 	@Override
 	protected void montaScript(JSONArray notebook) {
 		importacoes(notebook);
@@ -32,27 +37,27 @@ public class NotebookTreinoTensorFlow extends NotebookObj {
 		celula = new CelulaNotebook();
 		
 		celula.setTitulo("Estrutra", 2);
-		celula.adicionaLinha(this.rede.getEstrutura());
+		celula.adicionaLinha(this.getTreinoRede().getRedeNeural().getEstrutura());
 		celula.adicionaLinha("model.summary()");
 		insereCelula(notebook,celula);
 	}
 	private void compilacaoRede(JSONArray notebook) {
 		CelulaNotebook celula = new CelulaNotebook();
 		celula.setTitulo("Compilacao", 2);
-		celula.adicionaLinha(this.rede.getCompilacao());
+		celula.adicionaLinha(this.getTreinoRede().getRedeNeural().getCompilacao());
 		insereCelula(notebook,celula);
 	}
 	
 	private void fitRede(JSONArray notebook) {
 		CelulaNotebook celula = new CelulaNotebook();
 		celula.setTitulo("Fit - Treino", 2);
-		celula.adicionaLinha(this.rede.getFitTreinamento());
+		celula.adicionaLinha(this.getTreinoRede().getRedeNeural().getFitTreinamento());
 		insereCelula(notebook,celula);
 	}
 	private void salvaRede(JSONArray notebook) {
 		CelulaNotebook celula = new CelulaNotebook();
 		celula.setTitulo("Salva Rede", 2);
-		celula.adicionaLinha("path='pesos/rede" + this.rede.getId() + ".h5'");
+		celula.adicionaLinha("path='pesos/treino_rede" + this.getTreinoRede().getId() + ".h5'");
 		celula.adicionaLinha("model.save(path)");
 		insereCelula(notebook,celula);
 	}
@@ -60,7 +65,15 @@ public class NotebookTreinoTensorFlow extends NotebookObj {
 	private void dadosValidacao(JSONArray notebook) {
 		CelulaNotebook celula = new CelulaNotebook();
 		celula.setTitulo("Dados Validacao", 1);
-		celula.adicionaLinha("urlValida = \"http://vps-40d69db1.vps.ovh.ca:23005/api/ExemploTreinoAcaos/obtemConjuntoDesenvolvimento?idPeriodo={}&codigoGrupoAcao={}&codigoRegraProjecao={}\".format(codigoPeriodo,codigoGrupo,codigoRegra)");
+		celula.adicionaLinha("diaInicio = '" + this.treinoRede.getPeriodoTreinoRede().getDiaNumInicioValidacao() + "'");
+		celula.adicionaLinha("diaFinal = '" + this.treinoRede.getPeriodoTreinoRede().getDiaNumFinalValidacao() + "'");
+		celula.adicionaLinha("idGrupo = '" + this.treinoRede.getGrupoAcaoId() + "'");
+		celula.adicionaLinha("idRegra = '" + this.treinoRede.getRegraProjecaoId() + "'");
+		celula.adicionaLinha("idTipo = '" + this.treinoRede.getTipoExemploTreinoId() + "'");
+		celula.adicionaLinha("urlValida = 'http://vps-40d69db1.vps.ovh.ca:23004/api/ExemploTreinoAcaoSaidas/listaParaTreino?diaNumInicio={}&diaNumFinal={}&idGrupoAcao={}&idRegraProjecao={}&idTipoExemplo={}'.format(diaInicio,diaFinal,idGrupo,idRegra,idTipo)");;
+		insereCelula(notebook,celula);
+		
+		celula = new CelulaNotebook();
 		celula.adicionaLinha("print(urlValida)");
 		insereCelula(notebook,celula);
 		
@@ -110,10 +123,12 @@ public class NotebookTreinoTensorFlow extends NotebookObj {
 	private void conexaoServidor(JSONArray notebook) {
 		CelulaNotebook celula = new CelulaNotebook();
 		celula.setTitulo("Conectando com servidor", 1);
-		celula.adicionaLinha("codigoGrupo = 'Neg-100'");
-		celula.adicionaLinha("codigoPeriodo = '11'");
-		celula.adicionaLinha("codigoRegra = 't11s17v'");
-		celula.adicionaLinha("url = 'http://vps-40d69db1.vps.ovh.ca:23005/api/ExemploTreinoAcaos/obtemConjuntoTreino?idPeriodo={}&codigoGrupoAcao={}&codigoRegraProjecao={}'.format(codigoPeriodo,codigoGrupo,codigoRegra)");;
+		celula.adicionaLinha("diaInicio = '" + this.treinoRede.getPeriodoTreinoRede().getDiaNumInicioTreino() + "'");
+		celula.adicionaLinha("diaFinal = '" + this.treinoRede.getPeriodoTreinoRede().getDiaNumFinalTreino() + "'");
+		celula.adicionaLinha("idGrupo = '" + this.treinoRede.getGrupoAcaoId() + "'");
+		celula.adicionaLinha("idRegra = '" + this.treinoRede.getRegraProjecaoId() + "'");
+		celula.adicionaLinha("idTipo = '" + this.treinoRede.getTipoExemploTreinoId() + "'");
+		celula.adicionaLinha("url = 'http://vps-40d69db1.vps.ovh.ca:23004/api/ExemploTreinoAcaoSaidas/listaParaTreino?diaNumInicio={}&diaNumFinal={}&idGrupoAcao={}&idRegraProjecao={}&idTipoExemplo={}'.format(diaInicio,diaFinal,idGrupo,idRegra,idTipo)");;
 		insereCelula(notebook,celula);
 		
 		celula = new CelulaNotebook();

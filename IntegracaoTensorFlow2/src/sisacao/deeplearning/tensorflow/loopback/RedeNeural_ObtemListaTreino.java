@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.strongloop.android.loopback.callbacks.ListCallback;
 
-import br.com.digicom.sisacao.modelo.RedeNeural;
+import br.com.digicom.sisacao.modelo.TreinoRede;
 import br.inf.digicom.loopback.DaoBase;
 import sisacao.deeplearning.tensorflow.python.GeraPython;
 
@@ -16,11 +16,11 @@ public class RedeNeural_ObtemListaTreino extends DaoAplicacao {
 	@Override
 	protected void executaImpl() {
 		final DatasetTreinoRede ds = (DatasetTreinoRede) getComum();
-		this.repRede.obtemListaTreino(new ListCallback<RedeNeural>() {
+		this.repTreinoRede.obtemListaParaTreino(new ListCallback<TreinoRede>() {
 
-			public void onSuccess(List<RedeNeural> objects) {
-				for (RedeNeural rede : objects) {
-					ds.setRedeCorrente(rede);
+			public void onSuccess(List<TreinoRede> objects) {
+				for (TreinoRede treino : objects) {
+					ds.setTreinoRedeCorrente(treino);
 					executaProximoSemFinalizar();
 				}
 				finalizar();
