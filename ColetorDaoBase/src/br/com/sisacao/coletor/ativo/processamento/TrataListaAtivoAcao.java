@@ -13,17 +13,30 @@ import br.inf.digicom.loopback.IDatasetComum;
 public class TrataListaAtivoAcao extends DaoBaseRecorrenteTempoPadrao {
 
 
-	private final int TAMANHO_CLUSTER = 5;
+	private final int TAMANHO_CLUSTER = 4;
+	private final int SLEEP_DAO_BASE = 2000;
+	private final int SLEEP_ENTRE_CLUSTER = 5000;
+	private final int SLEEP_INTRA_CLUSTER = 2000;
+	private final int INTERVALO_MINUTO = 15;
+	
+	
 	private DummyDaoBase dummy = null;
 	
 	
+	
+	
+	@Override
+	protected int getIntervaloMinuto() {
+		return INTERVALO_MINUTO;
+	}
+
 	public TrataListaAtivoAcao() {
 		this.dummy = new DummyDaoBase();
 	}
 	
 	@Override
 	protected long getTempo() {
-		return 1000;
+		return SLEEP_DAO_BASE;
 	}
 
 	
@@ -46,7 +59,7 @@ public class TrataListaAtivoAcao extends DaoBaseRecorrenteTempoPadrao {
 			ind = ind + TAMANHO_CLUSTER;
 			executaEmThread(lista);
 			try {
-				Thread.sleep(5000);
+				Thread.sleep(SLEEP_ENTRE_CLUSTER);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -66,9 +79,14 @@ public class TrataListaAtivoAcao extends DaoBaseRecorrenteTempoPadrao {
 		List<DaoBase> saida = new LinkedList<DaoBase>();
 		for (int i=indice;i<indice+TAMANHO_CLUSTER; i++) {
 			AtivoAcao ativo = getAtivo(i);
-			if (ativo!=null) {
-				DaoBase dao = new ExecutaAtivoAcao(ativo);
-				saida.add(dao);
+			try {
+				Thread.sleep(SLEEP_INTRA_CLUSTER);
+				if (ativo!=null) {
+					DaoBase dao = new ExecutaAtivoAcao(ativo);
+					saida.add(dao);
+				}
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
 		}
 		return saida;

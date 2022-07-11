@@ -293,19 +293,20 @@ module.exports = function (Ativoacao) {
                     " set spread1Mes = ((max1Mes - min1Mes) / max1Mes) * 100;";
 
         app.models.OrdemCompra.LimpaGeral((err,result) => {
-
+            console.log('OrdemCompra.LimpaGeral - err:' , err , ' result:' , result);
         });
         app.models.TradeReal.AtualizaDiaAberto((err,result) => {
+            console.log('TradeReal.AtualizaDiaAberto - err:' , err , ' result:' , result);
             
         });
         app.models.FundoImobiliario.AtualizaMetricaFundoImobiliario((err,result) => {
-            
+            console.log('FundoImobiliario.AtualizaMetricaFundoImobiliario - err:' , err , ' result:' , result); 
         })
         app.models.ExecucaoSimulacao.CalculaMaximoMedioGeral((err,result) => {
-
+            console.log('ExecucaoSimulacao.CalculaMaximoMedioGeral - err:' , err , ' result:' , result);
         })
         app.models.TradeReal.AtualizaLucroPrejuizo((err,result) => {
-            
+            console.log('TradeReal.AtualizaLucroPrejuizo - err:' , err , ' result:' , result); 
         });
         //app.models.ExperimentoSimulacao.ProcessaPermiteEdicaoExperimento((err,result) => {
         //})

@@ -4,6 +4,21 @@ var app = require('../../server/server');
 
 module.exports = function(Diapregao) {
 
+
+    Diapregao.ObtemAnteriorQuantidade = function(quantidade,callback) {
+        let ds = Diapregao.dataSource;
+        if (quantidade <= 0) {
+            let sql = "select * from DiaPregao where data <= now() order by data desc limit " + ((quantidade*-1) + 1);
+            console.log(sql);
+            ds.connector.query(sql,(err,result) => {
+                callback(err,result[result.length-1])
+            })
+        } else {
+            callback(null,null)
+        }
+       
+    }
+
    
     Diapregao.ProximoParaValidador = function(tickerm,idPeriodo,callback) {
         app.models.PeriodoExperimento.findById(idPeriodo, (err,periodo) => {

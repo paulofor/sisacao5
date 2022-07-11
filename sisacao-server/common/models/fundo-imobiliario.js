@@ -7,7 +7,19 @@ var app = require('../../server/server');
 module.exports = function (Fundoimobiliario) {
 
 
+    Fundoimobiliario.ListaIntradayFundo = function(callback) {
+        let filtro = {'where' : {'intraday' : 1}}
+        Fundoimobiliario.find(filtro,callback);
+    }
 
+    Fundoimobiliario.AtualizaIntraday = function(callback) {
+        let ds = Fundoimobiliario.dataSource;
+        let sql = "update FundoImobiliario set intraday = 1 " +
+            " where dataAtual = '2022-07-04' " +
+            " and mediaNegocio1 >= 300"
+
+        ds.connector.query(sql,callback);
+    }
 
 
 
@@ -100,13 +112,14 @@ module.exports = function (Fundoimobiliario) {
     * @param {Function(Error, array)} callback
     */
     Fundoimobiliario.Melhores6M = function(quantidade, callback) {
-        app.models.DiaPregao.ObtemAnteriorB3((err,result) => {
+        app.models.DiaPregao.ObtemAtualB3((err,result) => {
             let sql = " SELECT * FROM FundoImobiliario " +
             " where dataAtual = '" + result.dataDbStr + "' " +
             " and mediaNegocio1 >= 50 " +
             //" and percentual12 > 0 " +
             " order by percentual6 desc " +
             " limit " + quantidade;
+            console.log(sql);
             var ds = Fundoimobiliario.dataSource;
             ds.connector.query(sql, callback)
         })
@@ -119,12 +132,12 @@ module.exports = function (Fundoimobiliario) {
     * @param {Function(Error, array)} callback
     */
     Fundoimobiliario.MelhoresAluguel = function(quantidade, callback) {
-        app.models.DiaPregao.ObtemAnteriorB3((err,result) => {
+        app.models.DiaPregao.ObtemAtualB3((err,result) => {
             let sql = " SELECT * FROM FundoImobiliario " +
             " where dataAtual = '" + result.dataDbStr + "' " +
             " order by mediaPercentualAluguel6 desc " +
             " limit " + quantidade;
-            //console.log('sql:' , sql)
+            console.log('sql:' , sql)
             var ds = Fundoimobiliario.dataSource;
             ds.connector.query(sql, callback)
         })

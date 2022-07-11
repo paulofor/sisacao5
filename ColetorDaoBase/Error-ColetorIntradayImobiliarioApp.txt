@@ -1,0 +1,37 @@
+log4j:WARN No appenders could be found for logger (com.ning.http.client.RequestBuilderBase).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+jul 05, 2022 1:17:01 PM com.strongloop.android.remoting.BeanUtil setProperties
+GRAVE: BeanUtil: setPreco6() failed null
+jul 05, 2022 1:17:01 PM com.strongloop.android.remoting.BeanUtil setProperties
+GRAVE: BeanUtil: setPercentual6() failed null
+jul 05, 2022 1:17:01 PM com.strongloop.android.remoting.BeanUtil setProperties
+GRAVE: BeanUtil: setPreco6() failed null
+jul 05, 2022 1:17:01 PM com.strongloop.android.remoting.BeanUtil setProperties
+GRAVE: BeanUtil: setPercentual6() failed null
+jul 05, 2022 1:17:01 PM com.strongloop.android.remoting.BeanUtil setProperties
+GRAVE: BeanUtil: setPreco6() failed null
+jul 05, 2022 1:17:01 PM com.strongloop.android.remoting.BeanUtil setProperties
+GRAVE: BeanUtil: setPercentual6() failed null
+jul 05, 2022 1:17:01 PM com.strongloop.android.remoting.BeanUtil setProperties
+GRAVE: BeanUtil: setPreco6() failed null
+jul 05, 2022 1:17:01 PM com.strongloop.android.remoting.BeanUtil setProperties
+GRAVE: BeanUtil: setPercentual6() failed null
+jul 05, 2022 1:17:01 PM com.strongloop.android.remoting.BeanUtil setProperties
+GRAVE: BeanUtil: setPreco6() failed null
+jul 05, 2022 1:17:01 PM com.strongloop.android.remoting.BeanUtil setProperties
+GRAVE: BeanUtil: setPercentual6() failed null
+jul 05, 2022 1:17:01 PM com.strongloop.android.remoting.BeanUtil setProperties
+GRAVE: BeanUtil: setPreco6() failed null
+jul 05, 2022 1:17:01 PM com.strongloop.android.remoting.BeanUtil setProperties
+GRAVE: BeanUtil: setPercentual6() failed null
+jul 05, 2022 1:58:36 PM com.strongloop.android.remoting.adapters.RestAdapter$CallbackHandler onThrowable
+GRAVE: HTTP request (string) failed: Read timeout to vps-40d69db1.vps.ovh.ca/51.79.51.172:23005 of 60000 ms
+java.util.concurrent.TimeoutException: Read timeout to vps-40d69db1.vps.ovh.ca/51.79.51.172:23005 of 60000 ms
+	at com.ning.http.client.providers.netty.request.timeout.TimeoutTimerTask.expire(TimeoutTimerTask.java:47)
+	at com.ning.http.client.providers.netty.request.timeout.ReadTimeoutTimerTask.run(ReadTimeoutTimerTask.java:57)
+	at org.jboss.netty.util.HashedWheelTimer$HashedWheelTimeout.expire(HashedWheelTimer.java:556)
+	at org.jboss.netty.util.HashedWheelTimer$HashedWheelBucket.expireTimeouts(HashedWheelTimer.java:632)
+	at org.jboss.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:369)
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at java.lang.Thread.run(Thread.java:748)

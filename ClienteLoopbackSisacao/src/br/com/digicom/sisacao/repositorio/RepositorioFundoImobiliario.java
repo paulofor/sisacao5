@@ -36,4 +36,11 @@ public class RepositorioFundoImobiliario  extends ModelRepository<FundoImobiliar
         Map<String, Object> params = new HashMap<String, Object>();
         invokeStaticMethod("listaAluguel", params,   new JsonArrayParser<FundoImobiliario>(this, callback));
 	}
+	
+	public void listaIntradayFundo(final ListCallback<FundoImobiliario> callback ) {
+		RestContractItem contrato = new RestContractItem("FundoImobiliarios/listaIntradayFundo","GET");
+		this.getRestAdapter().getContract().addItem(contrato, "FundoImobiliario.listaIntradayFundo");
+        Map<String, Object> params = new HashMap<String, Object>();
+        invokeStaticMethod("listaIntradayFundo", params,   new JsonArrayParser<FundoImobiliario>(this, callback));
+	}
 }

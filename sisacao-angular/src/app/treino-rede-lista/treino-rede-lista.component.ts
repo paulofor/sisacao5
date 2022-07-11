@@ -26,6 +26,7 @@ export class TreinoRedeListaComponent extends BaseListComponent {
 
   getFiltro() {
     return {
+      'order' : 'redeNeuralId',
       'include' : ['redeNeural','grupoAcao','periodoTreinoRede','regraProjecao','tipoExemploTreino']
     };
   }  

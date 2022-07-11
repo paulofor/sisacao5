@@ -3,10 +3,10 @@ package br.com.sisacao.coletor.ativo.app;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.Properties;
 
 import br.inf.digicom.loopback.comum.DaoBaseComum;
-import br.inf.digicom.loopback.util.MonitoraThread;
 
 public class ColetorIntradayAtivoApp {
 public static String UrlLoopback = "";
@@ -17,8 +17,14 @@ public static String UrlLoopback = "";
 		//monitora.inicializa(60);
 		
 		System.out.println("Inicialiando ColetorIntradayAtivoApp");
-		System.out.println("Versao: 20-06-2022");
+		System.out.println("Versao: 04-07-2022");
+		
+
+       
+        
 		try {
+			PrintStream printStream = new PrintStream("Error-ColetorIntradayAtivoApp.txt");
+		    System.setErr(printStream);
 			carregaProp();
 			preparaComum();
 			ColetorIntradayAtivoObj obj = new ColetorIntradayAtivoObj();

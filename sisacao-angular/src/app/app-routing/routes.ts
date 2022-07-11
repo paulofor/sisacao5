@@ -62,6 +62,7 @@ import { ExemploSaidaResumoComponent } from '../exemplo-saida-resumo/exemplo-sai
 import { PrevisaoRedeListaDiaComponent } from '../previsao-rede-lista-dia/previsao-rede-lista-dia.component';
 import { TreinoRedeListaComponent } from '../treino-rede-lista/treino-rede-lista.component';
 import { PeriodoTreinoRedeListaComponent } from '../periodo-treino-rede-lista/periodo-treino-rede-lista.component';
+import { ImobiliarioIntradayComponent } from '../imobiliario-intraday/imobiliario-intraday.component';
 
 
 export const routes : Routes = [
@@ -113,6 +114,7 @@ export const routes : Routes = [
     { path : 'fundoImobiliarioMelhores' , component: FundoImobiliarioMelhoresComponent},
     { path : 'fundoImobiliarioAluguelMelhores' , component: FundoImobiliarioAluguelMelhoresComponent},
     { path : 'fundoImobiliarioMelhorEstabilidade' , component: FundoImobiliarioMelhorEstabilidadeComponent },
+    { path : 'imobiliarioIntraday' , component: ImobiliarioIntradayComponent },
 
     { path : 'valorMonitoriaPeriodo/:id' , component : ValorMonitoriaPeriodoComponent },
     { path : 'valorMonitoriaPeriodoTabela/:id' , component: ValorMonitoriaPeriodoTabelaComponent },

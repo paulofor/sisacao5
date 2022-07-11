@@ -105,10 +105,10 @@ export class AtivoIndiceApi extends BaseLoopBackApi {
    * This usually means the response is a `AtivoIndice` object.)
    * </em>
    */
-  public ListaColetaIntraday(customHeaders?: Function): Observable<any> {
+  public ListaColetaIntradayIndice(customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/AtivoIndices/listaColetaIntraday";
+    "/AtivoIndices/listaColetaIntradayIndice";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};

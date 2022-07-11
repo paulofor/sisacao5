@@ -8,7 +8,7 @@
     <mat-form-field class="example-full-width">
       <mat-select placeholder="Rede" #redeNeuralId [(ngModel)]="item.redeNeuralId" name="redeNeuralId">
         <mat-option *ngFor="let rede of listaRede" [value]="rede.id">
-          Rede #{{ rede.id }}
+          {{ rede.nome }}
         </mat-option>
       </mat-select>
     </mat-form-field>

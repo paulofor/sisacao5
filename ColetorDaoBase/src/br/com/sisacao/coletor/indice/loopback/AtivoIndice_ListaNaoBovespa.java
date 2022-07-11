@@ -9,7 +9,7 @@ import br.com.digicom.sisacao.modelo.AtivoIndice;
 import br.com.digicom.sisacao.repositorio.RepositorioIndiceBase;
 import br.com.sisacao.coletor.indice.daobase.ColetorIndiceDaoBase;
 import br.com.sisacao.coletor.indice.daobase.DatasetColetorIndice;
-import br.com.sisacao.coletor.indice.processamento.TrataListaAtivo;
+import br.com.sisacao.coletor.indice.processamento.TrataListaAtivoIndice;
 import br.inf.digicom.loopback.DaoBase;
 
 public class AtivoIndice_ListaNaoBovespa extends ColetorIndiceDaoBase{
@@ -44,7 +44,7 @@ public class AtivoIndice_ListaNaoBovespa extends ColetorIndiceDaoBase{
 
 	@Override
 	protected DaoBase getProximo() {
-		return new TrataListaAtivo();
+		return new TrataListaAtivoIndice();
 	}
 	
 	

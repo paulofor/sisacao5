@@ -14,6 +14,9 @@
     },
     "fitTreinamento": {
       "type": "string"
+    },
+    "nome" : {
+      "type": "string"
     }
   },
   "validations": [],

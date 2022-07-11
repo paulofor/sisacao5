@@ -3,15 +3,28 @@
       <span>Treino Rede</span>
       <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita()">novo</button>
   </div>
-  <div *ngIf="listaBase">
+  <div *ngIf="listaBase" class="dgc-painel-principal">
       <div class="dgc-card" *ngFor="let item of listaBase">
           <div class="dgc-card-header">
-            <span>Rede # {{item.redeNeural.id}}</span>
+            <span>{{item.redeNeural.nome}}</span>
           </div>
 
-          <div class="dgc-card-header">
-            <span>Período: </span>
-            <span>T {{item.periodoTreinoRede.diaNumFinalTreino}}</span>
+          <div class="dgc-card-detalhe">
+            <span>{{item.periodoTreinoRede.diaNumInicioTreino}}/</span>
+            <span>{{item.periodoTreinoRede.diaNumFinalTreino}}</span>
+          </div>
+
+          <div class="dgc-card-detalhe">
+            <span>{{item.regraProjecao.codigoRegraProjecao}}</span>
+          </div>
+
+          <div class="dgc-card-detalhe">
+            <span>treino_rede{{item.id}}.ipynb</span>
+          </div>
+
+          <div class="dgc-card-detalhe">
+            <span>Ativo Previsao: </span>
+            <span>{{item.ativoPrevisao}}</span>
           </div>
 
           <div  class="dgc-card-comandos">

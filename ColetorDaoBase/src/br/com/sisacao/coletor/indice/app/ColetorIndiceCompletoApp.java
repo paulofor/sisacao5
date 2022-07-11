@@ -3,6 +3,7 @@ package br.com.sisacao.coletor.indice.app;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.Properties;
 
 import br.inf.digicom.loopback.comum.DaoBaseComum;
@@ -22,8 +23,10 @@ public class ColetorIndiceCompletoApp {
 		
 		
 		System.out.println("Inicialiando ColetorIndiceCompletoApp");
-		System.out.println("Versao: 20-06-2022");
+		System.out.println("Versao: 06-07-2022");
 		try {
+			PrintStream printStream = new PrintStream("Error-ColetorIndiceCompletoApp.txt");
+		    System.setErr(printStream);
 			carregaProp();
 			preparaComum();
 			ColetorIndiceCompletoObj obj = new ColetorIndiceCompletoObj();

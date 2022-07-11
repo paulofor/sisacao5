@@ -11,8 +11,11 @@ module.exports = function(Treinorede) {
     } 
 
     Treinorede.ObtemListaParaPrevisao = function(callback) {
-        let filtro = {'where' : {'ativoPrevisao':'1'}}
-        Treinorede.find(filtro,callback);
+        let sql = "select TreinoRede.* , RegraProjecao.tipoCompraVenda from TreinoRede " +
+            " inner join RegraProjecao on RegraProjecao.id = TreinoRede.regraProjecaoId " +
+            " where ativoPrevisao = 1";
+        let ds = Treinorede.dataSource;
+        ds.connector.query(sql,callback);
     } 
 
     Treinorede.ListaPrevisaoDiaTreino = function(callback) {

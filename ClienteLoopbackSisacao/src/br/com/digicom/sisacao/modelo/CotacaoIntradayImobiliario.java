@@ -10,6 +10,9 @@ public class CotacaoIntradayImobiliario extends Model {
 	private String dataHora;
 	private Long posicaoDia;
 	private Long intervalo;
+
+	
+	
 	public String getTicker() {
 		return ticker;
 	}

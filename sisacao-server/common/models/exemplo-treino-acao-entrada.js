@@ -69,29 +69,37 @@ order by ent.diaNumPrevisao
 ) as tab
 where tab.tickerSaida is null
 
+select diaNumPrevisao
+from ExemploTreinoAcaoEntrada where ticker = 'ABEV3'
+and qtdeDias = 120
+and posicaoReferencia = 0
+and diaNumPrevisao not in 
+(
+select diaNumPrevisao
+from ExemploTreinoAcaoSaida where ticker = 'ABEV3'
+and regraProjecaoId = 30
+order by diaNumPrevisao desc
+)
+order by diaNumPrevisao desc
+
+
     */
 
 
 
     Exemplotreinoacaoentrada.ListaSemResultado = function(ticker,regraId,qtdeDias,posicaoReferencia, callback) {
-        let sql = " select * from " +
+        let sql = " select * "  +
+            " from ExemploTreinoAcaoEntrada where ticker = '" + ticker + "'" +
+            " and qtdeDias = " + qtdeDias +
+            " and posicaoReferencia = " + posicaoReferencia +
+            " and diaNumPrevisao not in " +
             " ( " +
-            " select " + 
-            " ent.*, " +
-            " sai.ticker as tickerSaida " +
-            " from " +
-            " ExemploTreinoAcaoEntrada ent " +
-            " left outer join ExemploTreinoAcaoSaida sai on " +
-            " (ent.ticker = sai.ticker and ent.diaNumPrevisao = sai.diaNumPrevisao) " +
-            " where " +
-            " ent.ticker = '" + ticker + "' and " +
-            " ent.qtdeDias = " + qtdeDias + " and " +
-            " ent.posicaoReferencia = " + posicaoReferencia + " and " +
-            " (sai.regraProjecaoId = " + regraId + " or sai.regraProjecaoId is null) " +
-            " order by ent.diaNumPrevisao " +
-            " ) as tab " +
-            " where tab.tickerSaida is null";
+            " select diaNumPrevisao " +
+            " from ExemploTreinoAcaoSaida where ticker = '" + ticker + "'" +
+            " and regraProjecaoId = " + regraId + " ) " +
+            " order by diaNumPrevisao asc ";
         let ds = Exemplotreinoacaoentrada.dataSource;
+        console.log(sql);
         ds.connector.query(sql,callback);
     }
 };

@@ -159,6 +159,7 @@ import { PeriodoTreinoRedeEditaComponent } from './periodo-treino-rede-edita/per
 import { TreinoRedeListaComponent } from './treino-rede-lista/treino-rede-lista.component';
 import { TreinoRedeEditaComponent } from './treino-rede-edita/treino-rede-edita.component';
 import { PrevisaoTreinoRedeItemDiaComponent } from './previsao-treino-rede-item-dia/previsao-treino-rede-item-dia.component';
+import { ImobiliarioIntradayComponent } from './imobiliario-intraday/imobiliario-intraday.component';
 
 //import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
@@ -291,6 +292,7 @@ registerLocaleData(localePt, 'pt-BR');
     TreinoRedeListaComponent,
     TreinoRedeEditaComponent,
     PrevisaoTreinoRedeItemDiaComponent,
+    ImobiliarioIntradayComponent,
   ],
   imports: [
     BrowserModule,

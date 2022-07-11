@@ -8,6 +8,7 @@ export interface RedeNeuralInterface {
   "estrutura"?: string;
   "compilacao"?: string;
   "fitTreinamento"?: string;
+  "nome"?: string;
   "id"?: number;
   previsaoRedes?: PrevisaoRede[];
 }
@@ -16,6 +17,7 @@ export class RedeNeural implements RedeNeuralInterface {
   "estrutura": string;
   "compilacao": string;
   "fitTreinamento": string;
+  "nome": string;
   "id": number;
   previsaoRedes: PrevisaoRede[];
   constructor(data?: RedeNeuralInterface) {
@@ -61,6 +63,10 @@ export class RedeNeural implements RedeNeuralInterface {
         },
         "fitTreinamento": {
           name: 'fitTreinamento',
+          type: 'string'
+        },
+        "nome": {
+          name: 'nome',
           type: 'string'
         },
         "id": {

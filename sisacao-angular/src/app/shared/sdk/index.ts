@@ -212,7 +212,6 @@ export class SDKBrowserModule {
         TreinoRedeApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
-
       ]
     };
   }

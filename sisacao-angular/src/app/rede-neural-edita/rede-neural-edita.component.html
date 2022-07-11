@@ -6,7 +6,11 @@
 
 
     <mat-form-field class="example-full-width">
-      <textarea matInput #estrutura [(ngModel)]="item.estrutura" name="estrutura" placeholder="Estrtuura" ></textarea>
+      <input matInput #nome [(ngModel)]="item.nome" name="nome" placeholder="Nome" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <textarea matInput #estrutura [(ngModel)]="item.estrutura" name="estrutura" placeholder="Estrutura" ></textarea>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">

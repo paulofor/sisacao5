@@ -93,6 +93,9 @@
     },
     "dataAtual": {
       "type": "date"
+    },
+    "intraday" : {
+      "type": "number"
     }
   },
   "validations": [],
@@ -145,6 +148,42 @@
         {
           "path": "/registraDiario",
           "verb": "post"
+        }
+      ]
+    },
+    "ListaIntradayFundo": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaIntradayFundo",
+          "verb": "get"
+        }
+      ]
+    },
+    "AtualizaIntraday": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaIntraday",
+          "verb": "get"
         }
       ]
     },

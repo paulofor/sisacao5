@@ -173,8 +173,15 @@
         }
       ]
     },
-    "ObtemAnteriorB3": {
-      "accepts": [],
+    "ObtemAnteriorQuantidade": {
+     "accepts": [
+        {
+          "arg": "quantidade",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
       "returns": [
         {
           "arg": "dia",
@@ -186,7 +193,7 @@
       "description": "",
       "http": [
         {
-          "path": "/obtemAnteriorB3",
+          "path": "/obtemAnteriorQuantidade",
           "verb": "get"
         }
       ]
