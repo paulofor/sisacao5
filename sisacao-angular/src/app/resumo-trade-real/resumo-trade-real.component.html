@@ -32,12 +32,13 @@
           <th width="10%">Saída</th>
           <th width="10%">Dias</th>
           <th width="10%">Ticker</th>
-          <th width="10%">Posição</th>
+          <th width="8%">Posição</th>
           <th width="10%">Qtde</th>
           <th width="10%">Preço Ent.</th>
           <th width="10%">Preço Sai</th>
           <th width="10%">Precentual</th>
           <th width="10%">Lucro</th>
+          <th width="2%"></th>
         </tr>
       </thead>
       <tbody>
@@ -52,6 +53,7 @@
           <td>{{trade.precoSaida | number : '1.2-2'}}</td>
           <td>{{trade.percentual | number : '1.1-1'}}%</td>
           <td>{{trade.lucroPrejuizo | number: '1.2-2'}}</td>
+          <td><img class="dgc-link" src="assets/img/reprocessar.gif" width="24px" height="24px" (click)="reprocessar(trade)"></td>
         </tr>
       </tbody>
     </table>

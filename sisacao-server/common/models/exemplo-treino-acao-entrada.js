@@ -88,7 +88,7 @@ order by diaNumPrevisao desc
 
 
     Exemplotreinoacaoentrada.ListaSemResultado = function(ticker,regraId,qtdeDias,posicaoReferencia, callback) {
-        let sql = " select * "  +
+        let sql = " select ticker, diaNumInicio, diaNumPrevisao, valorReferencia, qtdeDias, posicaoReferencia "  +
             " from ExemploTreinoAcaoEntrada where ticker = '" + ticker + "'" +
             " and qtdeDias = " + qtdeDias +
             " and posicaoReferencia = " + posicaoReferencia +

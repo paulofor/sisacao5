@@ -6,8 +6,8 @@ import br.com.digicom.parse.ExecutadorParse;
 import br.com.digicom.parse.callback.ICallbackParse;
 import br.com.digicom.sisacao.app.Loopback;
 import br.com.digicom.sisacao.repositorio.RepositorioFundoImobiliario;
-import sisacao.fixa.parser.callback.ListaRendaFixaYubbCallback;
-import sisacao.fixa.parser.dado.ItemRendaFixaDado;
+import sisacao.cdb.processamento.ItemRendaFixaDado;
+import sisacao.cdb.processamento.ListaRendaFixaYubbCallback;
 
 public class RendaFixaFacade {
 	

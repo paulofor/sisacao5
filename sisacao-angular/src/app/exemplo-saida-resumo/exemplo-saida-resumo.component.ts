@@ -11,6 +11,8 @@ import { ExemploTreinoAcaoSaidaApi } from '../shared/sdk';
 })
 export class ExemploSaidaResumoComponent  extends BaseListComponent {
 
+  processando = false;
+
   constructor(protected dialog: MatDialog, protected srv:ExemploTreinoAcaoSaidaApi,public router: Router) { 
     super(dialog,srv)
   }
@@ -22,16 +24,21 @@ export class ExemploSaidaResumoComponent  extends BaseListComponent {
   percentualClasse1(item) {
     return (item.classe1 / item.qtdeSaida) * 100;
   }
+  percentualResultado(item) {
+    return (item.resultado / item.qtdeSaida) * 100;
+  }
  
   atualiza() {
     this.carregaTela();
   }
 
   carregaTela() {
+    this.processando = true;
     this.srv.ResumoPorRegra()
     .subscribe((result:any[]) => {
         console.log('result: ' , result);
         this.listaBase = result;
+        this.processando = false;
         this.posCarregaLista();
     })
  }

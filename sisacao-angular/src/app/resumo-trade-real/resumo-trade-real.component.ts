@@ -31,6 +31,13 @@ export class ResumoTradeRealComponent implements OnInit {
       })
   }
 
+  reprocessar(item) {
+    this.srv.CalculaSaida(item.id)
+      .subscribe((result) => {
+        this.ngOnInit();
+      })
+  }
+
   carregaListaTrade() {
     let filtro = {
       'order' : 'dataSaida desc',

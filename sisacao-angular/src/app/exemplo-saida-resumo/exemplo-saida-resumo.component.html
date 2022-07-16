@@ -1,10 +1,10 @@
 <div class="dgc-painel">
   <div class="dgc-painel-header">
     <span>Dados Exemplos Treino</span>
+    <span *ngIf="processando"><img src="assets/img/aguardando.gif" width="200" height="60"></span>
     <button class="btn btn-primary btn-sm dgc-direita" (click)="atualiza()">Atualizar</button>
   </div>
-
-  <div *ngIf="listaBase">
+  <div *ngIf="listaBase" class="dgc-painel-principal">
     <div class="dgc-card" *ngFor="let item of listaBase">
       <div class="dgc-card-header">
         <span>{{item.codigoRegraProjecao}}</span>
@@ -20,6 +20,9 @@
       </div>
       <div class="dgc-card-detalhe">
         <span>Classe1: </span><span>{{item.classe1}} ( {{percentualClasse1(item) | number:'1.2-2' }}% ) </span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <span>Resultado: </span><span>{{item.resultado}} ( {{percentualResultado(item) | number:'1.2-2' }}% ) </span>
       </div>
     </div>
   </div>

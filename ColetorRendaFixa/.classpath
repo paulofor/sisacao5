@@ -10,5 +10,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ClienteLoopbackSisacao"/>
 	<classpathentry kind="lib" path="/home/usuario/sisacao5/AplicacoesAtivas/Java-Terceiros/org.json-20120521.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/DaoLib-Rec"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/SisacaoLoopbackDaoBase"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

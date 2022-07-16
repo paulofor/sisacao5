@@ -17,8 +17,8 @@ public class InsereExemploTreinoAcaoEntradaApp {
 		System.out.print("InsereExemploTreinoAcaoEntradaApp");
 		System.out.println(" (12-05-2022)");
 		try {
-			PrintStream printStream = new PrintStream("Error-InsereExemploTreinoAcaoEntradaApp.txt");
-		    System.setErr(printStream);
+			//PrintStream printStream = new PrintStream("Error-InsereExemploTreinoAcaoEntradaApp.txt");
+		    //System.setErr(printStream);
 			
 			carregaProp();
 			int posicaoEntrada = 0;
