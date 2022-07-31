@@ -174,7 +174,7 @@
       ]
     },
     "ObtemAnteriorQuantidade": {
-     "accepts": [
+      "accepts": [
         {
           "arg": "quantidade",
           "type": "number",
@@ -212,6 +212,56 @@
       "http": [
         {
           "path": "/obtemAtualB3",
+          "verb": "get"
+        }
+      ]
+    },
+    "ObtemAnteriorPorDia": {
+      "accepts": [
+        {
+          "arg": "diaNum",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "dia",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemAnteriorPorDia",
+          "verb": "get"
+        }
+      ]
+    },
+    "ObtemPeriodoPrevisaoTeste": {
+      "accepts": [
+        {
+          "arg": "idPeriodoTreinoRede",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "dia",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemPeriodoPrevisaoTeste",
           "verb": "get"
         }
       ]

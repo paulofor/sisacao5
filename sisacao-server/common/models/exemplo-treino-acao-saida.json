@@ -268,49 +268,6 @@
         }
       ]
     },
-    "ObtemPorDia": {
-      "accepts": [
-        {
-          "arg": "diaNum",
-          "type": "number",
-          "required": true,
-          "description": ""
-        },
-        {
-          "arg": "idGrupoAcao",
-          "type": "number",
-          "required": true,
-          "description": ""
-        },
-        {
-          "arg": "idRegraProjecao",
-          "type": "number",
-          "required": true,
-          "description": ""
-        },
-        {
-          "arg": "idTipoExemplo",
-          "type": "number",
-          "required": true,
-          "description": ""
-        }
-      ],
-      "returns": [
-        {
-          "arg": "resultado",
-          "type": "array",
-          "root": true,
-          "description": ""
-        }
-      ],
-      "description": "",
-      "http": [
-        {
-          "path": "/obtemPorDia",
-          "verb": "get"
-        }
-      ]
-    },
     "ListaParaAnalise": {
       "accepts": [
         {

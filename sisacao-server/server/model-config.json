@@ -294,5 +294,13 @@
   "TreinoRede": {
     "dataSource": "mysqlKingDS2",
     "public": true
+  },
+  "RendaFixaPrivada": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "PrevisaoTeste": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
   }
 }

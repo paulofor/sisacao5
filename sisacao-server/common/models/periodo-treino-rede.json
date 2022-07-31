@@ -17,6 +17,12 @@
     },
     "diaNumFinalValidacao": {
       "type": "number"
+    },
+    "diaNumInicioTeste": {
+      "type": "number"
+    },
+    "diaNumFinalTeste": {
+      "type": "number"
     }
   },
   "validations": [],

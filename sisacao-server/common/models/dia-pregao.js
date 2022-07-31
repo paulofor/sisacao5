@@ -19,6 +19,16 @@ module.exports = function(Diapregao) {
        
     }
 
+    Diapregao.ObtemAnteriorPorDia = function(diaNum,callback) {
+        let ds = Diapregao.dataSource;
+        let sql = "select * from DiaPregao " +
+                " where diaNum < " + diaNum +
+                " order by diaNum desc limit 1";
+        ds.connector.query(sql,(err,result) => {
+            callback(err,result[result.length-1])
+        })
+    }
+
    
     Diapregao.ProximoParaValidador = function(tickerm,idPeriodo,callback) {
         app.models.PeriodoExperimento.findById(idPeriodo, (err,periodo) => {
@@ -38,6 +48,18 @@ module.exports = function(Diapregao) {
         let sql = "select * from DiaPregao " +
                 " where data <= now() and " +
                 " diaNum not in (select diaNum from CotacaoDiarioAcao where ticker = 'AZUL4')";
+        let ds = Diapregao.dataSource;
+        ds.connector.query(sql,callback);
+    };
+
+    Diapregao.ObtemPeriodoPrevisaoTeste = function(idPeriodoTreinoRede, callback) {
+        let sql = " select DiaPregao.* " +
+                " from PeriodoTreinoRede, DiaPregao " +
+                " where PeriodoTreinoRede.id = " + idPeriodoTreinoRede +
+                " and DiaPregao.diaNum >= PeriodoTreinoRede.diaNumInicioTeste " +
+                " and DiaPregao.diaNum <= PeriodoTreinoRede.diaNumFinalTeste " +
+                " and DiaPregao.data < date(now()) " +
+                " order by data";
         let ds = Diapregao.dataSource;
         ds.connector.query(sql,callback);
     };

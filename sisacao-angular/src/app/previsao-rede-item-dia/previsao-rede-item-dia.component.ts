@@ -21,22 +21,10 @@ export class PrevisaoRedeItemDiaComponent implements OnInit {
     this.listaPrevisao = this.rede.previsaoRedes
   }
 
-  edita(edicao?) {
-    this.dialog.afterAllClosed.subscribe(result => {
-        //this.carregaTela();
-    });
-    this.dialog.open(this.getComponente(), {
-        width: '800px',
-        data: {
-            item: edicao
-        }
-    });
-  }
+ 
 
 
-  getComponente() {
-    return TradeRealListaEditComponent;
-  }
+ 
 
   telaCompra(item:PrevisaoRede) {
     this.dialog.open(TradeNovoSimulacaoComponent, {

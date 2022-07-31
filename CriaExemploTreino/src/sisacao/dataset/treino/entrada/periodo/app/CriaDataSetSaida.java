@@ -33,6 +33,8 @@ public class CriaDataSetSaida extends DaoBaseApp{
 		DatasetExemplo ds = (DatasetExemplo) getComum();
 		this.dias = ds.getListaCotacaoResultado();
 		System.out.println("Amostra dia: " + this.dias.size());
+		int tamAmostra = dias.size();
+		int tamRegraProjeco = ds.getRegraProjecao().getDiaLimite();
 		if (dias.size()<ds.getRegraProjecao().getDiaLimite()) {
 			if (dias.size()==0) {
 				this.finalizar();

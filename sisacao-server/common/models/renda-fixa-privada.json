@@ -1,0 +1,64 @@
+{
+  "name": "RendaFixaPrivada",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nome": {
+      "type": "string"
+    },
+    "emissor": {
+      "type": "string"
+    },
+    "distribuidor": {
+      "type": "string"
+    },
+    "vencimento": {
+      "type": "string"
+    },
+    "renatibilidadeAnualCalculada": {
+      "type": "number"
+    },
+    "tipo": {
+      "type": "string"
+    },
+    "valorMinimo": {
+      "type": "number"
+    },
+    "dataInsercao": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {
+    "RecebeDado": {
+      "accepts": [
+        {
+          "arg": "rendaFixaPrivada",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/recebeDado",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

@@ -37,11 +37,11 @@ group by regraProjecaoId, codigoRegraProjecao
             " and saida.resultado<>0) as resultado " +
             " from " +
             " ( " +
-            " select regraProjecaoId , codigoRegraProjecao, count(*) as qtdeSaida, " +
+            " select regraProjecaoId , codigoRegraProjecao, percentualEntradaDataset,  count(*) as qtdeSaida, " +
             " (select count(*) from ExemploTreinoAcaoEntrada) as qtdeEntrada " +
             " from ExemploTreinoAcaoSaida " +
             " inner join RegraProjecao on RegraProjecao.id = ExemploTreinoAcaoSaida.regraProjecaoId " +
-            " group by regraProjecaoId, codigoRegraProjecao " +
+            " group by regraProjecaoId, codigoRegraProjecao, percentualEntradaDataset " +
             " ) as tab";
         let ds = Exemplotreinoacaosaida.dataSource;
         ds.connector.query(sql,callback);

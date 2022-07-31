@@ -1,2 +1,3 @@
-java.lang.ArrayIndexOutOfBoundsException: 0
-	at sisacao.dataset.treino.saida.app.InsereExemploTreinoAcaoSaidaApp.main(InsereExemploTreinoAcaoSaidaApp.java:27)
+log4j:WARN No appenders could be found for logger (com.ning.http.client.RequestBuilderBase).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.

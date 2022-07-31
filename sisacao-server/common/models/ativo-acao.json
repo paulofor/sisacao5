@@ -369,9 +369,7 @@
       ]
     },
     "ListaColetaIntraday": {
-      "accepts": [
-       
-      ],
+      "accepts": [],
       "returns": [
         {
           "arg": "lista",

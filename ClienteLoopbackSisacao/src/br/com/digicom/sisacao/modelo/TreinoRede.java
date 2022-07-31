@@ -20,6 +20,9 @@ public class TreinoRede extends Model {
 	private TipoExemploTreino tipoExemploTreino;
 	private RegraProjecao regraProjecao;
 	
+	private Double limiteParaEntrada;
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -107,5 +110,13 @@ public class TreinoRede extends Model {
 	public void setRegraProjecaoId(Integer regraProjecaoId) {
 		this.regraProjecaoId = regraProjecaoId;
 	}
+	public Double getLimiteParaEntrada() {
+		return limiteParaEntrada;
+	}
+	public void setLimiteParaEntrada(Double limiteParaEntrada) {
+		this.limiteParaEntrada = limiteParaEntrada;
+	}
 
+	
+	
 }

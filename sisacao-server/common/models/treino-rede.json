@@ -8,6 +8,9 @@
   "properties": {
     "ativoPrevisao": {
       "type": "number"
+    },
+    "limiteParaEntrada": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -46,9 +49,7 @@
   "acls": [],
   "methods": {
     "ObtemListaParaTreino": {
-      "accepts": [
-       
-      ],
+      "accepts": [],
       "returns": [
         {
           "arg": "lista",
@@ -66,9 +67,7 @@
       ]
     },
     "ObtemListaParaPrevisao": {
-      "accepts": [
-       
-      ],
+      "accepts": [],
       "returns": [
         {
           "arg": "lista",

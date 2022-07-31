@@ -30,7 +30,7 @@ public abstract class DaoBaseApp extends DaoBase{
 
 	@Override
 	protected long getTempo() {
-		return 300000;
+		return 30000;
 	}
 	
 	@Override

@@ -27,8 +27,17 @@
     "treinoRedeId": {
       "type": "number"
     },
-    "tipoCompraVenda" : {
+    "tipoCompraVenda": {
       "type": "string"
+    },
+    "precoSaida": {
+      "type": "number"
+    },
+    "resultado": {
+      "type": "number"
+    },
+    "diaNumSaida": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -72,7 +81,6 @@
           "root": true,
           "description": ""
         }
-        
       ],
       "returns": [
         {
@@ -87,6 +95,136 @@
         {
           "path": "/recebePrevisao",
           "verb": "post"
+        }
+      ]
+    },
+    "ObtemPorDiaTreino": {
+      "accepts": [
+        {
+          "arg": "diaNumPrevisao",
+          "type": "number",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "treinoRedeId",
+          "type": "number",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "previsao",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemPorDiaTreino",
+          "verb": "get"
+        }
+      ]
+    },
+    "AtualizaResultado": {
+      "accepts": [
+        {
+          "arg": "previsao",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaResultado",
+          "verb": "post"
+        }
+      ]
+    },
+    "ListaComDiarioTargetStop": {
+      "accepts": [
+        {
+          "arg": "treinoRedeId",
+          "type": "number",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "diaNumInicial",
+          "type": "number",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "diaNumFinal",
+          "type": "number",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "limiteValor",
+          "type": "number",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "previsao",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaComDiarioTargetStop",
+          "verb": "get"
+        }
+      ]
+    },
+    "ObtemPorDiaTreinoComDiario": {
+      "accepts": [
+        {
+          "arg": "diaNumPrevisao",
+          "type": "number",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "treinoRedeId",
+          "type": "number",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "previsao",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemPorDiaTreinoComDiario",
+          "verb": "get"
         }
       ]
     },

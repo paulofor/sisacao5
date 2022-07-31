@@ -1,7 +1,7 @@
 <div class="dgc-card" *ngIf="listaPrevisao" >
   <div class="dgc-card-header">
       <span *ngIf="!rede.grupoAcaoId">{{rede.id}}</span>
-      <span *ngIf="rede.grupoAcaoId">Treino Rede #{{rede.id}}</span>
+      <span *ngIf="rede.grupoAcaoId">{{rede.redeNeural.nome}} - {{rede.regraProjecao.codigoRegraProjecao}} (#{{rede.id}})</span>
   </div>
   
   <div>

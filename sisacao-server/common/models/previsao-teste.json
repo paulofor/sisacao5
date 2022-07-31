@@ -1,0 +1,106 @@
+{
+  "name": "PrevisaoTeste",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ticker": {
+      "type": "string"
+    },
+    "diaNumPrevisao": {
+      "type": "number"
+    },
+    "valorPrevisao": {
+      "type": "number"
+    },
+    "precoEntrada": {
+      "type": "number"
+    },
+    "precoReferencia": {
+      "type": "number"
+    },
+    "treinoRedeId": {
+      "type": "number"
+    },
+    "tipoCompraVenda": {
+      "type": "string"
+    },
+    "precoSaida": {
+      "type": "number"
+    },
+    "resultado": {
+      "type": "number"
+    },
+    "diaNumSaida": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {
+    "RecebePrevisaoTreinoTeste": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "diaNumPrevisao",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "treinoRedeId",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "valorEntrada",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "valorReferencia",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "tipoCompraVenda",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/recebePrevisaoTreinoTeste",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

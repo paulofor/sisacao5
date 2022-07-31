@@ -1,10 +1,12 @@
 package sisacao.dataset.treino.saida.app;
 
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Properties;
+
 
 import br.inf.digicom.loopback.comum.DaoBaseComum;
 import sisacao.dataset.treino.obj.CriaExemploTreinoAcaoObj;
@@ -15,10 +17,9 @@ public class InsereExemploTreinoAcaoSaidaApp {
 	
 	public static void main(String[] args) {
 		System.out.print("InsereExemploTreinoAcaoSaidaApp");
-		System.out.println(" (12-05-2022)");
+		System.out.println(" (26-07-2022)");
 		try {
-			PrintStream printStream = new PrintStream("Error-InsereExemploTreinoAcaoSaidaApp.txt");
-		    System.setErr(printStream);
+			
 			carregaProp();
 			//int posicaoEntrada = 0;
 			//int qtdeDias = 120;
@@ -28,8 +29,12 @@ public class InsereExemploTreinoAcaoSaidaApp {
 			int qtdeDias = Integer.parseInt(args[1]);
 			String codigoGrupoAcao = args[2];
 			String codigoRegra = args[3];
+			PrintStream printStream = new PrintStream("Error_" + codigoRegra + "_InsereExemploTreinoAcaoSaidaApp.txt");
+		    System.setErr(printStream);
+			
 			InsereExemploTreinoAcaoSaidaObj obj = new InsereExemploTreinoAcaoSaidaObj();
 			obj.executa(posicaoEntrada, qtdeDias, codigoGrupoAcao, codigoRegra);
+			gravaFinalExecucao("Finalizou_" + codigoRegra + ".log");
 			System.exit(0);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -37,7 +42,11 @@ public class InsereExemploTreinoAcaoSaidaApp {
 
 	}
 
-	
+	private static void gravaFinalExecucao(String nomeArquivo) throws IOException {
+		FileWriter arq = new FileWriter(nomeArquivo, true);
+		arq.write("acabou");
+		arq.close();
+	}
 
 	private static void carregaProp() throws IOException {
 		System.out.println("Dir:" + System.getProperty("user.dir"));

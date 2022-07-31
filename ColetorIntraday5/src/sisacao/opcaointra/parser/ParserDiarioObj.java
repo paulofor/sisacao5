@@ -157,7 +157,12 @@ public class ParserDiarioObj {
 							//System.out.println(ticker);
 							String fec = eElement.getElementsByTagName("LastPric").item(0).getTextContent();
 							String max = eElement.getElementsByTagName("MaxPric").item(0).getTextContent();
-							String abe = eElement.getElementsByTagName("FrstPric").item(0).getTextContent();
+							String abe = null;
+							try {
+								abe = eElement.getElementsByTagName("FrstPric").item(0).getTextContent();
+							} catch (Exception e) {
+								abe = fec;
+							}
 							String min = eElement.getElementsByTagName("MinPric").item(0).getTextContent();
 							String neg = null;
 							try {

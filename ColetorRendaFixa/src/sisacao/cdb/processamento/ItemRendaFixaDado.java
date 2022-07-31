@@ -6,6 +6,9 @@ import br.com.digicom.parse.callback.IDadosParse;
 import sisacao.cdb.daobase.DatasetColetorCDB;
 
 public class ItemRendaFixaDado implements IDadosParse{
+	
+	
+	private DatasetColetorCDB ds = null;
 
 	@Override
 	public void setServidor(String paramString) {
@@ -20,8 +23,7 @@ public class ItemRendaFixaDado implements IDadosParse{
 	}
 
 	public void setDs(DatasetColetorCDB comum) {
-		// TODO Auto-generated method stub
-		
+		this.ds = comum;
 	}
 
 }

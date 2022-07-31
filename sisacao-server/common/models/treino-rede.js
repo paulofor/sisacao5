@@ -24,6 +24,7 @@ module.exports = function(Treinorede) {
                 'where' : {'ativoPrevisao' : 1},
                 'include' : 
                 [
+                    'redeNeural' , 'regraProjecao',
                     { 
                     'relation' : 'previsaoRedes',
                     'scope' : 

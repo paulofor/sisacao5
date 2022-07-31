@@ -31,16 +31,36 @@ public class ListaRendaFixaYubbCallback extends CallbackParseHtml{
 	private String proximaUrl = null;
 	
 	
+	
+	private ItemRendaFixaDado dado = null;
+	
+	
+
 	@Override
 	protected void elementoSimples(Tag t, String nomeId, String nomeClasse, String conteudo) {
 		super.elementoSimples(t, nomeId, nomeClasse, conteudo);
-		if ("header__top".equals(this.getUltClasse2())) {
-			this.ativo = conteudo;
+		
+		if ("Valor bruto".equals(this.getUltConteudo2())) {
+			System.out.println("Parei aqui");
+			this.nome = conteudo;
 			coletando = true;
+		}
+		
+		
+		if ("investmentCard lca".equals(this.getUltClasse2())) {
+			this.ativo = conteudo;
+			this.tipo = "LCA";
+			//coletando = true;
+		}
+		if ("investmentCard cdb".equals(this.getUltClasse2())) {
+			this.ativo = conteudo;
+			this.tipo = "CDB";
+			//coletando = true;
 		}
 		if ("sugarish__number".equals(nomeClasse)) {
 			this.percentual = conteudo;
 		}
+		/*
 		if ("sugarish__cdi".equals(nomeClasse)) {
 			if ("CDI".equals(conteudo)) {
 				this.tipo = "CDI";
@@ -52,13 +72,14 @@ public class ListaRendaFixaYubbCallback extends CallbackParseHtml{
 		if ("header__title header__title--column investmentCard__row".equals(this.getUltClasse3())) {
 			if (this.nome==null) this.nome  = conteudo;
 		}
-		if (("Rentabilidade ao Ano").equals(this.getUltConteudo2())) {
+		*/
+		if (("Rentabilidade líquida ao ano").equals(this.getUltConteudo2())) {
 			this.rentabilidadeAno = conteudo;
 		}
-		if (("Investimento Mínimo").equals(this.getUltConteudo2())) {
+		if (("Investimento mínimo").equals(this.getUltConteudo2())) {
 			this.investimentoMinimo = conteudo;
 		}
-		if (("Prazo de Resgate").equals(this.getUltConteudo2())) {
+		if (("Prazo de resgate").equals(this.getUltConteudo2())) {
 			this.dataResgate = conteudo;
 		}
 		if (("Distribuidor").equals(this.getUltConteudo2())) {
@@ -67,8 +88,8 @@ public class ListaRendaFixaYubbCallback extends CallbackParseHtml{
 		if (coletando && ("Emissor").equals(this.getUltConteudo2())) {
 			if (this.emissor==null) {
 				this.emissor = conteudo;
-				coletando = false;
 				finalizaItem();
+				coletando = false;
 			}
 		}
 	}
@@ -79,6 +100,9 @@ public class ListaRendaFixaYubbCallback extends CallbackParseHtml{
 		System.out.println("Rentabilidade Anual: " + this.rentabilidadeAno);
 		System.out.println("Valor Minimo:" + this.investimentoMinimo);
 		System.out.println("Vencimento: " + this.dataResgate);
+		System.out.println("Emissor: " + this.emissor);
+		System.out.println("Distribuidor: " + this.distribuidor);
+		System.out.println("Percentual:" + this.percentual);
 		System.out.println();
 		
 		this.emissor = null;
@@ -108,7 +132,7 @@ public class ListaRendaFixaYubbCallback extends CallbackParseHtml{
 	public URL getUrl() throws MalformedURLException {
 		String url = null;
 		if (this.proximaUrl==null) {
-			url = "https://172.66.40.254/investimentos/renda-fixa?investment_type=renda-fixa&months=24&principal=5000.0&risk%5Bmax%5D=&risk%5Bmin%5D=&sort_by=net_return";
+			url = "https://yubb.com.br/investimentos/renda-fixa?investment_type=renda-fixa&months=24&principal=5000.0&risk%5Bmax%5D=&risk%5Bmin%5D=&sort_by=net_return";
  		} else {
  			url = "https://yubb.com.br" + this.proximaUrl;
  		}
@@ -119,7 +143,8 @@ public class ListaRendaFixaYubbCallback extends CallbackParseHtml{
 	@Override
 	public void setDados(IDadosParse paramIDadosParse) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("Cheguei aqui");
+		this.dado = (ItemRendaFixaDado) paramIDadosParse;
 	}
 
 	@Override
@@ -130,7 +155,7 @@ public class ListaRendaFixaYubbCallback extends CallbackParseHtml{
 
 	@Override
 	public void finalizacaoOk() throws DaoException {
-		System.out.println("finalizou");
+		System.out.println("finalizou callback");
 	}
 
 	@Override

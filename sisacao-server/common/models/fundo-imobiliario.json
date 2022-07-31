@@ -94,7 +94,7 @@
     "dataAtual": {
       "type": "date"
     },
-    "intraday" : {
+    "intraday": {
       "type": "number"
     }
   },

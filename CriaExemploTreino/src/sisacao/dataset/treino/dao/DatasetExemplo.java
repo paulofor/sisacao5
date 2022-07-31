@@ -8,12 +8,14 @@ import br.com.digicom.sisacao.modelo.ExemploTreinoAcaoEntrada;
 import br.com.digicom.sisacao.modelo.RegraProjecao;
 import br.inf.digicom.loopback.IDatasetComum;
 import br.inf.digicom.loopback.comum.ativoacao.AtivoAcao_ListaPorNomeGrupoDS;
+import br.inf.digicom.loopback.comum.diapregao.DiaPregao_ObtemIntradayResultadoTickerAteFinalDS;
 import br.inf.digicom.loopback.comum.diapregao.DiaPregao_ObtemIntradayResultadoTickerPeriodoQuantidadeDS;
 import br.inf.digicom.loopback.comum.diapregao.DiaPregao_ObtemIntradayResultadoTickerQuantidadeB3DS;
 import br.inf.digicom.loopback.comum.diapregao.DiaPregao_ObtemIntradayResultadoValorDS;
 import br.inf.digicom.loopback.comum.regraprojecao.RegraProjecao_ObtemPorCodigoRegraDS;
 
 public class DatasetExemplo implements IDatasetComum, 
+											DiaPregao_ObtemIntradayResultadoTickerAteFinalDS,
 											DiaPregao_ObtemIntradayResultadoTickerQuantidadeB3DS,
 											DiaPregao_ObtemIntradayResultadoTickerPeriodoQuantidadeDS,
 											AtivoAcao_ListaPorNomeGrupoDS,
