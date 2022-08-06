@@ -2,6 +2,8 @@ package br.com.digicom.sisacao.modelo;
 
 import java.util.Collection;
 
+import org.json.JSONObject;
+
 import com.strongloop.android.loopback.Model;
 
 public class RendaFixaPrivada extends Model{
@@ -16,6 +18,35 @@ public class RendaFixaPrivada extends Model{
 	
 	private Double valorMinimo;
 	private String dataInsercao;
+	
+	public void converteDataParaServer() {
+		// DD-MM-AAAA
+		// 0123456789
+		String dia = this.vencimento.substring(0,2);
+		String mes = this.vencimento.substring(3, 5);
+		String ano = this.vencimento.substring(6);
+		this.vencimento = ano + "-" + mes + "-" + dia;
+	}
+	
+	
+	public JSONObject getJSON() {
+		JSONObject obj = new JSONObject();
+		try {
+			obj.put("nome", nome);
+			obj.put("emissor", emissor);
+			obj.put("distribuidor", distribuidor);
+			obj.put("vencimento", vencimento);
+			obj.put("rentabilidadeAnualCalculada", rentabilidadeAnualCalculada);
+			obj.put("tipo", tipo);
+			obj.put("valorMinimo", valorMinimo);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return obj;
+	}
+	
+	
 	public String getNome() {
 		return nome;
 	}
@@ -64,10 +95,7 @@ public class RendaFixaPrivada extends Model{
 	public void setDataInsercao(String dataInsercao) {
 		this.dataInsercao = dataInsercao;
 	}
-	public Collection getJSON() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	
 	
 	

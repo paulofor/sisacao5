@@ -1,21 +1,21 @@
 package sisacao.deeplearning.desenvolvimento.processamento;
 
 import br.com.digicom.sisacao.modelo.CotacaoDiarioAcao;
-import br.com.digicom.sisacao.modelo.PrevisaoRede;
+import br.com.digicom.sisacao.modelo.PrevisaoTeste;
 
 public class TradePrevisao {
 	
-	private PrevisaoRede previsao;
+	private PrevisaoTeste previsao;
 	
-	public TradePrevisao(PrevisaoRede previsao) {
+	public TradePrevisao(PrevisaoTeste previsao) {
 		this.previsao = previsao;
 		this.previsao.setDiaNumSaida(99999999);
 		
 	}
-	public PrevisaoRede getPrevisao() {
+	public PrevisaoTeste getPrevisao() {
 		return this.previsao;
 	}
-	public void saidaTrade(PrevisaoRede previsao) {
+	public void saidaTrade(PrevisaoTeste previsao) {
 		this.previsao = previsao;
 	}
 	

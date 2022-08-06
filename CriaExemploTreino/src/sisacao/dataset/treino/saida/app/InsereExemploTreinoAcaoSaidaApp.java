@@ -17,7 +17,7 @@ public class InsereExemploTreinoAcaoSaidaApp {
 	
 	public static void main(String[] args) {
 		System.out.print("InsereExemploTreinoAcaoSaidaApp");
-		System.out.println(" (26-07-2022)");
+		System.out.println(" (06-08-2022)");
 		try {
 			
 			carregaProp();

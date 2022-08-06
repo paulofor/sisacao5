@@ -35,6 +35,9 @@
     },
     "diaNumSaida": {
       "type": "number"
+    },
+    "pontuacao": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -99,6 +102,74 @@
         {
           "path": "/recebePrevisaoTreinoTeste",
           "verb": "post"
+        }
+      ]
+    },
+    "AtualizaResultadoTeste": {
+      "accepts": [
+        {
+          "arg": "previsao",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaResultadoTeste",
+          "verb": "post"
+        }
+      ]
+    },
+    "ListaComDiarioTargetStopTeste": {
+      "accepts": [
+        {
+          "arg": "treinoRedeId",
+          "type": "number",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "diaNumInicial",
+          "type": "number",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "diaNumFinal",
+          "type": "number",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "limiteValor",
+          "type": "number",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "previsao",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaComDiarioTargetStopTeste",
+          "verb": "get"
         }
       ]
     }

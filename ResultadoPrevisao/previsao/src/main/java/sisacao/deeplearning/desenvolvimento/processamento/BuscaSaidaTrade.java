@@ -8,7 +8,7 @@ import br.com.digicom.sisacao.modelo.DiaPregao;
 import br.inf.digicom.loopback.DaoBase;
 import sisacao.deeplearning.desenvolvimento.dao.DaoBasePrevisao;
 import sisacao.deeplearning.desenvolvimento.dao.DatasetResultadoPrevisao;
-import sisacao.deeplearning.desenvolvimento.dao.PrevisaoRede_AtualizaResultado;
+import sisacao.deeplearning.desenvolvimento.dao.PrevisaoTeste_AtualizaResultadoTeste;
 
 public class BuscaSaidaTrade extends DaoBasePrevisao{
 
@@ -37,43 +37,26 @@ public class BuscaSaidaTrade extends DaoBasePrevisao{
 
 	private boolean verificaSaida(DiaPregao dia, TradePrevisao trade) {
 		System.out.println("Data: " + dia.getDiaNum());
+		if (dia.getCotacaoDiarioAcaos().size()<1) {
+			return false;
+		}
 		CotacaoDiarioAcao cotacao = dia.getCotacaoDiarioAcaos().get(0);
 		System.out.println(cotacao);
-		if (trade.limiteInferior() <= obtemMaximo(dia) && trade.limiteInferior() >= obtemMinimo(dia)) {
+		if (trade.limiteInferior() <= dia.getMaximoDia() && trade.limiteInferior() >= dia.getMinimoDia()) {
 			trade.saidaInferior(cotacao);
 			return true;
 		}
-		if (trade.limiteSuperior() <= obtemMaximo(dia) && trade.limiteSuperior() >= obtemMinimo(dia)) {
+		if (trade.limiteSuperior() <= dia.getMaximoDia() && trade.limiteSuperior() >= dia.getMinimoDia()) {
 			trade.saidaSuperior(cotacao);
 			return true;
 		}
 		return false;
 	}
 
-	private Double obtemMaximo(DiaPregao dia) {
-		Double max = (dia.getCotacaoDiarioAcaos().size()>0?dia.getCotacaoDiarioAcaos().get(0).getMaximo():null);
-		if (max!=null) return max;
-		max = 0d;
-		for (CotacaoIntradayAcaoResultado cotacao :dia.getCotacaoIntradayAcaoResultados()) {
-			if (cotacao.getValor() > max) max = cotacao.getValor();
-		}
-		return max;
-		
-		
-	}
-	private Double obtemMinimo(DiaPregao dia) {
-		Double min = (dia.getCotacaoDiarioAcaos().size()>0?dia.getCotacaoDiarioAcaos().get(0).getMinimo():null);
-		if (min!=null) return min;
-		min = 99999d;
-		for (CotacaoIntradayAcaoResultado cotacao :dia.getCotacaoIntradayAcaoResultados()) {
-			if (cotacao.getValor() < min) min = cotacao.getValor();
-		}
-		return min;
-	}
-
+	
 	@Override
 	protected DaoBase getProximo() {
-		return new PrevisaoRede_AtualizaResultado();
+		return new PrevisaoTeste_AtualizaResultadoTeste();
 	}
 
 }

@@ -2,11 +2,11 @@ package sisacao.deeplearning.desenvolvimento.dao;
 
 import com.strongloop.android.loopback.callbacks.VoidCallback;
 
-import br.com.digicom.sisacao.modelo.PrevisaoRede;
+import br.com.digicom.sisacao.modelo.PrevisaoTeste;
 import br.inf.digicom.loopback.DaoBase;
 import br.inf.digicom.loopback.DummyDaoBase;
 
-public class PrevisaoRede_AtualizaResultado extends DaoBasePrevisao{
+public class PrevisaoTeste_AtualizaResultadoTeste extends DaoBasePrevisao{
 
 	
 	DummyDaoBase dummy = new DummyDaoBase();
@@ -15,9 +15,10 @@ public class PrevisaoRede_AtualizaResultado extends DaoBasePrevisao{
 	protected void executaImpl() {
 		// TODO Auto-generated method stub
 		DatasetResultadoPrevisao ds = (DatasetResultadoPrevisao) getComum();
-		PrevisaoRede previsao = ds.getTradeCorrente().getPrevisao();
+		PrevisaoTeste previsao = ds.getTradeCorrente().getPrevisao();
+		previsao.calculaPontuacao();
 		System.out.println(previsao);
-		this.repPrevisao.atualizaResultado(previsao, new VoidCallback() {
+		this.repPrevisao.atualizaResultadoTeste(previsao, new VoidCallback() {
 
 			public void onSuccess() {
 				executaProximo();

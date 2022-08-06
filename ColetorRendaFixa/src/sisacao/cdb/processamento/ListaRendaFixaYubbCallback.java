@@ -11,6 +11,7 @@ import javax.swing.text.html.HTML.Tag;
 import br.com.digicom.lib.dao.DaoException;
 import br.com.digicom.parse.callback.CallbackParseHtml;
 import br.com.digicom.parse.callback.IDadosParse;
+import br.com.digicom.sisacao.modelo.RendaFixaPrivada;
 
 public class ListaRendaFixaYubbCallback extends CallbackParseHtml{
 
@@ -105,6 +106,29 @@ public class ListaRendaFixaYubbCallback extends CallbackParseHtml{
 		System.out.println("Percentual:" + this.percentual);
 		System.out.println();
 		
+
+		
+		RendaFixaPrivada cdb = new RendaFixaPrivada();
+		cdb.setDistribuidor(distribuidor);
+		cdb.setEmissor(emissor);
+		cdb.setNome(nome);
+		
+		int posicaoFinal = this.rentabilidadeAno.indexOf("%");
+		String valor = this.rentabilidadeAno.substring(0,posicaoFinal);
+		String valor2 = valor.replaceAll(",",".");
+		cdb.setRentabilidadeAnualCalculada(Double.valueOf(valor2));
+		
+		cdb.setVencimento(dataResgate);
+		
+		String valorMinimo = this.investimentoMinimo.substring(3);
+		String valorMinimo2 = valorMinimo.replace(".", "");
+		String valorMinimo3 = valorMinimo2.replaceAll(",", ".");
+		cdb.setValorMinimo(Double.valueOf(valorMinimo3));
+		
+		dado.addItem(cdb);
+		
+		
+		this.coletando = true;
 		this.emissor = null;
 		this.distribuidor = null;
 		this.dataResgate = null;
@@ -114,9 +138,6 @@ public class ListaRendaFixaYubbCallback extends CallbackParseHtml{
 		this.percentual = null;
 		this.nome = null;
 		this.ativo = null;
-		
-
-		
 	}
 	
 	@Override
@@ -156,6 +177,7 @@ public class ListaRendaFixaYubbCallback extends CallbackParseHtml{
 	@Override
 	public void finalizacaoOk() throws DaoException {
 		System.out.println("finalizou callback");
+		dado.finaliza();
 	}
 
 	@Override

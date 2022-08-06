@@ -68,6 +68,31 @@
         }
       ]
     },
+    "ObtemPorDiaNum": {
+      "accepts": [
+        {
+          "arg": "diaNum",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemPorDiaNum",
+          "verb": "get"
+        }
+      ]
+    },
     "ObtemProximoDia": {
       "accepts": [],
       "returns": [

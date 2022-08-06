@@ -22,7 +22,24 @@ public class TreinoRede extends Model {
 	
 	private Double limiteParaEntrada;
 	
+	// PeriodoTreino
+	private Integer diaNumInicioTeste;
+	private Integer diaNumFinalTeste;
 	
+	
+	
+	public Integer getDiaNumInicioTeste() {
+		return diaNumInicioTeste;
+	}
+	public void setDiaNumInicioTeste(Integer diaNumInicioTeste) {
+		this.diaNumInicioTeste = diaNumInicioTeste;
+	}
+	public Integer getDiaNumFinalTeste() {
+		return diaNumFinalTeste;
+	}
+	public void setDiaNumFinalTeste(Integer diaNumFinalTeste) {
+		this.diaNumFinalTeste = diaNumFinalTeste;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -111,10 +128,14 @@ public class TreinoRede extends Model {
 		this.regraProjecaoId = regraProjecaoId;
 	}
 	public Double getLimiteParaEntrada() {
+		System.out.println("Limite entrada: " + limiteParaEntrada);
 		return limiteParaEntrada;
 	}
 	public void setLimiteParaEntrada(Double limiteParaEntrada) {
 		this.limiteParaEntrada = limiteParaEntrada;
+	}
+	public void setLimiteParaEntrada(Integer limiteParaEntrada) {
+		this.limiteParaEntrada = new Double(limiteParaEntrada);
 	}
 
 	

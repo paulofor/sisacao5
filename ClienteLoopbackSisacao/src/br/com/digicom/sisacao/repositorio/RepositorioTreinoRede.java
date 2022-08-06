@@ -30,6 +30,11 @@ public class RepositorioTreinoRede extends ModelRepository<TreinoRede>{
         invokeStaticMethod("obtemListaParaTreino", params,   new JsonArrayParser<TreinoRede>(this, callback));
 	}
 	
-	
+	public void obtemListaPrevisaoTeste(final ListCallback<TreinoRede> callback ) {
+		RestContractItem contrato = new RestContractItem("TreinoRedes/obtemListaPrevisaoTeste","GET");
+		this.getRestAdapter().getContract().addItem(contrato, "TreinoRede.obtemListaPrevisaoTeste");
+        Map<String, Object> params = new HashMap<String, Object>();
+        invokeStaticMethod("obtemListaPrevisaoTeste", params,   new JsonArrayParser<TreinoRede>(this, callback));
+	}
 
 }

@@ -25,7 +25,7 @@ public class ResultadoPrevisaoApp
 		    //System.setErr(printStream);
 			carregaProp();
 			ResultadoPrevisaoObj obj = new ResultadoPrevisaoObj();
-			obj.executa(2,20220601,20220729,0.5);
+			obj.executa(2,20220601,20220731,0.5);
 			System.exit(0);
 		} catch (Exception e) {
 			e.printStackTrace();

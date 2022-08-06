@@ -26,7 +26,7 @@ public class RepositorioRendaFixaPrivada extends ModelRepository<RendaFixaPrivad
 	}
 	
 	public void insereSeNaoExisteFixaPrivada(List<RendaFixaPrivada> listaItem, final VoidCallback voidCallback ) {
-		RestContractItem contrato = new RestContractItem("RendaFixaPrivada/insereSeNaoExisteFixaPrivada","POST");
+		RestContractItem contrato = new RestContractItem("RendaFixaPrivadas/insereSeNaoExisteFixaPrivada","POST");
 		this.getRestAdapter().getContract().addItem(contrato, "RendaFixaPrivada.insereSeNaoExisteFixaPrivada");
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("listaItem", obtemLista(listaItem));

@@ -68,4 +68,24 @@ public class DiaPregao extends Model{
 		return this.diaNum + "";
 	}
 
+	
+	public double getMinimoDia() {
+		Double min = (getCotacaoDiarioAcaos().size()>0?getCotacaoDiarioAcaos().get(0).getMinimo():null);
+		if (min!=null) return min;
+		min = 99999d;
+		for (CotacaoIntradayAcaoResultado cotacao :getCotacaoIntradayAcaoResultados()) {
+			if (cotacao.getValor() < min) min = cotacao.getValor();
+		}
+		return min;
+	}
+	
+	public double getMaximoDia() {
+		Double max = (getCotacaoDiarioAcaos().size()>0?getCotacaoDiarioAcaos().get(0).getMaximo():null);
+		if (max!=null) return max;
+		max = 0d;
+		for (CotacaoIntradayAcaoResultado cotacao :getCotacaoIntradayAcaoResultados()) {
+			if (cotacao.getValor() > max) max = cotacao.getValor();
+		}
+		return max;
+	}
 }

@@ -11,6 +11,15 @@
     },
     "limiteParaEntrada": {
       "type": "number"
+    },
+    "qtdeLucroTeste": {
+      "type": "number"
+    },
+    "qtdePrejuizoTeste": {
+      "type": "number"
+    },
+    "pontuacaoTeste": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -48,6 +57,31 @@
   },
   "acls": [],
   "methods": {
+    "AtualizaPontuacaoTreino": {
+      "accepts": [
+        {
+          "arg": "id",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaPontuacaoTreino",
+          "verb": "post"
+        }
+      ]
+    },
     "ObtemListaParaTreino": {
       "accepts": [],
       "returns": [
@@ -62,6 +96,24 @@
       "http": [
         {
           "path": "/obtemListaParaTreino",
+          "verb": "get"
+        }
+      ]
+    },
+    "ObtemListaPrevisaoTeste": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemListaPrevisaoTeste",
           "verb": "get"
         }
       ]

@@ -25,7 +25,7 @@ module.exports = function(Exemplotreinoacaoentrada) {
         })
     }
 
-    Exemplotreinoacaoentrada.ObtemPorDia = function(diaNum,callback){
+    Exemplotreinoacaoentrada.ObtemPorDiaNum = function(diaNum,callback){
         let sql = "select campoX , ticker, diaNumPrevisao from ExemploTreinoAcaoEntrada " +
             " where diaNumPrevisao = " + diaNum 
             

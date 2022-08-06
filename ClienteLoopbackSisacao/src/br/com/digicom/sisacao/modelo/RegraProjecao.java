@@ -29,6 +29,10 @@ public class RegraProjecao extends Model {
 	public void setPercentualEntradaDataset(Double percentualEntradaDataset) {
 		this.percentualEntradaDataset = percentualEntradaDataset;
 	}
+	public void setPercentualEntradaDataset(Integer percentualEntradaDataset) {
+		this.percentualEntradaDataset = new Double(percentualEntradaDataset);
+	}
+	
 	public Integer getIndiceHoraReferenciaDataset() {
 		return indiceHoraReferenciaDataset;
 	}

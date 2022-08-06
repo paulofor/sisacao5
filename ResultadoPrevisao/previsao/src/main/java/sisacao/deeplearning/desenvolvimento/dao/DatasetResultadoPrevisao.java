@@ -5,7 +5,8 @@ import java.util.List;
 
 import br.com.digicom.sisacao.modelo.AtivoAcao;
 import br.com.digicom.sisacao.modelo.DiaPregao;
-import br.com.digicom.sisacao.modelo.PrevisaoRede;
+import br.com.digicom.sisacao.modelo.PrevisaoTeste;
+import br.com.digicom.sisacao.modelo.TreinoRede;
 import br.inf.digicom.loopback.IDatasetComum;
 import br.inf.digicom.loopback.comum.diapregao.DiaPregao_ObtemIntradayResultadoTickerAteFinalDS;
 import sisacao.deeplearning.desenvolvimento.processamento.TradePrevisao;
@@ -13,12 +14,12 @@ import sisacao.deeplearning.desenvolvimento.processamento.TradePrevisao;
 public class DatasetResultadoPrevisao implements IDatasetComum,
 		DiaPregao_ObtemIntradayResultadoTickerAteFinalDS{
 
-	private long idTreinoRede;
-	private long diaNumInicial;
-	private long diaNumFinal;
-	private double valorLimite;
+	//private long idTreinoRede;
+	//private long diaNumInicial;
+	//private long diaNumFinal;
+	//private double valorLimite;
 	
-	private List<PrevisaoRede> listaPrevisao;
+	private List<PrevisaoTeste> listaPrevisao;
 	
 	private List<TradePrevisao> listaTrade = new LinkedList<TradePrevisao>();
 	
@@ -31,16 +32,26 @@ public class DatasetResultadoPrevisao implements IDatasetComum,
 	private int tamanhoAmostra;
 	private int diaNumInicio;
 	
-	private PrevisaoRede previsaoCorrente;
+	private PrevisaoTeste previsaoCorrente;
+	
+	private TreinoRede treinoCorrente;
 	
 	
 	
 	
+	public TreinoRede getTreinoCorrente() {
+		return treinoCorrente;
+	}
+
+	public void setTreinoCorrente(TreinoRede treinoCorrente) {
+		this.treinoCorrente = treinoCorrente;
+	}
+
 	private void adicionaTrade(TradePrevisao trade) {
 		this.listaTrade.add(trade);
 	}
 	
-	public boolean podeProcessar(PrevisaoRede previsao) {
+	public boolean podeProcessar(PrevisaoTeste previsao) {
 		boolean saida = true;
 		for (TradePrevisao trade : listaTrade) {
 			if (trade.getTicker().compareTo(previsao.getTicker())==0) {
@@ -54,47 +65,17 @@ public class DatasetResultadoPrevisao implements IDatasetComum,
 	}
 	
 
-	public long getIdTreinoRede() {
-		return idTreinoRede;
-	}
+	
 
-	public void setIdTreinoRede(long idTreinoRede) {
-		this.idTreinoRede = idTreinoRede;
-	}
-
-	public long getDiaNumInicial() {
-		return diaNumInicial;
-	}
-
-	public void setDiaNumInicial(long diaNumInicial) {
-		this.diaNumInicial = diaNumInicial;
-	}
-
-	public long getDiaNumFinal() {
-		return diaNumFinal;
-	}
-
-	public void setDiaNumFinal(long diaNumFinal) {
-		this.diaNumFinal = diaNumFinal;
-	}
-
-	public double getValorLimite() {
-		return valorLimite;
-	}
-
-	public void setValorLimite(double valorLimite) {
-		this.valorLimite = valorLimite;
-	}
-
-	public List<PrevisaoRede> getListaPrevisao() {
+	public List<PrevisaoTeste> getListaPrevisao() {
 		return listaPrevisao;
 	}
 
-	public void setListaPrevisao(List<PrevisaoRede> listaPrevisao) {
+	public void setListaPrevisao(List<PrevisaoTeste> listaPrevisao) {
 		this.listaPrevisao = listaPrevisao;
 	}
 
-	public void criaTrade(PrevisaoRede previsao) {
+	public void criaTrade(PrevisaoTeste previsao) {
 		this.tradeCorrente = new TradePrevisao(previsao);
 		this.adicionaTrade(tradeCorrente);
 	}
@@ -150,11 +131,11 @@ public class DatasetResultadoPrevisao implements IDatasetComum,
 		this.diaNumInicio = diaNumInicio;
 	}
 
-	public PrevisaoRede getPrevisaoCorrente() {
+	public PrevisaoTeste getPrevisaoCorrente() {
 		return previsaoCorrente;
 	}
 
-	public void setPrevisaoCorrente(PrevisaoRede previsaoCorrente) {
+	public void setPrevisaoCorrente(PrevisaoTeste previsaoCorrente) {
 		this.previsaoCorrente = previsaoCorrente;
 	}
 

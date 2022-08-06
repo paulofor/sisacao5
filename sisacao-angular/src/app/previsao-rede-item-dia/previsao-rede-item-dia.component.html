@@ -7,7 +7,7 @@
   <div>
     <span  *ngFor="let previsao of listaPrevisao">
         {{previsao.ticker}}: {{previsao.valorPrevisao | number: '1.2-2'}} 
-        <span class="dgc-link" *ngIf='(previsao.valorPrevisao > 0.5)' (click)="telaCompra(previsao)">
+        <span class="dgc-link" *ngIf='(previsao.valorPrevisao > rede.limiteParaEntrada)' (click)="telaCompra(previsao)">
           ({{previsao.precoEntrada | number: '1.2-2'}})
         </span> ; 
     </span>

@@ -18,7 +18,7 @@
     "vencimento": {
       "type": "string"
     },
-    "renatibilidadeAnualCalculada": {
+    "rentabilidadeAnualCalculada": {
       "type": "number"
     },
     "tipo": {
@@ -35,6 +35,31 @@
   "relations": {},
   "acls": [],
   "methods": {
+    "InsereSeNaoExisteFixaPrivada": {
+      "accepts": [
+        {
+          "arg": "listaItem",
+          "type": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/insereSeNaoExisteFixaPrivada",
+          "verb": "post"
+        }
+      ]
+    },
     "RecebeDado": {
       "accepts": [
         {

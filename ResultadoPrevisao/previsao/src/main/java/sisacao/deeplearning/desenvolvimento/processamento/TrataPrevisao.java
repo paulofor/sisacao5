@@ -3,7 +3,7 @@ package sisacao.deeplearning.desenvolvimento.processamento;
 import java.util.List;
 
 import br.com.digicom.sisacao.modelo.AtivoAcao;
-import br.com.digicom.sisacao.modelo.PrevisaoRede;
+import br.com.digicom.sisacao.modelo.PrevisaoTeste;
 import br.inf.digicom.loopback.DaoBase;
 import br.inf.digicom.loopback.comum.diapregao.DiaPregao_ObtemIntradayResultadoTickerAteFinal;
 import sisacao.deeplearning.desenvolvimento.dao.DaoBasePrevisao;
@@ -14,9 +14,9 @@ public class TrataPrevisao extends DaoBasePrevisao{
 	@Override
 	protected void executaImpl() {
 		DatasetResultadoPrevisao ds = (DatasetResultadoPrevisao) getComum();
-		PrevisaoRede previsao = ds.getPrevisaoCorrente();
+		PrevisaoTeste previsao = ds.getPrevisaoCorrente();
 		System.out.println(previsao);
-		List<PrevisaoRede> listaPrevisao = ds.getListaPrevisao();
+		List<PrevisaoTeste> listaPrevisao = ds.getListaPrevisao();
 		if (previsao.getPrecoEntrada() >= previsao.getMinimoDiario() && previsao.getPrecoEntrada() <= previsao.getMaximoDiario()) {
 			System.out.println("Ativou o preço");
 			if (ds.podeProcessar(previsao)) {
