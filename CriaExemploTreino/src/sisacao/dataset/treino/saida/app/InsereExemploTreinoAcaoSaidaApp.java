@@ -20,7 +20,7 @@ public class InsereExemploTreinoAcaoSaidaApp {
 		System.out.println(" (06-08-2022)");
 		try {
 			
-			carregaProp();
+			//carregaProp();
 			//int posicaoEntrada = 0;
 			//int qtdeDias = 120;
 			//String codigoGrupoAcao = "Neg-100";
@@ -29,6 +29,11 @@ public class InsereExemploTreinoAcaoSaidaApp {
 			int qtdeDias = Integer.parseInt(args[1]);
 			String codigoGrupoAcao = args[2];
 			String codigoRegra = args[3];
+			String porta = args[4];
+			
+	        UrlLoopback = "http://vps-40d69db1.vps.ovh.ca:" + porta + "/api";
+	        DaoBaseComum.setUrl(UrlLoopback);
+			
 			PrintStream printStream = new PrintStream("Error_" + codigoRegra + "_InsereExemploTreinoAcaoSaidaApp.txt");
 		    System.setErr(printStream);
 			

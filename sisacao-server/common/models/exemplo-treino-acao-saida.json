@@ -66,6 +66,31 @@
         }
       ]
     },
+    "ResumoPorRegraGrupo": {
+      "accepts": [
+        {
+          "arg": "idGrupo",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/resumoPorRegraGrupo",
+          "verb": "get"
+        }
+      ]
+    },
     "ResumoPorRegra": {
       "accepts": [],
       "returns": [

@@ -48,6 +48,58 @@ group by regraProjecaoId, codigoRegraProjecao
     }
 
 /*
+
+select *, (100*(qtdeSaida/qtdeEntrada)) as percentual,
+(select count(*) from ExemploTreinoAcaoSaida saida 
+where saida.regraProjecaoId = tab.regraProjecaoId
+and saida.campoY=0) as classe0,
+(select count(*) from ExemploTreinoAcaoSaida saida 
+where saida.regraProjecaoId = tab.regraProjecaoId
+and saida.campoY=1) as classe1  
+from
+(
+select ExemploTreinoAcaoSaida.regraProjecaoId , codigoRegraProjecao, count(*) as qtdeSaida,
+(select count(*) from ExemploTreinoAcaoEntrada) as qtdeEntrada
+from ExemploTreinoAcaoSaida
+inner join RegraProjecao on RegraProjecao.id = ExemploTreinoAcaoSaida.regraProjecaoId
+inner join GrupoRegraRel on GrupoRegraRel.regraProjecaoId = RegraProjecao.id
+where GrupoRegraRel.grupoRegraId = 1
+group by ExemploTreinoAcaoSaida.regraProjecaoId, codigoRegraProjecao
+order by codigoRegraProjecao
+) as tab
+*/
+
+
+
+    Exemplotreinoacaosaida.ResumoPorRegraGrupo = function(idGrupo, callback) {
+        let sql = " select *, (100*(qtdeSaida/qtdeEntrada)) as percentual, " +
+            " (select count(*) from ExemploTreinoAcaoSaida saida  " +
+            " where saida.regraProjecaoId = tab.regraProjecaoId " +
+            " and saida.campoY=0) as classe0, " +
+            " (select count(*) from ExemploTreinoAcaoSaida saida " + 
+            " where saida.regraProjecaoId = tab.regraProjecaoId " +
+            " and saida.campoY=1) as classe1,  " +
+            " (select count(*) from ExemploTreinoAcaoSaida saida  " +
+            " where saida.regraProjecaoId = tab.regraProjecaoId " +
+            " and saida.resultado<>0) as resultado " +
+            " from " +
+            " ( " +
+            " select ExemploTreinoAcaoSaida.regraProjecaoId , codigoRegraProjecao, percentualEntradaDataset,  count(*) as qtdeSaida, " +
+            " (select count(*) from ExemploTreinoAcaoEntrada) as qtdeEntrada " +
+            " from ExemploTreinoAcaoSaida " +
+            " inner join RegraProjecao on RegraProjecao.id = ExemploTreinoAcaoSaida.regraProjecaoId " +
+            " inner join GrupoRegraRel on GrupoRegraRel.regraProjecaoId = RegraProjecao.id " +
+            " where GrupoRegraRel.grupoRegraId = " + idGrupo + 
+            " group by ExemploTreinoAcaoSaida.regraProjecaoId, codigoRegraProjecao, percentualEntradaDataset " +
+            " order by codigoRegraProjecao " +
+            " ) as tab";
+        let ds = Exemplotreinoacaosaida.dataSource;
+        //console.log(sql);
+        ds.connector.query(sql,callback);
+    }
+
+
+/*
 select campoX, campoX
 from ExemploTreinoAcaoSaida saida
 inner join ExemploTreinoAcaoEntrada entrada 

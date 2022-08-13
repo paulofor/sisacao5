@@ -11,6 +11,10 @@ import {
 declare var Object: any;
 export interface TreinoRedeInterface {
   "ativoPrevisao"?: number;
+  "limiteParaEntrada"?: number;
+  "qtdeLucroTeste"?: number;
+  "qtdePrejuizoTeste"?: number;
+  "pontuacaoTeste"?: number;
   "id"?: number;
   "grupoAcaoId"?: number;
   "periodoTreinoRedeId"?: number;
@@ -27,6 +31,10 @@ export interface TreinoRedeInterface {
 
 export class TreinoRede implements TreinoRedeInterface {
   "ativoPrevisao": number;
+  "limiteParaEntrada": number;
+  "qtdeLucroTeste": number;
+  "qtdePrejuizoTeste": number;
+  "pontuacaoTeste": number;
   "id": number;
   "grupoAcaoId": number;
   "periodoTreinoRedeId": number;
@@ -74,6 +82,22 @@ export class TreinoRede implements TreinoRedeInterface {
       properties: {
         "ativoPrevisao": {
           name: 'ativoPrevisao',
+          type: 'number'
+        },
+        "limiteParaEntrada": {
+          name: 'limiteParaEntrada',
+          type: 'number'
+        },
+        "qtdeLucroTeste": {
+          name: 'qtdeLucroTeste',
+          type: 'number'
+        },
+        "qtdePrejuizoTeste": {
+          name: 'qtdePrejuizoTeste',
+          type: 'number'
+        },
+        "pontuacaoTeste": {
+          name: 'pontuacaoTeste',
           type: 'number'
         },
         "id": {

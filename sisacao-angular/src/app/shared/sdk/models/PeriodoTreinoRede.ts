@@ -6,6 +6,8 @@ export interface PeriodoTreinoRedeInterface {
   "diaNumFinalTreino"?: number;
   "diaNumInicioValidacao"?: number;
   "diaNumFinalValidacao"?: number;
+  "diaNumInicioTeste"?: number;
+  "diaNumFinalTeste"?: number;
   "id"?: number;
 }
 
@@ -14,6 +16,8 @@ export class PeriodoTreinoRede implements PeriodoTreinoRedeInterface {
   "diaNumFinalTreino": number;
   "diaNumInicioValidacao": number;
   "diaNumFinalValidacao": number;
+  "diaNumInicioTeste": number;
+  "diaNumFinalTeste": number;
   "id": number;
   constructor(data?: PeriodoTreinoRedeInterface) {
     Object.assign(this, data);
@@ -62,6 +66,14 @@ export class PeriodoTreinoRede implements PeriodoTreinoRedeInterface {
         },
         "diaNumFinalValidacao": {
           name: 'diaNumFinalValidacao',
+          type: 'number'
+        },
+        "diaNumInicioTeste": {
+          name: 'diaNumInicioTeste',
+          type: 'number'
+        },
+        "diaNumFinalTeste": {
+          name: 'diaNumFinalTeste',
           type: 'number'
         },
         "id": {

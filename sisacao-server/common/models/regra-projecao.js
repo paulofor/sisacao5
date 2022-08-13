@@ -3,6 +3,13 @@
 module.exports = function(Regraprojecao) {
 
 
+  Regraprojecao.FinalizaInsercao = function(idRegraProjecao, callback) {
+    let sql = "update RegraProjecao set ultimaInsercao = now() where id = " + idRegraProjecao;
+    let ds = Regraprojecao.dataSource;
+    ds.connector.query(sql,callback);
+  }
+
+
 
   Regraprojecao.EmDataSet = function(callback) {
     let sql = "select * from RegraProjecao " +

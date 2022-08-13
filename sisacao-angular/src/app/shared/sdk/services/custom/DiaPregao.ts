@@ -1078,6 +1078,8 @@ export class DiaPregaoApi extends BaseLoopBackApi {
          * (The remote method definition does not provide any description.)
          * </em>
    *
+   * @param {number} quantidade 
+   *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
    *   from the server.
@@ -1087,13 +1089,14 @@ export class DiaPregaoApi extends BaseLoopBackApi {
    * This usually means the response is a `DiaPregao` object.)
    * </em>
    */
-  public ObtemAnteriorB3(customHeaders?: Function): Observable<any> {
+  public ObtemAnteriorQuantidade(quantidade: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/DiaPregaos/obtemAnteriorB3";
+    "/DiaPregaos/obtemAnteriorQuantidade";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
+    if (typeof quantidade !== 'undefined' && quantidade !== null) _urlParams.quantidade = quantidade;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
@@ -1119,6 +1122,62 @@ export class DiaPregaoApi extends BaseLoopBackApi {
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {number} diaNum 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `DiaPregao` object.)
+   * </em>
+   */
+  public ObtemAnteriorPorDia(diaNum: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/DiaPregaos/obtemAnteriorPorDia";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof diaNum !== 'undefined' && diaNum !== null) _urlParams.diaNum = diaNum;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {number} idPeriodoTreinoRede 
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `DiaPregao` object.)
+   * </em>
+   */
+  public ObtemPeriodoPrevisaoTeste(idPeriodoTreinoRede: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/DiaPregaos/obtemPeriodoPrevisaoTeste";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof idPeriodoTreinoRede !== 'undefined' && idPeriodoTreinoRede !== null) _urlParams.idPeriodoTreinoRede = idPeriodoTreinoRede;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }

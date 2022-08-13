@@ -1,0 +1,53 @@
+{
+  "name": "GrupoRegra",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "targetInicial": {
+      "type": "number"
+    },
+    "targetFinal": {
+      "type": "number"
+    },
+    "targetPasso": {
+      "type": "number"
+    },
+    "stopInicial": {
+      "type": "number"
+    },
+    "stopFinal": {
+      "type": "number"
+    },
+    "stopPasso": {
+      "type": "number"
+    },
+    "diaLimiteInicial": {
+      "type": "number"
+    },
+    "diaLimiteFinal": {
+      "type": "number"
+    },
+    "diaLimitePasso": {
+      "type": "number"
+    },
+    "nome": {
+      "type": "string"
+    },
+    "quantidade": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "grupoRegraRels": {
+      "type": "hasMany",
+      "model": "GrupoRegraRel",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

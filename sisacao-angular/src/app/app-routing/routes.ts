@@ -63,6 +63,9 @@ import { PrevisaoRedeListaDiaComponent } from '../previsao-rede-lista-dia/previs
 import { TreinoRedeListaComponent } from '../treino-rede-lista/treino-rede-lista.component';
 import { PeriodoTreinoRedeListaComponent } from '../periodo-treino-rede-lista/periodo-treino-rede-lista.component';
 import { ImobiliarioIntradayComponent } from '../imobiliario-intraday/imobiliario-intraday.component';
+import { GrupoRegraListaComponent } from '../grupo-regra-lista/grupo-regra-lista.component';
+import { GrupoRegraDetalheComponent } from '../grupo-regra-detalhe/grupo-regra-detalhe.component';
+import { RendaFixaPrivadaMelhoresComponent } from '../renda-fixa-privada-melhores/renda-fixa-privada-melhores.component';
 
 
 export const routes : Routes = [
@@ -150,6 +153,11 @@ export const routes : Routes = [
     { path : 'previsaoRedeListaDia' , component: PrevisaoRedeListaDiaComponent },
     { path : 'treinoRedeLista' , component: TreinoRedeListaComponent },
     { path : 'periodoTreinoRedeLista' , component: PeriodoTreinoRedeListaComponent },
+
+    { path: 'grupoRegraLista' , component: GrupoRegraListaComponent },
+    { path: 'grupoRegraDetalhe/:id' , component: GrupoRegraDetalheComponent },
+
+    { path: 'rendaPrivadaMelhores' , component: RendaFixaPrivadaMelhoresComponent },
 
     { path: '',  component: HomeComponent  }
     //{ path: '',          redirectTo: 'home', pathMatch: 'full' }

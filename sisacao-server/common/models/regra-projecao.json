@@ -35,6 +35,9 @@
     },
     "quantidadeTicker": {
       "type": "number"
+    },
+    "ultimaInsercao": {
+      "type": "date"
     }
   },
   "validations": [],
@@ -47,6 +50,11 @@
     "regraProjecaoTotalMes": {
       "type": "hasMany",
       "model": "RegraProjecaoTotalMes",
+      "foreignKey": ""
+    },
+    "grupoRegraRels": {
+      "type": "hasMany",
+      "model": "GrupoRegraRel",
       "foreignKey": ""
     }
   },
@@ -152,6 +160,31 @@
       "http": [
         {
           "path": "/ligaProcessando",
+          "verb": "post"
+        }
+      ]
+    },
+    "FinalizaInsercao": {
+      "accepts": [
+        {
+          "arg": "idRegraProjecao",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/finalizaInsercao",
           "verb": "post"
         }
       ]

@@ -302,5 +302,13 @@
   "PrevisaoTeste": {
     "dataSource": "mysqlKingDS2",
     "public": true
+  },
+  "GrupoRegra": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "GrupoRegraRel": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
   }
 }

@@ -160,6 +160,11 @@ import { TreinoRedeListaComponent } from './treino-rede-lista/treino-rede-lista.
 import { TreinoRedeEditaComponent } from './treino-rede-edita/treino-rede-edita.component';
 import { PrevisaoTreinoRedeItemDiaComponent } from './previsao-treino-rede-item-dia/previsao-treino-rede-item-dia.component';
 import { ImobiliarioIntradayComponent } from './imobiliario-intraday/imobiliario-intraday.component';
+import { GrupoRegraListaComponent } from './grupo-regra-lista/grupo-regra-lista.component';
+import { GrupoRegraDetalheComponent } from './grupo-regra-detalhe/grupo-regra-detalhe.component';
+import { GrupoRegraEditaComponent } from './grupo-regra-edita/grupo-regra-edita.component';
+import { RendaFixaPrivadaMelhoresComponent } from './renda-fixa-privada-melhores/renda-fixa-privada-melhores.component';
+import { EscolheRegraGrupoEditComponent } from './escolhe-regra-grupo-edit/escolhe-regra-grupo-edit.component';
 
 //import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
@@ -293,6 +298,11 @@ registerLocaleData(localePt, 'pt-BR');
     TreinoRedeEditaComponent,
     PrevisaoTreinoRedeItemDiaComponent,
     ImobiliarioIntradayComponent,
+    GrupoRegraListaComponent,
+    GrupoRegraDetalheComponent,
+    GrupoRegraEditaComponent,
+    RendaFixaPrivadaMelhoresComponent,
+    EscolheRegraGrupoEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -380,7 +390,9 @@ registerLocaleData(localePt, 'pt-BR');
     TradeNovoSimulacaoComponent,
     RedeNeuralEditaComponent,
     PeriodoTreinoRedeEditaComponent,
-    TreinoRedeEditaComponent
+    TreinoRedeEditaComponent,
+    GrupoRegraEditaComponent,
+    EscolheRegraGrupoEditComponent
   ],
   bootstrap: [AppComponent]
 })

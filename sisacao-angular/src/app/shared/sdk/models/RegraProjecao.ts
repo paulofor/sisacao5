@@ -1,7 +1,8 @@
 /* tslint:disable */
 import {
   CotacaoIntradayAcaoResultadoValor,
-  RegraProjecaoTotalMes
+  RegraProjecaoTotalMes,
+  GrupoRegraRel
 } from '../index';
 
 declare var Object: any;
@@ -19,6 +20,7 @@ export interface RegraProjecaoInterface {
   "id"?: number;
   cotacaoIntradayAcaoResultadoValors?: CotacaoIntradayAcaoResultadoValor[];
   regraProjecaoTotalMes?: RegraProjecaoTotalMes[];
+  grupoRegraRels?: GrupoRegraRel[];
 }
 
 export class RegraProjecao implements RegraProjecaoInterface {
@@ -35,6 +37,7 @@ export class RegraProjecao implements RegraProjecaoInterface {
   "id": number;
   cotacaoIntradayAcaoResultadoValors: CotacaoIntradayAcaoResultadoValor[];
   regraProjecaoTotalMes: RegraProjecaoTotalMes[];
+  grupoRegraRels: GrupoRegraRel[];
   constructor(data?: RegraProjecaoInterface) {
     Object.assign(this, data);
   }
@@ -126,6 +129,14 @@ export class RegraProjecao implements RegraProjecaoInterface {
           name: 'regraProjecaoTotalMes',
           type: 'RegraProjecaoTotalMes[]',
           model: 'RegraProjecaoTotalMes',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'regraProjecaoId'
+        },
+        grupoRegraRels: {
+          name: 'grupoRegraRels',
+          type: 'GrupoRegraRel[]',
+          model: 'GrupoRegraRel',
           relationType: 'hasMany',
                   keyFrom: 'id',
           keyTo: 'regraProjecaoId'

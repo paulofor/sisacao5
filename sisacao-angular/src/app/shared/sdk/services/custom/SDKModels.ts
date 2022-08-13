@@ -66,6 +66,10 @@ import { RedeNeural } from '../../models/RedeNeural';
 import { PeriodoTreinoRede } from '../../models/PeriodoTreinoRede';
 import { TipoExemploTreino } from '../../models/TipoExemploTreino';
 import { TreinoRede } from '../../models/TreinoRede';
+import { RendaFixaPrivada } from '../../models/RendaFixaPrivada';
+import { PrevisaoTeste } from '../../models/PrevisaoTeste';
+import { GrupoRegra } from '../../models/GrupoRegra';
+import { GrupoRegraRel } from '../../models/GrupoRegraRel';
 
 export interface Models { [name: string]: any }
 
@@ -139,6 +143,10 @@ export class SDKModels {
     PeriodoTreinoRede: PeriodoTreinoRede,
     TipoExemploTreino: TipoExemploTreino,
     TreinoRede: TreinoRede,
+    RendaFixaPrivada: RendaFixaPrivada,
+    PrevisaoTeste: PrevisaoTeste,
+    GrupoRegra: GrupoRegra,
+    GrupoRegraRel: GrupoRegraRel,
     
   };
 

@@ -114,6 +114,10 @@ import { RedeNeuralApi } from './services/custom/RedeNeural';
 import { PeriodoTreinoRedeApi } from './services/custom/PeriodoTreinoRede';
 import { TipoExemploTreinoApi } from './services/custom/TipoExemploTreino';
 import { TreinoRedeApi } from './services/custom/TreinoRede';
+import { RendaFixaPrivadaApi } from './services/custom/RendaFixaPrivada';
+import { PrevisaoTesteApi } from './services/custom/PrevisaoTeste';
+import { GrupoRegraApi } from './services/custom/GrupoRegra';
+import { GrupoRegraRelApi } from './services/custom/GrupoRegraRel';
 /**
 * @module SDKBrowserModule
 * @description
@@ -210,6 +214,10 @@ export class SDKBrowserModule {
         PeriodoTreinoRedeApi,
         TipoExemploTreinoApi,
         TreinoRedeApi,
+        RendaFixaPrivadaApi,
+        PrevisaoTesteApi,
+        GrupoRegraApi,
+        GrupoRegraRelApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
       ]

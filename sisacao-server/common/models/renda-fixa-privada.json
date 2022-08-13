@@ -29,6 +29,9 @@
     },
     "dataInsercao": {
       "type": "string"
+    },
+    "dataAcesso": {
+      "type": "string"
     }
   },
   "validations": [],
@@ -57,6 +60,31 @@
         {
           "path": "/insereSeNaoExisteFixaPrivada",
           "verb": "post"
+        }
+      ]
+    },
+    "ListaMelhoresDia": {
+      "accepts": [
+        {
+          "arg": "qtde",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaMelhoresDia",
+          "verb": "get"
         }
       ]
     },

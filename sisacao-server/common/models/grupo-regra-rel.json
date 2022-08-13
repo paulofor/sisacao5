@@ -1,0 +1,60 @@
+{
+  "name": "GrupoRegraRel",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "regraProjecaoId": {
+      "type": "number",
+      "id": true
+    },
+    "grupoRegraId": {
+      "type": "number",
+      "id": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "regraProjecao": {
+      "type": "belongsTo",
+      "model": "RegraProjecao",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {
+    "AtualizaPorGrupoRegra": {
+      "accepts": [
+        {
+          "arg": "idGrupo",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "listaRegra",
+          "type": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaPorGrupoRegra",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

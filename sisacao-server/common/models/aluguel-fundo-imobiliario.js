@@ -37,6 +37,9 @@ module.exports = function (Aluguelfundoimobiliario) {
             ]}};
         Aluguelfundoimobiliario.find(filtro, (err,result) => {
             if (result.length==0) {
+                let yourDate = new Date();
+                let dataInsercao = yourDate.toISOString().split('T')[0];
+                itemAluguel['dataInsercao'] = dataInsercao;
                 Aluguelfundoimobiliario.create(itemAluguel,callback);
             } else {
                 callback(null,{})

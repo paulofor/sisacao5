@@ -1,21 +1,15 @@
 package br.com.digicom.sisacao.repositorio;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-import org.json.JSONArray;
 
 import com.strongloop.android.loopback.ModelRepository;
 import com.strongloop.android.loopback.callbacks.EmptyResponseParser;
 import com.strongloop.android.loopback.callbacks.JsonObjectParser;
-import com.strongloop.android.loopback.callbacks.ListCallback;
 import com.strongloop.android.loopback.callbacks.ObjectCallback;
 import com.strongloop.android.loopback.callbacks.VoidCallback;
 import com.strongloop.android.remoting.adapters.RestContractItem;
 
-import br.com.digicom.sisacao.modelo.AtivoOpcao;
-import br.com.digicom.sisacao.modelo.PeriodoExperimento;
 import br.com.digicom.sisacao.modelo.RegraProjecao;
 
 public class RepositorioRegraProjecao extends ModelRepository<RegraProjecao>{
@@ -44,6 +38,13 @@ public class RepositorioRegraProjecao extends ModelRepository<RegraProjecao>{
         invokeStaticMethod("obtemPorId", params,   new JsonObjectParser<RegraProjecao>(this, callback));
 	}
 	
+	public void finalizaInsercao(final int id, final VoidCallback callback) {
+		RestContractItem contrato = new RestContractItem("RegraProjecaos/finalizaInsercao","POST");
+		this.getRestAdapter().getContract().addItem(contrato, "RegraProjecao.finalizaInsercao");
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("id",id);
+        invokeStaticMethod("finalizaInsercao", params,   new EmptyResponseParser(callback));
+	}
 	
 	public void obtemPorCodigoRegra(String codigoRegra, ObjectCallback<RegraProjecao> callback) {
 		RestContractItem contrato = new RestContractItem("RegraProjecaos/obtemPorCodigoRegra","GET");

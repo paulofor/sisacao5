@@ -126,6 +126,34 @@ export class ExemploTreinoAcaoSaidaApi extends BaseLoopBackApi {
          * (The remote method definition does not provide any description.)
          * </em>
    *
+   * @param {number} idGrupo 
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExemploTreinoAcaoSaida` object.)
+   * </em>
+   */
+  public ResumoPorRegraGrupo(idGrupo: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExemploTreinoAcaoSaidas/resumoPorRegraGrupo";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof idGrupo !== 'undefined' && idGrupo !== null) _urlParams.idGrupo = idGrupo;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
    * @returns {object[]} An empty reference that will be
    *   populated with the actual data once the response is returned
    *   from the server.
@@ -216,6 +244,132 @@ export class ExemploTreinoAcaoSaidaApi extends BaseLoopBackApi {
     if (typeof idGrupoAcao !== 'undefined' && idGrupoAcao !== null) _urlParams.idGrupoAcao = idGrupoAcao;
     if (typeof idRegraProjecao !== 'undefined' && idRegraProjecao !== null) _urlParams.idRegraProjecao = idRegraProjecao;
     if (typeof idTipoExemplo !== 'undefined' && idTipoExemplo !== null) _urlParams.idTipoExemplo = idTipoExemplo;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {number} diaNumInicio 
+   *
+   * @param {number} diaNumFinal 
+   *
+   * @param {number} idGrupoAcao 
+   *
+   * @param {number} idRegraProjecao 
+   *
+   * @param {number} idTipoExemplo 
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExemploTreinoAcaoSaida` object.)
+   * </em>
+   */
+  public ListaParaExperiencia(diaNumInicio: any, diaNumFinal: any, idGrupoAcao: any, idRegraProjecao: any, idTipoExemplo: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExemploTreinoAcaoSaidas/listaParaExperiencia";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof diaNumInicio !== 'undefined' && diaNumInicio !== null) _urlParams.diaNumInicio = diaNumInicio;
+    if (typeof diaNumFinal !== 'undefined' && diaNumFinal !== null) _urlParams.diaNumFinal = diaNumFinal;
+    if (typeof idGrupoAcao !== 'undefined' && idGrupoAcao !== null) _urlParams.idGrupoAcao = idGrupoAcao;
+    if (typeof idRegraProjecao !== 'undefined' && idRegraProjecao !== null) _urlParams.idRegraProjecao = idRegraProjecao;
+    if (typeof idTipoExemplo !== 'undefined' && idTipoExemplo !== null) _urlParams.idTipoExemplo = idTipoExemplo;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {number} diaNumInicio 
+   *
+   * @param {number} diaNumFinal 
+   *
+   * @param {number} idGrupoAcao 
+   *
+   * @param {number} idRegraProjecao 
+   *
+   * @param {number} idTipoExemplo 
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExemploTreinoAcaoSaida` object.)
+   * </em>
+   */
+  public ListaParaExperienciaValidacao(diaNumInicio: any, diaNumFinal: any, idGrupoAcao: any, idRegraProjecao: any, idTipoExemplo: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExemploTreinoAcaoSaidas/listaParaExperienciaValidacao";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof diaNumInicio !== 'undefined' && diaNumInicio !== null) _urlParams.diaNumInicio = diaNumInicio;
+    if (typeof diaNumFinal !== 'undefined' && diaNumFinal !== null) _urlParams.diaNumFinal = diaNumFinal;
+    if (typeof idGrupoAcao !== 'undefined' && idGrupoAcao !== null) _urlParams.idGrupoAcao = idGrupoAcao;
+    if (typeof idRegraProjecao !== 'undefined' && idRegraProjecao !== null) _urlParams.idRegraProjecao = idRegraProjecao;
+    if (typeof idTipoExemplo !== 'undefined' && idTipoExemplo !== null) _urlParams.idTipoExemplo = idTipoExemplo;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {number} diaNumInicio 
+   *
+   * @param {number} diaNumFinal 
+   *
+   * @param {number} idGrupoAcao 
+   *
+   * @param {number} idRegraProjecao 
+   *
+   * @param {number} idTipoExemplo 
+   *
+   * @param {number} quantidade 
+   *
+   * @param {number} classeSaida 
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExemploTreinoAcaoSaida` object.)
+   * </em>
+   */
+  public ListaParaAnalise(diaNumInicio: any, diaNumFinal: any, idGrupoAcao: any, idRegraProjecao: any, idTipoExemplo: any, quantidade: any, classeSaida: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExemploTreinoAcaoSaidas/listaParaAnalise";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof diaNumInicio !== 'undefined' && diaNumInicio !== null) _urlParams.diaNumInicio = diaNumInicio;
+    if (typeof diaNumFinal !== 'undefined' && diaNumFinal !== null) _urlParams.diaNumFinal = diaNumFinal;
+    if (typeof idGrupoAcao !== 'undefined' && idGrupoAcao !== null) _urlParams.idGrupoAcao = idGrupoAcao;
+    if (typeof idRegraProjecao !== 'undefined' && idRegraProjecao !== null) _urlParams.idRegraProjecao = idRegraProjecao;
+    if (typeof idTipoExemplo !== 'undefined' && idTipoExemplo !== null) _urlParams.idTipoExemplo = idTipoExemplo;
+    if (typeof quantidade !== 'undefined' && quantidade !== null) _urlParams.quantidade = quantidade;
+    if (typeof classeSaida !== 'undefined' && classeSaida !== null) _urlParams.classeSaida = classeSaida;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
