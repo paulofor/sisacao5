@@ -1,0 +1,62 @@
+{
+  "name": "TreinoGrupoRede",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+   
+  },
+  "validations": [],
+  "relations": {
+    "grupoRede": {
+      "type": "belongsTo",
+      "model": "GrupoRede",
+      "foreignKey": ""
+    },
+    "grupoAcao": {
+      "type": "belongsTo",
+      "model": "GrupoAcao",
+      "foreignKey": ""
+    },
+    "periodoTreinoRede": {
+      "type": "belongsTo",
+      "model": "PeriodoTreinoRede",
+      "foreignKey": ""
+    },
+    "grupoRegra": {
+      "type": "belongsTo",
+      "model": "GrupoRegra",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {
+    "CriaTreino": {
+      "accepts": [
+        {
+          "arg": "idGrupo",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/criaTreino",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

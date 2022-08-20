@@ -118,6 +118,11 @@ import { RendaFixaPrivadaApi } from './services/custom/RendaFixaPrivada';
 import { PrevisaoTesteApi } from './services/custom/PrevisaoTeste';
 import { GrupoRegraApi } from './services/custom/GrupoRegra';
 import { GrupoRegraRelApi } from './services/custom/GrupoRegraRel';
+import { EmprestimoP2PApi } from './services/custom/EmprestimoP2P';
+import { ParcelaEmprestimoApi } from './services/custom/ParcelaEmprestimo';
+import { GrupoRedeApi } from './services/custom/GrupoRede';
+import { GrupoRedeRelApi } from './services/custom/GrupoRedeRel';
+import { TreinoGrupoRedeApi } from './services/custom/TreinoGrupoRede';
 /**
 * @module SDKBrowserModule
 * @description
@@ -218,8 +223,14 @@ export class SDKBrowserModule {
         PrevisaoTesteApi,
         GrupoRegraApi,
         GrupoRegraRelApi,
+        EmprestimoP2PApi,
+        ParcelaEmprestimoApi,
+        GrupoRedeApi,
+        GrupoRedeRelApi,
+        TreinoGrupoRedeApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
+ 
       ]
     };
   }

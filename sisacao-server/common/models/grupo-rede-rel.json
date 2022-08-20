@@ -1,0 +1,65 @@
+{
+  "name": "GrupoRedeRel",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "redeNeuralId": {
+      "type": "number",
+      "id": true
+    },
+    "grupoRedeId": {
+      "type": "number",
+      "id": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "redeNeural": {
+      "type": "belongsTo",
+      "model": "RedeNeural",
+      "foreignKey": ""
+    },
+    "grupoRede": {
+      "type": "belongsTo",
+      "model": "GrupoRede",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {
+    "AtualizaPorGrupoRede": {
+      "accepts": [
+        {
+          "arg": "idGrupo",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "listaRede",
+          "type": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaPorGrupoRede",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

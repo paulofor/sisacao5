@@ -17,6 +17,7 @@ export interface RegraProjecaoInterface {
   "codigoRegraProjecao"?: string;
   "diaNumMaisAntigo"?: number;
   "quantidadeTicker"?: number;
+  "ultimaInsercao"?: Date;
   "id"?: number;
   cotacaoIntradayAcaoResultadoValors?: CotacaoIntradayAcaoResultadoValor[];
   regraProjecaoTotalMes?: RegraProjecaoTotalMes[];
@@ -34,6 +35,7 @@ export class RegraProjecao implements RegraProjecaoInterface {
   "codigoRegraProjecao": string;
   "diaNumMaisAntigo": number;
   "quantidadeTicker": number;
+  "ultimaInsercao": Date;
   "id": number;
   cotacaoIntradayAcaoResultadoValors: CotacaoIntradayAcaoResultadoValor[];
   regraProjecaoTotalMes: RegraProjecaoTotalMes[];
@@ -110,6 +112,10 @@ export class RegraProjecao implements RegraProjecaoInterface {
         "quantidadeTicker": {
           name: 'quantidadeTicker',
           type: 'number'
+        },
+        "ultimaInsercao": {
+          name: 'ultimaInsercao',
+          type: 'Date'
         },
         "id": {
           name: 'id',

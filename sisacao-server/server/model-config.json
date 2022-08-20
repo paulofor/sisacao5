@@ -310,5 +310,25 @@
   "GrupoRegraRel": {
     "dataSource": "mysqlKingDS2",
     "public": true
+  },
+  "EmprestimoP2P": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "ParcelaEmprestimo": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "GrupoRede": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "GrupoRedeRel": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "TreinoGrupoRede": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
   }
 }

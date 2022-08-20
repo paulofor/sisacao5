@@ -24,6 +24,9 @@
         <div class="dgc-card-detalhe">
           <span>Resultado: </span><span>{{item.resultado}} ( {{percentualResultado(item) | number:'1.2-2' }}% ) </span>
         </div>
+        <div class="dgc-card-detalhe">
+          <span>Data Inserção: </span><span>{{item.ultimaInsercao  | date : 'dd/MM/yyyy' : 'UTC'}}</span>
+        </div>
       </div>
     </div>
   

@@ -66,6 +66,10 @@ import { ImobiliarioIntradayComponent } from '../imobiliario-intraday/imobiliari
 import { GrupoRegraListaComponent } from '../grupo-regra-lista/grupo-regra-lista.component';
 import { GrupoRegraDetalheComponent } from '../grupo-regra-detalhe/grupo-regra-detalhe.component';
 import { RendaFixaPrivadaMelhoresComponent } from '../renda-fixa-privada-melhores/renda-fixa-privada-melhores.component';
+import { GrupoRedeListaComponent } from '../grupo-rede-lista/grupo-rede-lista.component';
+import { EmprestimoP2PListaComponent } from '../emprestimo-p2-plista/emprestimo-p2-plista.component';
+import { TreinoGrupoListaComponent } from '../treino-grupo-lista/treino-grupo-lista.component';
+import { EmprestimoP2PDetalheComponent } from '../emprestimo-p2-pdetalhe/emprestimo-p2-pdetalhe.component';
 
 
 export const routes : Routes = [
@@ -157,7 +161,14 @@ export const routes : Routes = [
     { path: 'grupoRegraLista' , component: GrupoRegraListaComponent },
     { path: 'grupoRegraDetalhe/:id' , component: GrupoRegraDetalheComponent },
 
+    { path: 'grupoRedeLista' , component: GrupoRedeListaComponent },
+
     { path: 'rendaPrivadaMelhores' , component: RendaFixaPrivadaMelhoresComponent },
+    { path: 'emprestimoP2PLista' , component: EmprestimoP2PListaComponent },
+
+    { path: 'emprestimoP2PDetalhe/:id' , component: EmprestimoP2PDetalheComponent },
+
+    { path : 'treinoGrupoLista' , component: TreinoGrupoListaComponent },
 
     { path: '',  component: HomeComponent  }
     //{ path: '',          redirectTo: 'home', pathMatch: 'full' }

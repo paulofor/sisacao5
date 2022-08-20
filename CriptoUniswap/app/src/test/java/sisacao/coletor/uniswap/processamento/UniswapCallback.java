@@ -17,7 +17,8 @@ public class UniswapCallback extends CallbackParseJson{
 	}
 
 	public URL getUrl() throws MalformedURLException {
-		return new URL("https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2");
+		return new URL("https://watcher.foxbit.com.br/api/Ticker/");
+		//return new URL("https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2");
 	}
 
 	public void setDados(IDadosParse paramIDadosParse) {

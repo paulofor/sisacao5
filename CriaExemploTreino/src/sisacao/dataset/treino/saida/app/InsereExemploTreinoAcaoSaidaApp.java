@@ -7,9 +7,8 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Properties;
 
-
 import br.inf.digicom.loopback.comum.DaoBaseComum;
-import sisacao.dataset.treino.obj.CriaExemploTreinoAcaoObj;
+import sisacao.dataset.treino.saida.dao.RegraProjecao_FinalizaInsercao;
 
 public class InsereExemploTreinoAcaoSaidaApp {
 
@@ -40,7 +39,10 @@ public class InsereExemploTreinoAcaoSaidaApp {
 			InsereExemploTreinoAcaoSaidaObj obj = new InsereExemploTreinoAcaoSaidaObj();
 			obj.executa(posicaoEntrada, qtdeDias, codigoGrupoAcao, codigoRegra);
 			gravaFinalExecucao("Finalizou_" + codigoRegra + ".log");
-			System.exit(0);
+			
+			RegraProjecao_FinalizaInsercao finaliza = new RegraProjecao_FinalizaInsercao();
+			finaliza.executa();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

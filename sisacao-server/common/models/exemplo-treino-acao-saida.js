@@ -58,13 +58,13 @@ where saida.regraProjecaoId = tab.regraProjecaoId
 and saida.campoY=1) as classe1  
 from
 (
-select ExemploTreinoAcaoSaida.regraProjecaoId , codigoRegraProjecao, count(*) as qtdeSaida,
+select ExemploTreinoAcaoSaida.regraProjecaoId , codigoRegraProjecao,  RegraProjecao.ultimaInsercao, ount(*) as qtdeSaida,
 (select count(*) from ExemploTreinoAcaoEntrada) as qtdeEntrada
 from ExemploTreinoAcaoSaida
 inner join RegraProjecao on RegraProjecao.id = ExemploTreinoAcaoSaida.regraProjecaoId
 inner join GrupoRegraRel on GrupoRegraRel.regraProjecaoId = RegraProjecao.id
 where GrupoRegraRel.grupoRegraId = 1
-group by ExemploTreinoAcaoSaida.regraProjecaoId, codigoRegraProjecao
+group by ExemploTreinoAcaoSaida.regraProjecaoId, codigoRegraProjecao,  RegraProjecao.ultimaInsercao
 order by codigoRegraProjecao
 ) as tab
 */
@@ -84,13 +84,13 @@ order by codigoRegraProjecao
             " and saida.resultado<>0) as resultado " +
             " from " +
             " ( " +
-            " select ExemploTreinoAcaoSaida.regraProjecaoId , codigoRegraProjecao, percentualEntradaDataset,  count(*) as qtdeSaida, " +
+            " select ExemploTreinoAcaoSaida.regraProjecaoId , codigoRegraProjecao, percentualEntradaDataset, ultimaInsercao,  count(*) as qtdeSaida, " +
             " (select count(*) from ExemploTreinoAcaoEntrada) as qtdeEntrada " +
             " from ExemploTreinoAcaoSaida " +
             " inner join RegraProjecao on RegraProjecao.id = ExemploTreinoAcaoSaida.regraProjecaoId " +
             " inner join GrupoRegraRel on GrupoRegraRel.regraProjecaoId = RegraProjecao.id " +
             " where GrupoRegraRel.grupoRegraId = " + idGrupo + 
-            " group by ExemploTreinoAcaoSaida.regraProjecaoId, codigoRegraProjecao, percentualEntradaDataset " +
+            " group by ExemploTreinoAcaoSaida.regraProjecaoId, codigoRegraProjecao, percentualEntradaDataset, ultimaInsercao " +
             " order by codigoRegraProjecao " +
             " ) as tab";
         let ds = Exemplotreinoacaosaida.dataSource;

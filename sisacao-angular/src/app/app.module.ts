@@ -165,6 +165,14 @@ import { GrupoRegraDetalheComponent } from './grupo-regra-detalhe/grupo-regra-de
 import { GrupoRegraEditaComponent } from './grupo-regra-edita/grupo-regra-edita.component';
 import { RendaFixaPrivadaMelhoresComponent } from './renda-fixa-privada-melhores/renda-fixa-privada-melhores.component';
 import { EscolheRegraGrupoEditComponent } from './escolhe-regra-grupo-edit/escolhe-regra-grupo-edit.component';
+import { GrupoRedeListaComponent } from './grupo-rede-lista/grupo-rede-lista.component';
+import { GrupoRedeEditaComponent } from './grupo-rede-edita/grupo-rede-edita.component';
+import { EscolheRedeGrupoEditComponent } from './escolhe-rede-grupo-edit/escolhe-rede-grupo-edit.component';
+import { EmprestimoP2PListaComponent } from './emprestimo-p2-plista/emprestimo-p2-plista.component';
+import { EmprestimoP2PEditaComponent } from './emprestimo-p2-pedita/emprestimo-p2-pedita.component';
+import { TreinoGrupoListaComponent } from './treino-grupo-lista/treino-grupo-lista.component';
+import { TreinoGrupoEditaComponent } from './treino-grupo-edita/treino-grupo-edita.component';
+import { EmprestimoP2PDetalheComponent } from './emprestimo-p2-pdetalhe/emprestimo-p2-pdetalhe.component';
 
 //import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
@@ -303,6 +311,14 @@ registerLocaleData(localePt, 'pt-BR');
     GrupoRegraEditaComponent,
     RendaFixaPrivadaMelhoresComponent,
     EscolheRegraGrupoEditComponent,
+    GrupoRedeListaComponent,
+    GrupoRedeEditaComponent,
+    EscolheRedeGrupoEditComponent,
+    EmprestimoP2PListaComponent,
+    EmprestimoP2PEditaComponent,
+    TreinoGrupoListaComponent,
+    TreinoGrupoEditaComponent,
+    EmprestimoP2PDetalheComponent,
   ],
   imports: [
     BrowserModule,
@@ -392,7 +408,11 @@ registerLocaleData(localePt, 'pt-BR');
     PeriodoTreinoRedeEditaComponent,
     TreinoRedeEditaComponent,
     GrupoRegraEditaComponent,
-    EscolheRegraGrupoEditComponent
+    EscolheRegraGrupoEditComponent,
+    EmprestimoP2PEditaComponent,
+    GrupoRedeEditaComponent,
+    EscolheRedeGrupoEditComponent,
+    TreinoGrupoEditaComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -20,6 +20,12 @@
     },
     "pontuacaoTeste": {
       "type": "number"
+    },
+    "dataCriacaoGmt" : {
+      "type": "date"
+    },
+    "treinoGrupoRedeId" : {
+      "type": "number"
     }
   },
   "validations": [],

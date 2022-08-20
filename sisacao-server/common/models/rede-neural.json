@@ -25,6 +25,11 @@
       "type": "hasMany",
       "model": "PrevisaoRede",
       "foreignKey": ""
+    },
+    "grupoRedeRels": {
+      "type": "hasMany",
+      "model": "GrupoRedeRel",
+      "foreignKey": ""
     }
   },
   "acls": [],

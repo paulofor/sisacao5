@@ -1,6 +1,7 @@
 /* tslint:disable */
 import {
-  PrevisaoRede
+  PrevisaoRede,
+  GrupoRedeRel
 } from '../index';
 
 declare var Object: any;
@@ -11,6 +12,7 @@ export interface RedeNeuralInterface {
   "nome"?: string;
   "id"?: number;
   previsaoRedes?: PrevisaoRede[];
+  grupoRedeRels?: GrupoRedeRel[];
 }
 
 export class RedeNeural implements RedeNeuralInterface {
@@ -20,6 +22,7 @@ export class RedeNeural implements RedeNeuralInterface {
   "nome": string;
   "id": number;
   previsaoRedes: PrevisaoRede[];
+  grupoRedeRels: GrupoRedeRel[];
   constructor(data?: RedeNeuralInterface) {
     Object.assign(this, data);
   }
@@ -79,6 +82,14 @@ export class RedeNeural implements RedeNeuralInterface {
           name: 'previsaoRedes',
           type: 'PrevisaoRede[]',
           model: 'PrevisaoRede',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'redeNeuralId'
+        },
+        grupoRedeRels: {
+          name: 'grupoRedeRels',
+          type: 'GrupoRedeRel[]',
+          model: 'GrupoRedeRel',
           relationType: 'hasMany',
                   keyFrom: 'id',
           keyTo: 'redeNeuralId'

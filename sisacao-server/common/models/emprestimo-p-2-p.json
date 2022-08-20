@@ -1,0 +1,62 @@
+{
+  "name": "EmprestimoP2P",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nomePessoa": {
+      "type": "string"
+    },
+    "cpf": {
+      "type": "string"
+    },
+    "valorCota": {
+      "type": "number"
+    },
+    "valorEmprestimo": {
+      "type": "number"
+    },
+    "dataCompra": {
+      "type": "date"
+    },
+    "quantidadeCota": {
+      "type": "number"
+    },
+    "quantidadeParcela": {
+      "type": "number"
+    },
+    "ativo": {
+      "type": "number"
+    },
+    "valorPresente": {
+      "type": "number"
+    },
+    "roi": {
+      "type": "number"
+    },
+    "dataPrimeiraParcela": {
+      "type": "date"
+    },
+    "rentabilidadeAnual": {
+      "type": "number"
+    },
+    "totalRecebido": {
+      "type": "number"
+    },
+    "valorParcela": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "parcelaEmprestimos": {
+      "type": "hasMany",
+      "model": "ParcelaEmprestimo",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

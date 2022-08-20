@@ -70,6 +70,11 @@ import { RendaFixaPrivada } from '../../models/RendaFixaPrivada';
 import { PrevisaoTeste } from '../../models/PrevisaoTeste';
 import { GrupoRegra } from '../../models/GrupoRegra';
 import { GrupoRegraRel } from '../../models/GrupoRegraRel';
+import { EmprestimoP2P } from '../../models/EmprestimoP2P';
+import { ParcelaEmprestimo } from '../../models/ParcelaEmprestimo';
+import { GrupoRede } from '../../models/GrupoRede';
+import { GrupoRedeRel } from '../../models/GrupoRedeRel';
+import { TreinoGrupoRede } from '../../models/TreinoGrupoRede';
 
 export interface Models { [name: string]: any }
 
@@ -147,6 +152,11 @@ export class SDKModels {
     PrevisaoTeste: PrevisaoTeste,
     GrupoRegra: GrupoRegra,
     GrupoRegraRel: GrupoRegraRel,
+    EmprestimoP2P: EmprestimoP2P,
+    ParcelaEmprestimo: ParcelaEmprestimo,
+    GrupoRede: GrupoRede,
+    GrupoRedeRel: GrupoRedeRel,
+    TreinoGrupoRede: TreinoGrupoRede,
     
   };
 
