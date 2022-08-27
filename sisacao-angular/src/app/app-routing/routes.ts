@@ -70,6 +70,7 @@ import { GrupoRedeListaComponent } from '../grupo-rede-lista/grupo-rede-lista.co
 import { EmprestimoP2PListaComponent } from '../emprestimo-p2-plista/emprestimo-p2-plista.component';
 import { TreinoGrupoListaComponent } from '../treino-grupo-lista/treino-grupo-lista.component';
 import { EmprestimoP2PDetalheComponent } from '../emprestimo-p2-pdetalhe/emprestimo-p2-pdetalhe.component';
+import { TreinoGrupoDetalheComponent } from '../treino-grupo-detalhe/treino-grupo-detalhe.component';
 
 
 export const routes : Routes = [
@@ -169,6 +170,7 @@ export const routes : Routes = [
     { path: 'emprestimoP2PDetalhe/:id' , component: EmprestimoP2PDetalheComponent },
 
     { path : 'treinoGrupoLista' , component: TreinoGrupoListaComponent },
+    { path : 'treinoGrupoDetalhe/:id' , component: TreinoGrupoDetalheComponent },
 
     { path: '',  component: HomeComponent  }
     //{ path: '',          redirectTo: 'home', pathMatch: 'full' }

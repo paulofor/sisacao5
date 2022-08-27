@@ -27,8 +27,48 @@ public class NotebookTreinoTensorFlow extends NotebookObj {
 		compilacaoRede(notebook);
 		fitRede(notebook);
 		salvaRede(notebook);
-		
+		enviaRede(notebook);
+		registraTreinamento(notebook);
 	}
+	
+	private void registraTreinamento(JSONArray notebook) {
+		CelulaNotebook celula = new CelulaNotebook();
+		celula.setTitulo("Registra Treinamento", 1);
+		celula.adicionaLinha("#import requests");
+		celula.adicionaLinha("url = 'http://vps-40d69db1.vps.ovh.ca:23004/api/TreinoRedes/executouTreinamento'");
+		celula.adicionaLinha("myobj = {'id': " + this.getTreinoRede().getId() + "}");
+		celula.adicionaLinha("x = requests.post(url, json = myobj)");
+		celula.adicionaLinha("print(x.text)");
+		insereCelula(notebook,celula);
+		//celula = new CelulaNotebook();
+	}
+	
+	private void enviaRede(JSONArray notebook) {
+		CelulaNotebook celula = new CelulaNotebook();
+		celula.setTitulo("Enviando Rede", 1);
+		insereCelula(notebook,celula);
+		celula = new CelulaNotebook();
+		
+		celula.adicionaLinha("!pip install paramiko");
+		insereCelula(notebook,celula);
+		celula = new CelulaNotebook();
+		
+		celula.adicionaLinha("import os");
+		celula.adicionaLinha("import paramiko");
+		insereCelula(notebook,celula);
+		celula = new CelulaNotebook();
+		
+		celula.adicionaLinha("ssh = paramiko.SSHClient()");
+		celula.adicionaLinha("ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())");
+		celula.adicionaLinha("ssh.connect(\"191.252.219.136\", username=\"root\", password=\"digicom2004%\")");
+		celula.adicionaLinha("sftp = ssh.open_sftp()");
+		celula.adicionaLinha("sftp.put(\"pesos/treino_rede" + this.getTreinoRede().getId() + ".h5\", \"/root/executa-rede/redes/treino_rede" + this.getTreinoRede().getId() + ".h5\")");
+		celula.adicionaLinha("sftp.close()");
+		celula.adicionaLinha("ssh.close()");
+		insereCelula(notebook,celula);
+
+	}
+	
 	
 	private void estruturaRede(JSONArray notebook) {
 		CelulaNotebook celula = new CelulaNotebook();

@@ -16,7 +16,7 @@ public class InsereExemploTreinoAcaoSaidaApp {
 	
 	public static void main(String[] args) {
 		System.out.print("InsereExemploTreinoAcaoSaidaApp");
-		System.out.println(" (06-08-2022)");
+		System.out.println(" (26-08-2022)");
 		try {
 			
 			//carregaProp();
@@ -40,7 +40,9 @@ public class InsereExemploTreinoAcaoSaidaApp {
 			obj.executa(posicaoEntrada, qtdeDias, codigoGrupoAcao, codigoRegra);
 			gravaFinalExecucao("Finalizou_" + codigoRegra + ".log");
 			
+			System.out.println("Finalizado " + codigoRegra);
 			RegraProjecao_FinalizaInsercao finaliza = new RegraProjecao_FinalizaInsercao();
+			finaliza.setComum(obj.getDataset());
 			finaliza.executa();
 			
 		} catch (Exception e) {

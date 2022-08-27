@@ -302,6 +302,36 @@ export class EmprestimoP2PApi extends BaseLoopBackApi {
   }
 
   /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {object} data Request data.
+   *
+   *  - `idEmprestimo` – `{number}` - 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `EmprestimoP2P` object.)
+   * </em>
+   */
+  public CriaParcelas(idEmprestimo: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/EmprestimoP2Ps/criaParcelas";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof idEmprestimo !== 'undefined' && idEmprestimo !== null) _urlParams.idEmprestimo = idEmprestimo;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
    * Cria uma nova instância no parcelaEmprestimos deste modelo.
    *
    * @param {any} id EmprestimoP2P id

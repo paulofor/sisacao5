@@ -3,7 +3,8 @@ import {
   GrupoRede,
   GrupoAcao,
   PeriodoTreinoRede,
-  GrupoRegra
+  GrupoRegra,
+  TreinoRede
 } from '../index';
 
 declare var Object: any;
@@ -17,6 +18,7 @@ export interface TreinoGrupoRedeInterface {
   grupoAcao?: GrupoAcao;
   periodoTreinoRede?: PeriodoTreinoRede;
   grupoRegra?: GrupoRegra;
+  treinoRedes?: TreinoRede[];
 }
 
 export class TreinoGrupoRede implements TreinoGrupoRedeInterface {
@@ -29,6 +31,7 @@ export class TreinoGrupoRede implements TreinoGrupoRedeInterface {
   grupoAcao: GrupoAcao;
   periodoTreinoRede: PeriodoTreinoRede;
   grupoRegra: GrupoRegra;
+  treinoRedes: TreinoRede[];
   constructor(data?: TreinoGrupoRedeInterface) {
     Object.assign(this, data);
   }
@@ -115,6 +118,14 @@ export class TreinoGrupoRede implements TreinoGrupoRedeInterface {
           relationType: 'belongsTo',
                   keyFrom: 'grupoRegraId',
           keyTo: 'id'
+        },
+        treinoRedes: {
+          name: 'treinoRedes',
+          type: 'TreinoRede[]',
+          model: 'TreinoRede',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'treinoGrupoRedeId'
         },
       }
     }

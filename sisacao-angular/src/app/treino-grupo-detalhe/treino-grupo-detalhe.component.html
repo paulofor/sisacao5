@@ -1,0 +1,30 @@
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+    <span>Grupo Treino: {{treinoGrupoRede.grupoAcao.nome}} ({{listaBase.length}})</span>
+    <span></span>
+    <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita()">novo</button>
+  </div>
+  <div *ngIf="listaBase" class="dgc-painel-principal">
+    <div class="dgc-card" *ngFor="let item of listaBase">
+      <div class="dgc-card-header">
+        <span># {{item.id}}</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <span>{{item.redeNeural.nome}}</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <div>{{item.regraProjecao.codigoRegraProjecao}}</div>
+      </div>
+      <div class="dgc-card-detalhe">
+        <div>Exemplos: {{item.regraProjecao.ultimaInsercao  | date : 'dd/MM/yyyy' : 'UTC' }}</div>
+        <div>Treino: {{item.dataTreinamento  | date : 'dd/MM/yyyy' : 'UTC' }}</div>
+      </div>
+      <div class="dgc-card-detalhe">
+        <div>Ativo Teste: {{item.ativoTeste}}</div>
+      </div>
+      <div  class="dgc-card-comandos">
+        <button class="btn-primary btn-sm btn" (click)="ativaTeste(item)"> Ativa Teste</button>
+     </div>
+    </div>
+  </div>
+</div>

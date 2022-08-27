@@ -9,6 +9,9 @@
     "ativoPrevisao": {
       "type": "number"
     },
+    "ativoTeste" : {
+      "type":"number"
+    },
     "limiteParaEntrada": {
       "type": "number"
     },
@@ -21,11 +24,14 @@
     "pontuacaoTeste": {
       "type": "number"
     },
-    "dataCriacaoGmt" : {
+    "dataCriacaoGmt": {
       "type": "date"
     },
-    "treinoGrupoRedeId" : {
+    "treinoGrupoRedeId": {
       "type": "number"
+    },
+    "dataTreinamento" : {
+      "type": "date"
     }
   },
   "validations": [],
@@ -63,6 +69,81 @@
   },
   "acls": [],
   "methods": {
+    "AtivaTeste": {
+      "accepts": [
+        {
+          "arg": "idTreino",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/ativaTeste",
+          "verb": "post"
+        }
+      ]
+    },
+    "ExecutouTreinamento": {
+      "accepts": [
+        {
+          "arg": "id",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/executouTreinamento",
+          "verb": "post"
+        }
+      ]
+    },
+    "ListaTestePorGrupo": {
+      "accepts": [
+        {
+          "arg": "idGrupo",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaTestePorGrupo",
+          "verb": "post"
+        }
+      ]
+    },
     "AtualizaPontuacaoTreino": {
       "accepts": [
         {

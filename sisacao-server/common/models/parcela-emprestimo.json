@@ -16,7 +16,7 @@
       "type": "date"
     },
     "valorRecebido": {
-      "type": "date"
+      "type": "number"
     },
     "valor": {
       "type": "number"

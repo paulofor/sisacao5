@@ -10,8 +10,10 @@ import sisacao.dataset.treino.saida.dao.ExemploTreinoAcaoEntrada_ListaSemResulta
 
 public class InsereExemploTreinoAcaoSaidaObj {
 
+	DatasetExemplo ds = null;
+	
 	public void executa(int posicaoEntrada, int qtdeDias,String codigo, String codigoRegra) {
-		DatasetExemplo ds = new DatasetExemplo();
+		ds = new DatasetExemplo();
 		ds.setPosicaoEntrada(posicaoEntrada);
 		ds.setQtdeDia(qtdeDias);
 		ds.setCodigoGrupoAcao(codigo);
@@ -20,6 +22,10 @@ public class InsereExemploTreinoAcaoSaidaObj {
 		exec.setComum(ds);
 		trataProximo();
 		exec.executa();
+	}
+	
+	public DatasetExemplo getDataset() {
+		return ds;
 	}
 
 	private void trataProximo() {

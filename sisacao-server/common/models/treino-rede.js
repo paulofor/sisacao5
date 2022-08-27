@@ -5,6 +5,24 @@ var app = require('../../server/server');
 module.exports = function(Treinorede) {
 
 
+    Treinorede.AtivaTeste = function(idTreino,callback) {
+        let sql = "update TreinoRede " +
+            " set ativoTeste = case when ativoTeste = 0 then 1 else 0 end " +
+            " where id = " + id;
+        let ds = Treinorede.dataSource;
+        ds.connector.query(sql,callback);
+    }
+
+
+    Treinorede.ExecutouTreinamento = function(id,callback) {
+        let sql = "update TreinoRede " +
+            " set dataTreinamento = now() " +
+            " where id = "  + id;
+        let ds = Treinorede.dataSource;
+        ds.connector.query(sql,callback);
+    }
+
+
     Treinorede.AtualizaPontuacaoTreino = function(id,callback) {
         let sql = "update TreinoRede " +
             " set qtdeLucroTeste = (select count(*) from PrevisaoTeste where resultado = 1 and PrevisaoTeste.treinoRedeId = TreinoRede.id), " +
@@ -34,7 +52,16 @@ module.exports = function(Treinorede) {
             " from TreinoRede " +
             " inner join RegraProjecao on RegraProjecao.id = TreinoRede.regraProjecaoId " +
             " inner join PeriodoTreinoRede on PeriodoTreinoRede.id = TreinoRede.periodoTreinoRedeId " +
-            " where ativoPrevisao = 1";
+            " where ativoTeste = 1";
+        let ds = Treinorede.dataSource;
+        ds.connector.query(sql,callback);
+    } 
+    Treinorede.ListaTestePorGrupo = function(id,callback) {
+        let sql = "select TreinoRede.* , RegraProjecao.tipoCompraVenda, PeriodoTreinoRede.diaNumInicioTeste, PeriodoTreinoRede.diaNumFinalTeste " +
+            " from TreinoRede " +
+            " inner join RegraProjecao on RegraProjecao.id = TreinoRede.regraProjecaoId " +
+            " inner join PeriodoTreinoRede on PeriodoTreinoRede.id = TreinoRede.periodoTreinoRedeId " +
+            " where ativoTeste = 1 and treinoGrupoRedeId = " + id;
         let ds = Treinorede.dataSource;
         ds.connector.query(sql,callback);
     } 

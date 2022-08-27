@@ -42,7 +42,7 @@ public class RepositorioRegraProjecao extends ModelRepository<RegraProjecao>{
 		RestContractItem contrato = new RestContractItem("RegraProjecaos/finalizaInsercao","POST");
 		this.getRestAdapter().getContract().addItem(contrato, "RegraProjecao.finalizaInsercao");
         Map<String, Object> params = new HashMap<String, Object>();
-        params.put("id",id);
+        params.put("idRegraProjecao",id);
         invokeStaticMethod("finalizaInsercao", params,   new EmptyResponseParser(callback));
 	}
 	

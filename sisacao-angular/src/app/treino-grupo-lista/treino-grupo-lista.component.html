@@ -19,7 +19,7 @@
             <span>Grupo Ação: {{item.grupoAcao.nome}}</span>
           </div>
           <div  class="dgc-card-comandos">
-            <button class="btn-primary btn-sm btn" (click)="edita(item)">Treinos</button>
+            <button class="btn-primary btn-sm btn" [routerLink]="['/treinoGrupoDetalhe' , item.id]"> Treinos</button>
             <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar</button>
           </div>
       </div>

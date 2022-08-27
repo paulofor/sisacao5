@@ -173,6 +173,8 @@ import { EmprestimoP2PEditaComponent } from './emprestimo-p2-pedita/emprestimo-p
 import { TreinoGrupoListaComponent } from './treino-grupo-lista/treino-grupo-lista.component';
 import { TreinoGrupoEditaComponent } from './treino-grupo-edita/treino-grupo-edita.component';
 import { EmprestimoP2PDetalheComponent } from './emprestimo-p2-pdetalhe/emprestimo-p2-pdetalhe.component';
+import { TreinoGrupoDetalheComponent } from './treino-grupo-detalhe/treino-grupo-detalhe.component';
+import { ParcelaEmprestimoEditComponent } from './parcela-emprestimo-edit/parcela-emprestimo-edit.component';
 
 //import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
@@ -319,6 +321,8 @@ registerLocaleData(localePt, 'pt-BR');
     TreinoGrupoListaComponent,
     TreinoGrupoEditaComponent,
     EmprestimoP2PDetalheComponent,
+    TreinoGrupoDetalheComponent,
+    ParcelaEmprestimoEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -412,7 +416,8 @@ registerLocaleData(localePt, 'pt-BR');
     EmprestimoP2PEditaComponent,
     GrupoRedeEditaComponent,
     EscolheRedeGrupoEditComponent,
-    TreinoGrupoEditaComponent
+    TreinoGrupoEditaComponent,
+    ParcelaEmprestimoEditComponent
   ],
   bootstrap: [AppComponent]
 })

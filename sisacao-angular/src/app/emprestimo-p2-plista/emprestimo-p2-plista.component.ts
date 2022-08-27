@@ -24,6 +24,16 @@ export class EmprestimoP2PListaComponent extends BaseListComponent {
     return EmprestimoP2PEditaComponent;
   }
 
+  getFiltro() {
+    return {
+      'order' : ['ativo desc' , 'dataCompra asc']
+    }
+  }
+
+  getPercentualRecebido(item:EmprestimoP2P) {
+    return (item.totalRecebido / item.valorEmprestimo) * 100;
+  }
+
   /*
   edita(edicao?) {
     this.dialog.afterAllClosed.subscribe(result => {

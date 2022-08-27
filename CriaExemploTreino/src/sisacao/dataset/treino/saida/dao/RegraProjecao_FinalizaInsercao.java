@@ -25,18 +25,22 @@ public class RegraProjecao_FinalizaInsercao extends DaoBaseApp {
 	
 	@Override
 	public void executaImpl() {
+		System.out.println("Entrou no executaImpl:");
 		final DatasetExemplo ds = (DatasetExemplo) getComum();
 		int idRegra = ds.getRegraProjecao().getId();
+		System.out.println("Serviço finalizacao ID:" + idRegra);
 		this.repRegraProjecao.finalizaInsercao(idRegra, new VoidCallback() {
 
 			@Override
 			public void onSuccess() {
+				System.out.println("onSuccess");
 				finalizar();
 				System.exit(0);
 			}
 
 			@Override
 			public void onError(Throwable t) {
+				System.out.println("onError");
 				onErrorBase(t);
 			}
 			

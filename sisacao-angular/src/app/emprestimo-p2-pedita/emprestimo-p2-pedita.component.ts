@@ -18,6 +18,7 @@ export class EmprestimoP2PEditaComponent extends BaseEditComponent {
 
   criaItem() {
     let novo = new EmprestimoP2P();
+    novo.ativo = 1;
     return novo;
   }
 

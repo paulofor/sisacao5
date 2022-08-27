@@ -11,10 +11,14 @@ import {
 declare var Object: any;
 export interface TreinoRedeInterface {
   "ativoPrevisao"?: number;
+  "ativoTeste"?: number;
   "limiteParaEntrada"?: number;
   "qtdeLucroTeste"?: number;
   "qtdePrejuizoTeste"?: number;
   "pontuacaoTeste"?: number;
+  "dataCriacaoGmt"?: Date;
+  "treinoGrupoRedeId"?: number;
+  "dataTreinamento"?: Date;
   "id"?: number;
   "grupoAcaoId"?: number;
   "periodoTreinoRedeId"?: number;
@@ -31,10 +35,14 @@ export interface TreinoRedeInterface {
 
 export class TreinoRede implements TreinoRedeInterface {
   "ativoPrevisao": number;
+  "ativoTeste": number;
   "limiteParaEntrada": number;
   "qtdeLucroTeste": number;
   "qtdePrejuizoTeste": number;
   "pontuacaoTeste": number;
+  "dataCriacaoGmt": Date;
+  "treinoGrupoRedeId": number;
+  "dataTreinamento": Date;
   "id": number;
   "grupoAcaoId": number;
   "periodoTreinoRedeId": number;
@@ -84,6 +92,10 @@ export class TreinoRede implements TreinoRedeInterface {
           name: 'ativoPrevisao',
           type: 'number'
         },
+        "ativoTeste": {
+          name: 'ativoTeste',
+          type: 'number'
+        },
         "limiteParaEntrada": {
           name: 'limiteParaEntrada',
           type: 'number'
@@ -99,6 +111,18 @@ export class TreinoRede implements TreinoRedeInterface {
         "pontuacaoTeste": {
           name: 'pontuacaoTeste',
           type: 'number'
+        },
+        "dataCriacaoGmt": {
+          name: 'dataCriacaoGmt',
+          type: 'Date'
+        },
+        "treinoGrupoRedeId": {
+          name: 'treinoGrupoRedeId',
+          type: 'number'
+        },
+        "dataTreinamento": {
+          name: 'dataTreinamento',
+          type: 'Date'
         },
         "id": {
           name: 'id',

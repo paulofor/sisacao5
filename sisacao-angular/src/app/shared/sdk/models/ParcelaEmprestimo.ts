@@ -5,7 +5,7 @@ export interface ParcelaEmprestimoInterface {
   "numeroParcela"?: number;
   "dataVencimento"?: Date;
   "dataRecebimento"?: Date;
-  "valorRecebido"?: Date;
+  "valorRecebido"?: number;
   "valor"?: number;
   "valorPresente"?: number;
   "pago"?: number;
@@ -17,7 +17,7 @@ export class ParcelaEmprestimo implements ParcelaEmprestimoInterface {
   "numeroParcela": number;
   "dataVencimento": Date;
   "dataRecebimento": Date;
-  "valorRecebido": Date;
+  "valorRecebido": number;
   "valor": number;
   "valorPresente": number;
   "pago": number;
@@ -70,7 +70,7 @@ export class ParcelaEmprestimo implements ParcelaEmprestimoInterface {
         },
         "valorRecebido": {
           name: 'valorRecebido',
-          type: 'Date'
+          type: 'number'
         },
         "valor": {
           name: 'valor',

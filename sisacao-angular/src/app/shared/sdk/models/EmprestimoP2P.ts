@@ -19,6 +19,11 @@ export interface EmprestimoP2PInterface {
   "rentabilidadeAnual"?: number;
   "totalRecebido"?: number;
   "valorParcela"?: number;
+  "previsaoRecebimento"?: number;
+  "previsaoTotal"?: number;
+  "quantidadeRecebida"?: number;
+  "parcelaMinima"?: number;
+  "quantidadeFutura"?: number;
   "id"?: number;
   parcelaEmprestimos?: ParcelaEmprestimo[];
 }
@@ -38,6 +43,11 @@ export class EmprestimoP2P implements EmprestimoP2PInterface {
   "rentabilidadeAnual": number;
   "totalRecebido": number;
   "valorParcela": number;
+  "previsaoRecebimento": number;
+  "previsaoTotal": number;
+  "quantidadeRecebida": number;
+  "parcelaMinima": number;
+  "quantidadeFutura": number;
   "id": number;
   parcelaEmprestimos: ParcelaEmprestimo[];
   constructor(data?: EmprestimoP2PInterface) {
@@ -127,6 +137,26 @@ export class EmprestimoP2P implements EmprestimoP2PInterface {
         },
         "valorParcela": {
           name: 'valorParcela',
+          type: 'number'
+        },
+        "previsaoRecebimento": {
+          name: 'previsaoRecebimento',
+          type: 'number'
+        },
+        "previsaoTotal": {
+          name: 'previsaoTotal',
+          type: 'number'
+        },
+        "quantidadeRecebida": {
+          name: 'quantidadeRecebida',
+          type: 'number'
+        },
+        "parcelaMinima": {
+          name: 'parcelaMinima',
+          type: 'number'
+        },
+        "quantidadeFutura": {
+          name: 'quantidadeFutura',
           type: 'number'
         },
         "id": {

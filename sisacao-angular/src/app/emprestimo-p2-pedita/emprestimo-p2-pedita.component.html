@@ -28,6 +28,14 @@
       <input matInput maxlength="20" #quantidadeParcela [(ngModel)]="item.quantidadeParcela" name="quantidadeParcela" placeholder="Qtde Parcelas" />
     </mat-form-field>
 
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="dataPrimeiraParcela" placeholder="Primeira Parcela" [(ngModel)]="item.dataPrimeiraParcela" [ngModelOptions]="{standalone: true}">
+      <mat-datepicker-toggle matSuffix [for]="dataPrimeiraParcela"></mat-datepicker-toggle>
+      <mat-datepicker #dataPrimeiraParcela></mat-datepicker>
+    </mat-form-field>
+
+
     <mat-form-field>
       <input matInput [matDatepicker]="dataCompra" placeholder="Data Investimento" [(ngModel)]="item.dataCompra" [ngModelOptions]="{standalone: true}">
       <mat-datepicker-toggle matSuffix [for]="dataCompra"></mat-datepicker-toggle>
@@ -35,11 +43,6 @@
     </mat-form-field>
 
 
-    <mat-form-field>
-      <input matInput [matDatepicker]="dataPrimeiraParcela" placeholder="Primeira Parcela" [(ngModel)]="item.dataPrimeiraParcela" [ngModelOptions]="{standalone: true}">
-      <mat-datepicker-toggle matSuffix [for]="dataPrimeiraParcela"></mat-datepicker-toggle>
-      <mat-datepicker #dataPrimeiraParcela></mat-datepicker>
-    </mat-form-field>
 
   </mat-dialog-content>
 

@@ -47,6 +47,21 @@
     },
     "valorParcela": {
       "type": "number"
+    },
+    "previsaoRecebimento": {
+      "type": "number"
+    },
+    "previsaoTotal": {
+      "type": "number"
+    },
+    "quantidadeRecebida": {
+      "type": "number"
+    },
+    "parcelaMinima": {
+      "type": "number"
+    },
+    "quantidadeFutura": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -58,5 +73,31 @@
     }
   },
   "acls": [],
-  "methods": {}
+  "methods": {
+    "CriaParcelas": {
+      "accepts": [
+        {
+          "arg": "idEmprestimo",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/criaParcelas",
+          "verb": "post"
+        }
+      ]
+    }
+  }
 }
