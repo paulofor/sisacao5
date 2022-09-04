@@ -1,0 +1,52 @@
+<div class="main-content" *ngIf="listaBase">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Trades Abertos</h4>
+            <h4 class="title dgc-direita">Risco: {{totalPrejuizo | currency : 'BRL'}}</h4>
+          </div>
+          <div class="content table-responsive table-full-width">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th width="10%">Ticker</th>
+                  <th width="10%">Tipo</th>
+                  <th width="10%">Preço</th>
+                  <th width="10%">Target</th>
+                  <th width="10%">Dif. Target</th>
+                  <th width="10%">Stop</th>
+                  <th width="10%">Dif. Stop</th>
+                  <th width="10%">Target</th>
+                  <th width="10%">Stop</th>
+                  <th width="10%">Prejuizo Stop</th>
+                  <th width="10%"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listaBase">
+                  <td>{{item.ticker}}</td>
+                  <td>{{item.tipo}}</td>
+                  <td>{{item.precoAtual | number : '1.2-2'}}</td>
+                  <td>{{item.precoTarget | number : '1.2-2'}}</td>
+                  <td>{{item.diferencaTarget | number : '1.1-1'}}%</td>
+                  <td>{{item.precoStop | number : '1.2-2'}}</td>
+                  <td>{{item.diferencaStop | number : '1.1-1'}}% </td>
+                  <td>{{item.percentualTarget | number : '1.0-0'}}% </td>
+                  <td>{{item.percentualStop | number : '1.0-0'}}% </td>
+                  <td>{{item.prejuizoTotal | number : '1.2-2'}}</td>
+                  <td align="right">
+                    <button type="button" (click)="edita(item)">alterar</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

@@ -201,6 +201,16 @@ module.exports = function(Tradereal) {
     }
 
 
+    Tradereal.ListaAbertoComPreco = function(callback) {
+        let sql = "SELECT * , " +
+            " (select valor from CotacaoIntradayAcao where CotacaoIntradayAcao.ticker = TradeReal.ticker order by dataHora desc limit 1) as precoAtual " +
+            " FROM lojadigicom35.TradeReal " +
+            " where dataSaida is null";
+        let ds = Tradereal.dataSource;
+        ds.connector.query(sql,callback);
+    }
+
+
     Tradereal.observe('before save', function updateInicioColeta(ctx, next) {
         let sqlPosicaoOpercao
         if (ctx.instance) {

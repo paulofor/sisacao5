@@ -22,8 +22,11 @@ export interface EmprestimoP2PInterface {
   "previsaoRecebimento"?: number;
   "previsaoTotal"?: number;
   "quantidadeRecebida"?: number;
-  "parcelaMinima"?: number;
   "quantidadeFutura"?: number;
+  "parcelaMinima"?: number;
+  "quantidadeEmAtraso"?: number;
+  "dataUltimaParcela"?: Date;
+  "previsaoLucroPrejuizo"?: number;
   "id"?: number;
   parcelaEmprestimos?: ParcelaEmprestimo[];
 }
@@ -46,8 +49,11 @@ export class EmprestimoP2P implements EmprestimoP2PInterface {
   "previsaoRecebimento": number;
   "previsaoTotal": number;
   "quantidadeRecebida": number;
-  "parcelaMinima": number;
   "quantidadeFutura": number;
+  "parcelaMinima": number;
+  "quantidadeEmAtraso": number;
+  "dataUltimaParcela": Date;
+  "previsaoLucroPrejuizo": number;
   "id": number;
   parcelaEmprestimos: ParcelaEmprestimo[];
   constructor(data?: EmprestimoP2PInterface) {
@@ -151,12 +157,24 @@ export class EmprestimoP2P implements EmprestimoP2PInterface {
           name: 'quantidadeRecebida',
           type: 'number'
         },
+        "quantidadeFutura": {
+          name: 'quantidadeFutura',
+          type: 'number'
+        },
         "parcelaMinima": {
           name: 'parcelaMinima',
           type: 'number'
         },
-        "quantidadeFutura": {
-          name: 'quantidadeFutura',
+        "quantidadeEmAtraso": {
+          name: 'quantidadeEmAtraso',
+          type: 'number'
+        },
+        "dataUltimaParcela": {
+          name: 'dataUltimaParcela',
+          type: 'Date'
+        },
+        "previsaoLucroPrejuizo": {
+          name: 'previsaoLucroPrejuizo',
           type: 'number'
         },
         "id": {

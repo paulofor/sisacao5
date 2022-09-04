@@ -110,6 +110,24 @@
   },
   "acls": [],
   "methods": {
+    "ListaAbertoComPreco": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "trade",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaAbertoComPreco",
+          "verb": "get"
+        }
+      ]
+    },
     "SituacaoAtual": {
       "accepts": [],
       "returns": [

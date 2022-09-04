@@ -71,6 +71,8 @@ import { EmprestimoP2PListaComponent } from '../emprestimo-p2-plista/emprestimo-
 import { TreinoGrupoListaComponent } from '../treino-grupo-lista/treino-grupo-lista.component';
 import { EmprestimoP2PDetalheComponent } from '../emprestimo-p2-pdetalhe/emprestimo-p2-pdetalhe.component';
 import { TreinoGrupoDetalheComponent } from '../treino-grupo-detalhe/treino-grupo-detalhe.component';
+import { EmprestimoP2PMesCorrenteComponent } from '../emprestimo-p2-pmes-corrente/emprestimo-p2-pmes-corrente.component';
+import { TradeAtivoComponent } from '../trade-ativo/trade-ativo.component';
 
 
 export const routes : Routes = [
@@ -171,6 +173,10 @@ export const routes : Routes = [
 
     { path : 'treinoGrupoLista' , component: TreinoGrupoListaComponent },
     { path : 'treinoGrupoDetalhe/:id' , component: TreinoGrupoDetalheComponent },
+
+    { path : 'emprestimoP2PMesCorrente' , component : EmprestimoP2PMesCorrenteComponent },
+
+    { path : 'tradeAtivo' , component : TradeAtivoComponent },
 
     { path: '',  component: HomeComponent  }
     //{ path: '',          redirectTo: 'home', pathMatch: 'full' }

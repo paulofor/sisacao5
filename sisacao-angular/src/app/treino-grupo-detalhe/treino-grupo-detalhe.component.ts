@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseListComponent } from '../base-component/base-list-component';
-import { TreinoGrupoRedeApi, TreinoGrupoRede, TreinoRedeApi } from '../shared/sdk';
+import { TreinoGrupoRedeApi, TreinoGrupoRede, TreinoRedeApi, RegraProjecao, RegraProjecaoApi, GrupoRegraRelApi } from '../shared/sdk';
 import { TreinoGrupoEditaComponent } from '../treino-grupo-edita/treino-grupo-edita.component';
+import { TreinoRedeGrupoEditaComponent } from '../treino-rede-grupo-edita/treino-rede-grupo-edita.component';
 
 @Component({
   selector: 'app-treino-grupo-detalhe',
@@ -13,15 +14,30 @@ import { TreinoGrupoEditaComponent } from '../treino-grupo-edita/treino-grupo-ed
 export class TreinoGrupoDetalheComponent  extends BaseListComponent {
 
   treinoGrupoRede : TreinoGrupoRede;
+  listaRegra : RegraProjecao[];
 
   constructor(protected dialog: MatDialog, protected srv:TreinoGrupoRedeApi,public router: ActivatedRoute, 
-      private srvTreino:TreinoRedeApi) { 
+      private srvTreino:TreinoRedeApi, private srvRegra : GrupoRegraRelApi) { 
     super(dialog,srv)
   }
 
   ativaTeste(item) {
     console.log('item' , item);
-    this.srvTreino.AtivaTeste(item.id)
+    this.srvTreino.AlteraAtivaTeste(item.id)
+      .subscribe((result) => {
+        this.carregaTela();
+      })
+  }
+  ativaPrevisaoTeste(item) {
+    console.log('item' , item);
+    this.srvTreino.AlteraAtivaPrevisaoTeste(item.id)
+      .subscribe((result) => {
+        this.carregaTela();
+      })
+  }
+
+  resetTeste() {
+    this.srvTreino.DesligaTesteGrupo(this.treinoGrupoRede.id)
       .subscribe((result) => {
         this.carregaTela();
       })
@@ -44,9 +60,34 @@ export class TreinoGrupoDetalheComponent  extends BaseListComponent {
         .subscribe((result: TreinoGrupoRede) => {
           console.log('treinoGrupoRede', result);
           this.treinoGrupoRede = result;
-          this.listaBase = this.treinoGrupoRede.treinoRedes;
+          //this.listaBase = this.treinoGrupoRede.treinoRedes;
+          this.carregaRegra(result);
         })
     })
   }
+
+  carregaRegra(treinoGrupo:TreinoGrupoRede) {
+    let filtro = {
+      'where' : {'grupoRegraId' : treinoGrupo.grupoRegraId} ,
+      'include' : 
+        {
+          'relation' : 'regraProjecao' , 
+          'scope' : { 'include' : {
+            'relation' : 'treinoRedes' ,
+            'scope' : { 'include' : {
+              'relation' : 'redeNeural'
+            }}, 'where' : {'treinoGrupoRedeId' : treinoGrupo.id }
+          }}
+        }
+    }
+    this.srvRegra.find(filtro)
+      .subscribe((result) => {
+        console.log('Carrega Regra: ' , result);
+        this.listaBase = result;
+      })
+  }
  
+  getComponente() {
+    return TreinoRedeGrupoEditaComponent;
+  }
 }

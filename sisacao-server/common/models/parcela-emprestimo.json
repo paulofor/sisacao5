@@ -15,13 +15,16 @@
     "dataRecebimento": {
       "type": "date"
     },
-    "valorRecebido": {
-      "type": "number"
-    },
     "valor": {
       "type": "number"
     },
     "valorPresente": {
+      "type": "number"
+    },
+    "valorRecebido": {
+      "type": "number"
+    },
+    "valorPrevisto": {
       "type": "number"
     },
     "pago": {
@@ -29,7 +32,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "emprestimoP2P": {
+      "type": "belongsTo",
+      "model": "EmprestimoP2P",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }

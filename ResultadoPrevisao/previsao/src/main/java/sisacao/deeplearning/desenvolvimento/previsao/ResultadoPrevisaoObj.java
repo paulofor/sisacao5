@@ -8,7 +8,7 @@ import sisacao.deeplearning.desenvolvimento.processamento.BuscaSaidaTrade;
 
 public class ResultadoPrevisaoObj {
 
-	public void executa(long idTreinoRede, long diaInicio, long diaFinal, double valor) {
+	public void executa() {
 		DatasetResultadoPrevisao ds = new DatasetResultadoPrevisao();
  		TreinoRede_ObtemListaPrevisaoTeste exec = new TreinoRede_ObtemListaPrevisaoTeste();
 		exec.setComum(ds);

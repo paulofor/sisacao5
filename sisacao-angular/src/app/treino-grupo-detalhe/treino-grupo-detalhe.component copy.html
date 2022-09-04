@@ -1,0 +1,46 @@
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+    <span>Grupo Treino: {{treinoGrupoRede.grupoAcao.nome}} ({{listaBase.length}})</span>
+    <span></span>
+    <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="resetTeste()">Reset Teste</button>
+  </div>
+  <div *ngIf="listaBase" class="dgc-painel-principal">
+    <div class="dgc-card" *ngFor="let item of listaBase">
+      <div class="dgc-card-header">
+        <span># {{item.id}}</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <span>{{item.redeNeural.nome}}</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <div>{{item.regraProjecao.codigoRegraProjecao}} (#{{item.regraProjecao.id}})</div>
+      </div>
+      <div class="dgc-card-detalhe">
+        <div>Exemplos: {{item.regraProjecao.ultimaInsercao  | date : 'dd/MM/yyyy HH:mm' : 'UTC' }}</div>
+        <div>Treino: {{item.dataTreinamento  | date : 'dd/MM/yyyy HH:mm' : 'UTC' }}</div>
+      </div>
+      <div class="dgc-card-detalhe">
+        <div>
+          <span>Dados Teste: {{item.ativoTeste}}</span>
+          <span><button class="btn-primary btn-sm btn" (click)="ativaTeste(item)">X</button></span>
+        </div>
+        <div>{{item.dataTeste  | date : 'dd/MM/yyyy HH:mm' : 'UTC' }}</div>
+        <div>Média: {{item.mediaValorTeste | number : '1.2-2'}} - Desvio: {{item.desvioValorTeste | number : '1.2-2'}}</div>
+      </div>
+      <div class="dgc-card-detalhe">
+        <div>
+          <span>Previsão Teste: {{item.ativoPrevisaoTeste}}</span>
+          <span class="dgc-direita"><button class="btn-primary btn-sm btn" (click)="ativaPrevisaoTeste(item)">X</button></span>
+        </div>
+        <div>{{item.dataPrevisaoTeste  | date : 'dd/MM/yyyy HH:mm' : 'UTC' }}</div>
+        <div>Limite Entrada: {{item.limiteParaEntrada}}</div>
+        <div>Trades: {{item.qtdeTradeTeste}} ({{item.qtdeLucroTeste}} x {{item.qtdePrejuizoTeste}}) {{ ((item.qtdeLucroTeste / item.qtdeTradeTeste)*100) | number : '1.0-0' }}%</div>
+        <div>Pontos: {{item.pontuacaoTeste | number : '1.0-0'}}</div>
+      </div>
+
+      <div  class="dgc-card-comandos">
+        <button class="btn-primary btn-sm btn" (click)="edita(item)">Edita</button>
+     </div>
+    </div>
+  </div>
+</div>

@@ -19,6 +19,9 @@ public class DatasetResultadoPrevisao implements IDatasetComum,
 	//private long diaNumFinal;
 	//private double valorLimite;
 	
+
+	
+	
 	private List<PrevisaoTeste> listaPrevisao;
 	
 	private List<TradePrevisao> listaTrade = new LinkedList<TradePrevisao>();
@@ -52,6 +55,8 @@ public class DatasetResultadoPrevisao implements IDatasetComum,
 	}
 	
 	public boolean podeProcessar(PrevisaoTeste previsao) {
+		int abertos = abertosNaData(previsao);
+		if (abertos>=5) return false;
 		boolean saida = true;
 		for (TradePrevisao trade : listaTrade) {
 			if (trade.getTicker().compareTo(previsao.getTicker())==0) {
@@ -64,7 +69,18 @@ public class DatasetResultadoPrevisao implements IDatasetComum,
 		return saida;
 	}
 	
-
+	private int abertosNaData(PrevisaoTeste previsao) {
+		int total = 0;
+		for (TradePrevisao trade : listaTrade) {
+			int diaPrevisao = previsao.getDiaNumPrevisao();
+			long inicioTrade = trade.getDiaNumEntrada();
+			int finalTrade = trade.getDiaNumSaida();
+			if (diaPrevisao >= inicioTrade && diaPrevisao <= finalTrade) {
+				total++;
+			}
+		}
+		return total;
+	}
 	
 
 	public List<PrevisaoTeste> getListaPrevisao() {
@@ -138,10 +154,6 @@ public class DatasetResultadoPrevisao implements IDatasetComum,
 	public void setPrevisaoCorrente(PrevisaoTeste previsaoCorrente) {
 		this.previsaoCorrente = previsaoCorrente;
 	}
-
-	
-
-
 
 	
 	

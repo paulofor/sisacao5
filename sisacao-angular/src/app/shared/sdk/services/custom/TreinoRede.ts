@@ -463,6 +463,66 @@ export class TreinoRedeApi extends BaseLoopBackApi {
    *
    * @param {object} data Request data.
    *
+   *  - `listaId` – `{any}` - 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `TreinoRede` object.)
+   * </em>
+   */
+  public RecebeListaTeste(listaId: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/TreinoRedes/recebeListaTeste";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof listaId !== 'undefined' && listaId !== null) _urlParams.listaId = listaId;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {object} data Request data.
+   *
+   *  - `idGrupoTreino` – `{number}` - 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `TreinoRede` object.)
+   * </em>
+   */
+  public DesligaTesteGrupo(idGrupoTreino: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/TreinoRedes/desligaTesteGrupo";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof idGrupoTreino !== 'undefined' && idGrupoTreino !== null) _urlParams.idGrupoTreino = idGrupoTreino;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {object} data Request data.
+   *
    *  - `idTreino` – `{number}` - 
    *
    * @returns {object} An empty reference that will be
@@ -474,10 +534,40 @@ export class TreinoRedeApi extends BaseLoopBackApi {
    * This usually means the response is a `TreinoRede` object.)
    * </em>
    */
-  public AtivaTeste(idTreino: any, customHeaders?: Function): Observable<any> {
+  public AlteraAtivaTeste(idTreino: any, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/TreinoRedes/ativaTeste";
+    "/TreinoRedes/alteraAtivaTeste";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof idTreino !== 'undefined' && idTreino !== null) _urlParams.idTreino = idTreino;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {object} data Request data.
+   *
+   *  - `idTreino` – `{number}` - 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `TreinoRede` object.)
+   * </em>
+   */
+  public AlteraAtivaPrevisaoTeste(idTreino: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/TreinoRedes/alteraAtivaPrevisaoTeste";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
@@ -524,7 +614,36 @@ export class TreinoRedeApi extends BaseLoopBackApi {
    *
    * @param {object} data Request data.
    *
-   *  - `idGrupo` – `{number}` - 
+   *  - `id` – `{number}` - 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `TreinoRede` object.)
+   * </em>
+   */
+  public ExecutouDadoTeste(id: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/TreinoRedes/executouDadoTeste";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {number} idGrupo 
    *
    * @returns {object[]} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -535,10 +654,10 @@ export class TreinoRedeApi extends BaseLoopBackApi {
    * This usually means the response is a `TreinoRede` object.)
    * </em>
    */
-  public ListaTestePorGrupo(idGrupo: any, customHeaders?: Function): Observable<any> {
-    let _method: string = "POST";
+  public ObtemListaParaTestePorGrupo(idGrupo: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/TreinoRedes/listaTestePorGrupo";
+    "/TreinoRedes/obtemListaParaTestePorGrupo";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};

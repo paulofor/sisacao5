@@ -12,9 +12,21 @@ import { EmprestimoP2PApi, EmprestimoP2P } from '../shared/sdk';
 })
 export class EmprestimoP2PListaComponent extends BaseListComponent {
 
+
+  resumo: any;
+
   constructor(protected dialog: MatDialog, protected srv:EmprestimoP2PApi,public router: Router) { 
     super(dialog,srv)
   }
+
+  preCarregaTela(): void {
+     this.srv.ObtemResumo()
+      .subscribe((result) => {
+        console.log('resumo' , result);
+        this.resumo = result;
+      }) 
+  }
+
 
   criaItem() {
     return new EmprestimoP2P();
@@ -30,9 +42,11 @@ export class EmprestimoP2PListaComponent extends BaseListComponent {
     }
   }
 
-  getPercentualRecebido(item:EmprestimoP2P) {
-    return (item.totalRecebido / item.valorEmprestimo) * 100;
+  getPercentual(valor:number, item) {
+    return (valor / item.valorEmprestimo) * 100;
   }
+
+ 
 
   /*
   edita(edicao?) {

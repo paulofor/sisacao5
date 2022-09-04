@@ -56,6 +56,11 @@
       "type": "hasMany",
       "model": "GrupoRegraRel",
       "foreignKey": ""
+    },
+    "treinoRedes": {
+      "type": "hasMany",
+      "model": "TreinoRede",
+      "foreignKey": ""
     }
   },
   "acls": [],

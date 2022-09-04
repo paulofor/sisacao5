@@ -1,0 +1,32 @@
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+      <span>Mês Corrente - Previsão: {{  totalPrevisto | currency : 'BRL'}} ({{listaBase.length}})</span>
+      <span class="dgc-direita">Pago: {{  totalPago | currency : 'BRL'}} ({{qtdePago}})</span>
+  </div>
+  <div *ngIf="listaBase" class="dgc-painel-principal">
+      <div class="dgc-card" *ngFor="let item of listaBase">
+          <div class="dgc-card-header">
+            <span>{{  item.dataVencimento | date : 'dd/MM/yyyy' : 'UTC' }}</span>
+            <span class="dgc-direita">{{  item.numeroParcela }}</span>
+          </div>
+          <div class="dgc-card-header">
+            <span>Valor: {{  item.valor | currency : 'BRL'}}</span>
+          </div>
+          <div class="dgc-card-header">
+            <span>{{  item.emprestimoP2P.nomePessoa }}</span>
+          </div>
+          <div class="dgc-card-detalhe">
+            <span>Pago: {{  item.valorRecebido | currency : 'BRL'}}</span>
+          </div>
+          <div class="dgc-card-detalhe">
+            <span>Previsto: {{  item.valorPrevisto | currency : 'BRL'}}</span>
+          </div>
+          <div class="dgc-card-detalhe">
+            <span>Presente: {{  item.valorPresente | currency : 'BRL'}}</span>
+          </div>
+          <div  class="dgc-card-comandos">
+              <button class="btn-primary btn-sm btn" (click)="edita(item)">Alterar</button>
+          </div>
+      </div>
+  </div>
+</div>

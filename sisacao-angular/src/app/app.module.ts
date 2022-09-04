@@ -175,6 +175,10 @@ import { TreinoGrupoEditaComponent } from './treino-grupo-edita/treino-grupo-edi
 import { EmprestimoP2PDetalheComponent } from './emprestimo-p2-pdetalhe/emprestimo-p2-pdetalhe.component';
 import { TreinoGrupoDetalheComponent } from './treino-grupo-detalhe/treino-grupo-detalhe.component';
 import { ParcelaEmprestimoEditComponent } from './parcela-emprestimo-edit/parcela-emprestimo-edit.component';
+import { EmprestimoP2PMesCorrenteComponent } from './emprestimo-p2-pmes-corrente/emprestimo-p2-pmes-corrente.component';
+import { TradeAtivoComponent } from './trade-ativo/trade-ativo.component';
+import { TreinoRedeGrupoEditaComponent } from './treino-rede-grupo-edita/treino-rede-grupo-edita.component';
+import { TargetStopEditaComponent } from './target-stop-edita/target-stop-edita.component';
 
 //import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
@@ -323,6 +327,10 @@ registerLocaleData(localePt, 'pt-BR');
     EmprestimoP2PDetalheComponent,
     TreinoGrupoDetalheComponent,
     ParcelaEmprestimoEditComponent,
+    EmprestimoP2PMesCorrenteComponent,
+    TradeAtivoComponent,
+    TreinoRedeGrupoEditaComponent,
+    TargetStopEditaComponent,
   ],
   imports: [
     BrowserModule,
@@ -417,7 +425,9 @@ registerLocaleData(localePt, 'pt-BR');
     GrupoRedeEditaComponent,
     EscolheRedeGrupoEditComponent,
     TreinoGrupoEditaComponent,
-    ParcelaEmprestimoEditComponent
+    ParcelaEmprestimoEditComponent,
+    TreinoRedeGrupoEditaComponent,
+    TargetStopEditaComponent
   ],
   bootstrap: [AppComponent]
 })

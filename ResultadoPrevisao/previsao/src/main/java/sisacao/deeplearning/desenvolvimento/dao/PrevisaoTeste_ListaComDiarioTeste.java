@@ -10,7 +10,7 @@ import sisacao.deeplearning.desenvolvimento.processamento.TrataPrevisao;
 public class PrevisaoTeste_ListaComDiarioTeste extends DaoBasePrevisao {
 
 	
-
+	
 
 	@Override
 	public void executaImpl() {
@@ -25,6 +25,7 @@ public class PrevisaoTeste_ListaComDiarioTeste extends DaoBasePrevisao {
 				for (PrevisaoTeste previsao : objects) {
 					ds.setPrevisaoCorrente(previsao);
 					executaProximoSemFinalizar();
+					
 				}
 				finalizar();
 			}

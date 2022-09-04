@@ -9,6 +9,8 @@ import br.inf.digicom.loopback.DaoBase;
 
 public class TreinoRede_ObtemListaPrevisaoTeste  extends DaoBasePrevisao{
 
+	private TreinoRede_ExecutouPrevisaoTeste paralelo = new TreinoRede_ExecutouPrevisaoTeste();
+	
 	@Override
 	protected void executaImpl() {
 		final DatasetResultadoPrevisao ds = (DatasetResultadoPrevisao) getComum();
@@ -18,6 +20,8 @@ public class TreinoRede_ObtemListaPrevisaoTeste  extends DaoBasePrevisao{
 				for (TreinoRede treino:objects) {
 					ds.setTreinoCorrente(treino);
 					executaProximoSemFinalizar();
+					paralelo.setComum(ds);
+					paralelo.executa();
 				}
 				finalizar();
 			}

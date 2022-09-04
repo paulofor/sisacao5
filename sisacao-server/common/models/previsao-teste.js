@@ -20,7 +20,8 @@ module.exports = function(Previsaoteste) {
 
 
     Previsaoteste.ListaComDiarioTargetStopTeste = function(treinoRedeId, diaNumInicial, diaNumFinal , limiteValor, callback) {
-        let sql = "select PrevisaoTeste.* , diario.maximo maximoDiario , diario.minimo minimoDiario, RegraProjecao.target, RegraProjecao.stop, PrevisaoTeste.tipoCompraVenda " +
+        let sql = "select PrevisaoTeste.* , diario.maximo maximoDiario , diario.minimo minimoDiario, RegraProjecao.target, RegraProjecao.stop, PrevisaoTeste.tipoCompraVenda, " +
+            " PrevisaoTeste.valorPrevisao " +
             " from PrevisaoTeste " +
             " inner join CotacaoDiarioAcao as diario on " + 
             " diario.ticker = PrevisaoTeste.ticker and diario.diaNum = PrevisaoTeste.diaNumPrevisao " +
@@ -30,7 +31,7 @@ module.exports = function(Previsaoteste) {
             " and diaNumPrevisao >= "  + diaNumInicial +
             " and diaNumPrevisao <= "  + diaNumFinal +
             " and valorPrevisao >= "  + (limiteValor) +
-            " order by PrevisaoTeste.diaNumPrevisao"
+            " order by PrevisaoTeste.diaNumPrevisao, PrevisaoTeste.valorPrevisao desc"
         let ds = Previsaoteste.dataSource;
         ds.connector.query(sql,callback);
     }

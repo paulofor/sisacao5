@@ -10,6 +10,9 @@ import sisacao.deeplearning.desenvolvimento.dao.DaoBasePrevisao;
 import sisacao.deeplearning.desenvolvimento.dao.DatasetResultadoPrevisao;
 
 public class TrataPrevisao extends DaoBasePrevisao{
+	
+	
+
 
 	@Override
 	protected void executaImpl() {

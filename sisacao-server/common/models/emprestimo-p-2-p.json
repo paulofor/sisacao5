@@ -57,10 +57,19 @@
     "quantidadeRecebida": {
       "type": "number"
     },
+    "quantidadeFutura": {
+      "type": "number"
+    },
     "parcelaMinima": {
       "type": "number"
     },
-    "quantidadeFutura": {
+    "quantidadeEmAtraso": {
+      "type": "number"
+    },
+    "dataUltimaParcela": {
+      "type": "date"
+    },
+    "previsaoLucroPrejuizo": {
       "type": "number"
     }
   },
@@ -74,6 +83,42 @@
   },
   "acls": [],
   "methods": {
+    "CalculaValorPresente": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "resumo",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/calculaValorPresente",
+          "verb": "post"
+        }
+      ]
+    },
+    "ObtemResumo": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "resumo",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemResumo",
+          "verb": "get"
+        }
+      ]
+    },
     "CriaParcelas": {
       "accepts": [
         {

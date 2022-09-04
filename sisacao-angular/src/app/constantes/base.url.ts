@@ -1,8 +1,8 @@
 //
 
 
-export const BASE_URL = 'http://localhost:21046'; // local
-//export const BASE_URL = 'http://vps-40d69db1.vps.ovh.ca:23005'; // ovh - sisacao-angular
+//export const BASE_URL = 'http://localhost:21046'; // local
+export const BASE_URL = 'http://vps-40d69db1.vps.ovh.ca:23005'; // ovh - sisacao-angular
 
 export const API_VERSION = 'api';
 

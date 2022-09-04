@@ -9,8 +9,8 @@
     "ativoPrevisao": {
       "type": "number"
     },
-    "ativoTeste" : {
-      "type":"number"
+    "ativoTeste": {
+      "type": "number"
     },
     "limiteParaEntrada": {
       "type": "number"
@@ -30,8 +30,26 @@
     "treinoGrupoRedeId": {
       "type": "number"
     },
-    "dataTreinamento" : {
+    "dataTreinamento": {
       "type": "date"
+    },
+    "dataTeste": {
+      "type": "date"
+    },
+    "ativoPrevisaoTeste": {
+      "type": "number"
+    },
+    "dataPrevisaoTeste": {
+      "type": "date"
+    },
+    "desvioValorTeste": {
+      "type": "number"
+    },
+    "mediaValorTeste": {
+      "type": "number"
+    },
+    "qtdeTradeTeste": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -69,7 +87,57 @@
   },
   "acls": [],
   "methods": {
-    "AtivaTeste": {
+    "RecebeListaTeste": {
+      "accepts": [
+        {
+          "arg": "listaId",
+          "type": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/recebeListaTeste",
+          "verb": "post"
+        }
+      ]
+    },
+    "DesligaTesteGrupo": {
+      "accepts": [
+        {
+          "arg": "idGrupoTreino",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/desligaTesteGrupo",
+          "verb": "post"
+        }
+      ]
+    },
+    "AlteraAtivaTeste": {
       "accepts": [
         {
           "arg": "idTreino",
@@ -89,7 +157,32 @@
       "description": "",
       "http": [
         {
-          "path": "/ativaTeste",
+          "path": "/alteraAtivaTeste",
+          "verb": "post"
+        }
+      ]
+    },
+    "AlteraAtivaPrevisaoTeste": {
+      "accepts": [
+        {
+          "arg": "idTreino",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/alteraAtivaPrevisaoTeste",
           "verb": "post"
         }
       ]
@@ -119,7 +212,57 @@
         }
       ]
     },
-    "ListaTestePorGrupo": {
+    "ExecutouDadoTeste": {
+      "accepts": [
+        {
+          "arg": "id",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/executouDadoTeste",
+          "verb": "post"
+        }
+      ]
+    },
+    "ExecutouPrevisaoTeste": {
+      "accepts": [
+        {
+          "arg": "id",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/executouPrevisaoTeste",
+          "verb": "post"
+        }
+      ]
+    },
+    "ObtemListaParaTestePorGrupo": {
       "accepts": [
         {
           "arg": "idGrupo",
@@ -139,8 +282,8 @@
       "description": "",
       "http": [
         {
-          "path": "/listaTestePorGrupo",
-          "verb": "post"
+          "path": "/obtemListaParaTestePorGrupo",
+          "verb": "get"
         }
       ]
     },

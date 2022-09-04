@@ -19,6 +19,12 @@ export interface TreinoRedeInterface {
   "dataCriacaoGmt"?: Date;
   "treinoGrupoRedeId"?: number;
   "dataTreinamento"?: Date;
+  "dataTeste"?: Date;
+  "ativoPrevisaoTeste"?: number;
+  "dataPrevisaoTeste"?: Date;
+  "desvioValorTeste"?: number;
+  "mediaValorTeste"?: number;
+  "qtdeTradeTeste"?: number;
   "id"?: number;
   "grupoAcaoId"?: number;
   "periodoTreinoRedeId"?: number;
@@ -43,6 +49,12 @@ export class TreinoRede implements TreinoRedeInterface {
   "dataCriacaoGmt": Date;
   "treinoGrupoRedeId": number;
   "dataTreinamento": Date;
+  "dataTeste": Date;
+  "ativoPrevisaoTeste": number;
+  "dataPrevisaoTeste": Date;
+  "desvioValorTeste": number;
+  "mediaValorTeste": number;
+  "qtdeTradeTeste": number;
   "id": number;
   "grupoAcaoId": number;
   "periodoTreinoRedeId": number;
@@ -123,6 +135,30 @@ export class TreinoRede implements TreinoRedeInterface {
         "dataTreinamento": {
           name: 'dataTreinamento',
           type: 'Date'
+        },
+        "dataTeste": {
+          name: 'dataTeste',
+          type: 'Date'
+        },
+        "ativoPrevisaoTeste": {
+          name: 'ativoPrevisaoTeste',
+          type: 'number'
+        },
+        "dataPrevisaoTeste": {
+          name: 'dataPrevisaoTeste',
+          type: 'Date'
+        },
+        "desvioValorTeste": {
+          name: 'desvioValorTeste',
+          type: 'number'
+        },
+        "mediaValorTeste": {
+          name: 'mediaValorTeste',
+          type: 'number'
+        },
+        "qtdeTradeTeste": {
+          name: 'qtdeTradeTeste',
+          type: 'number'
         },
         "id": {
           name: 'id',

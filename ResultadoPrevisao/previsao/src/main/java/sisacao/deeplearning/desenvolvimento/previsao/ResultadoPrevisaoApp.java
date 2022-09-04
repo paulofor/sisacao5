@@ -19,13 +19,13 @@ public class ResultadoPrevisaoApp
 	
 	public static void main(String[] args) {
 		System.out.print("ResultadoPrevisaoApp");
-		System.out.println(" (19-07-2022)");
+		System.out.println(" (01-09-2022)");
 		try {
 			//PrintStream printStream = new PrintStream("Error-InsereExemploTreinoAcaoEntradaApp.txt");
 		    //System.setErr(printStream);
 			carregaProp();
 			ResultadoPrevisaoObj obj = new ResultadoPrevisaoObj();
-			obj.executa(2,20220601,20220731,0.5);
+			obj.executa();
 			System.exit(0);
 		} catch (Exception e) {
 			e.printStackTrace();

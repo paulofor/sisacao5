@@ -1,28 +1,35 @@
 /* tslint:disable */
+import {
+  EmprestimoP2P
+} from '../index';
 
 declare var Object: any;
 export interface ParcelaEmprestimoInterface {
   "numeroParcela"?: number;
   "dataVencimento"?: Date;
   "dataRecebimento"?: Date;
-  "valorRecebido"?: number;
   "valor"?: number;
   "valorPresente"?: number;
+  "valorRecebido"?: number;
+  "valorPrevisto"?: number;
   "pago"?: number;
   "id"?: number;
   "emprestimoP2PId"?: number;
+  emprestimoP2P?: EmprestimoP2P;
 }
 
 export class ParcelaEmprestimo implements ParcelaEmprestimoInterface {
   "numeroParcela": number;
   "dataVencimento": Date;
   "dataRecebimento": Date;
-  "valorRecebido": number;
   "valor": number;
   "valorPresente": number;
+  "valorRecebido": number;
+  "valorPrevisto": number;
   "pago": number;
   "id": number;
   "emprestimoP2PId": number;
+  emprestimoP2P: EmprestimoP2P;
   constructor(data?: ParcelaEmprestimoInterface) {
     Object.assign(this, data);
   }
@@ -68,16 +75,20 @@ export class ParcelaEmprestimo implements ParcelaEmprestimoInterface {
           name: 'dataRecebimento',
           type: 'Date'
         },
-        "valorRecebido": {
-          name: 'valorRecebido',
-          type: 'number'
-        },
         "valor": {
           name: 'valor',
           type: 'number'
         },
         "valorPresente": {
           name: 'valorPresente',
+          type: 'number'
+        },
+        "valorRecebido": {
+          name: 'valorRecebido',
+          type: 'number'
+        },
+        "valorPrevisto": {
+          name: 'valorPrevisto',
           type: 'number'
         },
         "pago": {
@@ -94,6 +105,14 @@ export class ParcelaEmprestimo implements ParcelaEmprestimoInterface {
         },
       },
       relations: {
+        emprestimoP2P: {
+          name: 'emprestimoP2P',
+          type: 'EmprestimoP2P',
+          model: 'EmprestimoP2P',
+          relationType: 'belongsTo',
+                  keyFrom: 'emprestimoP2PId',
+          keyTo: 'id'
+        },
       }
     }
   }
