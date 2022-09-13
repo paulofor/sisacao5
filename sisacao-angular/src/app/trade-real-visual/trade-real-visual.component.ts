@@ -38,6 +38,7 @@ export class TradeRealVisualComponent extends BaseListComponent {
         this.exposicao = result.valor;
       })
   }
+  
   carregaValorAtual() {
     this.srv.SituacaoAtual()
     .subscribe((result) => {

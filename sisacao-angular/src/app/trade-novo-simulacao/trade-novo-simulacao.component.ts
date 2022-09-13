@@ -23,6 +23,8 @@ export class TradeNovoSimulacaoComponent  extends BaseEditComponent {
       console.log('Previsao');
       item.previsaoRedeId = this.origem.id;
       item.tipo = this.origem.tipoCompraVenda;
+      item.operacaoRisco = 0;
+      item.operacaoAlvo = 0;
     } else {
       item.execucaoSimulacaoId = this.origem.execucaoSimulacaoId;
       item.tipo = this.origem.tipo;

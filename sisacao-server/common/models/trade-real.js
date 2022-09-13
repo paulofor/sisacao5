@@ -200,6 +200,26 @@ module.exports = function(Tradereal) {
         
     }
 
+    Tradereal.ResumoAtual = function(callback) {
+        let sql = " select " +
+            " (select sum(operacaoRisco) from TradeReal where dataSaida is null) as risco, " +
+            " (select sum(operacaoAlvo) from TradeReal where dataSaida is null) as alvo, " +
+            " (select sum(operacaoAlvo) from TradeReal where dataSaida is null and tipo='C') as alvoLong, " +
+            " (select sum(operacaoRisco) from TradeReal where dataSaida is null and tipo='C') as riscoLong, " +
+            " (select sum(operacaoAlvo) from TradeReal where dataSaida is null and tipo='V') as alvoShort, " +
+            " (select sum(operacaoRisco) from TradeReal where dataSaida is null and tipo='V') as riscoShort, " +
+            " (select sum(lucroPrejuizo) from TradeReal where dataSaida is not null) as resultadoTotal, " +
+            " (select count(*) from TradeReal where dataSaida is not null) as trades, " +
+            " (select sum(operacaoRisco) from TradeReal where dataSaida is null) / " +
+            " (select sum(lucroPrejuizo) from TradeReal where dataSaida is not null) as proporcaoRisco";
+        
+        let ds = Tradereal.dataSource;
+        ds.connector.query(sql,(err,result) => {
+            callback(err,result[0]);
+        });
+    }
+
+
 
     Tradereal.ListaAbertoComPreco = function(callback) {
         let sql = "SELECT * , " +
@@ -213,10 +233,21 @@ module.exports = function(Tradereal) {
 
     Tradereal.observe('before save', function updateInicioColeta(ctx, next) {
         let sqlPosicaoOpercao
+        //console.log('entrou no before save');
+        //console.log()
         if (ctx.instance) {
-           ctx.instance.posicaoOpercao = (ctx.instance.tipo=='V'?-1:1);
+           //console.log('instance');
+           ctx.instance.posicaoOperacao = (ctx.instance.tipo=='V'?-1:1);
+           if (ctx.instance.tipo=='C' &&  ctx.instance.precoStop && ctx.instance.precoTarget) {
+                ctx.instance.operacaoRisco = ctx.instance.quantidade * (ctx.instance.precoEntrada - ctx.instance.precoStop);
+                ctx.instance.operacaoAlvo = ctx.instance.quantidade * (ctx.instance.precoTarget - ctx.instance.precoEntrada) 
+           }
+           if (ctx.instance.tipo=='V' &&  ctx.instance.precoStop && ctx.instance.precoTarget) {
+                ctx.instance.operacaoRisco = ctx.instance.quantidade * (ctx.instance.precoStop - ctx.instance.precoEntrada);
+                ctx.instance.operacaoAlvo = ctx.instance.quantidade * (ctx.instance.precoEntrada - ctx.instance.precoTarget) 
+           }
         } else {
-            ctx.data.posicaoOpercao = (ctx.data.tipo=='V'?-1:1);
+            ctx.data.posicaoOperacao = (ctx.data.tipo=='V'?-1:1);
         }
         next();
       })

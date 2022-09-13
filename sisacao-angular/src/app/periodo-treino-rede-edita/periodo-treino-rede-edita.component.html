@@ -25,6 +25,30 @@
       placeholder="Data Numérica Final Validação (yyyymmdd)" autocomplete="off" />
     </mat-form-field>
 
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #diaNumInicioValidacao [(ngModel)]="item.diaNumInicioTeste" name="diaNumInicioTeste" 
+      placeholder="Data Numérica Início Teste (yyyymmdd)" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #diaNumFinalValidacao [(ngModel)]="item.diaNumFinalTeste" name="diaNumFinalTeste" 
+      placeholder="Data Numérica Final Teste (yyyymmdd)" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="3" #minimoTradeTeste [(ngModel)]="item.minimoTradeTeste" name="minimoTradeTeste" 
+      placeholder="Mínimo Trade Teste" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="3" #maximoTradeTeste [(ngModel)]="item.maximoTradeTeste" name="maximoTradeTeste" 
+      placeholder="Máximo Trade Teste" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="3" #simultaneoTradeTeste [(ngModel)]="item.simultaneoTradeTeste" name="simultaneoTradeTeste" 
+      placeholder="Simultâneo Trade Teste" autocomplete="off" />
+    </mat-form-field>
 
   </mat-dialog-content>
 

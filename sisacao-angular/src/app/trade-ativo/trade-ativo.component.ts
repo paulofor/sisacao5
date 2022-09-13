@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
+import { interval, Subscription } from 'rxjs';
 import { BaseListComponent } from '../base-component/base-list-component';
 import { TradeRealApi } from '../shared/sdk';
 import { TargetStopEditaComponent } from '../target-stop-edita/target-stop-edita.component';
@@ -13,9 +14,15 @@ import { TargetStopEditaComponent } from '../target-stop-edita/target-stop-edita
 export class TradeAtivoComponent extends BaseListComponent {
 
   totalPrejuizo : number;
+  resumo: any;
+  private updateSubscription: Subscription;
 
   constructor(protected dialog: MatDialog, protected srv:TradeRealApi,public router: Router) { 
     super(dialog,srv)
+    this.updateSubscription = interval(300000)
+    .subscribe((val) => { 
+      this.carregaTela()
+    });
   }
 
 
@@ -25,10 +32,16 @@ export class TradeAtivoComponent extends BaseListComponent {
         console.log('result: ' , result);
         this.listaBase = result;
         this.posCarregaLista();
+        this.srv.ResumoAtual()
+          .subscribe((result) => {
+            console.log('Resumo: ' , result);
+            this.resumo = result;
+          })
     })
   }
 
   posCarregaLista() {
+    
     this.totalPrejuizo = 0;
     this.listaBase.forEach((item) => {
       item.prejuizoTotal = (item.precoEntrada - item.precoStop) * item.quantidade;

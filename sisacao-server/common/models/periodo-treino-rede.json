@@ -23,6 +23,15 @@
     },
     "diaNumFinalTeste": {
       "type": "number"
+    },
+    "maximoTradeTeste" : {
+      "type" : "number"
+    },
+    "minimoTradeTeste" : {
+      "type" : "number"
+    },
+    "simultaneoTradeTeste" : {
+      "type" : "number"
     }
   },
   "validations": [],

@@ -330,5 +330,9 @@
   "TreinoGrupoRede": {
     "dataSource": "mysqlKingDS2",
     "public": true
+  },
+  "FundoImobiliarioCarteira": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
   }
 }

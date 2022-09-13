@@ -125,7 +125,7 @@ import { AtivoCriptomoedaEditComponent } from './ativo-criptomoeda-edit/ativo-cr
 import { CotacaoIntraMercadoBitcoinComponent } from './cotacao-intra-mercado-bitcoin/cotacao-intra-mercado-bitcoin.component';
 import { PainelPatrimonioMesComponent } from './painel-patrimonio-mes/painel-patrimonio-mes.component';
 import { GraficoAlocacaoComponent } from './grafico-alocacao/grafico-alocacao.component';
-import { NgApexchartsModule } from 'ng-apexcharts';
+
 import { GraficoAlocacaoAporteComponent } from './grafico-alocacao-aporte/grafico-alocacao-aporte.component';
 import { RegraProjecaoDatasComponent } from './regra-projecao-datas/regra-projecao-datas.component';
 import { GrupoParaAcaoComponent } from './grupo-para-acao/grupo-para-acao.component';
@@ -179,7 +179,12 @@ import { EmprestimoP2PMesCorrenteComponent } from './emprestimo-p2-pmes-corrente
 import { TradeAtivoComponent } from './trade-ativo/trade-ativo.component';
 import { TreinoRedeGrupoEditaComponent } from './treino-rede-grupo-edita/treino-rede-grupo-edita.component';
 import { TargetStopEditaComponent } from './target-stop-edita/target-stop-edita.component';
+import { FundoImobiliarioCarteiraComponent } from './fundo-imobiliario-carteira/fundo-imobiliario-carteira.component';
+import { FundoImobilarioCarteiraEditComponent } from './fundo-imobilario-carteira-edit/fundo-imobilario-carteira-edit.component';
+import { MapaCalorGrupoTreinoComponent } from './mapa-calor-grupo-treino/mapa-calor-grupo-treino.component';
 
+
+import { NgApexchartsModule } from 'ng-apexcharts';
 //import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
 
@@ -331,6 +336,9 @@ registerLocaleData(localePt, 'pt-BR');
     TradeAtivoComponent,
     TreinoRedeGrupoEditaComponent,
     TargetStopEditaComponent,
+    FundoImobiliarioCarteiraComponent,
+    FundoImobilarioCarteiraEditComponent,
+    MapaCalorGrupoTreinoComponent,
   ],
   imports: [
     BrowserModule,
@@ -363,8 +371,13 @@ registerLocaleData(localePt, 'pt-BR');
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
+
+    //MatMomentDateModule,
+
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     NgApexchartsModule
-    //MatMomentDateModule
   ],
   providers: [
     AtivoAcaoApi,
@@ -427,7 +440,9 @@ registerLocaleData(localePt, 'pt-BR');
     TreinoGrupoEditaComponent,
     ParcelaEmprestimoEditComponent,
     TreinoRedeGrupoEditaComponent,
-    TargetStopEditaComponent
+    TargetStopEditaComponent,
+    FundoImobilarioCarteiraEditComponent,
+    FundoImobiliarioCarteiraComponent
   ],
   bootstrap: [AppComponent]
 })

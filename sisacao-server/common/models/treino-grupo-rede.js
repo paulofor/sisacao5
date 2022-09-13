@@ -18,6 +18,7 @@ module.exports = function(Treinogruporede) {
                     app.models.GrupoRegraRel.find(filtroRegra, (err,grupoRegraRel) => {
                         grupoRegraRel.forEach((itemGrupoRegraRel) => {
                             let treino = {
+                                'limiteParaEntrada' : 0.5,
                                 'redeNeuralId' : itemGrupoRedeRel.redeNeuralId,
                                 'grupoAcaoId' : grupoTreino.grupoAcaoId,
                                 'periodoTreinoRedeId' : grupoTreino.periodoTreinoRedeId,

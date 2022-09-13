@@ -73,6 +73,9 @@ import { EmprestimoP2PDetalheComponent } from '../emprestimo-p2-pdetalhe/emprest
 import { TreinoGrupoDetalheComponent } from '../treino-grupo-detalhe/treino-grupo-detalhe.component';
 import { EmprestimoP2PMesCorrenteComponent } from '../emprestimo-p2-pmes-corrente/emprestimo-p2-pmes-corrente.component';
 import { TradeAtivoComponent } from '../trade-ativo/trade-ativo.component';
+import { FundoImobiliarioCarteira } from '../shared/sdk';
+import { FundoImobiliarioCarteiraComponent } from '../fundo-imobiliario-carteira/fundo-imobiliario-carteira.component';
+import { MapaCalorGrupoTreinoComponent } from '../mapa-calor-grupo-treino/mapa-calor-grupo-treino.component';
 
 
 export const routes : Routes = [
@@ -177,6 +180,9 @@ export const routes : Routes = [
     { path : 'emprestimoP2PMesCorrente' , component : EmprestimoP2PMesCorrenteComponent },
 
     { path : 'tradeAtivo' , component : TradeAtivoComponent },
+    { path : 'fundoImobiliarioCarteira' , component: FundoImobiliarioCarteiraComponent },
+
+    { path: 'mapaCalorGrupoTreino/:id' , component: MapaCalorGrupoTreinoComponent },
 
     { path: '',  component: HomeComponent  }
     //{ path: '',          redirectTo: 'home', pathMatch: 'full' }

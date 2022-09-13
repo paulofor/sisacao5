@@ -21,6 +21,22 @@ export class TreinoGrupoDetalheComponent  extends BaseListComponent {
     super(dialog,srv)
   }
 
+  precisaTreino(itemRegra,item) {
+    console.log('itemRegra:' , itemRegra);
+    console.log('item', item);
+    if (itemRegra.regraProjecao.ultimaInsercao && !item.dataTreinamento) return "dgc-alerta"
+    else return ""
+  }
+
+  classeAtivo(item) {
+    if (item.ativoPrevisao==1) return "dgc-treino-previsao"
+    else return "";
+  }
+  pendente(ativo) {
+    if (ativo==1) return "dgc-pendente";
+    else return "";
+  }
+
   ativaTeste(item) {
     console.log('item' , item);
     this.srvTreino.AlteraAtivaTeste(item.id)

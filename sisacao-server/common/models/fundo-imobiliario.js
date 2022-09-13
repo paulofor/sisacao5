@@ -76,6 +76,7 @@ module.exports = function (Fundoimobiliario) {
                     " where ticker = FundoImobiliario.ticker and tipo='Rendimento' " +
                     " and dataPagamento >= (select DATE_SUB(now(), INTERVAL 6 month)) " +
                     ") "; 
+        app.models.FundoImobiliarioCarteria.AtualizaDiario((err,result) => {});
         var ds = Fundoimobiliario.dataSource;
         ds.connector.query(sqlMaximo1, (err,result) => {
            ds.connector.query(sqlMinimo1, (err,result) => {

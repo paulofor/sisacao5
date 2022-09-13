@@ -38,6 +38,30 @@
     },
     "ultimaInsercao": {
       "type": "date"
+    },
+    "exemploQuantidadeSaida": {
+      "type": "number"
+    },
+    "exemploPercentualSaida": {
+      "type": "number"
+    },
+    "exemploQuantidadeClasse0": {
+      "type": "number"
+    },
+    "exemploPercentualClasse0": {
+      "type": "number"
+    },
+    "exemploQuantidadeClasse1": {
+      "type": "number"
+    },
+    "exemploPercentualClasse1": {
+      "type": "number"
+    },
+    "exemploQuantidadeResultado": {
+      "type": "number"
+    },
+    "exemploPercentualResultado": {
+      "type": "number"
     }
   },
   "validations": [],

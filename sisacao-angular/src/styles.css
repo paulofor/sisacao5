@@ -239,7 +239,9 @@ body {
 	
   /* background-image: linear-gradient(to bottom, transparent, #ccc); */
 }
-  
+ .dgc-esquerda {
+  margin-right: 120px;
+ }
  .dgc-direita {
   margin-left: auto;
  }
@@ -252,6 +254,10 @@ body {
  .dgc-alerta {
    color: #cd150c;
  }
+ .dgc-pendente {
+  color: blue;  
+ }
+
 
  .dgc-campo-form-100 {
    width: 100%;

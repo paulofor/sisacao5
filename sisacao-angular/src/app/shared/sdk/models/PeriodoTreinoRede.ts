@@ -8,6 +8,9 @@ export interface PeriodoTreinoRedeInterface {
   "diaNumFinalValidacao"?: number;
   "diaNumInicioTeste"?: number;
   "diaNumFinalTeste"?: number;
+  "maximoTradeTeste"?: number;
+  "minimoTradeTeste"?: number;
+  "simultaneoTradeTeste"?: number;
   "id"?: number;
 }
 
@@ -18,6 +21,9 @@ export class PeriodoTreinoRede implements PeriodoTreinoRedeInterface {
   "diaNumFinalValidacao": number;
   "diaNumInicioTeste": number;
   "diaNumFinalTeste": number;
+  "maximoTradeTeste": number;
+  "minimoTradeTeste": number;
+  "simultaneoTradeTeste": number;
   "id": number;
   constructor(data?: PeriodoTreinoRedeInterface) {
     Object.assign(this, data);
@@ -74,6 +80,18 @@ export class PeriodoTreinoRede implements PeriodoTreinoRedeInterface {
         },
         "diaNumFinalTeste": {
           name: 'diaNumFinalTeste',
+          type: 'number'
+        },
+        "maximoTradeTeste": {
+          name: 'maximoTradeTeste',
+          type: 'number'
+        },
+        "minimoTradeTeste": {
+          name: 'minimoTradeTeste',
+          type: 'number'
+        },
+        "simultaneoTradeTeste": {
+          name: 'simultaneoTradeTeste',
           type: 'number'
         },
         "id": {

@@ -13,7 +13,19 @@
             <span>Validação: </span>
             <span>{{item.diaNumInicioValidacao}} - {{item.diaNumFinalValidacao}}</span>
           </div>
-
+          <div class="dgc-card-header">
+            <span>Teste: </span>
+            <span>{{item.diaNumInicioTeste}} - {{item.diaNumFinalTeste}}</span>
+          </div>
+          <div class="dgc-card-detalhe">
+            Trades:
+          </div>
+          <div class="dgc-card-detalhe">
+            Min: {{item.minimoTradeTeste}} Max:{{item.maximoTradeTeste}}
+          </div>
+          <div class="dgc-card-detalhe">
+            Simultaneo: {{item.simultaneoTradeTeste}}
+          </div>
           <div  class="dgc-card-comandos">
               <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar</button>
           </div>

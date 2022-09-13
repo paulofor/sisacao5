@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Edita Experimento</h2>
+
+<form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
+
+  <mat-dialog-content>
+    
+    <mat-form-field>
+      <input matInput [matDatepicker]="dataReferencia" placeholder="Data" [(ngModel)]="item.dataReferencia" [ngModelOptions]="{standalone: true}">
+      <mat-datepicker-toggle matSuffix [for]="dataReferencia"></mat-datepicker-toggle>
+      <mat-datepicker #dataReferencia></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="50" #ticker [(ngModel)]="item.ticker" name="ticker" placeholder="Ticker" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #quantidade [(ngModel)]="item.quantidade" name="quantidade" placeholder="Quantidade" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #proventoTotal [(ngModel)]="item.proventoTotal" name="proventoTotal" placeholder="Proventos (9.99)" autocomplete="off" />
+    </mat-form-field>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button>Salvar</button>
+    <button mat-raised-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+
+</form>

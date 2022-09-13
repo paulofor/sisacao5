@@ -2,9 +2,19 @@
   <div class="dgc-card-header">
       <span *ngIf="!rede.grupoAcaoId">{{rede.id}}</span>
       <span *ngIf="rede.grupoAcaoId">{{rede.redeNeural.nome}} - {{rede.regraProjecao.codigoRegraProjecao}} (#{{rede.id}})</span>
+     
+
   </div>
-  
+  <div class="dgc-card-detalhe">
+    <div>Pontuação: {{rede.pontuacaoTeste}}</div>
+    <div>Placar: {{rede.qtdeLucroTeste}} x {{rede.qtdePrejuizoTeste}}</div>
+    <div>Limite: {{rede.limiteParaEntrada | number: '1.2'}}</div>
+  </div>
   <div>
+    <div>
+      <img *ngIf="rede.regraProjecao.tipoCompraVenda=='C'" src="assets/img/compra.png" width="32" height="32">
+      <img *ngIf="rede.regraProjecao.tipoCompraVenda=='V'" src="assets/img/venda.png" width="32" height="32">
+    </div>
     <span  *ngFor="let previsao of listaPrevisao">
         {{previsao.ticker}}: {{previsao.valorPrevisao | number: '1.2-2'}} 
         <span class="dgc-link" *ngIf='(previsao.valorPrevisao > rede.limiteParaEntrada)' (click)="telaCompra(previsao)">

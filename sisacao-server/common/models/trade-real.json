@@ -83,6 +83,12 @@
     },
     "posicaoOperacao": {
       "type": "number"
+    },
+    "operacaoRisco": {
+      "type": "number"
+    },
+    "operacaoAlvo": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -110,6 +116,24 @@
   },
   "acls": [],
   "methods": {
+    "ResumoAtual": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "resumo",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/resumoAtual",
+          "verb": "get"
+        }
+      ]
+    },
     "ListaAbertoComPreco": {
       "accepts": [],
       "returns": [

@@ -4,9 +4,23 @@ module.exports = function(Regraprojecao) {
 
 
   Regraprojecao.FinalizaInsercao = function(idRegraProjecao, callback) {
-    let sql = "update RegraProjecao set ultimaInsercao = now() where id = " + idRegraProjecao;
+    let sql1 = "update RegraProjecao " +
+              " set " 
+              " exemploQuantidadeClasse1 = (select count(*) from ExemploTreinoAcaoSaida where campoY = 1 and regraProjecaoId = RegraProjecao.id), " +
+              " exemploQuantidadeClasse0 = (select count(*) from ExemploTreinoAcaoSaida where campoY = 0 and regraProjecaoId = RegraProjecao.id), " +
+              " exemploQuantidadeResultado = (select count(*) from ExemploTreinoAcaoSaida where resultado <> 0 and regraProjecaoId = RegraProjecao.id), " +
+              " exemploQuantidadeSaida = (select count(*) from ExemploTreinoAcaoSaida where regraProjecaoId = RegraProjecao.id) " +
+              " where id = " + idRegraProjecao;
+    let sql2 = " update RegraProjecao " +
+              " set " + 
+              " exemploPercentualClasse1 = (exemploQuantidadeClasse1 / exemploQuantidadeSaida) * 100, " +
+              " exemploPercentualClasse0 = (exemploQuantidadeClasse0 / exemploQuantidadeSaida) * 100, " +
+              " exemploPercentualResultado = (exemploQuantidadeResultado / exemploQuantidadeSaida) * 100, " +
+              " ultimaInsercao = now() where id = " + idRegraProjecao;
     let ds = Regraprojecao.dataSource;
-    ds.connector.query(sql,callback);
+    ds.connector.query(sql1,(err,result) => {
+      ds.connector.query(sql2,callback);
+    })
   }
 
 

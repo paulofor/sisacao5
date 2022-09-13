@@ -22,7 +22,9 @@ export class TreinoRedeGrupoEditaComponent  extends BaseEditComponent {
 
 
 
- 
+  preSubmit() {
+    this.item.ativoPrevisaoTeste = 1;
+  }
 
 
 }

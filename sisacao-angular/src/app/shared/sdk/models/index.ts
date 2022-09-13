@@ -74,5 +74,6 @@ export * from './ParcelaEmprestimo';
 export * from './GrupoRede';
 export * from './GrupoRedeRel';
 export * from './TreinoGrupoRede';
+export * from './FundoImobiliarioCarteira';
 export * from './BaseModels';
 export * from './FireLoopRef';

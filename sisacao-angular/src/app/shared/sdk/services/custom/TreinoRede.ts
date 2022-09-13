@@ -523,6 +523,39 @@ export class TreinoRedeApi extends BaseLoopBackApi {
    *
    * @param {object} data Request data.
    *
+   *  - `quantidade` – `{number}` - 
+   *
+   *  - `tipo` – `{string}` - 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `TreinoRede` object.)
+   * </em>
+   */
+  public LigaMelhoresPrevisao(quantidade: any, tipo: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/TreinoRedes/ligaMelhoresPrevisao";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof quantidade !== 'undefined' && quantidade !== null) _urlParams.quantidade = quantidade;
+    if (typeof tipo !== 'undefined' && tipo !== null) _urlParams.tipo = tipo;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {object} data Request data.
+   *
    *  - `idTreino` – `{number}` - 
    *
    * @returns {object} An empty reference that will be
@@ -629,6 +662,37 @@ export class TreinoRedeApi extends BaseLoopBackApi {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/TreinoRedes/executouDadoTeste";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {object} data Request data.
+   *
+   *  - `id` – `{number}` - 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `TreinoRede` object.)
+   * </em>
+   */
+  public ExecutouPrevisaoTeste(id: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/TreinoRedes/executouPrevisaoTeste";
     let _routeParams: any = {
       id: id
     };

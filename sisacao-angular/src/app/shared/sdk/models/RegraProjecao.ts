@@ -2,6 +2,7 @@
 import {
   CotacaoIntradayAcaoResultadoValor,
   RegraProjecaoTotalMes,
+  TreinoRede,
   GrupoRegraRel
 } from '../index';
 
@@ -18,9 +19,18 @@ export interface RegraProjecaoInterface {
   "diaNumMaisAntigo"?: number;
   "quantidadeTicker"?: number;
   "ultimaInsercao"?: Date;
+  "exemploQuantidadeSaida"?: number;
+  "exemploPercentualSaida"?: number;
+  "exemploQuantidadeClasse0"?: number;
+  "exemploPercentualClasse0"?: number;
+  "exemploQuantidadeClasse1"?: number;
+  "exemploPercentualClasse1"?: number;
+  "exemploQuantidadeResultado"?: number;
+  "exemploPercentualResultado"?: number;
   "id"?: number;
   cotacaoIntradayAcaoResultadoValors?: CotacaoIntradayAcaoResultadoValor[];
   regraProjecaoTotalMes?: RegraProjecaoTotalMes[];
+  treinoRedes?: TreinoRede[];
   grupoRegraRels?: GrupoRegraRel[];
 }
 
@@ -36,9 +46,18 @@ export class RegraProjecao implements RegraProjecaoInterface {
   "diaNumMaisAntigo": number;
   "quantidadeTicker": number;
   "ultimaInsercao": Date;
+  "exemploQuantidadeSaida": number;
+  "exemploPercentualSaida": number;
+  "exemploQuantidadeClasse0": number;
+  "exemploPercentualClasse0": number;
+  "exemploQuantidadeClasse1": number;
+  "exemploPercentualClasse1": number;
+  "exemploQuantidadeResultado": number;
+  "exemploPercentualResultado": number;
   "id": number;
   cotacaoIntradayAcaoResultadoValors: CotacaoIntradayAcaoResultadoValor[];
   regraProjecaoTotalMes: RegraProjecaoTotalMes[];
+  treinoRedes: TreinoRede[];
   grupoRegraRels: GrupoRegraRel[];
   constructor(data?: RegraProjecaoInterface) {
     Object.assign(this, data);
@@ -117,6 +136,38 @@ export class RegraProjecao implements RegraProjecaoInterface {
           name: 'ultimaInsercao',
           type: 'Date'
         },
+        "exemploQuantidadeSaida": {
+          name: 'exemploQuantidadeSaida',
+          type: 'number'
+        },
+        "exemploPercentualSaida": {
+          name: 'exemploPercentualSaida',
+          type: 'number'
+        },
+        "exemploQuantidadeClasse0": {
+          name: 'exemploQuantidadeClasse0',
+          type: 'number'
+        },
+        "exemploPercentualClasse0": {
+          name: 'exemploPercentualClasse0',
+          type: 'number'
+        },
+        "exemploQuantidadeClasse1": {
+          name: 'exemploQuantidadeClasse1',
+          type: 'number'
+        },
+        "exemploPercentualClasse1": {
+          name: 'exemploPercentualClasse1',
+          type: 'number'
+        },
+        "exemploQuantidadeResultado": {
+          name: 'exemploQuantidadeResultado',
+          type: 'number'
+        },
+        "exemploPercentualResultado": {
+          name: 'exemploPercentualResultado',
+          type: 'number'
+        },
         "id": {
           name: 'id',
           type: 'number'
@@ -135,6 +186,14 @@ export class RegraProjecao implements RegraProjecaoInterface {
           name: 'regraProjecaoTotalMes',
           type: 'RegraProjecaoTotalMes[]',
           model: 'RegraProjecaoTotalMes',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'regraProjecaoId'
+        },
+        treinoRedes: {
+          name: 'treinoRedes',
+          type: 'TreinoRede[]',
+          model: 'TreinoRede',
           relationType: 'hasMany',
                   keyFrom: 'id',
           keyTo: 'regraProjecaoId'

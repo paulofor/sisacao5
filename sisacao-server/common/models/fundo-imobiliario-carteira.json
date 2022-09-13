@@ -1,0 +1,75 @@
+{
+  "name": "FundoImobiliarioCarteira",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ticker": {
+      "type": "string",
+      "id" : true
+    },
+    "quantidade": {
+      "type": "number"
+    },
+    "dataReferencia": {
+      "type": "date",
+      "id" : true
+    },
+    "cotacaoDataReferencia": {
+      "type": "number"
+    },
+    "cotacaoAtual": {
+      "type": "number"
+    },
+    "valorizacaoAtual": {
+      "type": "number"
+    },
+    "valorTotalDataReferencia": {
+      "type": "number"
+    },
+    "valorTotalAtual": {
+      "type": "number"
+    },
+    "proventoPorUnidade": {
+      "type": "number"
+    },
+    "proventoPercentual": {
+      "type": "number"
+    },
+    "proventoTotal": {
+      "type": "number"
+    },
+    "dataCotacaoAtual" : {
+      "type": "date"
+    },
+    "percentualValorizacao" : {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {
+    "AtualizaDiario": {
+      "accepts": [
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaDiario",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

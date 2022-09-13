@@ -137,6 +137,37 @@
         }
       ]
     },
+    "LigaMelhoresPrevisao": {
+      "accepts": [
+        {
+          "arg": "quantidade",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "tipo",
+          "type": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/ligaMelhoresPrevisao",
+          "verb": "post"
+        }
+      ]
+    },
     "AlteraAtivaTeste": {
       "accepts": [
         {
