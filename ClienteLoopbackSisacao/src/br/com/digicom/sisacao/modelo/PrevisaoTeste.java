@@ -27,7 +27,7 @@ public class PrevisaoTeste extends Model{
 	
 
 	public String toString() {
-		return "#" + this.getId() + " - " + this.ticker + "(" + this.diaNumPrevisao + "): " + this.precoEntrada + " resultado: " + this.resultado;
+		return "#" + this.getId() + " - " + this.ticker + "(" + this.diaNumPrevisao + "): " + this.precoEntrada + " resultado: " + this.resultado + " Valor:" + this.valorPrevisao;
 	}
 	
 	

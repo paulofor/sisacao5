@@ -25,9 +25,30 @@ public class TreinoRede extends Model {
 	// PeriodoTreino
 	private Integer diaNumInicioTeste;
 	private Integer diaNumFinalTeste;
+	private Integer maximoTradeTeste;
+	private Integer minimoTradeTeste;
+	private Integer simultaneoTradeTeste;
 	
 	
 	
+	public Integer getMaximoTradeTeste() {
+		return maximoTradeTeste;
+	}
+	public void setMaximoTradeTeste(Integer maximoTradeTeste) {
+		this.maximoTradeTeste = maximoTradeTeste;
+	}
+	public Integer getMinimoTradeTeste() {
+		return minimoTradeTeste;
+	}
+	public void setMinimoTradeTeste(Integer minimoTradeTeste) {
+		this.minimoTradeTeste = minimoTradeTeste;
+	}
+	public Integer getSimultaneoTradeTeste() {
+		return simultaneoTradeTeste;
+	}
+	public void setSimultaneoTradeTeste(Integer simultaneoTradeTeste) {
+		this.simultaneoTradeTeste = simultaneoTradeTeste;
+	}
 	public Integer getDiaNumInicioTeste() {
 		return diaNumInicioTeste;
 	}
