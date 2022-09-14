@@ -22,6 +22,7 @@ public class PrevisaoTeste_ListaComDiarioTeste extends DaoBasePrevisao {
 		repPrevisao.listaComDiarioTargetStopTeste(idTreinoRede, diaNumInicial, diaNumFinal, valorLimite,new ListCallback<PrevisaoTeste>() {
 
 			public void onSuccess(List<PrevisaoTeste> objects) {
+				System.out.println("Trazendo: " + objects.size() + " itens");
 				for (PrevisaoTeste previsao : objects) {
 					ds.setPrevisaoCorrente(previsao);
 					executaProximoSemFinalizar();

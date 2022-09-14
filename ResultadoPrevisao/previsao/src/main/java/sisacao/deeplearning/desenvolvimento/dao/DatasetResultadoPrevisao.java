@@ -19,7 +19,7 @@ public class DatasetResultadoPrevisao implements IDatasetComum,
 	//private long diaNumFinal;
 	//private double valorLimite;
 	
-
+	private final int LIMITE_TRADES_ABERTOS = 3;
 	
 	
 	private List<PrevisaoTeste> listaPrevisao;
@@ -48,6 +48,7 @@ public class DatasetResultadoPrevisao implements IDatasetComum,
 
 	public void setTreinoCorrente(TreinoRede treinoCorrente) {
 		this.treinoCorrente = treinoCorrente;
+		this.listaTrade.clear();
 	}
 
 	private void adicionaTrade(TradePrevisao trade) {
@@ -56,7 +57,8 @@ public class DatasetResultadoPrevisao implements IDatasetComum,
 	
 	public boolean podeProcessar(PrevisaoTeste previsao) {
 		int abertos = abertosNaData(previsao);
-		if (abertos>=5) return false;
+		System.out.println("Abertos: " + abertos + "(" + previsao.getDiaNumPrevisao() + ")");
+		if (abertos>=this.treinoCorrente.getSimultaneoTradeTeste()) return false;
 		boolean saida = true;
 		for (TradePrevisao trade : listaTrade) {
 			if (trade.getTicker().compareTo(previsao.getTicker())==0) {
