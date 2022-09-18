@@ -20,7 +20,10 @@ public class TrataPrevisao extends DaoBasePrevisao{
 		PrevisaoTeste previsao = ds.getPrevisaoCorrente();
 		System.out.println(previsao);
 		List<PrevisaoTeste> listaPrevisao = ds.getListaPrevisao();
-		if (previsao.getPrecoEntrada() >= previsao.getMinimoDiario() && previsao.getPrecoEntrada() <= previsao.getMaximoDiario()) {
+		double precoEntrada = previsao.getPrecoEntrada();
+		double minimoDia = previsao.getMinimoDiario();
+		double maximoDia = previsao.getMaximoDiario();
+		if (precoEntrada >= minimoDia && precoEntrada <= maximoDia) {
 			System.out.println("Ativou o preço");
 			if (ds.podeProcessar(previsao)) {
 				System.out.println("Não esta operando");

@@ -185,6 +185,8 @@ import { MapaCalorGrupoTreinoComponent } from './mapa-calor-grupo-treino/mapa-ca
 
 
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { FundoImobiliarioCarteiraSemTabelaComponent } from './fundo-imobiliario-carteira-sem-tabela/fundo-imobiliario-carteira-sem-tabela.component';
+import { GraficoMapaCalorItemComponent } from './grafico-mapa-calor-item/grafico-mapa-calor-item.component';
 //import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
 
@@ -339,6 +341,8 @@ registerLocaleData(localePt, 'pt-BR');
     FundoImobiliarioCarteiraComponent,
     FundoImobilarioCarteiraEditComponent,
     MapaCalorGrupoTreinoComponent,
+    FundoImobiliarioCarteiraSemTabelaComponent,
+    GraficoMapaCalorItemComponent,
   ],
   imports: [
     BrowserModule,

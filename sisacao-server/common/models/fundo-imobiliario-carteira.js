@@ -39,7 +39,15 @@ order by data desc limit 1)) / (select fechamento from CotacaoDiarioAcao
 where FundoImobiliarioCarteira.ticker = CotacaoDiarioAcao.ticker
 and date(data) < date(dataReferencia)
 order by data desc limit 1) * 100,
-proventoPercentual = (proventoTotal/valorTotalDataReferencia) * 100
+proventoPercentual = (proventoTotal/valorTotalDataReferencia) * 100,
+resultadoMes = proventoTotal + (
+((select fechamento from CotacaoDiarioAcao 
+where FundoImobiliarioCarteira.ticker = CotacaoDiarioAcao.ticker
+order by data desc limit 1) - (select fechamento from CotacaoDiarioAcao 
+where FundoImobiliarioCarteira.ticker = CotacaoDiarioAcao.ticker
+and date(data) < date(dataReferencia)
+order by data desc limit 1)) * quantidade
+)
 
 */
 
@@ -82,7 +90,15 @@ proventoPercentual = (proventoTotal/valorTotalDataReferencia) * 100
             " where FundoImobiliarioCarteira.ticker = CotacaoDiarioAcao.ticker " +
             " and date(data) < date(dataReferencia) " +
             " order by data desc limit 1) * 100, " +
-            " proventoPercentual = (proventoTotal/valorTotalDataReferencia) * 100";
+            " proventoPercentual = (proventoTotal/valorTotalDataReferencia) * 100, " +
+            " resultadoMes = proventoTotal + ( " +
+            " ((select fechamento from CotacaoDiarioAcao  " +
+            " where FundoImobiliarioCarteira.ticker = CotacaoDiarioAcao.ticker " +
+            " order by data desc limit 1) - (select fechamento from CotacaoDiarioAcao " +
+            " where FundoImobiliarioCarteira.ticker = CotacaoDiarioAcao.ticker " +
+            " and date(data) < date(dataReferencia) " +
+            " order by data desc limit 1)) * quantidade " +
+            " )" ;
         ds.connector.query(sql,callback);
     }
 };

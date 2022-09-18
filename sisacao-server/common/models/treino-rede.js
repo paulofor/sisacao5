@@ -156,6 +156,10 @@ module.exports = function(Treinorede) {
     } 
 
     Treinorede.ObtemListaPrevisaoTeste = function(callback) {
+        let sqlLimpeza = "update PrevisaoTeste  " +
+                    " inner join TreinoRede on TreinoRede.id = PrevisaoTeste.treinoRedeId " +
+                    " set resultado = 0, pontuacao = 0, diaNumSaida = null, precoSaida = null " +
+                    " where ativoPrevisaoTeste = 1";
         let sql = "select TreinoRede.* , RegraProjecao.tipoCompraVenda, PeriodoTreinoRede.diaNumInicioTeste, PeriodoTreinoRede.diaNumFinalTeste, " +
             " PeriodoTreinoRede.maximoTradeTeste, PeriodoTreinoRede.minimoTradeTeste , PeriodoTreinoRede.simultaneoTradeTeste " +
             " from TreinoRede " +
@@ -163,7 +167,9 @@ module.exports = function(Treinorede) {
             " inner join PeriodoTreinoRede on PeriodoTreinoRede.id = TreinoRede.periodoTreinoRedeId " +
             " where ativoPrevisaoTeste = 1";
         let ds = Treinorede.dataSource;
-        ds.connector.query(sql,callback);
+        ds.connector.query(sqlLimpeza,(err,result) => {
+            ds.connector.query(sql, callback);
+        });
     } 
     Treinorede.ObtemListaParaTestePorGrupo = function(id,callback) {
         let sql = "select TreinoRede.* , RegraProjecao.tipoCompraVenda, PeriodoTreinoRede.diaNumInicioTeste, PeriodoTreinoRede.diaNumFinalTeste " +

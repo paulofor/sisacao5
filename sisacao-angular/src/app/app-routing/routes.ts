@@ -76,6 +76,7 @@ import { TradeAtivoComponent } from '../trade-ativo/trade-ativo.component';
 import { FundoImobiliarioCarteira } from '../shared/sdk';
 import { FundoImobiliarioCarteiraComponent } from '../fundo-imobiliario-carteira/fundo-imobiliario-carteira.component';
 import { MapaCalorGrupoTreinoComponent } from '../mapa-calor-grupo-treino/mapa-calor-grupo-treino.component';
+import { FundoImobiliarioCarteiraSemTabelaComponent } from '../fundo-imobiliario-carteira-sem-tabela/fundo-imobiliario-carteira-sem-tabela.component';
 
 
 export const routes : Routes = [
@@ -183,6 +184,7 @@ export const routes : Routes = [
     { path : 'fundoImobiliarioCarteira' , component: FundoImobiliarioCarteiraComponent },
 
     { path: 'mapaCalorGrupoTreino/:id' , component: MapaCalorGrupoTreinoComponent },
+    { path: 'fundoImobiliarioCarteiraSemCarteira' , component: FundoImobiliarioCarteiraSemTabelaComponent },
 
     { path: '',  component: HomeComponent  }
     //{ path: '',          redirectTo: 'home', pathMatch: 'full' }
