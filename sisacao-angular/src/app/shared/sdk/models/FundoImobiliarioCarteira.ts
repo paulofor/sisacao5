@@ -15,6 +15,10 @@ export interface FundoImobiliarioCarteiraInterface {
   "proventoTotal"?: number;
   "dataCotacaoAtual"?: Date;
   "percentualValorizacao"?: number;
+  "saldoMes"?: number;
+  "percentualSaldoMes"?: number;
+  "percentualValorTotal"?: number;
+  "percentualValorDataReferencia"?: number;
 }
 
 export class FundoImobiliarioCarteira implements FundoImobiliarioCarteiraInterface {
@@ -31,6 +35,10 @@ export class FundoImobiliarioCarteira implements FundoImobiliarioCarteiraInterfa
   "proventoTotal": number;
   "dataCotacaoAtual": Date;
   "percentualValorizacao": number;
+  "saldoMes": number;
+  "percentualSaldoMes": number;
+  "percentualValorTotal": number;
+  "percentualValorDataReferencia": number;
   constructor(data?: FundoImobiliarioCarteiraInterface) {
     Object.assign(this, data);
   }
@@ -114,6 +122,22 @@ export class FundoImobiliarioCarteira implements FundoImobiliarioCarteiraInterfa
         },
         "percentualValorizacao": {
           name: 'percentualValorizacao',
+          type: 'number'
+        },
+        "saldoMes": {
+          name: 'saldoMes',
+          type: 'number'
+        },
+        "percentualSaldoMes": {
+          name: 'percentualSaldoMes',
+          type: 'number'
+        },
+        "percentualValorTotal": {
+          name: 'percentualValorTotal',
+          type: 'number'
+        },
+        "percentualValorDataReferencia": {
+          name: 'percentualValorDataReferencia',
           type: 'number'
         },
       },

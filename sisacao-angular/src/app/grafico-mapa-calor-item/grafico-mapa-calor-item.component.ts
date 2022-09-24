@@ -73,8 +73,8 @@ export class GraficoMapaCalorItemComponent implements OnInit {
     this.chartOptions = {
       series: this.dadosGrafico,
       chart: {
-        height: 280,
-        width: 320,
+        height: 250,
+        width: 450,
         type: "heatmap"
       },
       dataLabels: {
@@ -97,18 +97,24 @@ export class GraficoMapaCalorItemComponent implements OnInit {
     let v6 = this.listaBase[6].treinoRedes[0].pontuacaoTeste + this.listaBase[0].treinoRedes[1].pontuacaoTeste
     let v7 = this.listaBase[7].treinoRedes[0].pontuacaoTeste + this.listaBase[0].treinoRedes[1].pontuacaoTeste
     let v8 = this.listaBase[8].treinoRedes[0].pontuacaoTeste + this.listaBase[0].treinoRedes[1].pontuacaoTeste
+    let target09 = 'Target-9 (' + (v0+v1+v2) + ')'
+    let target13 = 'Target-13 (' + (v3+v4+v5) + ')'
+    let target17 = 'Target-17 (' + (v6+v7+v8) + ')'
+    let stop09 = 'Stop-9 (' + (v0+v3+v6) + ')'
+    let stop13 = 'Stop-13 (' + (v1+v4+v7) + ')'
+    let stop17 = 'Stop-17 (' + (v2+v5+v8) + ')'
     this.dadosGrafico = [
       {
-        name: "Target-9",
-        data: [{ 'x': 'Stop-9', 'y': v0 }, { 'x': 'Stop-13', 'y': v1 }, { 'x': 'Stop-17', 'y': v2 }]
+        name: stop09,
+        data: [{ 'x': target09, 'y': v0 }, { 'x': target13, 'y': v3 }, { 'x': target17, 'y': v6 }]
       },
       {
-        name: "Target-13",
-        data: [{ 'x': 'Stop-9', 'y': v3 }, { 'x': 'Stop-13', 'y': v4 }, { 'x': 'Stop-17', 'y': v5 }]
+        name: stop13,
+        data: [{ 'x': target09, 'y': v1 }, { 'x': target13, 'y': v4 }, { 'x': target17, 'y': v7 }]
       },
       {
-        name: "Target-17",
-        data: [{ 'x': 'Stop-9', 'y': v6 }, { 'x': 'Stop-13', 'y': v7 }, { 'x': 'Stop-17', 'y': v8 }]
+        name: stop17,
+        data: [{ 'x': target09, 'y': v2 }, { 'x': target13, 'y': v5 }, { 'x': target17, 'y': v8 }]
       }
     ]
   }

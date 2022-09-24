@@ -5,7 +5,8 @@ import {
   TipoExemploTreino,
   RegraProjecao,
   RedeNeural,
-  PrevisaoRede
+  PrevisaoRede,
+  TradeTreinoRede
 } from '../index';
 
 declare var Object: any;
@@ -37,6 +38,7 @@ export interface TreinoRedeInterface {
   regraProjecao?: RegraProjecao;
   redeNeural?: RedeNeural;
   previsaoRedes?: PrevisaoRede[];
+  tradeTreinoRedes?: TradeTreinoRede[];
 }
 
 export class TreinoRede implements TreinoRedeInterface {
@@ -67,6 +69,7 @@ export class TreinoRede implements TreinoRedeInterface {
   regraProjecao: RegraProjecao;
   redeNeural: RedeNeural;
   previsaoRedes: PrevisaoRede[];
+  tradeTreinoRedes: TradeTreinoRede[];
   constructor(data?: TreinoRedeInterface) {
     Object.assign(this, data);
   }
@@ -230,6 +233,14 @@ export class TreinoRede implements TreinoRedeInterface {
           name: 'previsaoRedes',
           type: 'PrevisaoRede[]',
           model: 'PrevisaoRede',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'treinoRedeId'
+        },
+        tradeTreinoRedes: {
+          name: 'tradeTreinoRedes',
+          type: 'TradeTreinoRede[]',
+          model: 'TradeTreinoRede',
           relationType: 'hasMany',
                   keyFrom: 'id',
           keyTo: 'treinoRedeId'

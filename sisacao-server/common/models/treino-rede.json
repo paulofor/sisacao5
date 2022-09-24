@@ -83,6 +83,11 @@
       "type": "hasMany",
       "model": "PrevisaoRede",
       "foreignKey": ""
+    },
+    "tradeTreinoRedes": {
+      "type": "hasMany",
+      "model": "TradeTreinoRede",
+      "foreignKey": ""
     }
   },
   "acls": [],

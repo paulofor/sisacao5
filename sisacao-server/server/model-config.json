@@ -334,5 +334,9 @@
   "FundoImobiliarioCarteira": {
     "dataSource": "mysqlKingDS2",
     "public": true
+  },
+  "TradeTreinoRede": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
   }
 }

@@ -1,12 +1,37 @@
-<div class="dgc-painel">
+<div class="dgc-painel" *ngIf="listaBase">
   <div class="dgc-painel-header">
-      <span>Carteira - FII</span>
-  </div>
-  <div *ngIf="listaBase">
-      <div class="dgc-card" *ngFor="let item of listaBase">
- 
-         
+      <span>FII - Carteira ({{listaBase.length}}) </span>
+      <div class="dgc-direita">
+        <span>{{ resultadoMes | currency : 'BRL'}} + </span>
+        <span>{{ proventoMes | currency : 'BRL' }} = </span> 
+        <span>{{ resultadoMes + proventoMes | currency : 'BRL' }}</span> 
+      </div>
 
+  </div>
+  <div *ngIf="listaBase" class="dgc-painel-principal">
+      <div class="dgc-card" *ngFor="let item of listaBase">
+        <div class="dgc-card-header">
+          {{item.ticker}}
+        </div>
+         
+        <div class="dgc-card-detalhe">
+          <div>{{item.dataCotacaoAtual | date : 'dd/MM/yyyy' : 'UTC'}} : {{item.cotacaoAtual | currency : 'BRL'}} ({{item.percentualValorizacao  | number: '1.1-1'}}%)</div>
+          <div>{{item.dataReferencia | date : 'dd/MM/yyyy' : 'UTC'}} : {{item.cotacaoDataReferencia | currency : 'BRL'}}</div>
+          <div>Valorização: {{item.valorizacaoAtual | currency : 'BRL'}}</div>
+        </div>
+
+        <div class="dgc-card-detalhe">
+          <div>Provento: {{item.proventoTotal | currency : 'BRL'}} ({{item.proventoPercentual  | number: '1.2-2'}}%)</div>
+        </div>
+
+        <div class="dgc-card-header">
+          <div>Saldo: {{ (item.valorizacaoAtual+item.proventoTotal) | currency : 'BRL'}} ({{item.percentualSaldoMes | number: '1.2-2'}}%)</div>
+        </div>
+
+        <div class="dgc-card-detalhe">
+          <div>Quantidade: {{ item.quantidade }}</div>
+          <div>Valor Total: {{ item.valorTotalAtual | currency : 'BRL'}} ({{item.percentualValorTotal | number: '1.2-2'}}%)</div>
+        </div>
       </div>
   </div>
 </div>

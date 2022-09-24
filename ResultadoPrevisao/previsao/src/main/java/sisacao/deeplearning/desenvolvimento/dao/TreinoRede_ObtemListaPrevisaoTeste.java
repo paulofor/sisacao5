@@ -6,10 +6,12 @@ import com.strongloop.android.loopback.callbacks.ListCallback;
 
 import br.com.digicom.sisacao.modelo.TreinoRede;
 import br.inf.digicom.loopback.DaoBase;
+import br.inf.digicom.loopback.comum.DaoBaseComum;
 
 public class TreinoRede_ObtemListaPrevisaoTeste  extends DaoBasePrevisao{
 
 	private TreinoRede_ExecutouPrevisaoTeste paralelo = new TreinoRede_ExecutouPrevisaoTeste();
+	public static String NOME = "TreinoRede_ObtemListaPrevisaoTeste";
 	
 	@Override
 	protected void executaImpl() {
@@ -35,7 +37,9 @@ public class TreinoRede_ObtemListaPrevisaoTeste  extends DaoBasePrevisao{
 
 	@Override
 	protected DaoBase getProximo() {
-		return new PrevisaoTeste_ListaComDiarioTeste();
+		return DaoBaseComum.getProximo(NOME);
 	}
+
+	
 
 }

@@ -22,6 +22,12 @@ export class FundoImobiliarioCarteiraSemTabelaComponent extends BaseListComponen
     return FundoImobilarioCarteiraEditComponent;
   }
 
+  getFiltro() {
+    return {
+      'order' : 'percentualSaldoMes desc'
+    }
+  }
+
   posCarregaLista(): void {
       this.resultadoMes = 0;
       this.proventoMes = 0;

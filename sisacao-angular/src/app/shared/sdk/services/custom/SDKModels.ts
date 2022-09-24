@@ -76,6 +76,7 @@ import { GrupoRede } from '../../models/GrupoRede';
 import { GrupoRedeRel } from '../../models/GrupoRedeRel';
 import { TreinoGrupoRede } from '../../models/TreinoGrupoRede';
 import { FundoImobiliarioCarteira } from '../../models/FundoImobiliarioCarteira';
+import { TradeTreinoRede } from '../../models/TradeTreinoRede';
 
 export interface Models { [name: string]: any }
 
@@ -159,6 +160,7 @@ export class SDKModels {
     GrupoRedeRel: GrupoRedeRel,
     TreinoGrupoRede: TreinoGrupoRede,
     FundoImobiliarioCarteira: FundoImobiliarioCarteira,
+    TradeTreinoRede: TradeTreinoRede,
     
   };
 

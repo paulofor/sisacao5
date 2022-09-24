@@ -1,0 +1,35 @@
+{
+  "name": "TradeTreinoRede",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ticker": {
+      "type": "string",
+      "id" : true
+    },
+    "precoEntrada": {
+      "type": "number"
+    },
+    "diaNumEntrada": {
+      "type": "number",
+      "id" : true 
+    },
+    "precoSaida": {
+      "type": "number"
+    },
+    "diaNumSaida": {
+      "type": "number"
+    },
+    "treinoRedeId" : {
+      "type": "number",
+      "id" : true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

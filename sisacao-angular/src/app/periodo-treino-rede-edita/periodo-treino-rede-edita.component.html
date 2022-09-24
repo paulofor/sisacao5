@@ -36,6 +36,16 @@
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #diaNumInicioExecucao [(ngModel)]="item.diaNumInicioExecucao" name="diaNumInicioExecucao" 
+      placeholder="Data Numérica Início Execução (yyyymmdd)" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #diaNumFinalExecucao [(ngModel)]="item.diaNumFinalExecucao" name="diaNumFinalExecucao" 
+      placeholder="Data Numérica Final Execução (yyyymmdd)" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
       <input matInput maxlength="3" #minimoTradeTeste [(ngModel)]="item.minimoTradeTeste" name="minimoTradeTeste" 
       placeholder="Mínimo Trade Teste" autocomplete="off" />
     </mat-form-field>

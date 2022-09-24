@@ -17,7 +17,7 @@ module.exports = function(Previsaoteste) {
             }
         }
     }
-
+   
 
     Previsaoteste.ListaComDiarioTargetStopTeste = function(treinoRedeId, diaNumInicial, diaNumFinal , limiteValor, callback) {
         let sql = "select PrevisaoTeste.* , diario.maximo maximoDiario , diario.minimo minimoDiario, RegraProjecao.target, RegraProjecao.stop, PrevisaoTeste.tipoCompraVenda, " +

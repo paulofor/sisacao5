@@ -113,9 +113,8 @@ module.exports = function (Fundoimobiliario) {
     * @param {Function(Error, array)} callback
     */
     Fundoimobiliario.Melhores6M = function(quantidade, callback) {
-        app.models.DiaPregao.ObtemAtualB3((err,result) => {
             let sql = " SELECT * FROM FundoImobiliario " +
-            " where dataAtual = '" + result.dataDbStr + "' " +
+            " where dataAtual = (select max(dataAtual) from FundoImobiliario) " +
             " and mediaNegocio1 >= 50 " +
             //" and percentual12 > 0 " +
             " order by percentual6 desc " +
@@ -123,7 +122,6 @@ module.exports = function (Fundoimobiliario) {
             console.log(sql);
             var ds = Fundoimobiliario.dataSource;
             ds.connector.query(sql, callback)
-        })
     };
 
 
@@ -133,16 +131,13 @@ module.exports = function (Fundoimobiliario) {
     * @param {Function(Error, array)} callback
     */
     Fundoimobiliario.MelhoresAluguel = function(quantidade, callback) {
-        app.models.DiaPregao.ObtemAtualB3((err,result) => {
             let sql = " SELECT * FROM FundoImobiliario " +
-            " where dataAtual = '" + result.dataDbStr + "' " +
+            " where dataAtual = (select max(dataAtual) from FundoImobiliario) " +
             " order by mediaPercentualAluguel6 desc " +
             " limit " + quantidade;
             console.log('sql:' , sql)
             var ds = Fundoimobiliario.dataSource;
             ds.connector.query(sql, callback)
-        })
-       
     };
   
 
@@ -248,7 +243,7 @@ module.exports = function (Fundoimobiliario) {
         let sqlVariacao = "update FundoImobiliario " +
                 " set variacao12m = (maximo12m - minimo12m) / maximo12m * 100," +
                 " variacao24m = (maximo24m - minimo24m) / maximo24m * 100";
-        app.models.FundoImobiliarioCarteria.AtualizaDiario((err,result) => {});
+        app.models.FundoImobiliarioCarteira.AtualizaDiario((err,result) => {});
         var ds = Fundoimobiliario.dataSource;
         Fundoimobiliario.AtualizaDiarioFII((err,result) => {
             ds.connector.query(sqlMediaNegocio1, (err1, result1) => {

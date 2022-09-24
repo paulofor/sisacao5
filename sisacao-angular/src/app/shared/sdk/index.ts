@@ -124,6 +124,7 @@ import { GrupoRedeApi } from './services/custom/GrupoRede';
 import { GrupoRedeRelApi } from './services/custom/GrupoRedeRel';
 import { TreinoGrupoRedeApi } from './services/custom/TreinoGrupoRede';
 import { FundoImobiliarioCarteiraApi } from './services/custom/FundoImobiliarioCarteira';
+import { TradeTreinoRedeApi } from './services/custom/TradeTreinoRede';
 /**
 * @module SDKBrowserModule
 * @description
@@ -230,9 +231,9 @@ export class SDKBrowserModule {
         GrupoRedeRelApi,
         TreinoGrupoRedeApi,
         FundoImobiliarioCarteiraApi,
+        TradeTreinoRedeApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
-
       ]
     };
   }

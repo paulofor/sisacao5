@@ -1,6 +1,7 @@
 <div class="dgc-painel" *ngIf="listaBase">
   <div class="dgc-painel-header">
     <span>Grupo Treino: {{treinoGrupoRede.grupoAcao.nome}} ({{listaBase.length}})</span>
+    <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="criaTreino()">Cria Treinos</button>
   </div>
   <div class="dgc-painel-detalhe">
     <div>Treino: {{treinoGrupoRede.periodoTreinoRede.diaNumInicioTreino}} até {{treinoGrupoRede.periodoTreinoRede.diaNumFinalTreino}}</div>
@@ -34,28 +35,27 @@
 
         <div class="dgc-card-detalhe {{pendente(item.ativoTeste)}}">
           <div>
-            <span>Dados Teste: {{item.ativoTeste}}</span>
+            <span>Score Teste: {{item.dataTeste  | date : 'dd/MM/yyyy HH:mm' : 'UTC' }}</span>
           </div>
-          <div>{{item.dataTeste  | date : 'dd/MM/yyyy HH:mm' : 'UTC' }}</div>
           <div>Média: {{item.mediaValorTeste | number : '1.2-2'}} - Desvio: {{item.desvioValorTeste | number : '1.2-2'}}</div>
         </div>
 
         <div class="dgc-card-detalhe {{pendente(item.ativoPrevisaoTeste)}}">
           <div>
-            <span>Previsão Teste: {{item.ativoPrevisaoTeste}}</span>
-            <span class="dgc-direita"><button class="btn-primary btn-sm btn" (click)="ativaPrevisaoTeste(item)">X</button></span>
+            <span>Teste: {{item.dataPrevisaoTeste  | date : 'dd/MM/yyyy HH:mm' : 'UTC' }} </span>
           </div>
-          <div>{{item.dataPrevisaoTeste  | date : 'dd/MM/yyyy HH:mm' : 'UTC' }}</div>
-          <div>Limite Entrada: {{item.limiteParaEntrada}}</div>
-          <div>Trades: {{item.qtdeTradeTeste}} ({{item.qtdeLucroTeste}} x {{item.qtdePrejuizoTeste}}) {{ ((item.qtdeLucroTeste / item.qtdeTradeTeste)*100) | number : '1.0-0' }}%</div>
+          <div>
+            Trades: {{item.qtdeTradeTeste}} ({{item.qtdeLucroTeste}} x {{item.qtdePrejuizoTeste}}) 
+            {{ ((item.qtdeLucroTeste / item.qtdeTradeTeste)*100) | number : '1.0-0' }}%
+            >{{item.limiteParaEntrada | number : '1.2-2'}}
+          </div>
           <div>Pontos: {{item.pontuacaoTeste | number : '1.0-0'}}</div>
- 
         </div>
 
         <div  class="dgc-card-comandos">
           <img class="dgc-esquerda" *ngIf="itemRegra.regraProjecao.tipoCompraVenda=='C'" src="assets/img/compra.png" width="32" height="32">
           <img class="dgc-esquerda" *ngIf="itemRegra.regraProjecao.tipoCompraVenda=='V'" src="assets/img/venda.png" width="32" height="32">
-          <!--<button class="btn-primary btn-sm btn" (click)="edita(item)">Edita</button>-->
+          <button class="btn-primary btn-sm btn" (click)="ativaPrevisaoTeste(item)">Reset</button>
        </div>
   
        <div>

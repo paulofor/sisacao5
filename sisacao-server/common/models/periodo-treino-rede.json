@@ -24,14 +24,20 @@
     "diaNumFinalTeste": {
       "type": "number"
     },
-    "maximoTradeTeste" : {
-      "type" : "number"
+    "maximoTradeTeste": {
+      "type": "number"
     },
-    "minimoTradeTeste" : {
-      "type" : "number"
+    "minimoTradeTeste": {
+      "type": "number"
     },
-    "simultaneoTradeTeste" : {
-      "type" : "number"
+    "simultaneoTradeTeste": {
+      "type": "number"
+    },
+    "diaNumInicioExecucao": {
+      "type": "number"
+    },
+    "diaNumFinalExecucao": {
+      "type": "number"
     }
   },
   "validations": [],

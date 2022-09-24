@@ -8,14 +8,14 @@
   "properties": {
     "ticker": {
       "type": "string",
-      "id" : true
+      "id": true
     },
     "quantidade": {
       "type": "number"
     },
     "dataReferencia": {
       "type": "date",
-      "id" : true
+      "id": true
     },
     "cotacaoDataReferencia": {
       "type": "number"
@@ -41,20 +41,32 @@
     "proventoTotal": {
       "type": "number"
     },
-    "dataCotacaoAtual" : {
+    "dataCotacaoAtual": {
       "type": "date"
     },
-    "percentualValorizacao" : {
+    "percentualValorizacao": {
       "type": "number"
+    },
+    "saldoMes" : {
+      "type" : "number"
+    },
+    "percentualSaldoMes" : {
+      "type" : "number"
+    },
+    "percentualValorTotal" : {
+      "type" : "number"
+    },
+    "percentualValorDataReferencia" : {
+      "type" : "number"
     }
+    
   },
   "validations": [],
   "relations": {},
   "acls": [],
   "methods": {
     "AtualizaDiario": {
-      "accepts": [
-      ],
+      "accepts": [],
       "returns": [
         {
           "arg": "saida",

@@ -67,7 +67,7 @@ module.exports = function(Treinorede) {
     }
     Treinorede.AlteraAtivaPrevisaoTeste = function(idTreino,callback) {
         let sql = "update TreinoRede " +
-            " set ativoPrevisaoTeste = 1 " +
+            " set ativoPrevisaoTeste =  case when ativoPrevisaoTeste = 0 then 1 else 0 end  " +
             " where id = " + idTreino;
         let sql2 = "update PrevisaoTeste " +
             " set pontuacao = null, " +
@@ -122,7 +122,7 @@ module.exports = function(Treinorede) {
                 " inner join PeriodoTreinoRede on TreinoRede.periodoTreinoRedeId = PeriodoTreinoRede.id " +
                 " set limiteParaEntrada = limiteParaEntrada - 0.01, " +
                 " ativoPrevisaoTeste = 1 " +
-                " where TreinoRede.id = " + id + " and qtdeTradeTeste < minimoTradeTeste";        
+                " where TreinoRede.id = " + id + " and qtdeTradeTeste < minimoTradeTeste and limiteParaEntrada > 0";        
         let ds = Treinorede.dataSource;
         ds.connector.query(sql,(err,result) => {
             ds.connector.query(sqlAjusteMaximos, (err,result) => {
@@ -160,8 +160,7 @@ module.exports = function(Treinorede) {
                     " inner join TreinoRede on TreinoRede.id = PrevisaoTeste.treinoRedeId " +
                     " set resultado = 0, pontuacao = 0, diaNumSaida = null, precoSaida = null " +
                     " where ativoPrevisaoTeste = 1";
-        let sql = "select TreinoRede.* , RegraProjecao.tipoCompraVenda, PeriodoTreinoRede.diaNumInicioTeste, PeriodoTreinoRede.diaNumFinalTeste, " +
-            " PeriodoTreinoRede.maximoTradeTeste, PeriodoTreinoRede.minimoTradeTeste , PeriodoTreinoRede.simultaneoTradeTeste " +
+        let sql = "select TreinoRede.* , RegraProjecao.tipoCompraVenda, PeriodoTreinoRede.* " +
             " from TreinoRede " +
             " inner join RegraProjecao on RegraProjecao.id = TreinoRede.regraProjecaoId " +
             " inner join PeriodoTreinoRede on PeriodoTreinoRede.id = TreinoRede.periodoTreinoRedeId " +

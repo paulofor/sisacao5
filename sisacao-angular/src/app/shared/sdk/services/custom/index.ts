@@ -75,5 +75,6 @@ export * from './GrupoRede';
 export * from './GrupoRedeRel';
 export * from './TreinoGrupoRede';
 export * from './FundoImobiliarioCarteira';
+export * from './TradeTreinoRede';
 export * from './SDKModels';
 export * from './logger.service';

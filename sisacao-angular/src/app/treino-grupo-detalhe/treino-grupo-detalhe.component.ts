@@ -58,6 +58,13 @@ export class TreinoGrupoDetalheComponent  extends BaseListComponent {
         this.carregaTela();
       })
   }
+  criaTreino() {
+    this.srv.CriaTreino(this.treinoGrupoRede.id)
+      .subscribe((result) => {
+        this.carregaTela();
+      })
+  }
+
  
   carregaTela() {
     this.router.params.subscribe((params) => {
