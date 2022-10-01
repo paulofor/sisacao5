@@ -2,7 +2,21 @@
 
 module.exports = function(Previsaorede) {
 
-
+    Previsaorede.RecebePrevisaoTreinoExecucao = function(ticker, resultado, diaNumPrevisao, treinoRedeId, 
+        valorEntrada, valorReferencia,  tipoCompraVenda, callback) {
+        let cont=0;
+        for (let i=0;i<ticker.length;i++) {
+            let novo = {'ticker' : ticker[i] , 'valorPrevisao' : resultado[i] , 
+                        'diaNumPrevisao' : diaNumPrevisao[i] , 'treinoRedeId' : treinoRedeId[i], 
+                        'precoEntrada' : valorEntrada[i], 'precoReferencia' : valorReferencia[i], 
+                        'tipoCompraVenda' : tipoCompraVenda[i]};
+            console.log(cont, ') ' ,novo);
+            Previsaorede.create(novo);
+            if (++cont==ticker.length) {
+                callback(null,{'resultado' : ticker.length})
+            }
+        }
+    }
 
     Previsaorede.AtualizaResultado = function(previsao, callback) {
         let ds = Previsaorede.dataSource;
@@ -32,6 +46,19 @@ module.exports = function(Previsaorede) {
             }
         }
         Previsaorede.find(filtro,callback);
+    }
+    Previsaorede.ObtemPorDiaTreinoSelecionada = function(diaNumPrevisao, treinoRedeId,  callback) {
+        let sql = "select PrevisaoRede.ticker, PrevisaoRede.valorPrevisao, PrevisaoRede.precoEntrada, "  +
+            " diario.maximo as maximoDiario, diario.minimo as minimoDiario" +
+            " from PrevisaoRede " +
+            " inner join CotacaoDiarioAcao as diario on " + 
+            " diario.ticker = PrevisaoRede.ticker and diario.diaNum = PrevisaoRede.diaNumPrevisao " +
+            " where diaNumPrevisao = " + diaNumPrevisao +
+            " and treinoRedeId = " + treinoRedeId +
+            " and valorPrevisao > (select limiteParaEntrada from TreinoRede where id = " + treinoRedeId + " ) " +
+            " order by valorPrevisao desc";
+        let ds = Previsaorede.dataSource;
+        ds.connector.query(sql,callback);
     }
 
     Previsaorede.ObtemPorDiaTreinoComDiario = function(diaNumPrevisao, treinoRedeId,  callback) {

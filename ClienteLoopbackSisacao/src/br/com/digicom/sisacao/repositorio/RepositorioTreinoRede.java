@@ -44,5 +44,24 @@ public class RepositorioTreinoRede extends ModelRepository<TreinoRede>{
         Map<String, Object> params = new HashMap<String, Object>();
         invokeStaticMethod("obtemListaPrevisaoTeste", params,   new JsonArrayParser<TreinoRede>(this, callback));
 	}
+	public void obtemListaPrevisaoExecucao(final ListCallback<TreinoRede> callback ) {
+		RestContractItem contrato = new RestContractItem("TreinoRedes/obtemListaPrevisaoExecucao","GET");
+		this.getRestAdapter().getContract().addItem(contrato, "TreinoRede.obtemListaPrevisaoExecucao");
+        Map<String, Object> params = new HashMap<String, Object>();
+        invokeStaticMethod("obtemListaPrevisaoExecucao", params,   new JsonArrayParser<TreinoRede>(this, callback));
+	}
+	public void obtemListaParaPrevisao(final ListCallback<TreinoRede> callback ) {
+		RestContractItem contrato = new RestContractItem("TreinoRedes/obtemListaParaPrevisao","GET");
+		this.getRestAdapter().getContract().addItem(contrato, "TreinoRede.obtemListaParaPrevisao");
+        Map<String, Object> params = new HashMap<String, Object>();
+        invokeStaticMethod("obtemListaParaPrevisao", params,   new JsonArrayParser<TreinoRede>(this, callback));
+	}
+	public void obtemListaPrevisaoExecucaoComTradeAberto(ListCallback<TreinoRede> listCallback) {
+		RestContractItem contrato = new RestContractItem("TreinoRedes/obtemListaPrevisaoExecucaoComTradeAberto","GET");
+		this.getRestAdapter().getContract().addItem(contrato, "TreinoRede.obtemListaPrevisaoExecucaoComTradeAberto");
+        Map<String, Object> params = new HashMap<String, Object>();
+        invokeStaticMethod("obtemListaPrevisaoExecucaoComTradeAberto", params,   new JsonArrayParser<TreinoRede>(this, listCallback));
+		
+	}
 
 }

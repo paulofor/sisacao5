@@ -18,14 +18,15 @@ public class ExecucaoTreinoRedeApp
 	public static String UrlLoopback = "";
 	
 	public static void main(String[] args) {
+		int diaNumAtual = 20220901;
 		System.out.print("ExecucaoTreinoRedeApp");
-		System.out.println(" (24-09-2022)");
+		System.out.println(" (30-09-2022)");
 		try {
 			//PrintStream printStream = new PrintStream("Error-InsereExemploTreinoAcaoEntradaApp.txt");
 		    //System.setErr(printStream);
 			carregaProp();
 			ExecucaoTreinoRedeObj obj = new ExecucaoTreinoRedeObj();
-			obj.executa();
+			obj.executa(diaNumAtual);
 			System.exit(0);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -38,6 +38,9 @@
     },
     "diaNumSaida": {
       "type": "number"
+    },
+    "aberta": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -55,6 +58,67 @@
   },
   "acls": [],
   "methods": {
+    "RecebePrevisaoTreinoExecucao": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "diaNumPrevisao",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "treinoRedeId",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "valorEntrada",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "valorReferencia",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "tipoCompraVenda",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/recebePrevisaoTreinoExecucao",
+          "verb": "post"
+        }
+      ]
+    },
     "RecebePrevisao": {
       "accepts": [
         {
@@ -125,6 +189,37 @@
       "http": [
         {
           "path": "/obtemPorDiaTreino",
+          "verb": "get"
+        }
+      ]
+    },
+    "ObtemPorDiaTreinoSelecionada": {
+      "accepts": [
+        {
+          "arg": "diaNumPrevisao",
+          "type": "number",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "treinoRedeId",
+          "type": "number",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "previsao",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemPorDiaTreinoSelecionada",
           "verb": "get"
         }
       ]

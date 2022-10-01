@@ -338,5 +338,13 @@
   "TradeTreinoRede": {
     "dataSource": "mysqlKingDS2",
     "public": true
+  },
+  "TesouroDireto": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "TesouroDiretoCotacao": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
   }
 }

@@ -8,14 +8,14 @@
   "properties": {
     "ticker": {
       "type": "string",
-      "id" : true
+      "id": true
     },
     "precoEntrada": {
       "type": "number"
     },
     "diaNumEntrada": {
       "type": "number",
-      "id" : true 
+      "id": true
     },
     "precoSaida": {
       "type": "number"
@@ -23,13 +23,39 @@
     "diaNumSaida": {
       "type": "number"
     },
-    "treinoRedeId" : {
+    "treinoRedeId": {
       "type": "number",
-      "id" : true
+      "id": true
     }
   },
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {}
+  "methods": {
+    "InsereTrade": {
+      "accepts": [
+        {
+          "arg": "item",
+          "type": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/insereTrade",
+          "verb": "post"
+        }
+      ]
+    }
+  }
 }

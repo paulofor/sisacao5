@@ -154,13 +154,37 @@ module.exports = function(Treinorede) {
         let ds = Treinorede.dataSource;
         ds.connector.query(sql,callback);
     } 
+ 
+    Treinorede.ObtemListaPrevisaoExecucaoComTradeAberto = function(callback) {
+        let filtro = {
+            'include' : [
+                'regraProjecao',
+                'periodoTreinoRede'
+            ],
+            'where' : {'ativoPrevisao' : 1}
+        }
+        Treinorede.find(filtro,callback);
 
+        /*
+        let sql = "select TreinoRede.* , RegraProjecao.tipoCompraVenda, PeriodoTreinoRede.diaNumInicioTeste, PeriodoTreinoRede.diaNumFinalTeste, " +
+                    " PeriodoTreinoRede.maximoTradeTeste, PeriodoTreinoRede.minimoTradeTeste , PeriodoTreinoRede.simultaneoTradeTeste, " +
+                    " PeriodoTreinoRede.diaNumInicioExecucao, PeriodoTreinoRede.diaNumFinalExecucao " +
+            " from TreinoRede " +
+            " inner join RegraProjecao on RegraProjecao.id = TreinoRede.regraProjecaoId " +
+            " inner join PeriodoTreinoRede on PeriodoTreinoRede.id = TreinoRede.periodoTreinoRedeId " +
+            " where ativoPrevisao = 1";
+            let ds = Treinorede.dataSource;
+            ds.connector.query(sql,callback);
+        */
+    } 
     Treinorede.ObtemListaPrevisaoTeste = function(callback) {
         let sqlLimpeza = "update PrevisaoTeste  " +
                     " inner join TreinoRede on TreinoRede.id = PrevisaoTeste.treinoRedeId " +
                     " set resultado = 0, pontuacao = 0, diaNumSaida = null, precoSaida = null " +
                     " where ativoPrevisaoTeste = 1";
-        let sql = "select TreinoRede.* , RegraProjecao.tipoCompraVenda, PeriodoTreinoRede.* " +
+        let sql = "select TreinoRede.* , RegraProjecao.tipoCompraVenda, PeriodoTreinoRede.diaNumInicioTeste, PeriodoTreinoRede.diaNumFinalTeste, " +
+                    " PeriodoTreinoRede.maximoTradeTeste, PeriodoTreinoRede.minimoTradeTeste , PeriodoTreinoRede.simultaneoTradeTeste, " +
+                    " PeriodoTreinoRede.diaNumInicioExecucao, PeriodoTreinoRede.diaNumFinalExecucao " +
             " from TreinoRede " +
             " inner join RegraProjecao on RegraProjecao.id = TreinoRede.regraProjecaoId " +
             " inner join PeriodoTreinoRede on PeriodoTreinoRede.id = TreinoRede.periodoTreinoRedeId " +

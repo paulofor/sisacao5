@@ -64,6 +64,18 @@ module.exports = function(Diapregao) {
         ds.connector.query(sql,callback);
     };
   
+    Diapregao.ObtemPeriodoPrevisaoExecucao = function(idPeriodoTreinoRede, callback) {
+        let sql = " select DiaPregao.* " +
+                " from PeriodoTreinoRede, DiaPregao " +
+                " where PeriodoTreinoRede.id = " + idPeriodoTreinoRede +
+                " and DiaPregao.diaNum >= PeriodoTreinoRede.diaNumInicioExecucao " +
+                " and DiaPregao.diaNum <= PeriodoTreinoRede.diaNumFinalExecucao " +
+                " and DiaPregao.data < date(now()) " +
+                " order by data";
+        let ds = Diapregao.dataSource;
+        console.log(sql);
+        ds.connector.query(sql,callback);
+    };
 
     Diapregao.ObtemIntradayResultadoTickerAteFinal = function(ticker, diaNumInicio, tamanhoAmostra, callback) {
         Diapregao.ObtemProximo((err,result) => {

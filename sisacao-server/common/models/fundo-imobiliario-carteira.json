@@ -47,19 +47,18 @@
     "percentualValorizacao": {
       "type": "number"
     },
-    "saldoMes" : {
-      "type" : "number"
+    "saldoMes": {
+      "type": "number"
     },
-    "percentualSaldoMes" : {
-      "type" : "number"
+    "percentualSaldoMes": {
+      "type": "number"
     },
-    "percentualValorTotal" : {
-      "type" : "number"
+    "percentualValorTotal": {
+      "type": "number"
     },
-    "percentualValorDataReferencia" : {
-      "type" : "number"
+    "percentualValorDataReferencia": {
+      "type": "number"
     }
-    
   },
   "validations": [],
   "relations": {},

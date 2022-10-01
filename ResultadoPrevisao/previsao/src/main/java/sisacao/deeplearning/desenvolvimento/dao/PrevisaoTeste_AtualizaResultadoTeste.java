@@ -15,7 +15,7 @@ public class PrevisaoTeste_AtualizaResultadoTeste extends DaoBasePrevisao{
 	protected void executaImpl() {
 		// TODO Auto-generated method stub
 		DatasetResultadoPrevisao ds = (DatasetResultadoPrevisao) getComum();
-		PrevisaoTeste previsao = ds.getTradeCorrente().getPrevisao();
+		PrevisaoTeste previsao = (PrevisaoTeste) ds.getTradeCorrente().getPrevisao();
 		previsao.calculaPontuacao();
 		System.out.println(previsao);
 		this.repPrevisao.atualizaResultadoTeste(previsao, new VoidCallback() {

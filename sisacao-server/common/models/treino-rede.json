@@ -384,6 +384,26 @@
         }
       ]
     },
+    "ObtemListaPrevisaoExecucaoComTradeAberto": {
+      "accepts": [
+       
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemListaPrevisaoExecucaoComTradeAberto",
+          "verb": "get"
+        }
+      ]
+    },
     "ObtemListaParaPrevisao": {
       "accepts": [],
       "returns": [

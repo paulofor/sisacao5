@@ -42,5 +42,15 @@ public class RepositorioPrevisaoRede extends ModelRepository<PrevisaoRede>{
         params.put("previsao", exemplo.jSON());
         invokeStaticMethod("atualizaResultado", params,   new EmptyResponseParser(callback));
 	}
+	public void obtemPorDiaTreinoSelecionada(long idTreinoRede, long diaNumPrevisao,
+			ListCallback<PrevisaoRede> listCallback) {
+		RestContractItem contrato = new RestContractItem("PrevisaoRedes/obtemPorDiaTreinoSelecionada","GET");
+		this.getRestAdapter().getContract().addItem(contrato, "PrevisaoRede.obtemPorDiaTreinoSelecionada");
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("treinoRedeId", idTreinoRede);
+        params.put("diaNumPrevisao", diaNumPrevisao);
+        invokeStaticMethod("obtemPorDiaTreinoSelecionada", params,   new JsonArrayParser<PrevisaoRede>(this, listCallback));
+		
+	}
 	
 }

@@ -1,0 +1,29 @@
+{
+  "name": "TesouroDiretoCotacao",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "diaNum": {
+      "type": "number"
+    },
+    "taxaMercado": {
+      "type": "number"
+    },
+    "dataHora": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "tesouroDireto": {
+      "type": "belongsTo",
+      "model": "TesouroDireto",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -1,9 +1,11 @@
 package sisacao.deeplearning.desenvolvimento.processamento;
 
 import br.com.digicom.sisacao.modelo.CotacaoDiarioAcao;
+import br.com.digicom.sisacao.modelo.PrevisaoRede;
 import br.com.digicom.sisacao.modelo.PrevisaoTeste;
+import sisacao.deeplearning.comum.TradeI;
 
-public class TradePrevisao {
+public class TradePrevisao implements TradeI{
 	
 	private PrevisaoTeste previsao;
 	
@@ -60,7 +62,7 @@ public class TradePrevisao {
 	}
 	
 	
-	public long getDiaNumEntrada() {
+	public int getDiaNumEntrada() {
 		return previsao.getDiaNumPrevisao();
 	}
 	

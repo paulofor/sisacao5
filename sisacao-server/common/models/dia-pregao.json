@@ -266,6 +266,31 @@
         }
       ]
     },
+    "ObtemPeriodoPrevisaoExecucao": {
+      "accepts": [
+        {
+          "arg": "idPeriodoTreinoRede",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "dia",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemPeriodoPrevisaoExecucao",
+          "verb": "get"
+        }
+      ]
+    },
     "ObtemProximoAntesMeiaNoite": {
       "accepts": [
         {

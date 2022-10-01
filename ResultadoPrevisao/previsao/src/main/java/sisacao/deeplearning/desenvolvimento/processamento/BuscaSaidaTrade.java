@@ -3,9 +3,9 @@ package sisacao.deeplearning.desenvolvimento.processamento;
 import java.util.List;
 
 import br.com.digicom.sisacao.modelo.CotacaoDiarioAcao;
-import br.com.digicom.sisacao.modelo.CotacaoIntradayAcaoResultado;
 import br.com.digicom.sisacao.modelo.DiaPregao;
 import br.inf.digicom.loopback.DaoBase;
+import sisacao.deeplearning.comum.TradeI;
 import sisacao.deeplearning.desenvolvimento.dao.DaoBasePrevisao;
 import sisacao.deeplearning.desenvolvimento.dao.DatasetResultadoPrevisao;
 import sisacao.deeplearning.desenvolvimento.dao.PrevisaoTeste_AtualizaResultadoTeste;
@@ -18,7 +18,7 @@ public class BuscaSaidaTrade extends DaoBasePrevisao{
 	@Override
 	protected void executaImpl() {
 		DatasetResultadoPrevisao ds = (DatasetResultadoPrevisao) getComum();
-		TradePrevisao trade = ds.getTradeCorrente();
+		TradeI trade = ds.getTradeCorrente();
 		System.out.println(trade.getPrevisao());
 		List<DiaPregao> listaCotacao = ds.getListaCotacaoResultado();
 		System.out.println("Tam:" + listaCotacao.size());
@@ -35,7 +35,7 @@ public class BuscaSaidaTrade extends DaoBasePrevisao{
 	
 	
 
-	private boolean verificaSaida(DiaPregao dia, TradePrevisao trade) {
+	private boolean verificaSaida(DiaPregao dia, TradeI trade) {
 		System.out.println("Data: " + dia.getDiaNum());
 		if (dia.getCotacaoDiarioAcaos().size()<1) {
 			return false;
