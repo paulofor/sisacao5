@@ -26,12 +26,59 @@
     "treinoRedeId": {
       "type": "number",
       "id": true
+    },
+    "precoTarget" : {
+      "type" : "number"
+    },
+    "precoStop" : {
+      "type" : "number"
+    },
+    "tipoCompraVenda" : {
+      "type" : "string"
+    },
+    "resultado" : {
+      "type" : "number"
+    },
+    "pontuacao" : {
+      "type" : "number"
+    },
+    "percentualAtual" : {
+      "type" : "number"
+    },
+    "precoAtual" : {
+      "type" : "number"
     }
+
   },
   "validations": [],
   "relations": {},
   "acls": [],
   "methods": {
+    "FinalizaTrade": {
+      "accepts": [
+        {
+          "arg": "item",
+          "type": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/finalizaTrade",
+          "verb": "post"
+        }
+      ]
+    },
     "InsereTrade": {
       "accepts": [
         {
@@ -53,6 +100,25 @@
       "http": [
         {
           "path": "/insereTrade",
+          "verb": "post"
+        }
+      ]
+    },
+    "AtualizaTrade": {
+      "accepts": [
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaTrade",
           "verb": "post"
         }
       ]

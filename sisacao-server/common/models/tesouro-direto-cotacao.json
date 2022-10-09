@@ -12,7 +12,10 @@
     "taxaMercado": {
       "type": "number"
     },
-    "dataHora": {
+    "dataHoraStr": {
+      "type": "string"
+    },
+    "dataHora" : {
       "type": "date"
     }
   },
@@ -25,5 +28,31 @@
     }
   },
   "acls": [],
-  "methods": {}
+  "methods": {
+    "InsereLista": {
+      "accepts": [
+        {
+          "arg": "listaItem",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/insereLista",
+          "verb": "post"
+        }
+      ]
+    }
+  }
 }

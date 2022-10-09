@@ -166,6 +166,54 @@ export class PrevisaoRedeApi extends BaseLoopBackApi {
    *
    *  - `diaNumPrevisao` – `{any}` - 
    *
+   *  - `treinoRedeId` – `{any}` - 
+   *
+   *  - `valorEntrada` – `{any}` - 
+   *
+   *  - `valorReferencia` – `{any}` - 
+   *
+   *  - `tipoCompraVenda` – `{any}` - 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `PrevisaoRede` object.)
+   * </em>
+   */
+  public RecebePrevisaoTreinoExecucao(ticker: any = {}, resultado: any = {}, diaNumPrevisao: any = {}, treinoRedeId: any = {}, valorEntrada: any = {}, valorReferencia: any = {}, tipoCompraVenda: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/PrevisaoRedes/recebePrevisaoTreinoExecucao";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof ticker !== 'undefined' && ticker !== null) _urlParams.ticker = ticker;
+    if (typeof resultado !== 'undefined' && resultado !== null) _urlParams.resultado = resultado;
+    if (typeof diaNumPrevisao !== 'undefined' && diaNumPrevisao !== null) _urlParams.diaNumPrevisao = diaNumPrevisao;
+    if (typeof treinoRedeId !== 'undefined' && treinoRedeId !== null) _urlParams.treinoRedeId = treinoRedeId;
+    if (typeof valorEntrada !== 'undefined' && valorEntrada !== null) _urlParams.valorEntrada = valorEntrada;
+    if (typeof valorReferencia !== 'undefined' && valorReferencia !== null) _urlParams.valorReferencia = valorReferencia;
+    if (typeof tipoCompraVenda !== 'undefined' && tipoCompraVenda !== null) _urlParams.tipoCompraVenda = tipoCompraVenda;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {object} data Request data.
+   *
+   *  - `ticker` – `{any}` - 
+   *
+   *  - `resultado` – `{any}` - 
+   *
+   *  - `diaNumPrevisao` – `{any}` - 
+   *
    *  - `redeId` – `{any}` - 
    *
    * @returns {object} An empty reference that will be
@@ -214,6 +262,37 @@ export class PrevisaoRedeApi extends BaseLoopBackApi {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/PrevisaoRedes/obtemPorDiaTreino";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof diaNumPrevisao !== 'undefined' && diaNumPrevisao !== null) _urlParams.diaNumPrevisao = diaNumPrevisao;
+    if (typeof treinoRedeId !== 'undefined' && treinoRedeId !== null) _urlParams.treinoRedeId = treinoRedeId;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {number} diaNumPrevisao 
+   *
+   * @param {number} treinoRedeId 
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `PrevisaoRede` object.)
+   * </em>
+   */
+  public ObtemPorDiaTreinoSelecionada(diaNumPrevisao: any = {}, treinoRedeId: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/PrevisaoRedes/obtemPorDiaTreinoSelecionada";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};

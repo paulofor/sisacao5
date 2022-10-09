@@ -1,5 +1,7 @@
 package br.com.digicom.sisacao.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import com.strongloop.android.loopback.Model;
@@ -31,6 +33,28 @@ public class TreinoRede extends Model {
 	private Integer diaNumInicioExecucao;
 	private Integer diaNumFinalExecucao;
 	
+	private int abertos;
+	
+	public void somaAberto() {
+		this.abertos++;
+	}
+	public int getAbertos() {
+		return this.abertos;
+	}
+	
+	private List<TradeTreinoRede> tradeTreinoRedes;
+	
+	public List<TradeTreinoRede> getTradeTreinoRedes() {
+		return tradeTreinoRedes;
+	}
+	public void setTradeTreinoRedes(List<TradeTreinoRede> tradeTreinoRedes) {
+		this.tradeTreinoRedes = new ArrayList<TradeTreinoRede>();
+		for (int i = 0; i < tradeTreinoRedes.size(); i++) {
+			Object objeto = new TradeTreinoRede();
+			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) tradeTreinoRedes.get(i), true);
+			this.tradeTreinoRedes.add((TradeTreinoRede) objeto);
+		}
+	}
 	
 	
 	public Integer getDiaNumInicioExecucao() {

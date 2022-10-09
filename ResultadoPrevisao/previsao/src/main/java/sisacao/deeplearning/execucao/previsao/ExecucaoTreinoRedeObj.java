@@ -1,12 +1,11 @@
 package sisacao.deeplearning.execucao.previsao;
 
 import br.inf.digicom.loopback.comum.DaoBaseComum;
-import br.inf.digicom.loopback.comum.diapregao.DiaPregao_ObtemIntradayResultadoTickerAteFinal;
+import br.inf.digicom.loopback.comum.ativoacao.CotacaoDiarioAcao_CotacaoDia;
 import sisacao.deeplearning.desenvolvimento.dao.DatasetResultadoPrevisao;
-import sisacao.deeplearning.desenvolvimento.dao.TreinoRede_ObtemListaPrevisaoTeste;
-import sisacao.deeplearning.desenvolvimento.processamento.BuscaSaidaTrade;
-import sisacao.deeplearning.execucao.dao.PrevisaoTeste_ObtemPorDiaTreinoSelecionada;
+import sisacao.deeplearning.execucao.dao.TradeTreinoRede_AtualizaTrade;
 import sisacao.deeplearning.execucao.dao.TreinoRede_ObtemListaPrevisaoExecucaoComTradeAberto;
+import sisacao.deeplearning.execucao.processamento.VerificaTrade;
 
 public class ExecucaoTreinoRedeObj {
 
@@ -17,10 +16,14 @@ public class ExecucaoTreinoRedeObj {
 		exec.setComum(ds);
 		trataProximo();
 		exec.executa();
+		
+		TradeTreinoRede_AtualizaTrade exec2 = new TradeTreinoRede_AtualizaTrade();
+		exec2.setComum(ds);
+		exec2.executa();
 	}
 
 	private void trataProximo() {
-		//DaoBaseComum.setProximo(TreinoRede_ObtemListaPrevisaoExecucaoComTradeAberto.NOME, new PrevisaoTeste_ObtemPorDiaTreinoSelecionada());
+		DaoBaseComum.setProximo(CotacaoDiarioAcao_CotacaoDia.NOME, new VerificaTrade());
 		//DaoBaseComum.setProximo(DiaPregao_ObtemIntradayResultadoTickerAteFinal.NOME, new BuscaSaidaTrade());
 		//DaoBaseComum.setProximo(DiaPregao_ObtemIntradayResultadoTickerQuantidadeB3.NOME, new CriaDataSetEntrada());
 	}

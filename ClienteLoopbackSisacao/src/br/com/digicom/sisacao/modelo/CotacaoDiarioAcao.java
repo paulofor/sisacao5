@@ -1,6 +1,8 @@
 package br.com.digicom.sisacao.modelo;
 
-public class CotacaoDiarioAcao {
+import com.strongloop.android.loopback.Model;
+
+public class CotacaoDiarioAcao extends Model{
 	
 	private String ticker;
 	private Double abertura;
@@ -25,7 +27,7 @@ public class CotacaoDiarioAcao {
 	public void setAbertura(Double abertura) {
 		this.abertura = abertura;
 	}
-	public void setAbertura(Long abertura) {
+	public void setAbertura(Integer abertura) {
 		this.abertura = abertura.doubleValue();
 	}
 	public Double getMaximo() {
@@ -34,7 +36,7 @@ public class CotacaoDiarioAcao {
 	public void setMaximo(Double maximo) {
 		this.maximo = maximo;
 	}
-	public void setMaximo(Long maximo) {
+	public void setMaximo(Integer maximo) {
 		this.maximo = maximo.doubleValue();
 	}
 	public Double getMinimo() {
@@ -43,7 +45,7 @@ public class CotacaoDiarioAcao {
 	public void setMinimo(Double minimo) {
 		this.minimo = minimo;
 	}
-	public void setMinimo(Long minimo) {
+	public void setMinimo(Integer minimo) {
 		this.minimo = minimo.doubleValue();
 	}
 	public Double getFechamento() {
@@ -52,7 +54,7 @@ public class CotacaoDiarioAcao {
 	public void setFechamento(Double fechamento) {
 		this.fechamento = fechamento;
 	}
-	public void setFechamento(Long fechamento) {
+	public void setFechamento(Integer fechamento) {
 		this.fechamento = fechamento.doubleValue();
 	}
 	public Integer getNegocios() {

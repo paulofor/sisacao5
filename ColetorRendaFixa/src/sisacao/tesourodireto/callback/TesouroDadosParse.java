@@ -7,7 +7,9 @@ import org.json.JSONObject;
 
 import br.com.digicom.parse.callback.IDadosParse;
 import br.com.digicom.sisacao.modelo.TesouroDiretoCotacao;
+import br.inf.digicom.loopback.util.DataUtils;
 import sisacao.tesourodireto.daobase.DatasetColetorTesouro;
+import sisacao.tesourodireto.loopback.TesouroDiretoCotacao_InsereLista;
 
 public class TesouroDadosParse  implements IDadosParse {
 
@@ -16,7 +18,7 @@ public class TesouroDadosParse  implements IDadosParse {
 	
 	private DatasetColetorTesouro ds = null;
 	private List<TesouroDiretoCotacao> listaCotacao = new LinkedList<TesouroDiretoCotacao>();
-	//private CotacaoIntradayAcao_InsereValorHorario proc = new CotacaoIntradayAcao_InsereValorHorario();
+	private TesouroDiretoCotacao_InsereLista proc = new TesouroDiretoCotacao_InsereLista();
 	
 	public DatasetColetorTesouro getDs() {
 		return ds;
@@ -34,7 +36,12 @@ public class TesouroDadosParse  implements IDadosParse {
 	}
 	
 	public void adicionaCotacao(TesouroDiretoCotacao cotacao) {
-		this.listaCotacao.add(cotacao);
+		if (cotacao.ativo()) { 
+			System.out.println(cotacao);
+			cotacao.setDiaNum(DataUtils.getDiaNumCorrente());
+			cotacao.setDataHoraStr(DataUtils.getHoraCorrente());
+			this.listaCotacao.add(cotacao);
+		}
 	}
 	
 	public void enviaValor(Double valor, String horario) {
@@ -46,6 +53,11 @@ public class TesouroDadosParse  implements IDadosParse {
 		proc.setComum(ds);
 		proc.executa();
 		*/
+	}
+	public void enviaDados() {
+		this.ds.setListaTesouroDiretoCotacao(listaCotacao);
+		this.proc.setComum(ds);
+		this.proc.executa();
 	}
 
 }

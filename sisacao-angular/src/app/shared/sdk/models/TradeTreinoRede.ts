@@ -8,6 +8,13 @@ export interface TradeTreinoRedeInterface {
   "precoSaida"?: number;
   "diaNumSaida"?: number;
   "treinoRedeId"?: number;
+  "precoTarget"?: number;
+  "precoStop"?: number;
+  "tipoCompraVenda"?: string;
+  "resultado"?: number;
+  "pontuacao"?: number;
+  "percentualAtual"?: number;
+  "precoAtual"?: number;
 }
 
 export class TradeTreinoRede implements TradeTreinoRedeInterface {
@@ -17,6 +24,13 @@ export class TradeTreinoRede implements TradeTreinoRedeInterface {
   "precoSaida": number;
   "diaNumSaida": number;
   "treinoRedeId": number;
+  "precoTarget": number;
+  "precoStop": number;
+  "tipoCompraVenda": string;
+  "resultado": number;
+  "pontuacao": number;
+  "percentualAtual": number;
+  "precoAtual": number;
   constructor(data?: TradeTreinoRedeInterface) {
     Object.assign(this, data);
   }
@@ -72,6 +86,34 @@ export class TradeTreinoRede implements TradeTreinoRedeInterface {
         },
         "treinoRedeId": {
           name: 'treinoRedeId',
+          type: 'number'
+        },
+        "precoTarget": {
+          name: 'precoTarget',
+          type: 'number'
+        },
+        "precoStop": {
+          name: 'precoStop',
+          type: 'number'
+        },
+        "tipoCompraVenda": {
+          name: 'tipoCompraVenda',
+          type: 'string'
+        },
+        "resultado": {
+          name: 'resultado',
+          type: 'number'
+        },
+        "pontuacao": {
+          name: 'pontuacao',
+          type: 'number'
+        },
+        "percentualAtual": {
+          name: 'percentualAtual',
+          type: 'number'
+        },
+        "precoAtual": {
+          name: 'precoAtual',
           type: 'number'
         },
       },

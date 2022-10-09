@@ -4,16 +4,16 @@ import java.util.List;
 
 import com.strongloop.android.loopback.callbacks.ListCallback;
 
+import br.com.digicom.sisacao.modelo.TradeTreinoRede;
 import br.com.digicom.sisacao.modelo.TreinoRede;
 import br.inf.digicom.loopback.DaoBase;
 import sisacao.deeplearning.desenvolvimento.dao.DaoBasePrevisao;
 import sisacao.deeplearning.desenvolvimento.dao.DatasetResultadoPrevisao;
-import sisacao.deeplearning.execucao.processamento.TrataPrevisaoExecucao;
 
 public class TreinoRede_ObtemListaPrevisaoExecucaoComTradeAberto  extends DaoBasePrevisao{
 
 
-	public static String NOME = "TreinoRede_ObtemListaPrevisaoExecucao";
+	public static String NOME = "TreinoRede_ObtemListaPrevisaoExecucaoComTradeAberto";
 	
 	@Override
 	protected void executaImpl() {
@@ -25,9 +25,9 @@ public class TreinoRede_ObtemListaPrevisaoExecucaoComTradeAberto  extends DaoBas
 				for (TreinoRede treino:objects) {
 					ds.setTreinoCorrente(treino);
 					executaProximoSemFinalizar();
-					//paralelo.setComum(ds);
-					//paralelo.executa();
+					
 				}
+				
 				finalizar();
 			}
 
@@ -40,7 +40,7 @@ public class TreinoRede_ObtemListaPrevisaoExecucaoComTradeAberto  extends DaoBas
 
 	@Override
 	protected DaoBase getProximo() {
-		return new TrataPrevisaoExecucao();
+		return new PrevisaoTeste_ObtemPorDiaTreinoSelecionada();
 	}
 
 	

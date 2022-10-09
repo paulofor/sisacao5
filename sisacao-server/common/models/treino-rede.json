@@ -50,6 +50,15 @@
     },
     "qtdeTradeTeste": {
       "type": "number"
+    },
+    "pontuacaoExecucao" : {
+      "type": "number"
+    },
+    "qtdeLucroExecucao": {
+      "type": "number"
+    },
+    "qtdePrejuizoExecucao": {
+      "type": "number"
     }
   },
   "validations": [],

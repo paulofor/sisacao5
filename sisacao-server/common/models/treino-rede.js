@@ -159,7 +159,8 @@ module.exports = function(Treinorede) {
         let filtro = {
             'include' : [
                 'regraProjecao',
-                'periodoTreinoRede'
+                'periodoTreinoRede',
+                {'relation' : 'tradeTreinoRedes' , 'scope' : {'where' : { 'precoSaida' : null } } }
             ],
             'where' : {'ativoPrevisao' : 1}
         }
@@ -211,12 +212,20 @@ module.exports = function(Treinorede) {
                 'where' : {'ativoPrevisao' : 1},
                 'include' : 
                 [
-                    'redeNeural' , 'regraProjecao',
+                    'redeNeural' , 'regraProjecao', 
+                    {'relation' : 'tradeTreinoRedes' ,
+                    'scope' : 
+                        {
+                            'order' : 'diaNumEntrada'
+                        } 
+                    }, 
                     { 
                     'relation' : 'previsaoRedes',
                     'scope' : 
-                        {'where' : { 'and' : [ {'valor' : {'gt' : 0.25 }} , {'diaNumPrevisao' : result.diaNum }] }, 
-                        "order" : "valorPrevisao desc" , 'limit' : 10} 
+                        {
+                        'where' : { 'and' : [ {'valor' : {'gt' : 0.25 }} , {'diaNumPrevisao' : result.diaNum }] }, 
+                        "order" : "valorPrevisao desc" , 'limit' : 10,
+                        } 
                     },
                 ], 
             }

@@ -46,12 +46,14 @@ public class CallbackTesouroDiretoJson extends CallbackParseJson  {
 		try {
 			JSONArray itens = obj.getJSONObject("response").getJSONArray("TrsrBdTradgList");
 			for (int i=0; i<itens.length(); i++) {
-				JSONObject item = itens.getJSONObject(i);
+				JSONObject item = itens.getJSONObject(i).getJSONObject("TrsrBd");
 				TesouroDiretoCotacao cotacao = new TesouroDiretoCotacao();
 				cotacao.setCodigoTesouro(item.getString("isinCd"));
 				cotacao.setNome(item.getString("nm"));
-				cotacao.setTaxaAnual(item.getDouble("anulRedRate"));
+				cotacao.setTaxaAnual(item.getDouble("anulInvstmtRate"));
+				this.dados.adicionaCotacao(cotacao);
 			}
+			this.dados.enviaDados();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

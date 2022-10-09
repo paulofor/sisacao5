@@ -26,6 +26,9 @@ export interface TreinoRedeInterface {
   "desvioValorTeste"?: number;
   "mediaValorTeste"?: number;
   "qtdeTradeTeste"?: number;
+  "pontuacaoExecucao"?: number;
+  "qtdeLucroExecucao"?: number;
+  "qtdePrejuizoExecucao"?: number;
   "id"?: number;
   "grupoAcaoId"?: number;
   "periodoTreinoRedeId"?: number;
@@ -57,6 +60,9 @@ export class TreinoRede implements TreinoRedeInterface {
   "desvioValorTeste": number;
   "mediaValorTeste": number;
   "qtdeTradeTeste": number;
+  "pontuacaoExecucao": number;
+  "qtdeLucroExecucao": number;
+  "qtdePrejuizoExecucao": number;
   "id": number;
   "grupoAcaoId": number;
   "periodoTreinoRedeId": number;
@@ -161,6 +167,18 @@ export class TreinoRede implements TreinoRedeInterface {
         },
         "qtdeTradeTeste": {
           name: 'qtdeTradeTeste',
+          type: 'number'
+        },
+        "pontuacaoExecucao": {
+          name: 'pontuacaoExecucao',
+          type: 'number'
+        },
+        "qtdeLucroExecucao": {
+          name: 'qtdeLucroExecucao',
+          type: 'number'
+        },
+        "qtdePrejuizoExecucao": {
+          name: 'qtdePrejuizoExecucao',
           type: 'number'
         },
         "id": {

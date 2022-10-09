@@ -23,8 +23,12 @@ export class FundoImobiliarioCarteiraSemTabelaComponent extends BaseListComponen
   }
 
   getFiltro() {
+    const now = new Date();
+    let data = new Date(now.getFullYear(), now.getMonth(), 1);
+    let dataStr = data.toISOString().split('T')[0]
     return {
-      'order' : 'percentualSaldoMes desc'
+      'order' : 'percentualSaldoMes desc',
+      'where' : {'dataReferencia' : dataStr }
     }
   }
 

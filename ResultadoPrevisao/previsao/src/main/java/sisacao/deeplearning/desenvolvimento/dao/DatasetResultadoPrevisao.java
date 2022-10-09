@@ -4,18 +4,21 @@ import java.util.LinkedList;
 import java.util.List;
 
 import br.com.digicom.sisacao.modelo.AtivoAcao;
+import br.com.digicom.sisacao.modelo.CotacaoDiarioAcao;
 import br.com.digicom.sisacao.modelo.DiaPregao;
 import br.com.digicom.sisacao.modelo.PrevisaoRede;
 import br.com.digicom.sisacao.modelo.PrevisaoTeste;
 import br.com.digicom.sisacao.modelo.TradeTreinoRede;
 import br.com.digicom.sisacao.modelo.TreinoRede;
 import br.inf.digicom.loopback.IDatasetComum;
+import br.inf.digicom.loopback.comum.ativoacao.CotacaoDiarioAcao_CotacaoDiaDS;
 import br.inf.digicom.loopback.comum.diapregao.DiaPregao_ObtemIntradayResultadoTickerAteFinalDS;
 import sisacao.deeplearning.comum.TradeI;
 import sisacao.deeplearning.desenvolvimento.processamento.TradePrevisao;
 import sisacao.deeplearning.execucao.processamento.TradePrevisaoExecucao;
 
 public class DatasetResultadoPrevisao implements IDatasetComum,
+		CotacaoDiarioAcao_CotacaoDiaDS,
 		DiaPregao_ObtemIntradayResultadoTickerAteFinalDS{
 
 	//private long idTreinoRede;
@@ -47,6 +50,10 @@ public class DatasetResultadoPrevisao implements IDatasetComum,
 	private int diaNumExecucao;
 	
 	private TradeTreinoRede tradeTreinoRede;
+	
+	private int diaNum;
+	private String ticker;
+	private CotacaoDiarioAcao cotacaoDiarioAcao;
 	
 	
 	public List<PrevisaoTeste> getListaPrevisao() {
@@ -83,8 +90,19 @@ public class DatasetResultadoPrevisao implements IDatasetComum,
 		}
 		return saida;
 	}
-	public boolean podeProcessar(PrevisaoRede previsao) {
-		
+	public boolean podeProcessarTreinoCorrente(PrevisaoRede previsao) {
+		TreinoRede treino = this.treinoCorrente;
+		List<TradeTreinoRede> listaTrade = treino.getTradeTreinoRedes();
+		if (listaTrade.size()>=LIMITE_TRADES_ABERTOS) {
+			System.out.println("Limite de ativos");
+			return false;
+		}
+		for (TradeTreinoRede trade : listaTrade) {
+			if (previsao.getTicker().compareTo(trade.getTicker())==0) {
+				System.out.println(trade.getTicker() + " está na carteeira");
+				return false;
+			}
+		}
 		return true;
 	}
 	
@@ -212,6 +230,35 @@ public class DatasetResultadoPrevisao implements IDatasetComum,
 		this.tradeTreinoRede = tradeTreinoRede;
 	}
 
+	public int getDiaNum() {
+		return diaNum;
+	}
+
+	public void setDiaNum(int diaNum) {
+		this.diaNum = diaNum;
+	}
+
+	public String getTicker() {
+		return ticker;
+	}
+
+	public void setTicker(String ticker) {
+		this.ticker = ticker;
+	}
+
+	public CotacaoDiarioAcao getCotacaoDiarioAcao() {
+		return cotacaoDiarioAcao;
+	}
+
+	public void setCotacaoDiarioAcao(CotacaoDiarioAcao cotacaoDiarioAcao) {
+		this.cotacaoDiarioAcao = cotacaoDiarioAcao;
+	}
+
+	
+
+	
+
+	
 	
 	
 	

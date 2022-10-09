@@ -14,4 +14,9 @@ module.exports = function(Cotacaodiarioacao) {
             callback(err,result[0]);
         });
     }
+
+    Cotacaodiarioacao.CotacaoDia = function(ticker, diaNum, callback) {
+        let filtro = {'where' : {'and' : [{'ticker':ticker},{'diaNum':diaNum}] }}
+        Cotacaodiarioacao.findOne(filtro,callback);
+    }
 };

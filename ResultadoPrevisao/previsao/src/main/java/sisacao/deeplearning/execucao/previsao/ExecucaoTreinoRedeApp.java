@@ -18,7 +18,7 @@ public class ExecucaoTreinoRedeApp
 	public static String UrlLoopback = "";
 	
 	public static void main(String[] args) {
-		int diaNumAtual = 20220901;
+		int diaNumAtual = 20221007;
 		System.out.print("ExecucaoTreinoRedeApp");
 		System.out.println(" (30-09-2022)");
 		try {

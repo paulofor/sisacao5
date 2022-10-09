@@ -16,6 +16,7 @@ import com.strongloop.android.loopback.callbacks.VoidCallback;
 import com.strongloop.android.remoting.adapters.RestContractItem;
 
 import br.com.digicom.sisacao.modelo.AtivoAcao;
+import br.com.digicom.sisacao.modelo.CotacaoDiarioAcao;
 import br.com.digicom.sisacao.modelo.CotacaoIntradayAcao;
 import br.com.digicom.sisacao.modelo.CotacaoIntradayAcaoResultado;
 import br.com.digicom.sisacao.modelo.CotacaoIntradayAcaoResultadoValor;
@@ -99,6 +100,25 @@ public class RepositorioAcaoBase {
 		}
 		
 	}
+	
+	public static class CotacaoDiarioAcaoRepository extends ModelRepository<CotacaoDiarioAcao> {
+		public CotacaoDiarioAcaoRepository() {
+			super("CotacaoDiarioAcao", CotacaoDiarioAcao.class);
+		}
+		@Override
+		protected String verificaNomeUrl(String nome) {
+			return "CotacaoDiarioAcao";
+		}
+		public void cotacaoDia(String ticker, int diaNum, final ObjectCallback<CotacaoDiarioAcao> callback) {
+			RestContractItem contrato = new RestContractItem("CotacaoDiarioAcaos/cotacaoDia","GET");
+			this.getRestAdapter().getContract().addItem(contrato, "CotacaoDiarioAcao.cotacaoDia");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        params.put("ticker", ticker);
+	        params.put("diaNum", diaNum);
+	        invokeStaticMethod("cotacaoDia", params, new JsonObjectParser<CotacaoDiarioAcao>(this, callback));
+		}
+	}
+	
 	
 	public static class CotacaoIntradayAcaoRepository extends ModelRepository<CotacaoIntradayAcao> {
 		public CotacaoIntradayAcaoRepository() {

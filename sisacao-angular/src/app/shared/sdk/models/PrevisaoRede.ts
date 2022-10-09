@@ -17,6 +17,9 @@ export interface PrevisaoRedeInterface {
   "precoSaida"?: number;
   "resultado"?: number;
   "diaNumSaida"?: number;
+  "aberta"?: number;
+  "precoStop"?: number;
+  "precoTarget"?: number;
   "id"?: number;
   redeNeural?: RedeNeural;
   treinoRede?: TreinoRede;
@@ -34,6 +37,9 @@ export class PrevisaoRede implements PrevisaoRedeInterface {
   "precoSaida": number;
   "resultado": number;
   "diaNumSaida": number;
+  "aberta": number;
+  "precoStop": number;
+  "precoTarget": number;
   "id": number;
   redeNeural: RedeNeural;
   treinoRede: TreinoRede;
@@ -112,6 +118,18 @@ export class PrevisaoRede implements PrevisaoRedeInterface {
         },
         "diaNumSaida": {
           name: 'diaNumSaida',
+          type: 'number'
+        },
+        "aberta": {
+          name: 'aberta',
+          type: 'number'
+        },
+        "precoStop": {
+          name: 'precoStop',
+          type: 'number'
+        },
+        "precoTarget": {
+          name: 'precoTarget',
           type: 'number'
         },
         "id": {

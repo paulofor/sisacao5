@@ -48,11 +48,15 @@ module.exports = function(Previsaorede) {
         Previsaorede.find(filtro,callback);
     }
     Previsaorede.ObtemPorDiaTreinoSelecionada = function(diaNumPrevisao, treinoRedeId,  callback) {
-        let sql = "select PrevisaoRede.ticker, PrevisaoRede.valorPrevisao, PrevisaoRede.precoEntrada, "  +
-            " diario.maximo as maximoDiario, diario.minimo as minimoDiario" +
+        let sql = "select PrevisaoRede.ticker, PrevisaoRede.valorPrevisao, PrevisaoRede.precoEntrada, PrevisaoRede.diaNumPrevisao , "  +
+            " diario.maximo as maximoDiario, diario.minimo as minimoDiario, regra.target, regra.stop, PrevisaoRede.tipoCompraVenda " +
             " from PrevisaoRede " +
             " inner join CotacaoDiarioAcao as diario on " + 
             " diario.ticker = PrevisaoRede.ticker and diario.diaNum = PrevisaoRede.diaNumPrevisao " +
+            " inner join TreinoRede on " + 
+            " TreinoRede.id = PrevisaoRede.treinoRedeId " +
+            " inner join RegraProjecao as regra on " + 
+            " regra.id = TreinoRede.regraProjecaoId " +
             " where diaNumPrevisao = " + diaNumPrevisao +
             " and treinoRedeId = " + treinoRedeId +
             " and valorPrevisao > (select limiteParaEntrada from TreinoRede where id = " + treinoRedeId + " ) " +

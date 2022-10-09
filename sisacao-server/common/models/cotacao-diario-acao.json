@@ -43,6 +43,37 @@
   "relations": {},
   "acls": [],
   "methods": {
+    "CotacaoDia": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "diaNum",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/cotacaoDia",
+          "verb": "get"
+        }
+      ]
+    },
     "LimitesPeriodo": {
       "accepts": [
         {

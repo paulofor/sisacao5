@@ -19,6 +19,15 @@ export class FundoImobiliarioCarteiraComponent extends BaseListComponent {
     super(dialog,srv);
   }
 
+  getFiltro() {
+    const now = new Date();
+    let data = new Date(now.getFullYear(), now.getMonth(), 1);
+    let dataStr = data.toISOString().split('T')[0]
+    let filtro = {'where' : {'dataReferencia' : dataStr }};
+    console.log('filtro:' , filtro);
+    return filtro;
+  }
+
   getComponente() {
     return FundoImobilarioCarteiraEditComponent;
   }

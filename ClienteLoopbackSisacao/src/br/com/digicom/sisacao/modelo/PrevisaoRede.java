@@ -29,6 +29,26 @@ public class PrevisaoRede extends Model{
 		return "#" + this.getId() + " - " + this.ticker + "(" + this.diaNumPrevisao + "): " + this.precoEntrada + " resultado: " + this.resultado;
 	}
 	
+	public double precoTarget() {
+		double valorSaida = 0;
+		if ("C".equals(tipoCompraVenda)) {
+			valorSaida = (precoEntrada) * (1+this.target);
+		}
+		if ("V".equals(tipoCompraVenda)) {
+			valorSaida = (precoEntrada) * (1-this.target);
+		}
+		return valorSaida;
+	}
+	public double precoStop() {
+		double valorSaida = 0;
+		if ("C".equals(tipoCompraVenda)) {
+			valorSaida = (precoEntrada) * (1-this.stop);
+		}
+		if ("V".equals(tipoCompraVenda)) {
+			valorSaida = (precoEntrada) * (1+this.stop);
+		}
+		return valorSaida;
+	}
 	
 	public JSONObject jSON() {
 		JSONObject obj = new JSONObject();
@@ -37,7 +57,6 @@ public class PrevisaoRede extends Model{
 			obj.put("resultado", this.resultado);
 			obj.put("precoSaida", this.precoSaida);
 			obj.put("diaNumSaida", this.diaNumSaida);
-			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -86,6 +105,9 @@ public class PrevisaoRede extends Model{
 	}
 	public void setPrecoEntrada(Double precoEntrada) {
 		this.precoEntrada = precoEntrada;
+	}
+	public void setPrecoEntrada(Integer precoEntrada) {
+		this.precoEntrada = precoEntrada.doubleValue();
 	}
 	public Double getPrecoReferencia() {
 		return precoReferencia;
