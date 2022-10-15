@@ -51,7 +51,7 @@
     "qtdeTradeTeste": {
       "type": "number"
     },
-    "pontuacaoExecucao" : {
+    "pontuacaoExecucao": {
       "type": "number"
     },
     "qtdeLucroExecucao": {
@@ -257,6 +257,24 @@
         }
       ]
     },
+    "ContagemMes": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/contagemMes",
+          "verb": "get"
+        }
+      ]
+    },
     "ExecutouDadoTeste": {
       "accepts": [
         {
@@ -357,6 +375,31 @@
         }
       ]
     },
+    "AtualizaPontuacaoExecucao": {
+      "accepts": [
+        {
+          "arg": "id",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaPontuacaoExecucao",
+          "verb": "post"
+        }
+      ]
+    },
     "ObtemListaParaTreino": {
       "accepts": [],
       "returns": [
@@ -394,9 +437,7 @@
       ]
     },
     "ObtemListaPrevisaoExecucaoComTradeAberto": {
-      "accepts": [
-       
-      ],
+      "accepts": [],
       "returns": [
         {
           "arg": "lista",

@@ -102,8 +102,8 @@ order by data desc limit 1)) * quantidade
             " where year(dataReferencia) = year(date_sub(now(), interval 3 hour)) " +
             " and month(dataReferencia) = month(date_sub(now(), interval 3 hour)) ";
         let sql2 = "update FundoImobiliarioCarteira " +
-            " set saldoMes = valorizacaoAtual + proventoTotal, " +
-            " percentualSaldoMes = 100* ((valorizacaoAtual + proventoTotal) / valorTotalDataReferencia) " +
+            " set saldoMes = valorizacaoAtual + coalesce(proventoTotal,0) , " +
+            " percentualSaldoMes = 100* ((valorizacaoAtual + coalesce(proventoTotal,0)) / valorTotalDataReferencia) " +
             " where year(dataReferencia) = year(date_sub(now(), interval 3 hour)) " +
             " and month(dataReferencia) = month(date_sub(now(), interval 3 hour)) ";
         let sqlTotais = "select sum(valorTotalDataReferencia) totalReferencia, sum(valorTotalAtual) totalAtual " +

@@ -1,4 +1,7 @@
 /* tslint:disable */
+import {
+  TesouroDiretoCotacao
+} from '../index';
 
 declare var Object: any;
 export interface TesouroDiretoInterface {
@@ -6,6 +9,7 @@ export interface TesouroDiretoInterface {
   "indexador"?: string;
   "vencimento"?: Date;
   "id"?: number;
+  tesouroDiretoCotacaos?: TesouroDiretoCotacao[];
 }
 
 export class TesouroDireto implements TesouroDiretoInterface {
@@ -13,6 +17,7 @@ export class TesouroDireto implements TesouroDiretoInterface {
   "indexador": string;
   "vencimento": Date;
   "id": number;
+  tesouroDiretoCotacaos: TesouroDiretoCotacao[];
   constructor(data?: TesouroDiretoInterface) {
     Object.assign(this, data);
   }
@@ -64,6 +69,14 @@ export class TesouroDireto implements TesouroDiretoInterface {
         },
       },
       relations: {
+        tesouroDiretoCotacaos: {
+          name: 'tesouroDiretoCotacaos',
+          type: 'TesouroDiretoCotacao[]',
+          model: 'TesouroDiretoCotacao',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'tesouroDiretoId'
+        },
       }
     }
   }

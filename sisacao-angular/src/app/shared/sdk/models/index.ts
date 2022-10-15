@@ -78,5 +78,6 @@ export * from './FundoImobiliarioCarteira';
 export * from './TradeTreinoRede';
 export * from './TesouroDireto';
 export * from './TesouroDiretoCotacao';
+export * from './IndicadorRede';
 export * from './BaseModels';
 export * from './FireLoopRef';

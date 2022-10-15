@@ -1,0 +1,30 @@
+{
+  "name": "IndicadorRede",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "diaNumReferencia": {
+      "type": "number",
+      "id" : true
+    },
+    "mesReferencia": {
+      "type": "number"
+    },
+    "anoReferencia": {
+      "type": "number"
+    },
+    "qtdeTreinoRede": {
+      "type": "number"
+    },
+    "qtdeSaidaTargetStop": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

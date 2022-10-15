@@ -50,7 +50,7 @@ public class CallbackTesouroDiretoJson extends CallbackParseJson  {
 				TesouroDiretoCotacao cotacao = new TesouroDiretoCotacao();
 				cotacao.setCodigoTesouro(item.getString("isinCd"));
 				cotacao.setNome(item.getString("nm"));
-				cotacao.setTaxaAnual(item.getDouble("anulInvstmtRate"));
+				cotacao.setTaxaMercado(item.getDouble("anulInvstmtRate"));
 				this.dados.adicionaCotacao(cotacao);
 			}
 			this.dados.enviaDados();
@@ -62,6 +62,7 @@ public class CallbackTesouroDiretoJson extends CallbackParseJson  {
 
 	@Override
 	public void inicializacao() {
+		this.dados.inicializaLista();
 	}
 
 	@Override

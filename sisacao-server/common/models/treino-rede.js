@@ -38,7 +38,16 @@ module.exports = function(Treinorede) {
     }
 
 
-
+    Treinorede.ContagemMes = function(callback) {
+        let sql = "select  date(DATE_SUB(dataTeste,INTERVAL DAYOFMONTH(dataTeste)-1 DAY)) as dataReferencia, " +
+            " count(*) as qtdeTreino " +
+            " from TreinoRede " +
+            " where dataTeste is not null " +
+            " group by date(DATE_SUB(dataTeste,INTERVAL DAYOFMONTH(dataTeste)-1 DAY)) ";
+        let ds = Treinorede.dataSource;
+        ds.connector.query(sql,callback);
+        
+    }
 
     Treinorede.RecebeListaTeste = function(listaId, callback) {
         let listaIdStr = listaId.toString();
@@ -141,6 +150,15 @@ module.exports = function(Treinorede) {
         ds.connector.query(sql,callback);
     }
 
+    Treinorede.AtualizaPontuacaoExecucao = function(id,callback) {
+        let sql = "update TreinoRede " +
+            " set qtdeLucroExecucao = (select count(*) from TradeTreinoRede where resultado = 1 and TradeTreinoRede.treinoRedeId = TreinoRede.id), " +
+            " qtdePrejuizoExecucao = (select count(*) from TradeTreinoRede where resultado = -1 and TradeTreinoRede.treinoRedeId = TreinoRede.id), " +
+            " pontuacaoExecucao = (select sum(pontuacao) from TradeTreinoRede where pontuacao <> 0 and TradeTreinoRede.treinoRedeId = TreinoRede.id) " +
+            " where id = "  + id;
+        let ds = Treinorede.dataSource;
+        ds.connector.query(sql,callback);
+    }
 
     Treinorede.ObtemListaParaTreino = function(callback) {
         let filtro = {'include' : ['redeNeural' , 'periodoTreinoRede' , 'tipoExemploTreino']}

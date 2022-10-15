@@ -10,7 +10,7 @@ module.exports = function(Tesourodiretocotacao) {
 
     Tesourodiretocotacao.InsereLista = function(listaItem,callback) {
         listaItem.forEach(cotacao => {
-            console.log(cotacao);
+            //console.log(cotacao);
             app.models.TesouroDireto.find({'where' : {'nome' : cotacao.nome} } , (err,result) => {
                 console.log(result.length)
                 if (result.length==0) {
@@ -23,9 +23,10 @@ module.exports = function(Tesourodiretocotacao) {
                 } else {
                     cotacao['tesouroDiretoId'] = result[0].id
                 }
-
+                //console.log('insert:' + JSON.stringify(cotacao));
                 Tesourodiretocotacao.create(cotacao);
             })
         });
+        callback(null,{'result' : 'ok'})
     }
 };

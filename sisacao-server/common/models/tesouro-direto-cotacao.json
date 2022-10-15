@@ -15,7 +15,7 @@
     "dataHoraStr": {
       "type": "string"
     },
-    "dataHora" : {
+    "dataHora": {
       "type": "date"
     }
   },

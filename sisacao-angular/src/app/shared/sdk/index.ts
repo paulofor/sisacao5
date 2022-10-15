@@ -45,7 +45,6 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CookieBrowser } from './storage/cookie.browser';
 import { StorageBrowser } from './storage/storage.browser';
 import { SocketBrowser } from './sockets/socket.browser';
-
 import { SocketConnection } from './sockets/socket.connections';
 import { RealTime } from './services/core/real.time';
 import { UserApi } from './services/custom/User';
@@ -127,6 +126,7 @@ import { FundoImobiliarioCarteiraApi } from './services/custom/FundoImobiliarioC
 import { TradeTreinoRedeApi } from './services/custom/TradeTreinoRede';
 import { TesouroDiretoApi } from './services/custom/TesouroDireto';
 import { TesouroDiretoCotacaoApi } from './services/custom/TesouroDiretoCotacao';
+import { IndicadorRedeApi } from './services/custom/IndicadorRede';
 /**
 * @module SDKBrowserModule
 * @description
@@ -236,6 +236,7 @@ export class SDKBrowserModule {
         TradeTreinoRedeApi,
         TesouroDiretoApi,
         TesouroDiretoCotacaoApi,
+        IndicadorRedeApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
       ]

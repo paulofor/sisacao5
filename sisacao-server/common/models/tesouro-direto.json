@@ -17,7 +17,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "tesouroDiretoCotacaos": {
+      "type": "hasMany",
+      "model": "TesouroDiretoCotacao",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }

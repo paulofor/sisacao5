@@ -34,6 +34,9 @@ public class TesouroDadosParse  implements IDadosParse {
 	public void setJson(JSONObject json) {
 	
 	}
+	public void inicializaLista() {
+		this.listaCotacao.clear();
+	}
 	
 	public void adicionaCotacao(TesouroDiretoCotacao cotacao) {
 		if (cotacao.ativo()) { 

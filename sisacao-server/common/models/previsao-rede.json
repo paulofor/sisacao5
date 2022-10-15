@@ -41,13 +41,8 @@
     },
     "aberta": {
       "type": "number"
-    },
-    "precoStop" : {
-      "type" : "number"
-    },
-    "precoTarget" : {
-      "type" : "number"
     }
+   
   },
   "validations": [],
   "relations": {

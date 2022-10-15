@@ -346,5 +346,9 @@
   "TesouroDiretoCotacao": {
     "dataSource": "mysqlKingDS2",
     "public": true
+  },
+  "IndicadorRede": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
   }
 }

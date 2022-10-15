@@ -79,6 +79,7 @@ import { FundoImobiliarioCarteira } from '../../models/FundoImobiliarioCarteira'
 import { TradeTreinoRede } from '../../models/TradeTreinoRede';
 import { TesouroDireto } from '../../models/TesouroDireto';
 import { TesouroDiretoCotacao } from '../../models/TesouroDiretoCotacao';
+import { IndicadorRede } from '../../models/IndicadorRede';
 
 export interface Models { [name: string]: any }
 
@@ -165,6 +166,7 @@ export class SDKModels {
     TradeTreinoRede: TradeTreinoRede,
     TesouroDireto: TesouroDireto,
     TesouroDiretoCotacao: TesouroDiretoCotacao,
+    IndicadorRede: IndicadorRede,
     
   };
 

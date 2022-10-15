@@ -12,7 +12,7 @@ public class TesouroDiretoCotacao  extends Model{
 	private String codigoTesouro;
 	private int diaNum;
 	private String dataHoraStr;
-	private Double taxaAnual;
+	private Double taxaMercado;
 	
 	
 	public JSONObject getJSON() {
@@ -20,7 +20,7 @@ public class TesouroDiretoCotacao  extends Model{
 		try {
 			obj.put("nome", nome);
 			obj.put("codigoTesouro", codigoTesouro);
-			obj.put("taxaAnual", taxaAnual);
+			obj.put("taxaMercado", taxaMercado);
 			obj.put("dataHoraStr", dataHoraStr);
 			obj.put("diaNum", diaNum);
 		} catch (Exception e) {
@@ -31,11 +31,11 @@ public class TesouroDiretoCotacao  extends Model{
 	
 	
 	public String toString() {
-		return nome + " -> " + taxaAnual + "(cód:" + codigoTesouro + ")";
+		return nome + " -> " + taxaMercado + "(cód:" + codigoTesouro + ")";
 	}
 	
 	public boolean ativo() {
-		return (this.taxaAnual>0);
+		return (this.taxaMercado>0);
 	}
 	
 	public String getNome() {
@@ -67,11 +67,11 @@ public class TesouroDiretoCotacao  extends Model{
 	}
 
 
-	public Double getTaxaAnual() {
-		return taxaAnual;
+	public Double getTaxaMercado() {
+		return taxaMercado;
 	}
-	public void setTaxaAnual(Double taxaAnual) {
-		this.taxaAnual = taxaAnual;
+	public void setTaxaMercado(Double taxaMercado) {
+		this.taxaMercado = taxaMercado;
 	}
 
 	

@@ -73,10 +73,13 @@ import { EmprestimoP2PDetalheComponent } from '../emprestimo-p2-pdetalhe/emprest
 import { TreinoGrupoDetalheComponent } from '../treino-grupo-detalhe/treino-grupo-detalhe.component';
 import { EmprestimoP2PMesCorrenteComponent } from '../emprestimo-p2-pmes-corrente/emprestimo-p2-pmes-corrente.component';
 import { TradeAtivoComponent } from '../trade-ativo/trade-ativo.component';
-import { FundoImobiliarioCarteira } from '../shared/sdk';
+import { FundoImobiliarioCarteira, TesouroDiretoCotacao } from '../shared/sdk';
 import { FundoImobiliarioCarteiraComponent } from '../fundo-imobiliario-carteira/fundo-imobiliario-carteira.component';
 import { MapaCalorGrupoTreinoComponent } from '../mapa-calor-grupo-treino/mapa-calor-grupo-treino.component';
 import { FundoImobiliarioCarteiraSemTabelaComponent } from '../fundo-imobiliario-carteira-sem-tabela/fundo-imobiliario-carteira-sem-tabela.component';
+import { TreinoRedeEvolucaoComponent } from '../treino-rede-evolucao/treino-rede-evolucao.component';
+import { TesouroDiretoListaComponent } from '../tesouro-direto-lista/tesouro-direto-lista.component';
+import { TesouroDiretoCotacaoComponent } from '../tesouro-direto-cotacao/tesouro-direto-cotacao.component';
 
 
 export const routes : Routes = [
@@ -185,6 +188,11 @@ export const routes : Routes = [
 
     { path: 'mapaCalorGrupoTreino/:id' , component: MapaCalorGrupoTreinoComponent },
     { path: 'fundoImobiliarioCarteiraSemCarteira' , component: FundoImobiliarioCarteiraSemTabelaComponent },
+
+    { path: 'treinoRedeEvolucao' , component: TreinoRedeEvolucaoComponent },
+
+    { path: 'tesouroDiretoLista' , component: TesouroDiretoListaComponent },
+    { path: 'tesouroDiretoCotacao/:id' , component: TesouroDiretoCotacaoComponent },
 
     { path: '',  component: HomeComponent  }
     //{ path: '',          redirectTo: 'home', pathMatch: 'full' }

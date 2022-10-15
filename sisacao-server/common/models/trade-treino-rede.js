@@ -1,5 +1,7 @@
 'use strict';
 
+var app = require('../../server/server');
+
 module.exports = function(Tradetreinorede) {
 
 /*
@@ -34,12 +36,16 @@ where diaNumSaida is null and tipoCompraVenda = 'C'
             " diaNumEntrada = " + trade.diaNumEntrada + " and " +
             " treinoRedeId = " + trade.treinoRedeId;
         let ds = Tradetreinorede.dataSource;
-        ds.connector.query(sql,callback);
+        ds.connector.query(sql,(err,result) => {
+            app.models.TreinoRede.AtualizaPontuacaoExecucao(trade.treinoRedeId,callback);
+        });
     }
 
     Tradetreinorede.AtualizaTrade = function(callback) {
         let sql = " update TradeTreinoRede " +
                 " set precoAtual = (select valor from CotacaoIntradayAcao where TradeTreinoRede.ticker = CotacaoIntradayAcao.ticker " +
+                " order by dataHora desc limit 1), " +
+                " diaNumAtual = (select diaNum from CotacaoIntradayAcao where TradeTreinoRede.ticker = CotacaoIntradayAcao.ticker " +
                 " order by dataHora desc limit 1) " +
                 " where diaNumSaida is null ";
         let sql1 = " update TradeTreinoRede " +
@@ -49,6 +55,7 @@ where diaNumSaida is null and tipoCompraVenda = 'C'
                 " set percentualAtual = ((precoAtual - precoEntrada) / precoEntrada) * 100 " +
                 " where diaNumSaida is null and tipoCompraVenda = 'C' " ;
         let ds = Tradetreinorede.dataSource;
+        console.log(sql);
         ds.connector.query(sql,(err,result) => {
             ds.connector.query(sql1, (err,result) => {
                 ds.connector.query(sql2, callback);

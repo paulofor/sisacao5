@@ -27,28 +27,24 @@
       "type": "number",
       "id": true
     },
-    "precoTarget" : {
-      "type" : "number"
+    "tipoCompraVenda": {
+      "type": "string"
     },
-    "precoStop" : {
-      "type" : "number"
+    "resultado": {
+      "type": "number"
     },
-    "tipoCompraVenda" : {
-      "type" : "string"
+    "pontuacao": {
+      "type": "number"
     },
-    "resultado" : {
-      "type" : "number"
+    "percentualAtual": {
+      "type": "number"
     },
-    "pontuacao" : {
-      "type" : "number"
+    "precoAtual": {
+      "type": "number"
     },
-    "percentualAtual" : {
-      "type" : "number"
-    },
-    "precoAtual" : {
+    "diaNumAtual" : {
       "type" : "number"
     }
-
   },
   "validations": [],
   "relations": {},
@@ -105,8 +101,7 @@
       ]
     },
     "AtualizaTrade": {
-      "accepts": [
-      ],
+      "accepts": [],
       "returns": [
         {
           "arg": "resultado",

@@ -187,6 +187,10 @@ import { MapaCalorGrupoTreinoComponent } from './mapa-calor-grupo-treino/mapa-ca
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { FundoImobiliarioCarteiraSemTabelaComponent } from './fundo-imobiliario-carteira-sem-tabela/fundo-imobiliario-carteira-sem-tabela.component';
 import { GraficoMapaCalorItemComponent } from './grafico-mapa-calor-item/grafico-mapa-calor-item.component';
+import { TreinoRedeEvolucaoComponent } from './treino-rede-evolucao/treino-rede-evolucao.component';
+import { TesouroDiretoCotacaoComponent } from './tesouro-direto-cotacao/tesouro-direto-cotacao.component';
+import { TesouroDiretoListaComponent } from './tesouro-direto-lista/tesouro-direto-lista.component';
+import { IndicadorRedeResumoComponent } from './indicador-rede-resumo/indicador-rede-resumo.component';
 //import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
 
@@ -343,6 +347,10 @@ registerLocaleData(localePt, 'pt-BR');
     MapaCalorGrupoTreinoComponent,
     FundoImobiliarioCarteiraSemTabelaComponent,
     GraficoMapaCalorItemComponent,
+    TreinoRedeEvolucaoComponent,
+    TesouroDiretoCotacaoComponent,
+    TesouroDiretoListaComponent,
+    IndicadorRedeResumoComponent,
   ],
   imports: [
     BrowserModule,
