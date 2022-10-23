@@ -18,10 +18,11 @@ public class InsereExemploTreinoAcaoEntradaPeriodoApp {
 		try {
 			carregaProp();
 			int posicaoEntrada = 0;
-			int qtdeDias = 120;
+			
 			String codigoGrupoAcao = "Neg-100";
 			int diaNumInicio = Integer.parseInt(args[0]);
 			int diaNumFinal = Integer.parseInt(args[1]);
+			int qtdeDias = Integer.parseInt(args[2]);
 			InsereExemploTreinoAcaoEntradaPeriodoObj obj = new InsereExemploTreinoAcaoEntradaPeriodoObj();
 			obj.executa(posicaoEntrada, qtdeDias, codigoGrupoAcao, diaNumInicio, diaNumFinal);
 			System.exit(0);

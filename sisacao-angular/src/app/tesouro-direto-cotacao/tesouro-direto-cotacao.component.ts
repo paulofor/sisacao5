@@ -16,12 +16,16 @@ export class TesouroDiretoCotacaoComponent extends BaseItemComListaComponent {
 
   getFiltro() {
     return {
-      'include' : {'relation' : 'tesouroDiretoCotacaos'}
+      'include' : {
+        'relation' : 'tesouroDiretoCotacaos' , 'scope' : {
+          'order' : ['diaNum desc' , 'dataHoraStr desc'],
+          'limit' : '60'
+        }}
     }
 
   }
 
   setListaBase() {
-    
+    this.listaBase = this.principal.tesouroDiretoCotacaos;
   };
 }

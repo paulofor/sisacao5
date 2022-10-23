@@ -7,16 +7,22 @@
   },
   "properties": {
     "diaNum": {
-      "type": "number"
+      "type": "number",
+      "id" : true
     },
     "taxaMercado": {
       "type": "number"
     },
     "dataHoraStr": {
-      "type": "string"
+      "type": "string",
+      "id" : true
     },
     "dataHora": {
       "type": "date"
+    },
+    "tesouroDiretoId" : {
+      "type" : "number",
+      "id" : true
     }
   },
   "validations": [],

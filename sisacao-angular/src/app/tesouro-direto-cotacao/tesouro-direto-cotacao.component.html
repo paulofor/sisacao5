@@ -4,22 +4,22 @@
       <div class="col-md-12">
         <div class="card">
           <div class="header">
-            <h4 class="title">Tesouro Direto</h4>
+            <h4 class="title">{{principal.nome}}</h4>
           </div>
           <div class="content table-responsive table-full-width">
             <table class="table table-hover table-striped">
               <thead>
                 <tr>
-                  <th ></th>
-                  <th ></th>
+                  <th>Dia</th>
+                  <th>Hora</th>
+                  <th>Taxa Mercado</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let item of listaBase; let i = index">
-                  <td>{{item.nome }}</td>
-                  <td align="right">
-                    <a style="margin-left: 8px; margin-right: 8px;" routerLink="/tesouroDiretoCotacao/{{item.id}}">intraday</a>
-                  </td>
+                  <td>{{item.diaNum }}</td>
+                  <td>{{item.dataHoraStr }}</td>
+                  <td>{{item.taxaMercado }}</td>
                 </tr>
               </tbody>
             </table>

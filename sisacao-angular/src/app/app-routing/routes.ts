@@ -80,6 +80,7 @@ import { FundoImobiliarioCarteiraSemTabelaComponent } from '../fundo-imobiliario
 import { TreinoRedeEvolucaoComponent } from '../treino-rede-evolucao/treino-rede-evolucao.component';
 import { TesouroDiretoListaComponent } from '../tesouro-direto-lista/tesouro-direto-lista.component';
 import { TesouroDiretoCotacaoComponent } from '../tesouro-direto-cotacao/tesouro-direto-cotacao.component';
+import { IndicadorRedeResumoComponent } from '../indicador-rede-resumo/indicador-rede-resumo.component';
 
 
 export const routes : Routes = [
@@ -193,6 +194,7 @@ export const routes : Routes = [
 
     { path: 'tesouroDiretoLista' , component: TesouroDiretoListaComponent },
     { path: 'tesouroDiretoCotacao/:id' , component: TesouroDiretoCotacaoComponent },
+    { path: 'indicadorRedeResumo' , component: IndicadorRedeResumoComponent },
 
     { path: '',  component: HomeComponent  }
     //{ path: '',          redirectTo: 'home', pathMatch: 'full' }

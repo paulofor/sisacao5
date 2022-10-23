@@ -6,15 +6,79 @@
     "validateUpsert": true
   },
   "properties": {
+    "id" : {
+      "type" : "number",
+      "id" : true
+    },
     "qtdeDias": {
       "type": "number"
     },
     "posicaoReferencia": {
       "type": "number"
+    },
+    "diaNumInicio" : {
+      "type" : "number"
+    },
+    "diaNumFinal" : {
+      "type" : "number"
+    },
+    "diaNumAtualizado" : {
+      "type" : "number"
     }
   },
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {}
+  "methods": {
+    "ObtemTotaisPorData": {
+      "accepts": [
+        {
+          "arg": "idTipoExemploTreino",
+          "type": "number",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemTotaisPorData",
+          "verb": "get"
+        }
+      ]
+    },
+    "ReinicializaParaColetaInicial": {
+      "accepts": [
+        {
+          "arg": "idTipoExemploTreino",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/insereLista",
+          "verb": "post"
+        }
+      ]
+    }
+  }
 }
