@@ -8,7 +8,7 @@
   "properties": {
     "diaNumReferencia": {
       "type": "number",
-      "id" : true
+      "id": true
     },
     "mesReferencia": {
       "type": "number"

@@ -24,6 +24,11 @@
       "type": "hasMany",
       "model": "ValorMesInstituicaoTipo",
       "foreignKey": ""
+    },
+    "tipoAplicacaoSaldoMes": {
+      "type": "hasMany",
+      "model": "TipoAplicacaoSaldoMes",
+      "foreignKey": ""
     }
   },
   "acls": [],

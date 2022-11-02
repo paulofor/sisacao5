@@ -2,15 +2,21 @@
 
 declare var Object: any;
 export interface TipoExemploTreinoInterface {
+  "id"?: number;
   "qtdeDias"?: number;
   "posicaoReferencia"?: number;
-  "id"?: number;
+  "diaNumInicio"?: number;
+  "diaNumFinal"?: number;
+  "diaNumAtualizado"?: number;
 }
 
 export class TipoExemploTreino implements TipoExemploTreinoInterface {
+  "id": number;
   "qtdeDias": number;
   "posicaoReferencia": number;
-  "id": number;
+  "diaNumInicio": number;
+  "diaNumFinal": number;
+  "diaNumAtualizado": number;
   constructor(data?: TipoExemploTreinoInterface) {
     Object.assign(this, data);
   }
@@ -44,6 +50,10 @@ export class TipoExemploTreino implements TipoExemploTreinoInterface {
       path: 'TipoExemploTreinos',
       idName: 'id',
       properties: {
+        "id": {
+          name: 'id',
+          type: 'number'
+        },
         "qtdeDias": {
           name: 'qtdeDias',
           type: 'number'
@@ -52,8 +62,16 @@ export class TipoExemploTreino implements TipoExemploTreinoInterface {
           name: 'posicaoReferencia',
           type: 'number'
         },
-        "id": {
-          name: 'id',
+        "diaNumInicio": {
+          name: 'diaNumInicio',
+          type: 'number'
+        },
+        "diaNumFinal": {
+          name: 'diaNumFinal',
+          type: 'number'
+        },
+        "diaNumAtualizado": {
+          name: 'diaNumAtualizado',
           type: 'number'
         },
       },

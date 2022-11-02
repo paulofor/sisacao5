@@ -80,6 +80,7 @@ import { TradeTreinoRede } from '../../models/TradeTreinoRede';
 import { TesouroDireto } from '../../models/TesouroDireto';
 import { TesouroDiretoCotacao } from '../../models/TesouroDiretoCotacao';
 import { IndicadorRede } from '../../models/IndicadorRede';
+import { TipoAplicacaoSaldoMes } from '../../models/TipoAplicacaoSaldoMes';
 
 export interface Models { [name: string]: any }
 
@@ -167,6 +168,7 @@ export class SDKModels {
     TesouroDireto: TesouroDireto,
     TesouroDiretoCotacao: TesouroDiretoCotacao,
     IndicadorRede: IndicadorRede,
+    TipoAplicacaoSaldoMes: TipoAplicacaoSaldoMes,
     
   };
 

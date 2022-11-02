@@ -12,6 +12,8 @@ import {
   ApexFill,
   ApexTooltip
 } from "ng-apexcharts";
+import { TipoAplicacao, TipoAplicacaoApi } from '../shared/sdk';
+import { TipoAplicacaoSaldoMesApi } from '../shared/sdk/services/custom/TipoAplicacaoSaldoMes';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -35,22 +37,34 @@ export class GraficoEvolucaoMensalPatrimonioComponent implements OnInit {
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
 
-  constructor() {
-    this.chartOptions = {
-      series: [
-        {
-          name: "Net Profit",
-          data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
-        },
-        {
-          name: "Revenue",
-          data: [76, -85, 101, 98, 87, 105, 91, 114, 94]
-        },
-        {
-          name: "Free Cash Flow",
-          data: [35, 41, -36, 26, 45, 48, 52, 53, 41]
+  serie: any[];
+
+  ngOnInit() {
+    let filtro = {'include' : {'relation' : 'tipoAplicacaoSaldoMes' , 'scope' : {
+      'order' : 'diaNumReferencia'
+    }}}
+    this.srv.find(filtro)
+      .subscribe((resultado : TipoAplicacao[]) => {
+        console.log('ListaGrafico' , resultado);
+        this.serie = [];
+        for (let i=0;i<resultado.length;i++) {
+          let tipo = resultado[i];
+          let item = {'name' : tipo.nome , 'data' : []}
+          for (let x=0;x<tipo.tipoAplicacaoSaldoMes.length;x++) {
+            let saldoMes = tipo.tipoAplicacaoSaldoMes[x];
+            item['data'].push(saldoMes.lucroPrejuizoMes);
+          }
+          this.serie.push(item);
         }
-      ],
+        console.log('serie' , this.serie);
+        this.montaGrafico()
+      })
+
+  }
+
+  montaGrafico() {
+    this.chartOptions = {
+      series: this.serie,
       chart: {
         type: "bar",
         height: 350
@@ -99,8 +113,12 @@ export class GraficoEvolucaoMensalPatrimonioComponent implements OnInit {
       }
     };
   }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+
+
+  constructor(private srv:TipoAplicacaoApi) {
+   
+   
   }
+
 
 }

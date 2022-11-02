@@ -79,5 +79,6 @@ export * from './TradeTreinoRede';
 export * from './TesouroDireto';
 export * from './TesouroDiretoCotacao';
 export * from './IndicadorRede';
+export * from './TipoAplicacaoSaldoMes';
 export * from './SDKModels';
 export * from './logger.service';

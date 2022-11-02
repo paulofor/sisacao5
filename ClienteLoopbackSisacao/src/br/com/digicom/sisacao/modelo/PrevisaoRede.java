@@ -70,11 +70,17 @@ public class PrevisaoRede extends Model{
 	public void setTarget(Double target) {
 		this.target = target;
 	}
+	public void setTarget(Integer target) {
+		this.target = target.doubleValue();
+	}
 	public Double getStop() {
 		return stop;
 	}
 	public void setStop(Double stop) {
 		this.stop = stop;
+	}
+	public void setStop(Integer stop) {
+		this.stop = stop.doubleValue();
 	}
 	public String getTicker() {
 		return ticker;
@@ -93,6 +99,9 @@ public class PrevisaoRede extends Model{
 	}
 	public void setValorPrevisao(Double valorPrevisao) {
 		this.valorPrevisao = valorPrevisao;
+	}
+	public void setValorPrevisao(Integer valorPrevisao) {
+		this.valorPrevisao = valorPrevisao.doubleValue();
 	}
 	public Long getRedeNeuralId() {
 		return redeNeuralId;
@@ -115,6 +124,9 @@ public class PrevisaoRede extends Model{
 	public void setPrecoReferencia(Double precoReferencia) {
 		this.precoReferencia = precoReferencia;
 	}
+	public void setPrecoReferencia(Integer precoReferencia) {
+		this.precoReferencia = precoReferencia.doubleValue();
+	}
 	public String getTipoCompraVenda() {
 		return tipoCompraVenda;
 	}
@@ -127,17 +139,26 @@ public class PrevisaoRede extends Model{
 	public void setMaximoDiario(Double maximoDiario) {
 		this.maximoDiario = maximoDiario;
 	}
+	public void setMaximoDiario(Integer maximoDiario) {
+		this.maximoDiario = maximoDiario.doubleValue();
+	}
 	public Double getMinimoDiario() {
 		return minimoDiario;
 	}
 	public void setMinimoDiario(Double minimoDiario) {
 		this.minimoDiario = minimoDiario;
 	}
+	public void setMinimoDiario(Integer minimoDiario) {
+		this.minimoDiario = minimoDiario.doubleValue();
+	}
 	public Double getPrecoSaida() {
 		return precoSaida;
 	}
 	public void setPrecoSaida(Double precoSaida) {
 		this.precoSaida = precoSaida;
+	}
+	public void setPrecoSaida(Integer precoSaida) {
+		this.precoSaida = precoSaida.doubleValue();
 	}
 	public Long getResultado() {
 		return resultado;

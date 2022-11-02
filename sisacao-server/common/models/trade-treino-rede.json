@@ -42,8 +42,14 @@
     "precoAtual": {
       "type": "number"
     },
-    "diaNumAtual" : {
-      "type" : "number"
+    "diaNumAtual": {
+      "type": "number"
+    },
+    "precoTarget": {
+      "type": "number"
+    },
+    "precoStop": {
+      "type": "number"
     }
   },
   "validations": [],

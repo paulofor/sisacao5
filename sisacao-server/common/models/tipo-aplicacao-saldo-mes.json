@@ -1,0 +1,78 @@
+{
+  "name": "TipoAplicacaoSaldoMes",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "diaNumReferencia": {
+      "type": "number",
+      "id": true
+    },
+    "tipoAplicacaoId": {
+      "type": "number",
+      "id": true
+    },
+    "saldoAtual": {
+      "type": "number"
+    },
+    "saldoAnterior": {
+      "type": "number"
+    },
+    "percentual": {
+      "type": "number"
+    },
+    "saldoProjetado": {
+      "type": "number"
+    },
+    "movimentacaoMes": {
+      "type": "number"
+    },
+    "percentualProjetado": {
+      "type": "number"
+    },
+    "dataReferencia": {
+      "type": "string"
+    },
+    "lucroPrejuizoMes": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "tipoAplicacao": {
+      "type": "belongsTo",
+      "model": "TipoAplicacao",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {
+    "InsereMes": {
+      "accepts": [
+        {
+          "arg": "dataReferencia",
+          "type": "number",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/insereMes",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

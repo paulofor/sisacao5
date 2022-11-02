@@ -42,7 +42,6 @@
     "aberta": {
       "type": "number"
     }
-   
   },
   "validations": [],
   "relations": {

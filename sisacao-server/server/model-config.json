@@ -350,5 +350,9 @@
   "IndicadorRede": {
     "dataSource": "mysqlKingDS2",
     "public": true
+  },
+  "TipoAplicacaoSaldoMes": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
   }
 }

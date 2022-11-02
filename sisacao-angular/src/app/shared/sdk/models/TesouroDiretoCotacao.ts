@@ -9,7 +9,6 @@ export interface TesouroDiretoCotacaoInterface {
   "taxaMercado"?: number;
   "dataHoraStr"?: string;
   "dataHora"?: Date;
-  "id"?: number;
   "tesouroDiretoId"?: number;
   tesouroDireto?: TesouroDireto;
 }
@@ -19,7 +18,6 @@ export class TesouroDiretoCotacao implements TesouroDiretoCotacaoInterface {
   "taxaMercado": number;
   "dataHoraStr": string;
   "dataHora": Date;
-  "id": number;
   "tesouroDiretoId": number;
   tesouroDireto: TesouroDireto;
   constructor(data?: TesouroDiretoCotacaoInterface) {
@@ -53,7 +51,7 @@ export class TesouroDiretoCotacao implements TesouroDiretoCotacaoInterface {
       name: 'TesouroDiretoCotacao',
       plural: 'TesouroDiretoCotacaos',
       path: 'TesouroDiretoCotacaos',
-      idName: 'id',
+      idName: 'diaNum',
       properties: {
         "diaNum": {
           name: 'diaNum',
@@ -70,10 +68,6 @@ export class TesouroDiretoCotacao implements TesouroDiretoCotacaoInterface {
         "dataHora": {
           name: 'dataHora',
           type: 'Date'
-        },
-        "id": {
-          name: 'id',
-          type: 'number'
         },
         "tesouroDiretoId": {
           name: 'tesouroDiretoId',

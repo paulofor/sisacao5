@@ -18,8 +18,12 @@ public class VerificaTrade extends DaoBasePrevisao{
 		final DatasetResultadoPrevisao ds = (DatasetResultadoPrevisao) getComum();
 		CotacaoDiarioAcao cotacao = ds.getCotacaoDiarioAcao();
 		TradeTreinoRede trade = ds.getTradeTreinoRede();
+		
+	
+		
 		// trata stop
-		if (trade.getPrecoStop()>=cotacao.getMinimo() && trade.getPrecoStop()<= cotacao.getMaximo()) {
+		if (verificaStop(trade,cotacao)) {
+			System.out.println("Saiu por stop");
 			trade.setDiaNumSaida(cotacao.getDiaNum());
 			trade.setPrecoSaida(trade.getPrecoStop());
 			int pontuacao = (int) (ds.getTreinoCorrente().getRegraProjecao().getStop() * 100);
@@ -36,7 +40,8 @@ public class VerificaTrade extends DaoBasePrevisao{
 				}});
 		} else {
 			// trata target
-			if (trade.getPrecoTarget()>=cotacao.getMinimo() && trade.getPrecoTarget()<= cotacao.getMaximo()) {
+			if (verificaTarget(trade,cotacao)) {
+				System.out.println("Saiu por target");
 				trade.setDiaNumSaida(cotacao.getDiaNum());
 				trade.setPrecoSaida(trade.getPrecoTarget());
 				int pontuacao = (int) (ds.getTreinoCorrente().getRegraProjecao().getTarget() * 100);
@@ -59,6 +64,37 @@ public class VerificaTrade extends DaoBasePrevisao{
 		
 	}
 
+	private boolean verificaStop(TradeTreinoRede trade, CotacaoDiarioAcao cotacao) {
+		double precoStop = trade.getPrecoStop();
+		double maximo = cotacao.getMaximo();
+		double minimo = cotacao.getMinimo();
+		boolean compra = "C".equals(trade.getTipoCompraVenda());
+		
+		if (compra) {
+			System.out.println("Bull - Stop: " + precoStop + ", minimo: " + minimo);
+			if (minimo<=precoStop) return true;
+			else return false;
+		} else {
+			System.out.println("Bear - Stop: " + precoStop + ", maximo: " + maximo);
+			if (maximo>=precoStop) return true;
+			else return false;
+		}
+	}
+	private boolean verificaTarget(TradeTreinoRede trade, CotacaoDiarioAcao cotacao) {
+		double precoStop = trade.getPrecoStop();
+		double precoTarget = trade.getPrecoTarget();
+		double maximo = cotacao.getMaximo();
+		double minimo = cotacao.getMinimo();
+		boolean compra = "C".equals(trade.getTipoCompraVenda());
+		if (compra) {
+			if (precoTarget<=maximo) return true;
+			else return false;
+		} else {
+			if (precoTarget>=minimo) return true;
+			else return false;
+		}
+	}
+	
 	@Override
 	protected DaoBase getProximo() {
 

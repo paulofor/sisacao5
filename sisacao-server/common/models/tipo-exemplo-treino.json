@@ -6,9 +6,9 @@
     "validateUpsert": true
   },
   "properties": {
-    "id" : {
-      "type" : "number",
-      "id" : true
+    "id": {
+      "type": "number",
+      "id": true
     },
     "qtdeDias": {
       "type": "number"
@@ -16,14 +16,14 @@
     "posicaoReferencia": {
       "type": "number"
     },
-    "diaNumInicio" : {
-      "type" : "number"
+    "diaNumInicio": {
+      "type": "number"
     },
-    "diaNumFinal" : {
-      "type" : "number"
+    "diaNumFinal": {
+      "type": "number"
     },
-    "diaNumAtualizado" : {
-      "type" : "number"
+    "diaNumAtualizado": {
+      "type": "number"
     }
   },
   "validations": [],

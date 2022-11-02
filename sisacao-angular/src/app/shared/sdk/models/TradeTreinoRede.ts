@@ -14,6 +14,8 @@ export interface TradeTreinoRedeInterface {
   "percentualAtual"?: number;
   "precoAtual"?: number;
   "diaNumAtual"?: number;
+  "precoTarget"?: number;
+  "precoStop"?: number;
 }
 
 export class TradeTreinoRede implements TradeTreinoRedeInterface {
@@ -29,6 +31,8 @@ export class TradeTreinoRede implements TradeTreinoRedeInterface {
   "percentualAtual": number;
   "precoAtual": number;
   "diaNumAtual": number;
+  "precoTarget": number;
+  "precoStop": number;
   constructor(data?: TradeTreinoRedeInterface) {
     Object.assign(this, data);
   }
@@ -108,6 +112,14 @@ export class TradeTreinoRede implements TradeTreinoRedeInterface {
         },
         "diaNumAtual": {
           name: 'diaNumAtual',
+          type: 'number'
+        },
+        "precoTarget": {
+          name: 'precoTarget',
+          type: 'number'
+        },
+        "precoStop": {
+          name: 'precoStop',
           type: 'number'
         },
       },
