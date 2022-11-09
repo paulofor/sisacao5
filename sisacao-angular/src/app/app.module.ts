@@ -192,6 +192,8 @@ import { TesouroDiretoCotacaoComponent } from './tesouro-direto-cotacao/tesouro-
 import { TesouroDiretoListaComponent } from './tesouro-direto-lista/tesouro-direto-lista.component';
 import { IndicadorRedeResumoComponent } from './indicador-rede-resumo/indicador-rede-resumo.component';
 import { GraficoEvolucaoMensalPatrimonioComponent } from './grafico-evolucao-mensal-patrimonio/grafico-evolucao-mensal-patrimonio.component';
+import { PlanoMensalComponent } from './plano-mensal/plano-mensal.component';
+import { PrevisaoHistoricoComponent } from './previsao-historico/previsao-historico.component';
 //import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
 
@@ -353,6 +355,8 @@ registerLocaleData(localePt, 'pt-BR');
     TesouroDiretoListaComponent,
     IndicadorRedeResumoComponent,
     GraficoEvolucaoMensalPatrimonioComponent,
+    PlanoMensalComponent,
+    PrevisaoHistoricoComponent,
   ],
   imports: [
     BrowserModule,

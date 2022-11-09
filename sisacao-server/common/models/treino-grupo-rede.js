@@ -6,8 +6,26 @@ module.exports = function(Treinogruporede) {
 
     Treinogruporede.CriaTreino = function(idGrupo, callback) {
         //console.log('ID' , idGrupo);
+        let ds = Treinogruporede.dataSource;
+
+        let sqlTeste = " select * from  TreinoRede " +
+            " where treinoGrupoRedeId = " + idGrupo + 
+            " and dataTreinamento is not null " +
+            " limit 1";
+        ds.connector.query(sqlTeste, (err,result) => {
+            if (result.length==0) {
+
+            } else {
+                callback({"msg" : "tem item treinado"},null);
+            }
+
+        })
+        
+        
         let yourDate = new Date();
         let dataInsercao = yourDate.toISOString().split('T')[0];
+
+
        
         Treinogruporede.findById(idGrupo, (err,grupoTreino) => {
             //console.log('Err1' , err);

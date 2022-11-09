@@ -94,7 +94,14 @@
       ]
     },
     "ObtemProximoDia": {
-      "accepts": [],
+      "accepts": [
+        {
+          "arg": "qtdeDias",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
       "returns": [
         {
           "arg": "resultado",

@@ -259,12 +259,15 @@ module.exports = function(Diapregao) {
     };
       
     Diapregao.ExemploTreinoEntradaMaisRecente = function(qtde, callback) {
-        let sql = "select dia.*, count(*) quantidadeAcao " +
-                " from DiaPregao dia " +
-                " inner join ExemploTreinoAcaoEntrada as exemplo on exemplo.diaNumPrevisao = dia.diaNum " +
-                " group by dia.diaNum " +
-                " order by dia.diaNum desc " +
-                " limit " + qtde;
+        let sql = " select dia.*, " + 
+            " (select count(*) from ExemploTreinoAcaoEntrada as exemplo " +
+            " where exemplo.diaNumPrevisao = dia.diaNum  and qtdeDias = 120) as quantidadeAcao120, " +
+            " (select count(*) from ExemploTreinoAcaoEntrada as exemplo " +
+            " where exemplo.diaNumPrevisao = dia.diaNum  and qtdeDias = 40) as quantidadeAcao40 " +
+            " from DiaPregao dia " +
+            " where dia.diaNum <= (select max(diaNumPrevisao) from ExemploTreinoAcaoEntrada) " +
+            " order by dia.diaNum desc " +
+            " limit " + qtde;
         let ds = Diapregao.dataSource;
         ds.connector.query(sql,callback);
     }

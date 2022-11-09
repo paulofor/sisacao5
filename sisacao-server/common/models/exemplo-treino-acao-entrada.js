@@ -35,10 +35,10 @@ module.exports = function(Exemplotreinoacaoentrada) {
         })
     }
 
-    Exemplotreinoacaoentrada.ObtemProximoDia = function(callback){
+    Exemplotreinoacaoentrada.ObtemProximoDia = function(qtdeDias, callback){
         app.models.DiaPregao.ObtemProximoB3((err,result) => {
             let sql = "select campoX , ticker, diaNumPrevisao from ExemploTreinoAcaoEntrada " +
-            " where diaNumPrevisao = " + result.diaNum 
+            " where diaNumPrevisao = " + result.diaNum + " and qtdeDias = " + qtdeDias;
             console.log(sql)
             let ds = Exemplotreinoacaoentrada.dataSource;
             ds.connector.query(sql, (err,result) => {

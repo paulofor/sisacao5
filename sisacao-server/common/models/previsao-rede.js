@@ -2,6 +2,19 @@
 
 module.exports = function(Previsaorede) {
 
+
+    Previsaorede.PrevisaoHistorico = function(dias, callback) {
+        let sql = " select data, diaNum, " +
+                " (select count(distinct treinoRedeId) from PrevisaoRede where PrevisaoRede.diaNumPrevisao = DiaPregao.diaNum) " +
+                " as qtdeTreino " +
+                " from DiaPregao " +
+                " where diaNum <= (select max(diaNumPrevisao) from PrevisaoRede) " +
+                " order by data desc " +
+                " limit " + dias;
+        let ds = Previsaorede.dataSource;
+        ds.connector.query(sql,callback);
+    }
+
     Previsaorede.RecebePrevisaoTreinoExecucao = function(ticker, resultado, diaNumPrevisao, treinoRedeId, 
         valorEntrada, valorReferencia,  tipoCompraVenda, callback) {
         let cont=0;

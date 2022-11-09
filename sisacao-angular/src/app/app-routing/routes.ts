@@ -81,6 +81,8 @@ import { TreinoRedeEvolucaoComponent } from '../treino-rede-evolucao/treino-rede
 import { TesouroDiretoListaComponent } from '../tesouro-direto-lista/tesouro-direto-lista.component';
 import { TesouroDiretoCotacaoComponent } from '../tesouro-direto-cotacao/tesouro-direto-cotacao.component';
 import { IndicadorRedeResumoComponent } from '../indicador-rede-resumo/indicador-rede-resumo.component';
+import { PlanoMensalComponent } from '../plano-mensal/plano-mensal.component';
+import { PrevisaoHistoricoComponent } from '../previsao-historico/previsao-historico.component';
 
 
 export const routes : Routes = [
@@ -195,6 +197,9 @@ export const routes : Routes = [
     { path: 'tesouroDiretoLista' , component: TesouroDiretoListaComponent },
     { path: 'tesouroDiretoCotacao/:id' , component: TesouroDiretoCotacaoComponent },
     { path: 'indicadorRedeResumo' , component: IndicadorRedeResumoComponent },
+
+    { path: 'planoMensal' , component: PlanoMensalComponent },
+    { path: 'previsaoHistorico' , component: PrevisaoHistoricoComponent },
 
     { path: '',  component: HomeComponent  }
     //{ path: '',          redirectTo: 'home', pathMatch: 'full' }

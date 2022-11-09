@@ -22,7 +22,7 @@ public class InsereExemploTreinoAcaoEntradaApp {
 			
 			carregaProp();
 			int posicaoEntrada = 0;
-			int qtdeDias = 120;
+			int qtdeDias = Integer.parseInt(args[0]);
 			String codigoGrupoAcao = "Neg-100";
 			InsereExemploTreinoAcaoEntradaObj obj = new InsereExemploTreinoAcaoEntradaObj();
 			obj.executa(posicaoEntrada, qtdeDias, codigoGrupoAcao);
