@@ -43,6 +43,7 @@ export class EscolheRedeGrupoEditComponent extends BaseSelecionaEditComponent{
  
   getFiltro() {
     let filtro = {
+      "where" : { "and" : [ {"entrada1" : this.origem.entrada1} , {"entrada2" : this.origem.entrada2}] },
       "counts" : "grupoRedeRels",
       "order" : "nome",
       "include" : {

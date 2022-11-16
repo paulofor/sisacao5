@@ -194,6 +194,7 @@ import { IndicadorRedeResumoComponent } from './indicador-rede-resumo/indicador-
 import { GraficoEvolucaoMensalPatrimonioComponent } from './grafico-evolucao-mensal-patrimonio/grafico-evolucao-mensal-patrimonio.component';
 import { PlanoMensalComponent } from './plano-mensal/plano-mensal.component';
 import { PrevisaoHistoricoComponent } from './previsao-historico/previsao-historico.component';
+import { PlanoMensalEditaComponent } from './plano-mensal-edita/plano-mensal-edita.component';
 //import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
 
@@ -357,6 +358,7 @@ registerLocaleData(localePt, 'pt-BR');
     GraficoEvolucaoMensalPatrimonioComponent,
     PlanoMensalComponent,
     PrevisaoHistoricoComponent,
+    PlanoMensalEditaComponent,
   ],
   imports: [
     BrowserModule,
@@ -460,7 +462,8 @@ registerLocaleData(localePt, 'pt-BR');
     TreinoRedeGrupoEditaComponent,
     TargetStopEditaComponent,
     FundoImobilarioCarteiraEditComponent,
-    FundoImobiliarioCarteiraComponent
+    FundoImobiliarioCarteiraComponent,
+    PlanoMensalEditaComponent
   ],
   bootstrap: [AppComponent]
 })

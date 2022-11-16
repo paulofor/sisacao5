@@ -1,6 +1,7 @@
 /* tslint:disable */
 import {
   PrevisaoRede,
+  TipoExemploTreino,
   GrupoRedeRel
 } from '../index';
 
@@ -10,8 +11,14 @@ export interface RedeNeuralInterface {
   "compilacao"?: string;
   "fitTreinamento"?: string;
   "nome"?: string;
+  "entrada1"?: number;
+  "entrada2"?: number;
+  "qtdeTradeReal"?: number;
+  "resultadoTradeReal"?: number;
   "id"?: number;
+  "tipoExemploTreino1Id"?: number;
   previsaoRedes?: PrevisaoRede[];
+  tipoExemploTreino1?: TipoExemploTreino;
   grupoRedeRels?: GrupoRedeRel[];
 }
 
@@ -20,8 +27,14 @@ export class RedeNeural implements RedeNeuralInterface {
   "compilacao": string;
   "fitTreinamento": string;
   "nome": string;
+  "entrada1": number;
+  "entrada2": number;
+  "qtdeTradeReal": number;
+  "resultadoTradeReal": number;
   "id": number;
+  "tipoExemploTreino1Id": number;
   previsaoRedes: PrevisaoRede[];
+  tipoExemploTreino1: TipoExemploTreino;
   grupoRedeRels: GrupoRedeRel[];
   constructor(data?: RedeNeuralInterface) {
     Object.assign(this, data);
@@ -72,8 +85,28 @@ export class RedeNeural implements RedeNeuralInterface {
           name: 'nome',
           type: 'string'
         },
+        "entrada1": {
+          name: 'entrada1',
+          type: 'number'
+        },
+        "entrada2": {
+          name: 'entrada2',
+          type: 'number'
+        },
+        "qtdeTradeReal": {
+          name: 'qtdeTradeReal',
+          type: 'number'
+        },
+        "resultadoTradeReal": {
+          name: 'resultadoTradeReal',
+          type: 'number'
+        },
         "id": {
           name: 'id',
+          type: 'number'
+        },
+        "tipoExemploTreino1Id": {
+          name: 'tipoExemploTreino1Id',
           type: 'number'
         },
       },
@@ -85,6 +118,14 @@ export class RedeNeural implements RedeNeuralInterface {
           relationType: 'hasMany',
                   keyFrom: 'id',
           keyTo: 'redeNeuralId'
+        },
+        tipoExemploTreino1: {
+          name: 'tipoExemploTreino1',
+          type: 'TipoExemploTreino',
+          model: 'TipoExemploTreino',
+          relationType: 'belongsTo',
+                  keyFrom: 'tipoExemploTreino1Id',
+          keyTo: 'id'
         },
         grupoRedeRels: {
           name: 'grupoRedeRels',

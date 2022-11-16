@@ -242,6 +242,7 @@ export class SDKBrowserModule {
         TipoAplicacaoSaldoMesApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
+
       ]
     };
   }

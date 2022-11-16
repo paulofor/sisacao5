@@ -8,7 +8,13 @@
       <input matInput maxlength="50" #nome [(ngModel)]="item.nome" name="nome" placeholder="Nome" />
     </mat-form-field>
 
-   
+    <mat-form-field class="example-full-width">
+      <input matInput #entrada1 [(ngModel)]="item.entrada1" name="entrada1" placeholder="Entradas 1" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput #entrada2 [(ngModel)]="item.entrada2" name="entrada2" placeholder="Entradas 2" />
+    </mat-form-field>
  
   </mat-dialog-content>
 

@@ -323,8 +323,8 @@
         }
       ]
     },
-    "PrevisaoHistorico" : {
-      "accepts" : [
+    "PrevisaoHistorico": {
+      "accepts": [
         {
           "arg": "dias",
           "type": "number",

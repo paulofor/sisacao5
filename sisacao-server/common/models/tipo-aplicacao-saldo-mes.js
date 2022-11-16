@@ -22,7 +22,7 @@ module.exports = function(Tipoaplicacaosaldomes) {
         
         let sql3 = " update TipoAplicacaoSaldoMes " +
             " set movimentacaoMes = ( " +
-            " select coealesce(sum(valor),0) " +
+            " select coalesce(sum(valor),0) " +
             " from MovimentacaoValorAplicado " +
             " where month(data) = month(TipoAplicacaoSaldoMes.dataReferencia) " +
             " and year(data) = year(TipoAplicacaoSaldoMes.dataReferencia) " +
@@ -34,13 +34,26 @@ module.exports = function(Tipoaplicacaosaldomes) {
         
         let sql5 = " update TipoAplicacaoSaldoMes " +
             " set percentual = 100* ((lucroPrejuizoMes) / saldoAnterior) ";
+        
+        let sql6 = "update TipoAplicacao \n " +
+            " set saldoAtual = (select (saldoAnterior+movimentacaoMes) from TipoAplicacaoSaldoMes \n " +
+            " where TipoAplicacao.id = TipoAplicacaoSaldoMes.tipoAplicacaoId \n " +
+            " and TipoAplicacaoSaldoMes.saldoAtual is null and TipoAplicacaoSaldoMes.saldoAnterior is not null) \n "
+       
 
         let ds = Tipoaplicacaosaldomes.dataSource;
         ds.connector.query(sql1,(err1,result1) => {
-            ds.connector.query(sql2, (erro2, result2) => {
+            console.log('err1', err1);
+            ds.connector.query(sql2, (err2, result2) => {
+                console.log('err2', err2);
                 ds.connector.query(sql3, (err3,result3) => {
+                    console.log('err3', err3);
                     ds.connector.query(sql4, (err4,result4) => {
-                        ds.connector.query(sql5,callback);
+                        console.log('err4', err4);
+                        ds.connector.query(sql5,(err5,result5) => {
+                            console.log('err5', err5);
+                            ds.connector.query(sql6,callback);
+                        });
                     })
                 })
             })

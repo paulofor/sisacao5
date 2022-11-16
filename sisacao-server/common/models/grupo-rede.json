@@ -11,6 +11,12 @@
     },
     "quantidade": {
       "type": "number"
+    },
+    "entrada1": {
+      "type": "number"
+    },
+    "entrada2": {
+      "type": "number"
     }
   },
   "validations": [],

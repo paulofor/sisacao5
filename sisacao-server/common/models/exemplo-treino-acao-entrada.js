@@ -25,9 +25,9 @@ module.exports = function(Exemplotreinoacaoentrada) {
         })
     }
 
-    Exemplotreinoacaoentrada.ObtemPorDiaNum = function(diaNum,callback){
+    Exemplotreinoacaoentrada.ObtemPorDiaNum = function(diaNum,qtdeDias, callback){
         let sql = "select campoX , ticker, diaNumPrevisao from ExemploTreinoAcaoEntrada " +
-            " where diaNumPrevisao = " + diaNum 
+            " where diaNumPrevisao = " + diaNum + " and qtdeDias = " + qtdeDias;
             
         let ds = Exemplotreinoacaoentrada.dataSource;
         ds.connector.query(sql, (err,result) => {

@@ -36,6 +36,31 @@
   },
   "acls": [],
   "methods": {
+    "LimpaTreino": {
+      "accepts": [
+        {
+          "arg": "idGrupo",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/limpaTreino",
+          "verb": "post"
+        }
+      ]
+    },
     "CriaTreino": {
       "accepts": [
         {

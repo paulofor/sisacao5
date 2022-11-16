@@ -31,7 +31,7 @@
             <td width="10%">{{mes.percentual | number:'1.2-2'}}% </td>
             <td width="10%">{{mes.percentualProjetado | number:'1.2-2'}}% </td>
             <td width="10%">{{mes.saldoProjetado | currency : 'BRL'}} </td>
-            <td width="15%"><a (click)="dialogo1({'item' : investimento})">alterar</a></td>
+            <td width="15%"><a *ngIf="!mes.saldoAtual" (click)="dialogo1({'item' : mes})">alterar</a></td>
           </tr>
         </table>
 

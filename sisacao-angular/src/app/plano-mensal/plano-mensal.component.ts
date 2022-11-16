@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { BaseListComponent } from '../base-component/base-list-component';
+import { PlanoMensalEditaComponent } from '../plano-mensal-edita/plano-mensal-edita.component';
 import { TipoAplicacaoApi } from '../shared/sdk';
 
 @Component({
@@ -14,6 +15,9 @@ export class PlanoMensalComponent extends BaseListComponent {
     super(dialog,srv)
   }
 
+  getDialogo1() : any {
+    return PlanoMensalEditaComponent;
+  }
  
 
   getFiltro() {

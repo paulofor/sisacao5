@@ -75,6 +75,12 @@
           "type": "number",
           "required": true,
           "description": ""
+        },
+        {
+          "arg": "qtdeDias",
+          "type": "number",
+          "required": true,
+          "description": ""
         }
       ],
       "returns": [

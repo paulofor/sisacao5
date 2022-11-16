@@ -7,6 +7,8 @@ declare var Object: any;
 export interface GrupoRedeInterface {
   "nome"?: string;
   "quantidade"?: number;
+  "entrada1"?: number;
+  "entrada2"?: number;
   "id"?: number;
   grupoRedeRels?: GrupoRedeRel[];
 }
@@ -14,6 +16,8 @@ export interface GrupoRedeInterface {
 export class GrupoRede implements GrupoRedeInterface {
   "nome": string;
   "quantidade": number;
+  "entrada1": number;
+  "entrada2": number;
   "id": number;
   grupoRedeRels: GrupoRedeRel[];
   constructor(data?: GrupoRedeInterface) {
@@ -55,6 +59,14 @@ export class GrupoRede implements GrupoRedeInterface {
         },
         "quantidade": {
           name: 'quantidade',
+          type: 'number'
+        },
+        "entrada1": {
+          name: 'entrada1',
+          type: 'number'
+        },
+        "entrada2": {
+          name: 'entrada2',
           type: 'number'
         },
         "id": {

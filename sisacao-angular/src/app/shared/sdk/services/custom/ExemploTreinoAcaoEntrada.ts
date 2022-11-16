@@ -129,6 +129,8 @@ export class ExemploTreinoAcaoEntradaApi extends BaseLoopBackApi {
    *
    * @param {number} diaNum 
    *
+   * @param {number} qtdeDias 
+   *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
    *   from the server.
@@ -138,7 +140,7 @@ export class ExemploTreinoAcaoEntradaApi extends BaseLoopBackApi {
    * This usually means the response is a `ExemploTreinoAcaoEntrada` object.)
    * </em>
    */
-  public ObtemPorDiaNum(diaNum: any, customHeaders?: Function): Observable<any> {
+  public ObtemPorDiaNum(diaNum: any, qtdeDias: any, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/ExemploTreinoAcaoEntradas/obtemPorDiaNum";
@@ -146,6 +148,7 @@ export class ExemploTreinoAcaoEntradaApi extends BaseLoopBackApi {
     let _postBody: any = {};
     let _urlParams: any = {};
     if (typeof diaNum !== 'undefined' && diaNum !== null) _urlParams.diaNum = diaNum;
+    if (typeof qtdeDias !== 'undefined' && qtdeDias !== null) _urlParams.qtdeDias = qtdeDias;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
@@ -155,6 +158,8 @@ export class ExemploTreinoAcaoEntradaApi extends BaseLoopBackApi {
          * (The remote method definition does not provide any description.)
          * </em>
    *
+   * @param {number} qtdeDias 
+   *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
    *   from the server.
@@ -164,13 +169,14 @@ export class ExemploTreinoAcaoEntradaApi extends BaseLoopBackApi {
    * This usually means the response is a `ExemploTreinoAcaoEntrada` object.)
    * </em>
    */
-  public ObtemProximoDia(customHeaders?: Function): Observable<any> {
+  public ObtemProximoDia(qtdeDias: any, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/ExemploTreinoAcaoEntradas/obtemProximoDia";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
+    if (typeof qtdeDias !== 'undefined' && qtdeDias !== null) _urlParams.qtdeDias = qtdeDias;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
