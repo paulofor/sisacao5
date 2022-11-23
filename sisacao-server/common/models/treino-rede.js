@@ -214,10 +214,13 @@ module.exports = function(Treinorede) {
         });
     } 
     Treinorede.ObtemListaParaTestePorGrupo = function(id,callback) {
-        let sql = "select TreinoRede.* , RegraProjecao.tipoCompraVenda, PeriodoTreinoRede.diaNumInicioTeste, PeriodoTreinoRede.diaNumFinalTeste " +
+        let sql = "select TreinoRede.* , RegraProjecao.tipoCompraVenda, PeriodoTreinoRede.diaNumInicioTeste, PeriodoTreinoRede.diaNumFinalTeste, " +
+            "  Tipo1.qtdeDias as tipo1QtdeDias " +
             " from TreinoRede " +
             " inner join RegraProjecao on RegraProjecao.id = TreinoRede.regraProjecaoId " +
             " inner join PeriodoTreinoRede on PeriodoTreinoRede.id = TreinoRede.periodoTreinoRedeId " +
+            " inner join RedeNeural on RedeNeural.id = TreinoRede.redeNeuralId " +
+            " inner join TipoExemploTreino as Tipo1 on Tipo1.id = RedeNeural.tipoExemploTreino1Id " +
             " where ativoTeste = 1 and treinoGrupoRedeId = " + id;
         let ds = Treinorede.dataSource;
         ds.connector.query(sql,callback);

@@ -17,8 +17,10 @@ export interface RedeNeuralInterface {
   "resultadoTradeReal"?: number;
   "id"?: number;
   "tipoExemploTreino1Id"?: number;
+  "tipoExemploTreino2Id"?: number;
   previsaoRedes?: PrevisaoRede[];
   tipoExemploTreino1?: TipoExemploTreino;
+  tipoExemploTreino2?: TipoExemploTreino;
   grupoRedeRels?: GrupoRedeRel[];
 }
 
@@ -33,8 +35,10 @@ export class RedeNeural implements RedeNeuralInterface {
   "resultadoTradeReal": number;
   "id": number;
   "tipoExemploTreino1Id": number;
+  "tipoExemploTreino2Id": number;
   previsaoRedes: PrevisaoRede[];
   tipoExemploTreino1: TipoExemploTreino;
+  tipoExemploTreino2: TipoExemploTreino;
   grupoRedeRels: GrupoRedeRel[];
   constructor(data?: RedeNeuralInterface) {
     Object.assign(this, data);
@@ -109,6 +113,10 @@ export class RedeNeural implements RedeNeuralInterface {
           name: 'tipoExemploTreino1Id',
           type: 'number'
         },
+        "tipoExemploTreino2Id": {
+          name: 'tipoExemploTreino2Id',
+          type: 'number'
+        },
       },
       relations: {
         previsaoRedes: {
@@ -125,6 +133,14 @@ export class RedeNeural implements RedeNeuralInterface {
           model: 'TipoExemploTreino',
           relationType: 'belongsTo',
                   keyFrom: 'tipoExemploTreino1Id',
+          keyTo: 'id'
+        },
+        tipoExemploTreino2: {
+          name: 'tipoExemploTreino2',
+          type: 'TipoExemploTreino',
+          model: 'TipoExemploTreino',
+          relationType: 'belongsTo',
+                  keyFrom: 'tipoExemploTreino2Id',
           keyTo: 'id'
         },
         grupoRedeRels: {

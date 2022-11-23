@@ -32,9 +32,6 @@
     "percentualProjetado": {
       "type": "number"
     },
-    "dataReferencia": {
-      "type": "string"
-    },
     "lucroPrejuizoMes": {
       "type": "number"
     }
@@ -70,6 +67,31 @@
       "http": [
         {
           "path": "/insereMes",
+          "verb": "post"
+        }
+      ]
+    },
+    "CalculaProjecao": {
+      "accepts": [
+        {
+          "arg": "tipoAplicacaoId",
+          "type": "number",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/calculaProjecao",
           "verb": "post"
         }
       ]

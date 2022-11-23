@@ -47,6 +47,11 @@
       "type": "belongsTo",
       "model": "TipoExemploTreino",
       "foreignKey": "tipoExemploTreino1Id"
+    },
+    "tipoExemploTreino2": {
+      "type": "belongsTo",
+      "model": "TipoExemploTreino",
+      "foreignKey": "tipoExemploTreino2Id"
     }
   },
   "acls": [],

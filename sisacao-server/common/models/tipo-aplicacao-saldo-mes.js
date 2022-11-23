@@ -3,6 +3,50 @@
 module.exports = function(Tipoaplicacaosaldomes) {
 
 
+
+    Tipoaplicacaosaldomes.CalculaProjecao = function(tipoAplicacaoId, callback) {
+        let sql1 = "SELECT * FROM TipoAplicacaoSaldoMes \n " +
+            " where tipoAplicacaoId = " + tipoAplicacaoId + " \n" + 
+            " and percentualProjetado is not null \n" +
+            " and saldoAtual is null \n" +
+            " order by diaNumReferencia";
+        let ds = Tipoaplicacaosaldomes.dataSource;
+        
+        ds.connector.query(sql1,(err,result) => {
+            for (let i=0; i<result.length; i++) {
+                if (i==0) {
+                    let sqlUpdate = "update TipoAplicacaoSaldoMes set saldoProjetado = (saldoAnterior*(1+(percentualProjetado/100))) + movimentacao, " +
+                    " lucroProjetado = (saldoAnterior*(1+(percentualProjetado/100))) - saldoAnterior " +
+                    " where diaNumReferencia = " + result[i].diaNumReferencia;
+                    console.log(sqlUpdate);
+                    ds.connector.query(sqlUpdate,(err,result) => {
+
+                    })
+                } else {
+                    let sqlSaldoAnterior = "select * from TipoAplicacaoSaldoMes where tipoAplicacaoId = " + tipoAplicacaoId + 
+                        " and diaNumReferencia = " + result[i-1].diaNumReferencia;
+                    ds.connector.query(sqlSaldoAnterior, (err,resultAnt) => {
+                        console.log(resultAnt[0]);
+                        let year = result[i].dataReferencia.toLocaleString("default", { year: "numeric" });
+                        let month = result[i].dataReferencia.toLocaleString("default", { month: "2-digit" });
+                        let day = result[i].dataReferencia.toLocaleString("default", { day: "2-digit" });
+                        let sqlUpdate = "update TipoAplicacaoSaldoMes set saldoProjetado = (saldoAnterior*(1+(percentualProjetado/100))) " +
+                        " + movimentacaoMes where dataReferencia = date_sub('" + year + "-" + month + "-" + day + "' , interval 1 month)";
+                        console.log(sqlUpdate);
+                        ds.connector.query(sqlUpdate,(err,result) => {
+                            console.log('err:' , err);
+                        })
+                    })
+                   
+                }
+                
+            }
+        });
+        callback(null,{'concluido':'ok'});
+        
+    }
+
+
     Tipoaplicacaosaldomes.InsereMes = function(dataReferencia,callback) {
         let sql1 = "update TipoAplicacaoSaldoMes " +
             " set saldoAtual = ( " +

@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { BaseListComponent } from '../base-component/base-list-component';
 import { RedeNeuralEditaComponent } from '../rede-neural-edita/rede-neural-edita.component';
-import { RedeNeural, RedeNeuralApi } from '../shared/sdk';
+import { RedeNeural, RedeNeuralApi, TipoExemploTreino, TipoExemploTreinoApi } from '../shared/sdk';
 
 @Component({
   selector: 'app-rede-neural-lista',
@@ -11,6 +11,8 @@ import { RedeNeural, RedeNeuralApi } from '../shared/sdk';
   styleUrls: ['./rede-neural-lista.component.css']
 })
 export class RedeNeuralListaComponent extends BaseListComponent {
+
+
 
   constructor(protected dialog: MatDialog, protected srv:RedeNeuralApi,public router: Router) { 
     super(dialog,srv)
@@ -23,6 +25,12 @@ export class RedeNeuralListaComponent extends BaseListComponent {
   getComponente() {
     return RedeNeuralEditaComponent;
   }
+
+  getFiltro() {
+    return {'include' : ['tipoExemploTreino1' , 'tipoExemploTreino2']}
+  }
+
+ 
 
   /*
   edita(edicao?) {

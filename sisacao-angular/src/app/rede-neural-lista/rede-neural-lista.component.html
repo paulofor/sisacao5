@@ -11,7 +11,9 @@
           </div>
           <div class="dgc-card-detalhe">
             <div>Entradas</div>
-            <div>{{item.entrada1}} / {{item.entrada2}}</div>
+            <div>
+              {{item.entrada1}} <span *ngIf="item.tipoExemploTreino1">({{item.tipoExemploTreino1.qtdeDias}} dias)</span>/ {{item.entrada2}}
+            </div>
           </div>
           <div class="dgc-card-detalhe">
             <span>Estrutura</span>

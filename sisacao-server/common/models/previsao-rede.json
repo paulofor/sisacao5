@@ -193,6 +193,31 @@
         }
       ]
     },
+    "ObtemPorTreinoDiaAnterior": {
+      "accepts": [
+        {
+          "arg": "treinoRedeId",
+          "type": "number",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "previsao",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemPorTreinoDiaAnterior",
+          "verb": "get"
+        }
+      ]
+    },
     "ObtemPorDiaTreinoSelecionada": {
       "accepts": [
         {

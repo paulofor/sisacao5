@@ -12,9 +12,23 @@
     <mat-form-field class="example-full-width">
       <input matInput #entrada1 [(ngModel)]="item.entrada1" name="entrada1" placeholder="Entradas 1" />
     </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Tipo Entrada 1" #tipoExemploTreino1Id [(ngModel)]="item.tipoExemploTreino1Id" name="tipoExemploTreino1Id">
+        <mat-option *ngFor="let tipoExemplo of listaTipoExemplo" [value]="tipoExemplo.id">
+          {{ tipoExemplo.qtdeDias }} dias
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <input matInput #entrada2 [(ngModel)]="item.entrada2" name="entrada2" placeholder="Entradas 2" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Tipo Entrada 2" #tipoExemploTreino2Id [(ngModel)]="item.tipoExemploTreino2Id" name="tipoExemploTreino2Id">
+        <mat-option *ngFor="let tipoExemplo of listaTipoExemplo" [value]="tipoExemplo.id">
+          {{ tipoExemplo.qtdeDias }} dias
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
@@ -29,6 +43,7 @@
       <textarea matInput #fitTreinamento [(ngModel)]="item.fitTreinamento" name="fitTreinamento" placeholder="Fit Treinamento" ></textarea>
     </mat-form-field>
 
+   
 
   </mat-dialog-content>
 

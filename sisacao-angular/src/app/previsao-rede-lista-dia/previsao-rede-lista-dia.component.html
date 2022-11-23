@@ -1,7 +1,7 @@
 <div class="dgc-painel" *ngIf="listaBase">
 
   <div class="dgc-painel-header">
-    <span>Previsão Dia {{listaBase[0].previsaoRedes[0].diaNumPrevisao}}</span>
+    <span *ngIf="listaBase[0].previsaoRedes.length>0">Previsão Dia {{listaBase[0].previsaoRedes[0].diaNumPrevisao}}</span>
   </div>
   <div class="dgc-painel-detalhe">
     <span>ExecucaoTreinoRede.jar AAAAMMDD (localweb-java2/23003)</span>

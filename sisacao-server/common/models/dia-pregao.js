@@ -160,6 +160,19 @@ module.exports = function(Diapregao) {
         }
         Diapregao.findOne(filtro, callback);
     };
+    Diapregao.ObtemAtual = function(callback) {
+        var data = new Date();
+        data.setMinutes(0);
+        data.setHours(0);
+        data.setSeconds(0);
+        data.setMilliseconds(0);
+        console.log(data);
+        let filtro = { 
+            "where" : {"data" : {"lte": data } },
+            "order" : "data desc" 
+        }
+        Diapregao.findOne(filtro, callback);
+    };
 
     Diapregao.ObtemProximoB3 = function(callback) {
         Diapregao.ObtemProximoAntesMeiaNoite(5,callback); 

@@ -1,5 +1,8 @@
 'use strict';
 
+var app = require('../../server/server');
+
+
 module.exports = function(Previsaorede) {
 
 
@@ -48,9 +51,25 @@ module.exports = function(Previsaorede) {
             }
         })
     }
-    
+    Previsaorede.ObtemPorTreinoDiaAnterior = function(treinoRedeId,  callback) {
+        app.models.DiaPregao.ObtemAtual((err,result) => {
+            console.log('dia:' , result);
+            let filtro = {
+                'order' : 'valorPrevisao desc',
+                'limit' : 5,
+                'where' : {
+                    'and' : [
+                        { 'treinoRedeId' : treinoRedeId },
+                        { 'diaNumPrevisao' : result.diaNum }
+                    ]
+                }
+            }
+            Previsaorede.find(filtro,callback);
+        })
+    }
     Previsaorede.ObtemPorDiaTreino = function(diaNumPrevisao, treinoRedeId,  callback) {
         let filtro = {
+
             'where' : {
                 'and' : [
                     { 'treinoRedeId' : treinoRedeId },

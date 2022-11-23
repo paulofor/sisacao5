@@ -33,7 +33,7 @@ module.exports = function(Treinogruporede) {
        
         Treinogruporede.findById(idGrupo, (err,grupoTreino) => {
             //console.log('Err1' , err);
-            let filtroRede = {'where' : {'grupoRedeId' : grupoTreino.grupoRedeId }};
+            let filtroRede = {'include' : 'redeNeural', 'where' : {'grupoRedeId' : grupoTreino.grupoRedeId }};
             let filtroRegra = {'where' : {'grupoRegraId' : grupoTreino.grupoRegraId }};
             console.log('filtroRede:' , JSON.stringify(filtroRede));
             app.models.GrupoRedeRel.find(filtroRede, (err,grupoRedeRel) => {
@@ -50,10 +50,24 @@ module.exports = function(Treinogruporede) {
                                 'periodoTreinoRedeId' : grupoTreino.periodoTreinoRedeId,
                                 'regraProjecaoId' : itemGrupoRegraRel.regraProjecaoId,
                                 'treinoGrupoRedeId' : grupoTreino.id,
-                                'dataCriacaoGmt' : new Date()
+                                'dataCriacaoGmt' : new Date(),
+                                'tipoExemploTreinoId' : itemGrupoRedeRel.redeNeural.tipoExemploTreino1Id
                             }
                             //console.log(treino);
-                            app.models.TreinoRede.create(treino)
+                            let filtro = {'where' : {'and' : [
+                                {'redeNeuralId' : treino.redeNeuralId},
+                                {'regraProjecaoId' : treino.regraProjecaoId },
+                                {'treinoGrupoRedeId' : treino.treinoGrupoRedeId },
+                                {'periodoTreinoRedeId' : treino.periodoTreinoRedeId },
+                                {'grupoAcaoId' : treino.grupoAcaoId }
+                            ]}}
+                            app.models.TreinoRede.find(filtro,(err,result) => {
+                                if (result.length==0) {
+                                    console.log(treino);
+                                    app.models.TreinoRede.create(treino)
+                                }
+                            })
+                           
                         })
                     })
                 })
