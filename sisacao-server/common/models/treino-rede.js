@@ -166,8 +166,11 @@ module.exports = function(Treinorede) {
     } 
 
     Treinorede.ObtemListaParaPrevisao = function(callback) {
-        let sql = "select TreinoRede.* , RegraProjecao.tipoCompraVenda from TreinoRede " +
+        let sql = "select TreinoRede.* , RegraProjecao.tipoCompraVenda, T1.qtdeDias qtdeDias1 , T2.qtdeDias qtdeDias2 from TreinoRede " +
             " inner join RegraProjecao on RegraProjecao.id = TreinoRede.regraProjecaoId " +
+            " inner join RedeNeural on RedeNeural.id = TreinoRede.redeNeuralId " + 
+            " inner join TipoExemploTreino T1 on T1.id = RedeNeural.tipoExemploTreino1Id " +
+            " left outer join TipoExemploTreino T2 on T2.id = RedeNeural.tipoExemploTreino2Id " +
             " where ativoPrevisao = 1";
         let ds = Treinorede.dataSource;
         ds.connector.query(sql,callback);

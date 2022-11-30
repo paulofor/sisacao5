@@ -18,18 +18,19 @@
             <th width="10%">Lucro/Prejuízo</th>
             <th width="10%">Percentual</th>
             <th width="10%">Projetado %</th>
+            <th width="10%">Lucro Proj. R$</th>
             <th width="10%">Projetado R$</th>
             <th width="15%"></th>
           </tr>
           <tr *ngFor="let mes of item.tipoAplicacaoSaldoMes">
             <td width="10%">{{mes.diaNumReferencia}}</td>
-            
             <td width="10%">{{mes.saldoAnterior | currency : 'BRL'}}</td>
             <td width="10%">{{mes.movimentacaoMes | currency : 'BRL'}}</td>
             <td width="10%">{{mes.saldoAtual | currency : 'BRL'}}</td>
             <td width="10%">{{mes.lucroPrejuizoMes | currency : 'BRL'}}</td>
             <td width="10%">{{mes.percentual | number:'1.2-2'}}% </td>
             <td width="10%">{{mes.percentualProjetado | number:'1.2-2'}}% </td>
+            <td width="10%">{{mes.lucroProjetado | currency : 'BRL'}} </td>
             <td width="10%">{{mes.saldoProjetado | currency : 'BRL'}} </td>
             <td width="15%"><a *ngIf="!mes.saldoAtual" (click)="dialogo1({'item' : mes})">alterar</a></td>
           </tr>

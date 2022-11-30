@@ -13,8 +13,8 @@ export interface TipoAplicacaoSaldoMesInterface {
   "saldoProjetado"?: number;
   "movimentacaoMes"?: number;
   "percentualProjetado"?: number;
-  "dataReferencia"?: string;
   "lucroPrejuizoMes"?: number;
+  "lucroProjetado"?: number;
   tipoAplicacao?: TipoAplicacao;
 }
 
@@ -27,8 +27,8 @@ export class TipoAplicacaoSaldoMes implements TipoAplicacaoSaldoMesInterface {
   "saldoProjetado": number;
   "movimentacaoMes": number;
   "percentualProjetado": number;
-  "dataReferencia": string;
   "lucroPrejuizoMes": number;
+  "lucroProjetado": number;
   tipoAplicacao: TipoAplicacao;
   constructor(data?: TipoAplicacaoSaldoMesInterface) {
     Object.assign(this, data);
@@ -95,12 +95,12 @@ export class TipoAplicacaoSaldoMes implements TipoAplicacaoSaldoMesInterface {
           name: 'percentualProjetado',
           type: 'number'
         },
-        "dataReferencia": {
-          name: 'dataReferencia',
-          type: 'string'
-        },
         "lucroPrejuizoMes": {
           name: 'lucroPrejuizoMes',
+          type: 'number'
+        },
+        "lucroProjetado": {
+          name: 'lucroProjetado',
           type: 'number'
         },
       },

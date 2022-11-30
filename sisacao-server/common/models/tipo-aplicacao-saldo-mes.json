@@ -34,6 +34,9 @@
     },
     "lucroPrejuizoMes": {
       "type": "number"
+    },
+    "lucroProjetado": {
+      "type": "number"
     }
   },
   "validations": [],

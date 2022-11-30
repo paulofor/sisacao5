@@ -15,23 +15,22 @@ module.exports = function(Tipoaplicacaosaldomes) {
         ds.connector.query(sql1,(err,result) => {
             for (let i=0; i<result.length; i++) {
                 if (i==0) {
-                    let sqlUpdate = "update TipoAplicacaoSaldoMes set saldoProjetado = (saldoAnterior*(1+(percentualProjetado/100))) + movimentacao, " +
+                    let sqlUpdate = "update TipoAplicacaoSaldoMes set saldoProjetado = (saldoAnterior*(1+(percentualProjetado/100))) + movimentacaoMes, " +
                     " lucroProjetado = (saldoAnterior*(1+(percentualProjetado/100))) - saldoAnterior " +
                     " where diaNumReferencia = " + result[i].diaNumReferencia;
                     console.log(sqlUpdate);
                     ds.connector.query(sqlUpdate,(err,result) => {
+                        console.log('err1' , err);
 
                     })
                 } else {
                     let sqlSaldoAnterior = "select * from TipoAplicacaoSaldoMes where tipoAplicacaoId = " + tipoAplicacaoId + 
                         " and diaNumReferencia = " + result[i-1].diaNumReferencia;
                     ds.connector.query(sqlSaldoAnterior, (err,resultAnt) => {
-                        console.log(resultAnt[0]);
-                        let year = result[i].dataReferencia.toLocaleString("default", { year: "numeric" });
-                        let month = result[i].dataReferencia.toLocaleString("default", { month: "2-digit" });
-                        let day = result[i].dataReferencia.toLocaleString("default", { day: "2-digit" });
-                        let sqlUpdate = "update TipoAplicacaoSaldoMes set saldoProjetado = (saldoAnterior*(1+(percentualProjetado/100))) " +
-                        " + movimentacaoMes where dataReferencia = date_sub('" + year + "-" + month + "-" + day + "' , interval 1 month)";
+                        console.log(resultAnt);
+                        let sqlUpdate = "update TipoAplicacaoSaldoMes set saldoProjetado = (" + resultAnt[0]['saldoProjetado'] + "*(1+(percentualProjetado/100))), " +
+                        " lucroProjetado = (" + resultAnt[0]['saldoProjetado'] + " * (percentualProjetado/100) ) " +
+                        " where diaNumReferencia = " + result[i].diaNumReferencia + " and tipoAplicacaoId = " + tipoAplicacaoId;
                         console.log(sqlUpdate);
                         ds.connector.query(sqlUpdate,(err,result) => {
                             console.log('err:' , err);
