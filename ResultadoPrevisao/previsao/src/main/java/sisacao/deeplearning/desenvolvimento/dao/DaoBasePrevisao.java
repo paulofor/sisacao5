@@ -2,6 +2,7 @@ package sisacao.deeplearning.desenvolvimento.dao;
 
 import com.strongloop.android.loopback.RestAdapter;
 
+import br.com.digicom.sisacao.repositorio.RepositorioDiaPregao;
 import br.com.digicom.sisacao.repositorio.RepositorioPrevisaoRede;
 import br.com.digicom.sisacao.repositorio.RepositorioPrevisaoTeste;
 import br.com.digicom.sisacao.repositorio.RepositorioTradeTreinoRede;
@@ -20,6 +21,7 @@ public abstract class DaoBasePrevisao extends DaoBase{
 	protected RepositorioTradeTreinoRede repTrade = adapter.createRepository(RepositorioTradeTreinoRede.class);
 
 	protected RepositorioPrevisaoRede repPrevisaoExecucao = adapter.createRepository(RepositorioPrevisaoRede.class);
+	protected RepositorioDiaPregao repDia = adapter.createRepository(RepositorioDiaPregao.class);
 	
 	@Override
 	protected long getTempo() {

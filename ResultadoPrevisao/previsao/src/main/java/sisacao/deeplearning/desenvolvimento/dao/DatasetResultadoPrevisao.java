@@ -55,7 +55,29 @@ public class DatasetResultadoPrevisao implements IDatasetComum,
 	private String ticker;
 	private CotacaoDiarioAcao cotacaoDiarioAcao;
 	
+	private DiaPregao diaPrevisaoCorrente;
 	
+	private List<DiaPregao> listaDiaPrevisao;
+	
+	
+	
+	
+	public List<DiaPregao> getListaDiaPrevisao() {
+		return listaDiaPrevisao;
+	}
+
+	public void setListaDiaPrevisao(List<DiaPregao> listaDiaPrevisao) {
+		this.listaDiaPrevisao = listaDiaPrevisao;
+	}
+
+	public DiaPregao getDiaPrevisaoCorrente() {
+		return diaPrevisaoCorrente;
+	}
+
+	public void setDiaPrevisaoCorrente(DiaPregao diaPrevisaoCorrente) {
+		this.diaPrevisaoCorrente = diaPrevisaoCorrente;
+	}
+
 	public List<PrevisaoTeste> getListaPrevisao() {
 		
 		return listaPrevisao;

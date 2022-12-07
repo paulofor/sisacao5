@@ -101,6 +101,24 @@
   },
   "acls": [],
   "methods": {
+    "ObtemSelecionadoComPeriodoExecucao": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemSelecionadoComPeriodoExecucao",
+          "verb": "get"
+        }
+      ]
+    },
     "RecebeListaTeste": {
       "accepts": [
         {

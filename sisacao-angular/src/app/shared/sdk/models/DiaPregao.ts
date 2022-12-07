@@ -3,7 +3,8 @@ import {
   CotacaoIntradayAcao,
   CotacaoIntradayMercadoria,
   CotacaoDiarioAcao,
-  CotacaoIntradayAcaoResultado
+  CotacaoIntradayAcaoResultado,
+  PrevisaoRede
 } from '../index';
 
 declare var Object: any;
@@ -18,6 +19,7 @@ export interface DiaPregaoInterface {
   cotacaoIntradayMercadorias?: CotacaoIntradayMercadoria[];
   cotacaoDiarioAcaos?: CotacaoDiarioAcao[];
   cotacaoIntradayAcaoResultados?: CotacaoIntradayAcaoResultado[];
+  previsaoRedes?: PrevisaoRede[];
 }
 
 export class DiaPregao implements DiaPregaoInterface {
@@ -31,6 +33,7 @@ export class DiaPregao implements DiaPregaoInterface {
   cotacaoIntradayMercadorias: CotacaoIntradayMercadoria[];
   cotacaoDiarioAcaos: CotacaoDiarioAcao[];
   cotacaoIntradayAcaoResultados: CotacaoIntradayAcaoResultado[];
+  previsaoRedes: PrevisaoRede[];
   constructor(data?: DiaPregaoInterface) {
     Object.assign(this, data);
   }
@@ -121,6 +124,14 @@ export class DiaPregao implements DiaPregaoInterface {
           relationType: 'hasMany',
                   keyFrom: 'diaNum',
           keyTo: 'diaNum'
+        },
+        previsaoRedes: {
+          name: 'previsaoRedes',
+          type: 'PrevisaoRede[]',
+          model: 'PrevisaoRede',
+          relationType: 'hasMany',
+                  keyFrom: 'diaNum',
+          keyTo: 'diaNumPrevisao'
         },
       }
     }

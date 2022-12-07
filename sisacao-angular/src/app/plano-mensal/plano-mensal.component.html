@@ -1,12 +1,19 @@
 <section class="dgc-painel">
   <header class="dgc-painel-header">
     <span>Aplicações</span>
+    <span><button class="btn-primary btn-sm btn" (click)="atualizaGeral()">Atualiza</button></span>
+    <span *ngIf="totalAtual" class="dgc-direita">{{totalAtual | currency : 'BRL'}}</span>
   </header>
   <div *ngIf="listaBase">
     <div class="dgc-card" *ngFor="let item of listaBase">
       <header class="dgc-card-header">
         <span>{{item.nome}}</span>
         <span class="dgc-direita">{{item.saldoAtual | currency : 'BRL'}}</span>
+      </header>
+      <header class="dgc-card-header">
+        <span class="dgc-direita">
+          <button class="btn-primary btn-sm btn" (click)="projecao(item)">Projeção</button>
+        </span>
       </header>
       <div class="dgc-card-detalhe">
         <table>
@@ -19,6 +26,7 @@
             <th width="10%">Percentual</th>
             <th width="10%">Projetado %</th>
             <th width="10%">Lucro Proj. R$</th>
+            <th width="10%">Mov. Proj. R$</th>
             <th width="10%">Projetado R$</th>
             <th width="15%"></th>
           </tr>
@@ -31,8 +39,49 @@
             <td width="10%">{{mes.percentual | number:'1.2-2'}}% </td>
             <td width="10%">{{mes.percentualProjetado | number:'1.2-2'}}% </td>
             <td width="10%">{{mes.lucroProjetado | currency : 'BRL'}} </td>
+            <td width="10%">{{mes.movimentacaoProjetada | currency : 'BRL'}} </td>
             <td width="10%">{{mes.saldoProjetado | currency : 'BRL'}} </td>
             <td width="15%"><a *ngIf="!mes.saldoAtual" (click)="dialogo1({'item' : mes})">alterar</a></td>
+          </tr>
+        </table>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="dgc-card">
+      <header class="dgc-card-header">
+        <span>Total</span>
+      </header>
+    
+      <div class="dgc-card-detalhe">
+        <table>
+          <tr>
+            <th width="10%">Mês</th>
+            <th width="10%">Inicial</th>
+            <th width="10%">Movimentação</th>
+            <th width="10%">Final</th>
+            <th width="10%">Lucro/Prejuízo</th>
+            <th width="10%">Percentual</th>
+            <th width="10%">Projetado %</th>
+            <th width="10%">Lucro Proj. R$</th>
+            <th width="10%">Mov. Proj. R$</th>
+            <th width="10%">Projetado R$</th>
+            <th width="15%"></th>
+          </tr>
+          <tr *ngFor="let mes of listaTotal">
+            <td width="10%">{{mes.diaNumReferencia}}</td>
+            <td width="10%">{{mes.saldoAnterior | currency : 'BRL'}}</td>
+            <td width="10%">{{mes.movimentacaoMes | currency : 'BRL'}}</td>
+            <td width="10%">{{mes.saldoAtual | currency : 'BRL'}}</td>
+            <td width="10%">{{mes.lucroPrejuizoMes | currency : 'BRL'}}</td>
+            <td width="10%">{{mes.percentual | number:'1.2-2'}}% </td>
+            <td width="10%">{{mes.percentualProjetado | number:'1.2-2'}}% </td>
+            <td width="10%">{{mes.lucroProjetado | currency : 'BRL'}} </td>
+            <td width="10%">{{mes.movimentacaoProjetada | currency : 'BRL'}} </td>
+            <td width="10%">{{mes.saldoProjetado | currency : 'BRL'}} </td>
           </tr>
         </table>
 

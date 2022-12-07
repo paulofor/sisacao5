@@ -74,7 +74,8 @@ export class TreinoGrupoDetalheComponent  extends BaseListComponent {
         [{
           'relation': 'treinoRedes', 'scope': { 
             'order': 'id',
-            'include' : ['redeNeural' , 'regraProjecao']
+            'include' : ['redeNeural' , 'regraProjecao'],
+            'where' : {'treinoRedeGrupoId' : id }
           }
         }, 'grupoAcao' ,'periodoTreinoRede'
         ]
@@ -97,9 +98,10 @@ export class TreinoGrupoDetalheComponent  extends BaseListComponent {
           'relation' : 'regraProjecao' , 
           'scope' : { 'include' : {
             'relation' : 'treinoRedes' ,
-            'scope' : { 'include' : {
-              'relation' : 'redeNeural'
-            }}, 'where' : {'treinoGrupoRedeId' : treinoGrupo.id }
+            'scope' : { 
+              'include' : {'relation' : 'redeNeural'},
+              'where' : {'treinoGrupoRedeId' : treinoGrupo.id }
+            }, 'where' : {'treinoGrupoRedeId' : treinoGrupo.id }
           }}
         }
     }

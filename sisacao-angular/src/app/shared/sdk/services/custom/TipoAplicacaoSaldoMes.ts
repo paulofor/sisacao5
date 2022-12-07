@@ -129,7 +129,7 @@ export class TipoAplicacaoSaldoMesApi extends BaseLoopBackApi {
    *
    * @param {object} data Request data.
    *
-   *  - `dataReferencia` – `{number}` - 
+   * This method does not accept any data. Supply an empty object.
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -140,14 +140,13 @@ export class TipoAplicacaoSaldoMesApi extends BaseLoopBackApi {
    * This usually means the response is a `TipoAplicacaoSaldoMes` object.)
    * </em>
    */
-  public InsereMes(dataReferencia: any = {}, customHeaders?: Function): Observable<any> {
+  public AtualizaGeral(customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/TipoAplicacaoSaldoMes/insereMes";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (typeof dataReferencia !== 'undefined' && dataReferencia !== null) _urlParams.dataReferencia = dataReferencia;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
@@ -178,6 +177,35 @@ export class TipoAplicacaoSaldoMesApi extends BaseLoopBackApi {
     let _postBody: any = {};
     let _urlParams: any = {};
     if (typeof tipoAplicacaoId !== 'undefined' && tipoAplicacaoId !== null) _urlParams.tipoAplicacaoId = tipoAplicacaoId;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {object} data Request data.
+   *
+   * This method does not accept any data. Supply an empty object.
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `TipoAplicacaoSaldoMes` object.)
+   * </em>
+   */
+  public AtualizaTotal(customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/TipoAplicacaoSaldoMes/atualizaTotal";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }

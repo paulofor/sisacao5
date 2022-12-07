@@ -47,10 +47,39 @@
       "type": "hasMany",
       "model": "CotacaoDiarioAcao",
       "foreignKey": "diaNum"
+    },
+    "previsaoRedes": {
+      "type": "hasMany",
+      "model": "PrevisaoRede",
+      "foreignKey": "diaNumPrevisao"
     }
   },
   "acls": [],
   "methods": {
+    "ObtemComPrevisaoRedePorIdTreino": {
+      "accepts": [
+        {
+          "arg": "idTreino",
+          "type": "number",
+          "required": true
+        }
+      ],
+      "returns": [
+        {
+          "arg": "dia",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemComPrevisaoRedePorIdTreino",
+          "verb": "get"
+        }
+      ]
+    },
     "ObtemIntradayPorTicker": {
       "accepts": [
         {

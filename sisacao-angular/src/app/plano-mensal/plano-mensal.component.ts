@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { BaseListComponent } from '../base-component/base-list-component';
 import { PlanoMensalEditaComponent } from '../plano-mensal-edita/plano-mensal-edita.component';
-import { TipoAplicacaoApi } from '../shared/sdk';
+import { TipoAplicacao, TipoAplicacaoApi, TipoAplicacaoSaldoMes, TipoAplicacaoSaldoMesApi } from '../shared/sdk';
 
 @Component({
   selector: 'app-plano-mensal',
@@ -11,7 +11,10 @@ import { TipoAplicacaoApi } from '../shared/sdk';
 })
 export class PlanoMensalComponent extends BaseListComponent {
 
-  constructor(protected dialog: MatDialog, protected srv:TipoAplicacaoApi) { 
+  totalAtual: number;
+  listaTotal : TipoAplicacaoSaldoMes[] =[];
+
+  constructor(protected dialog: MatDialog, protected srv:TipoAplicacaoApi, protected srvTipo:TipoAplicacaoSaldoMesApi) { 
     super(dialog,srv)
   }
 
@@ -19,6 +22,21 @@ export class PlanoMensalComponent extends BaseListComponent {
     return PlanoMensalEditaComponent;
   }
  
+  posCarregaLista(): void {
+      this.totalAtual = 0
+      for (let i=0;i<this.listaBase.length;i++) {
+        let tipo : TipoAplicacao = this.listaBase[i];
+        this.totalAtual += tipo.saldoAtual;
+      }
+      let filtro = {
+        'where' : {'tipoAplicacaoId' : 0},
+        'order' : 'diaNumReferencia'
+      } 
+      this.srvTipo.find(filtro)
+        .subscribe((result:TipoAplicacaoSaldoMes[]) => {
+        this.listaTotal = result;
+      })
+  }
 
   getFiltro() {
     return {
@@ -29,7 +47,20 @@ export class PlanoMensalComponent extends BaseListComponent {
     }
   }
 
-  
+  atualizaGeral() {
+    this.srvTipo.AtualizaGeral()
+      .subscribe((result) => {
+        this.carregaTela();
+      })
+  }
+
+  projecao(item) {
+    console.log('projecao-item:' , item);
+    this.srvTipo.CalculaProjecao(item.id)
+      .subscribe((result) => {
+        this.carregaTela();
+      })
+  }
   
 
  

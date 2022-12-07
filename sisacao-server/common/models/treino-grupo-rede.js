@@ -4,6 +4,9 @@ var app = require('../../server/server');
 
 module.exports = function(Treinogruporede) {
 
+
+   
+
     Treinogruporede.LimpaTreino = function(idGrupo, callback) {
         let ds = Treinogruporede.dataSource;
 

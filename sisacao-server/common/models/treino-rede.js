@@ -5,6 +5,15 @@ var app = require('../../server/server');
 module.exports = function(Treinorede) {
 
 
+    Treinorede.ObtemSelecionadoComPeriodoExecucao = function(callback) {
+        let filtro = {
+                'where' : {'ativoPrevisao' : 1 },
+                'include' : 'periodoTreinoRede'
+            }
+        Treinorede.find(filtro, callback);
+    }
+
+
     Treinorede.LigaMelhoresPrevisao = function(quantidade,tipo,callback) {
         let sqlLimpa = "update TreinoRede " +
                 " inner join RegraProjecao on RegraProjecao.id = TreinoRede.regraProjecaoId " +

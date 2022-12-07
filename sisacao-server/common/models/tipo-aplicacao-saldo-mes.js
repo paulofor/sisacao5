@@ -3,6 +3,47 @@
 module.exports = function(Tipoaplicacaosaldomes) {
 
 
+    Tipoaplicacaosaldomes.AtualizaTotal = function (callback) {
+        let sql = "select diaNumReferencia, sum(saldoAtual) somaSaldoAtual, sum(saldoAnterior) somaSaldoAnterior, " +
+            " sum(movimentacaoMes) somaMovimentacaoMes , sum(saldoProjetado) somaSaldoProjetado , " +
+            " sum(lucroPrejuizoMes) somaLucroPrejuizoMes , sum(lucroProjetado) somaLucroProjetado , " +
+            " sum(movimentacaoProjetada) somaMovimentacaoProjetada " +
+            " from TipoAplicacaoSaldoMes " +
+            " where tipoAplicacaoId <> 0 " +
+            " group by diaNumReferencia";
+        let ds = Tipoaplicacaosaldomes.dataSource;
+        ds.connector.query(sql,(err,result) => {
+            if (result.length>0) {
+                let x = 0;
+                for (let i=0;i<result.length;i++) {
+                    let sqlAtualiza = " update TipoAplicacaoSaldoMes " +
+                        " set saldoAtual = " + result[i].somaSaldoAtual + " , " +
+                        " saldoAnterior = " + result[i].somaSaldoAnterior + " , " +
+                        " movimentacaoMes = " + result[i].somaMovimentacaoMes + " , " +
+                        " saldoProjetado = " + result[i].somaSaldoProjetado + " , " +
+                        " lucroPrejuizoMes = " + result[i].somaLucroPrejuizoMes + " , " +
+                        " lucroProjetado = " + result[i].somaLucroProjetado + " , " +
+                        " movimentacaoProjetada = " + result[i].somaMovimentacaoProjetada + 
+                        " where diaNumReferencia = " + result[i].diaNumReferencia + " and " +
+                        " tipoAplicacaoId = 0 ";
+                    ds.connector.query(sqlAtualiza, (err,result) => {
+                        console.log('err' + i + err);
+                        x++;
+                        if (x>=result.length) {
+                            let sql5 = " update TipoAplicacaoSaldoMes " +
+                            " set percentual = 100* ((lucroPrejuizoMes) / saldoAnterior) where tipoAplicacaoId = 0 ";
+                            ds.connector.query(sql5, (err,result) => {
+                                console.log('final');
+                            })
+                        }
+                    })
+                }
+                callback(null,{'finalizou' : 'ok'});
+            }
+        })
+    }
+
+
 
     Tipoaplicacaosaldomes.CalculaProjecao = function(tipoAplicacaoId, callback) {
         let sql1 = "SELECT * FROM TipoAplicacaoSaldoMes \n " +
@@ -46,7 +87,7 @@ module.exports = function(Tipoaplicacaosaldomes) {
     }
 
 
-    Tipoaplicacaosaldomes.InsereMes = function(dataReferencia,callback) {
+    Tipoaplicacaosaldomes.AtualizaGeral = function(callback) {
         let sql1 = "update TipoAplicacaoSaldoMes " +
             " set saldoAtual = ( " +
             " select sum(valor) " +
@@ -95,7 +136,9 @@ module.exports = function(Tipoaplicacaosaldomes) {
                         console.log('err4', err4);
                         ds.connector.query(sql5,(err5,result5) => {
                             console.log('err5', err5);
-                            ds.connector.query(sql6,callback);
+                            ds.connector.query(sql6,(err6,result6) => {
+                                Tipoaplicacaosaldomes.AtualizaTotal(callback)
+                            });
                         });
                     })
                 })

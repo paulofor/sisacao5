@@ -37,6 +37,9 @@
     },
     "lucroProjetado": {
       "type": "number"
+    },
+    "movimentacaoProjetada": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -49,14 +52,9 @@
   },
   "acls": [],
   "methods": {
-    "InsereMes": {
+    "AtualizaGeral": {
       "accepts": [
-        {
-          "arg": "dataReferencia",
-          "type": "number",
-          "root": true,
-          "description": ""
-        }
+  
       ],
       "returns": [
         {
@@ -95,6 +93,25 @@
       "http": [
         {
           "path": "/calculaProjecao",
+          "verb": "post"
+        }
+      ]
+    },
+    "AtualizaTotal": {
+      "accepts": [
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaTotal",
           "verb": "post"
         }
       ]
