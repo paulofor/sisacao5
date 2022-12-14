@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.strongloop.android.loopback.ModelRepository;
 import com.strongloop.android.loopback.callbacks.EmptyResponseParser;
@@ -15,6 +17,7 @@ import com.strongloop.android.loopback.callbacks.ObjectCallback;
 import com.strongloop.android.loopback.callbacks.VoidCallback;
 import com.strongloop.android.remoting.adapters.RestContractItem;
 
+import br.com.digicom.sisacao.modelo.Ativo;
 import br.com.digicom.sisacao.modelo.AtivoAcao;
 import br.com.digicom.sisacao.modelo.CotacaoDiarioAcao;
 import br.com.digicom.sisacao.modelo.CotacaoIntradayAcao;
@@ -116,6 +119,24 @@ public class RepositorioAcaoBase {
 	        params.put("ticker", ticker);
 	        params.put("diaNum", diaNum);
 	        invokeStaticMethod("cotacaoDia", params, new JsonObjectParser<CotacaoDiarioAcao>(this, callback));
+		}
+		public void listaTickerDia(List<Ativo> listaTicker, int diaNum, final ListCallback<CotacaoDiarioAcao> callback) {
+			RestContractItem contrato = new RestContractItem("CotacaoDiarioAcaos/listaTickerDia","GET");
+			this.getRestAdapter().getContract().addItem(contrato, "CotacaoDiarioAcao.listaTickerDia");
+	        Map<String, Object> params = new HashMap<String, Object>();
+	        JSONArray listaJson = new JSONArray();
+	        for (Ativo cotacao : listaTicker) {
+	        	JSONObject saida = new JSONObject();
+	        	try {
+					saida.put("ticker", cotacao.getTicker());
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+	        	listaJson.put(saida);
+	        }
+	        params.put("listaTicker", listaJson);
+	        params.put("diaNum", diaNum);
+	        invokeStaticMethod("listaTickerDia", params, new JsonArrayParser<CotacaoDiarioAcao>(this, callback));
 		}
 	}
 	

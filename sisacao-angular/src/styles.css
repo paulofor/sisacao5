@@ -85,6 +85,19 @@ body {
  .dgc-principal a:visited {
   color: #cd150c;
  }
+
+ .dgc-link a {
+  text-decoration: none;
+ }
+ .dgc-link a:link {
+  color: #cd150c
+ }
+ .dgc-link a:hover {
+  color: #f03018
+ }
+ .dgc-link a:visited {
+  color: #cd150c;
+ }
  /*************************************************************************/
  .dgc-painel {
   background-color: #ffffff;
@@ -273,6 +286,9 @@ body {
 }
 .dgc-azul {
   color: blue;
+}
+.dgc-texto-leve {
+  font-weight: 100;
 }
 .dgc-verde {
   color: green;

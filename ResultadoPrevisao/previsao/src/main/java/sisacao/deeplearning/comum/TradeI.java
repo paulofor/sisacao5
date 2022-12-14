@@ -19,5 +19,7 @@ public interface TradeI {
 	void saidaInferior(CotacaoDiarioAcao cotacao);
 
 	void saidaSuperior(CotacaoDiarioAcao cotacao);
+	
+	boolean getFechado();
 
 }

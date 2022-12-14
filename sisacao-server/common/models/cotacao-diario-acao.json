@@ -43,6 +43,37 @@
   "relations": {},
   "acls": [],
   "methods": {
+    "ListaTickerDia": {
+      "accepts": [
+        {
+          "arg": "listaTicker",
+          "type": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "diaNum",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaTickerDia",
+          "verb": "get"
+        }
+      ]
+    },
     "CotacaoDia": {
       "accepts": [
         {

@@ -4,7 +4,7 @@
     <span><button class="btn-primary btn-sm btn" (click)="atualizaGeral()">Atualiza</button></span>
     <span *ngIf="totalAtual" class="dgc-direita">{{totalAtual | currency : 'BRL'}}</span>
   </header>
-  <div *ngIf="listaBase">
+  <div *ngIf="listaBase" >
     <div class="dgc-card" *ngFor="let item of listaBase">
       <header class="dgc-card-header">
         <span>{{item.nome}}</span>
@@ -37,11 +37,19 @@
             <td width="10%">{{mes.saldoAtual | currency : 'BRL'}}</td>
             <td width="10%">{{mes.lucroPrejuizoMes | currency : 'BRL'}}</td>
             <td width="10%">{{mes.percentual | number:'1.2-2'}}% </td>
-            <td width="10%">{{mes.percentualProjetado | number:'1.2-2'}}% </td>
-            <td width="10%">{{mes.lucroProjetado | currency : 'BRL'}} </td>
-            <td width="10%">{{mes.movimentacaoProjetada | currency : 'BRL'}} </td>
-            <td width="10%">{{mes.saldoProjetado | currency : 'BRL'}} </td>
-            <td width="15%"><a *ngIf="!mes.saldoAtual" (click)="dialogo1({'item' : mes})">alterar</a></td>
+            <td width="10%">
+              <span class="{{classeProjecao(mes)}}">{{mes.percentualProjetado | number:'1.2-2'}}% </span>
+            </td>
+            <td width="10%">
+              <span class="{{classeProjecao(mes)}}">{{mes.lucroProjetado | currency : 'BRL'}}</span> 
+            </td>
+            <td width="10%">
+              <span class="{{classeProjecao(mes)}}">{{mes.movimentacaoProjetada | currency : 'BRL'}}</span> 
+            </td>
+            <td width="10%">
+              <span class="{{classeProjecao(mes)}}">{{mes.saldoProjetado | currency : 'BRL'}}</span>
+            </td>
+            <td width="15%"><span class="dgc-link" *ngIf="!mes.saldoAtual" (click)="dialogo1({'item' : mes})">alterar</span></td>
           </tr>
         </table>
 

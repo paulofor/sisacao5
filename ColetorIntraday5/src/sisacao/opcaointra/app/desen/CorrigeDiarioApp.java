@@ -11,7 +11,7 @@ public class CorrigeDiarioApp {
 	public static void main(String[] args) {
 		
 		
-		String dataAnterior = "10-11-2022";
+		String dataAnterior = "13-12-2022";
 		if (args.length == 1) {
 			dataAnterior = args[0];
 		}

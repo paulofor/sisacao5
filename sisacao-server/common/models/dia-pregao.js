@@ -12,14 +12,19 @@ module.exports = function(Diapregao) {
                 " where TreinoRede.id = " + idTreino;
         ds.connector.query(sql, (err,result) => {
             let filtro = {
-                'where' : {'diaNum' : {'gte' :  result[0].diaNumInicioExecucao } },
+                'where' : [
+                    {'diaNum' : {'gte' :  result[0].diaNumInicioExecucao } }
+                ],
                 'order' : 'diaNum' ,
                 'include' : {'relation' : 'previsaoRedes' , 'scope' : {
                     'order' : 'valorPrevisao desc',
                     'where' : {'and' : [
                         {'treinoRedeId' : idTreino},
                         {'valorPrevisao' : {'gte' : result[0].limiteParaEntrada  }}
-                    ] }
+                    ] },
+                    "include" : {"relation" : "treinoRede" , "scope" : {
+                        "include" : "regraProjecao"
+                    }}
                 }}
             }
             Diapregao.find(filtro,callback);

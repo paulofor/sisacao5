@@ -40,6 +40,12 @@
     },
     "movimentacaoProjetada": {
       "type": "number"
+    },
+    "sucessoProjecao" : {
+      "type": "number"
+    },
+    "diferencaProjecao" : {
+      "type": "number"
     }
   },
   "validations": [],
@@ -67,7 +73,7 @@
       "description": "",
       "http": [
         {
-          "path": "/insereMes",
+          "path": "/atualizaGeral",
           "verb": "post"
         }
       ]

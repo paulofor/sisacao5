@@ -9,6 +9,12 @@ public class TradePrevisao implements TradeI{
 	
 	private PrevisaoTeste previsao;
 	
+	private boolean fechado = false;
+	
+	public boolean getFechado() {
+		return fechado;
+	}
+	
 	public TradePrevisao(PrevisaoTeste previsao) {
 		this.previsao = previsao;
 		this.previsao.setDiaNumSaida(99999999);
@@ -31,6 +37,7 @@ public class TradePrevisao implements TradeI{
 			// prejuizo
 			this.previsao.setResultado(-1L);
 		}
+		this.fechado = true;
 	}
 
 	public void saidaSuperior(CotacaoDiarioAcao cotacao) {
@@ -43,7 +50,7 @@ public class TradePrevisao implements TradeI{
 			// lucro
 			this.previsao.setResultado(1L);
 		}
-		
+		this.fechado = true;
 	}
 	
 	public double limiteInferior() {

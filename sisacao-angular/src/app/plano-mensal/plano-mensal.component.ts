@@ -63,6 +63,10 @@ export class PlanoMensalComponent extends BaseListComponent {
   }
   
 
- 
+  classeProjecao(item) {
+    if (item.sucessoProjecao==1) return 'dgc-azul dgc-texto-leve';
+    if (item.sucessoProjecao==-1) return 'dgc-vermelho dgc-texto-leve';
+    return '';
+  }
 
 }

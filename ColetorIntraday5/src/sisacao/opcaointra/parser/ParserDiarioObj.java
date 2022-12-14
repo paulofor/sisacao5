@@ -163,7 +163,12 @@ public class ParserDiarioObj {
 							} catch (Exception e) {
 								abe = fec;
 							}
-							String min = eElement.getElementsByTagName("MinPric").item(0).getTextContent();
+							String min = null;
+							try {
+								min = eElement.getElementsByTagName("MinPric").item(0).getTextContent();
+							} catch (Exception e) {
+								min = "0";
+							}
 							String neg = null;
 							try {
 								neg = eElement.getElementsByTagName("RglrTxsQty").item(0).getTextContent();

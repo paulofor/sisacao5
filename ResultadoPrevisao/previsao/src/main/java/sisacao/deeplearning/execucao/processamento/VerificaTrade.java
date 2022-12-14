@@ -5,13 +5,16 @@ import com.strongloop.android.loopback.callbacks.ObjectCallback;
 import br.com.digicom.sisacao.modelo.CotacaoDiarioAcao;
 import br.com.digicom.sisacao.modelo.TradeTreinoRede;
 import br.inf.digicom.loopback.DaoBase;
+import br.inf.digicom.loopback.DummyDaoBase;
 import sisacao.deeplearning.desenvolvimento.dao.DaoBasePrevisao;
 import sisacao.deeplearning.desenvolvimento.dao.DatasetResultadoPrevisao;
 
 public class VerificaTrade extends DaoBasePrevisao{
 
 	
-	
+	public VerificaTrade() {
+		this.dummy = new DummyDaoBase();
+	}
 	
 	@Override
 	protected void executaImpl() {
@@ -97,8 +100,7 @@ public class VerificaTrade extends DaoBasePrevisao{
 	
 	@Override
 	protected DaoBase getProximo() {
-
-		return null;
+		return this.dummy;
 	}
 
 }

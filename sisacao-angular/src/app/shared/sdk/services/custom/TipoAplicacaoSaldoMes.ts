@@ -143,7 +143,7 @@ export class TipoAplicacaoSaldoMesApi extends BaseLoopBackApi {
   public AtualizaGeral(customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/TipoAplicacaoSaldoMes/insereMes";
+    "/TipoAplicacaoSaldoMes/atualizaGeral";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};

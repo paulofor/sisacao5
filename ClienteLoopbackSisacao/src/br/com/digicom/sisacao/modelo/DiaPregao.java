@@ -13,6 +13,8 @@ public class DiaPregao extends Model{
 	private List<CotacaoDiarioAcao> cotacaoDiarioAcaos;
 	private List<CotacaoIntradayAcaoResultado> cotacaoDiarioAcaoResultados;
 	
+	private List<PrevisaoRede> previsaoRedes;
+	
 	private Integer diaNum;
 	
 	
@@ -27,6 +29,21 @@ public class DiaPregao extends Model{
 			Object objeto = new CotacaoIntradayAcaoResultado();
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) cotacaoDiarioAcaoResultados.get(i), true);
 			this.cotacaoDiarioAcaoResultados.add((CotacaoIntradayAcaoResultado) objeto);
+		}
+	}
+
+	
+	
+	public List<PrevisaoRede> getPrevisaoRedes() {
+		return previsaoRedes;
+	}
+
+	public void setPrevisaoRedes(List<PrevisaoRede> previsaoRedes) {
+		this.previsaoRedes = new ArrayList<PrevisaoRede>();
+		for (int i = 0; i < previsaoRedes.size(); i++) {
+			Object objeto = new PrevisaoRede();
+			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) previsaoRedes.get(i), true);
+			this.previsaoRedes.add((PrevisaoRede) objeto);
 		}
 	}
 

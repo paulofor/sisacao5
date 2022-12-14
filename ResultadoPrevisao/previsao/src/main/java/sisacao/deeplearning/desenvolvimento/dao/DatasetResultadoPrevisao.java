@@ -1,8 +1,10 @@
 package sisacao.deeplearning.desenvolvimento.dao;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import br.com.digicom.sisacao.modelo.Ativo;
 import br.com.digicom.sisacao.modelo.AtivoAcao;
 import br.com.digicom.sisacao.modelo.CotacaoDiarioAcao;
 import br.com.digicom.sisacao.modelo.DiaPregao;
@@ -12,6 +14,7 @@ import br.com.digicom.sisacao.modelo.TradeTreinoRede;
 import br.com.digicom.sisacao.modelo.TreinoRede;
 import br.inf.digicom.loopback.IDatasetComum;
 import br.inf.digicom.loopback.comum.ativoacao.CotacaoDiarioAcao_CotacaoDiaDS;
+import br.inf.digicom.loopback.comum.ativoacao.CotacaoDiarioAcao_ListaTickerDiaDS;
 import br.inf.digicom.loopback.comum.diapregao.DiaPregao_ObtemIntradayResultadoTickerAteFinalDS;
 import sisacao.deeplearning.comum.TradeI;
 import sisacao.deeplearning.desenvolvimento.processamento.TradePrevisao;
@@ -19,6 +22,7 @@ import sisacao.deeplearning.execucao.processamento.TradePrevisaoExecucao;
 
 public class DatasetResultadoPrevisao implements IDatasetComum,
 		CotacaoDiarioAcao_CotacaoDiaDS,
+		CotacaoDiarioAcao_ListaTickerDiaDS,
 		DiaPregao_ObtemIntradayResultadoTickerAteFinalDS{
 
 	//private long idTreinoRede;
@@ -60,8 +64,37 @@ public class DatasetResultadoPrevisao implements IDatasetComum,
 	private List<DiaPregao> listaDiaPrevisao;
 	
 	
+	private List<Ativo> listaTicker;
+	private List<CotacaoDiarioAcao> listaCotacaoDiario;
+	private List<PrevisaoRede> listaPrevisaoExecucao;
 	
 	
+	
+	
+	public List<PrevisaoRede> getListaPrevisaoExecucao() {
+		return listaPrevisaoExecucao;
+	}
+
+	public void setListaPrevisaoExecucao(List<PrevisaoRede> listaPrevisaoExecucao) {
+		this.listaPrevisaoExecucao = listaPrevisaoExecucao;
+	}
+
+	public List<Ativo> getListaTicker() {
+		return listaTicker;
+	}
+
+	public void setListaTicker(List<Ativo> listaTicker) {
+		this.listaTicker = listaTicker;
+	}
+
+	public List<CotacaoDiarioAcao> getListaCotacaoDiario() {
+		return listaCotacaoDiario;
+	}
+
+	public void setListaCotacaoDiario(List<CotacaoDiarioAcao> listaCotacaoDiario) {
+		this.listaCotacaoDiario = listaCotacaoDiario;
+	}
+
 	public List<DiaPregao> getListaDiaPrevisao() {
 		return listaDiaPrevisao;
 	}
@@ -122,6 +155,39 @@ public class DatasetResultadoPrevisao implements IDatasetComum,
 		for (TradeTreinoRede trade : listaTrade) {
 			if (previsao.getTicker().compareTo(trade.getTicker())==0) {
 				System.out.println(trade.getTicker() + " está na carteeira");
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private int getAbertos() {
+		int total = 0;
+		for (TradeI trade : this.listaTrade) {
+			if (!trade.getFechado()) {
+				total++;
+			}
+		}
+		return total;
+	}
+	public List<TradeI> getListaTradeAberto() {
+		List<TradeI> saida = new ArrayList<TradeI>();
+		for (TradeI trade : this.listaTrade) {
+			if (!trade.getFechado()) {
+				saida.add(trade);
+			}
+		}
+		return saida;
+	}
+	
+	public boolean podeProcessar(PrevisaoRede previsao) {
+		if (getAbertos()>=LIMITE_TRADES_ABERTOS) {
+			System.out.println("Limite de ativos");
+			return false;
+		}
+		for (TradeI trade : listaTrade) {
+			if (!trade.getFechado() && previsao.getTicker().compareTo(trade.getTicker())==0) {
+				System.out.println(trade.getTicker() + " está na carteira");
 				return false;
 			}
 		}
@@ -278,11 +344,7 @@ public class DatasetResultadoPrevisao implements IDatasetComum,
 
 	
 
-	
 
-	
-	
-	
 	
 	
 }

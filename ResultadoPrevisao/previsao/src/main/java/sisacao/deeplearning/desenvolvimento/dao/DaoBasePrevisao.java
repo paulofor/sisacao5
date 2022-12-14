@@ -2,6 +2,7 @@ package sisacao.deeplearning.desenvolvimento.dao;
 
 import com.strongloop.android.loopback.RestAdapter;
 
+import br.com.digicom.sisacao.modelo.CotacaoDiarioAcao;
 import br.com.digicom.sisacao.repositorio.RepositorioDiaPregao;
 import br.com.digicom.sisacao.repositorio.RepositorioPrevisaoRede;
 import br.com.digicom.sisacao.repositorio.RepositorioPrevisaoTeste;
@@ -31,6 +32,22 @@ public abstract class DaoBasePrevisao extends DaoBase{
 	@Override
 	protected IDatasetComum criaDataSet() {
 		return new DatasetResultadoPrevisao();
+	}
+	
+	protected CotacaoDiarioAcao getCotacaoDia(String ticker) {
+		final DatasetResultadoPrevisao ds = (DatasetResultadoPrevisao) getComum();
+		for (CotacaoDiarioAcao cotacao : ds.getListaCotacaoDiario()) {
+			if (cotacao.getTicker().compareToIgnoreCase(ticker) == 0) {
+				return cotacao;
+			}
+		}
+		return null;
+	}
+	protected double minimoDia(CotacaoDiarioAcao cotacao) {
+		return cotacao.getMinimo();
+	}
+	protected double maximoDia(CotacaoDiarioAcao cotacao) {
+		return cotacao.getMaximo();
 	}
 
 }

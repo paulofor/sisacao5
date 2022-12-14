@@ -8,7 +8,61 @@ import sisacao.deeplearning.comum.TradeI;
 public class TradePrevisaoExecucao implements TradeI{
 	
 	private PrevisaoRede previsao;
+	
+	private boolean fechado = false;
+	
+	private double menorPreco = 9999999;
+	private double maiorPreco = 0;
+	private int dias = 0;
+	
+	
+	
+	public double getMenorPreco() {
+		return menorPreco;
+	}
 
+	public double getMaiorPreco() {
+		return maiorPreco;
+	}
+
+	public int getDias() {
+		return dias;
+	}
+
+	public boolean getFechado() {
+		return fechado;
+	}
+
+	public boolean verificaSaida(CotacaoDiarioAcao cotacao) {
+		double limiteInferior = this.limiteInferior();
+		double limiteSuperior = this.limiteSuperior();
+		System.out.println("Limite Superior: " + limiteSuperior + " <= Maximo: " + cotacao.getMaximo());
+		verificaMaiorMenor(cotacao);
+		if (cotacao.getMaximo()>=limiteSuperior) {
+			// Saiu superior
+			System.out.println("-> Saiu superior - " + this.previsao.getTicker() + " " + this.dias + " dias.");
+			this.saidaSuperior(cotacao);
+			return true;
+		}
+		System.out.println("Limite Inferior: " + limiteInferior + ">= Minimo: " + cotacao.getMinimo());
+		if (cotacao.getMinimo()<=limiteInferior) {
+			// Saiu superior
+			System.out.println("-> Saiu inferior - " + this.previsao.getTicker() + " " + this.dias + " dias.");;
+			this.saidaInferior(cotacao);
+			return true;
+		}
+		this.dias++;
+		return false;
+	}
+	
+	public void verificaMaiorMenor(CotacaoDiarioAcao cotacao) {
+		if (cotacao.getMaximo() > this.maiorPreco) {
+			this.maiorPreco = cotacao.getMaximo();
+		}
+		if (cotacao.getMinimo() < this.menorPreco) {
+			this.menorPreco = cotacao.getMinimo();
+		}
+	}
 	
 	public TradePrevisaoExecucao(PrevisaoRede previsao) {
 		this.previsao = previsao;
@@ -32,6 +86,7 @@ public class TradePrevisaoExecucao implements TradeI{
 			// prejuizo
 			this.previsao.setResultado(-1L);
 		}
+		this.fechado = true;
 	}
 
 	public void saidaSuperior(CotacaoDiarioAcao cotacao) {
@@ -44,8 +99,10 @@ public class TradePrevisaoExecucao implements TradeI{
 			// lucro
 			this.previsao.setResultado(1L);
 		}
-		
+		this.getFechado();
 	}
+	
+	
 	
 	public double limiteInferior() {
 		if ("V".contentEquals(previsao.getTipoCompraVenda())) {

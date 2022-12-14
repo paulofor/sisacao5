@@ -1,9 +1,12 @@
 package br.com.digicom.sisacao.modelo;
 
+import java.util.Map;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.strongloop.android.loopback.Model;
+import com.strongloop.android.remoting.BeanUtil;
 
 public class PrevisaoRede extends Model{
 
@@ -24,6 +27,19 @@ public class PrevisaoRede extends Model{
 	private Double target;
 	private Double stop;
 	
+	private TreinoRede treinoRede;
+	
+	
+	
+
+	public TreinoRede getTreinoRede() {
+		return treinoRede;
+	}
+
+	public void setTreinoRede(Object treinoRede) {
+		this.treinoRede = new TreinoRede();
+		BeanUtil.setProperties(this.treinoRede, (Map<String, ? extends Object>) treinoRede, true);
+	}
 
 	public String toString() {
 		return "#" + this.getId() + " - " + this.ticker + "(" + this.diaNumPrevisao + "): " + this.precoEntrada + " resultado: " + this.resultado;
@@ -65,7 +81,11 @@ public class PrevisaoRede extends Model{
 	
 	
 	public Double getTarget() {
-		return target;
+		if (target==null) {
+			return this.getTreinoRede().getRegraProjecao().getTarget();
+		} else {
+			return target;
+		}
 	}
 	public void setTarget(Double target) {
 		this.target = target;
@@ -74,7 +94,11 @@ public class PrevisaoRede extends Model{
 		this.target = target.doubleValue();
 	}
 	public Double getStop() {
-		return stop;
+		if (stop==null) {
+			return this.getTreinoRede().getRegraProjecao().getStop();
+		} else {
+			return stop;
+		}
 	}
 	public void setStop(Double stop) {
 		this.stop = stop;
