@@ -108,10 +108,10 @@ module.exports = function(Tipoaplicacaosaldomes) {
             " and diaNumReferencia = " + result[i-1].diaNumReferencia;
         ds.connector.query(sqlSaldoAnterior, (err,resultAnt) => {
             console.log(resultAnt);
-            let sqlUpdate = "update TipoAplicacaoSaldoMes set saldoProjetado = (" + resultAnt[0]['saldoProjetado'] + "*(1+(percentualProjetado/100))), " +
-                  " lucroProjetado = (" + resultAnt[0]['saldoProjetado'] + " * (percentualProjetado/100) ) + movimentacaoProjetada " +
+            let sqlUpdate = "update TipoAplicacaoSaldoMes set saldoProjetado =  movimentacaoProjetada  + (" + resultAnt[0]['saldoProjetado'] + "*(1+(percentualProjetado/100))), " +
+                  " lucroProjetado = (" + resultAnt[0]['saldoProjetado'] + " * (percentualProjetado/100) )" +
                   " where diaNumReferencia = " + result[i].diaNumReferencia + " and tipoAplicacaoId = " + tipoAplicacaoId;
-            console.log(sqlUpdate);
+            console.log('Proximo:' , sqlUpdate);
             ds.connector.query(sqlUpdate,(err1,result1) => {
                 calculaProximo(++i,result,tipoAplicacaoId,ds,callback);
             })

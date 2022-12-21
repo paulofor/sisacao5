@@ -10,10 +10,11 @@ import br.inf.digicom.loopback.DaoBase;
 import sisacao.deeplearning.comum.TradeI;
 import sisacao.deeplearning.desenvolvimento.dao.DaoBasePrevisao;
 import sisacao.deeplearning.desenvolvimento.dao.DatasetResultadoPrevisao;
+import sisacao.deeplearning.desenvolvimento.dao.TreinoRede_ExecutouPrevisaoTeste;
 
 public class TreinoRede_ObtemSelecionadoComPeriodoExecucao  extends DaoBasePrevisao{
 
-
+	private TradeTreinoRede_AtualizaTreino paralelo = new TradeTreinoRede_AtualizaTreino();
 	public static String NOME = "TreinoRede_ObtemSelecionadoComPeriodoExecucao";
 	
 	@Override
@@ -27,6 +28,8 @@ public class TreinoRede_ObtemSelecionadoComPeriodoExecucao  extends DaoBasePrevi
 					ds.setTreinoCorrente(treino);
 					ds.getListaTrade().clear();
 					executaProximoSemFinalizar();
+					paralelo.setComum(ds);
+					paralelo.executa();
 					
 				}
 				finalizar();

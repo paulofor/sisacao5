@@ -89,6 +89,30 @@
     },
     "operacaoAlvo": {
       "type": "number"
+    },
+    "menorPreco" : {
+      "type" : "number"
+    },
+    "maiorPreco" : {
+      "type" : "number"
+    },
+    "menorPercentual" : {
+      "type" : "number"
+    },
+    "maiorPercentual" : {
+      "type" : "number"
+    },
+    "menorPreco1Mes" : {
+      "type" : "number"
+    },
+    "maiorPreco1Mes" : {
+      "type" : "number"
+    },
+    "menorPercentual1Mes" : {
+      "type" : "number"
+    },
+    "maiorPercentual1Mes" : {
+      "type" : "number"
     }
   },
   "validations": [],

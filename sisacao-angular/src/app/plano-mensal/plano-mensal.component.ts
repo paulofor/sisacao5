@@ -40,6 +40,7 @@ export class PlanoMensalComponent extends BaseListComponent {
 
   getFiltro() {
     return {
+      'where' : {'saldoAtual' : {'gt' : 0}},
       'order' : 'saldoAtual desc',
       'include' : {'relation' : 'tipoAplicacaoSaldoMes' , 'scope' : {
         'order' : 'diaNumReferencia'

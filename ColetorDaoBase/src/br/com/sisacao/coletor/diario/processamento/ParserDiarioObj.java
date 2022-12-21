@@ -113,6 +113,7 @@ public class ParserDiarioObj {
 	}
 	
 	private void persisteCotacaoAcao() throws DaoException {
+		System.out.println("Persistencia com " + mapaAcao.values().size() + " itens");
 		cotacaoDiarioRegra.setListaEntradaItem(mapaAcao.values());
 		cotacaoDiarioRegra.InsereListaAcao();
 	}
@@ -154,33 +155,41 @@ public class ParserDiarioObj {
 							contaItem++;
 							CotacaoDiario novo = new CotacaoDiarioVo();
 							//System.out.println(ticker);
-							String fec = eElement.getElementsByTagName("LastPric").item(0).getTextContent();
-							String max = eElement.getElementsByTagName("MaxPric").item(0).getTextContent();
+							String fec = null;
+							try {
+								fec = eElement.getElementsByTagName("LastPric").item(0).getTextContent();
+							} catch (Exception e) {
+								fec = "-1";
+							}
+							String max = null;
+							try {
+								max = eElement.getElementsByTagName("MaxPric").item(0).getTextContent();
+							} catch (Exception e) {
+								max = "-1";
+							}
 							String abe = null;
 							try {
 								abe = eElement.getElementsByTagName("FrstPric").item(0).getTextContent();
 							} catch (Exception e) {
-								abe = "0";
+								abe = "-1";
 							}
-							//String abe = eElement.getElementsByTagName("FrstPric").item(0).getTextContent();
-							//String min = eElement.getElementsByTagName("MinPric").item(0).getTextContent();
 							String min = null;
 							try {
 								min = eElement.getElementsByTagName("MinPric").item(0).getTextContent();
 							} catch (Exception e) {
-								min = "0";
+								min = "-1";
 							}
 							String neg = null;
 							try {
 								neg = eElement.getElementsByTagName("RglrTxsQty").item(0).getTextContent();
 							} catch (Exception e) {
-								neg = "0";
+								neg = "-1";
 							}
 							String vol = null;
 							try {
 								vol = eElement.getElementsByTagName("RglrTraddCtrcts").item(0).getTextContent();
 							} catch (Exception e) {
-								vol = "0";
+								vol = "-1";
 							}
 							
 							Node nodePerc = eElement.getElementsByTagName("OscnPctg").item(0);
@@ -208,6 +217,7 @@ public class ParserDiarioObj {
 
 				}
 			}
+
 			this.persisteCotacaoAcao();
 		} catch (Exception e) {
 			e.printStackTrace();

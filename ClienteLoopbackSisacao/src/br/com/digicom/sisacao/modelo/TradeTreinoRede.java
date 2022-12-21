@@ -1,5 +1,7 @@
 package br.com.digicom.sisacao.modelo;
 
+import java.util.Collection;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -20,6 +22,57 @@ public class TradeTreinoRede extends Model{
 	private int resultado;
 	
 	private int pontuacao;
+	
+	private double percentualMinimo;
+	private double percentualMaximo;
+	private int dias;
+	private double target;
+	private double stop;
+	
+	
+	
+	public double getTarget() {
+		return target;
+	}
+
+	public void setTarget(double target) {
+		this.target = target;
+	}
+
+	public double getStop() {
+		return stop;
+	}
+
+	public void setStop(double stop) {
+		this.stop = stop;
+	}
+
+	public Object getJson() {
+		JSONObject saida = new JSONObject();
+		try {
+			saida.put("ticker", this.ticker);
+			saida.put("diaNumEntrada", this.diaNumEntrada);
+			saida.put("precoEntrada", this.precoEntrada);
+			saida.put("tipoCompraVenda", this.tipoCompraVenda);
+			saida.put("qtdeDias", this.dias);
+			saida.put("precoStop", this.precoStop);
+			saida.put("precoTarget", this.precoTarget);
+			saida.put("percentualMaximo", this.percentualMaximo);
+			saida.put("percentualMinimo", this.percentualMinimo);
+			saida.put("target", this.target);
+			saida.put("stop", this.stop);
+			saida.put("pontuacao", this.pontuacao);
+			saida.put("treinoRedeId", this.treinoRedeId);
+			
+			saida.put("resultado", this.resultado);
+			saida.put("precoSaida", this.precoSaida);
+			saida.put("diaNumSaida", this.diaNumSaida);
+
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return saida;
+	}
 	
 	public Object getJsonEstrada() {
 		JSONObject saida = new JSONObject();
@@ -53,6 +106,30 @@ public class TradeTreinoRede extends Model{
 	}
 	
 	
+	public double getPercentualMinimo() {
+		return percentualMinimo;
+	}
+
+	public void setPercentualMinimo(double percentualMinimo) {
+		this.percentualMinimo = percentualMinimo;
+	}
+
+	public double getPercentualMaximo() {
+		return percentualMaximo;
+	}
+
+	public void setPercentualMaximo(double percentualMaximo) {
+		this.percentualMaximo = percentualMaximo;
+	}
+
+	public int getDias() {
+		return dias;
+	}
+
+	public void setDias(int dias) {
+		this.dias = dias;
+	}
+
 	public int getPontuacao() {
 		return pontuacao;
 	}
@@ -134,6 +211,12 @@ public class TradeTreinoRede extends Model{
 	public void setResultado(int resultado) {
 		this.resultado = resultado;
 	}
+
+	public void calculaFinalizacao() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 	
 	

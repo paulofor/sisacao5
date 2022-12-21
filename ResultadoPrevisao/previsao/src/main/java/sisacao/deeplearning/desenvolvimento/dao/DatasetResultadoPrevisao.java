@@ -342,6 +342,16 @@ public class DatasetResultadoPrevisao implements IDatasetComum,
 		this.cotacaoDiarioAcao = cotacaoDiarioAcao;
 	}
 
+	public List<TradeTreinoRede> getTradeResultado() {
+		List<TradeTreinoRede> saida = new LinkedList<TradeTreinoRede>();
+		for (TradeI trade : this.listaTrade) {
+			TradePrevisaoExecucao novo = (TradePrevisaoExecucao) trade;
+			saida.add(novo.getTradeTreinoRede());
+		
+		}
+		return saida;
+	}
+
 	
 
 

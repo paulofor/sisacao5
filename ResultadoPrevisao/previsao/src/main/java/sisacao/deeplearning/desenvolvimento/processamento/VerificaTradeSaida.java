@@ -1,5 +1,7 @@
 package sisacao.deeplearning.desenvolvimento.processamento;
 
+import java.text.DecimalFormat;
+
 import br.com.digicom.sisacao.modelo.CotacaoDiarioAcao;
 import br.inf.digicom.loopback.DaoBase;
 import br.inf.digicom.loopback.DummyDaoBase;
@@ -12,7 +14,7 @@ public class VerificaTradeSaida extends DaoBasePrevisao{
 
 
 
-	
+	private static final DecimalFormat df = new DecimalFormat("0.00");
 	
 	public VerificaTradeSaida() {
 		this.dummy = new DummyDaoBase();
@@ -28,7 +30,8 @@ public class VerificaTradeSaida extends DaoBasePrevisao{
 			CotacaoDiarioAcao cotacao = this.getCotacaoDia(trade.getTicker());
 			TradePrevisaoExecucao tradeExec = (TradePrevisaoExecucao) trade;
 			if (!tradeExec.verificaSaida(cotacao)) {
-				System.out.println(tradeExec.getTicker() + " na carteria " + tradeExec.getDias() + " dias.");
+				System.out.println(tradeExec.getTicker() + " na carteria " + tradeExec.getDias() + " dias. (" + df.format(tradeExec.getMelhorPercentual()) + "%  " + df.format(tradeExec.getPiorPercentual()) + "% )");
+				
 			}
 			
 		}

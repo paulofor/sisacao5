@@ -50,6 +50,21 @@
     },
     "precoStop": {
       "type": "number"
+    },
+    "qtdeDias" : {
+      "type" : "number"
+    },
+    "menorPreco" : {
+      "type" : "number"
+    },
+    "maiorPreco" : {
+      "type" : "number"
+    },
+    "percentualMinimo" : {
+      "type" : "number"
+    },
+    "percentualMaximo" : {
+      "type" : "number"
     }
   },
   "validations": [],
@@ -102,6 +117,31 @@
       "http": [
         {
           "path": "/insereTrade",
+          "verb": "post"
+        }
+      ]
+    },
+    "AtualizaTreino": {
+      "accepts": [
+        {
+          "arg": "listaTrade",
+          "type": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaTreino",
           "verb": "post"
         }
       ]

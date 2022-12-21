@@ -36,6 +36,14 @@ export interface TradeRealInterface {
   "posicaoOperacao"?: number;
   "operacaoRisco"?: number;
   "operacaoAlvo"?: number;
+  "menorPreco"?: number;
+  "maiorPreco"?: number;
+  "menorPercentual"?: number;
+  "maiorPercentual"?: number;
+  "menorPreco1Mes"?: number;
+  "maiorPreco1Mes"?: number;
+  "menorPercentual1Mes"?: number;
+  "maiorPercentual1Mes"?: number;
   "id"?: number;
   "execucaoSimulacaoId"?: number;
   "instituicaoFinanceiraId"?: number;
@@ -75,6 +83,14 @@ export class TradeReal implements TradeRealInterface {
   "posicaoOperacao": number;
   "operacaoRisco": number;
   "operacaoAlvo": number;
+  "menorPreco": number;
+  "maiorPreco": number;
+  "menorPercentual": number;
+  "maiorPercentual": number;
+  "menorPreco1Mes": number;
+  "maiorPreco1Mes": number;
+  "menorPercentual1Mes": number;
+  "maiorPercentual1Mes": number;
   "id": number;
   "execucaoSimulacaoId": number;
   "instituicaoFinanceiraId": number;
@@ -226,6 +242,38 @@ export class TradeReal implements TradeRealInterface {
         },
         "operacaoAlvo": {
           name: 'operacaoAlvo',
+          type: 'number'
+        },
+        "menorPreco": {
+          name: 'menorPreco',
+          type: 'number'
+        },
+        "maiorPreco": {
+          name: 'maiorPreco',
+          type: 'number'
+        },
+        "menorPercentual": {
+          name: 'menorPercentual',
+          type: 'number'
+        },
+        "maiorPercentual": {
+          name: 'maiorPercentual',
+          type: 'number'
+        },
+        "menorPreco1Mes": {
+          name: 'menorPreco1Mes',
+          type: 'number'
+        },
+        "maiorPreco1Mes": {
+          name: 'maiorPreco1Mes',
+          type: 'number'
+        },
+        "menorPercentual1Mes": {
+          name: 'menorPercentual1Mes',
+          type: 'number'
+        },
+        "maiorPercentual1Mes": {
+          name: 'maiorPercentual1Mes',
           type: 'number'
         },
         "id": {

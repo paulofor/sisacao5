@@ -16,6 +16,11 @@ export interface TradeTreinoRedeInterface {
   "diaNumAtual"?: number;
   "precoTarget"?: number;
   "precoStop"?: number;
+  "qtdeDias"?: number;
+  "menorPreco"?: number;
+  "maiorPreco"?: number;
+  "percentualMinimo"?: number;
+  "percentualMaximo"?: number;
 }
 
 export class TradeTreinoRede implements TradeTreinoRedeInterface {
@@ -33,6 +38,11 @@ export class TradeTreinoRede implements TradeTreinoRedeInterface {
   "diaNumAtual": number;
   "precoTarget": number;
   "precoStop": number;
+  "qtdeDias": number;
+  "menorPreco": number;
+  "maiorPreco": number;
+  "percentualMinimo": number;
+  "percentualMaximo": number;
   constructor(data?: TradeTreinoRedeInterface) {
     Object.assign(this, data);
   }
@@ -120,6 +130,26 @@ export class TradeTreinoRede implements TradeTreinoRedeInterface {
         },
         "precoStop": {
           name: 'precoStop',
+          type: 'number'
+        },
+        "qtdeDias": {
+          name: 'qtdeDias',
+          type: 'number'
+        },
+        "menorPreco": {
+          name: 'menorPreco',
+          type: 'number'
+        },
+        "maiorPreco": {
+          name: 'maiorPreco',
+          type: 'number'
+        },
+        "percentualMinimo": {
+          name: 'percentualMinimo',
+          type: 'number'
+        },
+        "percentualMaximo": {
+          name: 'percentualMaximo',
           type: 'number'
         },
       },

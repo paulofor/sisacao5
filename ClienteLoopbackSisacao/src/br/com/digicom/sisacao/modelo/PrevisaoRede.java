@@ -29,6 +29,7 @@ public class PrevisaoRede extends Model{
 	
 	private TreinoRede treinoRede;
 	
+	private Integer treinoRedeId;
 	
 	
 
@@ -197,6 +198,14 @@ public class PrevisaoRede extends Model{
 
 	public void setDiaNumSaida(int diaNumSaida) {
 		this.diaNumSaida = diaNumSaida;
+	}
+
+	public Integer getTreinoRedeId() {
+		return treinoRedeId;
+	}
+
+	public void setTreinoRedeId(Integer treinoRedeId) {
+		this.treinoRedeId = treinoRedeId;
 	}
 	
 	

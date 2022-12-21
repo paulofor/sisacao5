@@ -195,6 +195,7 @@ import { GraficoEvolucaoMensalPatrimonioComponent } from './grafico-evolucao-men
 import { PlanoMensalComponent } from './plano-mensal/plano-mensal.component';
 import { PrevisaoHistoricoComponent } from './previsao-historico/previsao-historico.component';
 import { PlanoMensalEditaComponent } from './plano-mensal-edita/plano-mensal-edita.component';
+import { ResumoTradeReal2Component } from './resumo-trade-real2/resumo-trade-real2.component';
 //import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
 
@@ -359,6 +360,7 @@ registerLocaleData(localePt, 'pt-BR');
     PlanoMensalComponent,
     PrevisaoHistoricoComponent,
     PlanoMensalEditaComponent,
+    ResumoTradeReal2Component,
   ],
   imports: [
     BrowserModule,

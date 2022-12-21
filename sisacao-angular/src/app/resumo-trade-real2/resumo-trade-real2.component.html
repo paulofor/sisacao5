@@ -1,0 +1,22 @@
+<div class="dgc-painel" *ngIf="listaResumoTrade && listaTrade">
+  
+  
+  <div class="dgc-painel-principal" *ngIf="listaTrade">
+    <div class="dgc-card" *ngFor="let trade of listaTrade">
+      <div class="dgc-card-detalhe">
+        {{trade.ticker}} Operação: {{trade.posicaoOperacao}}
+      </div>
+      <div class="dgc-card-detalhe">
+        {{trade.lucroPrejuizo | currency: 'BRL'}} ({{trade.percentual | number : '1.1-1'}}%)
+      </div>
+      <div class="dgc-card-detalhe">
+        Dias: {{trade.dias}} De: {{trade.dataEntrada | date : 'dd/MM/yyyy' : 'UTC' }} Até: {{trade.dataSaida | date : 'dd/MM/yyyy' : 'UTC' }}
+      </div>
+      <div class="dgc-card-detalhe">
+        Qtde: {{trade.quantidade}} Entrada: {{trade.precoEntrada | currency : 'BRL'}} Saída: {{trade.precoSaida | number : '1.2-2'}}
+      </div>
+    </div>
+  </div>
+
+</div>
+

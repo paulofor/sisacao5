@@ -83,6 +83,7 @@ import { TesouroDiretoCotacaoComponent } from '../tesouro-direto-cotacao/tesouro
 import { IndicadorRedeResumoComponent } from '../indicador-rede-resumo/indicador-rede-resumo.component';
 import { PlanoMensalComponent } from '../plano-mensal/plano-mensal.component';
 import { PrevisaoHistoricoComponent } from '../previsao-historico/previsao-historico.component';
+import { ResumoTradeReal2Component } from '../resumo-trade-real2/resumo-trade-real2.component';
 
 
 export const routes : Routes = [
@@ -200,6 +201,8 @@ export const routes : Routes = [
 
     { path: 'planoMensal' , component: PlanoMensalComponent },
     { path: 'previsaoHistorico' , component: PrevisaoHistoricoComponent },
+
+    { path: 'resumoTradeReal2' , component: ResumoTradeReal2Component },
 
     { path: '',  component: HomeComponent  }
     //{ path: '',          redirectTo: 'home', pathMatch: 'full' }

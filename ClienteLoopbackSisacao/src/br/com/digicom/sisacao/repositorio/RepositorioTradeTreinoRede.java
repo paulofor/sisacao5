@@ -4,12 +4,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONArray;
+
 import com.strongloop.android.loopback.ModelRepository;
+import com.strongloop.android.loopback.callbacks.EmptyResponseParser;
 import com.strongloop.android.loopback.callbacks.JsonObjectParser;
 import com.strongloop.android.loopback.callbacks.ObjectCallback;
+import com.strongloop.android.loopback.callbacks.VoidCallback;
 import com.strongloop.android.remoting.adapters.RestContractItem;
 
-import br.com.digicom.sisacao.modelo.AluguelFundoImobiliario;
+import br.com.digicom.sisacao.modelo.RendaFixaPrivada;
 import br.com.digicom.sisacao.modelo.TradeTreinoRede;
 
 public class RepositorioTradeTreinoRede extends ModelRepository<TradeTreinoRede>{
@@ -20,6 +24,21 @@ public class RepositorioTradeTreinoRede extends ModelRepository<TradeTreinoRede>
 	@Override
 	protected String verificaNomeUrl(String nome) {
 		return "TradeTreinoRedes";
+	}
+	
+	public void atualizaTreino(final List<TradeTreinoRede> trades, final VoidCallback callback ) {
+		RestContractItem contrato = new RestContractItem("TradeTreinoRedes/atualizaTreino","POST");
+		this.getRestAdapter().getContract().addItem(contrato, "TradeTreinoRede.atualizaTreino");
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("listaTrade", obtemLista(trades));
+        invokeStaticMethod("atualizaTreino", params,    new EmptyResponseParser(callback));
+	}
+	private JSONArray obtemLista(List<TradeTreinoRede> listaEntrada) {
+		JSONArray lista = new JSONArray();
+		for (TradeTreinoRede item : listaEntrada) {
+			lista.put(item.getJson());
+		}
+		return lista;
 	}
 	
 	public void insereTrade(final TradeTreinoRede trade, final ObjectCallback<TradeTreinoRede> callback ) {

@@ -11,10 +11,16 @@ module.exports = function(Diapregao) {
                 " inner join PeriodoTreinoRede on PeriodoTreinoRede.id = TreinoRede.periodoTreinoRedeId " +
                 " where TreinoRede.id = " + idTreino;
         ds.connector.query(sql, (err,result) => {
+            let hoje = new Date();
             let filtro = {
-                'where' : [
-                    {'diaNum' : {'gte' :  result[0].diaNumInicioExecucao } }
-                ],
+                'where' : 
+                    { 'and' : 
+                        [
+                            {'diaNum' : {'gte' :  result[0].diaNumInicioExecucao } },
+                            {'data' : {'lte' : hoje }}
+                        ]
+                    }
+                ,
                 'order' : 'diaNum' ,
                 'include' : {'relation' : 'previsaoRedes' , 'scope' : {
                     'order' : 'valorPrevisao desc',

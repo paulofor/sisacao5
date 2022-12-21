@@ -19,7 +19,8 @@ public class TrataPrevisaoDiaTreino  extends DaoBasePrevisao{
 	protected void executaImpl() {
 		final DatasetResultadoPrevisao ds = (DatasetResultadoPrevisao) getComum();
 		List<DiaPregao> listaDia = ds.getListaDiaPrevisao();
-		for (DiaPregao dia : listaDia) {
+		for (int i=0;i<(listaDia.size()-1);i++) {
+			DiaPregao dia = listaDia.get(i);
 			System.out.println();
 			System.out.println(" *** " + dia.getDiaNum() + " *** ");
 			List<Ativo> listaAtivo = new ArrayList<Ativo>();
