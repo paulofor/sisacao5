@@ -16,6 +16,11 @@ public class TradePrevisaoExecucao implements TradeI{
 	private double maiorPreco = 0;
 	private int dias = 0;
 	private int pontuacao = 0;
+	private int diaNumAtual = 0;
+	private double percentualAtual = 0;
+	
+	//private double precoStop = 0;
+	//private double precoTarget = 0;
 	
 	public TradeTreinoRede getTradeTreinoRede() {
 		TradeTreinoRede vo = new TradeTreinoRede();
@@ -36,6 +41,9 @@ public class TradePrevisaoExecucao implements TradeI{
 			vo.setDiaNumSaida(previsao.getDiaNumSaida());
 			vo.setPrecoSaida(previsao.getPrecoSaida());
 			vo.setResultado(previsao.getResultado().intValue());
+		} else {
+			vo.setDiaNumAtual(diaNumAtual);
+			vo.setPercentualAtual(percentualAtual);
 		}
 		return vo;
 	}
@@ -57,10 +65,27 @@ public class TradePrevisaoExecucao implements TradeI{
 	}
 
 	public boolean verificaSaida(CotacaoDiarioAcao cotacao) {
+		this.diaNumAtual = cotacao.getDiaNum();
+		if ("C".contentEquals(previsao.getTipoCompraVenda())) {
+			this.percentualAtual = 100 * ((cotacao.getFechamento() - this.getPrevisao().getPrecoEntrada()) / this.getPrevisao().getPrecoEntrada()); 
+		} else {
+			this.percentualAtual = 100 * ((this.getPrevisao().getPrecoEntrada() - cotacao.getFechamento()) / this.getPrevisao().getPrecoEntrada()); 
+		}
+		
 		double limiteInferior = this.limiteInferior();
 		double limiteSuperior = this.limiteSuperior();
 		System.out.println("Target: " + previsao.getTarget() + " - Stop:" + previsao.getStop());
 		System.out.println("Limite Superior: " + limiteSuperior + " <= Maximo: " + cotacao.getMaximo());
+		/*
+		if ("V".contentEquals(previsao.getTipoCompraVenda())) {
+			this.precoStop = limiteSuperior;
+			this.precoTarget = limiteInferior;
+		} else {
+			this.precoStop = limiteInferior;
+			this.precoTarget = limiteSuperior;
+
+		}
+		*/
 		if (dias>0) verificaMaiorMenor(cotacao);
 		if (cotacao.getMaximo()>=limiteSuperior) {
 			// Saiu superior

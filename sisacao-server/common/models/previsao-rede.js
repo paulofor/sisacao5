@@ -9,7 +9,9 @@ module.exports = function(Previsaorede) {
     Previsaorede.PrevisaoHistorico = function(dias, callback) {
         let sql = " select data, diaNum, " +
                 " (select count(distinct treinoRedeId) from PrevisaoRede where PrevisaoRede.diaNumPrevisao = DiaPregao.diaNum) " +
-                " as qtdeTreino " +
+                " as qtdeTreino, " +
+                " (select count(*) from PrevisaoRede where PrevisaoRede.diaNumPrevisao = DiaPregao.diaNum) " +
+                " as qtdePrevisao " +
                 " from DiaPregao " +
                 " where diaNum <= (select max(diaNumPrevisao) from PrevisaoRede) " +
                 " order by data desc " +

@@ -13,12 +13,14 @@
                 <tr>
                   <th width="10%">Data Hora</th>
                   <th width="15%">Treinos</th>
+                  <th width="15%">Previsões</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let item of listaBase">
                   <td>{{item.data  | date : 'dd/MM/yyyy' : 'UTC'}}</td>
                   <td>{{item.qtdeTreino }}</td>
+                  <td>{{item.qtdePrevisao }}</td>
                 </tr>
               </tbody>
             </table>

@@ -119,12 +119,22 @@ module.exports = function(Tipoaplicacaosaldomes) {
     }
 
     Tipoaplicacaosaldomes.AtualizaGeral = function(callback) {
+
+        let sql0 = "update TipoAplicacaoSaldoMes " +
+                " set movimentacaoMes = ( " +
+                " select sum(valor) from MovimentacaoValorAplicado " +
+                " where TipoAplicacaoSaldoMes.tipoAplicacaoId = MovimentacaoValorAplicado.tipoAplicacaoId " +
+                " and month(now()) = month(MovimentacaoValorAplicado.data)  " +
+                " and year(now()) = year(MovimentacaoValorAplicado.data) " +
+                " ) " +
+                " where diaNumReferencia = DATE_FORMAT(now(), '%Y%m') "; 
+        
+
         let sql1 = "update TipoAplicacaoSaldoMes " +
             " set saldoAtual = ( " +
-            " select sum(valor) " +
-            " from ValorMesInstituicaoTipo " +
-            " where dataReferenciaNum = diaNumReferencia and " +
-            " TipoAplicacaoSaldoMes.tipoAplicacaoId = ValorMesInstituicaoTipo.tipoAplicacaoId  " +
+            " SELECT (saldoAnterior+coalesce(movimentacaoMes,0))  " +
+            " FROM TipoAplicacaoSaldoMes where tipoAplicacaoId = TipoAplicacao.id " +
+            " and diaNumReferencia = DATE_FORMAT(now(), '%Y%m') " +
             " )";
         
         let sql2 = "update TipoAplicacaoSaldoMes " +
@@ -164,28 +174,31 @@ module.exports = function(Tipoaplicacaosaldomes) {
             " where saldoAtual is not null";
 
         let ds = Tipoaplicacaosaldomes.dataSource;
-        ds.connector.query(sql1,(err1,result1) => {
-            console.log('err1', err1);
-            ds.connector.query(sql2, (err2, result2) => {
-                console.log('err2', err2);
-                ds.connector.query(sql3, (err3,result3) => {
-                    console.log('err3', err3);
-                    ds.connector.query(sql4, (err4,result4) => {
-                        console.log('err4', err4);
-                        ds.connector.query(sql5,(err5,result5) => {
-                            console.log('err5', err5);
-                            ds.connector.query(sql6,(err6,result6) => {
-                                console.log('err6' , err6);
-                                ds.connector.query(sql7,(err7,result7) => {
-                                    console.log('err7' , err7);
-                                    Tipoaplicacaosaldomes.AtualizaTotal(callback)
-                                })
+        ds.connector.query(sql0,(err0,result0) => {
+            ds.connector.query(sql1,(err1,result1) => {
+                console.log('err1', err1);
+                ds.connector.query(sql2, (err2, result2) => {
+                    console.log('err2', err2);
+                    ds.connector.query(sql3, (err3,result3) => {
+                        console.log('err3', err3);
+                        ds.connector.query(sql4, (err4,result4) => {
+                            console.log('err4', err4);
+                            ds.connector.query(sql5,(err5,result5) => {
+                                console.log('err5', err5);
+                                ds.connector.query(sql6,(err6,result6) => {
+                                    console.log('err6' , err6);
+                                    ds.connector.query(sql7,(err7,result7) => {
+                                        console.log('err7' , err7);
+                                        Tipoaplicacaosaldomes.AtualizaTotal(callback)
+                                    })
+                                });
                             });
-                        });
+                        })
                     })
                 })
             })
         })
+       
         
         
     }

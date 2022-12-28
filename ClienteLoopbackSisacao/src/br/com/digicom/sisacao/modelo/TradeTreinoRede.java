@@ -29,8 +29,28 @@ public class TradeTreinoRede extends Model{
 	private double target;
 	private double stop;
 	
+	private int diaNumAtual;
+	private double percentualAtual;
 	
 	
+	
+	
+	public int getDiaNumAtual() {
+		return diaNumAtual;
+	}
+
+	public void setDiaNumAtual(int diaNumAtual) {
+		this.diaNumAtual = diaNumAtual;
+	}
+
+	public double getPercentualAtual() {
+		return percentualAtual;
+	}
+
+	public void setPercentualAtual(double percentualAtual) {
+		this.percentualAtual = percentualAtual;
+	}
+
 	public double getTarget() {
 		return target;
 	}
@@ -68,6 +88,9 @@ public class TradeTreinoRede extends Model{
 			saida.put("precoSaida", this.precoSaida);
 			saida.put("diaNumSaida", this.diaNumSaida);
 
+			saida.put("diaNumAtual", this.diaNumAtual);
+			saida.put("percentualAtual", this.percentualAtual);
+			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

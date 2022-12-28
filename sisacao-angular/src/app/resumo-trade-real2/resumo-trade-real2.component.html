@@ -3,18 +3,39 @@
   
   <div class="dgc-painel-principal" *ngIf="listaTrade">
     <div class="dgc-card" *ngFor="let trade of listaTrade">
+      
+      <div *ngIf="(trade.lucroPrejuizo>0)"class="dgc-card-detalhe dgc-verde">
+        {{trade.lucroPrejuizo | currency: 'BRL'}} ({{trade.percentual | number : '1.1-1'}}%)
+      </div>
+      <div *ngIf="(trade.lucroPrejuizo<0)" class="dgc-card-detalhe dgc-vermelho">
+        {{trade.lucroPrejuizo | currency: 'BRL'}} ({{trade.percentual | number : '1.1-1'}}%)
+      </div>
+      
       <div class="dgc-card-detalhe">
         {{trade.ticker}} Operação: {{trade.posicaoOperacao}}
       </div>
+     
       <div class="dgc-card-detalhe">
-        {{trade.lucroPrejuizo | currency: 'BRL'}} ({{trade.percentual | number : '1.1-1'}}%)
+        {{trade.dias}} dias  ({{trade.dataEntrada | date : 'dd/MM/yyyy' : 'UTC' }} --> {{trade.dataSaida | date : 'dd/MM/yyyy' : 'UTC' }})
       </div>
       <div class="dgc-card-detalhe">
-        Dias: {{trade.dias}} De: {{trade.dataEntrada | date : 'dd/MM/yyyy' : 'UTC' }} Até: {{trade.dataSaida | date : 'dd/MM/yyyy' : 'UTC' }}
+        {{trade.quantidade}} x  {{trade.precoEntrada | currency : 'BRL'}} --> {{trade.precoSaida | currency : 'BRL' }}
       </div>
-      <div class="dgc-card-detalhe">
-        Qtde: {{trade.quantidade}} Entrada: {{trade.precoEntrada | currency : 'BRL'}} Saída: {{trade.precoSaida | number : '1.2-2'}}
+
+      <div class="dgc-card-detalhe" *ngIf="(trade.posicaoOperacao==1)">
+        Trade: {{trade.menorPreco | currency : 'BRL' }} ({{trade.menorPercentual | number: '1.1-1'}}%) / {{trade.maiorPreco | currency : 'BRL'}} ({{trade.maiorPercentual | number : '1.1-1'}}%)
       </div>
+      <div class="dgc-card-detalhe" *ngIf="(trade.posicaoOperacao==-1)">
+        Trade: {{trade.menorPreco | currency : 'BRL' }} ({{trade.maiorPercentual | number: '1.1-1'}}%) / {{trade.maiorPreco | currency : 'BRL'}} ({{trade.menorPercentual | number : '1.1-1'}}%)
+      </div>
+
+      <div class="dgc-card-detalhe" *ngIf="(trade.posicaoOperacao==1)">
+        1 mês: {{trade.menorPreco1Mes | currency : 'BRL' }} ({{trade.menorPercentual1Mes | number: '1.1-1'}}%) / {{trade.maiorPreco1Mes | currency : 'BRL'}} ({{trade.maiorPercentual1Mes | number : '1.1-1'}}%)
+      </div>
+      <div class="dgc-card-detalhe" *ngIf="(trade.posicaoOperacao==-1)">
+        1 mês: {{trade.menorPreco1Mes | currency : 'BRL' }} ({{trade.maiorPercentual1Mes | number: '1.1-1'}}%) / {{trade.maiorPreco1Mes | currency : 'BRL'}} ({{trade.menorPercentual1Mes | number : '1.1-1'}}%)
+      </div>
+
     </div>
   </div>
 

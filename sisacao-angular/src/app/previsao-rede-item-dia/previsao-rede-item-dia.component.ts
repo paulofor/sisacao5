@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { PrevisaoRede, PrevisaoRedeApi } from '../shared/sdk';
+import { PrevisaoRede, PrevisaoRedeApi, Trade, TradeTreinoRede } from '../shared/sdk';
 import { TradeNovoSimulacaoComponent } from '../trade-novo-simulacao/trade-novo-simulacao.component';
 import { TradeRealListaEditComponent } from '../trade-real-lista-edit/trade-real-lista-edit.component';
 
@@ -28,7 +28,11 @@ export class PrevisaoRedeItemDiaComponent implements OnInit {
 
  
 
-
+  classeTrade(item:TradeTreinoRede) {
+    if (item.resultado==1) return 'dgc-verde';
+    if (item.resultado==-1) return 'dgc-vermelho';
+    return '';
+  }
  
 
   telaCompra(item:PrevisaoRede) {
