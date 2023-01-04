@@ -12,10 +12,10 @@ module.exports = function(Diapregao) {
                 " where TreinoRede.id = " + idTreino;
         ds.connector.query(sql, (err,result) => {
             let hoje = new Date();
-            hoje.setUTCMinutes(0);
-            hoje.setUTCHours(0);
-            hoje.setUTCSeconds(0);
-            hoje.setUTCMilliseconds(0);
+            hoje.setMinutes(0);
+            hoje.setHours(0);
+            hoje.setSeconds(0);
+            hoje.setMilliseconds(0);
             let filtro = {
                 'where' : 
                     { 'and' : 

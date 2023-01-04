@@ -62,6 +62,9 @@
     },
     "exemploPercentualResultado": {
       "type": "number"
+    },
+    "dataHoraAcesso" : {
+      "type": "number"
     }
   },
   "validations": [],
@@ -89,6 +92,24 @@
   },
   "acls": [],
   "methods": {
+    "ProximoParaProcessamento": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "regra",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/proximoParaProcessamento",
+          "verb": "get"
+        }
+      ]
+    },
     "EmDataSet": {
       "accepts": [],
       "returns": [

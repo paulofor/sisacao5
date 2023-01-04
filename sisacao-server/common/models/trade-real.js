@@ -197,8 +197,67 @@ module.exports = function(Tradereal) {
             " and posicaoAtual = 0 ";
         let ds = Tradereal.dataSource;
         ds.connector.query(sql,callback);
-        
     }
+
+    Tradereal.AtualizaHistorico = function(callback) {
+        let sql1 = "update TradeReal " +
+                " set menorPreco = (select min(minimo) from CotacaoDiarioAcao where TradeReal.ticker = CotacaoDiarioAcao.ticker " +
+                " and CotacaoDiarioAcao.diaNum > TradeReal.dataNumEntrada and CotacaoDiarioAcao.diaNum < TradeReal.dataNumSaida " +
+                " ), " +
+                " maiorPreco = (select max(maximo) from CotacaoDiarioAcao where TradeReal.ticker = CotacaoDiarioAcao.ticker " +
+                " and CotacaoDiarioAcao.diaNum > TradeReal.dataNumEntrada and CotacaoDiarioAcao.diaNum < TradeReal.dataNumSaida " +
+                " ) " +
+                " where dataNumSaida is not null ";
+        let sql2 = "update TradeReal " +
+                " set menorPercentual = ((menorPreco - precoEntrada) / precoEntrada) * 100, " +
+                " maiorPercentual = ((maiorPreco -precoEntrada) / precoEntrada) * 100 " +
+                " where dataNumSaida is not null " +
+                " and tipo = 'C'"
+        let sql3 = "update TradeReal " +
+                " set menorPercentual = ((precoEntrada - maiorPreco) / precoEntrada) * 100, " +
+                " maiorPercentual = ((precoEntrada - menorPreco) / precoEntrada) * 100 " +
+                " where dataNumSaida is not null " +
+                " and tipo = 'V'"
+        let sql4 = "update TradeReal " +
+                " set menorPreco1Mes = (select min(minimo) from CotacaoDiarioAcao where TradeReal.ticker = CotacaoDiarioAcao.ticker " +
+                " and CotacaoDiarioAcao.diaNum > TradeReal.dataNumSaida and CotacaoDiarioAcao.data <= date_add(TradeReal.dataSaida,interval 1 month) " +
+                " ), " +
+                " maiorPreco1Mes = (select max(maximo) from CotacaoDiarioAcao where TradeReal.ticker = CotacaoDiarioAcao.ticker " +
+                " and CotacaoDiarioAcao.diaNum > TradeReal.dataNumSaida and CotacaoDiarioAcao.data <= date_add(TradeReal.dataSaida,interval 1 month) " +
+                " ) " +
+                " where dataNumSaida is not null"
+        let sql5 = "update TradeReal " +
+                " set menorPercentual1Mes = ((menorPreco1Mes - precoEntrada) / precoEntrada) * 100, " +
+                " maiorPercentual1Mes = ((maiorPreco1Mes -precoEntrada) / precoEntrada) * 100 " +
+                " where dataNumSaida is not null " +
+                " and tipo = 'C'"
+        let sql6 = "update TradeReal " +
+                " set menorPercentual1Mes = ((precoEntrada - maiorPreco1Mes) / precoEntrada) * 100, " +
+                " maiorPercentual1Mes = ((precoEntrada - menorPreco1Mes) / precoEntrada) * 100 " +
+                " where dataNumSaida is not null " +
+                " and tipo = 'V'";
+        let ds = Tradereal.dataSource;
+        ds.connector.query(sql1,(err1,result1) => {
+            console.log('err1: ' , err1);
+            ds.connector.query(sql2, (err2,result2) => {
+                console.log('err2: ' , err2);
+                ds.connector.query(sql3, (err3,result3) => {
+                    console.log('err3: ' , err3);
+                    ds.connector.query(sql4, (err4,result4) => {
+                        console.log('err4: ' , err4);
+                        ds.connector.query(sql5, (err5,result5) => {
+                            console.log('err5: ' , err5);
+                            ds.connector.query(sql6, (err6,result6) => {
+                                console.log('err6: ' , err6);
+                                callback(err6,result6);
+                            })
+                        })
+                    })
+                })
+            })
+        });
+    }
+
 
     Tradereal.ResumoAtual = function(callback) {
         let sql = " select " +

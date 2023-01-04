@@ -26,23 +26,23 @@ module.exports = function(Treinorede) {
                 " order by pontuacaoTeste desc, qtdePrejuizoTeste asc, id " +
                 " limit " + quantidade;
         let ds = Treinorede.dataSource;
-        ds.connector.query(sqlLimpa, (err,result) => {
-            if (!err) {
-                ds.connector.query(sql1, (err,result) => {
-                    if (result.length) {
-                        result.forEach(element => {
-                            let sql2 = "update TreinoRede set ativoPrevisao = 1 where id = " + element.id;
-                            console.log(sql2)
-                            ds.connector.query(sql2, (err,result) => {
-                                if (err) console.log(err);
-                            })
-                        });
-                    }
-                }); 
-            } else {
-                console.log(err);
+        //ds.connector.query(sqlLimpa, (err,result) => {
+        //    if (!err) {
+        ds.connector.query(sql1, (err,result) => {
+            if (result.length) {
+                result.forEach(element => {
+                    let sql2 = "update TreinoRede set ativoPrevisao = 1 where id = " + element.id;
+                    //console.log(sql2)
+                    ds.connector.query(sql2, (err,result) => {
+                        if (err) console.log(err);
+                    })
+                });
             }
-        })
+        }); 
+        //    } else {
+        //       console.log(err);
+        //    }
+        //})
         callback(null,{'terminou': 'ok'})
     }
 
@@ -234,6 +234,18 @@ module.exports = function(Treinorede) {
             " inner join RedeNeural on RedeNeural.id = TreinoRede.redeNeuralId " +
             " inner join TipoExemploTreino as Tipo1 on Tipo1.id = RedeNeural.tipoExemploTreino1Id " +
             " where ativoTeste = 1 and treinoGrupoRedeId = " + id;
+        let ds = Treinorede.dataSource;
+        ds.connector.query(sql,callback);
+    } 
+    Treinorede.ObtemListaParaTeste = function(callback) {
+        let sql = "select TreinoRede.* , RegraProjecao.tipoCompraVenda, PeriodoTreinoRede.diaNumInicioTeste, PeriodoTreinoRede.diaNumFinalTeste, " +
+            "  Tipo1.qtdeDias as tipo1QtdeDias " +
+            " from TreinoRede " +
+            " inner join RegraProjecao on RegraProjecao.id = TreinoRede.regraProjecaoId " +
+            " inner join PeriodoTreinoRede on PeriodoTreinoRede.id = TreinoRede.periodoTreinoRedeId " +
+            " inner join RedeNeural on RedeNeural.id = TreinoRede.redeNeuralId " +
+            " inner join TipoExemploTreino as Tipo1 on Tipo1.id = RedeNeural.tipoExemploTreino1Id " +
+            " where ativoTeste = 1 ";
         let ds = Treinorede.dataSource;
         ds.connector.query(sql,callback);
     } 

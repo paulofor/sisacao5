@@ -37,7 +37,7 @@ public class InsereExemploTreinoAcaoSaidaApp {
 		    System.setErr(printStream);
 			
 			InsereExemploTreinoAcaoSaidaObj obj = new InsereExemploTreinoAcaoSaidaObj();
-			obj.executa(posicaoEntrada, qtdeDias, codigoGrupoAcao, codigoRegra);
+			obj.executa(posicaoEntrada, qtdeDias,codigoGrupoAcao, codigoRegra);
 			gravaFinalExecucao("Finalizou_" + codigoRegra + ".log");
 			
 			System.out.println("Finalizado " + codigoRegra);

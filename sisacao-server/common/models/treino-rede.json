@@ -368,6 +368,25 @@
         }
       ]
     },
+    "ObtemListaParaTeste": {
+      "accepts": [
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemListaParaTeste",
+          "verb": "get"
+        }
+      ]
+    },
     "AtualizaPontuacaoTreino": {
       "accepts": [
         {

@@ -9,6 +9,7 @@ import br.com.digicom.lib.dao.DaoException;
 import br.com.digicom.parse.CallbackParseJson;
 import br.com.digicom.parse.callback.IDadosParse;
 
+
 public class CoinMarketCapCallback extends CallbackParseJson {
 
 	@Override

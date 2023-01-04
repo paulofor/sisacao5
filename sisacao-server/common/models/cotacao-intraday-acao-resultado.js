@@ -185,6 +185,24 @@ module.exports = function(Cotacaointradayacaoresultado) {
         }); 
     };
 
+    Cotacaointradayacaoresultado.CriaTickerAnoPorGrupo = function(nomeGrupo,ano,callback) {
+        let sql = "select ticker from RelGrupoAcao " +
+            " inner join GrupoAcao on GrupoAcao.id = RelGrupoAcao.grupoAcaoId " +
+            " where GrupoAcao.nome = '" + nomeGrupo + "' ";
+        var ds = Cotacaointradayacaoresultado.dataSource;
+        ds.connector.query(sql, (err,result) => {
+            for (let i=0; i< result.length; i++) {
+                console.log(result[i].ticker);
+                Cotacaointradayacaoresultado.CriaTickerAno(result[i].ticker,ano, (err,result) => {
+                    console.log('err', err);
+                })
+            }
+        })
+        callback(null,{'enviado' : 'ok'});
+    }
+
+
+
 /**
  * 
  * @param {string} ticker 

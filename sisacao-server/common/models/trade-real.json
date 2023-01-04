@@ -340,6 +340,24 @@
           "verb": "post"
         }
       ]
+    },
+    "AtualizaHistorico": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaHistorico",
+          "verb": "post"
+        }
+      ]
     }
   }
 }

@@ -445,12 +445,6 @@
           "type": "number",
           "required": false,
           "description": ""
-        },
-        {
-          "arg": "tamanhoAmostra",
-          "type": "number",
-          "required": false,
-          "description": ""
         }
       ],
       "returns": [

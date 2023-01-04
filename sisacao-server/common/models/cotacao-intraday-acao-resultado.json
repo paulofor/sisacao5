@@ -76,6 +76,37 @@
         }
       ]
     },
+    "CriaTickerAnoPorGrupo": {
+      "accepts": [
+        {
+          "arg": "nomeGrupo",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "ano",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/criaTickerAnoPorGrupo",
+          "verb": "post"
+        }
+      ]
+    },
     "CriaTickerAno": {
       "accepts": [
         {

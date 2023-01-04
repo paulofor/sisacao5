@@ -35,7 +35,10 @@ export class ValorMesSaldoEditComponent extends BaseEditComponent {
     return Number(String(d.getFullYear()) + String(mes));
   }
   
-
+  preSubmit() {
+    delete this.item['instituicaoFinanceira'];
+    delete this.item['tipoAplicacao'];
+  }
 
   montaCombos() {
     let filtro = {'order' : 'nome'}

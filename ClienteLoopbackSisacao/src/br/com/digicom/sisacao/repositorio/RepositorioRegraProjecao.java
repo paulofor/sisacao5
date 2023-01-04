@@ -30,6 +30,14 @@ public class RepositorioRegraProjecao extends ModelRepository<RegraProjecao>{
         invokeStaticMethod("obtemProcessando", params,   new JsonObjectParser<RegraProjecao>(this, callback));
 	}
 
+	public void proximoParaProcessamento(final ObjectCallback<RegraProjecao> callback) {
+		RestContractItem contrato = new RestContractItem("RegraProjecaos/proximoParaProcessamento","GET");
+		this.getRestAdapter().getContract().addItem(contrato, "RegraProjecao.proximoParaProcessamento");
+        Map<String, Object> params = new HashMap<String, Object>();
+        invokeStaticMethod("proximoParaProcessamento", params,   new JsonObjectParser<RegraProjecao>(this, callback));
+	}
+	
+	
 	public void obtemPorId(final int id, final ObjectCallback<RegraProjecao> callback) {
 		RestContractItem contrato = new RestContractItem("RegraProjecaos/obtemPorId","GET");
 		this.getRestAdapter().getContract().addItem(contrato, "RegraProjecao.obtemPorId");

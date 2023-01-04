@@ -3,6 +3,31 @@
 module.exports = function(Regraprojecao) {
 
 
+  Regraprojecao.ProximproximoParaProcessamentooParaProcessamento = function(callback) {
+    let sql1 = "SELECT distinct RegraProjecao.* " +
+        " FROM RegraProjecao " +
+        " inner join GrupoRegraRel on RegraProjecao.id = GrupoRegraRel.regraProjecaoId " +
+        " inner join TreinoGrupoRede on TreinoGrupoRede.grupoRegraId = GrupoRegraRel.grupoRegraId " +
+        " inner join PeriodoTreinoRede on PeriodoTreinoRede.id = TreinoGrupoRede.periodoTreinoRedeId " +
+        " where PeriodoTreinoRede.diaNumFinalTeste > DATE_FORMAT(DATE_SUB(ultimaInsercao,interval 2 month),'%Y%m%d') " +
+        " and PeriodoTreinoRede.diaNumFinalTeste <  DATE_FORMAT(DATE_SUB(now(),interval 2 month),'%Y%m%d') " +
+        " and (dataHoraAcesso is null or date_add(dataHoraAcesso,interval 15 minute) <= now()) " +
+        " order by id limit 1";
+    let ds = Regraprojecao.dataSource;
+    ds.connector.query(sql1, (err,result) => {
+      console.log('err:', err);
+      if (result.length>0) {
+        let saida = result[0];
+        let sql2 = "update RegraProjecao set dataHoraAcesso = now() where id = " + saida.id; 
+        ds.connector.query(sql2, (err,result) => {
+          callback(null,saida);
+        })
+      }
+    })
+  }
+
+
+
   Regraprojecao.FinalizaInsercao = function(idRegraProjecao, callback) {
     let sql1 = "update RegraProjecao " +
               " set " 

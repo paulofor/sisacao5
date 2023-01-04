@@ -48,6 +48,19 @@
           <span> --> Dias: {{trade.qtdeDias }} - Stop: {{trade.precoStop | currency : 'BRL'}}, Target: {{trade.precoTarget |
             currency : 'BRL'}}</span>
         </div>
+
+        <div  *ngIf="(trade.resultado==0)">
+          <span>{{trade.ticker}} Entrada: {{trade.precoEntrada | number:'1.2-2' }} ({{trade.diaNumEntrada}})</span>
+          <span *ngIf="trade.precoSaida">- Saida: {{trade.precoSaida | number: '1.2-2'}} ({{trade.diaNumSaida}}) Pts:
+            {{trade.pontuacao}}</span>
+          <span *ngIf="!trade.precoSaida">- Atual: {{trade.precoAtual | number: '1.2-2'}} ({{trade.percentualAtual | number:
+            '1.2-2'}}%) {{trade.diaNumAtual}}</span>
+          <span> - Melhor: {{trade.percentualMaximo | number: '1.1-1'}}% - Pior: {{trade.percentualMinimo | number: '1.1-1'}}%
+          </span>
+          <span> --> Dias: {{trade.qtdeDias }} - Stop: {{trade.precoStop | currency : 'BRL'}}, Target: {{trade.precoTarget |
+            currency : 'BRL'}}</span>
+        </div>
+
       </div>
       
     </div>

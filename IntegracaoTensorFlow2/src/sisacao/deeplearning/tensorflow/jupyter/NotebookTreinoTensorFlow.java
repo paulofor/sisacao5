@@ -60,7 +60,7 @@ public class NotebookTreinoTensorFlow extends NotebookObj {
 		
 		celula.adicionaLinha("ssh = paramiko.SSHClient()");
 		celula.adicionaLinha("ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())");
-		celula.adicionaLinha("ssh.connect(\"191.252.219.136\", username=\"root\", password=\"digicom2004%\")");
+		celula.adicionaLinha("ssh.connect(\"191.252.219.136\", username=\"root\", password=\"Digicom2004$\")");
 		celula.adicionaLinha("sftp = ssh.open_sftp()");
 		celula.adicionaLinha("sftp.put(\"pesos/treino_rede" + this.getTreinoRede().getId() + ".h5\", \"/root/executa-rede/redes/treino_rede" + this.getTreinoRede().getId() + ".h5\")");
 		celula.adicionaLinha("sftp.close()");

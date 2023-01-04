@@ -1,4 +1,4 @@
-package sisacao.coinmarketcap.coletor;
+package br.com.digicom.coletor;
 
 import sisacao.coinmarketcap.callback.CoinMarketCapCallback;
 

@@ -12,14 +12,14 @@ import br.inf.digicom.loopback.comum.diapregao.DiaPregao_ObtemIntradayResultadoT
 import br.inf.digicom.loopback.comum.diapregao.DiaPregao_ObtemIntradayResultadoTickerPeriodoQuantidadeDS;
 import br.inf.digicom.loopback.comum.diapregao.DiaPregao_ObtemIntradayResultadoTickerQuantidadeB3DS;
 import br.inf.digicom.loopback.comum.diapregao.DiaPregao_ObtemIntradayResultadoValorDS;
-import br.inf.digicom.loopback.comum.regraprojecao.RegraProjecao_ObtemPorCodigoRegraDS;
+import br.inf.digicom.loopback.comum.regraprojecao.RegraProjecao_ProximoParaProcessamentoDS;
 
 public class DatasetExemplo implements IDatasetComum, 
 											DiaPregao_ObtemIntradayResultadoTickerAteFinalDS,
 											DiaPregao_ObtemIntradayResultadoTickerQuantidadeB3DS,
 											DiaPregao_ObtemIntradayResultadoTickerPeriodoQuantidadeDS,
 											AtivoAcao_ListaPorNomeGrupoDS,
-											RegraProjecao_ObtemPorCodigoRegraDS,
+											RegraProjecao_ProximoParaProcessamentoDS,
 											DiaPregao_ObtemIntradayResultadoValorDS{
 
 	private int qtdeDia;
