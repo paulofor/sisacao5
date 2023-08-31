@@ -1,0 +1,26 @@
+{
+  "name": "RegraProjecaoReversao",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "targetStop": {
+      "type": "number"
+    },
+    "ativa": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "grupoAcao": {
+      "type": "belongsTo",
+      "model": "GrupoAcao",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

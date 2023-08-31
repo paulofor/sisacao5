@@ -5,6 +5,26 @@ var app = require('../../server/server');
 
 module.exports = function(Exemplotreinoacaosaida) {
 
+    Exemplotreinoacaosaida.ValidaExemploSaida = function(validacao, ticker,diaNum,regraProjecaoId, callback) {
+        let sql = "update ExemploTreinoAcaoSaida set validado = " + validacao + 
+            " where ticker = '" + ticker + "' and regraProjecaoId = " + regraProjecaoId + " and diaNumPrevisao = " + diaNum;
+        let ds = Exemplotreinoacaosaida.dataSource;
+        ds.connector.query(sql,callback);
+    }
+
+    Exemplotreinoacaosaida.ItemValidacao = function(callback) {
+        let sql = "select ExemploTreinoAcaoSaida.*  " +
+                " from ExemploTreinoAcaoSaida " +
+                " inner join RegraProjecao on RegraProjecao.id = ExemploTreinoAcaoSaida.regraProjecaoId " +
+                " where validado = 0 and RegraProjecao.dataHoraAcesso is not null " +
+                " order by rand() limit 1";
+        let ds = Exemplotreinoacaosaida.dataSource;
+        ds.connector.query(sql,(err,result) => {
+            if (result.length>0) {
+                callback(err,result[0]);
+            }
+        });
+    }
 
 
     /*
@@ -130,6 +150,72 @@ RelGrupoAcao.grupoAcaoId  = 12
             console.log(sql)
             let ds = Exemplotreinoacaosaida.dataSource;
             ds.connector.query(sql,callback);
+        })
+    }
+
+    Exemplotreinoacaosaida.ListaParaTreinoBalanceada = function(diaNumInicio,diaNumFinal,idGrupoAcao,idRegraProjecao,idTipoExemplo, callback) {
+        app.models.TipoExemploTreino.findById(idTipoExemplo, (err,tipo) => {
+            console.log(tipo);
+            let sql = " select campoX, campoY " +
+                " from ExemploTreinoAcaoSaida saida " +
+                " inner join ExemploTreinoAcaoEntrada entrada " +
+                " on entrada.diaNumPrevisao = saida.diaNumPrevisao and entrada.ticker = saida.ticker " +
+                " inner join RelGrupoAcao on RelGrupoAcao.ticker = saida.ticker " +
+                " where entrada.diaNumPrevisao >= " + diaNumInicio + " and " + 
+                " entrada.diaNumPrevisao <= " + diaNumFinal + " and " +
+                " saida.regraProjecaoId = " + idRegraProjecao + " and " +
+                " entrada.qtdeDias = " +  tipo.qtdeDias + " and " +
+                " entrada.posicaoReferencia = " + tipo.posicaoReferencia + " and " +
+                " RelGrupoAcao.grupoAcaoId  = " + idGrupoAcao + " ";
+            let sqlSaida1 = " select campoX, campoY " +
+                " from ExemploTreinoAcaoSaida saida " +
+                " inner join ExemploTreinoAcaoEntrada entrada " +
+                " on entrada.diaNumPrevisao = saida.diaNumPrevisao and entrada.ticker = saida.ticker " +
+                " inner join RelGrupoAcao on RelGrupoAcao.ticker = saida.ticker " +
+                " where entrada.diaNumPrevisao >= " + diaNumInicio + " and " + 
+                " entrada.diaNumPrevisao <= " + diaNumFinal + " and " +
+                " saida.regraProjecaoId = " + idRegraProjecao + " and " +
+                " entrada.qtdeDias = " +  tipo.qtdeDias + " and " +
+                " entrada.posicaoReferencia = " + tipo.posicaoReferencia + " and " +
+                " RelGrupoAcao.grupoAcaoId  = " + idGrupoAcao + "  and " +
+                " campoY = 1 ";
+            //console.log(sql)
+            let sqlBalanceado = sql + " union all " + sqlSaida1 + " union all " + sqlSaida1 + " union all " + sqlSaida1 + " union all " + sqlSaida1;
+            let ds = Exemplotreinoacaosaida.dataSource;
+
+            ds.connector.query(sqlBalanceado,callback);
+        })
+    }
+
+    Exemplotreinoacaosaida.ListaParaTreinoDuplaEntrada = function(diaNumInicio,diaNumFinal,idGrupoAcao,idRegraProjecao,idTipoExemplo1, idTipoExemplo2, callback) {
+        
+        console.log('Comecou ****');
+        console.log('idTipoExemplo1' , idTipoExemplo1);
+        app.models.TipoExemploTreino.findById(idTipoExemplo1, (err1,tipo1) => {
+            console.log('err1' , err1);
+            console.log('tipo1' , tipo1);
+            app.models.TipoExemploTreino.findById(idTipoExemplo2, (err2,tipo2) => {
+                console.log('err2' , err2);
+                console.log('tipo2' , tipo2);
+                let sql = "select entrada.diaNumPrevisao, entrada.ticker,  entrada.campoX as campoX1 , saida.campoY, entrada2.campoX as campoX2 " +
+                    " from ExemploTreinoAcaoSaida saida " +
+                    " inner join ExemploTreinoAcaoEntrada entrada " +
+                    " on entrada.diaNumPrevisao = saida.diaNumPrevisao and entrada.ticker = saida.ticker " +
+                    " inner join ExemploTreinoAcaoEntrada entrada2 " +
+                    " on entrada2.diaNumPrevisao = entrada.diaNumPrevisao and entrada2.ticker = entrada.ticker " +
+                    " inner join RelGrupoAcao on RelGrupoAcao.ticker = saida.ticker " +
+                    " where entrada.diaNumPrevisao >= " + diaNumInicio + " and " + 
+                    " entrada.diaNumPrevisao <= " + diaNumFinal + " and " +
+                    " saida.regraProjecaoId = " + idRegraProjecao + " and " +
+                    " entrada.qtdeDias = " +  tipo1.qtdeDias + " and " +
+                    " entrada.posicaoReferencia = " + tipo1.posicaoReferencia + " and " +
+                    " entrada2.qtdeDias = " +  tipo2.qtdeDias + " and " +
+                    " entrada2.posicaoReferencia = " + tipo2.posicaoReferencia + " and " +
+                    " RelGrupoAcao.grupoAcaoId  = " + idGrupoAcao;
+                console.log(sql)
+                let ds = Exemplotreinoacaosaida.dataSource;
+                ds.connector.query(sql,callback);
+            })
         })
     }
 

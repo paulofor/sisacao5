@@ -193,6 +193,31 @@
         }
       ]
     },
+    "LimpaDiaTreino": {
+      "accepts": [
+        {
+          "arg": "diaNumPrevisao",
+          "type": "number",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/limpaDiaTreino",
+          "verb": "post"
+        }
+      ]
+    },
     "ObtemPorTreinoDiaAnterior": {
       "accepts": [
         {

@@ -6,6 +6,9 @@
     "validateUpsert": true
   },
   "properties": {
+    "nome": {
+      "type": "string"
+    },
     "diaNumInicioTreino": {
       "type": "number"
     },
@@ -38,10 +41,51 @@
     },
     "diaNumFinalExecucao": {
       "type": "number"
+    },
+    "quantidadeDiaTreino": {
+      "type": "number"
+    },
+    "quantidadeDiaTeste": {
+      "type": "number"
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "preRedeNeurals": {
+      "type": "hasMany",
+      "model": "PreRedeNeural",
+      "foreignKey": ""
+    },
+    "experimentoPreRedeTreinadas": {
+      "type": "hasMany",
+      "model": "ExperimentoPreRedeTreinada",
+      "foreignKey": ""
+    },
+    "treinoGrupoRedes": {
+      "type": "hasMany",
+      "model": "TreinoGrupoRede",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
-  "methods": {}
+  "methods": {
+    "AtualizaQuantidadeDia": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaQuantidadeDia",
+          "verb": "post"
+        }
+      ]
+    }
+  }
 }

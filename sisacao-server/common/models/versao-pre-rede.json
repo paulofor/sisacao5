@@ -1,0 +1,108 @@
+{
+  "name": "VersaoPreRede",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "numero": {
+      "type": "number"
+    },
+    "caracteristica": {
+      "type": "string"
+    },
+    "dataCriacao": {
+      "type": "date"
+    },
+    "finalizada": {
+      "type": "number"
+    },
+    "estrutura": {
+      "type": "string"
+    },
+    "compilacao": {
+      "type": "string"
+    },
+    "fitTreinamento": {
+      "type": "string"
+    },
+    "qtdeParametro": {
+      "type": "number"
+    },
+    "redeNeuralId": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "versaoPreRedeRegras": {
+      "type": "hasMany",
+      "model": "VersaoPreRedeRegra",
+      "foreignKey": ""
+    },
+    "preRedeNeural": {
+      "type": "belongsTo",
+      "model": "PreRedeNeural",
+      "foreignKey": ""
+    },
+    "experimentoPreRedes": {
+      "type": "hasMany",
+      "model": "ExperimentoPreRede",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {
+    "CriaRedeNeural": {
+      "accepts": [
+        {
+          "arg": "idVersao",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/criaRedeNeural",
+          "verb": "post"
+        }
+      ]
+    },
+    "GerarRedeRegra": {
+      "accepts": [
+        {
+          "arg": "idVersao",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/gerarRedeRegra",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

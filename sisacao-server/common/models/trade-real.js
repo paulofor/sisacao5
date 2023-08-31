@@ -6,6 +6,9 @@ module.exports = function(Tradereal) {
     let CUSTO_OPERACAO = 11;
 
 
+    Tradereal.LimitaTargetStop = function(percentualTarget,percentualStop,callback) {
+        
+    }
 
     /**
     * 
@@ -268,7 +271,7 @@ module.exports = function(Tradereal) {
             " (select sum(operacaoAlvo) from TradeReal where dataSaida is null and tipo='V') as alvoShort, " +
             " (select sum(operacaoRisco) from TradeReal where dataSaida is null and tipo='V') as riscoShort, " +
             " (select sum(lucroPrejuizo) from TradeReal where dataSaida is not null) as resultadoTotal, " +
-            " (select count(*) from TradeReal where dataSaida is not null) as trades, " +
+            " (select count(*) from TradeReal where dataSaida is null) as trades, " +
             " (select sum(operacaoRisco) from TradeReal where dataSaida is null) / " +
             " (select sum(lucroPrejuizo) from TradeReal where dataSaida is not null) as proporcaoRisco";
         
@@ -281,10 +284,43 @@ module.exports = function(Tradereal) {
 
 
     Tradereal.ListaAbertoComPreco = function(callback) {
-        let sql = "SELECT * , " +
+        let sql = " SELECT * , " +
             " (select valor from CotacaoIntradayAcao where CotacaoIntradayAcao.ticker = TradeReal.ticker order by dataHora desc limit 1) as precoAtual " +
-            " FROM lojadigicom35.TradeReal " +
-            " where dataSaida is null";
+            " FROM TradeReal " +
+            " where dataSaida is null ";
+        let ds = Tradereal.dataSource;
+        ds.connector.query(sql,callback);
+    }
+
+    Tradereal.ListaAbertoComPrecoTarget = function(callback) {
+        let sql = "select *, " +
+            " (precoTarget-precoAtual) as difTarget, abs(((precoTarget-precoAtual)/precoAtual)*100) as percTarget, operacaoAlvo, " +
+            " ((precoAtual-precoEntrada)/precoEntrada*100*posicaoAtual) as percAtual, ((precoEntrada-precoTarget)/precoEntrada*100*posicaoAtual) as targetCalculado " +
+            " from " +
+            " ( " +
+            " SELECT * , " +
+            " (select valor from CotacaoIntradayAcao where CotacaoIntradayAcao.ticker = TradeReal.ticker order by dataHora desc limit 1) as precoAtual, " +
+            " (select dataHora from CotacaoIntradayAcao where CotacaoIntradayAcao.ticker = TradeReal.ticker order by dataHora desc limit 1) as precoHora " +
+            " FROM TradeReal " +
+            " where dataSaida is null " +
+            " ) tab1 " +
+            " order by percTarget ";
+        let ds = Tradereal.dataSource;
+        ds.connector.query(sql,callback);
+    }
+    Tradereal.ListaAbertoComPrecoStop = function(callback) {
+        let sql = "select *, " +
+            " (precoAtual-precoStop) as difStop, abs(((precoAtual-precoStop)/precoAtual)*100) as percStop, operacaoRisco, " +
+            " ((precoAtual-precoEntrada)/precoEntrada*100*posicaoAtual) as percAtual, ((precoEntrada-precoStop)/precoEntrada*100*posicaoAtual) as stopCalculado  " +
+            " from " +
+            " ( " +
+            " SELECT * , " +
+            " (select valor from CotacaoIntradayAcao where CotacaoIntradayAcao.ticker = TradeReal.ticker order by dataHora desc limit 1) as precoAtual, " +
+            " (select dataHora from CotacaoIntradayAcao where CotacaoIntradayAcao.ticker = TradeReal.ticker order by dataHora desc limit 1) as precoHora " +
+            " FROM TradeReal " +
+            " where dataSaida is null " +
+            " ) tab1 " +
+        " order by percStop " ;
         let ds = Tradereal.dataSource;
         ds.connector.query(sql,callback);
     }

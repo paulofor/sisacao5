@@ -13,4 +13,20 @@ module.exports = function(Tipoexemplotreino) {
         let ds = Tipoexemplotreino.dataSource;
         ds.connector.query(sql,callback);
     }
+
+    Tipoexemplotreino.AtualizaDatas = function(callback) {
+        let sql = "update TipoExemploTreino " +
+            " set diaNumInicio = ( " +
+            " select min(diaNumPrevisao) from ExemploTreinoAcaoEntrada " +
+            " where ExemploTreinoAcaoEntrada.qtdeDias = TipoExemploTreino.qtdeDias and " +
+            " ExemploTreinoAcaoEntrada.posicaoReferencia = TipoExemploTreino.posicaoReferencia " +
+            " ), " +
+            " diaNumFinal = ( " +
+            " select max(diaNumPrevisao) from ExemploTreinoAcaoEntrada " +
+            " where ExemploTreinoAcaoEntrada.qtdeDias = TipoExemploTreino.qtdeDias and " +
+            " ExemploTreinoAcaoEntrada.posicaoReferencia = TipoExemploTreino.posicaoReferencia " +
+            " )";
+        let ds = Tipoexemplotreino.dataSource;
+        ds.connector.query(sql,callback);
+    }
 };

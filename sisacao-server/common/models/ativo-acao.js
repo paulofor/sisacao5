@@ -25,7 +25,7 @@ module.exports = function (Ativoacao) {
     Ativoacao.ListaComResultadoMaisRecente = function(callback) {
         let filtro = {
             'where' : {'possuiIntradayResultado' : '1'},
-            'order' : 'ticker',
+            'order' : ['intraday15 desc' , 'ticker'],
             'include' : [
                         {   'relation' : 'cotacaoIntradayAcaoResultados' , 
                             'scope' : {
@@ -44,6 +44,23 @@ module.exports = function (Ativoacao) {
     };
 
 
+    Ativoacao.ColocaColetaPorIndice = function(listaTicker,callback) {
+        for (let i=0;i<listaTicker.length;i++) {
+            let item = listaTicker[i];
+            
+            Ativoacao.findById(item.ticker, (err,result) => {
+                //console.log('err:' , err , '  result:' , result);
+                if (!result) {
+                    console.log('item:' , item);
+                    let novo = {'ticker' : item.ticker, 'nome' : item.nome , 'intraday15' : '1'};
+                    Ativoacao.create(novo, (err,result) => {
+                        
+                    })
+                }
+            })
+        }
+        callback(null,{'retorno' : 'ok'});
+    }
 
     /**
     * 
@@ -181,7 +198,8 @@ module.exports = function (Ativoacao) {
      */
 
     Ativoacao.ListaColetaIntraday = function (callback) {
-        Ativoacao.find({}, callback);
+        let filtro = {'where' : {'intraday15' : 1}}
+        Ativoacao.find(filtro, callback);
     };
 
     /**

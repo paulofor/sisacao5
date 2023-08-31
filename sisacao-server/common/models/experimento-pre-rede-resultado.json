@@ -1,0 +1,67 @@
+{
+  "name": "ExperimentoPreRedeResultado",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "campoY": {
+      "type": "string"
+    },
+    "resultado": {
+      "type": "number"
+    },
+    "score": {
+      "type": "number"
+    },
+    "experimentoPreRedeId": {
+      "type": "number"
+    },
+    "exemploDadoSinteticoTesteId": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {
+    "RecebePrevisaoTeste": {
+      "accepts": [
+        {
+          "arg": "id",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "score",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "experimentoId",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/recebePrevisaoTeste",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

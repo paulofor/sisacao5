@@ -1,0 +1,26 @@
+{
+  "name": "KerasLayer",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nome": {
+      "type": "string"
+    },
+    "tipoObjeto": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "kerasLayerType": {
+      "type": "belongsTo",
+      "model": "KerasLayerType",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

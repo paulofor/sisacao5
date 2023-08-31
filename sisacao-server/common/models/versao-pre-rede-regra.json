@@ -1,0 +1,28 @@
+{
+  "name": "VersaoPreRedeRegra",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "regraProjecaoId": {
+      "type": "number",
+      "id": true
+    },
+    "versaoPreRedeId": {
+      "type": "number",
+      "id": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "regraProjecao": {
+      "type": "belongsTo",
+      "model": "RegraProjecao",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

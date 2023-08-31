@@ -1,0 +1,115 @@
+{
+  "name": "FinanceiroAcaoDia",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "diaNum": {
+      "type": "number",
+      "id": true
+    },
+    "tipoAplicacaoId": {
+      "type": "number",
+      "id": true
+    },
+    "instituicaoFinanceiraId": {
+      "type": "number",
+      "id": true
+    },
+    "valorTotalAtual": {
+      "type": "number"
+    },
+    "valorFixoDia": {
+      "type": "number"
+    },
+    "valorVariavelDia": {
+      "type": "number"
+    },
+    "qtdeTradeAbertoCompra": {
+      "type": "number"
+    },
+    "qtdeTradeAbertoVenda": {
+      "type": "number"
+    },
+    "targetDia": {
+      "type": "number"
+    },
+    "stopDia": {
+      "type": "number"
+    },
+    "menorDistanciaTarget": {
+      "type": "number"
+    },
+    "menorDistanciaStop": {
+      "type": "number"
+    },
+    "qtdeDiaFaltandoMes": {
+      "type": "number"
+    },
+    "qtdeDiaCorridoMes": {
+      "type": "number"
+    },
+    "valorMetaMes1": {
+      "type": "number"
+    },
+    "valorMetaMes2": {
+      "type": "number"
+    },
+    "valorMetaMes3": {
+      "type": "number"
+    },
+    "lucroMetaMes1": {
+      "type": "number"
+    },
+    "lucroMetaMes2": {
+      "type": "number"
+    },
+    "lucroMetaMes3": {
+      "type": "number"
+    },
+    "lucroAtual": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "tipoAplicacao": {
+      "type": "belongsTo",
+      "model": "TipoAplicacao",
+      "foreignKey": ""
+    },
+    "instituicaoFinanceira": {
+      "type": "belongsTo",
+      "model": "InstituicaoFinanceira",
+      "foreignKey": ""
+    },
+    "diaPregao": {
+      "type": "belongsTo",
+      "model": "DiaPregao",
+      "foreignKey": "diaNum"
+    }
+  },
+  "acls": [],
+  "methods": {
+    "AtualizaDia": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaDia",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

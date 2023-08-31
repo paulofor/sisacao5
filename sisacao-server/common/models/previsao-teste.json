@@ -130,6 +130,31 @@
         }
       ]
     },
+    "AtualizaPosicaoDiaPorTreino": {
+      "accepts": [
+        {
+          "arg": "idTreino",
+          "type": "number",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaPosicaoDiaPorTreino",
+          "verb": "post"
+        }
+      ]
+    },
     "ListaComDiarioTargetStopTeste": {
       "accepts": [
         {
@@ -169,6 +194,37 @@
       "http": [
         {
           "path": "/listaComDiarioTargetStopTeste",
+          "verb": "get"
+        }
+      ]
+    },
+    "ListaComDiarioTargetStopPeriodoTesteScore": {
+      "accepts": [
+        {
+          "arg": "treinoRedeId",
+          "type": "number",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "qtdeScore",
+          "type": "number",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "previsao",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaComDiarioTargetStopPeriodoTesteScore",
           "verb": "get"
         }
       ]

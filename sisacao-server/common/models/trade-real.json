@@ -90,29 +90,38 @@
     "operacaoAlvo": {
       "type": "number"
     },
-    "menorPreco" : {
-      "type" : "number"
+    "menorPreco": {
+      "type": "number"
     },
-    "maiorPreco" : {
-      "type" : "number"
+    "maiorPreco": {
+      "type": "number"
     },
-    "menorPercentual" : {
-      "type" : "number"
+    "menorPercentual": {
+      "type": "number"
     },
-    "maiorPercentual" : {
-      "type" : "number"
+    "maiorPercentual": {
+      "type": "number"
     },
-    "menorPreco1Mes" : {
-      "type" : "number"
+    "menorPreco1Mes": {
+      "type": "number"
     },
-    "maiorPreco1Mes" : {
-      "type" : "number"
+    "maiorPreco1Mes": {
+      "type": "number"
     },
-    "menorPercentual1Mes" : {
-      "type" : "number"
+    "menorPercentual1Mes": {
+      "type": "number"
     },
-    "maiorPercentual1Mes" : {
-      "type" : "number"
+    "maiorPercentual1Mes": {
+      "type": "number"
+    },
+    "treinoRedeId": {
+      "type": "number"
+    },
+    "percentualTarget": {
+      "type": "number"
+    },
+    "percentualStop": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -122,9 +131,9 @@
       "model": "ExecucaoSimulacao",
       "foreignKey": ""
     },
-    "previsaoRede": {
+    "treinoRede": {
       "type": "belongsTo",
-      "model": "PrevisaoRede",
+      "model": "TreinoRede",
       "foreignKey": ""
     },
     "ativoAcao": {
@@ -176,6 +185,42 @@
         }
       ]
     },
+    "ListaAbertoComPrecoStop": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "trade",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaAbertoComPrecoStop",
+          "verb": "get"
+        }
+      ]
+    },
+    "ListaAbertoComPrecoTarget": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "trade",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaAbertoComPrecoTarget",
+          "verb": "get"
+        }
+      ]
+    },
     "SituacaoAtual": {
       "accepts": [],
       "returns": [
@@ -215,6 +260,37 @@
       "http": [
         {
           "path": "/calculaEstimativa",
+          "verb": "post"
+        }
+      ]
+    },
+    "LimitaTargetStop": {
+      "accepts": [
+        {
+          "arg": "percentualTarget",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "percentualStop",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/limitaTargetStop",
           "verb": "post"
         }
       ]

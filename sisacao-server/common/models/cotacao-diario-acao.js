@@ -2,6 +2,16 @@
 
 module.exports = function(Cotacaodiarioacao) {
 
+    Cotacaodiarioacao.ListaValidacaoRegraProjecao = function(ticker,diaNumPrevisao,limiteDias,callback) {
+        let sql = "select CotacaoDiarioAcao.*, dataStr from DiaPregao " +
+                " inner join CotacaoDiarioAcao on CotacaoDiarioAcao.diaNum = DiaPregao.diaNum " +
+                " where DiaPregao.diaNum > " + diaNumPrevisao + " and ticker = '" + ticker + "' " +
+                " order by DiaPregao.diaNum " +
+                " limit " + limiteDias;
+        let ds = Cotacaodiarioacao.dataSource;
+        ds.connector.query(sql,callback);
+    }
+
 
     Cotacaodiarioacao.LimitesPeriodo = function(ticker,diaInicio,diaFinal,callback) {
         let sql = "select min(minimo) as minimo, max(maximo) as maximo " +
@@ -18,6 +28,17 @@ module.exports = function(Cotacaodiarioacao) {
     Cotacaodiarioacao.CotacaoDia = function(ticker, diaNum, callback) {
         let filtro = {'where' : {'and' : [{'ticker':ticker},{'diaNum':diaNum}] }}
         Cotacaodiarioacao.findOne(filtro,callback);
+    }
+
+    Cotacaodiarioacao.ListaTickerAteFinal = function(ticker, diaNumInicio, callback) {
+        let filtro = {
+            'where' : { 'and' : [
+                {'ticker' : ticker} , 
+                {'diaNum' : {'gte' : diaNumInicio}}
+            ]},
+            'order' : 'diaNum'
+        }
+        Cotacaodiarioacao.find(filtro,callback);
     }
 
 

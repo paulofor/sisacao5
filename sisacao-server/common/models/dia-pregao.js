@@ -151,6 +151,36 @@ module.exports = function(Diapregao) {
         });
     }
 
+    Diapregao.ObtemIntradayResultadoTickerAteFinalInicioAnterior = function(ticker, diaNumInicio, tamanhoAmostra, callback) {
+        let sql = "select * from DiaPregao where diaNum < " + diaNumInicio + " order by diaNum desc limit 1";
+        console.log('sql:' , sql);
+        let ds = Diapregao.dataSource;
+        ds.connector.query(sql, (err,resultDia) => {
+            console.log('inicio em :' , resultDia[0]);
+            Diapregao.ObtemProximo((err,result) => {
+                let filtro = {
+                    'limit' : tamanhoAmostra + 2,
+                    'include' : 
+                    [
+                        { 
+                        'relation' : 'cotacaoIntradayAcaoResultados',
+                        'scope' : 
+                            {'where' : {'ticker' : ticker } , "order" : "dataHora" } 
+                        },
+                        { 
+                        'relation' : 'cotacaoDiarioAcaos',
+                        'scope' : 
+                            {'where' : {'ticker' : ticker }} 
+                        }
+                    ], 
+                    'order' : 'diaNum',
+                    'where' : { and : [{'diaNum' : { 'gte' : resultDia[0].diaNum }}, {'diaNum': {'lt' : result.diaNum}} ]}
+                }
+                Diapregao.find(filtro,callback);
+            });
+        })
+       
+    }
 
     /**
     * 
@@ -253,7 +283,15 @@ module.exports = function(Diapregao) {
             }
             data.setDate(data.getDate() + 1);
         }
+        let ds = Diapregao.dataSource;
+        var feriados = ['01-01','04-21','05-01','09-07','10-12','11-02','11-15','07-09','11-20','01-25','12-25'];
+        for (let i=0;i<feriados.length;i++) {
+            let sql = "delete from DiaPregao where data = '" + ano + "-" + feriados[i] + "'";
+            console.log(sql);
+            ds.connector.query(sql,(err,result) => {
 
+            })
+        }
         callback(null, null);
     };
 
@@ -312,7 +350,11 @@ module.exports = function(Diapregao) {
             " (select count(*) from ExemploTreinoAcaoEntrada as exemplo " +
             " where exemplo.diaNumPrevisao = dia.diaNum  and qtdeDias = 120) as quantidadeAcao120, " +
             " (select count(*) from ExemploTreinoAcaoEntrada as exemplo " +
-            " where exemplo.diaNumPrevisao = dia.diaNum  and qtdeDias = 40) as quantidadeAcao40 " +
+            " where exemplo.diaNumPrevisao = dia.diaNum  and qtdeDias = 60) as quantidadeAcao60, " +
+            " (select count(*) from ExemploTreinoAcaoEntrada as exemplo " +
+            " where exemplo.diaNumPrevisao = dia.diaNum  and qtdeDias = 40) as quantidadeAcao40, " +
+            " (select count(*) from ExemploTreinoAcaoEntrada as exemplo " +
+            " where exemplo.diaNumPrevisao = dia.diaNum  and qtdeDias = 20) as quantidadeAcao20 " +
             " from DiaPregao dia " +
             " where dia.diaNum <= (select max(diaNumPrevisao) from ExemploTreinoAcaoEntrada) " +
             " order by dia.diaNum desc " +

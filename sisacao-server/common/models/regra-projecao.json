@@ -63,7 +63,19 @@
     "exemploPercentualResultado": {
       "type": "number"
     },
-    "dataHoraAcesso" : {
+    "dataHoraAcesso": {
+      "type": "date"
+    },
+    "maiorDataProcessamento": {
+      "type": "date"
+    },
+    "quantidadeValidada": {
+      "type": "number"
+    },
+    "percentualValidado": {
+      "type": "number"
+    },
+    "prioridade": {
       "type": "number"
     }
   },
@@ -88,10 +100,33 @@
       "type": "hasMany",
       "model": "TreinoRede",
       "foreignKey": ""
+    },
+    "regraProjecaoHists": {
+      "type": "hasMany",
+      "model": "RegraProjecaoHist",
+      "foreignKey": ""
     }
   },
   "acls": [],
   "methods": {
+    "ZerarPrioridades": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "regra",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/zerarPrioridades",
+          "verb": "post"
+        }
+      ]
+    },
     "ProximoParaProcessamento": {
       "accepts": [],
       "returns": [
@@ -106,6 +141,24 @@
       "http": [
         {
           "path": "/proximoParaProcessamento",
+          "verb": "get"
+        }
+      ]
+    },
+    "ConsultaProximoParaProcessamento": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "regra",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/consultaProximoParaProcessamento",
           "verb": "get"
         }
       ]
@@ -142,6 +195,31 @@
       "http": [
         {
           "path": "/atualizaDadosRegraProjecao",
+          "verb": "post"
+        }
+      ]
+    },
+    "AtualizaTotais": {
+      "accepts": [
+        {
+          "arg": "idRegraProjecao",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaTotais",
           "verb": "post"
         }
       ]
@@ -304,6 +382,56 @@
         {
           "path": "/obtemPorCodigoRegra",
           "verb": "get"
+        }
+      ]
+    },
+    "ListaPorGrupoRegra": {
+      "accepts": [
+        {
+          "arg": "codigoGrupo",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaPorGrupoRegra",
+          "verb": "get"
+        }
+      ]
+    },
+    "ZerarPrioridadePorGrupo": {
+      "accepts": [
+        {
+          "arg": "codigoGrupo",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/zerarPrioridadePorGrupo",
+          "verb": "post"
         }
       ]
     }

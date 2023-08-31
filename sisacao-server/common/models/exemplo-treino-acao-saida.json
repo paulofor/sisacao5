@@ -7,7 +7,8 @@
   },
   "properties": {
     "ticker": {
-      "type": "string"
+      "type": "string",
+      "id": true
     },
     "campoY": {
       "type": "string"
@@ -22,7 +23,8 @@
       "type": "number"
     },
     "diaNumPrevisao": {
-      "type": "number"
+      "type": "number",
+      "id": true
     },
     "limiteSuperior": {
       "type": "number"
@@ -34,6 +36,10 @@
       "type": "number"
     },
     "regraProjecaoId": {
+      "type": "number",
+      "id": true
+    },
+    "validado": {
       "type": "number"
     }
   },
@@ -41,6 +47,24 @@
   "relations": {},
   "acls": [],
   "methods": {
+    "ItemValidacao": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/itemValidacao",
+          "verb": "get"
+        }
+      ]
+    },
     "InsereExemploSaida": {
       "accepts": [
         {
@@ -62,6 +86,49 @@
       "http": [
         {
           "path": "/insereExemploSaida",
+          "verb": "post"
+        }
+      ]
+    },
+    "ValidaExemploSaida": {
+      "accepts": [
+        {
+          "arg": "validacao",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "diaNum",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "regraProjecaoId",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/validaExemploSaida",
           "verb": "post"
         }
       ]
@@ -146,7 +213,7 @@
         }
       ]
     },
-    "ListaParaTreino": {
+    "ListaParaTreinoBalanceada": {
       "accepts": [
         {
           "arg": "diaNumInicio",
@@ -190,7 +257,62 @@
       "description": "",
       "http": [
         {
-          "path": "/listaParaTreino",
+          "path": "/listaParaTreinoBalanceada",
+          "verb": "get"
+        }
+      ]
+    },
+    "ListaParaTreinoDuplaEntrada": {
+      "accepts": [
+        {
+          "arg": "diaNumInicio",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "diaNumFinal",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "idGrupoAcao",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "idRegraProjecao",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "idTipoExemplo1",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "idTipoExemplo2",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaParaTreinoDuplaEntrada",
           "verb": "get"
         }
       ]

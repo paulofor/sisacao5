@@ -1,0 +1,107 @@
+{
+  "name": "PreRedeNeural",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nome": {
+      "type": "string"
+    },
+    "conceito": {
+      "type": "string"
+    },
+    "dataCriacao": {
+      "type": "date"
+    },
+    "finalizada": {
+      "type": "number"
+    },
+    "comIbovespa": {
+      "type": "number"
+    },
+    "geraScriptTreino": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "versaoPreRedes": {
+      "type": "hasMany",
+      "model": "VersaoPreRede",
+      "foreignKey": ""
+    },
+    "tipoExemploTreino1": {
+      "type": "belongsTo",
+      "model": "TipoExemploTreino",
+      "foreignKey": "tipoExemploTreino1Id"
+    },
+    "tipoExemploTreino2": {
+      "type": "belongsTo",
+      "model": "TipoExemploTreino",
+      "foreignKey": "tipoExemploTreino2Id"
+    },
+    "periodoTreinoRede": {
+      "type": "belongsTo",
+      "model": "PeriodoTreinoRede",
+      "foreignKey": ""
+    },
+    "grupoAcao": {
+      "type": "belongsTo",
+      "model": "GrupoAcao",
+      "foreignKey": ""
+    },
+    "regraProjecaoVenda1": {
+      "type": "belongsTo",
+      "model": "RegraProjecao",
+      "foreignKey": "regraProjecaoVenda1Id"
+    },
+    "regraProjecaoVenda2": {
+      "type": "belongsTo",
+      "model": "RegraProjecao",
+      "foreignKey": "regraProjecaoVenda2Id"
+    },
+    "regraProjecaoVenda3": {
+      "type": "belongsTo",
+      "model": "RegraProjecao",
+      "foreignKey": "regraProjecaoVenda3Id"
+    },
+    "regraProjecaoCompra1": {
+      "type": "belongsTo",
+      "model": "RegraProjecao",
+      "foreignKey": "regraProjecaoCompra1Id"
+    },
+    "regraProjecaoCompra2": {
+      "type": "belongsTo",
+      "model": "RegraProjecao",
+      "foreignKey": "regraProjecaoCompra2Id"
+    },
+    "regraProjecaoCompra3": {
+      "type": "belongsTo",
+      "model": "RegraProjecao",
+      "foreignKey": "regraProjecaoCompra3Id"
+    }
+  },
+  "acls": [],
+  "methods": {
+    "ListaParaTreino": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaParaTreino",
+          "verb": "get"
+        }
+      ]
+    }
+  }
+}

@@ -55,7 +55,7 @@
       "returns": [
         {
           "arg": "resultado",
-          "type": "object",
+          "type": "array",
           "root": true,
           "description": ""
         }
@@ -86,7 +86,7 @@
       "returns": [
         {
           "arg": "resultado",
-          "type": "object",
+          "type": "array",
           "root": true,
           "description": ""
         }
@@ -95,6 +95,37 @@
       "http": [
         {
           "path": "/obtemPorDiaNum",
+          "verb": "get"
+        }
+      ]
+    },
+    "ObtemPorDiaNumTipoExemplo": {
+      "accepts": [
+        {
+          "arg": "diaNum",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "idTipo",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "igual ao obtemPorDiaNum só que usa o tipo-exemplo",
+      "http": [
+        {
+          "path": "/obtemPorDiaNumTipoExemplo",
           "verb": "get"
         }
       ]
@@ -188,6 +219,37 @@
       "http": [
         {
           "path": "/listaSemResultado",
+          "verb": "get"
+        }
+      ]
+    },
+    "ListaSemResultadoSimples": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "regraId",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaSemResultadoSimples",
           "verb": "get"
         }
       ]

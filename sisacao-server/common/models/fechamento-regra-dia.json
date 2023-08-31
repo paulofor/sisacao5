@@ -1,0 +1,58 @@
+{
+  "name": "FechamentoRegraDia",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "percentualTargetStop": {
+      "type": "number"
+    },
+    "grupoAcaoId": {
+      "type": "number"
+    },
+    "diaNumFechado": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "grupoAcao": {
+      "type": "belongsTo",
+      "model": "GrupoAcao",
+      "foreignKey": ""
+    },
+    "fechamentoPontoSaidas": {
+      "type": "hasMany",
+      "model": "FechamentoPontoSaida",
+      "foreignKey": ""
+    },
+    "fechamentoRegraDiaQuantidades": {
+      "type": "hasMany",
+      "model": "FechamentoRegraDiaQuantidade",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {
+    "ListaVerificacaoDiaria": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaVerificacaoDiaria",
+          "verb": "get"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "name": "FechamentoRegraDiaQuantidade",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "AtualizaParaFechamentoRegra": {
+    "accepts": [
+      {
+        "arg": "idFechamentoRegra",
+        "type": "number",
+        "required": false,
+        "description": ""
+      }
+    ],
+    "returns": [
+      {
+        "arg": "resultado",
+        "type": "object",
+        "root": true,
+        "description": ""
+      }
+    ],
+    "description": "",
+    "http": [
+      {
+        "path": "/atualizaParaFechamentoRegra",
+        "verb": "post"
+      }
+    ]
+  },
+  "properties": {
+    "diaNum": {
+      "type": "number",
+      "id": true
+    },
+    "quantidadeCompra": {
+      "type": "number"
+    },
+    "quantidadeVenda": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "fechamentoRegraDia": {
+      "type": "belongsTo",
+      "model": "FechamentoRegraDia",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {
+    "AtualizaParaFechamentoRegra": {
+      "accepts": [
+        {
+          "arg": "idFechamentoRegra",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaParaFechamentoRegra",
+          "verb": "post"
+        }
+      ]
+    },
+    "CriaParaFechamentoRegra": {
+      "accepts": [
+        {
+          "arg": "idFechamentoRegra",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/criaParaFechamentoRegra",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

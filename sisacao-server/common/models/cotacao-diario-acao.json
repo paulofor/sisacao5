@@ -43,6 +43,43 @@
   "relations": {},
   "acls": [],
   "methods": {
+    "ListaValidacaoRegraProjecao": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "diaNumPrevisao",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "limiteDias",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaValidacaoRegraProjecao",
+          "verb": "get"
+        }
+      ]
+    },
     "ListaTickerDia": {
       "accepts": [
         {
@@ -70,6 +107,37 @@
       "http": [
         {
           "path": "/listaTickerDia",
+          "verb": "get"
+        }
+      ]
+    },
+    "ListaTickerAteFinal": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "diaNum",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaTickerAteFinal",
           "verb": "get"
         }
       ]

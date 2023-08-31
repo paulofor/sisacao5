@@ -1,0 +1,78 @@
+{
+  "name": "CotacaoIntradayCoinmarketcap",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ticker": {
+      "type": "string",
+      "id": true
+    },
+    "dataHora": {
+      "type": "date",
+      "id": true
+    },
+    "diaNum": {
+      "type": "number"
+    },
+    "numMarketPair": {
+      "type": "number"
+    },
+    "circulationSupply": {
+      "type": "number"
+    },
+    "totalSupply": {
+      "type": "number"
+    },
+    "cmcRank": {
+      "type": "number"
+    },
+    "price": {
+      "type": "number"
+    },
+    "volume24h": {
+      "type": "number"
+    },
+    "marketCap": {
+      "type": "number"
+    },
+    "marketCapDominance": {
+      "type": "number"
+    },
+    "fullyDilutedMarketCap": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {
+    "RecebeCoinmarketcap": {
+      "accepts": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/recebeCoinmarketcap",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

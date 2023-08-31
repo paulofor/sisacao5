@@ -27,6 +27,9 @@
     "diaHoraNumTicker": {
       "type": "string",
       "id": true
+    },
+    "posicaoDia": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -39,6 +42,31 @@
   },
   "acls": [],
   "methods": {
+    "ListaPossiveisSaidas": {
+      "accepts": [
+        {
+          "arg": "entrada",
+          "type": "object",
+          "required": true,
+          "descripion": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaPossiveisSaidas",
+          "verb": "get"
+        }
+      ]
+    },
     "ObtemPorTickerPeriodo": {
       "accepts": [
         {
@@ -343,6 +371,37 @@
         }
       ]
     },
+    "ObtemCotacaoDiaAnterior": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "diaNum",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "cotacao",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemCotacaoDiaAnterior",
+          "verb": "get"
+        }
+      ]
+    },
     "ObtemListaComValor": {
       "accepts": [
         {
@@ -370,6 +429,31 @@
       "http": [
         {
           "path": "/obtemListaComValor",
+          "verb": "get"
+        }
+      ]
+    },
+    "PendentePorFechamentoRegra": {
+      "accepts": [
+        {
+          "arg": "idFechamentoRegraDia",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/pendentePorFechamentoRegra",
           "verb": "get"
         }
       ]

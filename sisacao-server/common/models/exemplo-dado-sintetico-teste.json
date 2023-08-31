@@ -1,0 +1,77 @@
+{
+  "name": "ExemploDadoSinteticoTeste",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "campoX": {
+      "type": "string"
+    },
+    "campoXOriginal": {
+      "type": "string"
+    },
+    "campoY": {
+      "type": "string"
+    },
+    "resultado": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {
+    "ListaPorAmostraParaTeste": {
+      "accepts": [
+        {
+          "arg": "idAmostra",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaPorAmostraParaTeste",
+          "verb": "get"
+        }
+      ]
+    },
+    "GerarPorAmostraTeste": {
+      "accepts": [
+        {
+          "arg": "idAmostra",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/gerarPorAmostraTeste",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

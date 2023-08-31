@@ -51,24 +51,30 @@
     "precoStop": {
       "type": "number"
     },
-    "qtdeDias" : {
-      "type" : "number"
+    "qtdeDias": {
+      "type": "number"
     },
-    "menorPreco" : {
-      "type" : "number"
+    "menorPreco": {
+      "type": "number"
     },
-    "maiorPreco" : {
-      "type" : "number"
+    "maiorPreco": {
+      "type": "number"
     },
-    "percentualMinimo" : {
-      "type" : "number"
+    "percentualMinimo": {
+      "type": "number"
     },
-    "percentualMaximo" : {
-      "type" : "number"
+    "percentualMaximo": {
+      "type": "number"
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "previsaoRede": {
+      "type": "belongsTo",
+      "model": "PrevisaoRede",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {
     "FinalizaTrade": {

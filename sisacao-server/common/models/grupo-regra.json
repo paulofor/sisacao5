@@ -38,6 +38,9 @@
     },
     "quantidade": {
       "type": "number"
+    },
+    "quantidadeDia": {
+      "type": "number"
     }
   },
   "validations": [],

@@ -2,6 +2,32 @@
 
 module.exports = function(Previsaoteste) {
 
+
+    Previsaoteste.AtualizaPosicaoDiaPorTreino = function(idTreino, callback) {
+        let sql1 = " SET @rank=1"; 
+        let sql2 = " SET @data_anterior=NULL";
+        let sql3 = " UPDATE PrevisaoTeste t  " +
+            " JOIN (  " +
+            " SELECT diaNumPrevisao, pontuacao, id,  " +
+                " @rank := IF(@data_anterior = diaNumPrevisao , @rank+1, 1) AS nova_ordem,  " +
+                " @data_anterior := diaNumPrevisao,  " +
+                " @pontuacao_anterior := pontuacao  " +
+            " FROM PrevisaoTeste, (SELECT @rank:=0, @data_anterior:=NULL, @pontuacao_anterior:=NULL) AS temp  " +
+            " where treinoRedeId = " + idTreino + " " +
+            " ORDER BY diaNumPrevisao, pontuacao DESC, id  " +
+            " ) AS temp  " +
+            " ON t.diaNumPrevisao = temp.diaNumPrevisao AND t.pontuacao = temp.pontuacao AND t.id = temp.id  " +
+            " SET t.posicaoDia = temp.nova_ordem;";
+        let ds = Previsaoteste.dataSource;
+        //console.log(sql);
+        ds.connector.query(sql1,(err1,retorno1) => {
+            ds.connector.query(sql2, (err2,retorno2) => {
+                ds.connector.query(sql3,callback);
+            })
+        });
+    }
+
+
     Previsaoteste.RecebePrevisaoTreinoTeste = function(ticker, resultado, diaNumPrevisao, treinoRedeId, 
         valorEntrada, valorReferencia,  tipoCompraVenda, callback) {
         let cont=0;
@@ -35,6 +61,27 @@ module.exports = function(Previsaoteste) {
         let ds = Previsaoteste.dataSource;
         ds.connector.query(sql,callback);
     }
+
+    Previsaoteste.ListaComDiarioTargetStopPeriodoTesteScore = function(treinoRedeId, qtdeScore, callback) {
+        let sql = "select PrevisaoTeste.* , diario.maximo maximoDiario , diario.minimo minimoDiario, RegraProjecao.target, RegraProjecao.stop, PrevisaoTeste.tipoCompraVenda,  " +
+            " PrevisaoTeste.valorPrevisao  " +
+            " from PrevisaoTeste " +
+            " inner join CotacaoDiarioAcao as diario on  " +
+            " diario.ticker = PrevisaoTeste.ticker and diario.diaNum = PrevisaoTeste.diaNumPrevisao  " +
+            " inner join TreinoRede on TreinoRede.id = PrevisaoTeste.treinoRedeId  " +
+            " inner join RegraProjecao on RegraProjecao.id = TreinoRede.regraProjecaoId " + 
+            " inner join PeriodoTreinoRede on PeriodoTreinoRede.id = TreinoRede.periodoTreinoRedeId " +
+            " where treinoRedeId = "  + treinoRedeId + 
+            " and diaNumPrevisao >= PeriodoTreinoRede.diaNumInicioTeste " +
+            " and diaNumPrevisao <= PeriodoTreinoRede.diaNumFinalTeste " +
+            " and valorPrevisao >= TreinoRede.limiteParaEntrada " +
+            " and posicaoDia <= " + qtdeScore +
+            " order by PrevisaoTeste.diaNumPrevisao, PrevisaoTeste.valorPrevisao desc "; 
+        let ds = Previsaoteste.dataSource;
+        ds.connector.query(sql,callback);
+    }
+
+    
     Previsaoteste.AtualizaResultadoTeste = function(previsao, callback) {
         let ds = Previsaoteste.dataSource;
         let sql1 = "update PrevisaoTeste set resultado = " + previsao.resultado + " , " +

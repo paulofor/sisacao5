@@ -4,6 +4,14 @@ var app = require('../../server/server');
 
 module.exports = function(Cotacaointradayacaoresultado) {
 
+    Cotacaointradayacaoresultado.ListaPossiveisSaidas = function(entrada, callback) {
+        //console.log('entrada:', entrada);
+        const ds = Cotacaointradayacaoresultado.dataSource;
+        const sql = "select * from CotacaoIntradayAcaoResultado where ticker = '" + entrada.ticker + "' and dataHora > '" + entrada.dataHora + "' order by dataHora limit 3000 ";
+        //console.log(sql);
+        ds.connector.query(sql,callback);
+    }
+
     Cotacaointradayacaoresultado.ListaPrecoEntradaPrevisaoProximoB3 = function(idRegra, idGrupo, callback) {
         let ds = Cotacaointradayacaoresultado.dataSource;
         app.models.RegraProjecao.findById(idRegra, (err,regra) => {
@@ -80,6 +88,23 @@ module.exports = function(Cotacaointradayacaoresultado) {
             })
         })
       
+    }
+
+    Cotacaointradayacaoresultado.ObtemCotacaoDiaAnterior = function(ticker,diaNum,callback) {
+        app.models.DiaPregao.ObtemAnteriorPorDia(diaNum, (err,dia) => {
+            console.log('dia:' , dia);
+            let filtro = {
+                'order' : 'dataHora desc',
+                'where' : {
+                    'and' : [
+                       {'ticker' : ticker},
+                       {'diaNum' : dia.diaNum }
+                    ]
+                    
+                }
+           }
+           Cotacaointradayacaoresultado.find(filtro, callback)
+        })
     }
 
     /**
@@ -215,6 +240,7 @@ module.exports = function(Cotacaointradayacaoresultado) {
     let filtroAno = { 'where' : {'ano' : ano}}
     let horarios = ['10:40:00' , '11:00:00' , '11:30:00' , '12:00:00' , '12:30:00' , '13:00:00' , '13:30:00' , '14:00:00' , '14:30:00' ,
                     '15:00:00' , '15:30:00' , '16:00:00' , '16:30:00' , '17:30:00' , '18:00:00'];
+    let posicao = [-14,-13,-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0];
     app.models.DiaPregao.find(filtroAno, (err,result) => {
         for (var i=0 ; i<result.length; i++) {
             let dia = result[i];
@@ -227,7 +253,7 @@ module.exports = function(Cotacaointradayacaoresultado) {
                dataHora.setUTCMinutes(minutoDate);
                let diaHoraNumTicker = dia.diaNum + hora + ticker;
                let item = {'ticker' : ticker , 'diaNum' : dia.diaNum , 'hora' : hora, 'dataHora' : dataHora, 'dia' : dia.data , 
-                        'diaHoraNumTicker' : diaHoraNumTicker};
+                        'diaHoraNumTicker' : diaHoraNumTicker , 'posicaoDia' : posicao[x]};
                //console.log('item' , item);
                Cotacaointradayacaoresultado.create(item, (err,result) => {
                    if (err) return
@@ -254,5 +280,25 @@ module.exports = function(Cotacaointradayacaoresultado) {
         callback(err,result[0]);
     });
  }
+
+
+Cotacaointradayacaoresultado.PendentePorFechamentoRegra = function(idFechamentoRegraDia,callback) {
+    app.models.FechamentoRegraDia.findById(idFechamentoRegraDia, (err,fechamentoRegraDia) => {
+        const ds = Cotacaointradayacaoresultado.dataSource;
+        const sql = "select CotacaoIntradayAcaoResultado.* , FechamentoPontoSaida.ticker as tickerFechamento " +
+            " from CotacaoIntradayAcaoResultado " +
+            " inner join RelGrupoAcao on RelGrupoAcao.ticker = CotacaoIntradayAcaoResultado.ticker " +
+            " LEFT JOIN FechamentoPontoSaida ON " +
+            " (FechamentoPontoSaida.diaHoraNumTickerEntrada = CotacaoIntradayAcaoResultado.diaHoraNumTicker) and FechamentoPontoSaida.fechamentoRegraDiaId = " + fechamentoRegraDia.id +
+            " where diaNum > " + fechamentoRegraDia.diaNumFechado +
+            " and RelGrupoAcao.grupoAcaoId = " + fechamentoRegraDia.grupoAcaoId +
+            " and FechamentoPontoSaida.ticker is null " +
+            " order by CotacaoIntradayAcaoResultado.diaNum " +
+            " limit 10000";
+        console.log(sql);
+        ds.connector.query(sql,callback);
+    })
+}
+
 
 };

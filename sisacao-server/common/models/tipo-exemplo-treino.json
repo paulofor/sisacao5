@@ -24,10 +24,19 @@
     },
     "diaNumAtualizado": {
       "type": "number"
+    },
+    "tamanhoEntrada": {
+      "type": "number"
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "amostraDadoSinteticos": {
+      "type": "hasMany",
+      "model": "AmostraDadoSintetico",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {
     "ObtemTotaisPorData": {
@@ -76,6 +85,24 @@
       "http": [
         {
           "path": "/insereLista",
+          "verb": "post"
+        }
+      ]
+    },
+    "AtualizaDatas": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaDatas",
           "verb": "post"
         }
       ]

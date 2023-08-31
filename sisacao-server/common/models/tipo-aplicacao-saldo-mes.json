@@ -41,10 +41,13 @@
     "movimentacaoProjetada": {
       "type": "number"
     },
-    "sucessoProjecao" : {
+    "sucessoProjecao": {
       "type": "number"
     },
-    "diferencaProjecao" : {
+    "diferencaProjecao": {
+      "type": "number"
+    },
+    "saldoCorrenteFixo": {
       "type": "number"
     }
   },
@@ -59,9 +62,7 @@
   "acls": [],
   "methods": {
     "AtualizaGeral": {
-      "accepts": [
-  
-      ],
+      "accepts": [],
       "returns": [
         {
           "arg": "resultado",
@@ -104,8 +105,7 @@
       ]
     },
     "AtualizaTotal": {
-      "accepts": [
-      ],
+      "accepts": [],
       "returns": [
         {
           "arg": "resultado",

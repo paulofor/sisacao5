@@ -1,0 +1,29 @@
+{
+  "name": "KerasLoss",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nome": {
+      "type": "string"
+    },
+    "tipo": {
+      "type": "string"
+    },
+    "tipoObjeto": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "explicacao": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

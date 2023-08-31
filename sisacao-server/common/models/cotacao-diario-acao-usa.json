@@ -1,0 +1,58 @@
+{
+  "name": "CotacaoDiarioAcaoUsa",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "Counts": true
+  },
+  "properties": {
+    "ticker": {
+      "type": "string",
+      "id": true
+    },
+    "data": {
+      "type": "date",
+      "id": true
+    },
+    "abertura": {
+      "type": "number"
+    },
+    "maximo": {
+      "type": "number"
+    },
+    "minimo": {
+      "type": "number"
+    },
+    "fechamento": {
+      "type": "number"
+    },
+    "negocios": {
+      "type": "number"
+    },
+    "volume": {
+      "type": "number"
+    },
+    "percentual": {
+      "type": "number"
+    },
+    "diaNum": {
+      "type": "number"
+    },
+    "diaPregaoId": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "diaPregao": {
+      "type": "belongsTo",
+      "model": "DiaPregao",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

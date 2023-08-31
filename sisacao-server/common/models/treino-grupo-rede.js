@@ -4,7 +4,68 @@ var app = require('../../server/server');
 
 module.exports = function(Treinogruporede) {
 
-
+    Treinogruporede.AtualizaTemData = function(idGrupo, callback) {
+        let sql = "select TreinoRede.id as idTreinoRede, diaNumFinalTeste -date_format(maiorDataProcessamento,'%Y%m%d') as diferenca " +
+            " from TreinoRede " +
+            " inner join PeriodoTreinoRede on PeriodoTreinoRede.id = TreinoRede.periodoTreinoRedeId " +
+            " inner join RegraProjecao on RegraProjecao.id = TreinoRede.regraProjecaoId " +
+            " where treinoGrupoRedeId = " + idGrupo
+        //console.log('sql1' , sql);
+        let ds = Treinogruporede.dataSource;
+        ds.connector.query(sql, (err,result) => {
+            let x = 0;
+            for (let i=0; i<result.length;i++) {
+                let valor = (result[i]['diferenca']>0?0:1)
+                let sql2 = "update TreinoRede set temDataParaTreinar = " + valor + " where id = " + result[i]['idTreinoRede'];
+                //console.log(sql2);
+                ds.connector.query(sql2, (err,result2) => {
+                    //console.log('err:' , err);
+                    x++;
+                    if (x==result.length) {
+                        let sqlPontos = "  update TreinoRede " +
+                                " set prontoDataTreino =  " +
+                                " ( " +
+                                " select  " +
+                                " case  " +
+                                " when diaNumFinalTreino < date_format(maiorDataProcessamento,'%Y%m%d') then 1 " +
+                                " else 0 " +
+                                " end " +
+                                " from PeriodoTreinoRede, RegraProjecao " +
+                                " where PeriodoTreinoRede.id = TreinoRede.periodoTreinoRedeId and " +
+                                " RegraProjecao.id = TreinoRede.regraProjecaoId " +
+                                " ) , " +
+                                " prontoDataTeste =  " +
+                                " ( " +
+                                " select  " +
+                                " case  " +
+                                " when diaNumFinalTeste < date_format(maiorDataProcessamento,'%Y%m%d') then 1 " +
+                                " else 0 " +
+                                " end " +
+                                " from PeriodoTreinoRede, RegraProjecao " +
+                                " where PeriodoTreinoRede.id = TreinoRede.periodoTreinoRedeId and " +
+                                " RegraProjecao.id = TreinoRede.regraProjecaoId " +
+                                " ) , " +
+                                " prontoSaidaFinalizado =  " +
+                                " ( " +
+                                " select  " +
+                                " case  " +
+                                " when ultimaInsercao is not null then 1 " +
+                                " else 0 " +
+                                " end " +
+                                " from RegraProjecao " +
+                                " where RegraProjecao.id = TreinoRede.regraProjecaoId " +
+                                " ) " +
+                                " where TreinoRede.treinoGrupoRedeId = " + idGrupo
+                        ds.connector.query(sqlPontos, (err,result) => {
+                            console.log(result);
+                            callback(err,{'total' : result.length});      
+                        })
+                    }
+                })
+            }
+           
+        })
+    }
    
 
     Treinogruporede.LimpaTreino = function(idGrupo, callback) {
@@ -61,7 +122,7 @@ module.exports = function(Treinogruporede) {
                                     'regraProjecaoId' : itemGrupoRegraRel.regraProjecaoId,
                                     'treinoGrupoRedeId' : grupoTreino.id,
                                     'dataCriacaoGmt' : new Date(),
-                                    'tipoExemploTreinoId' : itemGrupoRedeRel.redeNeural.tipoExemploTreino1Id
+                                    'tipoExemploTreinoId' : itemGrupoRedeRel.redeNeural.tipoExemploTreino1Id,
                                 }
                                 //console.log(treino);
                                 let filtro = {'where' : {'and' : [
@@ -74,7 +135,11 @@ module.exports = function(Treinogruporede) {
                                 app.models.TreinoRede.find(filtro,(err,result) => {
                                     if (result.length==0) {
                                         console.log(treino);
-                                        app.models.TreinoRede.create(treino)
+                                        app.models.RegraProjecao.findById(treino.regraProjecaoId, (err,regra) => {
+                                            treino['tipoCompraVenda'] = regra.tipoCompraVenda;
+                                            app.models.TreinoRede.create(treino)
+                                        })
+                                       
                                     }
                                 })
                                

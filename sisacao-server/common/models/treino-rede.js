@@ -4,10 +4,91 @@ var app = require('../../server/server');
 
 module.exports = function(Treinorede) {
 
+    Treinorede.AtualizaScore1Teste = function(treino,callback) {
+        console.log(treino);
+        let sql = "update TreinoRede " +
+            " set score1QtdeLucro = " + treino.score1QtdeLucro + ", " +
+            " score1QtdePrejuizo = " + treino.score1QtdePrejuizo + ", " +
+            " score1Pontuacao = " + treino.score1Pontuacao + 
+            " where id = " + treino.id;
+        let ds = Treinorede.dataSource;
+        ds.connector.query(sql,callback);
+    }
+
+    Treinorede.AtualizaScore2Teste = function(treino,callback) {
+        console.log(treino);
+        let sql = "update TreinoRede " +
+            " set score2QtdeLucro = " + treino.score2QtdeLucro + ", " +
+            " score2QtdePrejuizo = " + treino.score2QtdePrejuizo + ", " +
+            " score2Pontuacao = " + treino.score2Pontuacao + 
+            " where id = " + treino.id;
+        let ds = Treinorede.dataSource;
+        ds.connector.query(sql,callback);
+    }
+
+    Treinorede.ListaPendentePontuacaoFaseTeste = function(callback) {
+        let filtro = {
+            'where' : {'pendentePontuacaoFaseTeste' : 1},
+            'limit' : 100
+        }
+        Treinorede.find(filtro,callback);
+    }
+
+
+
+    Treinorede.AtualizaValoresReais = function(callback) {
+        let sql = "update TreinoRede " +
+            " set financeiroReal = ( " +
+            " select sum(lucroPrejuizo) from TradeReal " +
+            " where TreinoRede.id = TradeReal.treinoRedeId and  " +
+            " posicaoAtual = 0 " +
+            " ), " + 
+            " qtdeTradeReal = ( " +
+            " select count(*) from TradeReal " +
+            " where TreinoRede.id = TradeReal.treinoRedeId and  " +
+            " posicaoAtual = 0 " +
+            " ), " +
+            " mediaPercentualReal = ( " +
+            " select avg(percentual) from TradeReal " +
+            " where TreinoRede.id = TradeReal.treinoRedeId and  " +
+            " posicaoAtual = 0 " +
+            " ), " +
+            " qtdeLucroReal = ( " +
+            " select count(*) from TradeReal " +
+            " where TreinoRede.id = TradeReal.treinoRedeId and  " +
+            " posicaoAtual = 0 and lucroPrejuizo > 0 " +
+            " ), " +
+            " qtdePrejuizoReal = ( " +
+            " select count(*) from TradeReal " +
+            " where TreinoRede.id = TradeReal.treinoRedeId and " +
+            " posicaoAtual = 0 and lucroPrejuizo < 0 " +
+            " ), " +
+            " mediaPercentualReal = ( " +
+            " select avg(percentual) from TradeReal " +
+            " where TreinoRede.id = TradeReal.treinoRedeId and  " +
+            " posicaoAtual = 0 " +
+            " ), " +
+            " desvioPercentualReal = ( " +
+            " select STDDEV(percentual) from TradeReal " +
+            " where TreinoRede.id = TradeReal.treinoRedeId and " +
+            " posicaoAtual = 0 " +
+            " ) "
+        let ds = Treinorede.dataSource;
+        ds.connector.query(sql,callback);
+    }
+
 
     Treinorede.ObtemSelecionadoComPeriodoExecucao = function(callback) {
         let filtro = {
                 'where' : {'ativoPrevisao' : 1 },
+                'include' : 'periodoTreinoRede'
+            }
+        Treinorede.find(filtro, callback);
+    }
+
+    Treinorede.ObtemPorGrupoComPeriodoExecucao = function(idGrupo, callback) {
+        let filtro = {
+                'where' : {'treinoGrupoRedeId' : idGrupo },
                 'include' : 'periodoTreinoRede'
             }
         Treinorede.find(filtro, callback);
@@ -78,14 +159,22 @@ module.exports = function(Treinorede) {
 
     Treinorede.AlteraAtivaTeste = function(idTreino,callback) {
         let sql = "update TreinoRede " +
-            " set ativoTeste = case when ativoTeste = 0 then 1 else 0 end " +
+            " set ativoTeste = case when ativoTeste = 0 then 1 else 0 end, " +
+
             " where id = " + idTreino;
         let ds = Treinorede.dataSource;
         ds.connector.query(sql,callback);
     }
     Treinorede.AlteraAtivaPrevisaoTeste = function(idTreino,callback) {
+        console.log('Entrou no metodo');
         let sql = "update TreinoRede " +
-            " set ativoPrevisaoTeste =  case when ativoPrevisaoTeste = 0 then 1 else 0 end  " +
+            " set ativoPrevisaoTeste = 1,  " +
+            " dataPrevisaoTeste = null, " +
+            " pontuacaoTeste = null, " +
+            " qtdeLucroTeste = null, " +
+            " qtdePrejuizoTeste = null, " +
+            " qtdeTradeTeste = null, " +
+            " limiteParaEntrada = 0.5 " +
             " where id = " + idTreino;
         let sql2 = "update PrevisaoTeste " +
             " set pontuacao = null, " +
@@ -94,6 +183,7 @@ module.exports = function(Treinorede) {
             " precoSaida = null " +
             " where treinoRedeId = " + idTreino;
         let ds = Treinorede.dataSource;
+        console.log(sql)
         ds.connector.query(sql2, (err,result) => {
             ds.connector.query(sql,callback);
         })
@@ -143,7 +233,9 @@ module.exports = function(Treinorede) {
                 " where TreinoRede.id = " + id + " and qtdeTradeTeste < minimoTradeTeste and limiteParaEntrada > 0";        
         let ds = Treinorede.dataSource;
         ds.connector.query(sql,(err,result) => {
+            console.log('err1' , err);
             ds.connector.query(sqlAjusteMaximos, (err,result) => {
+                console.log('err2', err);
                 ds.connector.query(sqlAjusteMinimos, callback);
             });
         });
@@ -239,12 +331,13 @@ module.exports = function(Treinorede) {
     } 
     Treinorede.ObtemListaParaTeste = function(callback) {
         let sql = "select TreinoRede.* , RegraProjecao.tipoCompraVenda, PeriodoTreinoRede.diaNumInicioTeste, PeriodoTreinoRede.diaNumFinalTeste, " +
-            "  Tipo1.qtdeDias as tipo1QtdeDias " +
+            "  Tipo1.qtdeDias as tipo1QtdeDias , Tipo2.qtdeDias as tipo2QtdeDias " +
             " from TreinoRede " +
             " inner join RegraProjecao on RegraProjecao.id = TreinoRede.regraProjecaoId " +
             " inner join PeriodoTreinoRede on PeriodoTreinoRede.id = TreinoRede.periodoTreinoRedeId " +
             " inner join RedeNeural on RedeNeural.id = TreinoRede.redeNeuralId " +
             " inner join TipoExemploTreino as Tipo1 on Tipo1.id = RedeNeural.tipoExemploTreino1Id " +
+            " left outer join TipoExemploTreino as Tipo2 on Tipo2.id = RedeNeural.tipoExemploTreino2Id " +
             " where ativoTeste = 1 ";
         let ds = Treinorede.dataSource;
         ds.connector.query(sql,callback);
@@ -253,7 +346,7 @@ module.exports = function(Treinorede) {
     Treinorede.ListaPrevisaoDiaTreino = function(callback) {
         app.models.DiaPregao.ObtemProximo((err,result) => {
             let filtro = {
-                'order' : 'pontuacaoTeste desc',
+                'order' : 'pontuacaoExecucao desc',
                 'where' : {'ativoPrevisao' : 1},
                 'include' : 
                 [
@@ -261,7 +354,8 @@ module.exports = function(Treinorede) {
                     {'relation' : 'tradeTreinoRedes' ,
                     'scope' : 
                         {
-                            'order' : 'diaNumEntrada'
+                            'order' : 'diaNumEntrada',
+                            'include' : 'previsaoRede'
                         } 
                     }, 
                     { 

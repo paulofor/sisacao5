@@ -177,6 +177,31 @@
         }
       ]
     },
+    "ColocaColetaPorIndice": {
+      "accepts": [
+        {
+          "arg": "listaTicker",
+          "type": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/colocaColetaPorIndice",
+          "verb": "post"
+        }
+      ]
+    },
     "MelhorSimulacaoPorPeriodo": {
       "accepts": [
         {

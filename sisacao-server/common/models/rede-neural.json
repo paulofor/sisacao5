@@ -29,6 +29,15 @@
     },
     "resultadoTradeReal": {
       "type": "number"
+    },
+    "comIbovespa": {
+      "type": "number"
+    },
+    "estagio": {
+      "type": "string"
+    },
+    "objetivo": {
+      "type": "string"
     }
   },
   "validations": [],
@@ -52,10 +61,33 @@
       "type": "belongsTo",
       "model": "TipoExemploTreino",
       "foreignKey": "tipoExemploTreino2Id"
+    },
+    "versaoPreRede": {
+      "type": "belongsTo",
+      "model": "VersaoPreRede",
+      "foreignKey": ""
     }
   },
   "acls": [],
   "methods": {
+    "AtualizaPerformance": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaPerformance",
+          "verb": "post"
+        }
+      ]
+    },
     "ListaExecucaoPrevisao": {
       "accepts": [],
       "returns": [
@@ -70,6 +102,24 @@
       "http": [
         {
           "path": "/listaExecucaoPrevisao",
+          "verb": "get"
+        }
+      ]
+    },
+    "ListaDesenvolvimento": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaDesenvolvimento",
           "verb": "get"
         }
       ]

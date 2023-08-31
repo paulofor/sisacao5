@@ -1,0 +1,78 @@
+{
+  "name": "FechamentoPontoSaida",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "diaHoraNumTickerEntrada": {
+      "type": "string",
+      "id": true
+    },
+    "diaNumSaida": {
+      "type": "number"
+    },
+    "fechamentoRegraDiaId": {
+      "type": "number",
+      "id": true
+    },
+    "passo": {
+      "type": "number"
+    },
+    "resultado": {
+      "type": "number"
+    },
+    "ticker": {
+      "type": "string"
+    },
+    "dataHoraEntrada": {
+      "type": "date"
+    },
+    "dataHoraSaida": {
+      "type": "date"
+    },
+    "valorEntrada": {
+      "type": "number"
+    },
+    "valorSaida": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "fechamentoRegraDia": {
+      "type": "belongsTo",
+      "model": "FechamentoRegraDia",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {
+    "RegistraSaida": {
+      "accepts": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/registraSaida",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

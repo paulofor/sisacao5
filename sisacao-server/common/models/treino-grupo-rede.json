@@ -5,7 +5,11 @@
   "options": {
     "validateUpsert": true
   },
-  "properties": {},
+  "properties": {
+    "objetivo": {
+      "type": "string"
+    }
+  },
   "validations": [],
   "relations": {
     "grupoRede": {
@@ -36,6 +40,31 @@
   },
   "acls": [],
   "methods": {
+    "AtualizaTemData": {
+      "accepts": [
+        {
+          "arg": "idGrupo",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaTemData",
+          "verb": "post"
+        }
+      ]
+    },
     "LimpaTreino": {
       "accepts": [
         {

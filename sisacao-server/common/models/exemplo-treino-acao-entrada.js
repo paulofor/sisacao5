@@ -34,6 +34,11 @@ module.exports = function(Exemplotreinoacaoentrada) {
             callback(err,result);
         })
     }
+    Exemplotreinoacaoentrada.ObtemPorDiaNumTipoExemplo = function(diaNum, idTipo, callback) {
+        app.models.TipoExemploTreino.findById(idTipo, (err,tipo) => {
+            Exemplotreinoacaoentrada.ObtemPorDiaNum(diaNum,tipo.qtdeDias, callback);
+        })
+    }
 
     Exemplotreinoacaoentrada.ObtemProximoDia = function(qtdeDias, callback){
         app.models.DiaPregao.ObtemProximoB3((err,result) => {
@@ -92,6 +97,20 @@ order by diaNumPrevisao desc
             " from ExemploTreinoAcaoEntrada where ticker = '" + ticker + "'" +
             " and qtdeDias = " + qtdeDias +
             " and posicaoReferencia = " + posicaoReferencia +
+            " and diaNumPrevisao not in " +
+            " ( " +
+            " select diaNumPrevisao " +
+            " from ExemploTreinoAcaoSaida where ticker = '" + ticker + "'" +
+            " and regraProjecaoId = " + regraId + " ) " +
+            " order by diaNumPrevisao asc ";
+        let ds = Exemplotreinoacaoentrada.dataSource;
+        console.log(sql);
+        ds.connector.query(sql,callback);
+    }
+
+    Exemplotreinoacaoentrada.ListaSemResultadoSimples = function(ticker,regraId, callback) {
+        let sql = " select distinct ticker, diaNumPrevisao "  +
+            " from ExemploTreinoAcaoEntrada where ticker = '" + ticker + "'" +
             " and diaNumPrevisao not in " +
             " ( " +
             " select diaNumPrevisao " +

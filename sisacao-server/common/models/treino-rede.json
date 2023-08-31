@@ -59,6 +59,66 @@
     },
     "qtdePrejuizoExecucao": {
       "type": "number"
+    },
+    "temDataParaTreinar": {
+      "type": "number"
+    },
+    "pontuacaoPreExecucao": {
+      "type": "number"
+    },
+    "qtdeLucroPreExecucao": {
+      "type": "number"
+    },
+    "qtdePrejuizoPreExecucao": {
+      "type": "number"
+    },
+    "tipoCompraVenda": {
+      "type": "string"
+    },
+    "prontoDataTeste": {
+      "type": "number"
+    },
+    "prontoDataTreino": {
+      "type": "number"
+    },
+    "prontoSaidaFinalizado": {
+      "type": "number"
+    },
+    "qtdeLucroReal": {
+      "type": "number"
+    },
+    "qtdePrejuizoReal": {
+      "type": "number"
+    },
+    "financeiroReal": {
+      "type": "number"
+    },
+    "qtdeTradeReal": {
+      "type": "number"
+    },
+    "mediaPercentualReal": {
+      "type": "number"
+    },
+    "score1QtdeLucro": {
+      "type": "number"
+    },
+    "score1QtdePrejuizo": {
+      "type": "number"
+    },
+    "score1Pontuacao": {
+      "type": "number"
+    },
+    "score2QtdeLucro": {
+      "type": "number"
+    },
+    "score2QtdePrejuizo": {
+      "type": "number"
+    },
+    "score2Pontuacao": {
+      "type": "number"
+    },
+    "pendentePontuacaoFaseTeste": {
+      "type": "number"
     }
   },
   "validations": [],
@@ -101,6 +161,42 @@
   },
   "acls": [],
   "methods": {
+    "AtualizaValoresReais": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaValoresReais",
+          "verb": "post"
+        }
+      ]
+    },
+    "ListaPendentePontuacaoFaseTeste": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaPendentePontuacaoFaseTeste",
+          "verb": "get"
+        }
+      ]
+    },
     "ObtemSelecionadoComPeriodoExecucao": {
       "accepts": [],
       "returns": [
@@ -115,6 +211,31 @@
       "http": [
         {
           "path": "/obtemSelecionadoComPeriodoExecucao",
+          "verb": "get"
+        }
+      ]
+    },
+    "ObtemPorGrupoComPeriodoExecucao": {
+      "accepts": [
+        {
+          "arg": "grupoId",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemPorGrupoComPeriodoExecucao",
           "verb": "get"
         }
       ]
@@ -318,6 +439,56 @@
         }
       ]
     },
+    "AtualizaScore1Teste": {
+      "accepts": [
+        {
+          "arg": "treino",
+          "type": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaScore1Teste",
+          "verb": "post"
+        }
+      ]
+    },
+    "AtualizaScore2Teste": {
+      "accepts": [
+        {
+          "arg": "treino",
+          "type": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaScore2Teste",
+          "verb": "post"
+        }
+      ]
+    },
     "ExecutouPrevisaoTeste": {
       "accepts": [
         {
@@ -369,8 +540,7 @@
       ]
     },
     "ObtemListaParaTeste": {
-      "accepts": [
-      ],
+      "accepts": [],
       "returns": [
         {
           "arg": "lista",

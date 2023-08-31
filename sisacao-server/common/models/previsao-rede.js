@@ -5,6 +5,13 @@ var app = require('../../server/server');
 
 module.exports = function(Previsaorede) {
 
+    Previsaorede.LimpaDiaTreino = function(diaNum, callback) {
+        let sql = "delete from PrevisaoRede where diaNumPrevisao = " + diaNum;
+        let ds = Previsaorede.dataSource;
+        ds.connector.query(sql,callback);
+    }
+
+
 
     Previsaorede.PrevisaoHistorico = function(dias, callback) {
         let sql = " select data, diaNum, " +

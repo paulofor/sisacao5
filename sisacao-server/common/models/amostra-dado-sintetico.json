@@ -1,0 +1,162 @@
+{
+  "name": "AmostraDadoSintetico",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nome": {
+      "type": "string"
+    },
+    "qtdeExemplo": {
+      "type": "number"
+    },
+    "qtdeExemploTeste": {
+      "type": "number"
+    },
+    "percentualSubida": {
+      "type": "number"
+    },
+    "percentualDescida": {
+      "type": "number"
+    },
+    "percentualFlat": {
+      "type": "number"
+    },
+    "magnitudeTrend": {
+      "type": "number"
+    },
+    "percentualContraTrend": {
+      "type": "number"
+    },
+    "magnitudeContraTrend": {
+      "type": "number"
+    },
+    "magnitudeRuido": {
+      "type": "number"
+    },
+    "qtdeAtivo": {
+      "type": "number"
+    },
+    "qtdeDiaColetado": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "tipoExemploTreino": {
+      "type": "belongsTo",
+      "model": "TipoExemploTreino",
+      "foreignKey": ""
+    },
+    "exemploDadoSinteticos": {
+      "type": "hasMany",
+      "model": "ExemploDadoSintetico",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {
+    "ListaDisponivelParaPreRedeVersao1": {
+      "accepts": [
+        {
+          "arg": "idVersao",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaDisponivelParaPreRedeVersao1",
+          "verb": "get"
+        }
+      ]
+    },
+    "ListaDisponivelParaPreRedeVersao2": {
+      "accepts": [
+        {
+          "arg": "idVersao",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaDisponivelParaPreRedeVersao2",
+          "verb": "get"
+        }
+      ]
+    },
+    "ListaDisponivelParaPreRedeVersaoIndice1": {
+      "accepts": [
+        {
+          "arg": "idVersao",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaDisponivelParaPreRedeVersaoIndice1",
+          "verb": "get"
+        }
+      ]
+    },
+    "ListaDisponivelParaPreRedeVersaoIndice2": {
+      "accepts": [
+        {
+          "arg": "idVersao",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaDisponivelParaPreRedeVersaoIndice2",
+          "verb": "get"
+        }
+      ]
+    }
+  }
+}

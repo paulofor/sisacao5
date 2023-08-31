@@ -1,0 +1,40 @@
+{
+  "name": "FinanceiroAcaoFixo",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "valorAtual": {
+      "type": "number"
+    },
+    "dataAlteracao": {
+      "type": "date",
+      "id": true
+    },
+    "tipoAplicacaoId": {
+      "type": "number",
+      "id": true
+    },
+    "instituicaoFinanceiraId": {
+      "type": "number",
+      "id": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "instituicaoFinanceira": {
+      "type": "belongsTo",
+      "model": "InstituicaoFinanceira",
+      "foreignKey": ""
+    },
+    "tipoAplicacao": {
+      "type": "belongsTo",
+      "model": "TipoAplicacao",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
