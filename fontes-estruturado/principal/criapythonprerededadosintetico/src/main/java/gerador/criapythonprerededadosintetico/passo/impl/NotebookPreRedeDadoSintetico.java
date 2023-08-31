@@ -24,8 +24,7 @@ public class NotebookPreRedeDadoSintetico extends NotebookObj{
 	public String getNomeArquivo() {
 		return "ExperimentoSintetico_" 
 				+ this.experimento.getVersaoPreRede().getPreRedeNeural().getNome() 
-				+ "_v" + this.experimento.getVersaoPreRede().getNumero()
-				+ "_a" + this.experimento.getAmostraDadoSinteticoEntrada1().getNome();
+				+ "_v" + this.experimento.getVersaoPreRede().getNumero();
 				
 				
 	}
@@ -182,20 +181,20 @@ public class NotebookPreRedeDadoSintetico extends NotebookObj{
 		
 		celula = new CelulaNotebook();
 		celula.adicionaLinha("dfTratadoX = df.apply(trataLinhaX, axis='columns')");
-		celula.adicionaLinha("X = np.stack(dfTratadoX.values)");
-		celula.adicionaLinha("X.shape");
+		celula.adicionaLinha("Entrada1 = np.stack(dfTratadoX.values)");
+		celula.adicionaLinha("Entrada1.shape");
 		insereCelula(notebook,celula);
 		
 		celula = new CelulaNotebook();
 		celula.adicionaLinha("Y = np.stack(df['campoY'].values)");
-		celula.adicionaLinha("Y = Y.reshape(-1,1).astype(int)");
-		celula.adicionaLinha("Y.shape");
+		celula.adicionaLinha("Saida1 = Y.reshape(-1,1).astype(int)");
+		celula.adicionaLinha("Saida1.shape");
 		insereCelula(notebook,celula);
 		
 		
 		celula = new CelulaNotebook();
 		celula.adicionaLinha("# Verificar se há valores não numéricos");
-		celula.adicionaLinha("has_non_numeric = np.isnan(X).any() or np.isinf(X).any()");
+		celula.adicionaLinha("has_non_numeric = np.isnan(Entrada1).any() or np.isinfEntrada1).any()");
 		celula.adicionaLinha("if has_non_numeric:");
 		celula.adicionaLinha("    print(\"O array contém valores não numéricos.\")");
 		celula.adicionaLinha("else:");
@@ -204,7 +203,7 @@ public class NotebookPreRedeDadoSintetico extends NotebookObj{
 		
 		celula = new CelulaNotebook();
 		celula.adicionaLinha("# Verificar se há valores não numéricos");
-		celula.adicionaLinha("has_non_numeric = np.issubdtype(Y.dtype, np.number) is False");
+		celula.adicionaLinha("has_non_numeric = np.issubdtype(Saida1.dtype, np.number) is False");
 		celula.adicionaLinha("if has_non_numeric:");
 		celula.adicionaLinha("    print(\"O array contém valores não numéricos.\")");
 		celula.adicionaLinha("else:");
@@ -230,27 +229,27 @@ public class NotebookPreRedeDadoSintetico extends NotebookObj{
 		celula.adicionaLinha("df = pd.DataFrame.from_dict(j)");
 		insereCelula(notebook,celula);
 		
-		celula = new CelulaNotebook();
-		celula.adicionaLinha("def trataLinhaX(linha):");
-		celula.adicionaLinha("    return np.fromstring(linha['campoX'], dtype=float, sep=',')");
-		insereCelula(notebook,celula);
+		//celula = new CelulaNotebook();
+		//celula.adicionaLinha("def trataLinhaX(linha):");
+		//celula.adicionaLinha("    return np.fromstring(linha['campoX'], dtype=float, sep=',')");
+		//insereCelula(notebook,celula);
 		
 		celula = new CelulaNotebook();
 		celula.adicionaLinha("dfTratadoX = df.apply(trataLinhaX, axis='columns')");
-		celula.adicionaLinha("X2 = np.stack(dfTratadoX.values)");
-		celula.adicionaLinha("X2.shape");
+		celula.adicionaLinha("Entrada2 = np.stack(dfTratadoX.values)");
+		celula.adicionaLinha("Entrada2.shape");
 		insereCelula(notebook,celula);
 		
 		celula = new CelulaNotebook();
 		celula.adicionaLinha("Y = np.stack(df['campoY'].values)");
-		celula.adicionaLinha("Y2 = Y.reshape(-1,1).astype(int)");
-		celula.adicionaLinha("Y2.shape");
+		celula.adicionaLinha("Saida2 = Y.reshape(-1,1).astype(int)");
+		celula.adicionaLinha("Saida2.shape");
 		insereCelula(notebook,celula);
 		
 		
 		celula = new CelulaNotebook();
 		celula.adicionaLinha("# Verificar se há valores não numéricos");
-		celula.adicionaLinha("has_non_numeric = np.isnan(X2).any() or np.isinf(X2).any()");
+		celula.adicionaLinha("has_non_numeric = np.isnan(Entrada2).any() or np.isinf(Entrada2).any()");
 		celula.adicionaLinha("if has_non_numeric:");
 		celula.adicionaLinha("    print(\"O array contém valores não numéricos.\")");
 		celula.adicionaLinha("else:");
@@ -259,7 +258,7 @@ public class NotebookPreRedeDadoSintetico extends NotebookObj{
 		
 		celula = new CelulaNotebook();
 		celula.adicionaLinha("# Verificar se há valores não numéricos");
-		celula.adicionaLinha("has_non_numeric = np.issubdtype(Y2.dtype, np.number) is False");
+		celula.adicionaLinha("has_non_numeric = np.issubdtype(Saida2.dtype, np.number) is False");
 		celula.adicionaLinha("if has_non_numeric:");
 		celula.adicionaLinha("    print(\"O array contém valores não numéricos.\")");
 		celula.adicionaLinha("else:");
