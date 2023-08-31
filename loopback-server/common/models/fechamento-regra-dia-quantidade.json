@@ -1,0 +1,99 @@
+{
+	"name": "FechamentoRegraDiaQuantidade",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"diaNum": {
+			"type": "number"
+			,"id": true
+		},
+		"quantidadeCompra": {
+			"type": "number"
+		},
+		"quantidadeVenda": {
+			"type": "number"
+		},
+		"fechamentoRegraDiaId": {
+			"type": "number"
+			,"id": true
+		},
+		"fechamentoRegraDiaId": {
+			"type": "number"
+		},
+		"diaPregaoId": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"fechamentoRegraDia": {
+			"type": "belongsTo",
+			"model": "FechamentoRegraDia",
+			"foreignKey": ""
+		},
+		"diaPregao": {
+			"type": "belongsTo",
+			"model": "DiaPregao",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+		"CriaParaFechamentoRegra": {
+			"accepts": [
+				{
+					"arg": "idFechamentoRegra",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/criaParaFechamentoRegra",
+   					"verb": "post"
+ 				}
+ 			]
+		},
+		"AtualizaParaFechamentoRegra": {
+			"accepts": [
+				{
+					"arg": "idFechamentoRegra",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/atualizaParaFechamentoRegra",
+   					"verb": "post"
+ 				}
+ 			]
+		}
+	}
+}

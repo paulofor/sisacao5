@@ -1,0 +1,38 @@
+<div class="main-content" *ngIf="listaBase">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Scores Melhores Treinos</h4>
+            <button mat-raised-button color="primary" (click)="carregaTela()">Atualiza</button>
+          </div>
+          <div class="dgc-comando-correcao">
+            python3 /root/executa-rede/previsao-execucao-programada.py
+          </div>
+          <div class="content table-responsive table-full-width">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th >Data Hora</th>
+                  <th >Qtde Treinos</th>
+                  <th >Scores Calculados</th>
+                  <th width="10%"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listaBase">
+                  <td>{{item.data  | date : 'dd/MM/yyyy' : 'UTC'}}</td>
+                  <td>{{item.qtdeTreino }}</td>
+                  <td>{{item.qtdePrevisao }}</td>
+                  <td><button mat-raised-button  (click)="limpaDia(item)">Limpa Dia</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

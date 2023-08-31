@@ -1,0 +1,81 @@
+<div class="dgc-card" *ngIf="listaPrevisao" >
+  <div class="dgc-card-header">
+      <span *ngIf="!rede.grupoAcaoId">{{rede.id}}</span>
+      <span *ngIf="rede.grupoAcaoId">{{rede.redeNeural.nome}} - {{rede.regraProjecao.codigoRegraProjecao}} (#{{rede.id}})</span>
+     
+
+  </div>
+
+
+  <section class="aboutid section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 about-img">
+          <img style="max-height: 320px;border:1px solid black" src="assets/img/previsao_geral.png" alt="">
+        </div>
+        <div class="col-lg-6 vcenter">
+          <h6>Pontuação: {{rede.pontuacaoTeste}}</h6>
+          <h6>Placar: {{rede.qtdeLucroTeste}} x {{rede.qtdePrejuizoTeste}}</h6>
+          <h6>Limite: {{rede.limiteParaEntrada | number: '1.2'}}</h6>
+          <h6>Execução: {{rede.qtdeLucroExecucao}} x {{rede.qtdePrejuizoExecucao}}</h6>
+          <h6>Pontuação Execução: {{rede.pontuacaoExecucao}}</h6>
+          <h6>Real: {{ rede.financeiroReal | currency : 'BRL'}} ({{rede.qtdeTradeReal}})</h6>
+          
+        </div>
+        <div class="col-lg-6">&mu;: {{rede.mediaValorTeste | number : '1.2-2'}}  &sigma;: {{rede.desvioValorTeste | number : '1.2-2'}}</div>
+      </div>
+    </div>
+  </section>
+
+  <div >
+    <div>
+      <img *ngIf="rede.regraProjecao.tipoCompraVenda=='C'" src="assets/img/compra.png" width="32" height="32">
+      <img *ngIf="rede.regraProjecao.tipoCompraVenda=='V'" src="assets/img/venda.png" width="32" height="32">
+    </div>
+    <span class="dgc-azul" *ngFor="let previsao of listaPrevisao">
+        {{previsao.ticker}}: {{previsao.valorPrevisao | number: '1.2-2'}} 
+        <span class="dgc-link" *ngIf='(previsao.valorPrevisao > rede.limiteParaEntrada)' (click)="telaCompra(previsao)">
+          ({{previsao.precoEntrada | number: '1.2-2'}})
+        </span> ; 
+    </span>
+    <div>
+      <div *ngFor="let trade of rede.tradeTreinoRedes">
+        <div class="{{classeTrade(trade)}}" *ngIf="(trade.resultado!=0)">
+          <span>
+            {{trade.ticker}} Entrada: {{trade.precoEntrada | number:'1.2-2' }} ({{trade.diaNumEntrada}})
+          </span>
+          <span *ngIf="trade.precoSaida">- Saida: {{trade.precoSaida | number: '1.2-2'}} ({{trade.diaNumSaida}}) Pts:
+            {{trade.pontuacao}}</span>
+          <span *ngIf="!trade.precoSaida">- Atual: {{trade.precoAtual | number: '1.2-2'}} ({{trade.percentualAtual | number:
+            '1.2-2'}}%) {{trade.diaNumAtual}}</span>
+          <span> - Melhor: {{trade.percentualMaximo | number: '1.1-1'}}% - Pior: {{trade.percentualMinimo | number: '1.1-1'}}%
+          </span>
+          <span> --> Dias: {{trade.qtdeDias }} - Stop: {{trade.precoStop | currency : 'BRL'}}, Target: {{trade.precoTarget |
+            currency : 'BRL'}}</span>
+        </div>
+
+        <div  *ngIf="(trade.resultado==0)">
+          <span  class="dgc-link" *ngIf='trade.previsaoRede' (click)="telaCompra(trade.previsaoRede)">
+            {{trade.ticker}} Entrada: {{trade.precoEntrada | number:'1.2-2' }} ({{trade.diaNumEntrada}})</span>
+          <span *ngIf="trade.precoSaida">- Saida: {{trade.precoSaida | number: '1.2-2'}} ({{trade.diaNumSaida}}) Pts:
+            {{trade.pontuacao}}</span>
+          <span *ngIf="!trade.precoSaida">- Atual: {{trade.precoAtual | number: '1.2-2'}} ({{trade.percentualAtual | number:
+            '1.2-2'}}%) {{trade.diaNumAtual}}</span>
+          <span> - Melhor: {{trade.percentualMaximo | number: '1.1-1'}}% - Pior: {{trade.percentualMinimo | number: '1.1-1'}}%
+          </span>
+          <span> --> Dias: {{trade.qtdeDias }} - Stop: {{trade.precoStop | currency : 'BRL'}}, Target: {{trade.precoTarget |
+            currency : 'BRL'}}</span>
+        </div>
+
+      </div>
+      
+    </div>
+    <span class="dgc-azul"  *ngFor="let previsao of listaAtual">
+      {{previsao.ticker}}: {{previsao.valorPrevisao | number: '1.2-2'}} 
+      <span class="dgc-link" *ngIf='(previsao.valorPrevisao > rede.limiteParaEntrada)' (click)="telaCompra(previsao)">
+        ({{previsao.precoEntrada | number: '1.2-2'}})
+      </span> ; 
+  </span>
+  </div>
+  
+</div>

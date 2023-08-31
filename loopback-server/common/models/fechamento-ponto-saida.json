@@ -1,0 +1,103 @@
+{
+	"name": "FechamentoPontoSaida",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"diaNumSaida": {
+			"type": "number"
+		},
+		"diaHoraNumTickerEntrada": {
+			"type": "string"
+			,"id": true
+		},
+		"resultado": {
+			"type": "number"
+		},
+		"fechamentoRegraDiaId": {
+			"type": "number"
+			,"id": true
+		},
+		"ticker": {
+			"type": "string"
+		},
+		"passo": {
+			"type": "number"
+		},
+		"valorEntrada": {
+			"type": "number"
+		},
+		"valorSaida": {
+			"type": "number"
+		},
+		"dataHoraEntrada": {
+			"type": "date"
+		},
+		"dataHoraSaida": {
+			"type": "date"
+		},
+		"fechamentoRegraDiaId": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"fechamentoRegraDia": {
+			"type": "belongsTo",
+			"model": "FechamentoRegraDia",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+		"RegistraSaida": {
+			"accepts": [
+				{
+					"arg": "saida",
+					"type": "object",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/registraSaida",
+   					"verb": "post"
+ 				}
+ 			]
+		},
+		"CalculaMediaPassoAtivo": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/calculaMediaPassoAtivo",
+   					"verb": "post"
+ 				}
+ 			]
+		}
+	}
+}

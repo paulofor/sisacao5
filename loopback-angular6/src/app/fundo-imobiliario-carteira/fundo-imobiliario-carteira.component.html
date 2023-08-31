@@ -1,0 +1,61 @@
+
+<div class="main-content" *ngIf="listaBase">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">
+              Fundo Imobiliario - Carteira ({{listaBase.length}}) 
+              Valorização: {{ resultadoMes | currency : 'BRL'}}
+              Proventos: {{ proventoMes | currency : 'BRL' }}
+            </h4>
+            <button class="btn btn-primary btn-sm " (click)="edita()">Novo</button>
+          </div>
+          <div class="content table-responsive table-full-width">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th width="10%">Data</th>
+                  <th width="10%">Data Cot.</th>
+                  <th width="10%">Ticker</th>
+                  <th width="5%">Qtde</th>
+                  <th width="10%">Cotação Referência</th>
+                  <th width="10%">Valor Referência</th>
+                  <th width="10%">Cotação Atual</th>
+                  <th width="10%">Valor Atual</th>
+                  <th width="7%">Valorização</th>
+                  <th width="10%">%</th>
+                  <th width="10%">Proventos</th>
+                  <th width="10%">%</th>
+                  <th width="10%"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listaBase">
+                  <td>{{item.dataReferencia | date : 'dd/MM/yyyy' : 'UTC'}}</td>
+                  <td>{{item.dataCotacaoAtual | date : 'dd/MM/yyyy' : 'UTC'}}</td>
+                  <td>{{item.ticker}}</td>
+                  <td>{{item.quantidade}}</td>
+                  <td>{{item.cotacaoDataReferencia | number: '1.2-2'}}</td>
+                  <td>{{item.valorTotalDataReferencia | number: '1.2-2'}}</td>
+                  <td>{{item.cotacaoAtual | number: '1.2-2'}}</td>
+                  <td>{{item.valorTotalAtual | number: '1.2-2'}}</td>
+                  <td>{{item.valorizacaoAtual | number: '1.2-2'}}</td>
+                  <td>{{item.percentualValorizacao  | number: '1.1-1'}}%</td>
+                  <td>{{item.proventoTotal  | number: '1.2-2'}}</td>
+                  <td>{{item.proventoPercentual  | number: '1.1-1'}}%</td>
+                  <td align="right">
+                    <button class="btn btn-primary btn-sm " (click)="edita(item)">Alterar</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,72 @@
+<h2 *ngIf="item" mat-dialog-title>Rede Neural</h2>
+
+<form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
+
+  <mat-dialog-content>
+
+
+    <mat-form-field class="example-full-width">
+      <input matInput #nome [(ngModel)]="item.nome" name="nome" placeholder="Nome" />
+    </mat-form-field>
+
+
+    <mat-form-field class="example-half-width">
+      <mat-select placeholder="Tipo Entrada 1" (selectionChange)="onChangeEntrada1($event)" #tipoExemploTreino1Id [(ngModel)]="item.tipoExemploTreino1Id" name="tipoExemploTreino1Id">
+        <mat-option *ngFor="let tipoExemplo of listaTipoExemplo" [value]="tipoExemplo.id">
+          {{ tipoExemplo.qtdeDias }} dias
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-half-width">
+      <input matInput #entrada1 [(ngModel)]="item.entrada1" name="entrada1" placeholder="Entradas 1" />
+    </mat-form-field>
+
+
+    <mat-form-field class="example-half-width">
+      <mat-select placeholder="Tipo Entrada 2" (selectionChange)="onChangeEntrada2($event)" #tipoExemploTreino2Id [(ngModel)]="item.tipoExemploTreino2Id" name="tipoExemploTreino2Id">
+        <mat-option *ngFor="let tipoExemplo of listaTipoExemplo" [value]="tipoExemplo.id">
+          {{ tipoExemplo.qtdeDias }} dias
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-half-width">
+      <input matInput #entrada2 [(ngModel)]="item.entrada2" name="entrada2" placeholder="Entradas 2" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Estágio" #estagio [(ngModel)]="item.estagio" name="estagio">
+        <mat-option value="Desenvolvimento">Desenvolvimento</mat-option>
+        <mat-option value="Producao">Produção</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width">
+      <textarea rows="3" matInput #objetivo [(ngModel)]="item.objetivo" name="objetivo" placeholder="Objetivo" ></textarea>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width">
+      <textarea rows="6" matInput #estrutura [(ngModel)]="item.estrutura" name="estrutura" placeholder="Estrutura" ></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <textarea rows="3" matInput #compilacao [(ngModel)]="item.compilacao" name="compilacao" placeholder="Compilação" ></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <textarea rows="3" matInput #fitTreinamento [(ngModel)]="item.fitTreinamento" name="fitTreinamento" placeholder="Fit Treinamento" ></textarea>
+    </mat-form-field>
+
+   
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button>Salvar</button>
+    <button mat-raised-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+
+</form>

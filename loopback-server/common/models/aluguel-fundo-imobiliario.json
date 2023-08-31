@@ -1,0 +1,43 @@
+{
+	"name": "AluguelFundoImobiliario",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"ticker": {
+			"type": "string"
+		},
+		"dataPagamento": {
+			"type": "date"
+		},
+		"valor": {
+			"type": "number"
+		},
+		"dataCom": {
+			"type": "date"
+		},
+		"percentual": {
+			"type": "number"
+		},
+		"cotacao": {
+			"type": "number"
+		},
+		"tipo": {
+			"type": "string"
+		},
+		"dataInsercao": {
+			"type": "date"
+		}
+	},
+	"validations": [],
+	"relations": {
+	},
+	"acls": [],
+	"methods": {
+	}
+}

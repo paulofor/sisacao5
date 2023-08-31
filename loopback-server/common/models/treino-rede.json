@@ -1,0 +1,133 @@
+{
+	"name": "TreinoRede",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+	},
+	"validations": [],
+	"relations": {
+	},
+	"acls": [],
+	"methods": {
+		"DesligaTesteGrupo": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/desligaTesteGrupo",
+   					"verb": "post"
+ 				}
+ 			]
+		},
+		"AlteraAtivaTeste": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/alteraAtivaTeste",
+   					"verb": "post"
+ 				}
+ 			]
+		},
+		"ExecutouDadoTeste": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/executouDadoTeste",
+   					"verb": "post"
+ 				}
+ 			]
+		},
+		"ObtemListaPrevisaoTeste": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemListaPrevisaoTeste",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ExecutouPrevisaoTeste": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/executouPrevisaoTeste",
+   					"verb": "post"
+ 				}
+ 			]
+		},
+		"ObtemListaParaTeste": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemListaParaTeste",
+   					"verb": "get"
+ 				}
+ 			]
+		}
+	}
+}

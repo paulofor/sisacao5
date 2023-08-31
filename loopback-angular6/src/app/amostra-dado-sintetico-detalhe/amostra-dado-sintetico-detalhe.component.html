@@ -1,0 +1,43 @@
+<div class="dgc-painel" *ngIf="principal">
+  <div class="dgc-painel-header">
+      <span>{{principal.nome}}</span>
+      <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="recalcular()">Recalcular</button>
+  </div>
+
+<div class="dgc-card">
+  <div class="dgc-card-detalhe">
+    <span>Exemplos: {{principal.qtdeExemplo}}</span>
+  </div>
+  <div class="dgc-card-detalhe">
+    <span>Subida: {{principal.percentualSubida * 100}}%; Descida: {{principal.percentualDescida * 100}}%; Flat: {{principal.percentualFlat * 100}}%</span>
+  </div>
+  <div class="dgc-card-detalhe">
+    <span>Magnitude Trend : {{principal.magnitudeTrend | currency : 'BRL'}}</span>
+  </div>
+  <div class="dgc-card-detalhe">
+    <span>Percentual Contra-Trend %: {{principal.percentualContraTrend}}</span>
+  </div>
+  <div class="dgc-card-detalhe">
+    <span>Magnitude Contra-Trend : {{principal.magnitudeContraTrend | currency : 'BRL'}}</span>
+  </div>
+  <div class="dgc-card-detalhe">
+    <span>Magnitude Ruido: {{principal.magnitudeContraTrend | currency : 'BRL'}}</span>
+  </div>
+
+  <div class="dgc-card-comandos">
+    <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar</button>
+  </div>
+
+</div>
+  
+  <div class="dgc-card">
+    <div  class="dgc-painel-principal">
+        <div *ngFor="let exemplo of principal.exemploDadoSinteticos" >
+            <app-item-dado-sintetico-visual [item]="exemplo"></app-item-dado-sintetico-visual>
+        </div>
+    </div>
+      
+  </div>
+
+  
+</div>

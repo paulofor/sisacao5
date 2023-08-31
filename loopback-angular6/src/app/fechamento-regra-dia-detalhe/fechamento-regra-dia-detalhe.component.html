@@ -1,0 +1,24 @@
+<div class="dgc-painel" *ngIf="principal">
+	<div class="dgc-painel-header">
+		<span>Target/Stop: {{principal.percentualTargetStop}}</span>
+		<button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="atualizaQtde()">Atualiza Quantidades</button>
+	</div>
+	<div class="content table-responsive table-full-width">
+	<table class="table table-hover table-striped">
+		<thead>
+		  <tr>
+			<th width="10%">Data Hora</th>
+			<th width="10%">Qtde Compras</th>
+			<th width="10%">Qtde Vendas</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr *ngFor="let item of principal.fechamentoRegraDiaQuantidades">
+			<td>{{item.diaNum}}</td>
+			<td>{{item.quantidadeCompra}}</td>
+			<td>{{item.quantidadeVenda}}</td>
+		  </tr>
+		</tbody>
+	  </table>
+	</div>
+</div>

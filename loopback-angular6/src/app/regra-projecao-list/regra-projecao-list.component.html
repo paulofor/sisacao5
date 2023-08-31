@@ -1,0 +1,39 @@
+
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+      <span>Regras Projeção</span>
+      <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita()">novo</button>
+  </div>
+  <div *ngIf="listaBase" class="dgc-painel-principal">
+      <div class="dgc-card" *ngFor="let item of listaBase">
+          <div class="dgc-card-header">
+            <span>{{item.codigoRegraProjecao}}</span>
+            <span class="dgc-direita">#{{item.id}}</span>
+          </div>
+          <div class="dgc-card-detalhe">
+              <div>Tipo: {{item.tipoCompraVenda}}</div>
+              <div>Target: {{item.target}}</div>
+              <div>Stop: {{item.stop}}</div>
+              <div>Limite Saída: {{item.diaLimite}} dias</div>
+              <div>Percentual para entrada:{{item.percentualEntradaDataset}}</div>
+              <div>Posição índice de horário:{{item.indiceHoraReferenciaDataset}}</div>
+              <div>Prioridade: {{item.prioridade}}</div>
+          </div>
+          <div class="dgc-card-detalhe">
+            <div>Pegou para processar: <span *ngIf="item.dataHoraAcesso ">{{item.dataHoraAcesso  | date : 'dd/MM/yyyy' : 'UTC'}}</span></div>
+            <div>Exemplo Saída Até: <span *ngIf="item.maiorDataProcessamento">{{item.maiorDataProcessamento  | date : 'dd/MM/yyyy' : 'UTC' }}</span></div>
+            <div>Última Finalização: <span *ngIf="item.ultimaInsercao ">{{item.ultimaInsercao  | date : 'dd/MM/yyyy' : 'UTC' }}</span></div>
+            <div>Classe0: <span *ngIf="item.exemploPercentualClasse0">{{item.exemploPercentualClasse0  | number : '1.1-1' }}% ({{item.exemploQuantidadeClasse0}})</span></div>
+            <div>Classe1: <span *ngIf="item.exemploPercentualClasse1">{{item.exemploPercentualClasse1  | number : '1.1-1' }}% ({{item.exemploQuantidadeClasse1}})</span></div>
+            <div>Resultado: <span *ngIf="item.exemploPercentualResultado">{{item.exemploPercentualResultado  | number : '1.1-1' }}% ({{item.exemploQuantidadeResultado}})</span></div>
+            <div>Quantidade Ticker: <span *ngIf="item.quantidadeTicker">{{item.quantidadeTicker}}</span></div>
+            <div>Exemplos: <span *ngIf="item.exemploQuantidadeSaida">{{item.exemploQuantidadeSaida }}</span></div>
+            <div>Validados: <span *ngIf="item.quantidadeValidada">{{item.quantidadeValidada}}</span></div>
+          </div>
+
+          <div class="dgc-card-comandos">
+              <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar</button>
+          </div>
+      </div>
+  </div>
+</div>

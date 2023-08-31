@@ -1,0 +1,47 @@
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+      <span>Pre-Rede</span>
+      <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita()">novo</button>
+  </div>
+  <div *ngIf="listaBase" class="dgc-painel-principal">
+      <div class="dgc-card" *ngFor="let item of listaBase">
+        <div class="dgc-card-header">
+          <span class="dgc-link" routerLink="/preRedeVersao/{{item.id}}">{{item.nome}}</span>
+        </div>
+        <div class="dgc-card-detalhe">
+          <span>{{item.conceito}}</span>
+        </div>
+        <div class="dgc-card-detalhe">
+          Entrada1: <span *ngIf="item.tipoExemploTreino1">{{item.tipoExemploTreino1.qtdeDias}} dias</span> <span *ngIf="item.tipoExemploTreino1">({{item.tipoExemploTreino1.tamanhoEntrada}} pontos)</span> 
+        </div>
+        <div class="dgc-card-detalhe">
+          Entrada2: <span *ngIf="item.tipoExemploTreino2">{{item.tipoExemploTreino2.qtdeDias}} dias</span> <span *ngIf="item.tipoExemploTreino2">({{item.tipoExemploTreino2.tamanhoEntrada}} pontos)</span> 
+        </div>
+        <!--
+        <div class="dgc-card-detalhe" *ngIf="item.periodoTreinoRede">
+          Treino: {{ item.periodoTreinoRede.diaNumInicioTreino }} a  {{ item.periodoTreinoRede.diaNumFinalTreino }} ({{item.periodoTreinoRede.quantidadeDiaTreino}} dias)
+        </div>
+        <div class="dgc-card-detalhe" *ngIf="item.grupoAcao">
+          Grupo Ação: {{ item.grupoAcao.nome }}
+        </div>
+        <div class="dgc-card-detalhe">
+          Regra Venda: 
+                <span *ngIf="item.regraProjecaoVenda1">{{ item.regraProjecaoVenda1.codigoRegraProjecao }} </span> 
+                <span *ngIf="item.regraProjecaoVenda2"> ,{{ item.regraProjecaoVenda2.codigoRegraProjecao }}</span>
+                <span *ngIf="item.regraProjecaoVenda3"> ,{{ item.regraProjecaoVenda3.codigoRegraProjecao }}</span>
+        </div>
+
+        <div class="dgc-card-detalhe">
+          Regra Compra: 
+                <span *ngIf="item.regraProjecaoCompra1">{{ item.regraProjecaoCompra1.codigoRegraProjecao }} </span> 
+                <span *ngIf="item.regraProjecaoCompra2"> ,{{ item.regraProjecaoCompra2.codigoRegraProjecao }}</span>
+                <span *ngIf="item.regraProjecaoCompra3"> ,{{ item.regraProjecaoCompra3.codigoRegraProjecao }}</span>
+        </div>
+        -->
+
+        <div  class="dgc-card-comandos">
+          <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar</button>
+        </div>
+      </div>
+  </div>
+</div>

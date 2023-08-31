@@ -1,0 +1,17 @@
+<div class="dgc-card" >
+  <div class="dgc-card-header" *ngIf="(maiorOriginal && menorOriginal)">
+      <span>Y: {{item.campoY}} R: {{item.resultado}} ({{menorOriginal | number : '1.2-2'}} / {{maiorOriginal | number : '1.2.2'}})</span>
+      <span class="dgc-direita">Ticks: {{dados2.length}}</span>
+  </div>
+  <div id="chart">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [xaxis]="chartOptions.xaxis"
+      [dataLabels]="chartOptions.dataLabels"
+      [grid]="chartOptions.grid"
+      [stroke]="chartOptions.stroke"
+      [title]="chartOptions.title"
+    ></apx-chart>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+{
+	"name": "ExemploTreinoAcaoEntrada",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"ticker": {
+			"type": "string"
+			,"id": true
+		},
+		"campoX": {
+			"type": "string"
+		},
+		"diaNumPrevisao": {
+			"type": "number"
+			,"id": true
+		},
+		"campoXOriginal": {
+			"type": "string"
+		},
+		"valorReferencia": {
+			"type": "number"
+		},
+		"qtdeDias": {
+			"type": "number"
+			,"id": true
+		},
+		"posicaoReferencia": {
+			"type": "number"
+			,"id": true
+		},
+		"diaNumInicio": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+	},
+	"acls": [],
+	"methods": {
+		"ObtemPorDiaTicker": {
+			"accepts": [
+				{
+					"arg": "diaNum",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "ticker",
+					"type": "string",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemPorDiaTicker",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemPorDiaNum": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemPorDiaNum",
+   					"verb": "get"
+ 				}
+ 			]
+		}
+	}
+}

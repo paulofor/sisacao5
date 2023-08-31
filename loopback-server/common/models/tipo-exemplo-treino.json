@@ -1,0 +1,62 @@
+{
+	"name": "TipoExemploTreino",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"qtdeDias": {
+			"type": "number"
+		},
+		"posicaoReferencia": {
+			"type": "number"
+		},
+		"diaNumInicio": {
+			"type": "number"
+		},
+		"diaNumAtualizado": {
+			"type": "number"
+		},
+		"diaNumFinal": {
+			"type": "number"
+		},
+		"tamanhoEntrada": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"amostraDadoSinteticos": {
+			"type": "hasMany",
+			"model": "AmostraDadoSintetico",
+			"foreignKey": ""
+		},
+		"redeNeurals": {
+			"type": "hasMany",
+			"model": "RedeNeural",
+			"foreignKey": ""
+		},
+		"redeNeurals": {
+			"type": "hasMany",
+			"model": "RedeNeural",
+			"foreignKey": ""
+		},
+		"preRedeNeurals": {
+			"type": "hasMany",
+			"model": "PreRedeNeural",
+			"foreignKey": "tipoExemploTreinoId1"
+		},
+		"preRedeNeurals": {
+			"type": "hasMany",
+			"model": "PreRedeNeural",
+			"foreignKey": "tipoExemploTreinoId2"
+		}
+	},
+	"acls": [],
+	"methods": {
+	}
+}

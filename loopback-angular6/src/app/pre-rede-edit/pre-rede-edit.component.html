@@ -1,0 +1,101 @@
+<h2 *ngIf="item" mat-dialog-title>Projeção - {{item.diaNumPreferencia}}</h2>
+
+<form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
+
+  <mat-dialog-content>
+
+
+    <mat-form-field class="example-full-width">
+      <input matInput #nome [(ngModel)]="item.nome" name="nome" placeholder="Nome" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <textarea rows="4" matInput #conceito [(ngModel)]="item.conceito" name="conceito" placeholder="Conceito" ></textarea>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-half-width">
+      <mat-select placeholder="Tipo Entrada 1" #tipoExemploTreino1Id [(ngModel)]="item.tipoExemploTreino1Id" name="tipoExemploTreino1Id">
+        <mat-option *ngFor="let tipoExemplo of listaTipoExemplo" [value]="tipoExemplo.id">
+          {{ tipoExemplo.qtdeDias }} dias
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-half-width">
+      <mat-select placeholder="Tipo Entrada 2"  #tipoExemploTreino2Id [(ngModel)]="item.tipoExemploTreino2Id" name="tipoExemploTreino2Id">
+        <mat-option *ngFor="let tipoExemplo of listaTipoExemplo" [value]="tipoExemplo.id">
+          {{ tipoExemplo.qtdeDias }} dias
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-half-width" *ngIf="listaPeriodo">
+      <mat-select placeholder="Período"  #periodoTreinoRedeId [(ngModel)]="item.periodoTreinoRedeId" name="periodoTreinoRedeId">
+        <mat-option *ngFor="let periodo of listaPeriodo" [value]="periodo.id">
+          Treino: {{ periodo.diaNumInicioTreino }} a  {{ periodo.diaNumFinalTreino }} ({{periodo.quantidadeDiaTreino}} dias)
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-half-width" *ngIf="listaGrupoAcao">
+      <mat-select placeholder="Grupo Ação"  #grupoAcaoId [(ngModel)]="item.grupoAcaoId" name="grupoAcaoId">
+        <mat-option *ngFor="let grupoAcao of listaGrupoAcao" [value]="grupoAcao.id">
+          {{ grupoAcao.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-terco-width" *ngIf="listaRegraVenda">
+      <mat-select placeholder="Regra Venda1"  #regraProjecaoVenda1Id [(ngModel)]="item.regraProjecaoVenda1Id" name="regraProjecaoVenda1Id">
+        <mat-option *ngFor="let regra of listaRegraVenda" [value]="regra.id">
+          {{ regra.codigoRegraProjecao }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-terco-width" *ngIf="listaRegraVenda">
+      <mat-select placeholder="Regra Venda2"  #regraProjecaoVenda2Id [(ngModel)]="item.regraProjecaoVenda2Id" name="regraProjecaoVenda2Id">
+        <mat-option *ngFor="let regra of listaRegraVenda" [value]="regra.id">
+          {{ regra.codigoRegraProjecao }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-terco-width" *ngIf="listaRegraVenda">
+      <mat-select placeholder="Regra Venda3"  #regraProjecaoVenda3Id [(ngModel)]="item.regraProjecaoVenda3Id" name="regraProjecaoVenda3Id">
+        <mat-option *ngFor="let regra of listaRegraVenda" [value]="regra.id">
+          {{ regra.codigoRegraProjecao }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-terco-width" *ngIf="listaRegraCompra">
+      <mat-select placeholder="Regra Compra1"  #regraProjecaoCompra1Id [(ngModel)]="item.regraProjecaoCompra1Id" name="regraProjecaoCompra1Id">
+        <mat-option *ngFor="let regra of listaRegraCompra" [value]="regra.id">
+          {{ regra.codigoRegraProjecao }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-terco-width" *ngIf="listaRegraCompra">
+      <mat-select placeholder="Regra Compra2"  #regraProjecaoCompra2Id [(ngModel)]="item.regraProjecaoCompra2Id" name="regraProjecaoCompra2Id">
+        <mat-option *ngFor="let regra of listaRegraCompra" [value]="regra.id">
+          {{ regra.codigoRegraProjecao }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-terco-width" *ngIf="listaRegraCompra">
+      <mat-select placeholder="Regra Compra3"  #regraProjecaoCompra3Id [(ngModel)]="item.regraProjecaoCompra3Id" name="regraProjecaoCompra3Id">
+        <mat-option *ngFor="let regra of listaRegraCompra" [value]="regra.id">
+          {{ regra.codigoRegraProjecao }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button>Salvar</button>
+    <button mat-raised-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+
+</form>

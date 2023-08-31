@@ -1,0 +1,19 @@
+<div class="dgc-painel" *ngIf="listaMelhores">
+  <div class="dgc-painel-header">
+      <span>Melhores - ({{listaMelhores.length}})</span>
+  </div>
+  <div >
+      <div class="dgc-card" *ngFor="let item of listaMelhores">
+          <div class="dgc-card-header">
+              <span>{{item.ticker}} - </span>
+              <span>{{item.nome}}</span>
+          </div>
+          <div class="dgc-painel-principal">
+            <div class="dgc-card card-pequeno" *ngFor="let execucao of item.execucaoSimulacaos" >
+                <app-execucao-simulacao-display [item]="execucao"></app-execucao-simulacao-display>
+            </div>
+          </div>
+
+      </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<h2 *ngIf="item" mat-dialog-title>Ações para Grupo</h2>
+
+<form *ngIf="listaItem" class="example-full-width" (ngSubmit)="onSubmit()">
+
+  <mat-dialog-content>
+
+    <div *ngFor="let item of listaItem; let i = index;">
+      <mat-checkbox  [checked]="getCheck(item)"  (change)="onChange($event, i, item)">
+        <span class="ticker">{{item.ticker}}</span>
+        <span class="preco">R$ {{item.fechamentoAtual}}</span> 
+        <span class="spread">mês: {{item.spread1Mes | number: '1.1-1'}}%</span>
+        <span class="medNeg">MédNeg3: {{item.mediaNegocio3Mes | number: '1.1-1'}}%</span>
+        <span class="detalhe">grupos: {{item.relGrupoAcaosCount}}</span>
+      </mat-checkbox>
+    </div>
+
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button>Salvar</button>
+    <button mat-raised-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+
+</form>

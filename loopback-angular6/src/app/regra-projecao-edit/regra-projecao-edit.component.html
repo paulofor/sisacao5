@@ -1,0 +1,54 @@
+<h2 *ngIf="item" mat-dialog-title>Regra Projeção</h2>
+
+<form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
+
+  <mat-dialog-content>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="20" #codigoRegraProjecao [(ngModel)]="item.codigoRegraProjecao" name="codigoRegraProjecao" placeholder="Nome" />
+    </mat-form-field>
+   
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #target [(ngModel)]="item.target" name="target" placeholder="Target (0.10 = 10%)" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #stop [(ngModel)]="item.stop" name="stop" placeholder="Stop (0.10 = 10%)" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-select #tipoCompraVenda [(ngModel)]="item.tipoCompraVenda" name="tipoCompraVenda" placeholder="Tipo">
+        <mat-option value="CV">Compra/Venda</mat-option>
+        <mat-option value="C">Compra</mat-option>
+        <mat-option value="V">Venda</mat-option>
+         </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #diaLimite [(ngModel)]="item.diaLimite" name="diaLimite" placeholder="Dias limite para saída" />
+    </mat-form-field>
+    
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #percentualEntradaDataset [(ngModel)]="item.percentualEntradaDataset" name="percentualEntradaDataset" 
+          placeholder="Datasets: percentual para entrada no dia seguinte" />
+    </mat-form-field> 
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #indiceHoraReferenciaDataset [(ngModel)]="item.indiceHoraReferenciaDataset" name="indiceHoraReferenciaDataset" 
+          placeholder="Datasets: índice do horário tomado como referência para a entrada do dia seguinte (usar valor negativo)" />
+    </mat-form-field> 
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #prioridade [(ngModel)]="item.prioridade" name="prioridade" 
+          placeholder="Prioridade" />
+    </mat-form-field>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button>Salvar</button>
+    <button mat-raised-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+
+</form>

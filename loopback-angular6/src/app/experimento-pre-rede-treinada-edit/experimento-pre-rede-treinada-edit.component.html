@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Modelo para Fechamento</h2>
+
+<form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
+
+  <mat-dialog-content>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="50" #nome [(ngModel)]="item.nome" name="nome" placeholder="Nome" autocomplete="off" />
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Grupo Ação" #grupoAcaoId [(ngModel)]="item.grupoAcaoId" name="grupoAcaoId">
+        <mat-option *ngFor="let grupoAcao of listaGrupoAcao" [value]="grupoAcao.id">
+          {{ grupoAcao.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Regra Projeção" #regraProjecaoId [(ngModel)]="item.regraProjecaoId" name="regraProjecaoId">
+        <mat-option *ngFor="let regra of listaRegraProjecao" [value]="regra.id">
+          {{ regra.codigoRegraProjecao }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Período" #periodoTreinoRedeId [(ngModel)]="item.periodoTreinoRedeId" name="periodoTreinoRedeId">
+        <mat-option *ngFor="let periodo of listaPeriodo" [value]="periodo.id">
+          Teste: {{ periodo.diaNumInicioTeste }} até {{periodo.diaNumFinalTeste}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button>Salvar</button>
+    <button mat-raised-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+
+</form>

@@ -1,0 +1,51 @@
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+      <span>Treino Rede - Grupo</span>
+      <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita()">novo</button>
+  </div>
+  <div *ngIf="listaBase" class="dgc-painel-principal">
+
+    <div class="dgc-card" *ngFor="let periodo of listaBase">
+      <div class="dgc-card-header">
+        <span>{{periodo.nome}}</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <span>Treino: {{converteData(periodo.diaNumInicioTreino)}} a {{converteData(periodo.diaNumFinalTreino)}} </span>
+        <span>{{periodo.quantidadeDiaTreino}} dias</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <span>Teste: {{converteData(periodo.diaNumInicioTeste)}} a {{converteData(periodo.diaNumFinalTeste)}}</span>
+        <span>{{periodo.quantidadeDiaTeste}} dias</span>
+      </div>
+
+      <div class="dgc-card" *ngFor="let item of periodo.treinoGrupoRedes">
+
+        <div class="dgc-card-detalhe">
+          <span>Objetivo: {{item.objetivo}}</span>
+        </div>
+        <div class="dgc-card-detalhe">
+          <span>Grupo Regra Saída: {{item.grupoRegra.nome}}</span>
+        </div>
+        <div class="dgc-card-detalhe">
+          <span>Grupo Ação: {{item.grupoAcao.nome}}</span>
+        </div>
+        <div class="dgc-card-detalhe">
+          <span>Redes: {{listaRedes(item)}}</span><span>(Grupo: {{item.grupoRede.nome}})</span>
+        </div>
+
+       
+        <div  class="dgc-card-comandos">
+          <button class="btn-primary btn-sm btn" [routerLink]="['/mapaCalorGrupoTreino' , item.id]"> Target/Stop</button>
+          <button class="btn-primary btn-sm btn" [routerLink]="['/treinoGrupoDetalhe' , item.id]"> Treinos</button>
+          <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar</button>
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+     
+  </div>
+</div>

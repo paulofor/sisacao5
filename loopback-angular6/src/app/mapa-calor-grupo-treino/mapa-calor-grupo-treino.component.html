@@ -1,0 +1,39 @@
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+      <span>Mapas do Grupo</span>
+  </div>
+  <div class="dgc-painel-principal">
+
+      <div>
+        <app-grafico-mapa-calor-item 
+        [diaLimite]="50" 
+        [numCompraVenda]="1" 
+        [percentualEntradaDataset]="0" 
+         >
+        </app-grafico-mapa-calor-item>
+
+        <app-grafico-mapa-calor-item 
+        [diaLimite]="50" 
+        [numCompraVenda]="1" 
+        [percentualEntradaDataset]="0.02" 
+        >
+        </app-grafico-mapa-calor-item>
+      </div>
+
+      <div>
+      <app-grafico-mapa-calor-item 
+            [diaLimite]="50" 
+            [numCompraVenda]="-1" 
+            [percentualEntradaDataset]="0" 
+          >
+      </app-grafico-mapa-calor-item>
+      <app-grafico-mapa-calor-item 
+            [diaLimite]="50" 
+            [numCompraVenda]="-1" 
+            [percentualEntradaDataset]="0.02" 
+            >
+      </app-grafico-mapa-calor-item>
+      </div>
+
+  </div>
+</div>

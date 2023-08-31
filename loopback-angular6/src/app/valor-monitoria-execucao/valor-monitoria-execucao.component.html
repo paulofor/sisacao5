@@ -1,0 +1,30 @@
+<div class="dgc-painel">
+  <div class="dgc-painel-header" *ngIf="execucao">
+      <span>{{execucao.ticker}}</span>
+      <span class="dgc-minimo">{{execucao.id}}</span>
+  </div>
+  <div class="dgc-painel-principal" *ngIf="listaBase">
+      <div class="dgc-card" *ngFor="let item of listaBase">
+          <div class="dgc-card-header">
+              <span>{{item.diaNumEntrada}}</span>
+              <span  class="dgc-direita">{{item.contaTradeLucro}} x {{item.contaTradePrejuizo}}</span>
+          </div>
+          <div class="dgc-card-detalhe" *ngIf="(item.posicao==1)"> 
+            <span>Entrada: {{item.pontoEntrada | number: '1.2-2'}} t={{item.valorTarget | number: '1.2-2'}} s={{item.valorStop | number: '1.2-2'}}</span>
+            <span>({{item.quantidadeDiaTrade}})</span>
+          </div>
+          <div class="dgc-card-detalhe {{classeAlerta(item)}}" *ngIf="(item.posicao==0)"> 
+            <span>Preço Entrada: {{item.valorEntrada | number: '1.2-2'}} {{complementoPreco(item)}}</span>
+          </div>
+          <div class="dgc-card-detalhe"> 
+            <span>Diário: {{item.minimo | number: '1.2-2'}} - {{item.maximo | number: '1.2-2'}}</span>
+         </div>
+         <div class="dgc-card-detalhe" *ngIf="(item.posicao==1)">
+          <span>comprado</span>
+         </div>
+         <div class="dgc-card-detalhe" *ngIf="(item.posicao==0)">
+           <span>{{item.situacao}}</span>
+         </div>
+      </div>
+  </div>
+</div>

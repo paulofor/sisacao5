@@ -1,0 +1,48 @@
+<div class="dgc-painel">
+
+  <div class="dgc-card" *ngIf="financeiroDia">
+    <div class="dgc-card-header">
+      {{converteData(financeiroDia.diaNum)}}
+    </div>
+    <div class="dgc-card-detalhe">
+      <span>Dias restantes no mês: {{financeiroDia.qtdeDiaFaltandoMes}}</span>
+    </div>
+    <div class="dgc-card-detalhe">
+      <span>Financeiro Meta: {{financeiroDia.valorMetaMes2 | currency : 'BRL'}}</span>
+
+    </div>
+    <div class="dgc-card-detalhe">
+      <span>Financeiro Atual: {{financeiroDia.valorTotalAtual | currency : 'BRL'}}</span>
+      <span>&nbsp;&nbsp;( {{ financeiroDia.valorTotalAtual - financeiroDia.valorMetaMes2 | currency : 'BRL'}} )</span>
+    </div>
+    <div class="dgc-card-detalhe">
+      <span>Lucro Meta: {{financeiroDia.lucroMetaMes2 | currency : 'BRL'}}</span>
+    </div>
+    <div class="dgc-card-detalhe">
+      <span>Lucro Atual: {{financeiroDia.valorVariavelDia | currency : 'BRL'}}</span>
+    </div>
+
+    <div class="dgc-card-detalhe">
+      <span>Target Dia: +{{financeiroDia.targetDia | currency : 'BRL'}}</span>
+      <span>&nbsp;&nbsp;( Financeiro Potencial: {{ (financeiroDia.valorTotalAtual + financeiroDia.targetDia) | currency : 'BRL'}} )</span>
+    </div>
+    <div class="dgc-card-detalhe">
+      <span>Stop Dia: -{{financeiroDia.stopDia | currency : 'BRL'}}</span>
+      <span>&nbsp;&nbsp;( Financeiro Potencial: {{ (financeiroDia.valorTotalAtual - financeiroDia.stopDia) | currency : 'BRL'}} )</span>
+    </div>
+
+  </div>
+
+
+  <div class="dgc-card">
+    <div class="dgc-card-header">
+      <span *ngIf="financeiroFixo">Fixo Atual: {{financeiroFixo.valorAtual | currency : 'BRL'}} desde
+        {{financeiroFixo.dataAlteracao | date : 'dd/MM/yyyy' : 'UTC' }}</span>
+      <div class="dgc-direita">
+        <button class="btn btn-primary btn-sm dgc-botao-comando" (click)="alteraFixoAtual()">Alterar</button>
+      </div>
+    </div>
+  </div>
+
+
+</div>

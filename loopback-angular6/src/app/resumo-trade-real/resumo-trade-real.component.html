@@ -1,0 +1,63 @@
+<div class="dgc-painel" *ngIf="listaResumoTrade && listaTrade">
+  <div class="dgc-painel-header">
+      <span>Mês Corrente</span>
+      <span class="dgc-direita">{{listaResumoTrade[0].lucroPrejuizo  | currency: 'BRL' }}</span>
+  </div>
+  <div class="dgc-painel-detalhe">
+    <span>3 meses:</span>
+    <span>{{soma(3) | currency: 'BRL'}}</span>
+  </div>
+  <div class="dgc-painel-detalhe">
+    <span>6 meses:</span>
+    <span>{{soma(6) | currency: 'BRL'}}</span>
+  </div>
+  <div class="dgc-painel-detalhe">
+    <span>12 meses:</span>
+    <span>{{soma(12) | currency: 'BRL'}}</span>
+  </div>
+  <div class="dgc-painel-detalhe">
+    <span>Total:</span>
+    <span>{{total() | currency: 'BRL'}}</span>
+  </div>
+
+
+  <div class="dgc-painel" >
+    <app-grafico-trade-mensal></app-grafico-trade-mensal>
+  </div>
+  
+    <table class="table table-striped dgc-painel-tabela">
+      <thead>
+        <tr>
+          <th width="10%">Entrada</th>
+          <th width="10%">Saída</th>
+          <th width="10%">Dias</th>
+          <th width="10%">Ticker</th>
+          <th width="8%">Posição</th>
+          <th width="10%">Qtde</th>
+          <th width="10%">Preço Ent.</th>
+          <th width="10%">Preço Sai</th>
+          <th width="10%">Precentual</th>
+          <th width="10%">Lucro</th>
+          <th width="2%"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let trade of listaTrade">
+          <td>{{trade.dataEntrada | date : 'dd/MM/yyyy' : 'UTC' }}</td>
+          <td>{{trade.dataSaida | date : 'dd/MM/yyyy' : 'UTC' }}</td>
+          <td>{{trade.dias}}</td>
+          <td>{{trade.ticker}}</td>
+          <td>{{trade.posicaoOperacao}}</td>
+          <td>{{trade.quantidade}}</td>
+          <td>{{trade.precoEntrada | number : '1.2-2'}}</td>
+          <td>{{trade.precoSaida | number : '1.2-2'}}</td>
+          <td>{{trade.percentual | number : '1.1-1'}}%</td>
+          <td>{{trade.lucroPrejuizo | number: '1.2-2'}}</td>
+          <td><img class="dgc-link" src="assets/img/reprocessar.gif" width="24px" height="24px" (click)="reprocessar(trade)"></td>
+        </tr>
+      </tbody>
+    </table>
+
+
+</div>
+

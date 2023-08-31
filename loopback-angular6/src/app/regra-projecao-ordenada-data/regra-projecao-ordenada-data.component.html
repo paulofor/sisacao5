@@ -1,0 +1,37 @@
+<div class="dgc-painel">
+  <div class="dgc-painel-header" *ngIf="listaBase">
+      <span>Regra Projeção por Data Acesso</span>
+  </div>
+  <div *ngIf="listaBase" class="dgc-painel-principal">
+      <div class="dgc-card" *ngFor="let regra of listaBase">
+          <div class="dgc-card-header">
+            <span>{{regra.codigoRegraProjecao}}</span>
+            <span class="dgc-direita">#{{regra.id}}</span>
+          </div>
+          <div class="dgc-card-detalhe">
+              <div>Prioridade: {{regra.prioridade}}</div>
+          </div>
+          <div class="dgc-card-detalhe">
+            <div>Acesso: <span *ngIf="regra.dataHoraAcesso ">{{regra.dataHoraAcesso  | date : 'dd/MM/yyyy HH:mm:ss' : 'UTC'}}</span></div>
+            <div>Finalização: <span *ngIf="regra.ultimaInsercao ">{{regra.ultimaInsercao  | date : 'dd/MM/yyyy' : 'UTC' }}</span></div>
+            <div>Dados Até: <span *ngIf="regra.maiorDataProcessamento">{{regra.maiorDataProcessamento  | date : 'dd/MM/yyyy' : 'UTC' }}</span></div>
+          </div>  
+          <div class="dgc-card-detalhe">   
+            <div><span class="dgc-label">Exemplos:</span><span *ngIf="regra.exemploQuantidadeSaida">{{regra.exemploQuantidadeSaida }}</span></div>
+            <div><span class="dgc-label">Tickers:</span><span *ngIf="regra.quantidadeTicker">{{regra.quantidadeTicker}}</span></div>
+            <div><span class="dgc-label">Validados:</span><span *ngIf="regra.quantidadeValidada">{{regra.quantidadeValidada}}</span></div>
+          </div>
+          <div class="dgc-card-detalhe" *ngFor="let exec of regra.regraProjecaoHists">
+            <div><span >{{exec.dataHoraAtual | date : 'dd/MM/yyyy HH:mm:ss' }}</span></div>
+            <div><span class="dgc-label">Acesso:</span><span>{{exec.dataHoraAcesso | date : 'dd/MM/yyyy HH:mm:ss' : 'UTC'}}</span></div>
+            <div><span class="dgc-label">Finalização:</span><span>{{exec.ultimaInsercao  | date : 'dd/MM/yyyy' : 'UTC' }}</span></div>
+            <div><span class="dgc-label">Dados Até:</span><span>{{exec.maiorDataProcessamento  | date : 'dd/MM/yyyy' : 'UTC' }}</span></div>
+            <div><span class="dgc-label">Exemplos:</span><span>{{exec.exemploQuantidadeSaida }}</span></div>
+            <div><span class="dgc-label">Tickers:</span><span>{{exec.quantidadeTicker}}</span></div>
+          </div>
+          <div class="dgc-card-comandos">
+              <button class="btn-primary btn-sm btn" (click)="edita(regra)">Editar</button>
+          </div>
+      </div>
+  </div>
+</div>

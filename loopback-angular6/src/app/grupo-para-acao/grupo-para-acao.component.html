@@ -1,0 +1,7 @@
+<h2   *ngIf="item" mat-dialog-title>{{origem.ticker}}</h2>
+  
+<div  *ngFor="let grupo of item">
+    <p>{{grupo.grupoAcao.nome}}</p>
+</div>
+
+<button mat-raised-button mat-dialog-close>Fechar</button>

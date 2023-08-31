@@ -1,0 +1,40 @@
+<div class="dgc-painel">
+  <div class="dgc-painel-header" *ngIf="listaBase">
+      <span>{{principal.nome}} ({{listaBase.length}})</span>
+      <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="zeraPrioridadeGrupo(principal)">Zerar Prioridades</button>
+  </div>
+  <div *ngIf="listaBase" class="dgc-painel-principal">
+      <div class="dgc-card" *ngFor="let regra of listaBase">
+          <div class="dgc-card-header">
+            <span>{{regra.codigoRegraProjecao}}</span>
+            <span class="dgc-direita">#{{regra.id}}</span>
+          </div>
+          <div class="dgc-card-detalhe">
+              <div>Tipo: {{regra.tipoCompraVenda}}</div>
+              <div>Target: {{regra.target}}</div>
+              <div>Stop: {{regra.stop}}</div>
+              <div>Limite Saída: {{regra.diaLimite}} dias</div>
+              <div>Percentual para entrada:{{regra.percentualEntradaDataset}}</div>
+              <div>Posição índice de horário:{{regra.indiceHoraReferenciaDataset}}</div>
+              <div>Prioridade: {{regra.prioridade}}</div>
+          </div>
+          <div class="dgc-card-detalhe">
+            <div>Acesso: <span *ngIf="regra.dataHoraAcesso ">{{regra.dataHoraAcesso  | date : 'dd/MM/yyyy HH:mm:ss' : 'UTC'}}</span></div>
+            <div>Finalização: <span *ngIf="regra.ultimaInsercao ">{{regra.ultimaInsercao  | date : 'dd/MM/yyyy' : 'UTC' }}</span></div>
+            <div>Dados Até: <span *ngIf="regra.maiorDataProcessamento">{{regra.maiorDataProcessamento  | date : 'dd/MM/yyyy' : 'UTC' }}</span></div>
+          </div>  
+          <div class="dgc-card-detalhe">   
+            <div><span class="dgc-label">Exemplos:</span><span *ngIf="regra.exemploQuantidadeSaida">{{regra.exemploQuantidadeSaida }}</span></div>
+            <div><span class="dgc-label">Com saída:</span><span *ngIf="regra.exemploPercentualResultado">{{regra.exemploPercentualResultado  | number : '1.1-1' }}% ({{regra.exemploQuantidadeResultado}})</span></div>
+            <div><span class="dgc-label">Classe0:</span><span *ngIf="regra.exemploPercentualClasse0">{{regra.exemploPercentualClasse0  | number : '1.1-1' }}% ({{regra.exemploQuantidadeClasse0}})</span></div>
+            <div><span class="dgc-label">Classe1:</span><span *ngIf="regra.exemploPercentualClasse1">{{regra.exemploPercentualClasse1  | number : '1.1-1' }}% ({{regra.exemploQuantidadeClasse1}})</span></div>
+            <div><span class="dgc-label">Tickers:</span><span *ngIf="regra.quantidadeTicker">{{regra.quantidadeTicker}}</span></div>
+            <div><span class="dgc-label">Validados:</span><span *ngIf="regra.quantidadeValidada">{{regra.quantidadeValidada}}</span></div>
+          </div>
+
+          <div class="dgc-card-comandos">
+              <button class="btn-primary btn-sm btn" (click)="edita(regra)">Editar</button>
+          </div>
+      </div>
+  </div>
+</div>

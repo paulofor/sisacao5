@@ -1,0 +1,62 @@
+
+<div class="main-content"  >
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            
+            <form (ngSubmit)="onSubmit()">
+
+              <mat-form-field class="example-full-width">
+                <input matInput maxlength="10" [(ngModel)]="ticker" placeholder="Ticker" [ngModelOptions]="{standalone: true}" autocomplete="off"/>
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <input matInput maxlength="10" [(ngModel)]="data" placeholder="Data Inicial (Num)" [ngModelOptions]="{standalone: true}" autocomplete="off"/>
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <input matInput maxlength="10" [(ngModel)]="qtde" placeholder="Qtde" [ngModelOptions]="{standalone: true}" autocomplete="off"/>
+              </mat-form-field>
+
+              <button mat-raised-button>OK</button>
+            </form>
+          </div>
+
+          <div class="content"  *ngIf="processando && !(listaBase)">
+            <img src="assets/img/aguardando.gif" width="200" height="60">
+          </div>
+          <div class="content"  *ngIf="listaVaziaBol">
+            Nenhum Dado Encontrado
+          </div>
+
+
+          <div class="content" *ngIf="listaBase">
+            <p>Maior Valor: {{maiorValor}}</p>
+            <p>Menor Valor: {{menorValor}}</p>
+          </div>
+
+
+
+          <div class="content table-responsive table-full-width">
+            <table *ngIf="listaBase" class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th width="15%">Hora</th>
+                  <th width="25%">Cotação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listaBase; let i=index">
+                  <td>{{item.dataHora |  date : 'dd/MM/yyyy HH:mm' : 'UTC'}}</td>
+                  <td>{{item.valor | number: '1.2-2'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,35 @@
+{
+	"name": "GrupoRegraRel",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"grupoRegraId": {
+			"type": "number"
+		},
+		"regraProjecaoId": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"grupoRegra": {
+			"type": "belongsTo",
+			"model": "GrupoRegra",
+			"foreignKey": ""
+		},
+		"regraProjecao": {
+			"type": "belongsTo",
+			"model": "RegraProjecao",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+	}
+}

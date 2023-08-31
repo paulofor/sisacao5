@@ -1,0 +1,54 @@
+<h2 *ngIf="item" mat-dialog-title>Emprestimo P2P</h2>
+
+<form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
+
+  <mat-dialog-content>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="20" #nomePessoa [(ngModel)]="item.nomePessoa" name="nomePessoa" placeholder="Nome Pessoa" />
+    </mat-form-field>
+   
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="20" #valorCota [(ngModel)]="item.valorCota" name="valorCota" placeholder="Valor da Cota (9.99)" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="20" #quantidadeCota [(ngModel)]="item.quantidadeCota" name="quantidadeCota" placeholder="Cotas Compradas" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="20" #valorEmprestimo [(ngModel)]="item.valorEmprestimo" name="valorEmprestimo" placeholder="Investimento" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="20" #valorParcela [(ngModel)]="item.valorParcela" name="valorParcela" placeholder="Valor da Parcela" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="20" #quantidadeParcela [(ngModel)]="item.quantidadeParcela" name="quantidadeParcela" placeholder="Qtde Parcelas" />
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="dataPrimeiraParcela" placeholder="Primeira Parcela" [(ngModel)]="item.dataPrimeiraParcela" [ngModelOptions]="{standalone: true}">
+      <mat-datepicker-toggle matSuffix [for]="dataPrimeiraParcela"></mat-datepicker-toggle>
+      <mat-datepicker #dataPrimeiraParcela></mat-datepicker>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="dataCompra" placeholder="Data Investimento" [(ngModel)]="item.dataCompra" [ngModelOptions]="{standalone: true}">
+      <mat-datepicker-toggle matSuffix [for]="dataCompra"></mat-datepicker-toggle>
+      <mat-datepicker #dataCompra></mat-datepicker>
+    </mat-form-field>
+
+
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button>Salvar</button>
+    <button mat-raised-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+
+</form>

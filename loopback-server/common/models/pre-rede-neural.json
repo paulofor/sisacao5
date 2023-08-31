@@ -1,0 +1,79 @@
+{
+	"name": "PreRedeNeural",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"nome": {
+			"type": "string"
+		},
+		"conceito": {
+			"type": "string"
+		},
+		"dataCriacao": {
+			"type": "date"
+		},
+		"finalizada": {
+			"type": "number"
+		},
+		"tipoExemploTreinoId1": {
+			"type": "number"
+		},
+		"tipoExemploTreinoId2": {
+			"type": "number"
+		},
+		"periodoTreinoRedeId": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"periodoTreinoRede": {
+			"type": "belongsTo",
+			"model": "PeriodoTreinoRede",
+			"foreignKey": ""
+		},
+		"tipoExemploTreino1": {
+			"type": "belongsTo",
+			"model": "TipoExemploTreino",
+			"foreignKey": "tipoExemploTreinoId1"
+		},
+		"tipoExemploTreino2": {
+			"type": "belongsTo",
+			"model": "TipoExemploTreino",
+			"foreignKey": "tipoExemploTreinoId2"
+		},
+		"versaoPreRedes": {
+			"type": "hasMany",
+			"model": "VersaoPreRede",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+		"ListaParaTreino": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/listaParaTreino",
+   					"verb": "get"
+ 				}
+ 			]
+		}
+	}
+}

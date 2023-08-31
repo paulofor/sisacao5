@@ -1,0 +1,174 @@
+
+<div class="main-content" >
+  <div class="container-fluid">
+
+
+    <div class="row" *ngIf="lista">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Cotações - Mais Recentes (locaweb-java2 :23000)</h4>
+            <button mat-raised-button color="primary" (click)="carregaIntra()">Atualiza</button>
+          </div>
+          <div class="content table-responsive table-full-width">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th width="10%">Ticker</th>
+                  <th width="10%">Data Hora</th>
+                  <th width="10%">Valor</th>
+                  <th width="10%">Hora Neg.</th>
+                  <th width="10%"></th>
+                  <th width="10%"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of lista">
+                  <td>{{item.ticker}}</td>
+                  <td>{{item.dataHora  | date : 'dd/MM/yyyy HH:mm' : 'UTC'}}</td>
+                  <td>{{item.valor | number:'1.2-2'}}</td>
+                  <td>{{item.dataHoraNegStr}}</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="lista">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Indices - Mais Recentes (locaweb-java2 :23000)</h4>
+            <button mat-raised-button color="primary" (click)="carregaIntra()">Atualiza</button>
+          </div>
+          <div class="content table-responsive table-full-width">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th width="10%">Ticker</th>
+                  <th width="10%">Data Hora</th>
+                  <th width="10%">Valor</th>
+                  <th width="10%">Hora Neg.</th>
+                  <th width="10%"></th>
+                  <th width="10%"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listaIndice">
+                  <td>{{item.ticker}}</td>
+                  <td>{{item.dataHora  | date : 'dd/MM/yyyy HH:mm' : 'UTC'}}</td>
+                  <td>{{item.valor | number:'1.2-2'}}</td>
+                  <td>{{item.dataHoraNegStr}}</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="listaCripto">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Cripto - Mais Recentes</h4>
+            <button mat-raised-button color="primary" (click)="carregaIntra()">Atualiza</button>
+          </div>
+          <div class="content table-responsive table-full-width">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th width="10%">Ticker</th>
+                  <th width="10%">Data Hora</th>
+                  <th width="10%">Valor</th>
+                  <th width="10%"></th>
+                  <th width="10%"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listaCripto">
+                  <td>{{item.ticker}}</td>
+                  <td>{{item.dataHora  | date : 'dd/MM/yyyy HH:mm' : 'UTC'}}</td>
+                  <td>{{item.price | number:'1.8-8'}}</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row" *ngIf="listaFoxbit">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Foxbit - Mais Recentes (locaweb-java1 :23001)</h4>
+            <button mat-raised-button color="primary" (click)="carregaIntra()">Atualiza</button>
+          </div>
+          <div class="content table-responsive table-full-width">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th width="10%">Ticker</th>
+                  <th width="10%">Data Hora</th>
+                  <th width="10%">Valor</th>
+                  <th width="10%">Ticker Moeda</th>
+                  <th width="10%">Cambio</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listaFoxbit">
+                  <td>{{item.ticker}}</td>
+                  <td>{{item.dataHora  | date : 'dd/MM/yyyy HH:mm' : 'UTC'}}</td>
+                  <td>{{item.valor | number:'1.2-2'}}</td>
+                  <td>{{item.tickerMoeda}}</td>
+                  <td>{{item.cambio}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="listaMercadoBitcoin">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">MercadoBitcoin - Mais Recentes (aws :23001)</h4>
+            <button mat-raised-button color="primary" (click)="carregaIntra()">Atualiza</button>
+          </div>
+          <div class="content table-responsive table-full-width">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th width="10%">Ticker</th>
+                  <th width="10%">Data Hora</th>
+                  <th width="10%">Valor</th>
+                  <th width="10%">Ticker Moeda</th>
+               </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listaMercadoBitcoin">
+                  <td>{{item.ticker}}</td>
+                  <td>{{item.dataHora  | date : 'dd/MM/yyyy HH:mm' : 'UTC'}}</td>
+                  <td>{{item.valor | number:'1.2-2'}}</td>
+                  <td>{{item.tickerMoeda}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,76 @@
+{
+	"name": "PeriodoTreinoRede",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"diaNumInicioTreino": {
+			"type": "number"
+		},
+		"diaNumFinalTreino": {
+			"type": "number"
+		},
+		"diaNumInicioValidacao": {
+			"type": "number"
+		},
+		"diaNumFinalValidacao": {
+			"type": "number"
+		},
+		"diaNumInicioTeste": {
+			"type": "number"
+		},
+		"diaNumFinalTeste": {
+			"type": "number"
+		},
+		"maximoTradeTeste": {
+			"type": "number"
+		},
+		"minimoTradeTeste": {
+			"type": "number"
+		},
+		"simultaneoTradeTeste": {
+			"type": "number"
+		},
+		"diaNumInicioExecucao": {
+			"type": "number"
+		},
+		"diaNumFinalExecucao": {
+			"type": "number"
+		},
+		"nome": {
+			"type": "string"
+		},
+		"quantidadeDiaTreino": {
+			"type": "number"
+		},
+		"quantidadeDiaTeste": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"preRedeNeurals": {
+			"type": "hasMany",
+			"model": "PreRedeNeural",
+			"foreignKey": ""
+		},
+		"experimentoPreRedeTreinadas": {
+			"type": "hasMany",
+			"model": "ExperimentoPreRedeTreinada",
+			"foreignKey": ""
+		},
+		"treinoGrupoRedes": {
+			"type": "hasMany",
+			"model": "TreinoGrupoRede",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+	}
+}

@@ -1,0 +1,106 @@
+{
+	"name": "RegraProjecao",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"target": {
+			"type": "number"
+		},
+		"stop": {
+			"type": "number"
+		},
+		"diaLimite": {
+			"type": "number"
+		},
+		"tipoCompraVenda": {
+			"type": "string"
+		},
+		"processando": {
+			"type": "number"
+		},
+		"percentualEntradaDataset": {
+			"type": "number"
+		},
+		"indiceHoraReferenciaDataset": {
+			"type": "number"
+		},
+		"codigoRegraProjecao": {
+			"type": "string"
+		},
+		"quantidadeTicker": {
+			"type": "number"
+		},
+		"diaNumMaisAntigo": {
+			"type": "number"
+		},
+		"ultimaInsercao": {
+			"type": "date"
+		},
+		"exemploQuantidadeSaida": {
+			"type": "number"
+		},
+		"exemploPercentualSaida": {
+			"type": "number"
+		},
+		"exemploQuantidadeClasse0": {
+			"type": "number"
+		},
+		"exemploPercentualClasse0": {
+			"type": "number"
+		},
+		"exemploQuantidadeClasse1": {
+			"type": "number"
+		},
+		"exemploPercentualClasse1": {
+			"type": "number"
+		},
+		"exemploQuantidadeResultado": {
+			"type": "number"
+		},
+		"exemploPercentualResultado": {
+			"type": "number"
+		},
+		"dataHoraAcesso": {
+			"type": "date"
+		},
+		"maiorDataProcessamento": {
+			"type": "date"
+		},
+		"quantidadeValidada": {
+			"type": "number"
+		},
+		"percentualValidado": {
+			"type": "number"
+		},
+		"prioridade": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"versaoPreRedeRegras": {
+			"type": "hasMany",
+			"model": "VersaoPreRedeRegra",
+			"foreignKey": ""
+		},
+		"experimentoPreRedeTreinadas": {
+			"type": "hasMany",
+			"model": "ExperimentoPreRedeTreinada",
+			"foreignKey": ""
+		},
+		"grupoRegraRels": {
+			"type": "hasMany",
+			"model": "GrupoRegraRel",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+	}
+}

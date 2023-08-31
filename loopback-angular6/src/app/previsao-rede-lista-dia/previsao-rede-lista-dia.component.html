@@ -1,0 +1,21 @@
+<div class="dgc-painel" *ngIf="listaBase">
+
+  <div class="dgc-painel-header">
+    <span *ngIf="listaBase[0].previsaoRedes.length>0">Previsão Dia {{listaBase[0].previsaoRedes[0].diaNumPrevisao}}</span>
+  </div>
+  <div class="dgc-comando-correcao">
+    <span>python3 treino-rede.py</span>
+  </div>
+  <div class="dgc-comando-correcao">
+    <span>java -jar /root/aplicativos/ExecucaoTreinoRedeRecorrente.jar  (20:45 localweb-java2/23003)</span>
+  </div>
+
+
+
+  <div >
+    <div *ngFor="let item of listaBase" >
+      <app-previsao-rede-item-dia [rede]="item"></app-previsao-rede-item-dia>
+    </div>
+  </div>
+
+</div>

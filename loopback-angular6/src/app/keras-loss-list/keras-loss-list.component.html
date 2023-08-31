@@ -1,0 +1,16 @@
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+      <span>Função Perda (loss) Keras</span>
+      <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita()">novo</button>
+  </div>
+  <div>
+    <p>A função de perda em um modelo de deep learning serve para avaliar a diferença entre a saída prevista pelo modelo e o valor real dos dados de treinamento. Essa diferença é quantificada pela função de perda, que produz um valor numérico que representa o quão bem o modelo está performando em sua tarefa específica. A ideia é encontrar os valores dos pesos que minimizem a perda média em um conjunto de dados de treinamento, durante o processo de treinamento do modelo.</p>
+  </div>
+  <div *ngIf="listaBase">
+      <div class="dgc-card" *ngFor="let item of listaBase">
+          <div class="dgc-card-header">
+              <span>{{item.nome}}</span>
+          </div>
+      </div>
+  </div>
+</div>

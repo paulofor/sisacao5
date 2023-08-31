@@ -1,0 +1,248 @@
+{
+	"name": "ExperimentoPreRedeTreinada",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"nome": {
+			"type": "string"
+		},
+		"experimentoPreRedeId": {
+			"type": "number"
+		},
+		"grupoAcaoId": {
+			"type": "number"
+		},
+		"regraProjecaoId": {
+			"type": "number"
+		},
+		"geraScore": {
+			"type": "string"
+		},
+		"periodoTreinoRedeId": {
+			"type": "number"
+		},
+		"dataComResultado": {
+			"type": "date"
+		},
+		"dataComScore": {
+			"type": "date"
+		},
+		"totalResultadoPositivo": {
+			"type": "number"
+		},
+		"totalResultadoNegativo": {
+			"type": "number"
+		},
+		"totalResultadoNeutro": {
+			"type": "number"
+		},
+		"totalResultadoPositivoCtrl1": {
+			"type": "number"
+		},
+		"totalResultadoPositivoCtrl2": {
+			"type": "number"
+		},
+		"totalResultadoPositivoCtrl3": {
+			"type": "number"
+		},
+		"totalResultadoNegativoCtrl1": {
+			"type": "number"
+		},
+		"totalResultadoNegativoCtrl2": {
+			"type": "number"
+		},
+		"totalResultadoNegativoCtrl3": {
+			"type": "number"
+		},
+		"totalResultadoNeutroCtrl1": {
+			"type": "number"
+		},
+		"totalResultadoNeutroCtrl2": {
+			"type": "number"
+		},
+		"totalResultadoNeutroCtrl3": {
+			"type": "number"
+		},
+		"percentualResultadoPositivo": {
+			"type": "number"
+		},
+		"percentualResultadoNegativo": {
+			"type": "number"
+		},
+		"percentualResultadoNeutro": {
+			"type": "number"
+		},
+		"percentualPositivoCtrl1": {
+			"type": "number"
+		},
+		"percentualPositivoCtrl2": {
+			"type": "number"
+		},
+		"percentualPositivoCtrl3": {
+			"type": "number"
+		},
+		"percentualNegativoCtrl1": {
+			"type": "number"
+		},
+		"percentualNegativoCtrl2": {
+			"type": "number"
+		},
+		"percentualNegativoCtrl3": {
+			"type": "number"
+		},
+		"percentualNeutroCtrl1": {
+			"type": "number"
+		},
+		"percentualNeutroCtrl2": {
+			"type": "number"
+		},
+		"percentualNeutroCtrl3": {
+			"type": "number"
+		},
+		"posicaoCtrl": {
+			"type": "number"
+		},
+		"experimentoPreRedeId": {
+			"type": "number"
+		},
+		"grupoAcaoId": {
+			"type": "number"
+		},
+		"regraProjecaoId": {
+			"type": "number"
+		},
+		"periodoTreinoRedeId": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"experimentoPreRede": {
+			"type": "belongsTo",
+			"model": "ExperimentoPreRede",
+			"foreignKey": ""
+		},
+		"grupoAcao": {
+			"type": "belongsTo",
+			"model": "GrupoAcao",
+			"foreignKey": ""
+		},
+		"regraProjecao": {
+			"type": "belongsTo",
+			"model": "RegraProjecao",
+			"foreignKey": ""
+		},
+		"periodoTreinoRede": {
+			"type": "belongsTo",
+			"model": "PeriodoTreinoRede",
+			"foreignKey": ""
+		},
+		"experimentoPreRedeTreinadaScores": {
+			"type": "hasMany",
+			"model": "ExperimentoPreRedeTreinadaScore",
+			"foreignKey": ""
+		},
+		"experimentoPreRedeTreinadaControles": {
+			"type": "hasMany",
+			"model": "ExperimentoPreRedeTreinadaControle",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+		"ObtemProximoParaResultado": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemProximoParaResultado",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"AtualizaResultado": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/atualizaResultado",
+   					"verb": "post"
+ 				}
+ 			]
+		},
+		"CalculaResultado": {
+			"accepts": [
+				{
+					"arg": "experimentoId",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/calculaResultado",
+   					"verb": "post"
+ 				}
+ 			]
+		},
+		"CalculaResultadoControle": {
+			"accepts": [
+				{
+					"arg": "experimentoId",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/calculaResultadoControle",
+   					"verb": "post"
+ 				}
+ 			]
+		}
+	}
+}

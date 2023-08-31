@@ -1,0 +1,197 @@
+{
+	"name": "ExperimentoPreRedeTreinadaControle",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"diaNum": {
+			"type": "number"
+			,"id": true
+		},
+		"ticker": {
+			"type": "string"
+			,"id": true
+		},
+		"experimentoPreRedeTreinadaId": {
+			"type": "number"
+			,"id": true
+		},
+		"valorEntrada": {
+			"type": "number"
+		},
+		"valorSaida": {
+			"type": "number"
+		},
+		"resultado": {
+			"type": "number"
+		},
+		"diaNumEntrada": {
+			"type": "number"
+		},
+		"diaNumSaida": {
+			"type": "number"
+		},
+		"experimentoPreRedeTreinadaId": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"experimentoPreRedeTreinada": {
+			"type": "belongsTo",
+			"model": "ExperimentoPreRedeTreinada",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+		"ObtemEscolhaPorDia": {
+			"accepts": [
+				{
+					"arg": "diaNum",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "experimentoId",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemEscolhaPorDia",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"AtualizaResultadoTrade": {
+			"accepts": [
+				{
+					"arg": "resultado",
+					"type": "object",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/atualizaResultadoTrade",
+   					"verb": "post"
+ 				}
+ 			]
+		},
+		"RecebePrevisaoPreRedeTreinada": {
+			"accepts": [
+				{
+					"arg": "ticker",
+					"type": "array",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "experimentoPreRedeTreinadaId",
+					"type": "array",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "diaNum",
+					"type": "array",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/recebePrevisaoPreRedeTreinada",
+   					"verb": "post"
+ 				}
+ 			]
+		},
+		"Insere": {
+			"accepts": [
+				{
+					"arg": "controle",
+					"type": "object",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/insere",
+   					"verb": "post"
+ 				}
+ 			]
+		},
+		"ReinicializaExperimento": {
+			"accepts": [
+				{
+					"arg": "experimentoId",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/reinicializaExperimento",
+   					"verb": "post"
+ 				}
+ 			]
+		}
+	}
+}

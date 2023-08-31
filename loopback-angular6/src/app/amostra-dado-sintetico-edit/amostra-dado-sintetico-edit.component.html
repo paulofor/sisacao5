@@ -1,0 +1,66 @@
+<h2 *ngIf="item" mat-dialog-title>Amostra Dados Sintéticos</h2>
+
+<form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
+
+  <mat-dialog-content>
+    <mat-form-field class="example-full-width">
+      <input matInput #nome [(ngModel)]="item.nome" name="nome" placeholder="Nome" />
+    </mat-form-field>
+
+    <mat-form-field class="example-terco-width">
+      <input matInput #qtdeAtivo [(ngModel)]="item.qtdeAtivo" name="qtdeAtivo" placeholder="Qtde de Ativos" />
+    </mat-form-field>
+
+    <mat-form-field class="example-terco-width">
+      <input matInput #qtdeDiaColetado [(ngModel)]="item.qtdeDiaColetado" name="qtdeDiaColetado" placeholder="Qtde de Dias Coletados" />
+    </mat-form-field>
+
+    <mat-form-field class="example-terco-width">
+      <input matInput #qtdeExemplo [(ngModel)]="item.qtdeExemplo" name="qtdeExemplo" placeholder="Qtde de Exemplos (Ativos * Dias)" />
+    </mat-form-field>
+
+
+    <mat-form-field class="example-terco-width">
+      <input matInput #percentualSubida [(ngModel)]="item.percentualSubida" name="percentualSubida" placeholder="Percentual Ascendentes (0.99)" />
+    </mat-form-field>
+
+    <mat-form-field class="example-terco-width">
+      <input matInput #percentualDescida [(ngModel)]="item.percentualDescida" name="percentualDescida" placeholder="Percentual Descentendes (0.99)" />
+    </mat-form-field>
+
+    <mat-form-field class="example-terco-width">
+      <input matInput #percentualFlat [(ngModel)]="item.percentualFlat" name="percentualFlat" placeholder="Percentual Flat (0.99)" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput #magnitudeTrend [(ngModel)]="item.magnitudeTrend" name="magnitudeTrend" placeholder="Magnitude Trend" />
+    </mat-form-field>
+
+    <mat-form-field class="example-half-width">
+      <input matInput #percentualFlat [(ngModel)]="item.magnitudeContraTrend" name="magnitudeContraTrend" placeholder="Magnitude Contra Trend" />
+    </mat-form-field>
+
+    <mat-form-field class="example-half-width">
+      <input matInput #percentualFlat [(ngModel)]="item.percentualContraTrend" name="percentualContraTrend" placeholder="Percentual Contra TrendFlat (0.99)" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput #magnitudeRuido [(ngModel)]="item.magnitudeRuido" name="magnitudeRuido" placeholder="Magnitude Ruído" />
+    </mat-form-field>
+
+    <mat-form-field class="example-half-width">
+      <mat-select placeholder="Tipo Entrada" #tipoExemploTreinoId [(ngModel)]="item.tipoExemploTreinoId" name="tipoExemploTreinoId">
+        <mat-option *ngFor="let tipoExemplo of listaTipoExemplo" [value]="tipoExemplo.id">
+          {{ tipoExemplo.qtdeDias }} dias
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button>Salvar</button>
+    <button mat-raised-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+
+</form>

@@ -1,0 +1,27 @@
+{
+	"name": "CotacaoIntradayAcao",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"diaPregaoId": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"diaPregao": {
+			"type": "belongsTo",
+			"model": "DiaPregao",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+	}
+}

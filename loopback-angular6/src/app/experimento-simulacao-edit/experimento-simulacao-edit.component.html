@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>Edita Experimento</h2>
+
+<form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
+
+  <mat-dialog-content>
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="50" #codigo [(ngModel)]="item.codigo" name="codigo" placeholder="Codigo" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #siglaDescricao [(ngModel)]="item.siglaDescricao" name="siglaDescricao" placeholder="Sigla para descrição" autocomplete="off" />
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Regra" #regraSimulacaoId [(ngModel)]="item.regraSimulacaoId" name="regraSimulacaoId">
+        <mat-option *ngFor="let regra of listaRegra" [value]="regra.id">
+          {{ regra.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Grupo Ação" #grupoAcaoId [(ngModel)]="item.grupoAcaoId" name="grupoAcaoId">
+        <mat-option *ngFor="let grupoAcao of listaGrupoAcao" [value]="grupoAcao.id">
+          {{ grupoAcao.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button>Salvar</button>
+    <button mat-raised-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+
+</form>

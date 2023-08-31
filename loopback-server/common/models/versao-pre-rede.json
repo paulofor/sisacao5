@@ -1,0 +1,121 @@
+{
+	"name": "VersaoPreRede",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"numero": {
+			"type": "number"
+		},
+		"caracteristica": {
+			"type": "string"
+		},
+		"dataCriacao": {
+			"type": "date"
+		},
+		"finalizada": {
+			"type": "number"
+		},
+		"preRedeNeuralId": {
+			"type": "number"
+		},
+		"compilacao": {
+			"type": "string"
+		},
+		"estrutura": {
+			"type": "string"
+		},
+		"fitTreinamento": {
+			"type": "string"
+		},
+		"qtdeParametro": {
+			"type": "number"
+		},
+		"preRedeNeuralId": {
+			"type": "number"
+		},
+		"redeNeuralId": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"preRedeNeural": {
+			"type": "belongsTo",
+			"model": "PreRedeNeural",
+			"foreignKey": ""
+		},
+		"redeNeural": {
+			"type": "belongsTo",
+			"model": "RedeNeural",
+			"foreignKey": ""
+		},
+		"versaoPreRedeRegras": {
+			"type": "hasMany",
+			"model": "VersaoPreRedeRegra",
+			"foreignKey": ""
+		},
+		"experimentoPreRedes": {
+			"type": "hasMany",
+			"model": "ExperimentoPreRede",
+			"foreignKey": ""
+		},
+		"redeNeurals": {
+			"type": "hasMany",
+			"model": "RedeNeural",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+		"GerarRedeRegra": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/gerarRedeRegra",
+   					"verb": "post"
+ 				}
+ 			]
+		},
+		"CriaRedeNeural": {
+			"accepts": [
+				{
+					"arg": "idVersao",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/criaRedeNeural",
+   					"verb": "post"
+ 				}
+ 			]
+		}
+	}
+}

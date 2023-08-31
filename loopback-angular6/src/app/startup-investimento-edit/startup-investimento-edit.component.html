@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>Investimento</h2>
+
+<form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
+
+
+  <mat-dialog-content>
+  
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Fundo" #startupFundoId [(ngModel)]="item.startupFundoId" name="startupFundoId">
+        <mat-option *ngFor="let fundo of listaFundo" [value]="fundo.id">
+          {{ fundo.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="30" #valor [(ngModel)]="item.valor" name="valor" placeholder="Valor" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Moeda" #moeda [(ngModel)]="item.moeda" name="moeda">
+          <mat-option value="BRL">BRL</mat-option>
+          <mat-option value="USD">USD</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="30" #data [(ngModel)]="item.data" name="data" placeholder="Data" autocomplete="off" />
+    </mat-form-field>
+
+
+
+
+    <mat-form-field class="example-full-width">
+      <mat-select #tipo [(ngModel)]="item.tipo" name="tipo" placeholder="Tipo">
+        <mat-option value="Seed">Seed</mat-option>
+        <mat-option value="Series A">Series A</mat-option>
+        <mat-option value="Series B">Series B</mat-option>
+        <mat-option value="Series C">Series C</mat-option>
+        <mat-option value="Series D">Series D</mat-option>
+        <mat-option value="Series D">Series E</mat-option>
+        <mat-option value="N/A">N/A</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button>Salvar</button>
+    <button mat-raised-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+
+</form>

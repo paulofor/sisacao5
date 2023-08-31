@@ -1,0 +1,26 @@
+<h2 *ngIf="item" mat-dialog-title>Parcela</h2>
+
+<form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
+
+
+  <mat-dialog-content>
+   
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="20" #precoEntrada [(ngModel)]="item.valorRecebido" name="valorRecebido" placeholder="Preço Pago (formato: 9.99)" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="dataRecebimento" placeholder="Data" [(ngModel)]="item.dataRecebimento" [ngModelOptions]="{standalone: true}">
+      <mat-datepicker-toggle matSuffix [for]="dataRecebimento"></mat-datepicker-toggle>
+      <mat-datepicker #dataRecebimento></mat-datepicker>
+    </mat-form-field>
+
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button>Salvar</button>
+    <button mat-raised-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+
+</form>

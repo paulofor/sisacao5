@@ -1,0 +1,10 @@
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+    <span>Melhores Execuções</span>  
+  </div>
+  <div class="dgc-painel-principal" *ngIf="listaMelhores">
+    <div class="dgc-card" *ngFor="let item of listaMelhores" >
+      <app-execucao-simulacao-display [item]="item"></app-execucao-simulacao-display>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+<div class="dgc-painel" *ngIf="itemValidacao && regra">
+
+  <div class="dgc-painel-header">
+    <span>Exemplo Treino Saída - Validação</span>
+    <span *ngIf="processando"><img src="assets/img/aguardando.gif" width="200" height="60"></span>
+    <button class="btn btn-primary btn-sm dgc-direita" (click)="validar()">Validar</button>
+  </div>
+
+  <div class="dgc-painel-principal">
+
+    <div class="dgc-card">
+      <div class="dgc-card-header">
+        <span>Exemplo Treino Saída</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <span>{{itemValidacao.ticker}} ({{itemValidacao.diaNumPrevisao}})</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <span>Regra: {{regra.codigoRegraProjecao}} (#{{itemValidacao.regraProjecaoId}})</span>
+      </div>
+
+      <div class="dgc-card-detalhe">
+        <span>Valor Entrada: {{itemValidacao.valorEntrada | currency : 'BRL'}}</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <span>Y: {{itemValidacao.campoY}} (Resultado: {{itemValidacao.resultado}})</span>
+      </div>
+      <div class="dgc-card-detalhe" *ngIf="itemValidacao.valorSaida">
+        <span>Saída: {{itemValidacao.valorSaida | currency : 'BRL'}} ({{itemValidacao.diaNumSaida}}) {{lucroPrejuizo() |
+          number : '1.1-1'}} %</span>
+      </div>
+    </div>
+
+
+
+    <div class="dgc-card" *ngIf="cotacaoIntradayAnterior">
+      <div class="dgc-card-header">
+        <span>Cotação Intraday Anterior</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <span>{{cotacaoIntradayAnterior[0].ticker}} ({{cotacaoIntradayAnterior[0].diaNum}})</span>
+      </div>
+      <div class="dgc-card-detalhe" *ngIf="(regra.tipoCompraVenda=='V')">
+        <span>{{cotacaoIntradayAnterior[0].hora}} : {{cotacaoIntradayAnterior[0].valor | currency : 'BRL'}} +
+          {{regra.percentualEntradaDataset * 100}}%</span>
+        <span> = {{precoEntradaVenda() | currency : 'BRL'}}</span>
+      </div>
+      <div class="dgc-card-detalhe" *ngIf="(regra.tipoCompraVenda=='C')">
+        <span>{{cotacaoIntradayAnterior[0].hora}} : {{cotacaoIntradayAnterior[0].valor | currency : 'BRL'}} -
+          {{regra.percentualEntradaDataset * 100}}%</span>
+        <span> = {{precoEntradaCompra() | currency : 'BRL'}}</span>
+      </div>
+    </div>
+
+    <div class="dgc-card" *ngIf="cotacaoDiario">
+      <div class="dgc-card-header">
+        <span>Cotação Diário</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <span>{{cotacaoDiario.ticker}} ({{cotacaoDiario.diaNum}})</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <span>Range: {{cotacaoDiario.minimo | currency : 'BRL'}} </span>
+        <span class="{{classeEntrada()}}">{{itemValidacao.valorEntrada | currency : 'BRL'}} </span>
+        <span>{{cotacaoDiario.maximo | currency : 'BRL'}}</span>
+      </div>
+    </div>
+
+    <div class="dgc-card" *ngIf="listaDiarioSaida">
+      <div class="dgc-card-header">
+        <span>Cotação Diário</span>
+      </div>
+      <div *ngFor="let item of listaDiarioSaida" class="dgc-card-detalhe">
+        <span>{{item.diaNum}}: {{item.minimo | currency : 'BRL'}} </span>
+        <span class="{{classeSaida(item, itemValidacao.saidaTarget)}}">t: {{itemValidacao.saidaTarget | currency : 'BRL'}} </span>
+        <span class="{{classeSaida(item, itemValidacao.saidaStop)}}">s: {{itemValidacao.saidaStop | currency : 'BRL'}} </span>
+        <span>{{item.maximo | currency : 'BRL'}}</span>
+        <span>  (abe: {{item.abertura | currency : 'BRL'}})</span>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+</div>

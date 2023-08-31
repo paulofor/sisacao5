@@ -1,0 +1,80 @@
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+      <span>Trades</span>
+      <div class="dgc-direita">
+        <span class="{{vermelhoAzul(financeiroTotal)}}">{{financeiroTotal | currency: 'BRL' }}</span>
+        <button class="btn btn-primary btn-sm dgc-botao-comando" (click)="editaSaldoFixo()">Saldo Fixo</button>
+      </div>
+
+  </div>
+  <div *ngIf="listaBase" class="dgc-painel-principal">
+      <div class="dgc-card" *ngFor="let item of listaBase">
+          <div class="dgc-card-header">
+              <span>{{item.ticker}}</span>
+          </div>
+          <div class="dgc-card-detalhe">
+              <div>Entrada ({{item.dataEntrada | date : 'dd-MM-yyyy' : 'UTC'}})</div>
+              <div>R$: {{item.precoEntrada | number : '1.2-2'}} * {{item.quantidade}} = R$ {{item.valorEntrada | number: '1.2-2'}}</div>
+              <div>Retirada: R$ {{item.custoEntrada | number : '1.2-2' }} (-R$ {{(item.custoEntrada - item.valorEntrada) | number: '1.2-2'}})</div>
+          </div>
+          <div *ngIf="(item.posicaoAtual==1)">
+                <div>
+                    <span>{{item.dias}} dias</span>
+                </div>
+                <div>
+                    <span class="dgc-titulo">Atual</span>
+                      <span class="dgc-destaque dgc-link dgc-valor" routerLink="/cotacaoIntraAcao/{{item.ticker}}">
+                        :  R$ {{item.precoAtual | number: '1.2-2'}} (F: {{item.precoAtualF | number: '1.2-2'}}) 
+                      </span>
+                      <span class="">
+                        {{item.dataHora  | date : 'HH:mm - dd/MM' : 'UTC'}}
+                      </span>
+                </div>
+                <div>
+                    <span class="dgc-titulo">&nbsp;</span>
+                    <span class="dgc-valor {{vermelhoAzul(item.financeiro)}}"><b>{{item.financeiro | currency: 'BRL'}}  ({{item.percentual | number: '1.1-1'}}%)</b></span>
+                </div>
+                <div>
+                    <span class="dgc-titulo"></span>
+                    <span class="dgc-valor"></span>
+                </div>
+                <div>
+                    <span class="dgc-titulo">Stop</span>
+                    <span class="dgc-valor {{verificaMarcaTexto(item.precoStop,item.precoAtual)}}">:  R$ {{item.precoStop | number: '1.2-2'}} ({{percentual(item.precoStop,item.precoAtual)}}%)</span>
+                </div>
+                <div>
+                    <span class="dgc-titulo">Target</span>
+                    <span class="dgc-valor {{verificaMarcaTexto(item.precoTarget,item.precoAtual)}}">:  R$ {{item.precoTarget | number: '1.2-2'}} ({{percentual(item.precoTarget,item.precoAtual)}}%)</span>
+                </div>
+                <div>
+                    <span class="dgc-titulo">Exposição</span>
+                    <span class="dgc-valor">:  R$ {{item.valorExposicao | number: '1.2-2'}}</span>
+                </div>
+                <div>
+                    <span class="dgc-titulo">Alvo</span>
+                    <span class="dgc-valor">:  R$ {{item.lucroAlvo | number: '1.2-2'}}</span>
+                </div>
+                <div class="dgc-card-detalhe">
+                    <span>1:({{item.ativoAcao.min1Mes | number: '1.2-2'}} - {{item.ativoAcao.max1Mes | number: '1.2-2'}})&nbsp;&nbsp;&nbsp;</span>
+                    <span>3:({{item.ativoAcao.min3Mes | number: '1.2-2'}} - {{item.ativoAcao.max3Mes | number: '1.2-2'}})</span>
+                </div>
+          </div>
+          <div *ngIf="(item.posicaoAtual==0)">
+            <div class="dgc-card-detalhe">
+                <div>Saída ({{item.dataSaida | date : 'dd-MM-yyyy' : 'UTC'}})   {{item.dias}} dias</div>
+                <div>R$: {{item.precoSaida | number : '1.2-2'}} ({{item.percentual | number: '1.1-1' }}%)</div>
+                <div>Depósito: R$ {{item.custoSaida | number : '1.2-2' }} (-R$ {{(item.valorSaida - item.custoSaida) | number: '1.2-2'}})</div>
+            </div>
+            <div class="dgc-card-detalhe">
+                <div>Custo da operação: R$ {{ item.custoTotal | number: '1.2-2' }}</div>
+                <div><b>Lucro/Prejuizo: R$ {{item.lucroPrejuizo | number: '1.2-2'}}</b></div>
+            </div>
+          </div>
+
+          <div class="dgc-card-comandos">
+              <button class="btn-primary btn-sm btn" (click)="calcular(item)">Calcular</button>
+              <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar</button>
+          </div>
+      </div>
+  </div>
+</div>

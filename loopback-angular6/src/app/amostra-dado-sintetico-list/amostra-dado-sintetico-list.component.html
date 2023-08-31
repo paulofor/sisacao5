@@ -1,0 +1,46 @@
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+      <span>Amostra Dados Sinteticos</span>
+      <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita()">novo</button>
+  </div>
+  <div *ngIf="listaBase" class="dgc-painel-principal">
+      <div class="dgc-card" *ngFor="let item of listaBase">
+        <div class="dgc-card-header">
+          <span>Qtde Dias: {{item.qtdeDias}},  Entradas: {{item.tamanhoEntrada}}</span>
+        </div>
+
+        <div class="dgc-card-detalhe">
+          <div class="dgc-card" *ngFor="let amostra of item.amostraDadoSinteticos">
+            <div class="dgc-card-header">
+              <span class="dgc-link" routerLink="/amostraDadoSinteticoDetalhe/{{amostra.id}}">{{amostra.nome}}</span>
+            </div>
+            <div class="dgc-card-detalhe">
+              <span>Exemplos: {{amostra.qtdeExemplo}} = {{amostra.qtdeAtivo}} (ativos) x {{amostra.qtdeDiaColetado}} (dias coletedos) </span>
+            </div>
+            <div class="dgc-card-detalhe">
+              <span>Distribuição: subida:{{amostra.percentualSubida * 100}}%, descida:{{amostra.percentualDescida*100}}%, flat:{{amostra.percentualFlat*100}}%</span>
+            </div>
+            <div class="dgc-card-detalhe">
+              <span>Trend: {{amostra.magnitudeTrend | currency : 'BRL'}}</span>
+            </div>
+            <div class="dgc-card-detalhe">
+              <span>Contra-Trend: {{amostra.magnitudeTrend | currency : 'BRL'}} em {{amostra.percentualContraTrend * 100}}%</span>
+            </div>
+
+            <div class="dgc-card-detalhe">
+              <span>Ruído:  {{amostra.magnitudeRuido | currency : 'BRL'}}</span>    
+            </div>
+
+
+            <div class="dgc-card-comandos" >
+              <button class="btn-primary btn-sm btn" (click)="edita(amostra)">Editar</button>
+            </div>
+          </div>
+ 
+        </div>
+
+      </div>
+
+  </div>
+</div>
+

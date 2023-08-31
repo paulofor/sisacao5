@@ -1,0 +1,27 @@
+{
+	"name": "TreinoGrupoRede",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"periodoTreinoRedeId": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"periodoTreinoRede": {
+			"type": "belongsTo",
+			"model": "PeriodoTreinoRede",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+	}
+}

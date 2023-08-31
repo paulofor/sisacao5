@@ -1,0 +1,24 @@
+{
+	"name": "InstituicaoFinanceira",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+	},
+	"validations": [],
+	"relations": {
+		"aplicacaoInstituicaos": {
+			"type": "hasMany",
+			"model": "AplicacaoInstituicao",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+	}
+}

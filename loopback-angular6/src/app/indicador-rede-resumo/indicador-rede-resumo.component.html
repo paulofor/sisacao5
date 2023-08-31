@@ -1,0 +1,34 @@
+<div class="main-content" *ngIf="listaBase">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Performance Rede Ação</h4>
+          </div>
+          <div class="content table-responsive table-full-width">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th width="10%">Período</th>
+                  <th width="10%">Redes Treinadas</th>
+                  <th width="10%">Target Stop Concluídos</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listaBase">
+                  <td>{{item.diaNumReferencia}}</td>
+                  <td>{{item.qtdeTreinoRede}}</td>
+                  <td>{{item.qtdeSaidaTargetStop}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+

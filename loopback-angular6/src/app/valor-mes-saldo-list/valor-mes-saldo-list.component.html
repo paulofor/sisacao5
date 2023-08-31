@@ -1,0 +1,32 @@
+<div class="dgc-painel-60" >
+  <div class="dgc-painel-header">
+      <span>Valores para {{dataReferencia()}}</span>
+      <span class="dgc-direita">{{total | currency:'BRL':true}}</span>
+      <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita()">novo</button>
+  </div>
+  <div *ngIf="listaBase">
+      <div class="dgc-card" *ngFor="let item of listaBase">
+          <div class="dgc-card-header">
+              <span>{{item.nome}}</span>
+              <span class="dgc-direita">{{item.total | currency:'BRL':true}}</span>
+          </div>
+          
+          <div class="dgc-card-detalhe">
+            <table>
+              <tr *ngFor="let saldo of item.valorMesInstituicaoTipos">
+                <td width="10%">{{saldo.tipoAplicacao.nome}}</td>
+                <td width="20%">{{saldo.valor | currency:'BRL':true}}</td>
+                <td width="15%"><a (click)="edita(saldo)">alterar</a></td>
+              </tr>
+            </table>
+    
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="dgc-painel-40" >
+  <app-grafico-alocacao></app-grafico-alocacao>
+<br>
+  <app-grafico-alocacao-aporte></app-grafico-alocacao-aporte>
+</div>

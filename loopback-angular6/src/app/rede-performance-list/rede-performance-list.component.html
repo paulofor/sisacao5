@@ -1,0 +1,32 @@
+<div class="dgc-painel" *ngIf="listaBase">
+  <div class="dgc-painel-header">
+      <span>Redes Neurais ({{listaBase.length}})</span>
+      <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita()">novo</button>
+  </div>
+  <div class="dgc-painel-principal">
+      <div class="dgc-card" *ngFor="let item of listaBase">
+          <div class="dgc-card-header">
+            <span>{{item.nome}}  </span>
+            <span>(#{{item.id}})</span>
+          </div>
+          <div class="dgc-card-detalhe">
+            <div>Estagio: {{item.estagio}}</div>
+          </div>
+          <div class="dgc-card-detalhe">
+            <div>Objetivo: {{item.objetivo}}</div>
+          </div>
+
+          <div class="dgc-card-detalhe">
+            <div>Entradas</div>
+            <div>
+              {{item.entrada1}} <span *ngIf="item.tipoExemploTreino1">({{item.tipoExemploTreino1.qtdeDias}} dias)</span>/ 
+              {{item.entrada2}} <span *ngIf="item.tipoExemploTreino2">({{item.tipoExemploTreino2.qtdeDias}} dias)</span>
+            </div>
+          </div>
+          <div  class="dgc-card-comandos">
+              <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar</button>
+          </div>
+      </div>
+  </div>
+</div>
+

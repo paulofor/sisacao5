@@ -1,0 +1,73 @@
+{
+	"name": "VersaoPreRedeRegra",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"versaoPreRedeId": {
+			"type": "number"
+		},
+		"regraProjecaoId": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"versaoPreRede": {
+			"type": "belongsTo",
+			"model": "VersaoPreRede",
+			"foreignKey": ""
+		},
+		"regraProjecao": {
+			"type": "belongsTo",
+			"model": "RegraProjecao",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+		"ListaParaTreino": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/listaParaTreino",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ListaParaTreinoDadoSintetico": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/listaParaTreinoDadoSintetico",
+   					"verb": "get"
+ 				}
+ 			]
+		}
+	}
+}

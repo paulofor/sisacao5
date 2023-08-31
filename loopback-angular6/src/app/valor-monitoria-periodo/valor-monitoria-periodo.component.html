@@ -1,0 +1,84 @@
+<div class="dgc-painel" *ngIf="periodo">
+  <div class="dgc-painel-header">
+    <span>Monitoradas - {{periodo.quantidadeMes | number: '1.0-0'}}M</span> 
+    <span  class="dgc-direita">Exposição: {{ totalExposicao | number : '1.2-2'}} ({{ exposicaoTrade | number: '1.2-2'}})</span> 
+  </div>
+  <div class="dgc-painel-principal" *ngIf="listaBase && periodo">
+    <div class="dgc-card" *ngFor="let item of listaBase" >
+      <div class="dgc-card-header">
+        <span  class="dgc-link" (click)=trades(item)>{{item.ticker}}</span>
+        <span class="dgc-direita">{{item.quantidadeLucro}} x {{item.quantidadePrejuizo}}</span>
+      </div>
+      <div class="dgc-card-detalhe {{(posicaoAtual(item)==0?verificaMarcaTexto(-1*percPrecoAtual(item.precoEntrada,item)):'')}}">
+        <span>Entrada: {{item.precoEntrada | number: '1.2-2'}} ({{item.dataNumEntrada}}) </span> 
+        <span class="dgc-disponivel" *ngIf="(item.valorMonitorias.length>1) && item.valorMonitorias[1].posicao==0">
+          ({{percPrecoAtual(item.precoEntrada,item)}}%)
+        </span>
+        <span *ngIf="!((item.valorMonitorias.length>1) && item.valorMonitorias[1].posicao==0)">
+          <!--({{percPrecoAtual(item.precoEntrada,item)}}%)-->
+        </span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <span class="{{classeTargetCompra(item)}}">+ {{valorSaidaLucro(item)  | number: '1.2-2'}} ({{pontoSaidaLucro(item)  | number: '1.2-2'}})</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <span class="{{classeStopCompra(item)}}">- {{valorSaidaPrejuizo(item)  | number: '1.2-2'}} ({{pontoSaidaPrejuizo(item)  | number: '1.2-2'}})</span>
+      </div>      
+      <div class="dgc-card-detalhe">
+        <span>t: {{item.target}}  s: {{item.stop}}</span>
+      </div>
+
+      <div class="dgc-card-detalhe">
+        <span class="dgc-destaque dgc-link {{classePreco(item)}}" routerLink="/cotacaoIntraAcao/{{item.ticker}}">
+          $: {{item.precoAtual | number: '1.2-2'}} (F: {{item.precoAtualF | number: '1.2-2'}}) 
+        </span>
+        <span class="">
+          {{item.dataHora  | date : 'HH:mm - dd/MM' : 'UTC'}}
+        </span>
+      </div>
+
+      <div class="dgc-card-detalhe" *ngIf="(item.valorMonitorias.length>1) && item.valorMonitorias[1].posicao!=0">
+        <span *ngIf="(percPrecoAtual(item.valorMonitorias[1].pontoEntrada , item) >=0 )" class="dgc-disponivel">
+          {{item.valorMonitorias[1].pontoEntrada | number: '1.2-2'}} 
+          ({{-1* percPrecoAtual(item.valorMonitorias[1].pontoEntrada ,item) | number: '1.1-1'}})
+          ({{item.valorMonitorias[1].quantidadeDiaTrade}}d)
+        </span>
+        <span *ngIf="(percPrecoAtual(item.valorMonitorias[1].pontoEntrada, item) < 0 )" >
+          {{item.valorMonitorias[1].pontoEntrada | number: '1.2-2'}} 
+          ({{-1* percPrecoAtual(item.valorMonitorias[1].pontoEntrada ,item) | number: '1.1-1'}})
+          ({{item.valorMonitorias[1].quantidadeDiaTrade}}d)
+        </span>
+        <span>--><br/> </span>
+        <span class="{{classeStop(item)}}"> {{item.valorMonitorias[1].valorStop | number: '1.2-2'}} ({{percStop(item) | number: '1.1-1'}}%)</span>
+        <span class="{{classeTarget(item)}}"> {{item.valorMonitorias[1].valorTarget | number: '1.2-2'}} ({{percTarget(item) | number: '1.1-1'}}%)</span>
+      </div>
+      <div class="dgc-card-detalhe" *ngIf="(item.valorMonitorias.length>1) && item.valorMonitorias[1].posicao==0">
+        <span class="dgc-disponivel">fora<br/>&nbsp;</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <span>Médio: {{item.mediaDiaTrade | number: '1.1-1'}}d  Máximo: {{item.maximoDiaTrade | number: '1.0-0'}}d</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <span>1:({{item.ativoAcao.min1Mes | number: '1.2-2'}} - {{item.ativoAcao.max1Mes | number: '1.2-2'}})&nbsp;&nbsp;&nbsp;</span>
+        <span>3:({{item.ativoAcao.min3Mes | number: '1.2-2'}} - {{item.ativoAcao.max3Mes | number: '1.2-2'}})</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <span>Pontos: {{item.resultado}}</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <span>{{item.regraSimulacao.nomeClasse}}</span>
+      </div>
+
+      <div class="dgc-card-comandos">
+        <button class="btn btn-primary btn-sm dgc-botao-comando" (click)="telaCompra(item)">Trade({{item.qtdeTrade}})</button>
+        <button class="btn btn-primary btn-sm dgc-botao-comando" (click)="telaOrdem(item)">Ordem({{item.qtdeOrdem}})</button>
+        <button class="btn btn-primary btn-sm dgc-botao-comando" routerLink="/valorMonitoriaExecucao/{{item.id}}">
+          <span *ngIf="item.valorMonitorias.length>1">
+            ({{item.valorMonitorias[1].contaTradeLucro}} x {{item.valorMonitorias[1].contaTradePrejuizo}})
+          </span>
+        </button>
+     </div> 
+    </div>
+  </div>
+</div>
+

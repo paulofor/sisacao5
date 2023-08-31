@@ -1,0 +1,10 @@
+.dgc-card {
+    width: 22%;
+}
+.dgc-label {
+    display: inline-block;
+    width: 80px;
+}
+.dgc-card-detalhe {
+    display:block
+}

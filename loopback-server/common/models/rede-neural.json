@@ -1,0 +1,81 @@
+{
+	"name": "RedeNeural",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"estrutura": {
+			"type": "string"
+		},
+		"compilacao": {
+			"type": "string"
+		},
+		"fitTreinamento": {
+			"type": "string"
+		},
+		"nome": {
+			"type": "string"
+		},
+		"entrada1": {
+			"type": "number"
+		},
+		"enttrada2": {
+			"type": "number"
+		},
+		"qtdeTradeReal": {
+			"type": "number"
+		},
+		"resultadoTradeReal": {
+			"type": "number"
+		},
+		"comIbovespa": {
+			"type": "number"
+		},
+		"estagio": {
+			"type": "string"
+		},
+		"objetivo": {
+			"type": "string"
+		},
+		"tipoExemploTreino1Id": {
+			"type": "number"
+		},
+		"tipoExemploTreino2Id": {
+			"type": "number"
+		},
+		"versaoPreRedeId": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"tipoExemploTreino1": {
+			"type": "belongsTo",
+			"model": "TipoExemploTreino",
+			"foreignKey": ""
+		},
+		"tipoExemploTreino2": {
+			"type": "belongsTo",
+			"model": "TipoExemploTreino",
+			"foreignKey": ""
+		},
+		"versaoPreRede": {
+			"type": "belongsTo",
+			"model": "VersaoPreRede",
+			"foreignKey": ""
+		},
+		"versaoPreRedes": {
+			"type": "hasMany",
+			"model": "VersaoPreRede",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+	}
+}

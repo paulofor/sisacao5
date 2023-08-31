@@ -1,0 +1,145 @@
+{
+	"name": "ExperimentoPreRede",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"nome": {
+			"type": "string"
+		},
+		"versaoPreRedeId": {
+			"type": "number"
+		},
+		"amostraDadoSinteticoEntrada1Id": {
+			"type": "number"
+		},
+		"nomeArquivoRede": {
+			"type": "string"
+		},
+		"mediaTotal": {
+			"type": "number"
+		},
+		"mediaResultadoPositivo": {
+			"type": "number"
+		},
+		"mediaResultadoNegativo": {
+			"type": "number"
+		},
+		"mediaResultadoNeutro": {
+			"type": "number"
+		},
+		"mediaY1": {
+			"type": "number"
+		},
+		"mediaY0": {
+			"type": "number"
+		},
+		"qtdeY1": {
+			"type": "number"
+		},
+		"qtdeY0": {
+			"type": "number"
+		},
+		"desvioTotal": {
+			"type": "number"
+		},
+		"desvioY1": {
+			"type": "number"
+		},
+		"desvioY0": {
+			"type": "number"
+		},
+		"desvioResultadoPositivo": {
+			"type": "number"
+		},
+		"desvioResultadoNeutro": {
+			"type": "number"
+		},
+		"desvioResultadoNegativo": {
+			"type": "number"
+		},
+		"mediaResultadoPositivoCtrl1": {
+			"type": "number"
+		},
+		"mediaResultadoPositivoCtrl2": {
+			"type": "number"
+		},
+		"mediaResultadoPositivoCtrl3": {
+			"type": "number"
+		},
+		"mediaResultadoNeutroCtrl1": {
+			"type": "number"
+		},
+		"mediaResultadoNeutroCtrl2": {
+			"type": "number"
+		},
+		"mediaResultadoNeutroCtrl3": {
+			"type": "number"
+		},
+		"mediaResultadoNegativoCtrl1": {
+			"type": "number"
+		},
+		"mediaResultadoNegativoCtrl2": {
+			"type": "number"
+		},
+		"mediaResultadoNegativoCtrl3": {
+			"type": "number"
+		},
+		"amostraDadoSinteticoEntrada2Id": {
+			"type": "number"
+		},
+		"versaoPreRedeId": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"versaoPreRede": {
+			"type": "belongsTo",
+			"model": "VersaoPreRede",
+			"foreignKey": ""
+		},
+		"amostraDadoSinteticoEntrada1": {
+			"type": "belongsTo",
+			"model": "AmostraDadoSintetico",
+			"foreignKey": "amostraDadoSinteticoEntrada1Id"
+		},
+		"amostraDadoSinteticoEntrada2": {
+			"type": "belongsTo",
+			"model": "AmostraDadoSintetico",
+			"foreignKey": "amostraDadoSinteticoEntrada2Id"
+		},
+		"experimentoPreRedeTreinadas": {
+			"type": "hasMany",
+			"model": "ExperimentoPreRedeTreinada",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+		"ListaExperimentoParaTreino": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/listaExperimentoParaTreino",
+   					"verb": "get"
+ 				}
+ 			]
+		}
+	}
+}

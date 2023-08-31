@@ -1,0 +1,28 @@
+
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+      <span>{{execucao.ticker}} - t:{{execucao.target}} s:{{execucao.stop}}</span>
+      <span class="dgc-minimo">{{execucao.id}}</span>
+      <button mat-dialog-close class="dgc-direita btn btn-primary btn-sm">Fechar</button>
+  </div>
+  <div *ngIf="listaTrade" class="dgc-painel-principal">
+      <div class="dgc-card" *ngFor="let item of listaTrade">
+          <div class="dgc-card-detaalhe">
+              <span class="dgc-link" 
+              routerLink="/acaoDetalheDia/{{execucao.ticker}}/{{item.dataEntradaNum}}">
+              Entrada: {{item.precoEntrada  | number : '1.2-2'}} ({{item.dataHoraEntrada | date : 'dd/MM/yyyy HH:mm' : 'UTC'}})
+              </span>
+          </div>
+          <div>
+            <span class="dgc-link" 
+            routerLink="/acaoDetalheDia/{{execucao.ticker}}/{{item.dataSaidaNum}}">
+                Saida: {{item.precoSaida  | number : '1.2-2'}} ({{item.dataHoraSaida | date : 'dd/MM/yyyy HH:mm' : 'UTC'}})
+            </span>
+          </div>
+          <div>
+              <span>Dias: {{item.quantidadeDia}} - 
+                  Retorno: {{((item.precoSaida - item.precoEntrada)/item.precoEntrada * 100)  | number : '1.1-1'}}% ({{item.percentual | number: '1.1-1'}})</span>
+          </div>
+      </div>
+  </div>
+</div>

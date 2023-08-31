@@ -1,0 +1,119 @@
+<div class="dgc-painel" *ngIf="principal">
+  <div class="dgc-painel-header">
+      <span>{{principal.nome}} - Versões</span>
+      <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita(principal)">novo</button>
+  </div>
+  <div class="dgc-painel-detalhe">
+    <span>{{principal.conceito}}</span>
+  </div>
+  <div *ngIf="principal.tipoExemploTreino1" class="dgc-painel-detalhe">
+    <span>Entrada1: {{principal.tipoExemploTreino1.tamanhoEntrada}} pontos</span>
+  </div>
+  <div *ngIf="principal.tipoExemploTreino2" class="dgc-painel-detalhe">
+    <span>Entrada2: {{principal.tipoExemploTreino2.tamanhoEntrada}} pontos</span>
+  </div>
+  <div *ngIf="listaBase" class="dgc-painel-principal">
+      <div class="dgc-card" *ngFor="let item of principal.versaoPreRedes">
+        <div class="dgc-card-header">
+          <span class="dgc-link" routerLink="/versaoPreRedeDetalhe/{{item.id}}">Versão {{item.numero}}</span>
+          <button *ngIf="!item.redeNeuralId" class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="criaRede(item.id)">Cria Rede</button>
+        </div>
+        <div class="dgc-card-detalhe">
+          <span>Estrutura</span>
+          <pre>{{item.estrutura}}</pre>
+        </div>
+        <div class="dgc-card-detalhe">
+          <span>Compilação</span>
+          <pre>{{item.compilacao}}</pre>
+        </div>
+        <div class="dgc-card-detalhe">
+          <span>Fit Treino</span>
+          <pre>{{item.fitTreinamento}}</pre>
+        </div>
+        <div class="dgc-card-detalhe">
+          <span>Qtde VersaoRegra:</span>
+          <span>{{item.versaoPreRedeRegras.length}}</span>
+        </div>
+
+        <div class="dgc-card-header">
+          Experimentos:
+        </div>
+        <div *ngIf="item.experimentoPreRedes" class="dgc-painel-principal">
+          <div class="dgc-card card2" *ngFor="let experimento of item.experimentoPreRedes">
+            <div class="dgc-card-header">
+              {{experimento.amostraDadoSintetico.nome}}
+            </div>
+            <div class="dgc-card-detalhe">
+              Total exemplos: {{experimento.qtdeY0 + experimento.qtdeY1}}
+            </div>
+            <div class="dgc-card-detalhe">
+              Y1: {{ (experimento.qtdeY1) / (experimento.qtdeY0 + experimento.qtdeY1) * 100 }}%
+              &mu;: {{experimento.mediaY1 | number : '1.2-2'}}  &sigma;: {{experimento.desvioY1 | number : '1.2-2'}}
+            </div>
+            <div class="dgc-card-detalhe">
+              Y0: {{ (experimento.qtdeY0) / (experimento.qtdeY0 + experimento.qtdeY1) * 100 }}%
+              &mu;: {{experimento.mediaY0 | number : '1.2-2'}}  &sigma;: {{experimento.desvioY0 | number : '1.2-2'}}
+            </div>
+            <div class="dgc-card-detalhe">
+              Resultado 1: 
+              &mu;: {{experimento.mediaResultadoPositivo | number : '1.2-2'}}  &sigma;: {{experimento.desvioResultadoPositivo | number : '1.2-2'}}
+            </div>
+            <div class="dgc-card-detalhe">
+              Resultado 0:
+              &mu;: {{experimento.mediaResultadoNeutro | number : '1.2-2'}}  &sigma;: {{experimento.desvioResultadoNeutro | number : '1.2-2'}}
+            </div>
+            <div class="dgc-card-detalhe">
+              Resultado -1: 
+              &mu;: {{experimento.mediaResultadoNegativo | number : '1.2-2'}}  &sigma;: {{experimento.desvioResultadoNegativo | number : '1.2-2'}}
+            </div>
+            <div class="dgc-card-header">
+              Treinadas:
+            </div>
+            <div *ngFor="let treinada of experimento.experimentoPreRedeTreinadas">
+              <div class="dgc-card-detalhe">
+                <span *ngIf="treinada.grupoAcao">{{treinada.grupoAcao.nome}}</span> - 
+                <span *ngIf="treinada.regraProjecao">{{treinada.regraProjecao.codigoRegraProjecao}}</span> - 
+                <span *ngIf="treinada.periodoTreinoRede">{{treinada.periodoTreinoRede.diaNumInicioTeste}} até {{treinada.periodoTreinoRede.diaNumFinalTeste}}</span>
+                <div class="dgc-direita">
+                  <button class="btn-primary btn-sm btn" (click)="editaRedeTreinada(treinada)">Edita</button>
+                </div>
+              </div>
+              <div class="dgc-card-detalhe">
+                Sistema  -  
+                Positivo: {{treinada.percentualResultadoPositivo | number: '1.2-2'}}% |
+                Negativo: {{treinada.percentualResultadoNegativo | number: '1.2-2'}}% |
+                Neutro: {{treinada.percentualResultadoNeutro | number: '1.2-2'}}%
+              </div>
+              <div class="dgc-card-detalhe">
+                Ctrl1 - 
+                Positivo: {{treinada.percentualPositivoCtrl1 | number: '1.2-2'}}% |
+                Negativo: {{treinada.percentualNegativoCtrl1 | number: '1.2-2'}}% |
+                Neutro: {{treinada.percentualNeutroCtrl1 | number: '1.2-2'}}%
+              </div>
+              <div class="dgc-card-detalhe">
+                Ctrl2 -
+                Positivo: {{treinada.percentualPositivoCtrl2 | number: '1.2-2'}}% |
+                Negativo: {{treinada.percentualNegativoCtrl2 | number: '1.2-2'}}% |
+                Neutro: {{treinada.percentualNeutroCtrl2 | number: '1.2-2'}}%
+              </div>
+              <div class="dgc-card-detalhe">
+                Ctrl3 - 
+                Positivo: {{treinada.percentualPositivoCtrl3 | number: '1.2-2'}}% |
+                Negativo: {{treinada.percentualNegativoCtrl3 | number: '1.2-2'}}% |
+                Neutro: {{treinada.percentualNeutroCtrl3 | number: '1.2-2'}}%
+              </div>
+            </div>
+            <div  class="dgc-card-comandos">
+              <button class="btn-primary btn-sm btn" (click)="criaExperimentoRedeTreinada(experimento)">Cria Experimento Rede Treinada</button>
+            </div>
+          </div>
+        </div>
+
+        <div  class="dgc-card-comandos">
+          <button class="btn-primary btn-sm btn" (click)="criaExperimento(item)">Cria Experimento</button>
+          <button class="btn-primary btn-sm btn" (click)="geraVersaoRegra(item)">Gerar VersaoRegra</button>
+          <button class="btn-primary btn-sm btn" (click)="edita(principal,item)">Editar</button>
+        </div>
+      </div>
+  </div>
+</div>

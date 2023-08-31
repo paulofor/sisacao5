@@ -1,0 +1,42 @@
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+      <span>Períodos Experimento</span>
+      <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita()">novo</button>
+  </div>
+  <div *ngIf="listaBase" class="dgc-painel-principal">
+      <div class="dgc-card" *ngFor="let item of listaBase">
+        <div class="dgc-card-header">
+          <span>{{item.nome}}</span>
+          <span class="dgc-direita">#{{item.id}}</span>
+        </div>
+          <div class="dgc-card-detalhe">
+            <span>Treino: </span>
+            <span>{{item.diaNumInicioTreino}} - {{item.diaNumFinalTreino}}</span>
+          </div>
+          <div class="dgc-card-detalhe">
+            <span>Validação: </span>
+            <span>{{item.diaNumInicioValidacao}} - {{item.diaNumFinalValidacao}}</span>
+          </div>
+          <div class="dgc-card-detalhe">
+            <span>Teste: </span>
+            <span>{{item.diaNumInicioTeste}} - {{item.diaNumFinalTeste}}</span>
+          </div>
+          <div class="dgc-card-detalhe">
+            <span>Execução: </span>
+            <span>{{item.diaNumInicioExecucao}} - {{item.diaNumFinalExecucao}}</span>
+          </div>
+          <div class="dgc-card-detalhe">
+            Trades:
+          </div>
+          <div class="dgc-card-detalhe">
+            Min: {{item.minimoTradeTeste}} Max:{{item.maximoTradeTeste}}
+          </div>
+          <div class="dgc-card-detalhe">
+            Simultaneo: {{item.simultaneoTradeTeste}}
+          </div>
+          <div  class="dgc-card-comandos">
+              <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar</button>
+          </div>
+      </div>
+  </div>
+</div>

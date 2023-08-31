@@ -1,0 +1,34 @@
+{
+	"name": "GrupoAcao",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+	},
+	"validations": [],
+	"relations": {
+		"regraProjecaoReversaos": {
+			"type": "hasMany",
+			"model": "RegraProjecaoReversao",
+			"foreignKey": ""
+		},
+		"fechamentoRegraDias": {
+			"type": "hasMany",
+			"model": "FechamentoRegraDia",
+			"foreignKey": ""
+		},
+		"experimentoPreRedeTreinadas": {
+			"type": "hasMany",
+			"model": "ExperimentoPreRedeTreinada",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+	}
+}

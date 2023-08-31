@@ -1,0 +1,53 @@
+<h2 *ngIf="item" mat-dialog-title>Grupo Regra Projeção</h2>
+
+<form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
+
+  <mat-dialog-content>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #nome [(ngModel)]="item.nome" name="nome" placeholder="Nome" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="5" #quantidadeDia [(ngModel)]="item.quantidadeDia" name="quantidadeDia" placeholder="Qtde Dias" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #targetInicial [(ngModel)]="item.targetInicial" name="targetInicial" placeholder="Target Inicial (0.10 = 10%)" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #targetFinal [(ngModel)]="item.targetFinal" name="targetFinal" placeholder="Target Final (0.10 = 10%)" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #targetPasso [(ngModel)]="item.targetPasso" name="targetPasso" placeholder="Target Passo (0.10 = 10%)" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #stopInicial [(ngModel)]="item.stopInicial" name="stopInicial" placeholder="Stop Inicial (0.10 = 10%)" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #stopFinal [(ngModel)]="item.stopFinal" name="stopFinal" placeholder="Stop Final (0.10 = 10%)" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #stopPasso [(ngModel)]="item.stopPasso" name="stopPasso" placeholder="Stop Passo (0.10 = 10%)" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #diaLimiteInicial [(ngModel)]="item.diaLimiteInicial" name="diaLimiteInicial" placeholder="Dia Limite Inicial (0.10 = 10%)" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #diaLimiteFinal [(ngModel)]="item.diaLimiteFinal" name="diaLimiteFinal" placeholder="Dia Limite Final (0.10 = 10%)" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="10" #diaLimitePasso [(ngModel)]="item.diaLimitePasso" name="diaLimitePasso" placeholder="Dia Limite Passo (0.10 = 10%)" />
+    </mat-form-field>
+ 
+ 
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button>Salvar</button>
+    <button mat-raised-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+
+</form>

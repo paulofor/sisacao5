@@ -1,0 +1,42 @@
+<div class="main-content" *ngIf="listaBase && periodo">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Melhores ({{listaBase.length}}/{{contaValidado}}) - Período: {{periodo.dataStrInicial}} até {{periodo.dataStrFinal}}</h4>
+          </div>
+          <div class="content table-responsive table-full-width">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th width="10%">Id</th>
+                  <th width="10%">Pontos</th>
+                  <th width="10%">Ticker</th>
+                  <td width="10%">Target</td>
+                  <td width="10%">Stop</td>
+                  <th width="20%">Experimento</th>
+                  <th width="10%">Placar</th>
+                  <th width="10%">Placar Validação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listaBase">
+                  <td>{{item.id}}</td>
+                  <td>{{item.resultado}}</td>
+                  <td>{{item.ticker}}</td>
+                  <td>{{item.target}}</td>
+                  <td>{{item.stop}}</td>
+                  <td>{{item.experimentoSimulacao.codigo}} [#{{item.experimentoSimulacao.id}}]</td>
+                  <td>{{item.quantidadeLucro}} x {{item.quantidadePrejuizo}}</td>
+                  <td>{{placarValidacao(item)}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

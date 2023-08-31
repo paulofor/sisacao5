@@ -1,0 +1,42 @@
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+      <span>Emprestimos : {{ resumo.totalValorPresente | currency : 'BRL'}}</span>
+      <span class="dgc-direita" *ngIf="resumo">{{ resumo.totalLucroPrejuizo | currency : 'BRL'}}</span>
+      <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita()">novo</button>
+  </div>
+  <div *ngIf="listaBase" class="dgc-painel-principal">
+      <div class="dgc-card" *ngFor="let item of listaBase">
+          <div class="dgc-card-header">
+            <span>{{item.nomePessoa}}</span>
+            <span class="dgc-direita">{{item.quantidadeRecebida}}/{{item.quantidadeParcela}}/{{item.quantidadeEmAtraso}}</span>
+            
+          </div>
+          <div class="dgc-card-detalhe">
+            <span>Investimento: {{ item.valorEmprestimo | currency : 'BRL'}}</span>
+          </div>
+          <div class="dgc-card-detalhe">
+            <span>Cotas: {{ item.quantidadeCota }} </span>
+            <span>({{  item.dataCompra | date : 'dd/MM/yyyy' : 'UTC' }})</span>
+          </div>
+          <div class="dgc-card-detalhe">
+            <span>{{  item.dataPrimeiraParcela | date : 'dd/MM/yyyy' : 'UTC' }} até {{  item.dataUltimaParcela | date : 'dd/MM/yyyy' : 'UTC' }}</span>
+          </div>
+          <div class="dgc-card-detalhe">
+            <span>Recebido: {{ item.totalRecebido | currency : 'BRL'}} ( {{getPercentual(item.totalRecebido,item) | number : '1.2-2'}}% )</span>
+          </div>
+          <div class="dgc-card-detalhe">
+            <span>Previsão: {{ item.previsaoTotal | currency : 'BRL'}} ( {{getPercentual(item.previsaoTotal,item) | number : '1.2-2'}}% )</span>
+          </div>
+          <div class="dgc-card-detalhe">
+            <span>Lucro/Prejuizo: {{ item.previsaoLucroPrejuizo | currency : 'BRL'}}</span>
+          </div>
+          <div class="dgc-card-detalhe">
+            <span>Presente: {{ item.valorPresente | currency : 'BRL'}} ( {{getPercentual(item.valorPresente,item) | number : '1.2-2'}}% )</span>
+          </div>
+          <div  class="dgc-card-comandos">
+              <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar</button>
+              <button class="btn-primary btn-sm btn" [routerLink]="['/emprestimoP2PDetalhe' , item.id]">Parcelas</button>
+          </div>
+      </div>
+  </div>
+</div>

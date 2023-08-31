@@ -1,0 +1,70 @@
+{
+	"name": "CotacaoIntradayAcaoResultadoValor",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"ticker": {
+			"type": "string"
+			,"id": true
+		},
+		"diaNum": {
+			"type": "number"
+			,"id": true
+		},
+		"hora": {
+			"type": "date"
+			,"id": true
+		},
+		"resultado": {
+			"type": "number"
+		},
+		"dias": {
+			"type": "number"
+		},
+		"diaHoraNumTicker": {
+			"type": "string"
+		},
+		"dataHoraInsercao": {
+			"type": "date"
+		},
+		"valorEntrada": {
+			"type": "number"
+		},
+		"valorSaida": {
+			"type": "number"
+		},
+		"diaNumSaida": {
+			"type": "number"
+		},
+		"dataHora": {
+			"type": "date"
+		},
+		"valorSuperior": {
+			"type": "number"
+		},
+		"valorInferior": {
+			"type": "number"
+		},
+		"anoMesNum": {
+			"type": "number"
+		},
+		"lucro": {
+			"type": "number"
+		},
+		"prejuizo": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+	},
+	"acls": [],
+	"methods": {
+	}
+}

@@ -1,0 +1,62 @@
+
+
+<form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
+
+
+  <mat-dialog-content>
+   
+    <mat-form-field class="dgc-campo-form-50">
+        <mat-select placeholder="Percentual Target" (selectionChange)="mudouTarget($event)" name="percentualTarget">
+          <mat-option value="2">2%</mat-option>
+          <mat-option value="3">4%</mat-option>
+          <mat-option value="6">6%</mat-option>
+          <mat-option value="8">8%</mat-option>
+          <mat-option value="10">10%</mat-option>
+          <mat-option value="11">11%</mat-option>
+          <mat-option value="12">12%</mat-option>
+          <mat-option value="13">13%</mat-option>
+          <mat-option value="14">14%</mat-option>
+          <mat-option value="15">15%</mat-option>
+          <mat-option value="16">16%</mat-option>
+          <mat-option value="17">17%</mat-option>
+          <mat-option value="18">18%</mat-option>
+          <mat-option value="19">19%</mat-option>
+          <mat-option value="20">20%</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="dgc-campo-form-50">
+      <mat-select placeholder="Percentual Stop" (selectionChange)="mudouStop($event)" name="percentualStop">
+        <mat-option value="2">2%</mat-option>
+        <mat-option value="3">4%</mat-option>
+        <mat-option value="6">6%</mat-option>
+        <mat-option value="8">8%</mat-option>
+        <mat-option value="10">10%</mat-option>
+        <mat-option value="11">11%</mat-option>
+        <mat-option value="12">12%</mat-option>
+        <mat-option value="13">13%</mat-option>
+        <mat-option value="14">14%</mat-option>
+        <mat-option value="15">15%</mat-option>
+        <mat-option value="16">16%</mat-option>
+        <mat-option value="17">17%</mat-option>
+        <mat-option value="18">18%</mat-option>
+        <mat-option value="19">19%</mat-option>
+        <mat-option value="20">20%</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="dgc-campo-form-50">
+      <input matInput maxlength="30" #precoTarget [(ngModel)]="item.precoTarget" name="precoTarget" placeholder="Preço Target (formato: 9.99) {{precoTargetExec | number: '1.2-2'}}" autocomplete="off" />
+    </mat-form-field>
+    <mat-form-field class="dgc-campo-form-50">
+      <input matInput maxlength="30" #precoStop [(ngModel)]="item.precoStop" name="precoStop" placeholder="Preço Stop (formato: 9.99) {{precoStopExec | number: '1.2-2'}}" autocomplete="off" />
+    </mat-form-field>
+
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button>Salvar</button>
+    <button mat-raised-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+
+</form>

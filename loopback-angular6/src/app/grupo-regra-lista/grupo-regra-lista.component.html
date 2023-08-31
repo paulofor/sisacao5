@@ -1,0 +1,30 @@
+
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+      <span>Grupos Regras Projeção</span>
+      <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita()">novo</button>
+  </div>
+  <div *ngIf="listaBase" class="dgc-painel-principal">
+      <div class="dgc-card" *ngFor="let item of listaBase">
+          <div class="dgc-card-header">
+            <span><a routerLink='/grupoRegraDetalhe/{{item.id}}'>{{item.nome}}</a></span>
+            <span class="dgc-direita">#{{item.id}}</span>
+          </div>
+          <div class="dgc-card-detalhe">
+              <div>Target: de {{item.targetInicial}} até {{item.targetFinal}} ({{item.targetPasso}})</div>
+              <div>Stop: de {{item.stopInicial}} até {{item.stopFinal}} ({{item.stopPasso}})</div>
+              <div>Dia Limite: de {{item.diaLimiteInicial}} até {{item.diaLimiteFinal}} ({{item.diaLimitePasso}})</div>
+              <div>Quantidade: {{item.quantidade}}</div>
+          </div>
+          <div class="dgc-card-detalhe">
+            <span><a routerLink='/regraProjecaoPorGrupo/{{item.id}}'>regras</a></span>
+          </div>
+
+
+          <div class="dgc-card-comandos">
+              <button class="btn-primary btn-sm btn" (click)="dialogo1({'origem' : item})">Escolhe Regra</button>
+              <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar</button>
+          </div>
+      </div>
+  </div>
+</div>

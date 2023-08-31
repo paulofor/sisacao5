@@ -1,0 +1,858 @@
+{
+	"name": "DiaPregao",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"data": {
+			"type": "date"
+		},
+		"mes": {
+			"type": "number"
+		},
+		"ano": {
+			"type": "number"
+		},
+		"diaNum": {
+			"type": "number"
+			,"id": true
+		},
+		"dataStr": {
+			"type": "string"
+		},
+		"dataDbStr": {
+			"type": "string"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"cotacaoIntradayAcaos": {
+			"type": "hasMany",
+			"model": "CotacaoIntradayAcao",
+			"foreignKey": ""
+		},
+		"cotacaoIntradayAcaoResultados": {
+			"type": "hasMany",
+			"model": "CotacaoIntradayAcaoResultado",
+			"foreignKey": ""
+		},
+		"cotacaoDiarioAcaos": {
+			"type": "hasMany",
+			"model": "CotacaoDiarioAcao",
+			"foreignKey": ""
+		},
+		"previsaoRedes": {
+			"type": "hasMany",
+			"model": "PrevisaoRede",
+			"foreignKey": ""
+		},
+		"fechamentoRegraDiaQuantidades": {
+			"type": "hasMany",
+			"model": "FechamentoRegraDiaQuantidade",
+			"foreignKey": ""
+		},
+		"cotacaoDiarioAcaoUsas": {
+			"type": "hasMany",
+			"model": "CotacaoDiarioAcaoUsa",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+		"ObtemIntradayResultadoTickerAteFinal": {
+			"accepts": [
+				{
+					"arg": "ticker",
+					"type": "string",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "dataNumInicio",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "tamanhoAmostra",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemIntradayResultadoTickerAteFinal",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemComPrevisaoRedePorIdTreino": {
+			"accepts": [
+				{
+					"arg": "idTreino",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemComPrevisaoRedePorIdTreino",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemIntradayPorTicker": {
+			"accepts": [
+				{
+					"arg": "ticker",
+					"type": "string",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemIntradayPorTicker",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemDiaTicker": {
+			"accepts": [
+				{
+					"arg": "diaNum",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "ticker",
+					"type": "string",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "quantidadeDia",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemDiaTicker",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"CriaDatasAno": {
+			"accepts": [
+				{
+					"arg": "ano",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/criaDatasAno",
+   					"verb": "post"
+ 				}
+ 			]
+		},
+		"ObtemProximo": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemProximo",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemProximoB3": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemProximoB3",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemAnteriorQuantidade": {
+			"accepts": [
+				{
+					"arg": "quantidade",
+					"type": "object",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemAnteriorQuantidade",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemAtualB3": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemAtualB3",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemAnteriorPorDia": {
+			"accepts": [
+				{
+					"arg": "diaNum",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemAnteriorPorDia",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemPeriodoPrevisaoTeste": {
+			"accepts": [
+				{
+					"arg": "idPeriodoTreinoRede",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemPeriodoPrevisaoTeste",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemPeriodoPrevisaoExecucao": {
+			"accepts": [
+				{
+					"arg": "idPeriodoTreinoRede",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemPeriodoPrevisaoExecucao",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemPeriodoPrevisaoExecucaoPendente": {
+			"accepts": [
+				{
+					"arg": "idTreinoRede",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemPeriodoPrevisaoExecucaoPendente",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemProximoAntesMeiaNoite": {
+			"accepts": [
+				{
+					"arg": "horas",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemProximoAntesMeiaNoite",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"PeriodoAtualizacaoMonitoria": {
+			"accepts": [
+				{
+					"arg": "idExecucao",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/periodoAtualizacaoMonitoria",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemIntradayTickerPeriodoQuantidade": {
+			"accepts": [
+				{
+					"arg": "ticker",
+					"type": "string",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "qtdeDia",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "dataNumInicio",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemIntradayTickerPeriodoQuantidade",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemIntradayResultadoTickerAteFinalInicioAnterior": {
+			"accepts": [
+				{
+					"arg": "ticker",
+					"type": "string",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "dataNumInicio",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "tamanhoAmostra",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemIntradayResultadoTickerAteFinalInicioAnterior",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemIntradayTickerPeriodo": {
+			"accepts": [
+				{
+					"arg": "ticker",
+					"type": "string",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "dataNumInicio",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemIntradayTickerPeriodo",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemIntradayResultadoTickerPeriodoQuantidade": {
+			"accepts": [
+				{
+					"arg": "ticker",
+					"type": "string",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "qtdeDia",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "diaNumPrevisao",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemIntradayResultadoTickerPeriodoQuantidade",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemIntradayResultadoTickerPeriodo": {
+			"accepts": [
+				{
+					"arg": "ticker",
+					"type": "string",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "dataNumInicio",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemIntradayResultadoTickerPeriodo",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemIntradayResultadoTickerQuantidadeB3": {
+			"accepts": [
+				{
+					"arg": "ticker",
+					"type": "string",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "qtdeDia",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemIntradayResultadoTickerQuantidadeB3",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemIntradayResultadoTickerQuantidade": {
+			"accepts": [
+				{
+					"arg": "ticker",
+					"type": "string",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "qtdeDia",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemIntradayResultadoTickerQuantidade",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ComFalhaDiario": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/comFalhaDiario",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemIntradayResultadoValor": {
+			"accepts": [
+				{
+					"arg": "ticker",
+					"type": "string",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "dataNumInicio",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "idRegraProjecao",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemIntradayResultadoValor",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ExemploTreinoEntradaMaisRecente": {
+			"accepts": [
+				{
+					"arg": "qtde",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/exemploTreinoEntradaMaisRecente",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemIntradayResultadoDataset": {
+			"accepts": [
+				{
+					"arg": "ticker",
+					"type": "string",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "dataNumInicio",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemIntradayResultadoDataset",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ProximoParaValidador": {
+			"accepts": [
+				{
+					"arg": "ticker",
+					"type": "string",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "idPeriodo",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/proximoParaValidador",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ListaDataPeriodo": {
+			"accepts": [
+				{
+					"arg": "diaNumInicio",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "diaNumFinal",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/listaDataPeriodo",
+   					"verb": "get"
+ 				}
+ 			]
+		}
+	}
+}

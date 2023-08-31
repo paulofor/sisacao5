@@ -1,0 +1,34 @@
+<section class="dgc-painel">
+  <header class="dgc-painel-header">
+    <span>Startups Empresas</span>
+    <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="edita()">novo</button>
+  </header>
+  <div *ngIf="listaBase">
+    <div class="dgc-card" *ngFor="let item of listaBase">
+      <header class="dgc-card-header">
+
+        <span>{{item.nome}}</span><span>({{item.tipo}})</span>
+        <a class="dgc-direita" href={{item.url}} target="_blank">ver</a>
+      </header>
+      <div class="dgc-texto-grande">
+          <p>{{item.descricao}}</p>
+          <!--<p class="leia-mais"><a href="#" class="button">Mais</a></p>-->
+      </div>
+      <div class="dgc-card-detalhe">
+        <table>
+          <tr *ngFor="let investimento of item.startupInvestimentos">
+            <td width="10%">{{investimento.data}}</td>
+            <td width="55%">{{(investimento.startupFundo?investimento.startupFundo.nome:'-')}}</td>
+            <td width="20%">{{investimento.moeda}}&nbsp;&nbsp;{{investimento.valor | currency:'BRL':true}}</td>
+            <td width="15%"><a (click)="dialogo1({'item' : investimento})">alterar</a></td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="dgc-card-comandos">
+        <button class="btn-primary btn-sm btn" (click)="dialogo1({'origem' : item})">Investimento</button>
+        <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar</button>
+      </div> 
+    </div>
+  </div>
+</section>

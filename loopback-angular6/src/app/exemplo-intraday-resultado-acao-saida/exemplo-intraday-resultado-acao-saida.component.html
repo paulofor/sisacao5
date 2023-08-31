@@ -1,0 +1,85 @@
+
+<div class="main-content"  >
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            
+            <form (ngSubmit)="onSubmit()">
+
+              <mat-form-field class="example-full-width">
+                <input matInput maxlength="10" [(ngModel)]="ticker" placeholder="Ticker" [ngModelOptions]="{standalone: true}"/>
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <input matInput maxlength="10" [(ngModel)]="data" placeholder="Data (Num)" [ngModelOptions]="{standalone: true}"/>
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <mat-select placeholder="Regra Projeção" [(ngModel)]="regraProjecaoId" [ngModelOptions]="{standalone: true}" >
+                  <mat-option *ngFor="let regra of listaRegra" [value]="regra.id">
+                    {{ regra.codigoRegraProjecao }} (#{{regra.id}})
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <button mat-raised-button>OK</button>
+            </form>
+          </div>
+
+          <div class="content"  *ngIf="processando && !(listaBase && listaValor && diaPrevisao && exemplo)">
+            <img src="assets/img/aguardando.gif" width="200" height="60">
+          </div>
+          <div class="content"  *ngIf="listaVaziaBol">
+            Nenhum Dado Encontrado
+          </div>
+
+
+          <div class="content" *ngIf="listaBase && listaValor && diaPrevisao && exemplo">
+            <p>Data Previsão: {{exemplo.diaNumPrevisao}}</p>
+            <p>Tamanho X: {{tamanhoCampoX}}</p>
+            <p>Data Inicio Bloco: {{exemplo.diaNumInicio}} - Cotações Intra: {{listaBase.length}}</p>
+            <p>Y: {{exemplo.campoY}}</p>
+            <p>Ref: {{exemplo.valorReferencia}}, Entrada: {{exemplo.valorEntrada | number: '1.2-2' }} ({{percentualEntrada() | number: '1.1-1'}}%)</p>
+            <p class="{{entrou()}}">{{diaPrevisao.diaNum}}: Min: {{diaPrevisao.minimo}} - Max: {{diaPrevisao.maximo}} {{mensagemEntrou()}}</p>
+          </div>
+          <div class="content" *ngIf="limiteSaida && listaBase && listaValor && diaPrevisao && diaSaida && exemplo && exemplo.diaNumSaida">
+            <p>Target/Stop: {{exemplo.limiteInferior  | number: '1.2-2'}} e {{exemplo.limiteSuperior  | number: '1.2-2'}}
+              ({{percentualSaidaMinimo() | number: '1.1-1'}}%) ({{percentualSaidaMaximo() | number: '1.1-1'}}%)
+            </p> 
+            <p class="{{periodo()}}">
+              Valor Saída: {{exemplo.valorSaida}}
+            --> Limites Período: {{limiteSaida.minimo}} e {{limiteSaida.maximo}} 
+              ({{percentualMinimo() | number: '1.1-1'}}%) ({{percentualMaximo() | number: '1.1-1'}}%)
+            </p>
+            <p>Data Saída: {{exemplo.diaNumSaida}} 
+              --> Abe:{{diaSaida.abertura}} , Min:{{diaSaida.minimo}}, Max:{{diaSaida.maximo}}, Fec:{{diaSaida.fechamento}}</p>
+
+            <p>Resultado: {{exemplo.resultado}}</p>
+          </div>
+          <div class="content table-responsive table-full-width">
+            <table *ngIf="listaBase && listaValor" class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th width="15%">Hora</th>
+                  <th width="25%">Cotação</th>
+                  <th width="25%">Valor</th>
+                  <th width="25%">Original</th>
+                  <th width="25%">Caclulado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listaBase; let i=index">
+                  <td>{{item.dataHora |  date : 'dd/MM/yyyy HH:mm' : 'UTC'}}</td>
+                  <td>{{item.valor | number: '1.2-2'}}</td>
+                  <td>{{getValor(i)}}</td>
+                  <td>{{getValorOriginal(i)}}</td>
+                  <td>{{getValorCalculado(i)}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

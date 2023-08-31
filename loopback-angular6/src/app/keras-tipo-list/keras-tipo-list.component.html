@@ -1,0 +1,19 @@
+<div class="dgc-painel">
+  <div class="dgc-painel-header">
+      <span>Tipo de Layers Keras</span>
+  </div>
+  <div *ngIf="listaBase">
+      <div class="dgc-card" *ngFor="let item of listaBase">
+          <div class="dgc-card-header">
+              <span>{{item.nome}}</span>
+              <div class="dgc-direita">
+                <button class="btn btn-primary btn-sm" (click)="dialogo1({'origem' : item})">Nova Layer</button>
+              </div>
+              
+          </div>
+          <div *ngFor="let layer of item.kerasLayers">
+            <span>{{layer.nome}} : {{layer.tipoObjeto}}</span>
+        </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,187 @@
+{
+	"name": "ExperimentoPreRedeTreinadaScore",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"diaNum": {
+			"type": "number"
+			,"id": true
+		},
+		"score": {
+			"type": "number"
+		},
+		"ticker": {
+			"type": "string"
+			,"id": true
+		},
+		"experimentoPreRedeTreinadaId": {
+			"type": "number"
+			,"id": true
+		},
+		"valorEntrada": {
+			"type": "number"
+		},
+		"valorSaida": {
+			"type": "number"
+		},
+		"resultado": {
+			"type": "number"
+		},
+		"diaNumEntrada": {
+			"type": "number"
+		},
+		"diaNumSaida": {
+			"type": "number"
+		},
+		"experimentoPreRedeTreinadaId": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"experimentoPreRedeTreinada": {
+			"type": "belongsTo",
+			"model": "ExperimentoPreRedeTreinada",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+		"RecebePrevisaoPreRedeTreinada": {
+			"accepts": [
+				{
+					"arg": "ticker",
+					"type": "array",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "score",
+					"type": "array",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "experimentoPreRedeTreinadaId",
+					"type": "array",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "diaNum",
+					"type": "array",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/recebePrevisaoPreRedeTreinada",
+   					"verb": "post"
+ 				}
+ 			]
+		},
+		"ObtemMelhoresPorDia": {
+			"accepts": [
+				{
+					"arg": "diaNum",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "experimentoId",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemMelhoresPorDia",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"AtualizaResultadoTrade": {
+			"accepts": [
+				{
+					"arg": "resultado",
+					"type": "object",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/atualizaResultadoTrade",
+   					"verb": "post"
+ 				}
+ 			]
+		},
+		"ObtemAleatoriaBaseadaEmMelhores": {
+			"accepts": [
+				{
+					"arg": "diaNum",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "experimentoId",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemAleatoriaBaseadaEmMelhores",
+   					"verb": "get"
+ 				}
+ 			]
+		}
+	}
+}

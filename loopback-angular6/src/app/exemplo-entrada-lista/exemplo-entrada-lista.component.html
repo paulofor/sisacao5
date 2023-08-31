@@ -1,0 +1,39 @@
+
+<div class="main-content" *ngIf="listaBase">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Exemplo Entrada Treino  (locaweb-java2 :23002 - 20:00)</h4>
+            <button mat-raised-button color="primary" (click)="carregaTela()">Atualiza</button>
+          </div>
+          <div class="dgc-comando-correcao">java -Xms128m -Xmx1024m -jar /root/aplicativos/InsereExemploTreinoAcaoEntradaPeriodo.jar 20230102 20230103 20</div>
+          <div class="content table-responsive table-full-width">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th width="40%">Data Hora</th>
+                  <th width="15%">120 dias/Ref: 0</th>
+                  <th width="15%">60 dias/Ref: 0</th>
+                  <th width="15%">40 dias/Ref: 0</th>
+                  <th width="15%">20 dias/Ref: 0</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listaBase">
+                  <td>{{item.data  | date : 'dd/MM/yyyy' : 'UTC'}}</td>
+                  <td>{{item.quantidadeAcao120 }}</td>
+                  <td>{{item.quantidadeAcao60 }}</td>
+                  <td>{{item.quantidadeAcao40 }}</td>
+                  <td>{{item.quantidadeAcao20 }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

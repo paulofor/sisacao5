@@ -1,0 +1,51 @@
+<h2 *ngIf="item" mat-dialog-title>Treino Rede</h2>
+
+<form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
+
+  <mat-dialog-content>
+   
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="250" #objetivo [(ngModel)]="item.objetivo" name="objetivo" placeholder="Objetivo" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Grupo Rede" #redeNeuralId [(ngModel)]="item.grupoRedeId" name="grupoRedeId">
+        <mat-option *ngFor="let grupoRede of listaGrupoRede" [value]="grupoRede.id">
+          {{ grupoRede.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Grupo Ação" #grupoAcaoId [(ngModel)]="item.grupoAcaoId" name="grupoAcaoId">
+        <mat-option *ngFor="let grupoAcao of listaGrupoAcao" [value]="grupoAcao.id">
+          {{ grupoAcao.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Período Treino" #periodoTreinoRedeId [(ngModel)]="item.periodoTreinoRedeId" name="periodoTreinoRedeId">
+        <mat-option *ngFor="let periodo of listaPeriodoTreino" [value]="periodo.id">
+          {{ periodo.nome}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Grupo Regra" #grupoRegraId [(ngModel)]="item.grupoRegraId" name="grupoRegraId">
+        <mat-option *ngFor="let grupoRegra of listaGrupoRegra" [value]="grupoRegra.id">
+          {{ grupoRegra.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button>Salvar</button>
+    <button mat-raised-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+
+</form>

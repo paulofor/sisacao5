@@ -1,0 +1,86 @@
+<div class="dgc-painel">
+    <div class="dgc-painel-header">
+        <span>Venda - Pontuação Teste</span>
+    </div>
+    <div *ngIf="listaTreinoVenda" class="dgc-painel-principal">
+        <div class="dgc-card  {{classeAtivo(item)}}" *ngFor="let item of listaTreinoVenda">
+            <div class="dgc-card-header">
+                <span>#{{item.id}}</span>
+                <span class="dgc-direita">{{item.pontuacaoTeste}}</span>
+            </div>
+            <div>
+                <span>{{item.regraProjecao.codigoRegraProjecao}}</span>
+            </div>
+            <div>
+                <span>{{item.redeNeural.nome}}</span>
+            </div>
+            <div>
+                <span>Treino: {{item.dataTreinamento | date : 'dd/MM/yyyy' : 'UTC' }}</span>
+            </div>
+            <div>
+                <span>Período: {{item.periodoTreinoRede.nome }}</span>
+            </div>
+            <div>
+                <span>Vencimento: {{item.periodoTreinoRede.diaNumFinalExecucao }}</span>
+            </div>
+            <div>
+                <span>Teste: {{item.qtdeLucroTeste }} x {{item.qtdePrejuizoTeste}} ({{item.pontuacaoTeste}})</span>
+            </div>
+            <div>
+                <span>Pré-Execução: {{item.qtdeLucroPreExecucao }} x {{item.qtdePrejuizoPreExecucao}}
+                    ({{item.pontuacaoPreExecucao}})</span>
+            </div>
+            <div>
+                <span>Execução: {{item.qtdeLucroExecucao }} x {{item.qtdePrejuizoExecucao}}
+                    ({{item.pontuacaoExecucao}})</span>
+            </div>
+            <div>
+                Financeiro: {{ item.financeiroReal | currency : 'BRL'}} ({{item.qtdeTradeReal}})
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="dgc-painel">
+    <div class="dgc-painel-header">
+        <span>Compra - Pontuação Teste</span>
+    </div>
+    <div *ngIf="listaTreinoCompra" class="dgc-painel-principal">
+        <div class="dgc-card  {{classeAtivo(item)}}" *ngFor="let item of listaTreinoCompra">
+            <div class="dgc-card-header">
+                <span>#{{item.id}}</span>
+                <span class="dgc-direita">{{item.pontuacaoTeste}}</span>
+            </div>
+            <div>
+                <span>{{item.regraProjecao.codigoRegraProjecao}}</span>
+            </div>
+            <div>
+                <span>{{item.redeNeural.nome}}</span>
+            </div>
+            <div>
+                <span>Treino: {{item.dataTreinamento | date : 'dd/MM/yyyy' : 'UTC' }}</span>
+            </div>
+            <div>
+                <span>Período: {{item.periodoTreinoRede.nome }}</span>
+            </div>
+            <div>
+                <span>Vencimento: {{item.periodoTreinoRede.diaNumFinalExecucao }}</span>
+            </div>
+            <div>
+                <span>Teste: {{item.qtdeLucroTeste }} x {{item.qtdePrejuizoTeste}} ({{item.pontuacaoTeste}})</span>
+            </div>
+            <div>
+                <span>Pré-Execução: {{item.qtdeLucroPreExecucao }} x {{item.qtdePrejuizoPreExecucao}}
+                    ({{item.pontuacaoPreExecucao}})</span>
+            </div>
+            <div>
+                <span>Execução: {{item.qtdeLucroExecucao }} x {{item.qtdePrejuizoExecucao}}
+                    ({{item.pontuacaoExecucao}})</span>
+            </div>
+            <div>
+                Financeiro: {{ item.financeiroReal | currency : 'BRL'}} ({{item.qtdeTradeReal}})
+            </div>
+        </div>
+    </div>
+</div>

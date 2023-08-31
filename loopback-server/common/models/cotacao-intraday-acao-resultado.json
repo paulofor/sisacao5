@@ -1,0 +1,101 @@
+{
+	"name": "CotacaoIntradayAcaoResultado",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"ticker": {
+			"type": "string"
+		},
+		"hora": {
+			"type": "date"
+		},
+		"valor": {
+			"type": "number"
+		},
+		"dia": {
+			"type": "date"
+		},
+		"diaNum": {
+			"type": "number"
+		},
+		"dataHora": {
+			"type": "date"
+		},
+		"diaHoraNumTicker": {
+			"type": "string"
+		},
+		"posicaoDia": {
+			"type": "number"
+		},
+		"diaPregaoId": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"diaPregao": {
+			"type": "belongsTo",
+			"model": "DiaPregao",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+		"PendentePorFechamentoRegra": {
+			"accepts": [
+				{
+					"arg": "idFechamentoRegraDia",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/pendentePorFechamentoRegra",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ListaPossiveisSaidas": {
+			"accepts": [
+				{
+					"arg": "entrada",
+					"type": "object",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/listaPossiveisSaidas",
+   					"verb": "get"
+ 				}
+ 			]
+		}
+	}
+}

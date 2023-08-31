@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>Edita Startup - Empresa</h2>
+
+<form *ngIf="item" class="example-full-width" (ngSubmit)="onSubmit()">
+
+  <mat-dialog-content>
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="20" #nome [(ngModel)]="item.nome" name="nome" placeholder="Nome" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <textarea matInput #descricao [(ngModel)]="item.descricao" name="descricao" placeholder="Descrição" ></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="100" #url [(ngModel)]="item.url" name="url" placeholder="Url" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="50" #tamanho [(ngModel)]="item.tamanho" name="tamanho" placeholder="Tamanho" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="50" #fundacao [(ngModel)]="item.fundacao" name="fundacao" placeholder="Fundação" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-select #tipo [(ngModel)]="item.tipo" name="tipo" placeholder="Tipo">
+        <mat-option value="Agrotech">Agrotech</mat-option>
+        <mat-option value="Autotech">Autotech</mat-option>
+        <mat-option value="Construtech">Construtech</mat-option>
+        <mat-option value="Fintech">Fintech</mat-option>
+        <mat-option value="Games">Games</mat-option>
+        <mat-option value="Gestão">Gestão</mat-option>
+        <mat-option value="Healthtech">Healthtech</mat-option>
+        <mat-option value="HRTech">HRTech</mat-option>
+        <mat-option value="Logtech">Logtech</mat-option>
+        <mat-option value="Marketing">Marketing</mat-option>
+        <mat-option value="Midia">Midia</mat-option>
+        <mat-option value="Mobilidade">Mobilidade</mat-option>
+        <mat-option value="Pets">Pets</mat-option>
+        <mat-option value="Retailtech">Retailtech</mat-option>
+        <mat-option value="Salestech">Salestech</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button>Salvar</button>
+    <button mat-raised-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+
+</form>

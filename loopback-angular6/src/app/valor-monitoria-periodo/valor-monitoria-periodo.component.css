@@ -1,0 +1,15 @@
+.dgc-card {
+    width: 270px;
+}
+
+.dgc-disponivel {
+    color: blue;
+}
+.dgc-vantagem {
+    color: green
+}
+
+.dgc-destaque {
+    font-weight: 400;
+}
+
