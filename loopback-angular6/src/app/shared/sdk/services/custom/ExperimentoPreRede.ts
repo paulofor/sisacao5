@@ -668,9 +668,34 @@ export class ExperimentoPreRedeApi extends BaseLoopBackApi {
          * (The remote method definition does not provide any description.)
          * </em>
    *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExperimentoPreRede` object.)
+   * </em>
+   */
+  public ListaExperimentoParaScoreSintetico(customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExperimentoPreRedes/listaExperimentoParaScoreSintetico";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
    * @param {object} data Request data.
    *
-   *  - `id` – `{any}` - 
+   *  - `idExperimento` – `{any}` - 
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -681,15 +706,14 @@ export class ExperimentoPreRedeApi extends BaseLoopBackApi {
    * This usually means the response is a `ExperimentoPreRede` object.)
    * </em>
    */
-  public CalculaResultadoTeste(id: any = {}, customHeaders?: Function): Observable<any> {
+  public CalculaResultadoTeste(idExperimento: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/ExperimentoPreRedes/calculaResultadoTeste";
-    let _routeParams: any = {
-      id: id
-    };
+    let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
+    if (typeof idExperimento !== 'undefined' && idExperimento !== null) _urlParams.idExperimento = idExperimento;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
@@ -724,6 +748,36 @@ export class ExperimentoPreRedeApi extends BaseLoopBackApi {
          * (The remote method definition does not provide any description.)
          * </em>
    *
+   * @param {object} data Request data.
+   *
+   *  - `idExperimento` – `{number}` - 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExperimentoPreRede` object.)
+   * </em>
+   */
+  public FinalizaTreinoSintetico(idExperimento: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExperimentoPreRedes/finalizaTreinoSintetico";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof idExperimento !== 'undefined' && idExperimento !== null) _urlParams.idExperimento = idExperimento;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
    * @returns {object[]} An empty reference that will be
    *   populated with the actual data once the response is returned
    *   from the server.
@@ -733,10 +787,10 @@ export class ExperimentoPreRedeApi extends BaseLoopBackApi {
    * This usually means the response is a `ExperimentoPreRede` object.)
    * </em>
    */
-  public ProximoExperimentoParaPontuar(customHeaders?: Function): Observable<any> {
+  public ProximoExperimentoParaPontuarSintetico(customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/ExperimentoPreRedes/proximoExperimentoParaPontuar";
+    "/ExperimentoPreRedes/proximoExperimentoParaPontuarSintetico";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};

@@ -1,0 +1,36 @@
+{
+	"name": "ExperimentoPreRedeResultado",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"campoY": {
+			"type": "string"
+		},
+		"resultado": {
+			"type": "number"
+		},
+		"score": {
+			"type": "number"
+		},
+		"experimentoPreRedeId": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"experimentoPreRede": {
+			"type": "belongsTo",
+			"model": "ExperimentoPreRede",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+	}
+}

@@ -53,6 +53,9 @@
     },
     "qtdeY1": {
       "type": "number"
+    },
+    "geraScoreTesteSintetico": {
+			"type": "string"
     }
   },
   "validations": [],
@@ -95,10 +98,29 @@
   },
   "acls": [],
   "methods": {
+    "ListaExperimentoParaScoreSintetico": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          	"path": "/listaExperimentoParaScoreSintetico",
+   					"verb": "get"
+ 				}
+ 			]
+		},
     "CalculaResultadoTeste": {
       "accepts": [
         {
-          "arg": "id",
+          "arg": "idExperimento",
           "type": "array",
           "root": true,
           "description": ""
@@ -138,7 +160,32 @@
         }
       ]
     },
-    "ProximoExperimentoParaPontuar": {
+    "FinalizaTreinoSintetico": {
+			"accepts": [
+				{
+					"arg": "idExperimento",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          	"path": "/finalizaTreinoSintetico",
+   					"verb": "post"
+ 				}
+ 			]
+		},
+    "ProximoExperimentoParaPontuarSintetico": {
       "accepts": [],
       "returns": [
         {
@@ -151,7 +198,7 @@
       "description": "",
       "http": [
         {
-          "path": "/proximoExperimentoParaPontuar",
+          "path": "/proximoExperimentoParaPontuarSintetico",
           "verb": "get"
         }
       ]

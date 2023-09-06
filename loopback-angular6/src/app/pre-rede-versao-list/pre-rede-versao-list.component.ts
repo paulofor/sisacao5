@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 
 import { BaseDisplayComponent } from '../base-component/base-display-component';
-import { ExperimentoPreRede, ExperimentoPreRedeTreinada, PreRedeNeuralApi, VersaoPreRede, VersaoPreRedeApi } from '../shared/sdk';
+import { ExperimentoPreRede, ExperimentoPreRedeApi, ExperimentoPreRedeTreinada, PreRedeNeuralApi, VersaoPreRede, VersaoPreRedeApi } from '../shared/sdk';
 import { BaseItemComListaComponent } from '../base-component/base-item-com-lista';
 import { ActivatedRoute } from '@angular/router';
 import { PreRedeVersaoEditComponent } from '../pre-rede-versao-edit/pre-rede-versao-edit.component';
@@ -16,7 +16,8 @@ import { ExperimentoPreRedeTreinadaEditComponent } from '../experimento-pre-rede
 })
 export class PreRedeVersaoListComponent extends BaseItemComListaComponent {
 
-  constructor(protected srv:PreRedeNeuralApi, protected router: ActivatedRoute,protected dialog: MatDialog,private srvVersao: VersaoPreRedeApi) { 
+  constructor(protected srv:PreRedeNeuralApi, protected router: ActivatedRoute,protected dialog: MatDialog,private srvVersao: VersaoPreRedeApi,
+    private srvExperimento: ExperimentoPreRedeApi) { 
     super(srv,router,dialog);
   }  
 
@@ -39,6 +40,14 @@ export class PreRedeVersaoListComponent extends BaseItemComListaComponent {
       ]
     }
 
+  }
+
+  calulaResultadoExperimento(experimento:ExperimentoPreRede) {
+    console.log('experimento.id:', experimento.id);
+    this.srvExperimento.CalculaResultadoTeste(experimento.id)
+      .subscribe((result) => {
+        this.carregaTela()
+      }) 
   }
 
   geraVersaoRegra(item:VersaoPreRede) {

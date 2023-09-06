@@ -45,9 +45,6 @@
 		"qtdeDiaColetado": {
 			"type": "number"
 		},
-		"tipoExemploTreinoId": {
-			"type": "number"
-		}
 	},
 	"validations": [],
 	"relations": {
@@ -70,6 +67,11 @@
 			"type": "hasMany",
 			"model": "ExperimentoPreRede",
 			"foreignKey": "amostraDadoSinteticoEntrada2Id"
+		},
+		"exemploDadoSinteticoTestes": {
+			"type": "hasMany",
+			"model": "ExemploDadoSinteticoTeste",
+			"foreignKey": ""
 		}
 	},
 	"acls": [],

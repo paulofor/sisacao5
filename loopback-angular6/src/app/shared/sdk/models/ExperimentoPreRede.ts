@@ -24,6 +24,7 @@ export interface ExperimentoPreRedeInterface {
   "desvioTotal"?: number;
   "qtdeY0"?: number;
   "qtdeY1"?: number;
+  "geraScoreTesteSintetico"?: string;
   "id"?: number;
   "amostraDadoSinteticoEntrada1Id"?: number;
   "amostraDadoSinteticoEntrada2Id"?: number;
@@ -56,6 +57,7 @@ export class ExperimentoPreRede implements ExperimentoPreRedeInterface {
   "desvioTotal": number;
   "qtdeY0": number;
   "qtdeY1": number;
+  "geraScoreTesteSintetico": string;
   "id": number;
   "amostraDadoSinteticoEntrada1Id": number;
   "amostraDadoSinteticoEntrada2Id": number;
@@ -165,6 +167,10 @@ export class ExperimentoPreRede implements ExperimentoPreRedeInterface {
         "qtdeY1": {
           name: 'qtdeY1',
           type: 'number'
+        },
+        "geraScoreTesteSintetico": {
+          name: 'geraScoreTesteSintetico',
+          type: 'string'
         },
         "id": {
           name: 'id',

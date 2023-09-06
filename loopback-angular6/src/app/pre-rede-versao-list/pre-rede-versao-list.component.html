@@ -41,7 +41,7 @@
         <div *ngIf="item.experimentoPreRedes" class="dgc-painel-principal">
           <div class="dgc-card card2" *ngFor="let experimento of item.experimentoPreRedes">
             <div class="dgc-card-header">
-              {{experimento.amostraDadoSintetico.nome}}
+              {{experimento.amostraDadoSinteticoEntrada1.nome}}
             </div>
             <div class="dgc-card-detalhe">
               Total exemplos: {{experimento.qtdeY0 + experimento.qtdeY1}}
@@ -104,6 +104,7 @@
               </div>
             </div>
             <div  class="dgc-card-comandos">
+              <button class="btn-primary btn-sm btn" (click)="calulaResultadoExperimento(experimento)">Calcula Resultado Experimento</button>
               <button class="btn-primary btn-sm btn" (click)="criaExperimentoRedeTreinada(experimento)">Cria Experimento Rede Treinada</button>
             </div>
           </div>

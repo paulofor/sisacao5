@@ -24,9 +24,6 @@
 		"resultado": {
 			"type": "number"
 		},
-		"amostraDadoSinteticoId": {
-			"type": "number"
-		}
 	},
 	"validations": [],
 	"relations": {

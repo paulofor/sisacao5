@@ -23,12 +23,9 @@
 			"type": "number"
 			,"id": true
 		},
-		"fechamentoRegraDiaId": {
-			"type": "number"
-		},
 		"diaPregaoId": {
 			"type": "number"
-		}
+		},
 	},
 	"validations": [],
 	"relations": {

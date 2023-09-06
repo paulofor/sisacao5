@@ -36,9 +36,6 @@
 		"diaNumSaida": {
 			"type": "number"
 		},
-		"experimentoPreRedeTreinadaId": {
-			"type": "number"
-		}
 	},
 	"validations": [],
 	"relations": {

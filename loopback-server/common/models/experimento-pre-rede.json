@@ -93,9 +93,9 @@
 		"amostraDadoSinteticoEntrada2Id": {
 			"type": "number"
 		},
-		"versaoPreRedeId": {
-			"type": "number"
-		}
+		"geraScoreTesteSintetico": {
+			"type": "string"
+		},
 	},
 	"validations": [],
 	"relations": {
@@ -118,6 +118,11 @@
 			"type": "hasMany",
 			"model": "ExperimentoPreRedeTreinada",
 			"foreignKey": ""
+		},
+		"experimentoPreRedeResultados": {
+			"type": "hasMany",
+			"model": "ExperimentoPreRedeResultado",
+			"foreignKey": ""
 		}
 	},
 	"acls": [],
@@ -138,6 +143,75 @@
          		{
           			"path": "/listaExperimentoParaTreino",
    					"verb": "get"
+ 				}
+ 			]
+		},
+		"CalculaResultadoTeste": {
+			"accepts": [
+				{
+					"arg": "idExperimento",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/calculaResultadoTeste",
+   					"verb": "post"
+ 				}
+ 			]
+		},
+		"ProximoExperimentoParaPontuarSintetico": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/proximoExperimentoParaPontuarSintetico",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"FinalizaTreinoSintetico": {
+			"accepts": [
+				{
+					"arg": "idExperimento",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/finalizaTreinoSintetico",
+   					"verb": "post"
  				}
  			]
 		}

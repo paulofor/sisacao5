@@ -44,8 +44,34 @@ public class NotebookPreRedeDadoSintetico extends NotebookObj{
 		compilacaoRede(notebook);
 		fitRede(notebook);
 		salvaRede(notebook);
+		fechamentoTreino(notebook);
 		enviaRede(notebook);
 	}
+	
+	private void fechamentoTreino(JSONArray notebook) {
+		CelulaNotebook celula = new CelulaNotebook();
+		celula.setTitulo("Fechamento do Experimento", 2);
+		celula.adicionaLinha("url = 'http://vps-40d69db1.vps.ovh.ca:23004/api/ExperimentoPreRedes/finalizaTreinoSintetico'");
+		celula.adicionaLinha("data = {'idExperimento': " + this.experimento.getId() + "}");
+		celula.adicionaLinha("# Converte o dicionário em JSON");
+		celula.adicionaLinha("json_data = json.dumps(data)");
+		celula.adicionaLinha("");
+		celula.adicionaLinha("# Define o cabeçalho da solicitação");
+		celula.adicionaLinha("headers = {'Content-Type': 'application/json'}");
+		celula.adicionaLinha("");
+		celula.adicionaLinha("# Envie a solicitação POST");
+		celula.adicionaLinha("response = requests.post(url, data=json_data, headers=headers)");
+		celula.adicionaLinha("");
+		celula.adicionaLinha("# Verifique a resposta");
+		celula.adicionaLinha("if response.status_code == 200:");
+		celula.adicionaLinha("	print('Solicitação POST bem-sucedida!')");
+		celula.adicionaLinha("	print('Resposta do servidor:')");
+		celula.adicionaLinha("	print(response.text)");
+		celula.adicionaLinha("else:");
+		celula.adicionaLinha("	print(f'A solicitação POST falhou com o código de status {response.status_code}')");
+		insereCelula(notebook,celula);
+	}
+	
 	
 	private void salvaRede(JSONArray notebook) {
 		CelulaNotebook celula = new CelulaNotebook();
@@ -194,7 +220,7 @@ public class NotebookPreRedeDadoSintetico extends NotebookObj{
 		
 		celula = new CelulaNotebook();
 		celula.adicionaLinha("# Verificar se há valores não numéricos");
-		celula.adicionaLinha("has_non_numeric = np.isnan(Entrada1).any() or np.isinfEntrada1).any()");
+		celula.adicionaLinha("has_non_numeric = np.isnan(Entrada1).any() or np.isinf(Entrada1).any()");
 		celula.adicionaLinha("if has_non_numeric:");
 		celula.adicionaLinha("    print(\"O array contém valores não numéricos.\")");
 		celula.adicionaLinha("else:");
@@ -214,7 +240,7 @@ public class NotebookPreRedeDadoSintetico extends NotebookObj{
 	
 	private void conexaoServidor2(JSONArray notebook) {
 		CelulaNotebook celula = new CelulaNotebook();
-		celula.setTitulo("Dados Treino " + this.experimento.getVersaoPreRede().getPreRedeNeural().getNome() + " (entrada 1) " , 1);
+		celula.setTitulo("Dados Treino " + this.experimento.getVersaoPreRede().getPreRedeNeural().getNome() + " (entrada 2) " , 1);
 		celula.adicionaLinha("idAmostra = '" + this.experimento.getAmostraDadoSinteticoEntrada2Id() + "'");
 		celula.adicionaLinha("url = 'http://vps-40d69db1.vps.ovh.ca:23004/api/ExemploDadoSinteticos/listaPorAmostraParaTreino?idAmostra={}'.format(idAmostra)");;
 		insereCelula(notebook,celula);

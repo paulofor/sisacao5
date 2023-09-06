@@ -108,18 +108,6 @@
 		"posicaoCtrl": {
 			"type": "number"
 		},
-		"experimentoPreRedeId": {
-			"type": "number"
-		},
-		"grupoAcaoId": {
-			"type": "number"
-		},
-		"regraProjecaoId": {
-			"type": "number"
-		},
-		"periodoTreinoRedeId": {
-			"type": "number"
-		}
 	},
 	"validations": [],
 	"relations": {

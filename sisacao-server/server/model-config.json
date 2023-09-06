@@ -354,5 +354,109 @@
   "TipoAplicacaoSaldoMes": {
     "dataSource": "mysqlKingDS2",
     "public": true
+  },
+  "CotacaoIntradayCoinmarketcap": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "KerasLayer": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "KerasLayerType": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "RegraProjecaoHist": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "KerasOptimizer": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "KerasLoss": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "FinanceiroAcaoDia": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "PreRedeNeural": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "VersaoPreRede": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "FinanceiroAcaoFixo": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "VersaoPreRedeRegra": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "AmostraDadoSintetico": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "FechamentoRegraDia": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "ExemploDadoSintetico": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "RegraProjecaoReversao": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "FechamentoRegraDiaQuantidade": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "ExperimentoPreRede": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "FechamentoPontoSaida": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "ExperimentoPreRedeResultado": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "ExemploDadoSinteticoTeste": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "ExperimentoPreRedeTreinada": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "ExperimentoPreRedeTreinadaScore": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "ExperimentoPreRedeTreinadaControle": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "AtivoAcaoUsa": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "CotacaoDiarioAcaoUsa": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "CotacaoIntradayAcaoUsa": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
   }
 }

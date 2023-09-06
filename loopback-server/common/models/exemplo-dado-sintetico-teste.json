@@ -1,0 +1,39 @@
+{
+	"name": "ExemploDadoSinteticoTeste",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"campoX": {
+			"type": "string"
+		},
+		"campoXOriginal": {
+			"type": "string"
+		},
+		"campoY": {
+			"type": "string"
+		},
+		"resultado": {
+			"type": "number"
+		},
+		"amostraDadoSinteticoId": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"amostraDadoSintetico": {
+			"type": "belongsTo",
+			"model": "AmostraDadoSintetico",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+	}
+}

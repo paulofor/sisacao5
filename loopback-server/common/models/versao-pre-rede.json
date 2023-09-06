@@ -36,12 +36,9 @@
 		"qtdeParametro": {
 			"type": "number"
 		},
-		"preRedeNeuralId": {
-			"type": "number"
-		},
 		"redeNeuralId": {
 			"type": "number"
-		}
+		},
 	},
 	"validations": [],
 	"relations": {

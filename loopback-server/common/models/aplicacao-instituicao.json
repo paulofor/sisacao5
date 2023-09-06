@@ -18,9 +18,6 @@
 		"tipoAplicacaoId": {
 			"type": "number"
 		},
-		"instituicaoFinanceiraId": {
-			"type": "number"
-		}
 	},
 	"validations": [],
 	"relations": {

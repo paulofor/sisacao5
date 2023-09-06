@@ -41,9 +41,6 @@
 		"dataHoraSaida": {
 			"type": "date"
 		},
-		"fechamentoRegraDiaId": {
-			"type": "number"
-		}
 	},
 	"validations": [],
 	"relations": {

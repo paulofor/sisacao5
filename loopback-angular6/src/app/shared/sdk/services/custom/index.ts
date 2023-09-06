@@ -103,5 +103,8 @@ export * from './ExemploDadoSinteticoTeste';
 export * from './ExperimentoPreRedeTreinada';
 export * from './ExperimentoPreRedeTreinadaScore';
 export * from './ExperimentoPreRedeTreinadaControle';
+export * from './AtivoAcaoUsa';
+export * from './CotacaoDiarioAcaoUsa';
+export * from './CotacaoIntradayAcaoUsa';
 export * from './SDKModels';
 export * from './logger.service';

@@ -104,6 +104,9 @@ import { ExemploDadoSinteticoTeste } from '../../models/ExemploDadoSinteticoTest
 import { ExperimentoPreRedeTreinada } from '../../models/ExperimentoPreRedeTreinada';
 import { ExperimentoPreRedeTreinadaScore } from '../../models/ExperimentoPreRedeTreinadaScore';
 import { ExperimentoPreRedeTreinadaControle } from '../../models/ExperimentoPreRedeTreinadaControle';
+import { AtivoAcaoUsa } from '../../models/AtivoAcaoUsa';
+import { CotacaoDiarioAcaoUsa } from '../../models/CotacaoDiarioAcaoUsa';
+import { CotacaoIntradayAcaoUsa } from '../../models/CotacaoIntradayAcaoUsa';
 
 export interface Models { [name: string]: any }
 
@@ -215,6 +218,9 @@ export class SDKModels {
     ExperimentoPreRedeTreinada: ExperimentoPreRedeTreinada,
     ExperimentoPreRedeTreinadaScore: ExperimentoPreRedeTreinadaScore,
     ExperimentoPreRedeTreinadaControle: ExperimentoPreRedeTreinadaControle,
+    AtivoAcaoUsa: AtivoAcaoUsa,
+    CotacaoDiarioAcaoUsa: CotacaoDiarioAcaoUsa,
+    CotacaoIntradayAcaoUsa: CotacaoIntradayAcaoUsa,
     
   };
 

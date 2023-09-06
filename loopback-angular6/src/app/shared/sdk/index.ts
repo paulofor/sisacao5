@@ -45,7 +45,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CookieBrowser } from './storage/cookie.browser';
 import { StorageBrowser } from './storage/storage.browser';
 import { SocketBrowser } from './sockets/socket.browser';
-
+import { SocketDriver } from './sockets/socket.driver';
 import { SocketConnection } from './sockets/socket.connections';
 import { RealTime } from './services/core/real.time';
 import { UserApi } from './services/custom/User';
@@ -152,6 +152,9 @@ import { ExemploDadoSinteticoTesteApi } from './services/custom/ExemploDadoSinte
 import { ExperimentoPreRedeTreinadaApi } from './services/custom/ExperimentoPreRedeTreinada';
 import { ExperimentoPreRedeTreinadaScoreApi } from './services/custom/ExperimentoPreRedeTreinadaScore';
 import { ExperimentoPreRedeTreinadaControleApi } from './services/custom/ExperimentoPreRedeTreinadaControle';
+import { AtivoAcaoUsaApi } from './services/custom/AtivoAcaoUsa';
+import { CotacaoDiarioAcaoUsaApi } from './services/custom/CotacaoDiarioAcaoUsa';
+import { CotacaoIntradayAcaoUsaApi } from './services/custom/CotacaoIntradayAcaoUsa';
 /**
 * @module SDKBrowserModule
 * @description
@@ -286,8 +289,12 @@ export class SDKBrowserModule {
         ExperimentoPreRedeTreinadaApi,
         ExperimentoPreRedeTreinadaScoreApi,
         ExperimentoPreRedeTreinadaControleApi,
+        AtivoAcaoUsaApi,
+        CotacaoDiarioAcaoUsaApi,
+        CotacaoIntradayAcaoUsaApi,
         internalStorageProvider,
-        { provide: SDKStorage, useClass: StorageBrowser }
+        { provide: SDKStorage, useClass: StorageBrowser },
+        { provide: SocketDriver, useClass: SocketBrowser }
       ]
     };
   }

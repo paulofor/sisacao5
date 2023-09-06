@@ -2,7 +2,7 @@
 
 module.exports = function(Experimentoprerede) {
 
-    Experimentoprerede.CalculaResultadoTeste = function(id,callback) {
+    Experimentoprerede.CalculaResultadoTeste = function(idExperimento,callback) {
         const ds = Experimentoprerede.dataSource;
         const sql = "update ExperimentoPreRede " +
             " set " +
@@ -88,7 +88,7 @@ module.exports = function(Experimentoprerede) {
             " from ExperimentoPreRedeResultado  " +
             " inner join ExemploDadoSinteticoTeste on ExperimentoPreRedeResultado.exemploDadoSinteticoTesteId = ExemploDadoSinteticoTeste.id " +
             " ) " +
-        " where ExperimentoPreRede.id = " +  id;
+        " where ExperimentoPreRede.id = " +  idExperimento;
         ds.connector.query(sql,callback);
     }
 
@@ -103,8 +103,17 @@ module.exports = function(Experimentoprerede) {
         Experimentoprerede.find(filtro,callback);
     }
 
-    Experimentoprerede.ProximoExperimentoParaPontuar = function(callback) {
+    Experimentoprerede.ProximoExperimentoParaPontuarSintetico = function(callback) {
         //const filtro = {'limit' : 1};
-        Experimentoprerede.find(callback);
+        const filtro = {'where' : {'geraScoreTesteSintetico' : 'S'} , 'limit' : 1}
+        console.log(filtro);
+        Experimentoprerede.find(filtro,callback);
+    }
+
+    Experimentoprerede.FinalizaTreinoSintetico = function(idExperimento,callback) {
+        const sql = "update ExperimentoPreRede set geraScoreTesteSintetico = 'S' where id = " + idExperimento;
+        const ds = Experimentoprerede.dataSource;
+        ds.connector.query(sql,callback);
     }
 };
+ 
