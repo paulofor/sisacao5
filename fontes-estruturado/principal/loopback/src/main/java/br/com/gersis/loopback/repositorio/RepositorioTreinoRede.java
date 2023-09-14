@@ -72,6 +72,21 @@ public class RepositorioTreinoRede extends ModelRepository<TreinoRede> {
 		invokeStaticMethod("obtemListaParaTeste", params,   new JsonArrayParser<TreinoRede>(this, callback));
 	}
 
+	public synchronized void obtemListaParaTreino(final ListCallback<TreinoRede> callback ) {
+		RestContractItem contrato = new RestContractItem("TreinoRedes/obtemListaParaTreino","GET");
+		this.getRestAdapter().getContract().addItem(contrato, "TreinoRede.obtemListaParaTreino");
+		Map<String, Object> params = new HashMap<String, Object>();
+		invokeStaticMethod("obtemListaParaTreino", params,   new JsonArrayParser<TreinoRede>(this, callback));
+	}
+
+	public synchronized void executouTreinamento(int id ,final VoidCallback callback ) {
+		RestContractItem contrato = new RestContractItem("TreinoRedes/executouTreinamento","POST");
+		this.getRestAdapter().getContract().addItem(contrato, "TreinoRede.executouTreinamento");
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("id", id);
+		invokeStaticMethod("executouTreinamento", params,   new EmptyResponseParser(callback));
+	}
+
 
 	private JSONArray obtemLista(List<TreinoRede> listaEntrada) {
 		JSONArray lista = new JSONArray();

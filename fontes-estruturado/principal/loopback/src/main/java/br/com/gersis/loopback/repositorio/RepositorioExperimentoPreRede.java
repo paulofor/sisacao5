@@ -37,6 +37,29 @@ public class RepositorioExperimentoPreRede extends ModelRepository<ExperimentoPr
 		invokeStaticMethod("listaExperimentoParaTreino", params,   new JsonArrayParser<ExperimentoPreRede>(this, callback));
 	}
 
+	public synchronized void calculaResultadoTeste(int idExperimento ,final VoidCallback callback ) {
+		RestContractItem contrato = new RestContractItem("ExperimentoPreRedes/calculaResultadoTeste","POST");
+		this.getRestAdapter().getContract().addItem(contrato, "ExperimentoPreRede.calculaResultadoTeste");
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("idExperimento", idExperimento);
+		invokeStaticMethod("calculaResultadoTeste", params,   new EmptyResponseParser(callback));
+	}
+
+	public synchronized void proximoExperimentoParaPontuarSintetico(final ObjectCallback<ExperimentoPreRede> callback ) {
+		RestContractItem contrato = new RestContractItem("ExperimentoPreRedes/proximoExperimentoParaPontuarSintetico","GET");
+		this.getRestAdapter().getContract().addItem(contrato, "ExperimentoPreRede.proximoExperimentoParaPontuarSintetico");
+		Map<String, Object> params = new HashMap<String, Object>();
+		invokeStaticMethod("proximoExperimentoParaPontuarSintetico", params,   new JsonObjectParser<ExperimentoPreRede>(this, callback));
+	}
+
+	public synchronized void finalizaTreinoSintetico(int idExperimento ,final VoidCallback callback ) {
+		RestContractItem contrato = new RestContractItem("ExperimentoPreRedes/finalizaTreinoSintetico","POST");
+		this.getRestAdapter().getContract().addItem(contrato, "ExperimentoPreRede.finalizaTreinoSintetico");
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("idExperimento", idExperimento);
+		invokeStaticMethod("finalizaTreinoSintetico", params,   new EmptyResponseParser(callback));
+	}
+
 
 	private JSONArray obtemLista(List<ExperimentoPreRede> listaEntrada) {
 		JSONArray lista = new JSONArray();

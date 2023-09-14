@@ -33,6 +33,7 @@ public class PeriodoTreinoRede extends Model {
 	private List<PreRedeNeural> preRedeNeurals;
 	private List<ExperimentoPreRedeTreinada> ExperimentoPreRedeTreinadas;
 	private List<TreinoGrupoRede> TreinoGrupoRedes;
+	private List<TreinoRede> TreinoRedes;
 
 	public JSONObject getJSON() {
 		JSONObject obj = new JSONObject();
@@ -175,6 +176,17 @@ public class PeriodoTreinoRede extends Model {
 			Object objeto = new TreinoGrupoRede();
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.TreinoGrupoRedes.add((TreinoGrupoRede) objeto);
+		}
+	}
+	public List<TreinoRede> getTreinoRedes() {
+		return  TreinoRedes;
+	}
+	public void setTreinoRedes(List<TreinoRede> valores) {
+		this.TreinoRedes = new ArrayList<TreinoRede>();
+		for (int i = 0; i < valores.size(); i++) {
+			Object objeto = new TreinoRede();
+			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
+			this.TreinoRedes.add((TreinoRede) objeto);
 		}
 	}
 }

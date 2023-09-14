@@ -30,11 +30,16 @@ public class RepositorioExemploTreinoAcaoSaida extends ModelRepository<ExemploTr
 
 	// ***  Operações  ***
 
-	public synchronized void listaParaTreino(final ListCallback<ExemploTreinoAcaoSaida> callback ) {
-		RestContractItem contrato = new RestContractItem("ExemploTreinoAcaoSaidas/listaParaTreino","GET");
-		this.getRestAdapter().getContract().addItem(contrato, "ExemploTreinoAcaoSaida.listaParaTreino");
+	public synchronized void listaParaTreinoEntradaSaida(int diaNumInicio ,int diaNumFinal ,int idGrupoAcao ,int idRegraProjecao ,int idTipoExemplo ,final ListCallback<ExemploTreinoAcaoSaida> callback ) {
+		RestContractItem contrato = new RestContractItem("ExemploTreinoAcaoSaidas/listaParaTreinoEntradaSaida","GET");
+		this.getRestAdapter().getContract().addItem(contrato, "ExemploTreinoAcaoSaida.listaParaTreinoEntradaSaida");
 		Map<String, Object> params = new HashMap<String, Object>();
-		invokeStaticMethod("listaParaTreino", params,   new JsonArrayParser<ExemploTreinoAcaoSaida>(this, callback));
+		params.put("diaNumInicio", diaNumInicio);
+		params.put("diaNumFinal", diaNumFinal);
+		params.put("idGrupoAcao", idGrupoAcao);
+		params.put("idRegraProjecao", idRegraProjecao);
+		params.put("idTipoExemplo", idTipoExemplo);
+		invokeStaticMethod("listaParaTreinoEntradaSaida", params,   new JsonArrayParser<ExemploTreinoAcaoSaida>(this, callback));
 	}
 
 

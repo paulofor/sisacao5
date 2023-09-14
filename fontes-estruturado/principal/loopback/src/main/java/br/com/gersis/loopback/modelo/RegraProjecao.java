@@ -43,6 +43,7 @@ public class RegraProjecao extends Model {
 	private List<VersaoPreRedeRegra> VersaoPreRedeRegras;
 	private List<ExperimentoPreRedeTreinada> ExperimentoPreRedeTreinadas;
 	private List<GrupoRegraRel> GrupoRegraRels;
+	private List<TreinoRede> TreinoRedes;
 
 	public JSONObject getJSON() {
 		JSONObject obj = new JSONObject();
@@ -255,6 +256,17 @@ public class RegraProjecao extends Model {
 			Object objeto = new GrupoRegraRel();
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.GrupoRegraRels.add((GrupoRegraRel) objeto);
+		}
+	}
+	public List<TreinoRede> getTreinoRedes() {
+		return  TreinoRedes;
+	}
+	public void setTreinoRedes(List<TreinoRede> valores) {
+		this.TreinoRedes = new ArrayList<TreinoRede>();
+		for (int i = 0; i < valores.size(); i++) {
+			Object objeto = new TreinoRede();
+			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
+			this.TreinoRedes.add((TreinoRede) objeto);
 		}
 	}
 }

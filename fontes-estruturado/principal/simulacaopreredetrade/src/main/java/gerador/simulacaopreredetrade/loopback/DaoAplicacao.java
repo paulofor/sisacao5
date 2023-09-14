@@ -49,6 +49,15 @@ public abstract class DaoAplicacao extends DaoBase {
 	protected RepositorioCotacaoIntradayAcaoResultadoValor repCotacaoIntradayAcaoResultadoValor = adapter.createRepository(RepositorioCotacaoIntradayAcaoResultadoValor.class);
 	protected RepositorioTreinoGrupoRede repTreinoGrupoRede = adapter.createRepository(RepositorioTreinoGrupoRede.class);
 	protected RepositorioCotacaoIntradayCoinmarketcap repCotacaoIntradayCoinmarketcap = adapter.createRepository(RepositorioCotacaoIntradayCoinmarketcap.class);
+	protected RepositorioExperimentoPreRedeResultado repExperimentoPreRedeResultado = adapter.createRepository(RepositorioExperimentoPreRedeResultado.class);
+	protected RepositorioExemploDadoSinteticoTeste repExemploDadoSinteticoTeste = adapter.createRepository(RepositorioExemploDadoSinteticoTeste.class);
+	protected RepositorioGrupoRede repGrupoRede = adapter.createRepository(RepositorioGrupoRede.class);
+	protected RepositorioGrupoRedeRel repGrupoRedeRel = adapter.createRepository(RepositorioGrupoRedeRel.class);
+	protected RepositorioExemploTreinoIndiceAcaoEntrada repExemploTreinoIndiceAcaoEntrada = adapter.createRepository(RepositorioExemploTreinoIndiceAcaoEntrada.class);
+	protected RepositorioCotacaoIntradayIndice repCotacaoIntradayIndice = adapter.createRepository(RepositorioCotacaoIntradayIndice.class);
+	protected RepositorioCotacaoIntradayIndiceResultado repCotacaoIntradayIndiceResultado = adapter.createRepository(RepositorioCotacaoIntradayIndiceResultado.class);
+	protected RepositorioCotacaoIntradayCoinmarketcapIndice repCotacaoIntradayCoinmarketcapIndice = adapter.createRepository(RepositorioCotacaoIntradayCoinmarketcapIndice.class);
+	protected RepositorioIndiceAcao repIndiceAcao = adapter.createRepository(RepositorioIndiceAcao.class);
 
 
 	@Override

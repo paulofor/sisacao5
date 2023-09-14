@@ -163,13 +163,7 @@ public class NotebookPreRedeDadoSintetico extends NotebookObj{
 		celula.adicionaLinha("	print(f\"Versão do TensorFlow {version} já está instalada.\")");
 		insereCelula(notebook,celula);
 		
-		//celula = new CelulaNotebook();
-		//celula.setTitulo("Importacoes", 1);
-		//celula.adicionaLinha("import tensorflow as tf");
-		//insereCelula(notebook,celula);
-		
-
-		
+			
 		celula = new CelulaNotebook();
 		celula.setTitulo("Importacoes", 1);
 		celula.adicionaLinha("import requests");

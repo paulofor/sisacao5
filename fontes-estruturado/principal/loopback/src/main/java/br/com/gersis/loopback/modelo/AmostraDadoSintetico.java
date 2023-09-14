@@ -32,6 +32,7 @@ public class AmostraDadoSintetico extends Model {
 	private List<ExemploDadoSintetico> ExemploDadoSinteticos;
 	private List<ExperimentoPreRede> ExperimentoPreRedes;
 	private List<ExperimentoPreRede> ExperimentoPreRedes;
+	private List<ExemploDadoSinteticoTeste> ExemploDadoSinteticoTestes;
 
 	public JSONObject getJSON() {
 		JSONObject obj = new JSONObject();
@@ -167,6 +168,17 @@ public class AmostraDadoSintetico extends Model {
 			Object objeto = new ExperimentoPreRede();
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.ExperimentoPreRedes.add((ExperimentoPreRede) objeto);
+		}
+	}
+	public List<ExemploDadoSinteticoTeste> getExemploDadoSinteticoTestes() {
+		return  ExemploDadoSinteticoTestes;
+	}
+	public void setExemploDadoSinteticoTestes(List<ExemploDadoSinteticoTeste> valores) {
+		this.ExemploDadoSinteticoTestes = new ArrayList<ExemploDadoSinteticoTeste>();
+		for (int i = 0; i < valores.size(); i++) {
+			Object objeto = new ExemploDadoSinteticoTeste();
+			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
+			this.ExemploDadoSinteticoTestes.add((ExemploDadoSinteticoTeste) objeto);
 		}
 	}
 }

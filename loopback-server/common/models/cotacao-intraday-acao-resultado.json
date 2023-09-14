@@ -11,9 +11,11 @@
 	"properties": {
 		"ticker": {
 			"type": "string"
+			,"id": true
 		},
 		"hora": {
 			"type": "date"
+			,"id": true
 		},
 		"valor": {
 			"type": "number"
@@ -23,6 +25,7 @@
 		},
 		"diaNum": {
 			"type": "number"
+			,"id": true
 		},
 		"dataHora": {
 			"type": "date"

@@ -15,8 +15,38 @@
 	},
 	"acls": [],
 	"methods": {
-		"ListaParaTreino": {
+		"ListaParaTreinoEntradaSaida": {
 			"accepts": [
+				{
+					"arg": "diaNumInicio",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "diaNumFinal",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "idGrupoAcao",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "idRegraProjecao",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "idTipoExemplo",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
 			],
 			"returns": [
  				{
@@ -29,7 +59,7 @@
 			"description": "",
 			"http": [
          		{
-          			"path": "/listaParaTreino",
+          			"path": "/listaParaTreinoEntradaSaida",
    					"verb": "get"
  				}
  			]

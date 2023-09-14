@@ -1,0 +1,48 @@
+{
+	"name": "ExemploTreinoIndiceAcaoEntrada",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"ticker": {
+			"type": "string"
+			,"id": true
+		},
+		"campoX": {
+			"type": "string"
+		},
+		"diaNumPrevisao": {
+			"type": "number"
+			,"id": true
+		},
+		"campoXOriginal": {
+			"type": "string"
+		},
+		"valorReferencia": {
+			"type": "number"
+		},
+		"diaNumInicio": {
+			"type": "number"
+		},
+		"tipoExemploTreinoId": {
+			"type": "number"
+			,"id": true
+		},
+	},
+	"validations": [],
+	"relations": {
+		"tipoExemploTreino": {
+			"type": "belongsTo",
+			"model": "TipoExemploTreino",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+	}
+}

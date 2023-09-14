@@ -1,0 +1,36 @@
+{
+	"name": "CotacaoIntradayIndice",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"ticker": {
+			"type": "string"
+			,"id": true
+		},
+		"dataHora": {
+			"type": "date"
+			,"id": true
+		},
+		"valor": {
+			"type": "number"
+		},
+		"dataHoraNegStr": {
+			"type": "string"
+		},
+		"dia": {
+			"type": "date"
+		}
+	},
+	"validations": [],
+	"relations": {
+	},
+	"acls": [],
+	"methods": {
+	}
+}

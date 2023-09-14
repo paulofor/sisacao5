@@ -30,6 +30,13 @@ public class RepositorioRedeNeural extends ModelRepository<RedeNeural> {
 
 	// ***  Operações  ***
 
+	public synchronized void obtemListaTreino(final ListCallback<RedeNeural> callback ) {
+		RestContractItem contrato = new RestContractItem("RedeNeurals/obtemListaTreino","GET");
+		this.getRestAdapter().getContract().addItem(contrato, "RedeNeural.obtemListaTreino");
+		Map<String, Object> params = new HashMap<String, Object>();
+		invokeStaticMethod("obtemListaTreino", params,   new JsonArrayParser<RedeNeural>(this, callback));
+	}
+
 
 	private JSONArray obtemLista(List<RedeNeural> listaEntrada) {
 		JSONArray lista = new JSONArray();

@@ -17,7 +17,7 @@ public class ResultadoPrevisaoApp {
 
 	public static void main(String[] args) {
 		System.out.print("ResultadoPrevisaoApp");
-		System.out.println("(30/08/2023 08:25:28)");
+		System.out.println("(13/09/2023 01:46:41)");
 		try {
 			carregaProp();
 			ResultadoPrevisaoObj obj = new ResultadoPrevisaoObj();

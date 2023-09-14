@@ -458,5 +458,13 @@
   "CotacaoIntradayAcaoUsa": {
     "dataSource": "mysqlKingDS2",
     "public": true
+  },
+  "CotacaoIntradayIndiceResultado": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
+  },
+  "IndiceAcao": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
   }
 }

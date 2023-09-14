@@ -68,6 +68,11 @@
 			"type": "hasMany",
 			"model": "TreinoGrupoRede",
 			"foreignKey": ""
+		},
+		"treinoRedes": {
+			"type": "hasMany",
+			"model": "TreinoRede",
+			"foreignKey": ""
 		}
 	},
 	"acls": [],

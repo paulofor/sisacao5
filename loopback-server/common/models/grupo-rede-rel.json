@@ -1,0 +1,35 @@
+{
+	"name": "GrupoRedeRel",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"redeNeuralId": {
+			"type": "number"
+		},
+		"grupoRedeId": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"redeNeural": {
+			"type": "belongsTo",
+			"model": "RedeNeural",
+			"foreignKey": ""
+		},
+		"grupoRede": {
+			"type": "belongsTo",
+			"model": "GrupoRede",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+	}
+}

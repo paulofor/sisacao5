@@ -119,6 +119,9 @@
     },
     "pendentePontuacaoFaseTeste": {
       "type": "number"
+    },
+    "tipoExemploTreino2Id": {
+      "type": "number"
     }
   },
   "validations": [],

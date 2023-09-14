@@ -54,6 +54,21 @@
 			"type": "hasMany",
 			"model": "PreRedeNeural",
 			"foreignKey": "tipoExemploTreinoId2"
+		},
+		"treinoRedes": {
+			"type": "hasMany",
+			"model": "TreinoRede",
+			"foreignKey": ""
+		},
+		"treinoRedes": {
+			"type": "hasMany",
+			"model": "TreinoRede",
+			"foreignKey": "tipoExemploTreino2Id"
+		},
+		"exemploTreinoIndiceAcaoEntradas": {
+			"type": "hasMany",
+			"model": "ExemploTreinoIndiceAcaoEntrada",
+			"foreignKey": ""
 		}
 	},
 	"acls": [],

@@ -19,6 +19,7 @@ public class GrupoAcao extends Model {
 	private List<RegraProjecaoReversao> RegraProjecaoReversaos;
 	private List<FechamentoRegraDia> FechamentoRegraDias;
 	private List<ExperimentoPreRedeTreinada> ExperimentoPreRedeTreinadas;
+	private List<TreinoRede> TreinoRedes;
 
 	public JSONObject getJSON() {
 		JSONObject obj = new JSONObject();
@@ -63,6 +64,17 @@ public class GrupoAcao extends Model {
 			Object objeto = new ExperimentoPreRedeTreinada();
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.ExperimentoPreRedeTreinadas.add((ExperimentoPreRedeTreinada) objeto);
+		}
+	}
+	public List<TreinoRede> getTreinoRedes() {
+		return  TreinoRedes;
+	}
+	public void setTreinoRedes(List<TreinoRede> valores) {
+		this.TreinoRedes = new ArrayList<TreinoRede>();
+		for (int i = 0; i < valores.size(); i++) {
+			Object objeto = new TreinoRede();
+			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
+			this.TreinoRedes.add((TreinoRede) objeto);
 		}
 	}
 }

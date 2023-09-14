@@ -1,0 +1,71 @@
+{
+  "name": "CotacaoIntradayIndiceResultado",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ticker": {
+      "type": "string"
+    },
+    "valor": {
+      "type": "number"
+    },
+    "hora": {
+      "type": "string"
+    },
+    "dia": {
+      "type": "date"
+    },
+    "dataHora": {
+      "type": "date"
+    },
+    "diaNum": {
+      "type": "number"
+    },
+    "diaHoraNumTicker": {
+      "type": "string",
+      "id": true
+    },
+    "posicaoDia": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {
+    "CriaIndiceResultadoAno": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "ano",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/criaIndiceResultadoAno",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

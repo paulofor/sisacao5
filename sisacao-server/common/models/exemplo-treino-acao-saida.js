@@ -133,7 +133,7 @@ entrada.posicaoReferencia = 0 and
 RelGrupoAcao.grupoAcaoId  = 12
 */
 
-    Exemplotreinoacaosaida.ListaParaTreino = function(diaNumInicio,diaNumFinal,idGrupoAcao,idRegraProjecao,idTipoExemplo, callback) {
+    Exemplotreinoacaosaida.ListaParaTreinoEntradaSaida = function(diaNumInicio,diaNumFinal,idGrupoAcao,idRegraProjecao,idTipoExemplo, callback) {
         app.models.TipoExemploTreino.findById(idTipoExemplo, (err,tipo) => {
             console.log(tipo);
             let sql = "select campoX, campoY " +

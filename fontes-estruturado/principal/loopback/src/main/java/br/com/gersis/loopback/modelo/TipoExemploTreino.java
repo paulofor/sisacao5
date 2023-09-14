@@ -27,6 +27,9 @@ public class TipoExemploTreino extends Model {
 	private List<RedeNeural> RedeNeurals;
 	private List<PreRedeNeural> PreRedeNeurals;
 	private List<PreRedeNeural> PreRedeNeurals;
+	private List<TreinoRede> TreinoRedes;
+	private List<TreinoRede> TreinoRedes;
+	private List<ExemploTreinoIndiceAcaoEntrada> ExemploTreinoIndiceAcaoEntradas;
 
 	public JSONObject getJSON() {
 		JSONObject obj = new JSONObject();
@@ -135,6 +138,39 @@ public class TipoExemploTreino extends Model {
 			Object objeto = new PreRedeNeural();
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.PreRedeNeurals.add((PreRedeNeural) objeto);
+		}
+	}
+	public List<TreinoRede> getTreinoRedes() {
+		return  TreinoRedes;
+	}
+	public void setTreinoRedes(List<TreinoRede> valores) {
+		this.TreinoRedes = new ArrayList<TreinoRede>();
+		for (int i = 0; i < valores.size(); i++) {
+			Object objeto = new TreinoRede();
+			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
+			this.TreinoRedes.add((TreinoRede) objeto);
+		}
+	}
+	public List<TreinoRede> getTreinoRedes() {
+		return  TreinoRedes;
+	}
+	public void setTreinoRedes(List<TreinoRede> valores) {
+		this.TreinoRedes = new ArrayList<TreinoRede>();
+		for (int i = 0; i < valores.size(); i++) {
+			Object objeto = new TreinoRede();
+			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
+			this.TreinoRedes.add((TreinoRede) objeto);
+		}
+	}
+	public List<ExemploTreinoIndiceAcaoEntrada> getExemploTreinoIndiceAcaoEntradas() {
+		return  ExemploTreinoIndiceAcaoEntradas;
+	}
+	public void setExemploTreinoIndiceAcaoEntradas(List<ExemploTreinoIndiceAcaoEntrada> valores) {
+		this.ExemploTreinoIndiceAcaoEntradas = new ArrayList<ExemploTreinoIndiceAcaoEntrada>();
+		for (int i = 0; i < valores.size(); i++) {
+			Object objeto = new ExemploTreinoIndiceAcaoEntrada();
+			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
+			this.ExemploTreinoIndiceAcaoEntradas.add((ExemploTreinoIndiceAcaoEntrada) objeto);
 		}
 	}
 }

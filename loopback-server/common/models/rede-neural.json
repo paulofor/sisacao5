@@ -73,9 +73,38 @@
 			"type": "hasMany",
 			"model": "VersaoPreRede",
 			"foreignKey": ""
+		},
+		"treinoRedes": {
+			"type": "hasMany",
+			"model": "TreinoRede",
+			"foreignKey": ""
+		},
+		"grupoRedeRels": {
+			"type": "hasMany",
+			"model": "GrupoRedeRel",
+			"foreignKey": ""
 		}
 	},
 	"acls": [],
 	"methods": {
+		"ObtemListaTreino": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemListaTreino",
+   					"verb": "get"
+ 				}
+ 			]
+		}
 	}
 }

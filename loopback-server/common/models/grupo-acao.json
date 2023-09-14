@@ -26,6 +26,11 @@
 			"type": "hasMany",
 			"model": "ExperimentoPreRedeTreinada",
 			"foreignKey": ""
+		},
+		"treinoRedes": {
+			"type": "hasMany",
+			"model": "TreinoRede",
+			"foreignKey": ""
 		}
 	},
 	"acls": [],

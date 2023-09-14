@@ -20,6 +20,10 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 		<module>obtemacaousa</module>
 		<module>coletordiarioacaousa</module>
 		<module>coletorcoinmarketcap</module>
+		<module>criapythontreinorede</module>
+		<module>coletorcoinmarketcapindice</module>
+		<module>cotacaoresultadoindice</module>
+		<module>cotacaoresultadoativoacao</module>
 	</modules>
 
 </project>

@@ -31,6 +31,8 @@ public class RedeNeural extends Model {
 	private VersaoPreRede VersaoPreRede;
 	// Relacionamentos N
 	private List<VersaoPreRede> VersaoPreRedes;
+	private List<TreinoRede> TreinoRedes;
+	private List<GrupoRedeRel> GrupoRedeRels;
 
 	public JSONObject getJSON() {
 		JSONObject obj = new JSONObject();
@@ -151,6 +153,28 @@ public class RedeNeural extends Model {
 			Object objeto = new VersaoPreRede();
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.VersaoPreRedes.add((VersaoPreRede) objeto);
+		}
+	}
+	public List<TreinoRede> getTreinoRedes() {
+		return  TreinoRedes;
+	}
+	public void setTreinoRedes(List<TreinoRede> valores) {
+		this.TreinoRedes = new ArrayList<TreinoRede>();
+		for (int i = 0; i < valores.size(); i++) {
+			Object objeto = new TreinoRede();
+			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
+			this.TreinoRedes.add((TreinoRede) objeto);
+		}
+	}
+	public List<GrupoRedeRel> getGrupoRedeRels() {
+		return  GrupoRedeRels;
+	}
+	public void setGrupoRedeRels(List<GrupoRedeRel> valores) {
+		this.GrupoRedeRels = new ArrayList<GrupoRedeRel>();
+		for (int i = 0; i < valores.size(); i++) {
+			Object objeto = new GrupoRedeRel();
+			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
+			this.GrupoRedeRels.add((GrupoRedeRel) objeto);
 		}
 	}
 }

@@ -1,0 +1,36 @@
+{
+	"name": "GrupoRede",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"nome": {
+			"type": "string"
+		},
+		"quantidade": {
+			"type": "number"
+		},
+		"entrada1": {
+			"type": "number"
+		},
+		"entrada2": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"grupoRedeRels": {
+			"type": "hasMany",
+			"model": "GrupoRedeRel",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+	}
+}

@@ -9,9 +9,65 @@
     	"Counts": true
   	},
 	"properties": {
+		"tipoExemploTreino2Id": {
+			"type": "number"
+		},
+		"grupoAcaoId": {
+			"type": "number"
+		},
+		"regraProjecaoId": {
+			"type": "number"
+		},
+		"tipoExemploTreinoId": {
+			"type": "number"
+		},
+		"redeNeuralId": {
+			"type": "number"
+		},
+		"periodoTreinoRedeId": {
+			"type": "number"
+		},
+		"treinoGrupoRedeId": {
+			"type": "number"
+		},
 	},
 	"validations": [],
 	"relations": {
+		"redeNeural": {
+			"type": "belongsTo",
+			"model": "RedeNeural",
+			"foreignKey": ""
+		},
+		"periodoTreinoRede": {
+			"type": "belongsTo",
+			"model": "PeriodoTreinoRede",
+			"foreignKey": ""
+		},
+		"grupoAcao": {
+			"type": "belongsTo",
+			"model": "GrupoAcao",
+			"foreignKey": ""
+		},
+		"regraProjecao": {
+			"type": "belongsTo",
+			"model": "RegraProjecao",
+			"foreignKey": ""
+		},
+		"tipoExemploTreino": {
+			"type": "belongsTo",
+			"model": "TipoExemploTreino",
+			"foreignKey": ""
+		},
+		"entrada2": {
+			"type": "belongsTo",
+			"model": "TipoExemploTreino",
+			"foreignKey": "tipoExemploTreino2Id"
+		},
+		"treinoGrupoRede": {
+			"type": "belongsTo",
+			"model": "TreinoGrupoRede",
+			"foreignKey": ""
+		}
 	},
 	"acls": [],
 	"methods": {
@@ -126,6 +182,50 @@
          		{
           			"path": "/obtemListaParaTeste",
    					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemListaParaTreino": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemListaParaTreino",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ExecutouTreinamento": {
+			"accepts": [
+				{
+					"arg": "id",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/executouTreinamento",
+   					"verb": "post"
  				}
  			]
 		}

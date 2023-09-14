@@ -42,12 +42,14 @@ public class ExperimentoPreRede extends Model {
 	private double mediaResultadoNegativoCtrl2;
 	private double mediaResultadoNegativoCtrl3;
 	private int amostraDadoSinteticoEntrada2Id;
+	private String geraScoreTesteSintetico;
 	// Relacionamentos 1
 	private VersaoPreRede VersaoPreRede;
 	private AmostraDadoSintetico amostraDadoSinteticoEntrada1;
 	private AmostraDadoSintetico amostraDadoSinteticoEntrada2;
 	// Relacionamentos N
 	private List<ExperimentoPreRedeTreinada> ExperimentoPreRedeTreinadas;
+	private List<ExperimentoPreRedeResultado> ExperimentoPreRedeResultados;
 
 	public JSONObject getJSON() {
 		JSONObject obj = new JSONObject();
@@ -81,6 +83,7 @@ public class ExperimentoPreRede extends Model {
 			obj.put("mediaResultadoNegativoCtrl2", mediaResultadoNegativoCtrl2);
 			obj.put("mediaResultadoNegativoCtrl3", mediaResultadoNegativoCtrl3);
 			obj.put("amostraDadoSinteticoEntrada2Id", amostraDadoSinteticoEntrada2Id);
+			obj.put("geraScoreTesteSintetico", geraScoreTesteSintetico);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -256,6 +259,12 @@ public class ExperimentoPreRede extends Model {
 	public int getAmostraDadoSinteticoEntrada2Id() { 
 		return this.amostraDadoSinteticoEntrada2Id;
 	}
+	public void setGeraScoreTesteSintetico(String valor) { 
+		this.geraScoreTesteSintetico = valor;
+	}
+	public String getGeraScoreTesteSintetico() { 
+		return this.geraScoreTesteSintetico;
+	}
 
 	public VersaoPreRede getVersaoPreRede() {
 		return VersaoPreRede;
@@ -287,6 +296,17 @@ public class ExperimentoPreRede extends Model {
 			Object objeto = new ExperimentoPreRedeTreinada();
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.ExperimentoPreRedeTreinadas.add((ExperimentoPreRedeTreinada) objeto);
+		}
+	}
+	public List<ExperimentoPreRedeResultado> getExperimentoPreRedeResultados() {
+		return  ExperimentoPreRedeResultados;
+	}
+	public void setExperimentoPreRedeResultados(List<ExperimentoPreRedeResultado> valores) {
+		this.ExperimentoPreRedeResultados = new ArrayList<ExperimentoPreRedeResultado>();
+		for (int i = 0; i < valores.size(); i++) {
+			Object objeto = new ExperimentoPreRedeResultado();
+			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
+			this.ExperimentoPreRedeResultados.add((ExperimentoPreRedeResultado) objeto);
 		}
 	}
 }
