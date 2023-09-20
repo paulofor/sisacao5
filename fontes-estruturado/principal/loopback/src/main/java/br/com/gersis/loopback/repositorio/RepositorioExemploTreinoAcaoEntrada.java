@@ -46,6 +46,15 @@ public class RepositorioExemploTreinoAcaoEntrada extends ModelRepository<Exemplo
 		invokeStaticMethod("obtemPorDiaNum", params,   new JsonArrayParser<ExemploTreinoAcaoEntrada>(this, callback));
 	}
 
+	public synchronized void listaSemResultadoSimples(String ticker ,int regraId ,final ListCallback<ExemploTreinoAcaoEntrada> callback ) {
+		RestContractItem contrato = new RestContractItem("ExemploTreinoAcaoEntradas/listaSemResultadoSimples","GET");
+		this.getRestAdapter().getContract().addItem(contrato, "ExemploTreinoAcaoEntrada.listaSemResultadoSimples");
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("ticker", ticker);
+		params.put("regraId", regraId);
+		invokeStaticMethod("listaSemResultadoSimples", params,   new JsonArrayParser<ExemploTreinoAcaoEntrada>(this, callback));
+	}
+
 
 	private JSONArray obtemLista(List<ExemploTreinoAcaoEntrada> listaEntrada) {
 		JSONArray lista = new JSONArray();

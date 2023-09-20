@@ -9,9 +9,50 @@
     	"Counts": true
   	},
 	"properties": {
+		"ticker": {
+			"type": "string"
+			,"id": true
+		},
+		"regraProjecaoId": {
+			"type": "number"
+			,"id": true
+		},
+		"campoY": {
+			"type": "number"
+		},
+		"diaNumSaida": {
+			"type": "number"
+		},
+		"valorSaida": {
+			"type": "number"
+		},
+		"valorEntrada": {
+			"type": "number"
+		},
+		"diaNumPrevisao": {
+			"type": "number"
+			,"id": true
+		},
+		"limiteSuperior": {
+			"type": "number"
+		},
+		"limiteInferior": {
+			"type": "number"
+		},
+		"resultado": {
+			"type": "number"
+		},
+		"validado": {
+			"type": "number"
+		},
 	},
 	"validations": [],
 	"relations": {
+		"regraProjecao": {
+			"type": "belongsTo",
+			"model": "RegraProjecao",
+			"foreignKey": ""
+		}
 	},
 	"acls": [],
 	"methods": {

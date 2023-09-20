@@ -20,7 +20,7 @@ public class CotacaoIntradayIndiceResultado extends Model {
 	private String dia;
 	private int diaNum;
 	private String dataHora;
-	private String dataHoraNumTikcer;
+	private String diaHoraNumTicker;
 	private int posicaoDia;
 	// Relacionamentos 1
 	// Relacionamentos N
@@ -35,7 +35,7 @@ public class CotacaoIntradayIndiceResultado extends Model {
 			obj.put("dia", dia);
 			obj.put("diaNum", diaNum);
 			obj.put("dataHora", dataHora);
-			obj.put("dataHoraNumTikcer", dataHoraNumTikcer);
+			obj.put("diaHoraNumTicker", diaHoraNumTicker);
 			obj.put("posicaoDia", posicaoDia);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -80,11 +80,11 @@ public class CotacaoIntradayIndiceResultado extends Model {
 	public String getDataHora() { 
 		return this.dataHora;
 	}
-	public void setDataHoraNumTikcer(String valor) { 
-		this.dataHoraNumTikcer = valor;
+	public void setDiaHoraNumTicker(String valor) { 
+		this.diaHoraNumTicker = valor;
 	}
-	public String getDataHoraNumTikcer() { 
-		return this.dataHoraNumTikcer;
+	public String getDiaHoraNumTicker() { 
+		return this.diaHoraNumTicker;
 	}
 	public void setPosicaoDia(int valor) { 
 		this.posicaoDia = valor;

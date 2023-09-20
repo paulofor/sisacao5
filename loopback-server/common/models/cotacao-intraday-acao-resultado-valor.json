@@ -18,7 +18,7 @@
 			,"id": true
 		},
 		"hora": {
-			"type": "date"
+			"type": "string"
 			,"id": true
 		},
 		"resultado": {

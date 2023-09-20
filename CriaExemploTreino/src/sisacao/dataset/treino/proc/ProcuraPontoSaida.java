@@ -79,7 +79,7 @@ public class ProcuraPontoSaida {
 			while (indDia<dias.size() && contaDia < this.regraProjecao.getDiaLimite()) {
 				contaDia++;
 				DiaPregao dia = dias.get(indDia);
-				if (dia.getDiaNum()==20210610) break;
+				//if (dia.getDiaNum()==20210610) break;
 				if (dia.getCotacaoDiarioAcaos().size()>0) {
 					diario = dias.get(indDia).getCotacaoDiarioAcaos().get(0);
 					//System.out.println(diario + " - " + this.contaDia + " dias.");

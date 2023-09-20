@@ -23,8 +23,12 @@ public abstract class IndiceAcao_ListaIntradayResultado extends DaoAplicacao {
 		if (executaCustom()) {
 			repIndiceAcao.listaIntradayResultado(  new ListCallback<IndiceAcao>() { 
 				public void onSuccess(List<IndiceAcao> lista) {
-						ds.setIndiceCorrente(lista);
-						executaProximo();
+					for (IndiceAcao item : lista) {
+						ds.setIndiceCorrente(item);
+						executaProximoSemFinalizar();
+					}
+					preFinalizar();
+					finalizar();
 				}
 				public void onError(Throwable t) {
 					onErrorBase(t);
@@ -38,7 +42,7 @@ public abstract class IndiceAcao_ListaIntradayResultado extends DaoAplicacao {
 
 	@Override
 	protected final DaoBase getProximo() {
-		return new DummyDaoBase();
+		return new AtualizaDiaImpl();
 	}
 
 

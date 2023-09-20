@@ -10,10 +10,16 @@ import br.com.digicom.sisacao.modelo.RegraProjecao;
 import br.inf.digicom.loopback.comum.DaoBaseComum;
 import br.inf.digicom.loopback.comum.ativoacao.AtivoAcao_ListaPorNomeGrupo;
 import br.inf.digicom.loopback.comum.diapregao.DiaPregao_ObtemIntradayResultadoTickerAteFinal;
+import br.inf.digicom.loopback.comum.diapregao.DiaPregao_ObtemIntradayResultadoTickerAteFinalInicioAnterior;
+import br.inf.digicom.loopback.comum.diapregao.DiaPregao_ObtemIntradayResultadoTickerQuantidadeB3;
 import br.inf.digicom.loopback.comum.regraprojecao.RegraProjecao_ObtemPorCodigoRegra;
+import br.inf.digicom.loopback.comum.regraprojecao.RegraProjecao_ProximoParaProcessamento;
 import sisacao.dataset.treino.dao.DatasetExemplo;
+import sisacao.dataset.treino.entrada.app.CriaDataSetEntrada;
 import sisacao.dataset.treino.entrada.periodo.app.CriaDataSetSaida;
+import sisacao.dataset.treino.entrada.periodo.app.CriaDataSetSaidaSimples;
 import sisacao.dataset.treino.saida.dao.ExemploTreinoAcaoEntrada_ListaSemResultado;
+import sisacao.dataset.treino.saida.dao.ExemploTreinoAcaoEntrada_ListaSemResultadoSimples;
 
 public class TestaTreinoAcaoSaidaApp {
 	
@@ -31,21 +37,25 @@ public class TestaTreinoAcaoSaidaApp {
 		}
 		
 		AtivoAcao ativo = new AtivoAcao();
-		ativo.setTicker("ABEV3");
+		ativo.setTicker("AZUL4");
+		
 		RegraProjecao regraProjecao = new RegraProjecao();
-		regraProjecao.setDiaLimite(40);
-		regraProjecao.setId(30);
+		regraProjecao.setDiaLimite(50);
+		regraProjecao.setId(48);
 		regraProjecao.setTipoCompraVenda("V");
 		regraProjecao.setPercentualEntradaDataset(0.02);
+		regraProjecao.setIndiceHoraReferenciaDataset(0);
+		regraProjecao.setTarget(0.13);
+		regraProjecao.setStop(0.17);
 		
 		
-		ExemploTreinoAcaoEntrada_ListaSemResultado exec = new ExemploTreinoAcaoEntrada_ListaSemResultado();
+		DiaPregao_ObtemIntradayResultadoTickerAteFinalInicioAnterior exec = new DiaPregao_ObtemIntradayResultadoTickerAteFinalInicioAnterior();
 		DatasetExemplo ds = new DatasetExemplo();
 		ds.setAtivoAcaoCorrente(ativo);
 		ds.setRegraProjecao(regraProjecao);
-		ds.setDiaNumInicio(20210908);
+		ds.setDiaNumInicio(20210604);
 		ds.setPosicaoEntrada(0);
-		ds.setQtdeDia(120);
+		ds.setQtdeDia(50);
 		
 		exec.setComum(ds);
 		exec.executa();
@@ -62,10 +72,11 @@ public class TestaTreinoAcaoSaidaApp {
 	}
 	
 	private static void trataProximo() {
-		DaoBaseComum.setProximo(RegraProjecao_ObtemPorCodigoRegra.NOME, new AtivoAcao_ListaPorNomeGrupo());
-		DaoBaseComum.setProximo(AtivoAcao_ListaPorNomeGrupo.NOME, new ExemploTreinoAcaoEntrada_ListaSemResultado());
-		//DaoBaseComum.setProximo(ExemploTreinoAcaoEntrada_ListaSemResultado.NOME, new DiaPregao_ObtemIntradayResultadoTickerAteFinal());
-		DaoBaseComum.setProximo(DiaPregao_ObtemIntradayResultadoTickerAteFinal.NOME, new CriaDataSetSaida());
+		DaoBaseComum.setProximo(RegraProjecao_ProximoParaProcessamento.NOME, new AtivoAcao_ListaPorNomeGrupo());
+		DaoBaseComum.setProximo(AtivoAcao_ListaPorNomeGrupo.NOME, new ExemploTreinoAcaoEntrada_ListaSemResultadoSimples());
+		DaoBaseComum.setProximo(DiaPregao_ObtemIntradayResultadoTickerAteFinalInicioAnterior.NOME, new CriaDataSetSaidaSimples());
+
 	}
+
 
 }

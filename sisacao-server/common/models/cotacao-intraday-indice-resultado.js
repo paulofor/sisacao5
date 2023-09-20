@@ -13,7 +13,7 @@ module.exports = function(Cotacaointradayindiceresultado) {
                     " ( " +
                     " select valor from CotacaoIntradayIndice " +
                     " where CotacaoIntradayIndice.ticker = CotacaoIntradayIndiceResultado.ticker " +
-                    " and CotacaoIntradayIndice.dataHora <= CotacaoIntradayIdniceResultado.dataHora " +
+                    " and CotacaoIntradayIndice.dataHora <= CotacaoIntradayIndiceResultado.dataHora " +
                     " order by CotacaoIntradayIndice.dataHora desc " +
                     " limit 1 " +
                     " ) " +
@@ -32,6 +32,26 @@ module.exports = function(Cotacaointradayindiceresultado) {
 
     };
 
+
+    Cotacaointradayindiceresultado.ObtemProximoHorarioVazio = function(ticker, callback) {
+        // proximo horario vazio menor que o maior intraday.
+       let sql = "SELECT *  " +
+               " FROM CotacaoIntradayIndiceResultado " +
+               " where dataHora < (select dataHora from CotacaoIntradayIndice where ticker = '" + ticker + "' order by dataHora desc limit 1) " +
+               " and ticker = '" + ticker + "' " +
+               " and valor is null order by diaNum, hora " +
+               " limit 1"
+       
+       var ds = Cotacaointradayindiceresultado.dataSource;
+       console.log(sql);
+       ds.connector.query(sql, (err,result) => {
+           if (result.length==1) {
+               callback(err,result[0])
+           } else {
+               callback(err,null);
+           }
+       }); 
+   };
 
     Cotacaointradayindiceresultado.CriaIndiceResultadoAno = function(ticker, ano, callback) {
         //console.log('entrou aqui' + ano);
@@ -54,7 +74,7 @@ module.exports = function(Cotacaointradayindiceresultado) {
                             'diaHoraNumTicker' : diaHoraNumTicker , 'posicaoDia' : posicao[x]};
                    console.log('item' , item);
                    Cotacaointradayindiceresultado.create(item, (err,result) => {
-                        console.log('err:', err);
+                        //console.log('err:', err);
                         if (err) return
                    })
                 }

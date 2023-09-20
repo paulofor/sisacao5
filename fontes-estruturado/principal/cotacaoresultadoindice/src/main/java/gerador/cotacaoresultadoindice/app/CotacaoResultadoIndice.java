@@ -17,7 +17,7 @@ public class CotacaoResultadoIndice {
 
 	public static void main(String[] args) {
 		System.out.print("CotacaoResultadoIndice");
-		System.out.println("(13/09/2023 01:47:14)");
+		System.out.println("(20/09/2023 01:56:50)");
 		try {
 			carregaProp();
 			CotacaoResultadoIndiceObj obj = new CotacaoResultadoIndiceObj();
@@ -54,5 +54,7 @@ public class CotacaoResultadoIndice {
 	private static void preparaComum() {
 		DaoBaseComum.setUrl(UrlLoopback);
 		DaoBaseComum.setProximo("CotacaoResultadoIndiceObj", new IndiceAcao_ListaIntradayResultadoImpl());
+		DaoBaseComum.setProximo("IndiceAcao_ListaIntradayResultado", new AtualizaDiaImpl());
+		DaoBaseComum.setProximo("AtualizaDia", new CotacaoIntradayIndiceResultado_GravaVaziaComAnteriorIndiceImpl());
 	}
 }

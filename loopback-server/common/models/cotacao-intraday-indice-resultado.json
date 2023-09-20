@@ -14,7 +14,7 @@
 			,"id": true
 		},
 		"hora": {
-			"type": "date"
+			"type": "string"
 			,"id": true
 		},
 		"valor": {
@@ -30,7 +30,7 @@
 		"dataHora": {
 			"type": "date"
 		},
-		"dataHoraNumTikcer": {
+		"diaHoraNumTicker": {
 			"type": "string"
 		},
 		"posicaoDia": {
@@ -42,7 +42,7 @@
 	},
 	"acls": [],
 	"methods": {
-		"criaIndiceResultadoAno": {
+		"CriaIndiceResultadoAno": {
 			"accepts": [
 				{
 					"arg": "ticker",
@@ -69,6 +69,31 @@
 			"http": [
          		{
           			"path": "/criaIndiceResultadoAno",
+   					"verb": "post"
+ 				}
+ 			]
+		},
+		"GravaVaziaComAnteriorIndice": {
+			"accepts": [
+				{
+					"arg": "ticker",
+					"type": "string",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/gravaVaziaComAnteriorIndice",
    					"verb": "post"
  				}
  			]

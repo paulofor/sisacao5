@@ -24,6 +24,9 @@ public class YahooCallbackHtml extends CallbackParseHtml{
 		if ("nasdaq".equals(dados.getAtivoIndice().getTicker())) {
 			return new URL("https://finance.yahoo.com/quote/NQ%3DF/");
 		}
+		if ("nasdaq-cripto".equals(dados.getAtivoIndice().getTicker())) {
+			return new URL("https://finance.yahoo.com/quote/%5ENCI/");
+		}
 		return null;
 	}
 

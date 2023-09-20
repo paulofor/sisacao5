@@ -1,12 +1,14 @@
 package sisacao.dataset.treino.entrada.periodo.app;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.Properties;
 
 import br.inf.digicom.loopback.comum.DaoBaseComum;
-import sisacao.dataset.treino.obj.CriaExemploTreinoAcaoObj;
 
 public class InsereExemploTreinoAcaoEntradaPeriodoApp {
 
@@ -15,6 +17,7 @@ public class InsereExemploTreinoAcaoEntradaPeriodoApp {
 	public static void main(String[] args) {
 		System.out.print("InsereExemploTreinoAcaoEntradaApp");
 		System.out.println(" (15-06-2022)");
+		trataErros();
 		try {
 			carregaProp();
 			int posicaoEntrada = 0;
@@ -29,6 +32,20 @@ public class InsereExemploTreinoAcaoEntradaPeriodoApp {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+	}
+	
+	private static void trataErros() {
+		try {
+	        File file = new File("InsereExemploTreinoAcaoEntradaPeriodoApp.err");
+	        if (!file.exists()) {
+	            file.createNewFile();
+	        }
+	        PrintStream ps = new PrintStream(new FileOutputStream(file));
+	        System.setErr(ps);
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
 
 	}
 

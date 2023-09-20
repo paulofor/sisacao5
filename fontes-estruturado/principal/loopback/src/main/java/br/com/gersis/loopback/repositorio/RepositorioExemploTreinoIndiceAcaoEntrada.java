@@ -30,6 +30,16 @@ public class RepositorioExemploTreinoIndiceAcaoEntrada extends ModelRepository<E
 
 	// ***  Operações  ***
 
+	public synchronized void listaParaTreinoIndice(int diaNumInicio ,int diaNumFinal ,int idTipoExemplo ,final ListCallback<ExemploTreinoIndiceAcaoEntrada> callback ) {
+		RestContractItem contrato = new RestContractItem("ExemploTreinoIndiceAcaoEntradas/listaParaTreinoIndice","GET");
+		this.getRestAdapter().getContract().addItem(contrato, "ExemploTreinoIndiceAcaoEntrada.listaParaTreinoIndice");
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("diaNumInicio", diaNumInicio);
+		params.put("diaNumFinal", diaNumFinal);
+		params.put("idTipoExemplo", idTipoExemplo);
+		invokeStaticMethod("listaParaTreinoIndice", params,   new JsonArrayParser<ExemploTreinoIndiceAcaoEntrada>(this, callback));
+	}
+
 
 	private JSONArray obtemLista(List<ExemploTreinoIndiceAcaoEntrada> listaEntrada) {
 		JSONArray lista = new JSONArray();

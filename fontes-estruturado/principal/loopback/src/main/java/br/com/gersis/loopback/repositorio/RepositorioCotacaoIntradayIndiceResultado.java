@@ -39,6 +39,14 @@ public class RepositorioCotacaoIntradayIndiceResultado extends ModelRepository<C
 		invokeStaticMethod("criaIndiceResultadoAno", params,   new EmptyResponseParser(callback));
 	}
 
+	public synchronized void gravaVaziaComAnteriorIndice(String ticker ,final ObjectCallback<CotacaoIntradayIndiceResultado> callback ) {
+		RestContractItem contrato = new RestContractItem("CotacaoIntradayIndiceResultados/gravaVaziaComAnteriorIndice","POST");
+		this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayIndiceResultado.gravaVaziaComAnteriorIndice");
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("ticker", ticker);
+		invokeStaticMethod("gravaVaziaComAnteriorIndice", params,   new JsonObjectParser<CotacaoIntradayIndiceResultado>(this, callback));
+	}
+
 
 	private JSONArray obtemLista(List<CotacaoIntradayIndiceResultado> listaEntrada) {
 		JSONArray lista = new JSONArray();

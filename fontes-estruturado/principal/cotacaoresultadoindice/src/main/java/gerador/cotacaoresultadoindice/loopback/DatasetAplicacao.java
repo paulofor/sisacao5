@@ -7,6 +7,7 @@ import java.util.List;
 
 public class DatasetAplicacao  implements IDatasetComum {
 	private IndiceAcao indiceCorrente;
+	private CotacaoIntradayIndiceResultado resultado;
 
 
 	public void setIndiceCorrente(IndiceAcao valor) { 
@@ -14,5 +15,11 @@ public class DatasetAplicacao  implements IDatasetComum {
 	}
 	public IndiceAcao getIndiceCorrente() { 
 		return this.indiceCorrente;
+	}
+	public void setResultado(CotacaoIntradayIndiceResultado valor) { 
+		this.resultado = valor;
+	}
+	public CotacaoIntradayIndiceResultado getResultado() { 
+		return this.resultado;
 	}
 }

@@ -92,6 +92,37 @@
    					"verb": "get"
  				}
  			]
+		},
+		"ListaSemResultadoSimples": {
+			"accepts": [
+				{
+					"arg": "ticker",
+					"type": "string",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "regraId",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/listaSemResultadoSimples",
+   					"verb": "get"
+ 				}
+ 			]
 		}
 	}
 }

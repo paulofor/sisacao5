@@ -103,9 +103,33 @@
 			"type": "hasMany",
 			"model": "TreinoRede",
 			"foreignKey": ""
+		},
+		"exemploTreinoAcaoSaidas": {
+			"type": "hasMany",
+			"model": "ExemploTreinoAcaoSaida",
+			"foreignKey": ""
 		}
 	},
 	"acls": [],
 	"methods": {
+		"ProximoParaProcessamento": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/proximoParaProcessamento",
+   					"verb": "get"
+ 				}
+ 			]
+		}
 	}
 }

@@ -26,8 +26,8 @@ public class ExemploTreinoAcaoEntrada_ListaSemResultado extends DaoBaseApp {
 		final DatasetExemplo ds = (DatasetExemplo) getComum();
 		String ticker = ds.getAtivoAcaoCorrente().getTicker();
 		int regraId = ds.getRegraProjecao().getId();
-		int qtdeDias = ds.getQtdeDia();
-		int posicaoReferencia = ds.getPosicaoEntrada();
+		int qtdeDias = ds.getRegraProjecao().getDiaLimite();
+		int posicaoReferencia = ds.getRegraProjecao().getIndiceHoraReferenciaDataset();
 		this.repExemploTreinoEntrada.listaSemResultado(ticker, regraId, qtdeDias, posicaoReferencia, new ListCallback<ExemploTreinoAcaoEntrada>() {
 			@Override
 			public void onError(Throwable t) {

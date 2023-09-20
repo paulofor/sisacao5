@@ -44,6 +44,7 @@ public class RegraProjecao extends Model {
 	private List<ExperimentoPreRedeTreinada> ExperimentoPreRedeTreinadas;
 	private List<GrupoRegraRel> GrupoRegraRels;
 	private List<TreinoRede> TreinoRedes;
+	private List<ExemploTreinoAcaoSaida> ExemploTreinoAcaoSaidas;
 
 	public JSONObject getJSON() {
 		JSONObject obj = new JSONObject();
@@ -267,6 +268,17 @@ public class RegraProjecao extends Model {
 			Object objeto = new TreinoRede();
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.TreinoRedes.add((TreinoRede) objeto);
+		}
+	}
+	public List<ExemploTreinoAcaoSaida> getExemploTreinoAcaoSaidas() {
+		return  ExemploTreinoAcaoSaidas;
+	}
+	public void setExemploTreinoAcaoSaidas(List<ExemploTreinoAcaoSaida> valores) {
+		this.ExemploTreinoAcaoSaidas = new ArrayList<ExemploTreinoAcaoSaida>();
+		for (int i = 0; i < valores.size(); i++) {
+			Object objeto = new ExemploTreinoAcaoSaida();
+			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
+			this.ExemploTreinoAcaoSaidas.add((ExemploTreinoAcaoSaida) objeto);
 		}
 	}
 }

@@ -44,5 +44,42 @@
 	},
 	"acls": [],
 	"methods": {
+		"ListaParaTreinoIndice": {
+			"accepts": [
+				{
+					"arg": "diaNumInicio",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "diaNumFinal",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "idTipoExemplo",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/listaParaTreinoIndice",
+   					"verb": "get"
+ 				}
+ 			]
+		}
 	}
 }
