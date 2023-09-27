@@ -23,7 +23,7 @@ public abstract class CalculaPontoSaida extends DaoAplicacao {
 		if (executaCustom(ds.getFechamentoRegraDiaCorrente(), ds.getEntrada(), ds.getPossivelSaida())) {
 			executaProximo();
 		} else {
-			executaProximo();
+			finalizar()
 		}
 	}
 

@@ -23,7 +23,7 @@ public abstract class BuscaSaidaTrade extends DaoAplicacao {
 		if (executaCustom(ds.getListaCotacaoResultado())) {
 			executaProximo();
 		} else {
-			executaProximo();
+			finalizar()
 		}
 	}
 

@@ -4,6 +4,18 @@ var app = require('../../server/server');
 
 module.exports = function (Ativoacao) {
 
+
+    Ativoacao.ListaParaIntradayResultado = function(callback) {
+        let sql = "select AtivoAcao.* from AtivoAcao " +
+        " inner join RelGrupoAcao on AtivoAcao.ticker = RelGrupoAcao.ticker " +
+        " where RelGrupoAcao.grupoAcaoId =  12 " + 
+        " order by AtivoAcao.ticker";
+        let ds = Ativoacao.dataSource;
+        ds.connector.query(sql,callback);
+    }
+
+
+
     /**
     * 
     * @param {Function(Error, object)} callback

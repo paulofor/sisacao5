@@ -23,7 +23,7 @@ public abstract class ColetorListaAcao extends DaoAplicacao {
 		if (executaCustom()) {
 			executaProximo();
 		} else {
-			executaProximo();
+			finalizar()
 		}
 	}
 

@@ -23,7 +23,7 @@ public abstract class GeraPythonDadoSintetico extends DaoAplicacao {
 		if (executaCustom(ds.getExperimentoCorrente())) {
 			executaProximo();
 		} else {
-			executaProximo();
+			finalizar()
 		}
 	}
 

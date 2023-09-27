@@ -23,7 +23,7 @@ public abstract class TreinoRede_ObtemListaPrevisaoTeste extends DaoAplicacao {
 		if (executaCustom()) {
 			executaProximo();
 		} else {
-			executaProximo();
+			finalizar()
 		}
 	}
 

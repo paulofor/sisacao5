@@ -23,7 +23,7 @@ public abstract class ColetaIndiceCripto extends DaoAplicacao {
 		if (executaCustom()) {
 			executaProximo();
 		} else {
-			executaProximo();
+			finalizar()
 		}
 	}
 

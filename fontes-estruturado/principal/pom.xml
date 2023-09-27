@@ -25,6 +25,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 		<module>cotacaoresultadoindice</module>
 		<module>cotacaoresultadoativoacao</module>
 		<module>insereexemplotreinoacaosaida</module>
+		<module>geracotacaointradayacaoresultado</module>
 	</modules>
 
 </project>

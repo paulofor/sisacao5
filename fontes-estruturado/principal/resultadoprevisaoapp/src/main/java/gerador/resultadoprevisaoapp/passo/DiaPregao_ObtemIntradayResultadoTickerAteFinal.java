@@ -23,7 +23,7 @@ public abstract class DiaPregao_ObtemIntradayResultadoTickerAteFinal extends Dao
 		if (executaCustom(ds.getDiaNumInicio(), ds.getTamanhoAmostra(), ds.getTicker())) {
 			executaProximo();
 		} else {
-			executaProximo();
+			finalizar()
 		}
 	}
 

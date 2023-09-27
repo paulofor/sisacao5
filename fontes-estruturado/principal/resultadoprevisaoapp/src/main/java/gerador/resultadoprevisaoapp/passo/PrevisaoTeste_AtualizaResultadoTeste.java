@@ -23,7 +23,7 @@ public abstract class PrevisaoTeste_AtualizaResultadoTeste extends DaoAplicacao 
 		if (executaCustom()) {
 			executaProximo();
 		} else {
-			executaProximo();
+			finalizar()
 		}
 	}
 

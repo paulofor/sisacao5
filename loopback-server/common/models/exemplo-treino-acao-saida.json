@@ -104,6 +104,31 @@
    					"verb": "get"
  				}
  			]
+		},
+		"InsereExemploSaida": {
+			"accepts": [
+				{
+					"arg": "item",
+					"type": "object",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/insereExemploSaida",
+   					"verb": "post"
+ 				}
+ 			]
 		}
 	}
 }

@@ -41,7 +41,7 @@ public abstract class DiaPregao_ObtemIntradayResultadoTickerAteFinalInicioAnteri
 
 	@Override
 	protected final DaoBase getProximo() {
-		return new CriaDataSetSaidaImpl();
+		return new CriaDataSetSaidaSimplesImpl();
 	}
 
 

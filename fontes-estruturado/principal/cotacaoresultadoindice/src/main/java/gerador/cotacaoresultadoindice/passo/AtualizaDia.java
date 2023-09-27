@@ -23,7 +23,7 @@ public abstract class AtualizaDia extends DaoAplicacao {
 		if (executaCustom()) {
 			executaProximo();
 		} else {
-			executaProximo();
+			finalizar()
 		}
 	}
 

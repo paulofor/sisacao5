@@ -11,6 +11,7 @@ public class DatasetAplicacao  implements IDatasetComum {
 	private String nomeGrupoAcao;
 	private ExemploTreinoAcaoEntrada exemploCorrente;
 	private List<DiaPregao> listaDia;
+	private ExemploTreinoAcaoSaida saida;
 
 
 	public void setRegraSaida(RegraProjecao valor) { 
@@ -42,5 +43,11 @@ public class DatasetAplicacao  implements IDatasetComum {
 	}
 	public List<DiaPregao> getListaDia() { 
 		return this.listaDia;
+	}
+	public void setSaida(ExemploTreinoAcaoSaida valor) { 
+		this.saida = valor;
+	}
+	public ExemploTreinoAcaoSaida getSaida() { 
+		return this.saida;
 	}
 }

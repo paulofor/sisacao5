@@ -23,7 +23,7 @@ public abstract class VerificaTrade extends DaoAplicacao {
 		if (executaCustom(ds.getExperimento(), ds.getListaDiaComCotacao(), ds.getEscolhidoDia())) {
 			executaProximo();
 		} else {
-			executaProximo();
+			finalizar()
 		}
 	}
 

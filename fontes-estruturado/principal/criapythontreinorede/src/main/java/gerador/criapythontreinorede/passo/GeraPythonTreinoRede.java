@@ -23,7 +23,7 @@ public abstract class GeraPythonTreinoRede extends DaoAplicacao {
 		if (executaCustom(ds.getTreinoCorrente())) {
 			executaProximo();
 		} else {
-			executaProximo();
+			finalizar()
 		}
 	}
 

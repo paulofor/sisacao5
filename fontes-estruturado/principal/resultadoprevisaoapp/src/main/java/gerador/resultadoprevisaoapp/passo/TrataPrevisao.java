@@ -23,7 +23,7 @@ public abstract class TrataPrevisao extends DaoAplicacao {
 		if (executaCustom(ds.getPrevisaoCorrente())) {
 			executaProximo();
 		} else {
-			executaProximo();
+			finalizar()
 		}
 	}
 

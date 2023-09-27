@@ -23,7 +23,7 @@ public abstract class PreRedeNeural_ListaParaTreino extends DaoAplicacao {
 		if (executaCustom()) {
 			executaProximo();
 		} else {
-			executaProximo();
+			finalizar()
 		}
 	}
 

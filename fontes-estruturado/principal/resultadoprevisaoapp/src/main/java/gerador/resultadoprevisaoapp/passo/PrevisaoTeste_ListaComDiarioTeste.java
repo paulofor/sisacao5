@@ -23,7 +23,7 @@ public abstract class PrevisaoTeste_ListaComDiarioTeste extends DaoAplicacao {
 		if (executaCustom(ds.getTreinoCorrente())) {
 			executaProximo();
 		} else {
-			executaProximo();
+			finalizar()
 		}
 	}
 

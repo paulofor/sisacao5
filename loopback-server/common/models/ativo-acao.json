@@ -73,6 +73,25 @@
    					"verb": "get"
  				}
  			]
+		},
+		"ListaParaIntradayResultado": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/listaParaIntradayResultado",
+   					"verb": "get"
+ 				}
+ 			]
 		}
 	}
 }
