@@ -11,42 +11,31 @@ import java.util.List;
 import com.strongloop.android.loopback.callbacks.*;
 
 
-public abstract class AtivoAcao_ListaParaIntradayResultado extends DaoAplicacao { 
+public abstract class VerificaFechamento extends DaoAplicacao { 
 
-	private int NUM_PASSO = 1;
+	private int NUM_PASSO = 2;
 
 
+	// campos saida
 
 	@Override
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
-		if (executaCustom()) {
-			repAtivoAcao.listaParaIntradayResultado(  new ListCallback<AtivoAcao>() { 
-				public void onSuccess(List<AtivoAcao> lista) {
-					for (AtivoAcao item : lista) {
-						ds.setAcaoCorrente(item);
-						executaProximoSemFinalizar();
-					}
-					preFinalizar();
-					finalizar();
-				}
-				public void onError(Throwable t) {
-					onErrorBase(t);
-				}
-			});
-		} else {
+		if (executaCustom(ds.getCotacaoResultado())) {
 			executaProximo();
+		} else {
+			finalizar();
 		}
 	}
 
 
 	@Override
 	protected final DaoBase getProximo() {
-		return new VerificaFechamentoImpl();
+		return new CotacaoIntradayAcaoResultado_GravaVaziaComAnteriorImpl();
 	}
 
 
-	protected boolean executaCustom() { return true; }
+	protected boolean executaCustom( CotacaoIntradayAcaoResultado cotacaoResultado ) { return true; }
 
 	protected void preFinalizar() { return; }
 

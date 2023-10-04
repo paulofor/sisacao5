@@ -49,6 +49,7 @@ export interface TreinoRedeInterface {
   "score2QtdePrejuizo"?: number;
   "score2Pontuacao"?: number;
   "pendentePontuacaoFaseTeste"?: number;
+  "tipoExemploTreino2Id"?: number;
   "id"?: number;
   "grupoAcaoId"?: number;
   "periodoTreinoRedeId"?: number;
@@ -103,6 +104,7 @@ export class TreinoRede implements TreinoRedeInterface {
   "score2QtdePrejuizo": number;
   "score2Pontuacao": number;
   "pendentePontuacaoFaseTeste": number;
+  "tipoExemploTreino2Id": number;
   "id": number;
   "grupoAcaoId": number;
   "periodoTreinoRedeId": number;
@@ -299,6 +301,10 @@ export class TreinoRede implements TreinoRedeInterface {
         },
         "pendentePontuacaoFaseTeste": {
           name: 'pendentePontuacaoFaseTeste',
+          type: 'number'
+        },
+        "tipoExemploTreino2Id": {
+          name: 'tipoExemploTreino2Id',
           type: 'number'
         },
         "id": {

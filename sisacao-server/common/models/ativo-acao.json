@@ -152,6 +152,24 @@
         }
       ]
     },
+    "ListaParaInsereExemploSaida": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "saida",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaParaInsereExemploSaida",
+          "verb": "get"
+        }
+      ]
+    },
     "ListaPorGrupo": {
       "accepts": [
         {

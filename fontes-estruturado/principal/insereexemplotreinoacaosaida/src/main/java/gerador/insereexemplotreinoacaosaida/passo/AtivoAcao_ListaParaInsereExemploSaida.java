@@ -11,18 +11,17 @@ import java.util.List;
 import com.strongloop.android.loopback.callbacks.*;
 
 
-public abstract class AtivoAcao_ListaPorNomeGrupo extends DaoAplicacao { 
+public abstract class AtivoAcao_ListaParaInsereExemploSaida extends DaoAplicacao { 
 
 	private int NUM_PASSO = 2;
 
 
-	protected String nomeGrupo;
 
 	@Override
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
-		if (executaCustom(ds.getNomeGrupoAcao())) {
-			repAtivoAcao.listaPorNomeGrupo( nomeGrupo, new ListCallback<AtivoAcao>() { 
+		if (executaCustom()) {
+			repAtivoAcao.listaParaInsereExemploSaida(  new ListCallback<AtivoAcao>() { 
 				public void onSuccess(List<AtivoAcao> lista) {
 					for (AtivoAcao item : lista) {
 						ds.setAtivoCorrente(item);
@@ -47,7 +46,7 @@ public abstract class AtivoAcao_ListaPorNomeGrupo extends DaoAplicacao {
 	}
 
 
-	protected boolean executaCustom( String nomeGrupoAcao ) { return true; }
+	protected boolean executaCustom() { return true; }
 
 	protected void preFinalizar() { return; }
 

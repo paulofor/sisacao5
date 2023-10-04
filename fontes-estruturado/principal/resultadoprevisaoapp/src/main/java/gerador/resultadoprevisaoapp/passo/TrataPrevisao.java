@@ -16,14 +16,21 @@ public abstract class TrataPrevisao extends DaoAplicacao {
 	private int NUM_PASSO = 3;
 
 
+	// campos saida
+	protected int  saidaDiaNumInicio;
+	protected int  saidaTamanhoAmostra;
+	protected String  saidaTicker;
 
 	@Override
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom(ds.getPrevisaoCorrente())) {
+			ds.setDiaNumInicio(saidaDiaNumInicio);
+			ds.setTamanhoAmostra(saidaTamanhoAmostra);
+			ds.setTicker(saidaTicker);
 			executaProximo();
 		} else {
-			finalizar()
+			finalizar();
 		}
 	}
 

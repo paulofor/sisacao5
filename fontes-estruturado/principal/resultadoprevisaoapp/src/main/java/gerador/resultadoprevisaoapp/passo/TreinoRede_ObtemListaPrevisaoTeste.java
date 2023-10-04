@@ -16,14 +16,17 @@ public abstract class TreinoRede_ObtemListaPrevisaoTeste extends DaoAplicacao {
 	private int NUM_PASSO = 1;
 
 
+	// campos saida
+	protected TreinoRede  saidaTreinoCorrente;
 
 	@Override
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom()) {
+			ds.setTreinoCorrente(saidaTreinoCorrente);
 			executaProximo();
 		} else {
-			finalizar()
+			finalizar();
 		}
 	}
 

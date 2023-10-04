@@ -16,14 +16,17 @@ public abstract class DiaPregao_ObtemIntradayResultadoTickerAteFinal extends Dao
 	private int NUM_PASSO = 4;
 
 
+	// campos saida
+	protected List<DiaPregao>  saidaListaCotacaoResultado;
 
 	@Override
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom(ds.getDiaNumInicio(), ds.getTamanhoAmostra(), ds.getTicker())) {
+			ds.setListaCotacaoResultado(saidaListaCotacaoResultado);
 			executaProximo();
 		} else {
-			finalizar()
+			finalizar();
 		}
 	}
 

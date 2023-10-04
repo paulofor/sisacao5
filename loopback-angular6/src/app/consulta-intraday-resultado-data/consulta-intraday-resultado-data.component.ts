@@ -37,11 +37,12 @@ export class ConsultaIntradayResultadoDataComponent implements OnInit {
       'where' : {
         'and' : [
           {'ticker' : this.ticker},
-          {'gte' : {'diaNum' : this.data} }
+          {'diaNum' : {'gte' : this.data} }
         ]
       },
       'limit' : this.qtde
     }
+    console.log('filtro:' , filtro);
     this.srv.find(filtro)
       .subscribe((result:CotacaoIntradayAcaoResultado[]) => {
         for (const cotacao of result) {

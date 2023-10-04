@@ -404,4 +404,8 @@ module.exports = function (Ativoacao) {
         });
     };
 
+    Ativoacao.ListaParaInsereExemploSaida = function(callback) {
+        Ativoacao.ListaPorNomeGrupo('Neg-100', callback);
+    }
+
 };

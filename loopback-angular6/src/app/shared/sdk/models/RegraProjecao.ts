@@ -33,6 +33,9 @@ export interface RegraProjecaoInterface {
   "quantidadeValidada"?: number;
   "percentualValidado"?: number;
   "prioridade"?: number;
+  "tickerExemploSaidaRecente"?: string;
+  "diaNumExemploSaidaRecente"?: number;
+  "dataHoraExemploSaidaRecente"?: string;
   "id"?: number;
   cotacaoIntradayAcaoResultadoValors?: CotacaoIntradayAcaoResultadoValor[];
   regraProjecaoTotalMes?: RegraProjecaoTotalMes[];
@@ -66,6 +69,9 @@ export class RegraProjecao implements RegraProjecaoInterface {
   "quantidadeValidada": number;
   "percentualValidado": number;
   "prioridade": number;
+  "tickerExemploSaidaRecente": string;
+  "diaNumExemploSaidaRecente": number;
+  "dataHoraExemploSaidaRecente": string;
   "id": number;
   cotacaoIntradayAcaoResultadoValors: CotacaoIntradayAcaoResultadoValor[];
   regraProjecaoTotalMes: RegraProjecaoTotalMes[];
@@ -200,6 +206,18 @@ export class RegraProjecao implements RegraProjecaoInterface {
         "prioridade": {
           name: 'prioridade',
           type: 'number'
+        },
+        "tickerExemploSaidaRecente": {
+          name: 'tickerExemploSaidaRecente',
+          type: 'string'
+        },
+        "diaNumExemploSaidaRecente": {
+          name: 'diaNumExemploSaidaRecente',
+          type: 'number'
+        },
+        "dataHoraExemploSaidaRecente": {
+          name: 'dataHoraExemploSaidaRecente',
+          type: 'string'
         },
         "id": {
           name: 'id',

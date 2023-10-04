@@ -53,6 +53,13 @@ public class RepositorioAtivoAcao extends ModelRepository<AtivoAcao> {
 		invokeStaticMethod("listaParaIntradayResultado", params,   new JsonArrayParser<AtivoAcao>(this, callback));
 	}
 
+	public synchronized void listaParaInsereExemploSaida(final ListCallback<AtivoAcao> callback ) {
+		RestContractItem contrato = new RestContractItem("AtivoAcaos/listaParaInsereExemploSaida","GET");
+		this.getRestAdapter().getContract().addItem(contrato, "AtivoAcao.listaParaInsereExemploSaida");
+		Map<String, Object> params = new HashMap<String, Object>();
+		invokeStaticMethod("listaParaInsereExemploSaida", params,   new JsonArrayParser<AtivoAcao>(this, callback));
+	}
+
 
 	private JSONArray obtemLista(List<AtivoAcao> listaEntrada) {
 		JSONArray lista = new JSONArray();

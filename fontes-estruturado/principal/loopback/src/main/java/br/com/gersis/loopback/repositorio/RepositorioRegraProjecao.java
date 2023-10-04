@@ -37,6 +37,16 @@ public class RepositorioRegraProjecao extends ModelRepository<RegraProjecao> {
 		invokeStaticMethod("proximoParaProcessamento", params,   new JsonObjectParser<RegraProjecao>(this, callback));
 	}
 
+	public synchronized void atualizaExemploSaidaRecente(String ticker ,int regraId ,int diaNum ,final VoidCallback callback ) {
+		RestContractItem contrato = new RestContractItem("RegraProjecaos/atualizaExemploSaidaRecente","POST");
+		this.getRestAdapter().getContract().addItem(contrato, "RegraProjecao.atualizaExemploSaidaRecente");
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("ticker", ticker);
+		params.put("regraId", regraId);
+		params.put("diaNum", diaNum);
+		invokeStaticMethod("atualizaExemploSaidaRecente", params,   new EmptyResponseParser(callback));
+	}
+
 
 	private JSONArray obtemLista(List<RegraProjecao> listaEntrada) {
 		JSONArray lista = new JSONArray();

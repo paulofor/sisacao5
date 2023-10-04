@@ -9,15 +9,15 @@ import { LoopBackFilter,  } from '../../models/BaseModels';
 import { ErrorHandler } from '../core/error.service';
 import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AtivoAcaoUsa } from '../../models/AtivoAcaoUsa';
+import { IndiceAcao } from '../../models/IndiceAcao';
 import { SocketConnection } from '../../sockets/socket.connections';
 
 
 /**
- * Api services for the `AtivoAcaoUsa` model.
+ * Api services for the `IndiceAcao` model.
  */
 @Injectable()
-export class AtivoAcaoUsaApi extends BaseLoopBackApi {
+export class IndiceAcaoApi extends BaseLoopBackApi {
 
   constructor(
     @Inject(HttpClient) protected http: HttpClient,
@@ -42,13 +42,13 @@ export class AtivoAcaoUsaApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `AtivoAcaoUsa` object.)
+   * This usually means the response is a `IndiceAcao` object.)
    * </em>
    */
   public patchOrCreate(data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/AtivoAcaoUsas";
+    "/IndiceAcaos";
     let _routeParams: any = {};
     let _postBody: any = {
       data: data
@@ -61,7 +61,7 @@ export class AtivoAcaoUsaApi extends BaseLoopBackApi {
   /**
    * Patch attributes for a model instance and persist it into the data source.
    *
-   * @param {any} id AtivoAcaoUsa id
+   * @param {any} id IndiceAcao id
    *
    * @param {object} data Request data.
    *
@@ -73,13 +73,13 @@ export class AtivoAcaoUsaApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `AtivoAcaoUsa` object.)
+   * This usually means the response is a `IndiceAcao` object.)
    * </em>
    */
   public patchAttributes(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/AtivoAcaoUsas/:id";
+    "/IndiceAcaos/:id";
     let _routeParams: any = {
       id: id
     };
@@ -92,10 +92,35 @@ export class AtivoAcaoUsaApi extends BaseLoopBackApi {
   }
 
   /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `IndiceAcao` object.)
+   * </em>
+   */
+  public ListaIntradayResultado(customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/IndiceAcaos/listaIntradayResultado";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
    * The name of the model represented by this $resource,
-   * i.e. `AtivoAcaoUsa`.
+   * i.e. `IndiceAcao`.
    */
   public getModelName() {
-    return "AtivoAcaoUsa";
+    return "IndiceAcao";
   }
 }

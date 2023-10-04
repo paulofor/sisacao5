@@ -7,6 +7,7 @@ import java.util.List;
 
 public class DatasetAplicacao  implements IDatasetComum {
 	private AtivoAcao acaoCorrente;
+	private CotacaoIntradayAcaoResultado cotacaoResultado;
 
 
 	public void setAcaoCorrente(AtivoAcao valor) { 
@@ -14,5 +15,11 @@ public class DatasetAplicacao  implements IDatasetComum {
 	}
 	public AtivoAcao getAcaoCorrente() { 
 		return this.acaoCorrente;
+	}
+	public void setCotacaoResultado(CotacaoIntradayAcaoResultado valor) { 
+		this.cotacaoResultado = valor;
+	}
+	public CotacaoIntradayAcaoResultado getCotacaoResultado() { 
+		return this.cotacaoResultado;
 	}
 }

@@ -46,12 +46,12 @@ public class RepositorioCotacaoIntradayAcaoResultado extends ModelRepository<Cot
 		invokeStaticMethod("listaPossiveisSaidas", params,   new JsonArrayParser<CotacaoIntradayAcaoResultado>(this, callback));
 	}
 
-	public synchronized void gravaVaziaComAnterior(String ticker ,final VoidCallback callback ) {
+	public synchronized void gravaVaziaComAnterior(String ticker ,final ObjectCallback<CotacaoIntradayAcaoResultado> callback ) {
 		RestContractItem contrato = new RestContractItem("CotacaoIntradayAcaoResultados/gravaVaziaComAnterior","POST");
 		this.getRestAdapter().getContract().addItem(contrato, "CotacaoIntradayAcaoResultado.gravaVaziaComAnterior");
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("ticker", ticker);
-		invokeStaticMethod("gravaVaziaComAnterior", params,   new EmptyResponseParser(callback));
+		invokeStaticMethod("gravaVaziaComAnterior", params,   new JsonObjectParser<CotacaoIntradayAcaoResultado>(this, callback));
 	}
 
 

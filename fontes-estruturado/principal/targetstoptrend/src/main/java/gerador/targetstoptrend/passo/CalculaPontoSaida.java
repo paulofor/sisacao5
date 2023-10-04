@@ -16,14 +16,21 @@ public abstract class CalculaPontoSaida extends DaoAplicacao {
 	private int NUM_PASSO = 4;
 
 
+	// campos saida
+	protected CotacaoIntradayAcaoResultado  saidaPontoSaida;
+	protected int  saidaResultado;
+	protected int  saidaPasso;
 
 	@Override
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom(ds.getFechamentoRegraDiaCorrente(), ds.getEntrada(), ds.getPossivelSaida())) {
+			ds.setPontoSaida(saidaPontoSaida);
+			ds.setResultado(saidaResultado);
+			ds.setPasso(saidaPasso);
 			executaProximo();
 		} else {
-			finalizar()
+			finalizar();
 		}
 	}
 

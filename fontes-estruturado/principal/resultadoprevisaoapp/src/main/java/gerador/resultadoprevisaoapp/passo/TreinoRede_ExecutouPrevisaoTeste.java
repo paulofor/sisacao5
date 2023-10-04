@@ -16,6 +16,7 @@ public abstract class TreinoRede_ExecutouPrevisaoTeste extends DaoAplicacao {
 	private int NUM_PASSO = 7;
 
 
+	// campos saida
 
 	@Override
 	protected final void executaImpl() {
@@ -23,7 +24,7 @@ public abstract class TreinoRede_ExecutouPrevisaoTeste extends DaoAplicacao {
 		if (executaCustom()) {
 			executaProximo();
 		} else {
-			finalizar()
+			finalizar();
 		}
 	}
 

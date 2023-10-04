@@ -10,16 +10,15 @@
             <span class="dgc-direita">#{{regra.id}}</span>
           </div>
           <div class="dgc-card-detalhe">
-              <div>Tipo: {{regra.tipoCompraVenda}}</div>
-              <div>Target: {{regra.target}}</div>
-              <div>Stop: {{regra.stop}}</div>
-              <div>Limite Saída: {{regra.diaLimite}} dias</div>
-              <div>Percentual para entrada:{{regra.percentualEntradaDataset}}</div>
-              <div>Posição índice de horário:{{regra.indiceHoraReferenciaDataset}}</div>
+              <div>Acesso: <span *ngIf="regra.dataHoraAcesso ">{{regra.dataHoraAcesso  | date : 'dd/MM/yyyy HH:mm:ss' : 'UTC'}}</span></div>
               <div>Prioridade: {{regra.prioridade}}</div>
           </div>
           <div class="dgc-card-detalhe">
-            <div>Acesso: <span *ngIf="regra.dataHoraAcesso ">{{regra.dataHoraAcesso  | date : 'dd/MM/yyyy HH:mm:ss' : 'UTC'}}</span></div>
+            <div>Recente Ticker : {{regra.tickerExemploSaidaRecente}}</div>
+            <div>Recente Dia Previsao : {{regra.diaNumExemploSaidaRecente}}</div>
+            <div>Recente Hora :  <span *ngIf="regra.dataHoraExemploSaidaRecente ">{{regra.dataHoraExemploSaidaRecente  | date : 'dd/MM/yyyy HH:mm:ss' : 'UTC'}}</span></div>
+          </div>
+          <div class="dgc-card-detalhe">
             <div>Finalização: <span *ngIf="regra.ultimaInsercao ">{{regra.ultimaInsercao  | date : 'dd/MM/yyyy' : 'UTC' }}</span></div>
             <div>Dados Até: <span *ngIf="regra.maiorDataProcessamento">{{regra.maiorDataProcessamento  | date : 'dd/MM/yyyy' : 'UTC' }}</span></div>
           </div>  

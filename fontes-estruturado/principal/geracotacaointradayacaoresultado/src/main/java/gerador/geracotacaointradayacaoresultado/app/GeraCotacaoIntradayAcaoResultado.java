@@ -17,7 +17,7 @@ public class GeraCotacaoIntradayAcaoResultado {
 
 	public static void main(String[] args) {
 		System.out.print("GeraCotacaoIntradayAcaoResultado");
-		System.out.println("(26/09/2023 16:28:08)");
+		System.out.println("(03/10/2023 17:30:56)");
 		try {
 			carregaProp();
 			GeraCotacaoIntradayAcaoResultadoObj obj = new GeraCotacaoIntradayAcaoResultadoObj();
@@ -54,6 +54,7 @@ public class GeraCotacaoIntradayAcaoResultado {
 	private static void preparaComum() {
 		DaoBaseComum.setUrl(UrlLoopback);
 		DaoBaseComum.setProximo("GeraCotacaoIntradayAcaoResultadoObj", new AtivoAcao_ListaParaIntradayResultadoImpl());
-		DaoBaseComum.setProximo("AtivoAcao_ListaParaIntradayResultado", new CotacaoIntradayAcaoResultado_GravaVaziaComAnteriorImpl());
+		DaoBaseComum.setProximo("AtivoAcao_ListaParaIntradayResultado", new VerificaFechamentoImpl());
+		DaoBaseComum.setProximo("VerificaFechamento", new CotacaoIntradayAcaoResultado_GravaVaziaComAnteriorImpl());
 	}
 }

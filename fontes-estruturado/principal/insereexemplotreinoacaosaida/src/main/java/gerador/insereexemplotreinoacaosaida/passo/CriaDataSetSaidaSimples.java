@@ -16,14 +16,17 @@ public abstract class CriaDataSetSaidaSimples extends DaoAplicacao {
 	private int NUM_PASSO = 5;
 
 
+	// campos saida
+	protected ExemploTreinoAcaoSaida  saidaSaida;
 
 	@Override
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom(ds.getRegraSaida(), ds.getExemploCorrente(), ds.getListaDia())) {
+			ds.setSaida(saidaSaida);
 			executaProximo();
 		} else {
-			finalizar()
+			finalizar();
 		}
 	}
 

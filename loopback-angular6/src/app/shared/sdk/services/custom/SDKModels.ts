@@ -107,6 +107,8 @@ import { ExperimentoPreRedeTreinadaControle } from '../../models/ExperimentoPreR
 import { AtivoAcaoUsa } from '../../models/AtivoAcaoUsa';
 import { CotacaoDiarioAcaoUsa } from '../../models/CotacaoDiarioAcaoUsa';
 import { CotacaoIntradayAcaoUsa } from '../../models/CotacaoIntradayAcaoUsa';
+import { CotacaoIntradayIndiceResultado } from '../../models/CotacaoIntradayIndiceResultado';
+import { IndiceAcao } from '../../models/IndiceAcao';
 
 export interface Models { [name: string]: any }
 
@@ -221,6 +223,8 @@ export class SDKModels {
     AtivoAcaoUsa: AtivoAcaoUsa,
     CotacaoDiarioAcaoUsa: CotacaoDiarioAcaoUsa,
     CotacaoIntradayAcaoUsa: CotacaoIntradayAcaoUsa,
+    CotacaoIntradayIndiceResultado: CotacaoIntradayIndiceResultado,
+    IndiceAcao: IndiceAcao,
     
   };
 

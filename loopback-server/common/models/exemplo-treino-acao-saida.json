@@ -108,7 +108,7 @@
 		"InsereExemploSaida": {
 			"accepts": [
 				{
-					"arg": "item",
+					"arg": "exemplo",
 					"type": "object",
    					"required": false,
     				"description": ""

@@ -16,14 +16,17 @@ public abstract class ColetorListaAcao extends DaoAplicacao {
 	private int NUM_PASSO = 1;
 
 
+	// campos saida
+	protected List<AtivoAcaoUsa>  saidaListaAcao;
 
 	@Override
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom()) {
+			ds.setListaAcao(saidaListaAcao);
 			executaProximo();
 		} else {
-			finalizar()
+			finalizar();
 		}
 	}
 

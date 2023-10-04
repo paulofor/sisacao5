@@ -17,7 +17,7 @@ public class PreRedeTreinadaProcessaTesteControle {
 
 	public static void main(String[] args) {
 		System.out.print("PreRedeTreinadaProcessaTesteControle");
-		System.out.println("(26/09/2023 16:28:01)");
+		System.out.println("(03/10/2023 17:30:50)");
 		try {
 			carregaProp();
 			PreRedeTreinadaProcessaTesteControleObj obj = new PreRedeTreinadaProcessaTesteControleObj();

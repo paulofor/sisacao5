@@ -329,8 +329,11 @@ RelGrupoAcao.grupoAcaoId  = 12
     Exemplotreinoacaosaida.InsereExemploSaida = function(exemplo,callback)  {
         console.log('exemplo-saida: ' , exemplo);
         Exemplotreinoacaosaida.create(exemplo, (err,result) => {
-            console.log('Err:' , err);
-            console.log('Result:' , result);
+            //console.log('Err:' , err);
+            //console.log('Result:' , result);
+            app.models.RegraProjecao.AtualizaExemploSaidaRecente(exemplo.ticker,exemplo.regraProjecaoId, exemplo.diaNumPrevisao, (err2,result) => {
+                //console.log('err2', err2);
+            }) 
             callback(null,exemplo);
         });
     }

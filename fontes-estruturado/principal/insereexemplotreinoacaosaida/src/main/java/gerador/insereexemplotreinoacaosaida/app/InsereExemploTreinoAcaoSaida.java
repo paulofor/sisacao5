@@ -17,7 +17,7 @@ public class InsereExemploTreinoAcaoSaida {
 
 	public static void main(String[] args) {
 		System.out.print("InsereExemploTreinoAcaoSaida");
-		System.out.println("(26/09/2023 16:28:07)");
+		System.out.println("(03/10/2023 17:30:56)");
 		try {
 			carregaProp();
 			InsereExemploTreinoAcaoSaidaObj obj = new InsereExemploTreinoAcaoSaidaObj();
@@ -54,8 +54,8 @@ public class InsereExemploTreinoAcaoSaida {
 	private static void preparaComum() {
 		DaoBaseComum.setUrl(UrlLoopback);
 		DaoBaseComum.setProximo("InsereExemploTreinoAcaoSaidaObj", new RegraProjecao_ProximoParaProcessamentoImpl());
-		DaoBaseComum.setProximo("RegraProjecao_ProximoParaProcessamento", new AtivoAcao_ListaPorNomeGrupoImpl());
-		DaoBaseComum.setProximo("AtivoAcao_ListaPorNomeGrupo", new ExemploTreinoAcaoEntrada_ListaSemResultadoSimplesImpl());
+		DaoBaseComum.setProximo("RegraProjecao_ProximoParaProcessamento", new AtivoAcao_ListaParaInsereExemploSaidaImpl());
+		DaoBaseComum.setProximo("AtivoAcao_ListaParaInsereExemploSaida", new ExemploTreinoAcaoEntrada_ListaSemResultadoSimplesImpl());
 		DaoBaseComum.setProximo("ExemploTreinoAcaoEntrada_ListaSemResultadoSimples", new DiaPregao_ObtemIntradayResultadoTickerAteFinalInicioAnteriorImpl());
 		DaoBaseComum.setProximo("DiaPregao_ObtemIntradayResultadoTickerAteFinalInicioAnterior", new CriaDataSetSaidaSimplesImpl());
 		DaoBaseComum.setProximo("CriaDataSetSaidaSimples", new ExemploTreinoAcaoSaida_InsereExemploSaidaImpl());

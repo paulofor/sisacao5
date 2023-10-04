@@ -16,6 +16,7 @@ public abstract class GeraPythonTreinoRede extends DaoAplicacao {
 	private int NUM_PASSO = 2;
 
 
+	// campos saida
 
 	@Override
 	protected final void executaImpl() {
@@ -23,7 +24,7 @@ public abstract class GeraPythonTreinoRede extends DaoAplicacao {
 		if (executaCustom(ds.getTreinoCorrente())) {
 			executaProximo();
 		} else {
-			finalizar()
+			finalizar();
 		}
 	}
 

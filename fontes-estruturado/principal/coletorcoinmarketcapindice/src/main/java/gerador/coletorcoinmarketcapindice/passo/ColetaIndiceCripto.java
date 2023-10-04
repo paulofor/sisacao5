@@ -16,6 +16,7 @@ public abstract class ColetaIndiceCripto extends DaoAplicacao {
 	private int NUM_PASSO = 1;
 
 
+	// campos saida
 
 	@Override
 	protected final void executaImpl() {
@@ -23,7 +24,7 @@ public abstract class ColetaIndiceCripto extends DaoAplicacao {
 		if (executaCustom()) {
 			executaProximo();
 		} else {
-			finalizar()
+			finalizar();
 		}
 	}
 

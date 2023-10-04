@@ -177,7 +177,7 @@ module.exports = function(Cotacaointradayacaoresultado) {
                 });    
             } else {
                 console.log('nao tem');
-                callback(null,null);
+                callback(null,{'diaNum' : 0 });
             }
            
         })

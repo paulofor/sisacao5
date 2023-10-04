@@ -42,11 +42,11 @@ public class RepositorioExemploTreinoAcaoSaida extends ModelRepository<ExemploTr
 		invokeStaticMethod("listaParaTreinoEntradaSaida", params,   new JsonArrayParser<ExemploTreinoAcaoSaida>(this, callback));
 	}
 
-	public synchronized void insereExemploSaida(ExemploTreinoAcaoSaida item ,final VoidCallback callback ) {
+	public synchronized void insereExemploSaida(ExemploTreinoAcaoSaida exemplo ,final VoidCallback callback ) {
 		RestContractItem contrato = new RestContractItem("ExemploTreinoAcaoSaidas/insereExemploSaida","POST");
 		this.getRestAdapter().getContract().addItem(contrato, "ExemploTreinoAcaoSaida.insereExemploSaida");
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("item", item.getJSON());
+		params.put("exemplo", exemplo.getJSON());
 		invokeStaticMethod("insereExemploSaida", params,   new EmptyResponseParser(callback));
 	}
 

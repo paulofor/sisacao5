@@ -16,14 +16,17 @@ public abstract class VerificaTrade extends DaoAplicacao {
 	private int NUM_PASSO = 6;
 
 
+	// campos saida
+	protected ExperimentoPreRedeTreinadaScore  saidaEscolhidoDia;
 
 	@Override
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom(ds.getExperimento(), ds.getListaDiaComCotacao(), ds.getEscolhidoDia())) {
+			ds.setEscolhidoDia(saidaEscolhidoDia);
 			executaProximo();
 		} else {
-			finalizar()
+			finalizar();
 		}
 	}
 

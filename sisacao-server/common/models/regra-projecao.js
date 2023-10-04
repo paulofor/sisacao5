@@ -22,7 +22,13 @@ module.exports = function(Regraprojecao) {
     ds.connector.query(sql,callback);
   }
 
-
+  Regraprojecao.AtualizaExemploSaidaRecente = function(ticker,regraId, diaNum, callback) {
+    let sql = "UPDATE RegraProjecao " +
+      " set tickerExemploSaidaRecente = '" + ticker + "' , diaNumExemploSaidaRecente = "  + diaNum + " , dataHoraExemploSaidaRecente = now() " +
+      " where id = " + regraId; 
+    let ds = Regraprojecao.dataSource;
+    ds.connector.query(sql,callback);
+  }
 
   Regraprojecao.ZerarPrioridades = function(callback) {
     let sql = "update RegraProjecao set prioridade = 0";

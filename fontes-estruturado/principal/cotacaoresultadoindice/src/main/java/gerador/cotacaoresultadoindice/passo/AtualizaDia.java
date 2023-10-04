@@ -16,6 +16,7 @@ public abstract class AtualizaDia extends DaoAplicacao {
 	private int NUM_PASSO = 2;
 
 
+	// campos saida
 
 	@Override
 	protected final void executaImpl() {
@@ -23,7 +24,7 @@ public abstract class AtualizaDia extends DaoAplicacao {
 		if (executaCustom()) {
 			executaProximo();
 		} else {
-			finalizar()
+			finalizar();
 		}
 	}
 

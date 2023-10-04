@@ -16,13 +16,13 @@ public abstract class ExemploTreinoAcaoSaida_InsereExemploSaida extends DaoAplic
 	private int NUM_PASSO = 6;
 
 
-	protected ExemploTreinoAcaoSaida item;
+	protected ExemploTreinoAcaoSaida exemplo;
 
 	@Override
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom(ds.getSaida())) {
-			repExemploTreinoAcaoSaida.insereExemploSaida( item, new VoidCallback() { 
+			repExemploTreinoAcaoSaida.insereExemploSaida( exemplo, new VoidCallback() { 
 				public void onSuccess() {
 					executaProximo();
 				}

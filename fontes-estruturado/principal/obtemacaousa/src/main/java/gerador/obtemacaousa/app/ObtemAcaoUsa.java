@@ -17,7 +17,7 @@ public class ObtemAcaoUsa {
 
 	public static void main(String[] args) {
 		System.out.print("ObtemAcaoUsa");
-		System.out.println("(26/09/2023 16:28:04)");
+		System.out.println("(03/10/2023 17:30:51)");
 		try {
 			carregaProp();
 			ObtemAcaoUsaObj obj = new ObtemAcaoUsaObj();

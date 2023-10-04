@@ -16,6 +16,7 @@ public abstract class BuscaSaidaTrade extends DaoAplicacao {
 	private int NUM_PASSO = 5;
 
 
+	// campos saida
 
 	@Override
 	protected final void executaImpl() {
@@ -23,7 +24,7 @@ public abstract class BuscaSaidaTrade extends DaoAplicacao {
 		if (executaCustom(ds.getListaCotacaoResultado())) {
 			executaProximo();
 		} else {
-			finalizar()
+			finalizar();
 		}
 	}
 

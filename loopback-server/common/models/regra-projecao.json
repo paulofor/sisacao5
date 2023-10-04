@@ -80,6 +80,15 @@
 		},
 		"prioridade": {
 			"type": "number"
+		},
+		"tickerExemploSaidaRecente": {
+			"type": "string"
+		},
+		"diaNumExemploSaidaRecente": {
+			"type": "number"
+		},
+		"dataHoraExemploSaidaRecente": {
+			"type": "date"
 		}
 	},
 	"validations": [],
@@ -128,6 +137,43 @@
          		{
           			"path": "/proximoParaProcessamento",
    					"verb": "get"
+ 				}
+ 			]
+		},
+		"AtualizaExemploSaidaRecente": {
+			"accepts": [
+				{
+					"arg": "ticker",
+					"type": "string",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "regraId",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "diaNum",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/atualizaExemploSaidaRecente",
+   					"verb": "post"
  				}
  			]
 		}

@@ -106,5 +106,7 @@ export * from './ExperimentoPreRedeTreinadaControle';
 export * from './AtivoAcaoUsa';
 export * from './CotacaoDiarioAcaoUsa';
 export * from './CotacaoIntradayAcaoUsa';
+export * from './CotacaoIntradayIndiceResultado';
+export * from './IndiceAcao';
 export * from './SDKModels';
 export * from './logger.service';

@@ -16,14 +16,17 @@ public abstract class GeraPythonPreRedeNeural extends DaoAplicacao {
 	private int NUM_PASSO = 2;
 
 
+	// campos saida
+	protected PreRedeNeural  saidaPreRedeNeuralCorrente;
 
 	@Override
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom()) {
+			ds.setPreRedeNeuralCorrente(saidaPreRedeNeuralCorrente);
 			executaProximo();
 		} else {
-			finalizar()
+			finalizar();
 		}
 	}
 

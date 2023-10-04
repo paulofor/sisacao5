@@ -92,6 +92,25 @@
    					"verb": "get"
  				}
  			]
+		},
+		"ListaParaInsereExemploSaida": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/listaParaInsereExemploSaida",
+   					"verb": "get"
+ 				}
+ 			]
 		}
 	}
 }

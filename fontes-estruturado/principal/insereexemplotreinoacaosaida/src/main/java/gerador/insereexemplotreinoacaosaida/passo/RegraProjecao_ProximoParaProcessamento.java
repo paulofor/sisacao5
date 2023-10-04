@@ -39,7 +39,7 @@ public abstract class RegraProjecao_ProximoParaProcessamento extends DaoAplicaca
 
 	@Override
 	protected final DaoBase getProximo() {
-		return new AtivoAcao_ListaPorNomeGrupoImpl();
+		return new AtivoAcao_ListaParaInsereExemploSaidaImpl();
 	}
 
 

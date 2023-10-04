@@ -77,6 +77,12 @@ public class CriaDataSetSaidaSimplesImpl extends CriaDataSetSaidaSimples {
 					DiaPregao atual = dias.get(diaReferencia);
 					System.out.println("Dia sem saída:" + atual);
 					System.out.println("");
+					exemploSaida.setTicker(entrada.getTicker());
+					exemploSaida.setDiaNumPrevisao(entrada.getDiaNumPrevisao());
+					exemploSaida.setRegraProjecaoId(new Integer(regraSaida.getId().toString()));
+					exemploSaida.setValorEntrada(valorEntrada);
+					exemploSaida.setLimiteInferior(minimo);
+					exemploSaida.setLimiteSuperior(maximo);
 				}
 			} else {
 				dadosTreino.calcula(dias, this.procuraPontoSaida, valorReferencia);
@@ -97,6 +103,12 @@ public class CriaDataSetSaidaSimplesImpl extends CriaDataSetSaidaSimples {
 					DiaPregao atual = dias.get(diaReferencia);
 					System.out.println("Dia sem saída:" + atual);
 					System.out.println("");
+					exemploSaida.setTicker(entrada.getTicker());
+					exemploSaida.setDiaNumPrevisao(entrada.getDiaNumPrevisao());
+					exemploSaida.setRegraProjecaoId(new Integer(regraSaida.getId().toString()));
+					exemploSaida.setValorEntrada(valorEntrada);
+					exemploSaida.setLimiteInferior(minimo);
+					exemploSaida.setLimiteSuperior(maximo);
 				}
 			} else {
 				dadosTreino.calcula(dias, this.procuraPontoSaida, valorReferencia);

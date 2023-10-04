@@ -38,6 +38,9 @@ public class RegraProjecao extends Model {
 	private int quantidadeValidada;
 	private double percentualValidado;
 	private int prioridade;
+	private String tickerExemploSaidaRecente;
+	private int diaNumExemploSaidaRecente;
+	private String dataHoraExemploSaidaRecente;
 	// Relacionamentos 1
 	// Relacionamentos N
 	private List<VersaoPreRedeRegra> VersaoPreRedeRegras;
@@ -74,6 +77,9 @@ public class RegraProjecao extends Model {
 			obj.put("quantidadeValidada", quantidadeValidada);
 			obj.put("percentualValidado", percentualValidado);
 			obj.put("prioridade", prioridade);
+			obj.put("tickerExemploSaidaRecente", tickerExemploSaidaRecente);
+			obj.put("diaNumExemploSaidaRecente", diaNumExemploSaidaRecente);
+			obj.put("dataHoraExemploSaidaRecente", dataHoraExemploSaidaRecente);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -224,6 +230,24 @@ public class RegraProjecao extends Model {
 	}
 	public int getPrioridade() { 
 		return this.prioridade;
+	}
+	public void setTickerExemploSaidaRecente(String valor) { 
+		this.tickerExemploSaidaRecente = valor;
+	}
+	public String getTickerExemploSaidaRecente() { 
+		return this.tickerExemploSaidaRecente;
+	}
+	public void setDiaNumExemploSaidaRecente(int valor) { 
+		this.diaNumExemploSaidaRecente = valor;
+	}
+	public int getDiaNumExemploSaidaRecente() { 
+		return this.diaNumExemploSaidaRecente;
+	}
+	public void setDataHoraExemploSaidaRecente(String valor) { 
+		this.dataHoraExemploSaidaRecente = valor;
+	}
+	public String getDataHoraExemploSaidaRecente() { 
+		return this.dataHoraExemploSaidaRecente;
 	}
 
 	public List<VersaoPreRedeRegra> getVersaoPreRedeRegras() {

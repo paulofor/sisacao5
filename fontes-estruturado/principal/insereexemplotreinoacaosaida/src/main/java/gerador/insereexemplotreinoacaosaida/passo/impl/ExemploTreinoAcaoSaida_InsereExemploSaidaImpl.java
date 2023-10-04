@@ -10,7 +10,7 @@ public class ExemploTreinoAcaoSaida_InsereExemploSaidaImpl extends ExemploTreino
 
 	@Override
 	protected boolean executaCustom(ExemploTreinoAcaoSaida saida) {
-		this.item = saida;
+		this.exemplo = saida;
 		return true;
 	} 
 

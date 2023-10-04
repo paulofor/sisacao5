@@ -16,14 +16,17 @@ public abstract class PrevisaoTeste_ListaComDiarioTeste extends DaoAplicacao {
 	private int NUM_PASSO = 2;
 
 
+	// campos saida
+	protected PrevisaoTeste  saidaPrevisaoCorrente;
 
 	@Override
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom(ds.getTreinoCorrente())) {
+			ds.setPrevisaoCorrente(saidaPrevisaoCorrente);
 			executaProximo();
 		} else {
-			finalizar()
+			finalizar();
 		}
 	}
 

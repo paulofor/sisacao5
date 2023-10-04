@@ -13,7 +13,7 @@ import com.strongloop.android.loopback.callbacks.*;
 
 public abstract class CotacaoIntradayAcaoResultado_GravaVaziaComAnterior extends DaoAplicacao { 
 
-	private int NUM_PASSO = 2;
+	private int NUM_PASSO = 3;
 
 
 	protected String ticker;
@@ -22,8 +22,10 @@ public abstract class CotacaoIntradayAcaoResultado_GravaVaziaComAnterior extends
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom(ds.getAcaoCorrente())) {
-			repCotacaoIntradayAcaoResultado.gravaVaziaComAnterior( ticker, new VoidCallback() { 
-				public void onSuccess() {
+			repCotacaoIntradayAcaoResultado.gravaVaziaComAnterior( ticker , new ObjectCallback<CotacaoIntradayAcaoResultado>() { 
+				public void onSuccess(CotacaoIntradayAcaoResultado object) {
+					ds.setCotacaoResultado(object);
+					//preFinalizar();
 					executaProximo();
 				}
 				public void onError(Throwable t) {
