@@ -123,6 +123,31 @@
    					"verb": "get"
  				}
  			]
+		},
+		"InsereExemploEntrada": {
+			"accepts": [
+				{
+					"arg": "exemplo",
+					"type": "object",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/insereExemploEntrada",
+   					"verb": "post"
+ 				}
+ 			]
 		}
 	}
 }

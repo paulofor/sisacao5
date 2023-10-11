@@ -1,6 +1,7 @@
 <div class="dgc-painel">
   <div class="dgc-painel-header" *ngIf="listaBase">
       <span>{{principal.nome}} ({{listaBase.length}})</span>
+      <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="carregaTela()">Atualizar</button>
       <button class="btn btn-primary btn-sm dgc-botao-comando dgc-direita" (click)="zeraPrioridadeGrupo(principal)">Zerar Prioridades</button>
   </div>
   <div *ngIf="listaBase" class="dgc-painel-principal">

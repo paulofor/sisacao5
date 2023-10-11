@@ -1,4 +1,4 @@
-package gerador.coletorcoinmarketcapindice.app;
+package gerador.insereexemplotreinoacaoentradaperiodo.app;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -7,20 +7,20 @@ import java.util.Properties;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
-import gerador.coletorcoinmarketcapindice.passo.*;
-import gerador.coletorcoinmarketcapindice.passo.impl.*;
+import gerador.insereexemplotreinoacaoentradaperiodo.passo.*;
+import gerador.insereexemplotreinoacaoentradaperiodo.passo.impl.*;
 import br.com.gersis.daobase.comum.DaoBaseComum;
 
-public class ColetorCoinMarketCapIndice {
+public class InsereExemploTreinoAcaoEntradaPeriodo {
 
 	private static String UrlLoopback = "";
 
 	public static void main(String[] args) {
-		System.out.print("ColetorCoinMarketCapIndice");
-		System.out.println("(10/10/2023 11:40:49)");
+		System.out.print("InsereExemploTreinoAcaoEntradaPeriodo");
+		System.out.println("(10/10/2023 11:40:52)");
 		try {
 			carregaProp();
-			ColetorCoinMarketCapIndiceObj obj = new ColetorCoinMarketCapIndiceObj();
+			InsereExemploTreinoAcaoEntradaPeriodoObj obj = new InsereExemploTreinoAcaoEntradaPeriodoObj();
 			obj.executa();
 			System.out.println("finalizou");
 			System.exit(0);
@@ -32,7 +32,7 @@ public class ColetorCoinMarketCapIndice {
 
 	private static void gravarErro(Exception e) {
 		try {
-			FileWriter fileWriter = new FileWriter("ColetorCoinMarketCapIndice.err", true);
+			FileWriter fileWriter = new FileWriter("InsereExemploTreinoAcaoEntradaPeriodo.err", true);
 			PrintWriter printWriter = new PrintWriter(fileWriter);
 			e.printStackTrace(printWriter);
 			printWriter.close();
@@ -53,6 +53,10 @@ public class ColetorCoinMarketCapIndice {
 
 	private static void preparaComum() {
 		DaoBaseComum.setUrl(UrlLoopback);
-		DaoBaseComum.setProximo("ColetorCoinMarketCapIndiceObj", new ColetaIndiceCriptoImpl());
+		DaoBaseComum.setProximo("InsereExemploTreinoAcaoEntradaPeriodoObj", new DiaPregao_ListaDataPeriodoImpl());
+		DaoBaseComum.setProximo("DiaPregao_ListaDataPeriodo", new AtivoAcao_ListaParaInsereExemploSaidaImpl());
+		DaoBaseComum.setProximo("AtivoAcao_ListaParaInsereExemploSaida", new DiaPregao_ObtemIntradayResultadoTickerPeriodoQuantidadeImpl());
+		DaoBaseComum.setProximo("DiaPregao_ObtemIntradayResultadoTickerPeriodoQuantidade", new CriaDataSetEntradaImpl());
+		DaoBaseComum.setProximo("CriaDataSetEntrada", new ExemploTreinoAcaoEntrada_InsereExemploEntradaImpl());
 	}
 }

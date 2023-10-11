@@ -27,6 +27,9 @@
     },
     "tamanhoEntrada": {
       "type": "number"
+    },
+    "geraExemplo" : {
+      "type": "number"
     }
   },
   "validations": [],
@@ -39,6 +42,26 @@
   },
   "acls": [],
   "methods": {
+    "ListaGeraExemplo": {
+      "accepts": [
+       
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaGeraExemplo",
+          "verb": "get"
+        }
+      ]
+    },
     "ObtemTotaisPorData": {
       "accepts": [
         {

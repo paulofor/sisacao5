@@ -19,6 +19,9 @@ public class InsereExemploTreinoAcaoSaidaObj extends DaoAplicacao {
 		finalizar();
 	}
 	private void executaFinalizacao(DatasetAplicacao ds) {
+		DaoBase finalizacao1 = new RegraProjecao_FinalizaInsercaoImpl();
+		finalizacao1.setComum(ds);
+		finalizacao1.executa();
 	}
 	public int getNumPasso() {
 		return 1;

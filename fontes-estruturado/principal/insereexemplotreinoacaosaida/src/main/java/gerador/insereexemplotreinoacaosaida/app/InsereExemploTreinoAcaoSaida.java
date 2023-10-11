@@ -17,7 +17,7 @@ public class InsereExemploTreinoAcaoSaida {
 
 	public static void main(String[] args) {
 		System.out.print("InsereExemploTreinoAcaoSaida");
-		System.out.println("(03/10/2023 17:30:56)");
+		System.out.println("(10/10/2023 11:40:51)");
 		try {
 			carregaProp();
 			InsereExemploTreinoAcaoSaidaObj obj = new InsereExemploTreinoAcaoSaidaObj();
@@ -59,5 +59,6 @@ public class InsereExemploTreinoAcaoSaida {
 		DaoBaseComum.setProximo("ExemploTreinoAcaoEntrada_ListaSemResultadoSimples", new DiaPregao_ObtemIntradayResultadoTickerAteFinalInicioAnteriorImpl());
 		DaoBaseComum.setProximo("DiaPregao_ObtemIntradayResultadoTickerAteFinalInicioAnterior", new CriaDataSetSaidaSimplesImpl());
 		DaoBaseComum.setProximo("CriaDataSetSaidaSimples", new ExemploTreinoAcaoSaida_InsereExemploSaidaImpl());
+		DaoBaseComum.setProximo("ExemploTreinoAcaoSaida_InsereExemploSaida", new RegraProjecao_FinalizaInsercaoImpl());
 	}
 }

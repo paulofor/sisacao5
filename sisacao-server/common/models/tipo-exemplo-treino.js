@@ -2,6 +2,14 @@
 
 module.exports = function(Tipoexemplotreino) {
 
+
+    Tipoexemplotreino.ListaGeraExemplo = function(callback) {
+        let sql = "select * from TipoExemploTreino where geraExemplo = 1";
+        let ds = Tipoexemplotreino.dataSource;
+        ds.connector.query(sql,callback);
+    }
+
+
     Tipoexemplotreino.ObtemTotaisPorData = function(idTipoExemploTreino, callback) {
         let sql = "select diaNumPrevisao, count(*) as qtdeExemplo " +
             " from ExemploTreinoAcaoEntrada, TipoExemploTreino " +

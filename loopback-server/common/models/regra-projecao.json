@@ -176,6 +176,31 @@
    					"verb": "post"
  				}
  			]
+		},
+		"FinalizaInsercao": {
+			"accepts": [
+				{
+					"arg": "idRegra",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/finalizaInsercao",
+   					"verb": "post"
+ 				}
+ 			]
 		}
 	}
 }
