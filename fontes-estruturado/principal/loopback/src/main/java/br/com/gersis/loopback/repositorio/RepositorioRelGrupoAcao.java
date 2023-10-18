@@ -15,32 +15,25 @@ import com.strongloop.android.loopback.callbacks.ObjectCallback;
 import com.strongloop.android.loopback.callbacks.VoidCallback;
 import com.strongloop.android.remoting.adapters.RestContractItem;
 
-import br.com.gersis.loopback.modelo.TipoExemploTreino;
+import br.com.gersis.loopback.modelo.RelGrupoAcao;
 
-public class RepositorioTipoExemploTreino extends ModelRepository<TipoExemploTreino> {
+public class RepositorioRelGrupoAcao extends ModelRepository<RelGrupoAcao> {
 
-	public RepositorioTipoExemploTreino() {
-		super("TipoExemploTreino", TipoExemploTreino.class);
+	public RepositorioRelGrupoAcao() {
+		super("RelGrupoAcao", RelGrupoAcao.class);
 	}
 	@Override
 	protected String verificaNomeUrl(String nome) {
-		return "TipoExemploTreino";
+		return "RelGrupoAcao";
 	}
 
 
 	// ***  Operações  ***
 
-	public synchronized void listaGeraExemplo(final ListCallback<TipoExemploTreino> callback ) {
-		RestContractItem contrato = new RestContractItem("TipoExemploTreinos/listaGeraExemplo","GET");
-		this.getRestAdapter().getContract().addItem(contrato, "TipoExemploTreino.listaGeraExemplo");
-		Map<String, Object> params = new HashMap<String, Object>();
-		invokeStaticMethod("listaGeraExemplo", params,   new JsonArrayParser<TipoExemploTreino>(this, callback));
-	}
 
-
-	private JSONArray obtemLista(List<TipoExemploTreino> listaEntrada) {
+	private JSONArray obtemLista(List<RelGrupoAcao> listaEntrada) {
 		JSONArray lista = new JSONArray();
-		for (TipoExemploTreino item : listaEntrada) {
+		for (RelGrupoAcao item : listaEntrada) {
 			lista.put(item.getJSON());
 		}
 		return lista;

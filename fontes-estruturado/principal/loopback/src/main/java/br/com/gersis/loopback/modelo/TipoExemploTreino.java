@@ -20,6 +20,8 @@ public class TipoExemploTreino extends Model {
 	private int diaNumAtualizado;
 	private int diaNumFinal;
 	private int tamanhoEntrada;
+	private int geraExemplo;
+	private int diaNumExemploEntradaInicio;
 	// Relacionamentos 1
 	// Relacionamentos N
 	private List<AmostraDadoSintetico> AmostraDadoSinteticos;
@@ -41,6 +43,8 @@ public class TipoExemploTreino extends Model {
 			obj.put("diaNumAtualizado", diaNumAtualizado);
 			obj.put("diaNumFinal", diaNumFinal);
 			obj.put("tamanhoEntrada", tamanhoEntrada);
+			obj.put("geraExemplo", geraExemplo);
+			obj.put("diaNumExemploEntradaInicio", diaNumExemploEntradaInicio);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -83,6 +87,18 @@ public class TipoExemploTreino extends Model {
 	}
 	public int getTamanhoEntrada() { 
 		return this.tamanhoEntrada;
+	}
+	public void setGeraExemplo(int valor) { 
+		this.geraExemplo = valor;
+	}
+	public int getGeraExemplo() { 
+		return this.geraExemplo;
+	}
+	public void setDiaNumExemploEntradaInicio(int valor) { 
+		this.diaNumExemploEntradaInicio = valor;
+	}
+	public int getDiaNumExemploEntradaInicio() { 
+		return this.diaNumExemploEntradaInicio;
 	}
 
 	public List<AmostraDadoSintetico> getAmostraDadoSinteticos() {

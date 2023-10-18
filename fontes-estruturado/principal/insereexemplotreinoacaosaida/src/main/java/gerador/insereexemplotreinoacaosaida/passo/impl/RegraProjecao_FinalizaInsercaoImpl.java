@@ -10,7 +10,8 @@ public class RegraProjecao_FinalizaInsercaoImpl extends RegraProjecao_FinalizaIn
 
 	@Override
 	protected boolean executaCustom(RegraProjecao regraSaida) {
-		this.idRegra = new Integer(regraSaida.getId().toString());
+		this.idRegraProjecao = new Integer(regraSaida.getId().toString());
+		this.idGrupoAcao = 12;
 		return true;
 	} 
 

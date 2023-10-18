@@ -13,7 +13,7 @@ import com.strongloop.android.loopback.callbacks.*;
 
 public abstract class CriaDataSetEntrada extends DaoAplicacao { 
 
-	private int NUM_PASSO = 4;
+	private int NUM_PASSO = 5;
 
 
 	// campos saida
@@ -22,7 +22,7 @@ public abstract class CriaDataSetEntrada extends DaoAplicacao {
 	@Override
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
-		if (executaCustom(ds.getDiaCorrente(), ds.getAtivoCorrente(), ds.getListaDiaCotacao())) {
+		if (executaCustom(ds.getDiaCorrente(), ds.getAtivoCorrente(), ds.getListaDiaCotacao(), ds.getTipoCorrente())) {
 			ds.setExemploEntrada(saidaExemploEntrada);
 			executaProximo();
 		} else {
@@ -37,7 +37,7 @@ public abstract class CriaDataSetEntrada extends DaoAplicacao {
 	}
 
 
-	protected boolean executaCustom( DiaPregao diaCorrente , AtivoAcao ativoCorrente , List<DiaPregao> listaDiaCotacao ) { return true; }
+	protected boolean executaCustom( DiaPregao diaCorrente , AtivoAcao ativoCorrente , List<DiaPregao> listaDiaCotacao , TipoExemploTreino tipoCorrente ) { return true; }
 
 	protected void preFinalizar() { return; }
 

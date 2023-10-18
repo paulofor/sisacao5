@@ -484,6 +484,11 @@ module.exports = function(Diapregao) {
         }
         Diapregao.find(filtro,callback);
     }
+    Diapregao.ListaDataPeriodoAteOntem = function(diaNumInicio, callback) {
+        const sql = "select * from DiaPregao where diaNum >= " + diaNumInicio + " and data < date(now()) ";
+        const ds = Diapregao.dataSource;
+        ds.connector.query(sql,callback);
+    }
 
     /**
     * 

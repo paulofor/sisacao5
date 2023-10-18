@@ -30,7 +30,11 @@
     },
     "geraExemplo" : {
       "type": "number"
+    },
+    "diaNumExemploEntradaInicio" : {
+      "type" : "number"
     }
+
   },
   "validations": [],
   "relations": {

@@ -9,6 +9,18 @@
     	"Counts": true
   	},
 	"properties": {
+		"nome": {
+			"type": "string"
+		},
+		"descricao": {
+			"type": "string"
+		},
+		"quantidade": {
+			"type": "number"
+		},
+		"codigoGrupoAcao": {
+			"type": "string"
+		}
 	},
 	"validations": [],
 	"relations": {
@@ -30,6 +42,11 @@
 		"treinoRedes": {
 			"type": "hasMany",
 			"model": "TreinoRede",
+			"foreignKey": ""
+		},
+		"relGrupoAcaos": {
+			"type": "hasMany",
+			"model": "RelGrupoAcao",
 			"foreignKey": ""
 		}
 	},

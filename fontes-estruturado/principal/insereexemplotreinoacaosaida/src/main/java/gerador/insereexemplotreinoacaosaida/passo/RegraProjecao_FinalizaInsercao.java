@@ -16,13 +16,14 @@ public abstract class RegraProjecao_FinalizaInsercao extends DaoAplicacao {
 	private int NUM_PASSO = 7;
 
 
-	protected int idRegra;
+	protected int idRegraProjecao;
+	protected int idGrupoAcao;
 
 	@Override
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom(ds.getRegraSaida())) {
-			repRegraProjecao.finalizaInsercao( idRegra, new VoidCallback() { 
+			repRegraProjecao.finalizaInsercao( idRegraProjecao,idGrupoAcao, new VoidCallback() { 
 				public void onSuccess() {
 					executaProximo();
 				}

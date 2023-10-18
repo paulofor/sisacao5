@@ -21,6 +21,11 @@
 	},
 	"validations": [],
 	"relations": {
+		"relGrupoAcaos": {
+			"type": "hasMany",
+			"model": "RelGrupoAcao",
+			"foreignKey": "ticker"
+		}
 	},
 	"acls": [],
 	"methods": {

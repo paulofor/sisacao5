@@ -13,7 +13,7 @@ import com.strongloop.android.loopback.callbacks.*;
 
 public abstract class AtivoAcao_ListaParaInsereExemploSaida extends DaoAplicacao { 
 
-	private int NUM_PASSO = 2;
+	private int NUM_PASSO = 3;
 
 
 

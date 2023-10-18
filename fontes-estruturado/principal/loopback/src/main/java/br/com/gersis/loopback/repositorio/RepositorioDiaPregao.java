@@ -269,6 +269,14 @@ public class RepositorioDiaPregao extends ModelRepository<DiaPregao> {
 		invokeStaticMethod("listaDataPeriodo", params,   new JsonArrayParser<DiaPregao>(this, callback));
 	}
 
+	public synchronized void listaDataPeriodoAteOntem(int diaNumInicio ,final ListCallback<DiaPregao> callback ) {
+		RestContractItem contrato = new RestContractItem("DiaPregaos/listaDataPeriodoAteOntem","GET");
+		this.getRestAdapter().getContract().addItem(contrato, "DiaPregao.listaDataPeriodoAteOntem");
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("diaNumInicio", diaNumInicio);
+		invokeStaticMethod("listaDataPeriodoAteOntem", params,   new JsonArrayParser<DiaPregao>(this, callback));
+	}
+
 
 	private JSONArray obtemLista(List<DiaPregao> listaEntrada) {
 		JSONArray lista = new JSONArray();

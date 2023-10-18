@@ -1211,6 +1211,8 @@ export class RegraProjecaoApi extends BaseLoopBackApi {
          * (The remote method definition does not provide any description.)
          * </em>
    *
+   * @param {number} idGrupoAcao 
+   *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
    *   from the server.
@@ -1220,13 +1222,14 @@ export class RegraProjecaoApi extends BaseLoopBackApi {
    * This usually means the response is a `RegraProjecao` object.)
    * </em>
    */
-  public ProximoParaProcessamento(customHeaders?: Function): Observable<any> {
+  public ProximoParaProcessamento(idGrupoAcao: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/RegraProjecaos/proximoParaProcessamento";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
+    if (typeof idGrupoAcao !== 'undefined' && idGrupoAcao !== null) _urlParams.idGrupoAcao = idGrupoAcao;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
@@ -1319,6 +1322,8 @@ export class RegraProjecaoApi extends BaseLoopBackApi {
    *
    *  - `idRegraProjecao` – `{number}` - 
    *
+   *  - `idGrupoAcao` – `{number}` - 
+   *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
    *   from the server.
@@ -1328,7 +1333,7 @@ export class RegraProjecaoApi extends BaseLoopBackApi {
    * This usually means the response is a `RegraProjecao` object.)
    * </em>
    */
-  public AtualizaTotais(idRegraProjecao: any = {}, customHeaders?: Function): Observable<any> {
+  public AtualizaTotais(idRegraProjecao: any = {}, idGrupoAcao: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/RegraProjecaos/atualizaTotais";
@@ -1336,6 +1341,7 @@ export class RegraProjecaoApi extends BaseLoopBackApi {
     let _postBody: any = {};
     let _urlParams: any = {};
     if (typeof idRegraProjecao !== 'undefined' && idRegraProjecao !== null) _urlParams.idRegraProjecao = idRegraProjecao;
+    if (typeof idGrupoAcao !== 'undefined' && idGrupoAcao !== null) _urlParams.idGrupoAcao = idGrupoAcao;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
@@ -1416,6 +1422,8 @@ export class RegraProjecaoApi extends BaseLoopBackApi {
    *
    *  - `idRegraProjecao` – `{number}` - 
    *
+   *  - `idGrupoAcao` – `{number}` - 
+   *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
    *   from the server.
@@ -1425,7 +1433,7 @@ export class RegraProjecaoApi extends BaseLoopBackApi {
    * This usually means the response is a `RegraProjecao` object.)
    * </em>
    */
-  public FinalizaInsercao(idRegraProjecao: any = {}, customHeaders?: Function): Observable<any> {
+  public FinalizaInsercao(idRegraProjecao: any = {}, idGrupoAcao: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/RegraProjecaos/finalizaInsercao";
@@ -1433,6 +1441,7 @@ export class RegraProjecaoApi extends BaseLoopBackApi {
     let _postBody: any = {};
     let _urlParams: any = {};
     if (typeof idRegraProjecao !== 'undefined' && idRegraProjecao !== null) _urlParams.idRegraProjecao = idRegraProjecao;
+    if (typeof idGrupoAcao !== 'undefined' && idGrupoAcao !== null) _urlParams.idGrupoAcao = idGrupoAcao;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }

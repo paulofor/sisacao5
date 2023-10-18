@@ -11,20 +11,25 @@ import java.util.List;
 import com.strongloop.android.loopback.callbacks.*;
 
 
-public abstract class ExemploTreinoAcaoEntrada_InsereExemploEntrada extends DaoAplicacao { 
+public abstract class DiaPregao_ListaDataPeriodoAteOntem extends DaoAplicacao { 
 
-	private int NUM_PASSO = 6;
+	private int NUM_PASSO = 2;
 
 
-	protected ExemploTreinoAcaoEntrada exemplo;
+	protected int diaNumInicio;
 
 	@Override
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
-		if (executaCustom(ds.getExemploEntrada())) {
-			repExemploTreinoAcaoEntrada.insereExemploEntrada( exemplo, new VoidCallback() { 
-				public void onSuccess() {
-					executaProximo();
+		if (executaCustom()) {
+			repDiaPregao.listaDataPeriodoAteOntem( diaNumInicio, new ListCallback<DiaPregao>() { 
+				public void onSuccess(List<DiaPregao> lista) {
+					for (DiaPregao item : lista) {
+						ds.setDiaCorrente(item);
+						executaProximoSemFinalizar();
+					}
+					preFinalizar();
+					finalizar();
 				}
 				public void onError(Throwable t) {
 					onErrorBase(t);
@@ -38,11 +43,11 @@ public abstract class ExemploTreinoAcaoEntrada_InsereExemploEntrada extends DaoA
 
 	@Override
 	protected final DaoBase getProximo() {
-		return new DummyDaoBase();
+		return new AtivoAcao_ListaParaInsereExemploSaidaImpl();
 	}
 
 
-	protected boolean executaCustom( ExemploTreinoAcaoEntrada exemploEntrada ) { return true; }
+	protected boolean executaCustom() { return true; }
 
 	protected void preFinalizar() { return; }
 

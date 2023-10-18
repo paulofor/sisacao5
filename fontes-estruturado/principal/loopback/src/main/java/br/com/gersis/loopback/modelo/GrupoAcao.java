@@ -14,17 +14,26 @@ import org.json.JSONObject;
 public class GrupoAcao extends Model {
 
 
+	private String nome;
+	private String descricao;
+	private int quantidade;
+	private String codigoGrupoAcao;
 	// Relacionamentos 1
 	// Relacionamentos N
 	private List<RegraProjecaoReversao> RegraProjecaoReversaos;
 	private List<FechamentoRegraDia> FechamentoRegraDias;
 	private List<ExperimentoPreRedeTreinada> ExperimentoPreRedeTreinadas;
 	private List<TreinoRede> TreinoRedes;
+	private List<RelGrupoAcao> RelGrupoAcaos;
 
 	public JSONObject getJSON() {
 		JSONObject obj = new JSONObject();
 		try {
 			obj.put("id",getId());
+			obj.put("nome", nome);
+			obj.put("descricao", descricao);
+			obj.put("quantidade", quantidade);
+			obj.put("codigoGrupoAcao", codigoGrupoAcao);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -32,6 +41,30 @@ public class GrupoAcao extends Model {
 	}
 
 
+	public void setNome(String valor) { 
+		this.nome = valor;
+	}
+	public String getNome() { 
+		return this.nome;
+	}
+	public void setDescricao(String valor) { 
+		this.descricao = valor;
+	}
+	public String getDescricao() { 
+		return this.descricao;
+	}
+	public void setQuantidade(int valor) { 
+		this.quantidade = valor;
+	}
+	public int getQuantidade() { 
+		return this.quantidade;
+	}
+	public void setCodigoGrupoAcao(String valor) { 
+		this.codigoGrupoAcao = valor;
+	}
+	public String getCodigoGrupoAcao() { 
+		return this.codigoGrupoAcao;
+	}
 
 	public List<RegraProjecaoReversao> getRegraProjecaoReversaos() {
 		return  RegraProjecaoReversaos;
@@ -75,6 +108,17 @@ public class GrupoAcao extends Model {
 			Object objeto = new TreinoRede();
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.TreinoRedes.add((TreinoRede) objeto);
+		}
+	}
+	public List<RelGrupoAcao> getRelGrupoAcaos() {
+		return  RelGrupoAcaos;
+	}
+	public void setRelGrupoAcaos(List<RelGrupoAcao> valores) {
+		this.RelGrupoAcaos = new ArrayList<RelGrupoAcao>();
+		for (int i = 0; i < valores.size(); i++) {
+			Object objeto = new RelGrupoAcao();
+			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
+			this.RelGrupoAcaos.add((RelGrupoAcao) objeto);
 		}
 	}
 }

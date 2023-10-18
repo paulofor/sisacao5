@@ -13,7 +13,7 @@ import com.strongloop.android.loopback.callbacks.*;
 
 public abstract class DiaPregao_ListaDataPeriodo extends DaoAplicacao { 
 
-	private int NUM_PASSO = 1;
+	private int NUM_PASSO = 2;
 
 
 	protected int diaNumInicio;

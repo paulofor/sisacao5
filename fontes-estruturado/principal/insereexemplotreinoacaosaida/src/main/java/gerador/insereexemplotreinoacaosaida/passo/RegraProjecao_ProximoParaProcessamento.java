@@ -16,12 +16,13 @@ public abstract class RegraProjecao_ProximoParaProcessamento extends DaoAplicaca
 	private int NUM_PASSO = 1;
 
 
+	protected int idGrupoAcao;
 
 	@Override
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom()) {
-			repRegraProjecao.proximoParaProcessamento(  new ObjectCallback<RegraProjecao>() { 
+			repRegraProjecao.proximoParaProcessamento( idGrupoAcao , new ObjectCallback<RegraProjecao>() { 
 				public void onSuccess(RegraProjecao object) {
 					ds.setRegraSaida(object);
 					//preFinalizar();

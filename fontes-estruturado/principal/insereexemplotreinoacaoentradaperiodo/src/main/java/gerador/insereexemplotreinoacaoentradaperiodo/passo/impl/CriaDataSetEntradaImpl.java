@@ -6,6 +6,7 @@ import java.util.List;
 import br.com.gersis.loopback.modelo.AtivoAcao;
 import br.com.gersis.loopback.modelo.CotacaoIntradayAcaoResultado;
 import br.com.gersis.loopback.modelo.DiaPregao;
+import br.com.gersis.loopback.modelo.TipoExemploTreino;
 import gerador.insereexemplotreinoacaoentradaperiodo.passo.CriaDataSetEntrada;
 import gerador.insereexemplotreinoacaoentradaperiodo.passo.suporte.DadosTreinoX;
 import gerador.insereexemplotreinoacaoentradaperiodo.passo.suporte.EnviaDadosX;
@@ -21,23 +22,26 @@ public class CriaDataSetEntradaImpl extends CriaDataSetEntrada {
 	
 	
 	@Override
-	protected boolean executaCustom(DiaPregao diaCorrente, AtivoAcao ativoCorrente, List<DiaPregao> listaDiaCotacao) {
-		processaDias(ativoCorrente.getTicker(), listaDiaCotacao);
+	protected boolean executaCustom(DiaPregao diaCorrente, AtivoAcao ativoCorrente, List<DiaPregao> listaDiaCotacao,
+			TipoExemploTreino tipoCorrente) {
+		processaDias(ativoCorrente.getTicker(), listaDiaCotacao,tipoCorrente);
 		return true;
 	}
 
-	private void processaDias(String ticker, List<DiaPregao> dias) {
+	
+
+	private void processaDias(String ticker, List<DiaPregao> dias, TipoExemploTreino tipoCorrente) {
 	
 		CotacaoIntradayAcaoResultado cotacaoDiaReferencia = null;
 		DiaPregao diaReferencia = null; 
 		int indiceDia = 0;
 		try {
 			diaReferencia = dias.get(dias.size()-2);
-			indiceDia = dias.get(0).getCotacaoIntradayAcaoResultados().size() + comum.getPosicaoEntrada() - 1;
+			indiceDia = dias.get(0).getCotacaoIntradayAcaoResultados().size() + tipoCorrente.getPosicaoReferencia() - 1;
 			cotacaoDiaReferencia = diaReferencia.getCotacaoIntradayAcaoResultados().get(indiceDia);
 			
 			dadosTreino.calcula(dias, cotacaoDiaReferencia.getValor());
-			enviaDados.enviaDia(ticker, dadosTreino, cotacaoDiaReferencia.getValor(), comum.getQtdeDia(), comum.getPosicaoEntrada());
+			enviaDados.enviaDia(ticker, dadosTreino, cotacaoDiaReferencia.getValor(), tipoCorrente.getQtdeDias(), tipoCorrente.getPosicaoReferencia());
 
 				
 		} catch (Exception e) {

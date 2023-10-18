@@ -839,6 +839,31 @@
           "verb": "get"
         }
       ]
+    },
+    "ListaDataPeriodoAteOntem": {
+      "accepts": [
+        {
+          "arg": "diaNumInicio",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaDataPeriodoAteOntem",
+          "verb": "get"
+        }
+      ]
     }
   }
 }

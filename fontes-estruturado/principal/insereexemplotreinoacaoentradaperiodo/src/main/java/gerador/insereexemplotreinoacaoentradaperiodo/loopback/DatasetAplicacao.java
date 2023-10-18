@@ -10,6 +10,7 @@ public class DatasetAplicacao  implements IDatasetComum {
 	private AtivoAcao ativoCorrente;
 	private List<DiaPregao> listaDiaCotacao;
 	private ExemploTreinoAcaoEntrada exemploEntrada;
+	private TipoExemploTreino tipoCorrente;
 
 
 	public void setDiaCorrente(DiaPregao valor) { 
@@ -35,5 +36,11 @@ public class DatasetAplicacao  implements IDatasetComum {
 	}
 	public ExemploTreinoAcaoEntrada getExemploEntrada() { 
 		return this.exemploEntrada;
+	}
+	public void setTipoCorrente(TipoExemploTreino valor) { 
+		this.tipoCorrente = valor;
+	}
+	public TipoExemploTreino getTipoCorrente() { 
+		return this.tipoCorrente;
 	}
 }

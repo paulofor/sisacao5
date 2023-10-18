@@ -12,7 +12,7 @@ public class InsereExemploTreinoAcaoEntradaPeriodoObj extends DaoAplicacao {
 	@Override
 	protected void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
-		DiaPregao_ListaDataPeriodo exec = new DiaPregao_ListaDataPeriodoImpl();
+		TipoExemploTreino_ListaGeraExemplo exec = new TipoExemploTreino_ListaGeraExemploImpl();
 		exec.setComum(ds);
 		exec.executa();
 		executaFinalizacao(ds);

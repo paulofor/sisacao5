@@ -19,6 +19,7 @@ public class AtivoAcao extends Model {
 	private double mediaDiasTrade;
 	// Relacionamentos 1
 	// Relacionamentos N
+	private List<RelGrupoAcao> RelGrupoAcaos;
 
 	public JSONObject getJSON() {
 		JSONObject obj = new JSONObject();
@@ -53,4 +54,15 @@ public class AtivoAcao extends Model {
 		return this.mediaDiasTrade;
 	}
 
+	public List<RelGrupoAcao> getRelGrupoAcaos() {
+		return  RelGrupoAcaos;
+	}
+	public void setRelGrupoAcaos(List<RelGrupoAcao> valores) {
+		this.RelGrupoAcaos = new ArrayList<RelGrupoAcao>();
+		for (int i = 0; i < valores.size(); i++) {
+			Object objeto = new RelGrupoAcao();
+			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
+			this.RelGrupoAcaos.add((RelGrupoAcao) objeto);
+		}
+	}
 }

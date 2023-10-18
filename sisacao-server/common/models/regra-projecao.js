@@ -45,17 +45,18 @@ module.exports = function(Regraprojecao) {
         //" where (PeriodoTreinoRede.diaNumFinalTeste > DATE_FORMAT(DATE_SUB(ultimaInsercao,interval 2 month),'%Y%m%d') or ultimaInsercao is null) " +
         //" and PeriodoTreinoRede.diaNumFinalTeste <  DATE_FORMAT(DATE_SUB(now(),interval 2 month),'%Y%m%d') " +
         " where (dataHoraAcesso is null or date_add(dataHoraAcesso,interval 20 hour) <= now()) " +
+        " and (RegraProjecao.ultimaInsercao IS NULL OR RegraProjecao.ultimaInsercao <= DATE_SUB(now(),interval 15 day)) " +
         " order by prioridade desc, id limit 1";
     let ds = Regraprojecao.dataSource;
     ds.connector.query(sql1,callback);
   }
 
-  Regraprojecao.ProximoParaProcessamento = function(callback) {
+  Regraprojecao.ProximoParaProcessamento = function(idGrupoAcao, callback) {
     Regraprojecao.ConsultaProximoParaProcessamento((err,result) => {
       //console.log('err:', err);
       if (result.length>0) {
         let saida = result[0];
-        Regraprojecao.AtualizaTotais(saida.id,(err1,result1) => {
+        Regraprojecao.AtualizaTotais(saida.id,idGrupoAcao,(err1,result1) => {
           //callback(null,saida);
         });
         callback(null,saida);
@@ -63,7 +64,7 @@ module.exports = function(Regraprojecao) {
     })
   }
 
-  Regraprojecao.AtualizaTotais = function(idRegra, callback) {
+  Regraprojecao.AtualizaTotais = function(idRegra, idGrupoAcao, callback) {
     let ds = Regraprojecao.dataSource;
     let sqlHist = "insert into RegraProjecaoHist  " +
       " (regraProjecaoId, dataHoraAcesso, quantidadeTicker,diaNumMaisAntigo,ultimaInsercao, " +
@@ -88,7 +89,7 @@ module.exports = function(Regraprojecao) {
               " select ticker, max(diaNumPrevisao) as maximo " +
               " from ExemploTreinoAcaoSaida " +
               " where regraProjecaoId = " + idRegra +
-              " and ticker in (select ticker from AtivoAcao where intraday15 = 1) " +
+              " and ticker in (select ticker from RelGrupoAcao where grupoAcaoId = " + idGrupoAcao + " ) " +
               " group by ticker " +
               " order by maximo limit 1 " +
               " ) as tab ), " +
@@ -120,11 +121,11 @@ module.exports = function(Regraprojecao) {
 
 
 
-  Regraprojecao.FinalizaInsercao = function(idRegraProjecao, callback) {
+  Regraprojecao.FinalizaInsercao = function(idRegraProjecao, idGrupoAcao, callback) {
     let sql = " update RegraProjecao set ultimaInsercao = now() where id = " + idRegraProjecao;
     let ds = Regraprojecao.dataSource;
     ds.connector.query(sql,(err,result) => {
-      Regraprojecao.AtualizaTotais(idRegraProjecao,callback);
+      Regraprojecao.AtualizaTotais(idRegraProjecao,idGrupoAcao, callback);
     })
   }
 

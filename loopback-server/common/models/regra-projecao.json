@@ -123,6 +123,12 @@
 	"methods": {
 		"ProximoParaProcessamento": {
 			"accepts": [
+				{
+					"arg": "idGrupoAcao",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
 			],
 			"returns": [
  				{
@@ -180,7 +186,13 @@
 		"FinalizaInsercao": {
 			"accepts": [
 				{
-					"arg": "idRegra",
+					"arg": "idRegraProjecao",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "idGrupoAcao",
 					"type": "number",
    					"required": false,
     				"description": ""

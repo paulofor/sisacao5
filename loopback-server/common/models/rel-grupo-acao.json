@@ -1,0 +1,37 @@
+{
+	"name": "RelGrupoAcao",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"grupoAcaoId": {
+			"type": "number"
+			,"id": true
+		},
+		"ticker": {
+			"type": "string"
+			,"id": true
+		},
+	},
+	"validations": [],
+	"relations": {
+		"ativoAcao": {
+			"type": "belongsTo",
+			"model": "AtivoAcao",
+			"foreignKey": "ticker"
+		},
+		"grupoAcao": {
+			"type": "belongsTo",
+			"model": "GrupoAcao",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+	}
+}

@@ -13,7 +13,7 @@ import com.strongloop.android.loopback.callbacks.*;
 
 public abstract class DiaPregao_ObtemIntradayResultadoTickerPeriodoQuantidade extends DaoAplicacao { 
 
-	private int NUM_PASSO = 3;
+	private int NUM_PASSO = 4;
 
 
 	protected String ticker;

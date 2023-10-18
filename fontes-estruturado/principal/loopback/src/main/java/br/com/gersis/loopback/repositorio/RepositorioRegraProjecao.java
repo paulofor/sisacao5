@@ -30,10 +30,11 @@ public class RepositorioRegraProjecao extends ModelRepository<RegraProjecao> {
 
 	// ***  Operações  ***
 
-	public synchronized void proximoParaProcessamento(final ObjectCallback<RegraProjecao> callback ) {
+	public synchronized void proximoParaProcessamento(int idGrupoAcao ,final ObjectCallback<RegraProjecao> callback ) {
 		RestContractItem contrato = new RestContractItem("RegraProjecaos/proximoParaProcessamento","GET");
 		this.getRestAdapter().getContract().addItem(contrato, "RegraProjecao.proximoParaProcessamento");
 		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("idGrupoAcao", idGrupoAcao);
 		invokeStaticMethod("proximoParaProcessamento", params,   new JsonObjectParser<RegraProjecao>(this, callback));
 	}
 
@@ -47,11 +48,12 @@ public class RepositorioRegraProjecao extends ModelRepository<RegraProjecao> {
 		invokeStaticMethod("atualizaExemploSaidaRecente", params,   new EmptyResponseParser(callback));
 	}
 
-	public synchronized void finalizaInsercao(int idRegra ,final VoidCallback callback ) {
+	public synchronized void finalizaInsercao(int idRegraProjecao ,int idGrupoAcao ,final VoidCallback callback ) {
 		RestContractItem contrato = new RestContractItem("RegraProjecaos/finalizaInsercao","POST");
 		this.getRestAdapter().getContract().addItem(contrato, "RegraProjecao.finalizaInsercao");
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("idRegra", idRegra);
+		params.put("idRegraProjecao", idRegraProjecao);
+		params.put("idGrupoAcao", idGrupoAcao);
 		invokeStaticMethod("finalizaInsercao", params,   new EmptyResponseParser(callback));
 	}
 
