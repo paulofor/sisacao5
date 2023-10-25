@@ -26,11 +26,10 @@ public class TipoExemploTreino extends Model {
 	// Relacionamentos N
 	private List<AmostraDadoSintetico> AmostraDadoSinteticos;
 	private List<RedeNeural> RedeNeurals;
-	private List<RedeNeural> RedeNeurals;
-	private List<PreRedeNeural> PreRedeNeurals;
+
 	private List<PreRedeNeural> PreRedeNeurals;
 	private List<TreinoRede> TreinoRedes;
-	private List<TreinoRede> TreinoRedes;
+
 	private List<ExemploTreinoIndiceAcaoEntrada> ExemploTreinoIndiceAcaoEntradas;
 
 	public JSONObject getJSON() {

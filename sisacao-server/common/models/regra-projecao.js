@@ -44,7 +44,7 @@ module.exports = function(Regraprojecao) {
         " inner join PeriodoTreinoRede on PeriodoTreinoRede.id = TreinoGrupoRede.periodoTreinoRedeId " +
         //" where (PeriodoTreinoRede.diaNumFinalTeste > DATE_FORMAT(DATE_SUB(ultimaInsercao,interval 2 month),'%Y%m%d') or ultimaInsercao is null) " +
         //" and PeriodoTreinoRede.diaNumFinalTeste <  DATE_FORMAT(DATE_SUB(now(),interval 2 month),'%Y%m%d') " +
-        " where (dataHoraAcesso is null or date_add(dataHoraAcesso,interval 20 hour) <= now()) " +
+        " where (dataHoraAcesso is null or date_add(dataHoraAcesso,interval 5 hour) <= now()) " +
         " and (RegraProjecao.ultimaInsercao IS NULL OR RegraProjecao.ultimaInsercao <= DATE_SUB(now(),interval 15 day)) " +
         " order by prioridade desc, id limit 1";
     let ds = Regraprojecao.dataSource;
@@ -251,7 +251,7 @@ module.exports = function(Regraprojecao) {
             " where C1.diaNum >= 20210701 " +
             " group by C1.anoMesNum,C1.regraProjecaoId";
      
-      
+      distinct
       let sql2 = " update RegraProjecao " +
             " set " +
             " diaNumMaisAntigo =  " +

@@ -354,7 +354,13 @@ module.exports = function(Diapregao) {
             " (select count(*) from ExemploTreinoAcaoEntrada as exemplo " +
             " where exemplo.diaNumPrevisao = dia.diaNum  and qtdeDias = 40) as quantidadeAcao40, " +
             " (select count(*) from ExemploTreinoAcaoEntrada as exemplo " +
-            " where exemplo.diaNumPrevisao = dia.diaNum  and qtdeDias = 20) as quantidadeAcao20 " +
+            " where exemplo.diaNumPrevisao = dia.diaNum  and qtdeDias = 25) as quantidadeAcao25, " +
+            " (select count(*) from ExemploTreinoAcaoEntrada as exemplo " +
+            " where exemplo.diaNumPrevisao = dia.diaNum  and qtdeDias = 20) as quantidadeAcao20, " +
+            " (select count(*) from ExemploTreinoAcaoEntrada as exemplo " +
+            " where exemplo.diaNumPrevisao = dia.diaNum  and qtdeDias = 15) as quantidadeAcao15, " +
+            " (select count(*) from ExemploTreinoAcaoEntrada as exemplo " +
+            " where exemplo.diaNumPrevisao = dia.diaNum  and qtdeDias = 10) as quantidadeAcao10 " +
             " from DiaPregao dia " +
             " where dia.diaNum <= (select max(diaNumPrevisao) from ExemploTreinoAcaoEntrada) " +
             " order by dia.diaNum desc " +

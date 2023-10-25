@@ -12,9 +12,12 @@
       <input matInput maxlength="50" #posicaoReferencia [(ngModel)]="item.posicaoReferencia" name="posicaoReferencia" placeholder="Posição Referência" autocomplete="off" />
     </mat-form-field>
 
-
     <mat-form-field class="example-full-width">
       <input matInput maxlength="50" #diaNumExemploEntradaInicio [(ngModel)]="item.diaNumExemploEntradaInicio" name="diaNumExemploEntradaInicio" placeholder="Dia Num Inicio Exemplo Entrada" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput maxlength="3" #geraExemplo [(ngModel)]="item.geraExemplo" name="geraExemplo" placeholder="Gera Exemplo (0/1)" autocomplete="off" />
     </mat-form-field>
 
   </mat-dialog-content>

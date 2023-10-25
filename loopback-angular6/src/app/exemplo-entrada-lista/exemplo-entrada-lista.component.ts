@@ -16,7 +16,7 @@ export class ExemploEntradaListaComponent extends BaseListComponent {
 
 
   carregaTela() {
-    this.srv.ExemploTreinoEntradaMaisRecente(20)
+    this.srv.ExemploTreinoEntradaMaisRecente(90)
     .subscribe((result:any[]) => {
         console.log('result: ' , result);
         this.listaBase = result;
