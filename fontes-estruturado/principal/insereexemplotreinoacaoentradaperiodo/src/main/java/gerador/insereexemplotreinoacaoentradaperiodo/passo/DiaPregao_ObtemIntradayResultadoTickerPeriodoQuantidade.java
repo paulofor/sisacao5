@@ -23,7 +23,7 @@ public abstract class DiaPregao_ObtemIntradayResultadoTickerPeriodoQuantidade ex
 	@Override
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
-		if (executaCustom()) {
+		if (executaCustom(ds.getDiaCorrente(), ds.getAtivoCorrente(), ds.getTipoCorrente())) {
 			repDiaPregao.obtemIntradayResultadoTickerPeriodoQuantidade( ticker,qtdeDia,diaNumPrevisao, new ListCallback<DiaPregao>() { 
 				public void onSuccess(List<DiaPregao> lista) {
 						ds.setListaDiaCotacao(lista);
@@ -45,7 +45,7 @@ public abstract class DiaPregao_ObtemIntradayResultadoTickerPeriodoQuantidade ex
 	}
 
 
-	protected boolean executaCustom() { return true; }
+	protected boolean executaCustom( DiaPregao diaCorrente , AtivoAcao ativoCorrente , TipoExemploTreino tipoCorrente ) { return true; }
 
 	protected void preFinalizar() { return; }
 

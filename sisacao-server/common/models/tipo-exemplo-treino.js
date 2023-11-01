@@ -3,6 +3,14 @@
 module.exports = function(Tipoexemplotreino) {
 
 
+    Tipoexemplotreino.AtualizaDiaNumExemplo = function(idTipoExemplo, callback) {
+        let sql = "update TipoExemploTreino set diaNumExemploEntradaInicio = date_format(date_sub(now(),interval 10 day),'%Y%m%d') where id = " + idTipoExemplo;
+        let ds = Tipoexemplotreino.dataSource;
+        ds.connector.query(sql,callback);
+    }
+
+
+
     Tipoexemplotreino.ListaGeraExemplo = function(callback) {
         let sql = "select * from TipoExemploTreino where geraExemplo = 1";
         let ds = Tipoexemplotreino.dataSource;

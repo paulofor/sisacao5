@@ -33,6 +33,9 @@
     },
     "diaNumExemploEntradaInicio" : {
       "type" : "number"
+    },
+    "diaNumInicioEntradaIndice" : {
+      "type" : "number"
     }
 
   },
@@ -46,6 +49,31 @@
   },
   "acls": [],
   "methods": {
+    "AtualizaDiaNumExemplo": {
+      "accepts": [
+        {
+          "arg": "idTipoExemplo",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "result",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaDiaNumExemplo",
+          "verb": "post"
+        }
+      ]
+    },
     "ListaGeraExemplo": {
       "accepts": [
        

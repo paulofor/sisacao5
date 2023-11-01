@@ -16,12 +16,14 @@ public abstract class AtivoAcao_ListaParaInsereExemploSaida extends DaoAplicacao
 	private int NUM_PASSO = 3;
 
 
+	protected int qtdeDias;
+	protected int diaNum;
 
 	@Override
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
-		if (executaCustom()) {
-			repAtivoAcao.listaParaInsereExemploSaida(  new ListCallback<AtivoAcao>() { 
+		if (executaCustom(ds.getDiaCorrente(), ds.getTipoCorrente())) {
+			repAtivoAcao.listaParaInsereExemploSaida( qtdeDias,diaNum, new ListCallback<AtivoAcao>() { 
 				public void onSuccess(List<AtivoAcao> lista) {
 					for (AtivoAcao item : lista) {
 						ds.setAtivoCorrente(item);
@@ -46,7 +48,7 @@ public abstract class AtivoAcao_ListaParaInsereExemploSaida extends DaoAplicacao
 	}
 
 
-	protected boolean executaCustom() { return true; }
+	protected boolean executaCustom( DiaPregao diaCorrente , TipoExemploTreino tipoCorrente ) { return true; }
 
 	protected void preFinalizar() { return; }
 

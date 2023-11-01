@@ -17,6 +17,10 @@ public class AtivoAcao extends Model {
 	private String ticker;
 	private String nome;
 	private double mediaDiasTrade;
+	private int intraday5;
+	private int intraday15;
+	private int intraday30;
+	private double fechamentoAtual;
 	// Relacionamentos 1
 	// Relacionamentos N
 	private List<RelGrupoAcao> RelGrupoAcaos;
@@ -28,6 +32,10 @@ public class AtivoAcao extends Model {
 			obj.put("ticker", ticker);
 			obj.put("nome", nome);
 			obj.put("mediaDiasTrade", mediaDiasTrade);
+			obj.put("intraday5", intraday5);
+			obj.put("intraday15", intraday15);
+			obj.put("intraday30", intraday30);
+			obj.put("fechamentoAtual", fechamentoAtual);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -52,6 +60,30 @@ public class AtivoAcao extends Model {
 	}
 	public double getMediaDiasTrade() { 
 		return this.mediaDiasTrade;
+	}
+	public void setIntraday5(int valor) { 
+		this.intraday5 = valor;
+	}
+	public int getIntraday5() { 
+		return this.intraday5;
+	}
+	public void setIntraday15(int valor) { 
+		this.intraday15 = valor;
+	}
+	public int getIntraday15() { 
+		return this.intraday15;
+	}
+	public void setIntraday30(int valor) { 
+		this.intraday30 = valor;
+	}
+	public int getIntraday30() { 
+		return this.intraday30;
+	}
+	public void setFechamentoAtual(double valor) { 
+		this.fechamentoAtual = valor;
+	}
+	public double getFechamentoAtual() { 
+		return this.fechamentoAtual;
 	}
 
 	public List<RelGrupoAcao> getRelGrupoAcaos() {

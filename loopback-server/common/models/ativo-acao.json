@@ -17,6 +17,18 @@
 		},
 		"mediaDiasTrade": {
 			"type": "number"
+		},
+		"intraday5": {
+			"type": "number"
+		},
+		"intraday15": {
+			"type": "number"
+		},
+		"intraday30": {
+			"type": "number"
+		},
+		"fechamentoAtual": {
+			"type": "number"
 		}
 	},
 	"validations": [],
@@ -100,6 +112,18 @@
 		},
 		"ListaParaInsereExemploSaida": {
 			"accepts": [
+				{
+					"arg": "qtdeDias",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "diaNum",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
 			],
 			"returns": [
  				{

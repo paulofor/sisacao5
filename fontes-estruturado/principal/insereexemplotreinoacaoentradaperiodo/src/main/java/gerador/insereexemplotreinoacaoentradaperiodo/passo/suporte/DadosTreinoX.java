@@ -57,7 +57,7 @@ public class DadosTreinoX {
 		}
 		this.saidaXOriginal = this.saidaXOriginal.substring(1);
 		this.saidaX = this.saidaX.substring(1);
-		System.out.println("Calculou aqui");
+
 	}
 	
 }

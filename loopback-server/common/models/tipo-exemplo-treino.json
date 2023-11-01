@@ -32,6 +32,9 @@
 		},
 		"diaNumExemploEntradaInicio": {
 			"type": "number"
+		},
+		"diaNumInicioEntradaIndice": {
+			"type": "number"
 		}
 	},
 	"validations": [],
@@ -95,6 +98,31 @@
          		{
           			"path": "/listaGeraExemplo",
    					"verb": "get"
+ 				}
+ 			]
+		},
+		"AtualizaDiaNumExemplo": {
+			"accepts": [
+				{
+					"arg": "idTipoExemplo",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/atualizaDiaNumExemplo",
+   					"verb": "post"
  				}
  			]
 		}

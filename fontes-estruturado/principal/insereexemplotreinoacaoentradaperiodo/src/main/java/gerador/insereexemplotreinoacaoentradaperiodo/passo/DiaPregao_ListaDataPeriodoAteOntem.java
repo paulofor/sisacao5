@@ -21,7 +21,7 @@ public abstract class DiaPregao_ListaDataPeriodoAteOntem extends DaoAplicacao {
 	@Override
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
-		if (executaCustom()) {
+		if (executaCustom(ds.getTipoCorrente())) {
 			repDiaPregao.listaDataPeriodoAteOntem( diaNumInicio, new ListCallback<DiaPregao>() { 
 				public void onSuccess(List<DiaPregao> lista) {
 					for (DiaPregao item : lista) {
@@ -47,7 +47,7 @@ public abstract class DiaPregao_ListaDataPeriodoAteOntem extends DaoAplicacao {
 	}
 
 
-	protected boolean executaCustom() { return true; }
+	protected boolean executaCustom( TipoExemploTreino tipoCorrente ) { return true; }
 
 	protected void preFinalizar() { return; }
 

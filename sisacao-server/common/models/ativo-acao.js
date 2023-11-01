@@ -404,8 +404,18 @@ module.exports = function (Ativoacao) {
         });
     };
 
-    Ativoacao.ListaParaInsereExemploSaida = function(callback) {
-        Ativoacao.ListaPorNomeGrupo('Neg-100', callback);
+    Ativoacao.ListaParaInsereExemploSaida = function(qtdeDias,diaNum,callback) {
+        let sql = " select AtivoAcao.* from AtivoAcao " + 
+        " inner join RelGrupoAcao on RelGrupoAcao.ticker = AtivoAcao.ticker " +
+        " inner join GrupoAcao on GrupoAcao.id = RelGrupoAcao.grupoAcaoId " +
+        " where GrupoAcao.nome = 'Neg-100' and AtivoAcao.ticker not in " +
+        " (select ticker from ExemploTreinoAcaoEntrada where diaNumPrevisao = " + diaNum + " and qtdeDias = " + qtdeDias + " and posicaoReferencia = 0) ";
+        let ds = Ativoacao.dataSource;
+        ds.connector.query(sql,(err,result) => {
+            //console.log('terminou ListaPorNListaParaInsereExemploSaidaomeGrupo');
+            //console.log('erro:' , err);
+            callback(err,result);
+        });
     }
 
 };

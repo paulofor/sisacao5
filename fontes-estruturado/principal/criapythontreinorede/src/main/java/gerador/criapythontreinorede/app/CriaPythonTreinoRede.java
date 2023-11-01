@@ -17,7 +17,7 @@ public class CriaPythonTreinoRede {
 
 	public static void main(String[] args) {
 		System.out.print("CriaPythonTreinoRede");
-		System.out.println("(17/10/2023 01:52:30)");
+		System.out.println("(31/10/2023 09:51:10)");
 		try {
 			carregaProp();
 			CriaPythonTreinoRedeObj obj = new CriaPythonTreinoRedeObj();

@@ -153,7 +153,20 @@
       ]
     },
     "ListaParaInsereExemploSaida": {
-      "accepts": [],
+      "accepts": [
+        {
+          "arg": "qtdeDias",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "diaNum",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
       "returns": [
         {
           "arg": "saida",

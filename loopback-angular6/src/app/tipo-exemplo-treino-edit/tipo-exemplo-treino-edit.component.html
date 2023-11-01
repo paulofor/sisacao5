@@ -5,15 +5,15 @@
   <mat-dialog-content>
 
     <mat-form-field class="example-full-width">
-      <input matInput maxlength="50" #qtdeDias [(ngModel)]="item.qtdeDias" name="qtdeDias" placeholder="Qtde. Dias" autocomplete="off" />
+      <input matInput maxlength="3" #qtdeDias [(ngModel)]="item.qtdeDias" name="qtdeDias" placeholder="Qtde. Dias" autocomplete="off" />
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <input matInput maxlength="50" #posicaoReferencia [(ngModel)]="item.posicaoReferencia" name="posicaoReferencia" placeholder="Posição Referência" autocomplete="off" />
+      <input matInput maxlength="2" #posicaoReferencia [(ngModel)]="item.posicaoReferencia" name="posicaoReferencia" placeholder="Posição Referência" autocomplete="off" />
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <input matInput maxlength="50" #diaNumExemploEntradaInicio [(ngModel)]="item.diaNumExemploEntradaInicio" name="diaNumExemploEntradaInicio" placeholder="Dia Num Inicio Exemplo Entrada" autocomplete="off" />
+      <input matInput maxlength="6" #diaNumExemploEntradaInicio [(ngModel)]="item.diaNumExemploEntradaInicio" name="diaNumExemploEntradaInicio" placeholder="Dia Num Inicio Exemplo Entrada" autocomplete="off" />
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
