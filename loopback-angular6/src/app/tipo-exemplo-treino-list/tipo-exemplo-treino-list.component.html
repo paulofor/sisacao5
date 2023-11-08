@@ -18,9 +18,15 @@
       <div class="dgc-card-detalhe">
         Posição Referência: <span>{{item.posicaoReferencia}}</span>
       </div>
+      <div class="dgc-card-header">
+        Ações
+      </div>
       <div class="dgc-card-detalhe">
-        De: <span>{{item.diaNumInicio}}</span> 
-        Até: <span>{{item.diaNumFinal}}</span>
+        <span>De: {{item.diaNumInicio}}</span> 
+        <span>Até: {{item.diaNumFinal}}</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        Gera Exemplo: <span>{{item.geraExemplo}}</span>
       </div>
       <div class="dgc-card-detalhe">
         DiaNum Inicial Exemplo: <span>{{item.diaNumExemploEntradaInicio}}</span>
@@ -28,8 +34,18 @@
       <div class="dgc-card-detalhe">
         Atualização: <span>{{item.diaNumAtualizado}}</span>
       </div>
+      <div class="dgc-card-header">
+        Índice
+      </div>
       <div class="dgc-card-detalhe">
-        Gera Exemplo: <span>{{item.geraExemplo}}</span>
+        Gera Exemplo: <span>{{item.geraExemploIndice}}</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        Data Inicial Exemplo: <span>{{item.diaNumInicioEntradaIndice}}</span>
+      </div>
+      <div class="dgc-card-detalhe">
+        <span>De: {{item.diaNumInicioIndice}}</span> 
+        <span>Até: {{item.diaNumFinalIndice}}</span>
       </div>
       <div class="dgc-card-comandos">
         <button class="btn-primary btn-sm btn" (click)="edita(item)">Editar</button>

@@ -127,6 +127,7 @@ public class VersaoPreRede extends Model {
 		this.VersaoPreRedeRegras = new ArrayList<VersaoPreRedeRegra>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new VersaoPreRedeRegra();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.VersaoPreRedeRegras.add((VersaoPreRedeRegra) objeto);
 		}
@@ -138,6 +139,7 @@ public class VersaoPreRede extends Model {
 		this.ExperimentoPreRedes = new ArrayList<ExperimentoPreRede>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new ExperimentoPreRede();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.ExperimentoPreRedes.add((ExperimentoPreRede) objeto);
 		}
@@ -149,6 +151,7 @@ public class VersaoPreRede extends Model {
 		this.RedeNeurals = new ArrayList<RedeNeural>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new RedeNeural();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.RedeNeurals.add((RedeNeural) objeto);
 		}

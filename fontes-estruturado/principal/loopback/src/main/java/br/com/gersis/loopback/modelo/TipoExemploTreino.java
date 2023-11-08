@@ -23,15 +23,16 @@ public class TipoExemploTreino extends Model {
 	private int geraExemplo;
 	private int diaNumExemploEntradaInicio;
 	private int diaNumInicioEntradaIndice;
+	private int geraExemploIndice;
 	// Relacionamentos 1
 	// Relacionamentos N
 	private List<AmostraDadoSintetico> AmostraDadoSinteticos;
-
 	private List<RedeNeural> RedeNeurals;
 
 	private List<PreRedeNeural> PreRedeNeurals;
 
 	private List<TreinoRede> TreinoRedes;
+
 	private List<ExemploTreinoIndiceAcaoEntrada> ExemploTreinoIndiceAcaoEntradas;
 
 	public JSONObject getJSON() {
@@ -47,6 +48,7 @@ public class TipoExemploTreino extends Model {
 			obj.put("geraExemplo", geraExemplo);
 			obj.put("diaNumExemploEntradaInicio", diaNumExemploEntradaInicio);
 			obj.put("diaNumInicioEntradaIndice", diaNumInicioEntradaIndice);
+			obj.put("geraExemploIndice", geraExemploIndice);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -108,6 +110,12 @@ public class TipoExemploTreino extends Model {
 	public int getDiaNumInicioEntradaIndice() { 
 		return this.diaNumInicioEntradaIndice;
 	}
+	public void setGeraExemploIndice(int valor) { 
+		this.geraExemploIndice = valor;
+	}
+	public int getGeraExemploIndice() { 
+		return this.geraExemploIndice;
+	}
 
 	public List<AmostraDadoSintetico> getAmostraDadoSinteticos() {
 		return  AmostraDadoSinteticos;
@@ -116,18 +124,20 @@ public class TipoExemploTreino extends Model {
 		this.AmostraDadoSinteticos = new ArrayList<AmostraDadoSintetico>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new AmostraDadoSintetico();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.AmostraDadoSinteticos.add((AmostraDadoSintetico) objeto);
 		}
 	}
+
 	public List<RedeNeural> getRedeNeurals() {
 		return  RedeNeurals;
 	}
-
 	public void setRedeNeurals(List<RedeNeural> valores) {
 		this.RedeNeurals = new ArrayList<RedeNeural>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new RedeNeural();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.RedeNeurals.add((RedeNeural) objeto);
 		}
@@ -140,6 +150,7 @@ public class TipoExemploTreino extends Model {
 		this.PreRedeNeurals = new ArrayList<PreRedeNeural>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new PreRedeNeural();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.PreRedeNeurals.add((PreRedeNeural) objeto);
 		}
@@ -152,6 +163,7 @@ public class TipoExemploTreino extends Model {
 		this.TreinoRedes = new ArrayList<TreinoRede>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new TreinoRede();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.TreinoRedes.add((TreinoRede) objeto);
 		}
@@ -163,6 +175,7 @@ public class TipoExemploTreino extends Model {
 		this.ExemploTreinoIndiceAcaoEntradas = new ArrayList<ExemploTreinoIndiceAcaoEntrada>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new ExemploTreinoIndiceAcaoEntrada();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.ExemploTreinoIndiceAcaoEntradas.add((ExemploTreinoIndiceAcaoEntrada) objeto);
 		}

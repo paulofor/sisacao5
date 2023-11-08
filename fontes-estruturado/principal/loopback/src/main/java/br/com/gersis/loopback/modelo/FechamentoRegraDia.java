@@ -70,6 +70,7 @@ public class FechamentoRegraDia extends Model {
 		this.FechamentoPontoSaidas = new ArrayList<FechamentoPontoSaida>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new FechamentoPontoSaida();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.FechamentoPontoSaidas.add((FechamentoPontoSaida) objeto);
 		}
@@ -81,6 +82,7 @@ public class FechamentoRegraDia extends Model {
 		this.FechamentoRegraDiaQuantidades = new ArrayList<FechamentoRegraDiaQuantidade>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new FechamentoRegraDiaQuantidade();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.FechamentoRegraDiaQuantidades.add((FechamentoRegraDiaQuantidade) objeto);
 		}

@@ -156,7 +156,7 @@ import { AtivoAcaoUsaApi } from './services/custom/AtivoAcaoUsa';
 import { CotacaoDiarioAcaoUsaApi } from './services/custom/CotacaoDiarioAcaoUsa';
 import { CotacaoIntradayAcaoUsaApi } from './services/custom/CotacaoIntradayAcaoUsa';
 import { CotacaoIntradayIndiceResultadoApi } from './services/custom/CotacaoIntradayIndiceResultado';
-import { IndiceAcaoApi } from './services/custom/IndiceAcao';
+import { ExemploTreinoIndiceAcaoEntradaApi } from './services/custom/ExemploTreinoIndiceAcaoEntrada';
 /**
 * @module SDKBrowserModule
 * @description
@@ -295,7 +295,7 @@ export class SDKBrowserModule {
         CotacaoDiarioAcaoUsaApi,
         CotacaoIntradayAcaoUsaApi,
         CotacaoIntradayIndiceResultadoApi,
-        IndiceAcaoApi,
+        ExemploTreinoIndiceAcaoEntradaApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
       ]

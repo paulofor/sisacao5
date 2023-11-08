@@ -38,6 +38,11 @@
       "model": "CotacaoIntradayAcaoResultado",
       "foreignKey": "diaNum"
     },
+    "cotacaoIntradayIndiceResultados": {
+      "type": "hasMany",
+      "model": "CotacaoIntradayIndiceResultado",
+      "foreignKey": "diaNum"
+    },
     "cotacaoIntradayMercadorias": {
       "type": "hasMany",
       "model": "CotacaoIntradayMercadoria",
@@ -605,6 +610,43 @@
         }
       ]
     },
+    "ObtemIntradayResultadoIndicePeriodoQuantidade": {
+      "accepts": [
+        {
+          "arg": "ticker",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "qtdeDia",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "diaNumPrevisao",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemIntradayResultadoIndicePeriodoQuantidade",
+          "verb": "get"
+        }
+      ]
+    },
     "ObtemIntradayResultadoTickerQuantidadeB3": {
       "accepts": [
         {
@@ -743,6 +785,31 @@
       "http": [
         {
           "path": "/exemploTreinoEntradaMaisRecente",
+          "verb": "get"
+        }
+      ]
+    },
+    "ExemploTreinoEntradaMaisRecenteIndice": {
+      "accepts": [
+        {
+          "arg": "qtde",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/exemploTreinoEntradaMaisRecenteIndice",
           "verb": "get"
         }
       ]

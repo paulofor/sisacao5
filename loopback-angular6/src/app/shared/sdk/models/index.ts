@@ -107,6 +107,6 @@ export * from './AtivoAcaoUsa';
 export * from './CotacaoDiarioAcaoUsa';
 export * from './CotacaoIntradayAcaoUsa';
 export * from './CotacaoIntradayIndiceResultado';
-export * from './IndiceAcao';
+export * from './ExemploTreinoIndiceAcaoEntrada';
 export * from './BaseModels';
 export * from './FireLoopRef';

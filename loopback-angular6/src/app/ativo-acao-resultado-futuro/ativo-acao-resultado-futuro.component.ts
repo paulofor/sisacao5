@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 
 import { BaseListComponent } from '../base-component/base-list-component';
-import { AtivoAcaoApi } from '../shared/sdk';
+import { AtivoAcaoApi, AtivoIndice, AtivoIndiceApi } from '../shared/sdk';
 
 @Component({
   selector: 'app-ativo-acao-resultado-futuro',
@@ -12,7 +12,9 @@ import { AtivoAcaoApi } from '../shared/sdk';
 })
 export class AtivoAcaoResultadoFuturoComponent extends BaseListComponent  {
 
-  constructor(private router: ActivatedRoute,protected dialog: MatDialog, protected srv:AtivoAcaoApi) {
+  listaIndice : AtivoIndice[];
+
+  constructor(private router: ActivatedRoute,protected dialog: MatDialog, protected srv:AtivoAcaoApi, protected srvIndice:AtivoIndiceApi) {
     super(dialog, srv);
   }
 
@@ -20,8 +22,13 @@ export class AtivoAcaoResultadoFuturoComponent extends BaseListComponent  {
   carregaTela() {
     this.srv.ListaComResultadoMaisRecente()
       .subscribe((result:any[]) => {
-         console.log('result: ' , result);
+         console.log('result1: ' , result);
          this.listaBase = result;
+      })
+    this.srvIndice.ListaIndiceResultadoMaisRecente()
+      .subscribe((result:AtivoIndice[]) => {
+         console.log('result2: ' , result);
+         this.listaIndice = result;
       })
   }
 

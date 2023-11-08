@@ -1,0 +1,101 @@
+{
+  "name": "ExemploTreinoIndiceAcaoEntrada",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ticker": {
+			"type": "string"
+			,"id": true
+		},
+		"campoX": {
+			"type": "string"
+		},
+		"diaNumPrevisao": {
+			"type": "number"
+			,"id": true
+		},
+		"campoXOriginal": {
+			"type": "string"
+		},
+		"valorReferencia": {
+			"type": "number"
+		},
+		"diaNumInicio": {
+			"type": "number"
+		},
+		"tipoExemploTreinoId": {
+			"type": "number"
+			,"id": true
+		}
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {
+    "ListaParaTreinoIndice": {
+			"accepts": [
+				{
+					"arg": "diaNumInicio",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "diaNumFinal",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "idTipoExemplo",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/listaParaTreinoIndice",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+    "InsereExemploEntradaIndice": {
+      "accepts": [
+        {
+          "arg": "exemplo",
+          "type": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/insereExemploEntradaIndice",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

@@ -151,6 +151,7 @@ public class RedeNeural extends Model {
 		this.VersaoPreRedes = new ArrayList<VersaoPreRede>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new VersaoPreRede();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.VersaoPreRedes.add((VersaoPreRede) objeto);
 		}
@@ -162,6 +163,7 @@ public class RedeNeural extends Model {
 		this.TreinoRedes = new ArrayList<TreinoRede>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new TreinoRede();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.TreinoRedes.add((TreinoRede) objeto);
 		}
@@ -173,6 +175,7 @@ public class RedeNeural extends Model {
 		this.GrupoRedeRels = new ArrayList<GrupoRedeRel>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new GrupoRedeRel();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.GrupoRedeRels.add((GrupoRedeRel) objeto);
 		}

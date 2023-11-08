@@ -35,9 +35,6 @@
 		},
 		"posicaoDia": {
 			"type": "number"
-		},
-		"diaPregaoId": {
-			"type": "number"
 		}
 	},
 	"validations": [],
@@ -45,7 +42,7 @@
 		"diaPregao": {
 			"type": "belongsTo",
 			"model": "DiaPregao",
-			"foreignKey": ""
+			"foreignKey": "diaNum"
 		}
 	},
 	"acls": [],

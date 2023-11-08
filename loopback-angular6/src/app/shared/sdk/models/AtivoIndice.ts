@@ -1,4 +1,7 @@
 /* tslint:disable */
+import {
+  CotacaoIntradayIndiceResultado
+} from '../index';
 
 declare var Object: any;
 export interface AtivoIndiceInterface {
@@ -8,6 +11,7 @@ export interface AtivoIndiceInterface {
   "intraday15"?: number;
   "intraday30"?: number;
   "intraday10"?: number;
+  cotacaoIntradayIndiceResultados?: CotacaoIntradayIndiceResultado[];
 }
 
 export class AtivoIndice implements AtivoIndiceInterface {
@@ -17,6 +21,7 @@ export class AtivoIndice implements AtivoIndiceInterface {
   "intraday15": number;
   "intraday30": number;
   "intraday10": number;
+  cotacaoIntradayIndiceResultados: CotacaoIntradayIndiceResultado[];
   constructor(data?: AtivoIndiceInterface) {
     Object.assign(this, data);
   }
@@ -76,6 +81,14 @@ export class AtivoIndice implements AtivoIndiceInterface {
         },
       },
       relations: {
+        cotacaoIntradayIndiceResultados: {
+          name: 'cotacaoIntradayIndiceResultados',
+          type: 'CotacaoIntradayIndiceResultado[]',
+          model: 'CotacaoIntradayIndiceResultado',
+          relationType: 'hasMany',
+                  keyFrom: 'ticker',
+          keyTo: 'ticker'
+        },
       }
     }
   }

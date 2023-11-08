@@ -39,7 +39,7 @@
 		"cotacaoIntradayAcaoResultados": {
 			"type": "hasMany",
 			"model": "CotacaoIntradayAcaoResultado",
-			"foreignKey": ""
+			"foreignKey": "diaNum"
 		},
 		"cotacaoDiarioAcaos": {
 			"type": "hasMany",
@@ -60,6 +60,11 @@
 			"type": "hasMany",
 			"model": "CotacaoDiarioAcaoUsa",
 			"foreignKey": ""
+		},
+		"cotacaoIntradayIndiceResultados": {
+			"type": "hasMany",
+			"model": "CotacaoIntradayIndiceResultado",
+			"foreignKey": "diaNum"
 		}
 	},
 	"acls": [],
@@ -875,6 +880,43 @@
 			"http": [
          		{
           			"path": "/listaDataPeriodoAteOntem",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ObtemIntradayResultadoIndicePeriodoQuantidade": {
+			"accepts": [
+				{
+					"arg": "ticker",
+					"type": "string",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "qtdeDia",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "diaNumPrevisao",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemIntradayResultadoIndicePeriodoQuantidade",
    					"verb": "get"
  				}
  			]

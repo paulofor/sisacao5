@@ -37,6 +37,7 @@ public class InstituicaoFinanceira extends Model {
 		this.AplicacaoInstituicaos = new ArrayList<AplicacaoInstituicao>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new AplicacaoInstituicao();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.AplicacaoInstituicaos.add((AplicacaoInstituicao) objeto);
 		}

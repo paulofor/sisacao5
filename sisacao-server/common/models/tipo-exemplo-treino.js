@@ -9,10 +9,20 @@ module.exports = function(Tipoexemplotreino) {
         ds.connector.query(sql,callback);
     }
 
+    Tipoexemplotreino.AtualizaDiaNumExemploAtivo = function(callback) {
+        let sql = "update TipoExemploTreino set diaNumExemploEntradaInicio = date_format(date_sub(now(),interval 10 day),'%Y%m%d') where  geraExemplo = 1 ";
+        let ds = Tipoexemplotreino.dataSource;
+        ds.connector.query(sql,callback);
+    }
 
 
     Tipoexemplotreino.ListaGeraExemplo = function(callback) {
         let sql = "select * from TipoExemploTreino where geraExemplo = 1";
+        let ds = Tipoexemplotreino.dataSource;
+        ds.connector.query(sql,callback);
+    }
+    Tipoexemplotreino.ListaGeraExemploIndice = function(callback) {
+        let sql = "select * from TipoExemploTreino where geraExemploIndice = 1";
         let ds = Tipoexemplotreino.dataSource;
         ds.connector.query(sql,callback);
     }
@@ -41,7 +51,13 @@ module.exports = function(Tipoexemplotreino) {
             " select max(diaNumPrevisao) from ExemploTreinoAcaoEntrada " +
             " where ExemploTreinoAcaoEntrada.qtdeDias = TipoExemploTreino.qtdeDias and " +
             " ExemploTreinoAcaoEntrada.posicaoReferencia = TipoExemploTreino.posicaoReferencia " +
-            " )";
+            " ), " +
+            " diaNumInicioIndice = ( " +
+            " select min(diaNumPrevisao) from ExemploTreinoIndiceAcaoEntrada " +
+            " where ExemploTreinoIndiceAcaoEntrada.tipoExemploTreinoId = TipoExemploTreino.id ), " +
+            " diaNumFinalIndice = ( " +
+            " select max(diaNumPrevisao) from ExemploTreinoIndiceAcaoEntrada " +
+            " where ExemploTreinoIndiceAcaoEntrada.tipoExemploTreinoId = TipoExemploTreino.id ) ";
         let ds = Tipoexemplotreino.dataSource;
         ds.connector.query(sql,callback);
     }

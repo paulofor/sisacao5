@@ -44,7 +44,7 @@ public abstract class CotacaoIntradayIndiceResultado_GravaVaziaComAnteriorIndice
 	}
 
 
-	protected boolean executaCustom( IndiceAcao indiceCorrente ) { return true; }
+	protected boolean executaCustom( AtivoIndice indiceCorrente ) { return true; }
 
 	protected void preFinalizar() { return; }
 

@@ -1,0 +1,76 @@
+{
+	"name": "AtivoIndice",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"ticker": {
+			"type": "string"
+			,"id": true
+		},
+		"nome": {
+			"type": "string"
+		},
+		"intraday5": {
+			"type": "number"
+		},
+		"intraday15": {
+			"type": "number"
+		},
+		"intraday30": {
+			"type": "number"
+		},
+		"intraday10": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+	},
+	"acls": [],
+	"methods": {
+		"ListaBovespa": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/listaBovespa",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"ListaIndiceResultadoMaisRecente": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/listaIndiceResultadoMaisRecente",
+   					"verb": "get"
+ 				}
+ 			]
+		}
+	}
+}

@@ -133,6 +133,7 @@ public class GrupoRegra extends Model {
 		this.GrupoRegraRels = new ArrayList<GrupoRegraRel>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new GrupoRegraRel();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.GrupoRegraRels.add((GrupoRegraRel) objeto);
 		}

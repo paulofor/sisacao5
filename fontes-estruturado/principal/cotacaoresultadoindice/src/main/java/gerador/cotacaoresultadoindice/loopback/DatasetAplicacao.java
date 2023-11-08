@@ -6,14 +6,14 @@ import br.com.gersis.loopback.modelo.*;
 import java.util.List;
 
 public class DatasetAplicacao  implements IDatasetComum {
-	private IndiceAcao indiceCorrente;
+	private AtivoIndice indiceCorrente;
 	private CotacaoIntradayIndiceResultado resultado;
 
 
-	public void setIndiceCorrente(IndiceAcao valor) { 
+	public void setIndiceCorrente(AtivoIndice valor) { 
 		this.indiceCorrente = valor;
 	}
-	public IndiceAcao getIndiceCorrente() { 
+	public AtivoIndice getIndiceCorrente() { 
 		return this.indiceCorrente;
 	}
 	public void setResultado(CotacaoIntradayIndiceResultado valor) { 

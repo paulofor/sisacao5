@@ -80,6 +80,31 @@
    					"verb": "get"
  				}
  			]
+		},
+		"InsereExemploEntradaIndice": {
+			"accepts": [
+				{
+					"arg": "exemplo",
+					"type": "object",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/insereExemploEntradaIndice",
+   					"verb": "post"
+ 				}
+ 			]
 		}
 	}
 }

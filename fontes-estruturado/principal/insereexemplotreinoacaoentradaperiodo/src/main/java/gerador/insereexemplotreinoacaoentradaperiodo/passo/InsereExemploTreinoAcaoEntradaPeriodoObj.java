@@ -19,6 +19,9 @@ public class InsereExemploTreinoAcaoEntradaPeriodoObj extends DaoAplicacao {
 		finalizar();
 	}
 	private void executaFinalizacao(DatasetAplicacao ds) {
+		DaoBase finalizacao1 = new TipoExemploTreino_AtualizaDiaNumExemploAtivoImpl();
+		finalizacao1.setComum(ds);
+		finalizacao1.executa();
 	}
 	public int getNumPasso() {
 		return 1;

@@ -17,7 +17,7 @@ public class InsereExemploTreinoAcaoEntradaPeriodo {
 
 	public static void main(String[] args) {
 		System.out.print("InsereExemploTreinoAcaoEntradaPeriodo");
-		System.out.println("(31/10/2023 09:51:13)");
+		System.out.println("(07/11/2023 18:35:17)");
 		try {
 			carregaProp();
 			InsereExemploTreinoAcaoEntradaPeriodoObj obj = new InsereExemploTreinoAcaoEntradaPeriodoObj();
@@ -59,5 +59,6 @@ public class InsereExemploTreinoAcaoEntradaPeriodo {
 		DaoBaseComum.setProximo("AtivoAcao_ListaParaInsereExemploSaida", new DiaPregao_ObtemIntradayResultadoTickerPeriodoQuantidadeImpl());
 		DaoBaseComum.setProximo("DiaPregao_ObtemIntradayResultadoTickerPeriodoQuantidade", new CriaDataSetEntradaImpl());
 		DaoBaseComum.setProximo("CriaDataSetEntrada", new ExemploTreinoAcaoEntrada_InsereExemploEntradaImpl());
+		DaoBaseComum.setProximo("ExemploTreinoAcaoEntrada_InsereExemploEntrada", new TipoExemploTreino_AtualizaDiaNumExemploAtivoImpl());
 	}
 }

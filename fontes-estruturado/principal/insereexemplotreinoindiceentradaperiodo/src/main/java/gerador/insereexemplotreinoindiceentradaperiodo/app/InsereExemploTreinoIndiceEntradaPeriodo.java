@@ -17,7 +17,7 @@ public class InsereExemploTreinoIndiceEntradaPeriodo {
 
 	public static void main(String[] args) {
 		System.out.print("InsereExemploTreinoIndiceEntradaPeriodo");
-		System.out.println("(31/10/2023 09:51:13)");
+		System.out.println("(07/11/2023 18:35:17)");
 		try {
 			carregaProp();
 			InsereExemploTreinoIndiceEntradaPeriodoObj obj = new InsereExemploTreinoIndiceEntradaPeriodoObj();
@@ -53,5 +53,11 @@ public class InsereExemploTreinoIndiceEntradaPeriodo {
 
 	private static void preparaComum() {
 		DaoBaseComum.setUrl(UrlLoopback);
+		DaoBaseComum.setProximo("InsereExemploTreinoIndiceEntradaPeriodoObj", new TipoExemploTreino_ListaGeraExemploIndiceImpl());
+		DaoBaseComum.setProximo("TipoExemploTreino_ListaGeraExemploIndice", new DiaPregao_ListaDataPeriodoAteOntemImpl());
+		DaoBaseComum.setProximo("DiaPregao_ListaDataPeriodoAteOntem", new AtivoIndice_ListaBovespaImpl());
+		DaoBaseComum.setProximo("AtivoIndice_ListaBovespa", new DiaPregao_ObtemIntradayResultadoIndicePeriodoQuantidadeImpl());
+		DaoBaseComum.setProximo("DiaPregao_ObtemIntradayResultadoIndicePeriodoQuantidade", new CriaDataSetEntradaIndiceImpl());
+		DaoBaseComum.setProximo("CriaDataSetEntradaIndice", new ExemploTreinoIndiceAcaoEntrada_InsereExemploEntradaIndiceImpl());
 	}
 }

@@ -23,6 +23,7 @@ public class CotacaoIntradayIndiceResultado extends Model {
 	private String diaHoraNumTicker;
 	private int posicaoDia;
 	// Relacionamentos 1
+	private DiaPregao DiaPregao;
 	// Relacionamentos N
 
 	public JSONObject getJSON() {
@@ -93,4 +94,11 @@ public class CotacaoIntradayIndiceResultado extends Model {
 		return this.posicaoDia;
 	}
 
+	public DiaPregao getDiaPregao() {
+		return DiaPregao;
+	}
+	public void setDiaPregao(HashMap valor) {
+		this.DiaPregao = new DiaPregao();
+		BeanUtil.setProperties(this.DiaPregao, (Map<String, ? extends Object>) valor, true);
+	}
 }

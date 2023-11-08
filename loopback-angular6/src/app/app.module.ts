@@ -234,6 +234,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { FechamentoRegraDiaDetalheComponent } from './fechamento-regra-dia-detalhe/fechamento-regra-dia-detalhe.component';
 import { VersaoPreRedeDetalheComponent } from './versao-pre-rede-detalhe/versao-pre-rede-detalhe.component';
 import { FechamentoPontoSaidaListSimplesComponent } from './fechamento-ponto-saida-list-simples/fechamento-ponto-saida-list-simples.component';
+import { ProdutosTopVendasComponent } from './produtos-top-vendas/produtos-top-vendas.component';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -432,7 +433,8 @@ registerLocaleData(localePt, 'pt-BR');
     FechamentoPontoSaidaDetalheComponent,
     FechamentoRegraDiaDetalheComponent,
     VersaoPreRedeDetalheComponent,
-    FechamentoPontoSaidaListSimplesComponent
+    FechamentoPontoSaidaListSimplesComponent,
+    ProdutosTopVendasComponent
   ],
   imports: [
     BrowserModule,

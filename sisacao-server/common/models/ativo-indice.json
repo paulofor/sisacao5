@@ -27,7 +27,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "cotacaoIntradayIndiceResultados": {
+      "type": "hasMany",
+      "model": "CotacaoIntradayIndiceResultado",
+      "foreignKey": "ticker"
+    }
+  },
   "acls": [],
   "methods": {
     "ListaColetaIntradayIndice": {
@@ -62,6 +68,42 @@
       "http": [
         {
           "path": "/listaNaoBovespa",
+          "verb": "get"
+        }
+      ]
+    },
+    "ListaBovespa": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaBovespa",
+          "verb": "get"
+        }
+      ]
+    },
+    "ListaIndiceResultadoMaisRecente": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "lista",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaIndiceResultadoMaisRecente",
           "verb": "get"
         }
       ]

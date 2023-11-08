@@ -93,6 +93,7 @@ public class AtivoAcao extends Model {
 		this.RelGrupoAcaos = new ArrayList<RelGrupoAcao>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new RelGrupoAcao();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.RelGrupoAcaos.add((RelGrupoAcao) objeto);
 		}

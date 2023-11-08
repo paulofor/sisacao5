@@ -109,6 +109,7 @@ public class PreRedeNeural extends Model {
 		this.versaoPreRedes = new ArrayList<VersaoPreRede>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new VersaoPreRede();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.versaoPreRedes.add((VersaoPreRede) objeto);
 		}

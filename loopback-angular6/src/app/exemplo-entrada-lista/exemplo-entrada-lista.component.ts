@@ -10,6 +10,9 @@ import { DiaPregaoApi } from '../shared/sdk';
 })
 export class ExemploEntradaListaComponent extends BaseListComponent {
 
+  listaBaseIndice: any[];
+
+
   constructor(protected dialog: MatDialog, protected srv:DiaPregaoApi) { 
     super(dialog,srv);
   }
@@ -20,6 +23,11 @@ export class ExemploEntradaListaComponent extends BaseListComponent {
     .subscribe((result:any[]) => {
         console.log('result: ' , result);
         this.listaBase = result;
+    })
+    this.srv.ExemploTreinoEntradaMaisRecenteIndice(90)
+    .subscribe((result:any[]) => {
+        console.log('result: ' , result);
+        this.listaBaseIndice = result;
     })
 }
 

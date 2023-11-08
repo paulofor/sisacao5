@@ -27,7 +27,9 @@ export class PeriodoTreinoRedeListaComponent extends BaseListComponent {
 
   
   
-
+  getFiltro() {
+    return {'order' : 'id desc'}
+  }
  
 
 }

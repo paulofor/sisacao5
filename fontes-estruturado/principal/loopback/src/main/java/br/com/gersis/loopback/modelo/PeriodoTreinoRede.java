@@ -152,6 +152,7 @@ public class PeriodoTreinoRede extends Model {
 		this.preRedeNeurals = new ArrayList<PreRedeNeural>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new PreRedeNeural();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.preRedeNeurals.add((PreRedeNeural) objeto);
 		}
@@ -163,6 +164,7 @@ public class PeriodoTreinoRede extends Model {
 		this.ExperimentoPreRedeTreinadas = new ArrayList<ExperimentoPreRedeTreinada>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new ExperimentoPreRedeTreinada();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.ExperimentoPreRedeTreinadas.add((ExperimentoPreRedeTreinada) objeto);
 		}
@@ -174,6 +176,7 @@ public class PeriodoTreinoRede extends Model {
 		this.TreinoGrupoRedes = new ArrayList<TreinoGrupoRede>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new TreinoGrupoRede();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.TreinoGrupoRedes.add((TreinoGrupoRede) objeto);
 		}
@@ -185,6 +188,7 @@ public class PeriodoTreinoRede extends Model {
 		this.TreinoRedes = new ArrayList<TreinoRede>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new TreinoRede();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.TreinoRedes.add((TreinoRede) objeto);
 		}

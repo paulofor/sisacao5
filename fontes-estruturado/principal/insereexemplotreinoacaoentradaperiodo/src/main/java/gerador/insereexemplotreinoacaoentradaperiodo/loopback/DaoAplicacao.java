@@ -57,7 +57,7 @@ public abstract class DaoAplicacao extends DaoBase {
 	protected RepositorioCotacaoIntradayIndice repCotacaoIntradayIndice = adapter.createRepository(RepositorioCotacaoIntradayIndice.class);
 	protected RepositorioCotacaoIntradayIndiceResultado repCotacaoIntradayIndiceResultado = adapter.createRepository(RepositorioCotacaoIntradayIndiceResultado.class);
 	protected RepositorioCotacaoIntradayCoinmarketcapIndice repCotacaoIntradayCoinmarketcapIndice = adapter.createRepository(RepositorioCotacaoIntradayCoinmarketcapIndice.class);
-	protected RepositorioIndiceAcao repIndiceAcao = adapter.createRepository(RepositorioIndiceAcao.class);
+	protected RepositorioAtivoIndice repAtivoIndice = adapter.createRepository(RepositorioAtivoIndice.class);
 	protected RepositorioRegraProjecaoHists repRegraProjecaoHists = adapter.createRepository(RepositorioRegraProjecaoHists.class);
 	protected RepositorioRelGrupoAcao repRelGrupoAcao = adapter.createRepository(RepositorioRelGrupoAcao.class);
 

@@ -69,6 +69,7 @@ public class GrupoRede extends Model {
 		this.GrupoRedeRels = new ArrayList<GrupoRedeRel>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new GrupoRedeRel();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.GrupoRedeRels.add((GrupoRedeRel) objeto);
 		}

@@ -144,6 +144,7 @@ public class AmostraDadoSintetico extends Model {
 		this.ExemploDadoSinteticos = new ArrayList<ExemploDadoSintetico>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new ExemploDadoSintetico();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.ExemploDadoSinteticos.add((ExemploDadoSintetico) objeto);
 		}
@@ -155,6 +156,7 @@ public class AmostraDadoSintetico extends Model {
 		this.ExperimentoPreRedes = new ArrayList<ExperimentoPreRede>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new ExperimentoPreRede();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.ExperimentoPreRedes.add((ExperimentoPreRede) objeto);
 		}
@@ -166,6 +168,7 @@ public class AmostraDadoSintetico extends Model {
 		this.ExperimentoPreRedes = new ArrayList<ExperimentoPreRede>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new ExperimentoPreRede();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.ExperimentoPreRedes.add((ExperimentoPreRede) objeto);
 		}
@@ -177,6 +180,7 @@ public class AmostraDadoSintetico extends Model {
 		this.ExemploDadoSinteticoTestes = new ArrayList<ExemploDadoSinteticoTeste>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new ExemploDadoSinteticoTeste();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.ExemploDadoSinteticoTestes.add((ExemploDadoSinteticoTeste) objeto);
 		}

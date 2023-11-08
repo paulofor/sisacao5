@@ -463,7 +463,7 @@
     "dataSource": "mysqlKingDS2",
     "public": true
   },
-  "IndiceAcao": {
+  "ExemploTreinoIndiceAcaoEntrada": {
     "dataSource": "mysqlKingDS2",
     "public": true
   }

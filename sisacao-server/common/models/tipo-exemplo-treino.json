@@ -28,16 +28,24 @@
     "tamanhoEntrada": {
       "type": "number"
     },
-    "geraExemplo" : {
+    "geraExemplo": {
       "type": "number"
     },
-    "diaNumExemploEntradaInicio" : {
-      "type" : "number"
+    "diaNumExemploEntradaInicio": {
+      "type": "number"
     },
-    "diaNumInicioEntradaIndice" : {
-      "type" : "number"
+    "diaNumInicioEntradaIndice": {
+      "type": "number"
+    },
+    "geraExemploIndice": {
+      "type": "number"
+    },
+    "diaNumInicioIndice": {
+      "type": "number"
+    },
+    "diaNumFinalIndice": {
+      "type": "number"
     }
-
   },
   "validations": [],
   "relations": {
@@ -75,9 +83,7 @@
       ]
     },
     "ListaGeraExemplo": {
-      "accepts": [
-       
-      ],
+      "accepts": [],
       "returns": [
         {
           "arg": "resultado",
@@ -91,6 +97,42 @@
         {
           "path": "/listaGeraExemplo",
           "verb": "get"
+        }
+      ]
+    },
+    "ListaGeraExemploIndice": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaGeraExemploIndice",
+          "verb": "get"
+        }
+      ]
+    },
+    "AtualizaDiaNumExemploAtivo": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaDiaNumExemploAtivo",
+          "verb": "post"
         }
       ]
     },
@@ -162,5 +204,6 @@
         }
       ]
     }
+    
   }
 }

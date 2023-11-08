@@ -35,6 +35,9 @@
 		},
 		"diaNumInicioEntradaIndice": {
 			"type": "number"
+		},
+		"geraExemploIndice": {
+			"type": "number"
 		}
 	},
 	"validations": [],
@@ -123,6 +126,44 @@
          		{
           			"path": "/atualizaDiaNumExemplo",
    					"verb": "post"
+ 				}
+ 			]
+		},
+		"AtualizaDiaNumExemploAtivo": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/atualizaDiaNumExemploAtivo",
+   					"verb": "post"
+ 				}
+ 			]
+		},
+		"ListaGeraExemploIndice": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/listaGeraExemploIndice",
+   					"verb": "get"
  				}
  			]
 		}

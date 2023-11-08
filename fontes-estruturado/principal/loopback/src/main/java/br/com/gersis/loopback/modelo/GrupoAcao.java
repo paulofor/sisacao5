@@ -73,6 +73,7 @@ public class GrupoAcao extends Model {
 		this.RegraProjecaoReversaos = new ArrayList<RegraProjecaoReversao>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new RegraProjecaoReversao();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.RegraProjecaoReversaos.add((RegraProjecaoReversao) objeto);
 		}
@@ -84,6 +85,7 @@ public class GrupoAcao extends Model {
 		this.FechamentoRegraDias = new ArrayList<FechamentoRegraDia>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new FechamentoRegraDia();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.FechamentoRegraDias.add((FechamentoRegraDia) objeto);
 		}
@@ -95,6 +97,7 @@ public class GrupoAcao extends Model {
 		this.ExperimentoPreRedeTreinadas = new ArrayList<ExperimentoPreRedeTreinada>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new ExperimentoPreRedeTreinada();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.ExperimentoPreRedeTreinadas.add((ExperimentoPreRedeTreinada) objeto);
 		}
@@ -106,6 +109,7 @@ public class GrupoAcao extends Model {
 		this.TreinoRedes = new ArrayList<TreinoRede>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new TreinoRede();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.TreinoRedes.add((TreinoRede) objeto);
 		}
@@ -117,6 +121,7 @@ public class GrupoAcao extends Model {
 		this.RelGrupoAcaos = new ArrayList<RelGrupoAcao>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new RelGrupoAcao();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.RelGrupoAcaos.add((RelGrupoAcao) objeto);
 		}

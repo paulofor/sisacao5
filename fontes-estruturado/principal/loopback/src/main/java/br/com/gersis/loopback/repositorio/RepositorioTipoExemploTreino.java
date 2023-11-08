@@ -45,6 +45,20 @@ public class RepositorioTipoExemploTreino extends ModelRepository<TipoExemploTre
 		invokeStaticMethod("atualizaDiaNumExemplo", params,   new EmptyResponseParser(callback));
 	}
 
+	public synchronized void atualizaDiaNumExemploAtivo(final VoidCallback callback ) {
+		RestContractItem contrato = new RestContractItem("TipoExemploTreinos/atualizaDiaNumExemploAtivo","POST");
+		this.getRestAdapter().getContract().addItem(contrato, "TipoExemploTreino.atualizaDiaNumExemploAtivo");
+		Map<String, Object> params = new HashMap<String, Object>();
+		invokeStaticMethod("atualizaDiaNumExemploAtivo", params,   new EmptyResponseParser(callback));
+	}
+
+	public synchronized void listaGeraExemploIndice(final ListCallback<TipoExemploTreino> callback ) {
+		RestContractItem contrato = new RestContractItem("TipoExemploTreinos/listaGeraExemploIndice","GET");
+		this.getRestAdapter().getContract().addItem(contrato, "TipoExemploTreino.listaGeraExemploIndice");
+		Map<String, Object> params = new HashMap<String, Object>();
+		invokeStaticMethod("listaGeraExemploIndice", params,   new JsonArrayParser<TipoExemploTreino>(this, callback));
+	}
+
 
 	private JSONArray obtemLista(List<TipoExemploTreino> listaEntrada) {
 		JSONArray lista = new JSONArray();

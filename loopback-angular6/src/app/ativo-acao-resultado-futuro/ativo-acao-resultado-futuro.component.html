@@ -5,10 +5,50 @@
       <div class="col-md-12">
         <div class="card">
           <div class="header">
+            <h4 class="title">Indices - Com Resultado Futuro</h4>
+            
+          </div>
+          <div class="dgc-comando-correcao">20 18 * * 1-5 java -jar /root/aplicativos/AtualizaIntradayResultado.jar 12 > AtualizaIntradayResultado.log</div>
+          <div class="content table-responsive table-full-width">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th width="10%">Ticker</th>
+                  <th width="20%">Resultado mais recente</th>
+                  <td width="10%">Intraday15</td>
+                  <th width="60%"></th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listaIndice">
+                  <td>{{item.ticker}}</td>
+                  <td *ngIf="(item.cotacaoIntradayIndiceResultados.length>0)">{{item.cotacaoIntradayIndiceResultados[0].dataHora | date : 'dd/MM/yyyy HH:mm' : 'UTC'}}</td>
+                  <td *ngIf="(item.cotacaoIntradayIndiceResultados.length==0)">não encontrado</td>
+                  <td>{{item.intraday15}}</td>
+                  <td></td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
             <h4 class="title">Ações - Com Resultado Futuro ({{listaBase.length}}) (locaweb-java1)</h4>
             
           </div>
           <div class="dgc-comando-correcao">20 18 * * 1-5 java -jar /root/aplicativos/AtualizaIntradayResultado.jar 12 > AtualizaIntradayResultado.log</div>
+   
           <div class="content table-responsive table-full-width">
             <table class="table table-hover table-striped">
               <thead>
@@ -32,10 +72,16 @@
               </tbody>
             </table>
           </div>
+
+
+
         </div>
       </div>
 
     </div>
+
+
+
   </div>
 </div>
 

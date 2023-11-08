@@ -21,9 +21,9 @@ public abstract class IndiceAcao_ListaIntradayResultado extends DaoAplicacao {
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom()) {
-			repIndiceAcao.listaIntradayResultado(  new ListCallback<IndiceAcao>() { 
-				public void onSuccess(List<IndiceAcao> lista) {
-					for (IndiceAcao item : lista) {
+			repAtivoIndice.listaBovespa(  new ListCallback<AtivoIndice>() { 
+				public void onSuccess(List<AtivoIndice> lista) {
+					for (AtivoIndice item : lista) {
 						ds.setIndiceCorrente(item);
 						executaProximoSemFinalizar();
 					}

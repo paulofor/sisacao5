@@ -17,7 +17,7 @@ public class GeraCotacaoIntradayAcaoResultado {
 
 	public static void main(String[] args) {
 		System.out.print("GeraCotacaoIntradayAcaoResultado");
-		System.out.println("(31/10/2023 09:51:12)");
+		System.out.println("(07/11/2023 18:35:16)");
 		try {
 			carregaProp();
 			GeraCotacaoIntradayAcaoResultadoObj obj = new GeraCotacaoIntradayAcaoResultadoObj();

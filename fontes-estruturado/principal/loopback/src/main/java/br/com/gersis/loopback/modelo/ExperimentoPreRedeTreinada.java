@@ -334,6 +334,7 @@ public class ExperimentoPreRedeTreinada extends Model {
 		this.ExperimentoPreRedeTreinadaScores = new ArrayList<ExperimentoPreRedeTreinadaScore>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new ExperimentoPreRedeTreinadaScore();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.ExperimentoPreRedeTreinadaScores.add((ExperimentoPreRedeTreinadaScore) objeto);
 		}
@@ -345,6 +346,7 @@ public class ExperimentoPreRedeTreinada extends Model {
 		this.ExperimentoPreRedeTreinadaControles = new ArrayList<ExperimentoPreRedeTreinadaControle>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new ExperimentoPreRedeTreinadaControle();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.ExperimentoPreRedeTreinadaControles.add((ExperimentoPreRedeTreinadaControle) objeto);
 		}

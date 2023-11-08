@@ -28,6 +28,7 @@ public class DiaPregao extends Model {
 	private List<PrevisaoRede> PrevisaoRedes;
 	private List<FechamentoRegraDiaQuantidade> FechamentoRegraDiaQuantidades;
 	private List<CotacaoDiarioAcaoUsa> CotacaoDiarioAcaoUsas;
+	private List<CotacaoIntradayIndiceResultado> CotacaoIntradayIndiceResultados;
 
 	public JSONObject getJSON() {
 		JSONObject obj = new JSONObject();
@@ -90,6 +91,7 @@ public class DiaPregao extends Model {
 		this.CotacaoIntradayAcaos = new ArrayList<CotacaoIntradayAcao>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new CotacaoIntradayAcao();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.CotacaoIntradayAcaos.add((CotacaoIntradayAcao) objeto);
 		}
@@ -101,6 +103,7 @@ public class DiaPregao extends Model {
 		this.CotacaoIntradayAcaoResultados = new ArrayList<CotacaoIntradayAcaoResultado>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new CotacaoIntradayAcaoResultado();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.CotacaoIntradayAcaoResultados.add((CotacaoIntradayAcaoResultado) objeto);
 		}
@@ -112,6 +115,7 @@ public class DiaPregao extends Model {
 		this.CotacaoDiarioAcaos = new ArrayList<CotacaoDiarioAcao>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new CotacaoDiarioAcao();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.CotacaoDiarioAcaos.add((CotacaoDiarioAcao) objeto);
 		}
@@ -123,6 +127,7 @@ public class DiaPregao extends Model {
 		this.PrevisaoRedes = new ArrayList<PrevisaoRede>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new PrevisaoRede();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.PrevisaoRedes.add((PrevisaoRede) objeto);
 		}
@@ -134,6 +139,7 @@ public class DiaPregao extends Model {
 		this.FechamentoRegraDiaQuantidades = new ArrayList<FechamentoRegraDiaQuantidade>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new FechamentoRegraDiaQuantidade();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.FechamentoRegraDiaQuantidades.add((FechamentoRegraDiaQuantidade) objeto);
 		}
@@ -145,8 +151,21 @@ public class DiaPregao extends Model {
 		this.CotacaoDiarioAcaoUsas = new ArrayList<CotacaoDiarioAcaoUsa>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new CotacaoDiarioAcaoUsa();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.CotacaoDiarioAcaoUsas.add((CotacaoDiarioAcaoUsa) objeto);
+		}
+	}
+	public List<CotacaoIntradayIndiceResultado> getCotacaoIntradayIndiceResultados() {
+		return  CotacaoIntradayIndiceResultados;
+	}
+	public void setCotacaoIntradayIndiceResultados(List<CotacaoIntradayIndiceResultado> valores) {
+		this.CotacaoIntradayIndiceResultados = new ArrayList<CotacaoIntradayIndiceResultado>();
+		for (int i = 0; i < valores.size(); i++) {
+			Object objeto = new CotacaoIntradayIndiceResultado();
+			System.out.println(" --> ObjetoMap ");
+			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
+			this.CotacaoIntradayIndiceResultados.add((CotacaoIntradayIndiceResultado) objeto);
 		}
 	}
 }

@@ -39,6 +39,11 @@
 	},
 	"validations": [],
 	"relations": {
+		"diaPregao": {
+			"type": "belongsTo",
+			"model": "DiaPregao",
+			"foreignKey": "diaNum"
+		}
 	},
 	"acls": [],
 	"methods": {

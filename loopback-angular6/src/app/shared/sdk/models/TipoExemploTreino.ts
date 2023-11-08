@@ -14,6 +14,10 @@ export interface TipoExemploTreinoInterface {
   "tamanhoEntrada"?: number;
   "geraExemplo"?: number;
   "diaNumExemploEntradaInicio"?: number;
+  "diaNumInicioEntradaIndice"?: number;
+  "geraExemploIndice"?: number;
+  "diaNumInicioIndice"?: number;
+  "diaNumFinalIndice"?: number;
   amostraDadoSinteticos?: AmostraDadoSintetico[];
 }
 
@@ -27,6 +31,10 @@ export class TipoExemploTreino implements TipoExemploTreinoInterface {
   "tamanhoEntrada": number;
   "geraExemplo": number;
   "diaNumExemploEntradaInicio": number;
+  "diaNumInicioEntradaIndice": number;
+  "geraExemploIndice": number;
+  "diaNumInicioIndice": number;
+  "diaNumFinalIndice": number;
   amostraDadoSinteticos: AmostraDadoSintetico[];
   constructor(data?: TipoExemploTreinoInterface) {
     Object.assign(this, data);
@@ -95,6 +103,22 @@ export class TipoExemploTreino implements TipoExemploTreinoInterface {
         },
         "diaNumExemploEntradaInicio": {
           name: 'diaNumExemploEntradaInicio',
+          type: 'number'
+        },
+        "diaNumInicioEntradaIndice": {
+          name: 'diaNumInicioEntradaIndice',
+          type: 'number'
+        },
+        "geraExemploIndice": {
+          name: 'geraExemploIndice',
+          type: 'number'
+        },
+        "diaNumInicioIndice": {
+          name: 'diaNumInicioIndice',
+          type: 'number'
+        },
+        "diaNumFinalIndice": {
+          name: 'diaNumFinalIndice',
           type: 'number'
         },
       },

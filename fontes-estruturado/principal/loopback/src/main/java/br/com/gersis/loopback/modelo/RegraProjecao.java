@@ -257,6 +257,7 @@ public class RegraProjecao extends Model {
 		this.VersaoPreRedeRegras = new ArrayList<VersaoPreRedeRegra>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new VersaoPreRedeRegra();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.VersaoPreRedeRegras.add((VersaoPreRedeRegra) objeto);
 		}
@@ -268,6 +269,7 @@ public class RegraProjecao extends Model {
 		this.ExperimentoPreRedeTreinadas = new ArrayList<ExperimentoPreRedeTreinada>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new ExperimentoPreRedeTreinada();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.ExperimentoPreRedeTreinadas.add((ExperimentoPreRedeTreinada) objeto);
 		}
@@ -279,6 +281,7 @@ public class RegraProjecao extends Model {
 		this.GrupoRegraRels = new ArrayList<GrupoRegraRel>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new GrupoRegraRel();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.GrupoRegraRels.add((GrupoRegraRel) objeto);
 		}
@@ -290,6 +293,7 @@ public class RegraProjecao extends Model {
 		this.TreinoRedes = new ArrayList<TreinoRede>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new TreinoRede();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.TreinoRedes.add((TreinoRede) objeto);
 		}
@@ -301,6 +305,7 @@ public class RegraProjecao extends Model {
 		this.ExemploTreinoAcaoSaidas = new ArrayList<ExemploTreinoAcaoSaida>();
 		for (int i = 0; i < valores.size(); i++) {
 			Object objeto = new ExemploTreinoAcaoSaida();
+			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.ExemploTreinoAcaoSaidas.add((ExemploTreinoAcaoSaida) objeto);
 		}

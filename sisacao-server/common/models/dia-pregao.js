@@ -345,6 +345,22 @@ module.exports = function(Diapregao) {
         Diapregao.find(filtro,callback);
     };
       
+
+
+    Diapregao.ExemploTreinoEntradaMaisRecenteIndice = function(qtde, callback) {
+        let sql = " select dia.*, " + 
+            " (select count(*) from ExemploTreinoIndiceAcaoEntrada as exemplo " +
+            " where exemplo.diaNumPrevisao = dia.diaNum  and tipoExemploTreinoId = 1) as tipoExemplo1, " +
+            " (select count(*) from ExemploTreinoIndiceAcaoEntrada as exemplo " +
+            " where exemplo.diaNumPrevisao = dia.diaNum  and tipoExemploTreinoId = 5) as tipoExemplo5 " +
+            " from DiaPregao dia " +
+            " where dia.diaNum <= (select max(diaNumPrevisao) from ExemploTreinoIndiceAcaoEntrada) " +
+            " order by dia.diaNum desc " +
+            " limit " + qtde;
+        let ds = Diapregao.dataSource;
+        ds.connector.query(sql,callback);
+    }
+
     Diapregao.ExemploTreinoEntradaMaisRecente = function(qtde, callback) {
         let sql = " select dia.*, " + 
             " (select count(*) from ExemploTreinoAcaoEntrada as exemplo " +
@@ -417,6 +433,30 @@ module.exports = function(Diapregao) {
                 'scope' : 
                     {'where' : {'ticker' : ticker }} 
                 }
+            ], 
+            'order' : 'diaNum desc',
+            'limit' : qtdeDia + 1,
+            'where' : {'diaNum': {'lte' : diaNumPrevisao}} 
+        }
+        Diapregao.find(filtro, (err,result) => {
+            callback(err,result.reverse())
+        });
+    };
+
+    Diapregao.ObtemIntradayResultadoIndicePeriodoQuantidade = function(ticker, qtdeDia, diaNumPrevisao, callback) {
+        var data = new Date();
+        var diaComp = (data.getDate()<10?'0' + data.getDate(): '' + data.getDate());
+        var mesComp = (data.getUTCMonth()+1)<10?'0' + (data.getUTCMonth()+1): '' + (data.getUTCMonth()+1);
+        var diaNum = Number(data.getUTCFullYear() + mesComp + diaComp);
+        let filtro = {
+            'include' : 
+            [
+                { 
+                'relation' : 'cotacaoIntradayIndiceResultados',
+                'scope' : 
+                    {'where' : {'ticker' : ticker } , "order" : "dataHora" } 
+                }
+               
             ], 
             'order' : 'diaNum desc',
             'limit' : qtdeDia + 1,

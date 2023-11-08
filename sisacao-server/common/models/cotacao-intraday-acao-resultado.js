@@ -293,6 +293,7 @@ Cotacaointradayacaoresultado.PendentePorFechamentoRegra = function(idFechamentoR
             " where diaNum > " + fechamentoRegraDia.diaNumFechado +
             " and RelGrupoAcao.grupoAcaoId = " + fechamentoRegraDia.grupoAcaoId +
             " and FechamentoPontoSaida.ticker is null " +
+            " and posicaoDia in (0,-3,-7,-11) " +
             " order by CotacaoIntradayAcaoResultado.diaNum " +
             " limit 10000";
         console.log(sql);
