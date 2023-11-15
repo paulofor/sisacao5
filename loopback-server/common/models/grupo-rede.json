@@ -28,6 +28,11 @@
 			"type": "hasMany",
 			"model": "GrupoRedeRel",
 			"foreignKey": ""
+		},
+		"experimentoRedeNeurals": {
+			"type": "hasMany",
+			"model": "ExperimentoRedeNeural",
+			"foreignKey": ""
 		}
 	},
 	"acls": [],

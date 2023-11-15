@@ -133,6 +133,31 @@ entrada.posicaoReferencia = 0 and
 RelGrupoAcao.grupoAcaoId  = 12
 */
 
+    Exemplotreinoacaosaida.ListaParaTreinoEntradaSaidaDuplaComIndice = function(diaNumInicio,diaNumFinal,idGrupoAcao,idRegraProjecaoSaida,idTipoExemploCurta,idTipoExemploLonga,callback) {
+        app.models.TipoExemploTreino.findById(idTipoExemploCurta, (err,tipoCurta) => {
+            app.models.TipoExemploTreino.findById(idTipoExemploLonga, (err,tipoLonga) => {
+                let sql = "select acao.diaNumPrevisao, acao.ticker , acao.campoX , indice.campoX as campoXIndice , saida.campoY from ExemploTreinoAcaoEntrada acao " +
+                " inner join ExemploTreinoAcaoEntrada acaoLonga on acao.diaNumPrevisao = acaoLonga.diaNumPrevisao and acao.ticker = acaoLonga.ticker " +
+                " inner join ExemploTreinoAcaoSaida saida on saida.diaNumPrevisao = acao.diaNumPrevisao and acao.ticker = saida.ticker " +
+                " inner join ExemploTreinoIndiceAcaoEntrada indice on indice.diaNumPrevisao = acao.diaNumPrevisao " +
+                " inner join ExemploTreinoIndiceAcaoEntrada indiceLonga on indice.diaNumPrevisao = acao.diaNumPrevisao "  +
+                " where acao.diaNumPrevisao >= " + diaNumInicio + " and  acao.diaNumPrevisao <=" + diaNumFinal +
+                " and acao.ticker in (select ticker from RelGrupoAcao where grupoAcaoId = " + idGrupoAcao + " ) " +
+                " and acao.qtdeDias = " + tipoCurta.qtdeDias + " and acao.posicaoReferencia = " + tipoCurta.posicaoReferencia +
+                " and acaoLonga.qtdeDias = " + tipoLonga.qtdeDias + " and acao.posicaoReferencia = " + tipoLonga.posicaoReferencia +
+                " and indice.ticker = 'ibov' and indice.tipoExemploTreinoId = " + idTipoExemploCurta + 
+                " and indiceLonga.ticker = 'ibov' and indiceLonga.tipoExemploTreinoId = " + idTipoExemploLonga +
+                " and saida.regraProjecaoId = " + idRegraProjecaoSaida + 
+                " order by acao.diaNumPrevisao, acao.ticker";
+                let ds = Exemplotreinoacaosaida.dataSource;
+                ds.connector.query(sql, (err,result) => {
+                    callback(err,result);
+                })
+            })
+        })
+    }
+
+
     Exemplotreinoacaosaida.ListaParaTreinoEntradaSaida = function(diaNumInicio,diaNumFinal,idGrupoAcao,idRegraProjecao,idTipoExemplo, callback) {
         app.models.TipoExemploTreino.findById(idTipoExemplo, (err,tipo) => {
             console.log(tipo);

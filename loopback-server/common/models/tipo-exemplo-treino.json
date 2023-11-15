@@ -38,6 +38,12 @@
 		},
 		"geraExemploIndice": {
 			"type": "number"
+		},
+		"diaNumInicioIndice": {
+			"type": "number"
+		},
+		"diaNumFinalIndice": {
+			"type": "number"
 		}
 	},
 	"validations": [],

@@ -1,0 +1,98 @@
+{
+	"name": "ExperimentoRedeNeural",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"possuiCache": {
+			"type": "number"
+		},
+		"periodoTreinoRedeId": {
+			"type": "number"
+		},
+		"grupoRedeId": {
+			"type": "number"
+		},
+		"grupoAcaoId": {
+			"type": "number"
+		},
+		"grupoRegraId": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+		"periodoTreinoRede": {
+			"type": "belongsTo",
+			"model": "PeriodoTreinoRede",
+			"foreignKey": ""
+		},
+		"grupoRede": {
+			"type": "belongsTo",
+			"model": "GrupoRede",
+			"foreignKey": ""
+		},
+		"grupoAcao": {
+			"type": "belongsTo",
+			"model": "GrupoAcao",
+			"foreignKey": ""
+		},
+		"grupoRegra": {
+			"type": "belongsTo",
+			"model": "GrupoRegra",
+			"foreignKey": ""
+		}
+	},
+	"acls": [],
+	"methods": {
+		"ObtemParaCache": {
+			"accepts": [
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/obtemParaCache",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+		"GeraTreinoCache": {
+			"accepts": [
+				{
+					"arg": "idExperimento",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "object",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          			"path": "/geraTreinoCache",
+   					"verb": "post"
+ 				}
+ 			]
+		}
+	}
+}

@@ -17,7 +17,7 @@ public class CotacaoResultadoAtivoAcao {
 
 	public static void main(String[] args) {
 		System.out.print("CotacaoResultadoAtivoAcao");
-		System.out.println("(07/11/2023 18:35:15)");
+		System.out.println("(14/11/2023 14:27:39)");
 		try {
 			carregaProp();
 			CotacaoResultadoAtivoAcaoObj obj = new CotacaoResultadoAtivoAcaoObj();

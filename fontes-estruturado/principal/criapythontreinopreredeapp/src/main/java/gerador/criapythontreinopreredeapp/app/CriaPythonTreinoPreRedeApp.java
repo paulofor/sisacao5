@@ -17,7 +17,7 @@ public class CriaPythonTreinoPreRedeApp {
 
 	public static void main(String[] args) {
 		System.out.print("CriaPythonTreinoPreRedeApp");
-		System.out.println("(07/11/2023 18:35:09)");
+		System.out.println("(14/11/2023 14:27:33)");
 		try {
 			carregaProp();
 			CriaPythonTreinoPreRedeObj obj = new CriaPythonTreinoPreRedeObj();

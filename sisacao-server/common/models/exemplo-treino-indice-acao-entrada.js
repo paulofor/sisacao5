@@ -11,4 +11,15 @@ module.exports = function(Exemplotreinoindiceacaoentrada) {
             callback(null,exemplo);
         });
     }
+
+    Exemplotreinoindiceacaoentrada.ListaParaTreinoIndice = function(diaNumInicio,diaNumFinal,idTipoExemplo,callback) {
+        let sql = "select diaNumPrevisao, ticker, campoX from ExemploTreinoIndiceAcaoEntrada " +
+        " where diaNumPrevisao >= " + diaNumInicio + " and  diaNumPrevisao <=" + diaNumFinal +
+        " and ticker = 'ibov' and tipoExemploTreinoId = " + idTipoExemplo
+        " order by diaNumPrevisao, ticker";
+        let ds = Exemplotreinoindiceacaoentrada.dataSource;
+        ds.connector.query(sql, (err,result) => {
+            callback(err,result);
+        })
+    }
 };

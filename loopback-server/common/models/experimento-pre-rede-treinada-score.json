@@ -38,7 +38,7 @@
 		},
 		"diaNumSaida": {
 			"type": "number"
-		},
+		}
 	},
 	"validations": [],
 	"relations": {

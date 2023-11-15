@@ -40,7 +40,7 @@
 		},
 		"dataHoraSaida": {
 			"type": "date"
-		},
+		}
 	},
 	"validations": [],
 	"relations": {

@@ -38,7 +38,7 @@
 		},
 		"redeNeuralId": {
 			"type": "number"
-		},
+		}
 	},
 	"validations": [],
 	"relations": {

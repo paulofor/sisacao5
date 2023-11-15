@@ -95,7 +95,7 @@
 		},
 		"geraScoreTesteSintetico": {
 			"type": "string"
-		},
+		}
 	},
 	"validations": [],
 	"relations": {

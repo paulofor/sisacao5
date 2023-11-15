@@ -235,6 +235,8 @@ import { FechamentoRegraDiaDetalheComponent } from './fechamento-regra-dia-detal
 import { VersaoPreRedeDetalheComponent } from './versao-pre-rede-detalhe/versao-pre-rede-detalhe.component';
 import { FechamentoPontoSaidaListSimplesComponent } from './fechamento-ponto-saida-list-simples/fechamento-ponto-saida-list-simples.component';
 import { ProdutosTopVendasComponent } from './produtos-top-vendas/produtos-top-vendas.component';
+import { ExperimentoRedeNeuralListComponent } from './experimento-rede-neural-list/experimento-rede-neural-list.component';
+import { ExperimentoRedeNeuralEditComponent } from './experimento-rede-neural-edit/experimento-rede-neural-edit.component';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -434,7 +436,9 @@ registerLocaleData(localePt, 'pt-BR');
     FechamentoRegraDiaDetalheComponent,
     VersaoPreRedeDetalheComponent,
     FechamentoPontoSaidaListSimplesComponent,
-    ProdutosTopVendasComponent
+    ProdutosTopVendasComponent,
+    ExperimentoRedeNeuralListComponent,
+    ExperimentoRedeNeuralEditComponent
   ],
   imports: [
     BrowserModule,

@@ -1,45 +1,43 @@
 {
-	"name": "IndiceAcao",
-	"base": "PersistedModel",
-	"idInjection": true,
-	"options": {
-		"validateUpsert": true
-	},
-  	"mixins": {
-    	"Counts": true
-  	},
-	"properties": {
-		"ticker": {
-			"type": "string"
-			,"id": true
-		},
-		"nome": {
-			"type": "string"
-		}
-	},
-	"validations": [],
-	"relations": {
-	},
-	"acls": [],
-	"methods": {
-		"ListaIntradayResultado": {
-			"accepts": [
-			],
-			"returns": [
- 				{
-     				"arg": "resultado",
-     				"type": "array",
-   					"root": true,
-    				"description": ""
-   				}
-			],
-			"description": "",
-			"http": [
-         		{
-          			"path": "/listaIntradayResultado",
-   					"verb": "get"
- 				}
- 			]
-		}
-	}
+  "name": "IndiceAcao",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "Counts": true
+  },
+  "properties": {
+    "ticker": {
+      "type": "string",
+      "id": true
+    },
+    "nome": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {
+    "ListaIntradayResultado": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaIntradayResultado",
+          "verb": "get"
+        }
+      ]
+    }
+  }
 }

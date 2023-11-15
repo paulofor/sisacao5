@@ -466,5 +466,9 @@
   "ExemploTreinoIndiceAcaoEntrada": {
     "dataSource": "mysqlKingDS2",
     "public": true
+  },
+  "ExperimentoRedeNeural": {
+    "dataSource": "mysqlKingDS2",
+    "public": true
   }
 }

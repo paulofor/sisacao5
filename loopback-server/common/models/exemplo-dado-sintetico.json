@@ -23,7 +23,7 @@
 		},
 		"resultado": {
 			"type": "number"
-		},
+		}
 	},
 	"validations": [],
 	"relations": {

@@ -17,7 +17,7 @@
 		},
 		"diaNumFechado": {
 			"type": "number"
-		},
+		}
 	},
 	"validations": [],
 	"relations": {

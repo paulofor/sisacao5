@@ -47,6 +47,61 @@
   "relations": {},
   "acls": [],
   "methods": {
+    "ListaParaTreinoEntradaSaidaDuplaComIndice": {
+      "accepts": [
+        {
+          "arg": "diaNumInicio",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "diaNumFinal",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "idGrupoAcao",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "idRegraProjecaoSaida",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "idTipoExemploCurta",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "idTipoExemploLonga",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaParaTreinoEntradaSaidaDuplaComIndice",
+          "verb": "get"
+        }
+      ]
+    },
     "ListaParaTreinoEntradaSaida": {
       "accepts": [
         {

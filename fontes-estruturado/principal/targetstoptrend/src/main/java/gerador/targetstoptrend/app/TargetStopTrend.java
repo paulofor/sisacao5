@@ -17,7 +17,7 @@ public class TargetStopTrend {
 
 	public static void main(String[] args) {
 		System.out.print("TargetStopTrend");
-		System.out.println("(07/11/2023 18:35:10)");
+		System.out.println("(14/11/2023 14:27:34)");
 		try {
 			carregaProp();
 			TargetStopTrendObj obj = new TargetStopTrendObj();

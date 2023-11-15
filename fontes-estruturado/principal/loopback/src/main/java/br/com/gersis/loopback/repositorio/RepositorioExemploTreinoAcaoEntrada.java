@@ -63,6 +63,28 @@ public class RepositorioExemploTreinoAcaoEntrada extends ModelRepository<Exemplo
 		invokeStaticMethod("insereExemploEntrada", params,   new EmptyResponseParser(callback));
 	}
 
+	public synchronized void listaParaTreino(int idGrupoAcao ,int idTipoExemplo ,int diaNumInicioTreino ,int diaNumFinalTreino ,final ListCallback<ExemploTreinoAcaoEntrada> callback ) {
+		RestContractItem contrato = new RestContractItem("ExemploTreinoAcaoEntradas/listaParaTreino","GET");
+		this.getRestAdapter().getContract().addItem(contrato, "ExemploTreinoAcaoEntrada.listaParaTreino");
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("idGrupoAcao", idGrupoAcao);
+		params.put("idTipoExemplo", idTipoExemplo);
+		params.put("diaNumInicioTreino", diaNumInicioTreino);
+		params.put("diaNumFinalTreino", diaNumFinalTreino);
+		invokeStaticMethod("listaParaTreino", params,   new JsonArrayParser<ExemploTreinoAcaoEntrada>(this, callback));
+	}
+
+	public synchronized void listaParaTreinoComIndice(int idGrupoAcao ,int idTipoExemplo ,int diaNumInicioTreino ,int diaNumFinalTreino ,final ListCallback<ExemploTreinoAcaoEntrada> callback ) {
+		RestContractItem contrato = new RestContractItem("ExemploTreinoAcaoEntradas/listaParaTreinoComIndice","GET");
+		this.getRestAdapter().getContract().addItem(contrato, "ExemploTreinoAcaoEntrada.listaParaTreinoComIndice");
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("idGrupoAcao", idGrupoAcao);
+		params.put("idTipoExemplo", idTipoExemplo);
+		params.put("diaNumInicioTreino", diaNumInicioTreino);
+		params.put("diaNumFinalTreino", diaNumFinalTreino);
+		invokeStaticMethod("listaParaTreinoComIndice", params,   new JsonArrayParser<ExemploTreinoAcaoEntrada>(this, callback));
+	}
+
 
 	private JSONArray obtemLista(List<ExemploTreinoAcaoEntrada> listaEntrada) {
 		JSONArray lista = new JSONArray();

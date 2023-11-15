@@ -109,6 +109,7 @@ import { CotacaoDiarioAcaoUsa } from '../../models/CotacaoDiarioAcaoUsa';
 import { CotacaoIntradayAcaoUsa } from '../../models/CotacaoIntradayAcaoUsa';
 import { CotacaoIntradayIndiceResultado } from '../../models/CotacaoIntradayIndiceResultado';
 import { ExemploTreinoIndiceAcaoEntrada } from '../../models/ExemploTreinoIndiceAcaoEntrada';
+import { ExperimentoRedeNeural } from '../../models/ExperimentoRedeNeural';
 
 export interface Models { [name: string]: any }
 
@@ -225,6 +226,7 @@ export class SDKModels {
     CotacaoIntradayAcaoUsa: CotacaoIntradayAcaoUsa,
     CotacaoIntradayIndiceResultado: CotacaoIntradayIndiceResultado,
     ExemploTreinoIndiceAcaoEntrada: ExemploTreinoIndiceAcaoEntrada,
+    ExperimentoRedeNeural: ExperimentoRedeNeural,
     
   };
 

@@ -223,6 +223,49 @@
         }
       ]
     },
+    "ListaParaTreinoComIndice": {
+      "accepts": [
+        {
+          "arg": "idGrupoAcao",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "idTipoExemplo",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "diaNumInicioTreino",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "arg": "diaNumFinalTreino",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/listaParaTreinoComIndice",
+          "verb": "get"
+        }
+      ]
+    },
     "ListaSemResultadoSimples": {
       "accepts": [
         {

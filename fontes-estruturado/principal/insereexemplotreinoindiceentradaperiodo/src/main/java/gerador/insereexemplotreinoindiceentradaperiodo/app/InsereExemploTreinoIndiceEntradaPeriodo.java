@@ -17,7 +17,7 @@ public class InsereExemploTreinoIndiceEntradaPeriodo {
 
 	public static void main(String[] args) {
 		System.out.print("InsereExemploTreinoIndiceEntradaPeriodo");
-		System.out.println("(07/11/2023 18:35:17)");
+		System.out.println("(14/11/2023 14:27:41)");
 		try {
 			carregaProp();
 			InsereExemploTreinoIndiceEntradaPeriodoObj obj = new InsereExemploTreinoIndiceEntradaPeriodoObj();

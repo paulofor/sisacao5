@@ -25,7 +25,7 @@
 		},
 		"diaPregaoId": {
 			"type": "number"
-		},
+		}
 	},
 	"validations": [],
 	"relations": {

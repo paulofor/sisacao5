@@ -60,6 +60,8 @@ public abstract class DaoAplicacao extends DaoBase {
 	protected RepositorioAtivoIndice repAtivoIndice = adapter.createRepository(RepositorioAtivoIndice.class);
 	protected RepositorioRegraProjecaoHists repRegraProjecaoHists = adapter.createRepository(RepositorioRegraProjecaoHists.class);
 	protected RepositorioRelGrupoAcao repRelGrupoAcao = adapter.createRepository(RepositorioRelGrupoAcao.class);
+	protected RepositorioExemploTreinoCache repExemploTreinoCache = adapter.createRepository(RepositorioExemploTreinoCache.class);
+	protected RepositorioExperimentoRedeNeural repExperimentoRedeNeural = adapter.createRepository(RepositorioExperimentoRedeNeural.class);
 
 
 	@Override

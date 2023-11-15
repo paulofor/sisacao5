@@ -102,6 +102,49 @@ export class ExemploTreinoAcaoSaidaApi extends BaseLoopBackApi {
    *
    * @param {number} idGrupoAcao 
    *
+   * @param {number} idRegraProjecaoSaida 
+   *
+   * @param {number} idTipoExemploCurta 
+   *
+   * @param {number} idTipoExemploLonga 
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExemploTreinoAcaoSaida` object.)
+   * </em>
+   */
+  public ListaParaTreinoEntradaSaidaDuplaComIndice(diaNumInicio: any = {}, diaNumFinal: any = {}, idGrupoAcao: any = {}, idRegraProjecaoSaida: any = {}, idTipoExemploCurta: any = {}, idTipoExemploLonga: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExemploTreinoAcaoSaidas/listaParaTreinoEntradaSaidaDuplaComIndice";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof diaNumInicio !== 'undefined' && diaNumInicio !== null) _urlParams.diaNumInicio = diaNumInicio;
+    if (typeof diaNumFinal !== 'undefined' && diaNumFinal !== null) _urlParams.diaNumFinal = diaNumFinal;
+    if (typeof idGrupoAcao !== 'undefined' && idGrupoAcao !== null) _urlParams.idGrupoAcao = idGrupoAcao;
+    if (typeof idRegraProjecaoSaida !== 'undefined' && idRegraProjecaoSaida !== null) _urlParams.idRegraProjecaoSaida = idRegraProjecaoSaida;
+    if (typeof idTipoExemploCurta !== 'undefined' && idTipoExemploCurta !== null) _urlParams.idTipoExemploCurta = idTipoExemploCurta;
+    if (typeof idTipoExemploLonga !== 'undefined' && idTipoExemploLonga !== null) _urlParams.idTipoExemploLonga = idTipoExemploLonga;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {number} diaNumInicio 
+   *
+   * @param {number} diaNumFinal 
+   *
+   * @param {number} idGrupoAcao 
+   *
    * @param {number} idRegraProjecao 
    *
    * @param {number} idTipoExemplo 

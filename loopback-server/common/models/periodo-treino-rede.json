@@ -73,6 +73,11 @@
 			"type": "hasMany",
 			"model": "TreinoRede",
 			"foreignKey": ""
+		},
+		"experimentoRedeNeurals": {
+			"type": "hasMany",
+			"model": "ExperimentoRedeNeural",
+			"foreignKey": ""
 		}
 	},
 	"acls": [],

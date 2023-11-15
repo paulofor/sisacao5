@@ -282,6 +282,43 @@ export class ExemploTreinoAcaoEntradaApi extends BaseLoopBackApi {
          * (The remote method definition does not provide any description.)
          * </em>
    *
+   * @param {number} idGrupoAcao 
+   *
+   * @param {number} idTipoExemplo 
+   *
+   * @param {number} diaNumInicioTreino 
+   *
+   * @param {number} diaNumFinalTreino 
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `ExemploTreinoAcaoEntrada` object.)
+   * </em>
+   */
+  public ListaParaTreinoComIndice(idGrupoAcao: any = {}, idTipoExemplo: any = {}, diaNumInicioTreino: any = {}, diaNumFinalTreino: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/ExemploTreinoAcaoEntradas/listaParaTreinoComIndice";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof idGrupoAcao !== 'undefined' && idGrupoAcao !== null) _urlParams.idGrupoAcao = idGrupoAcao;
+    if (typeof idTipoExemplo !== 'undefined' && idTipoExemplo !== null) _urlParams.idTipoExemplo = idTipoExemplo;
+    if (typeof diaNumInicioTreino !== 'undefined' && diaNumInicioTreino !== null) _urlParams.diaNumInicioTreino = diaNumInicioTreino;
+    if (typeof diaNumFinalTreino !== 'undefined' && diaNumFinalTreino !== null) _urlParams.diaNumFinalTreino = diaNumFinalTreino;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
    * @param {string} ticker 
    *
    * @param {number} regraId 

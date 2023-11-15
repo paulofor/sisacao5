@@ -1,0 +1,58 @@
+{
+	"name": "ExemploTreinoCache",
+	"base": "PersistedModel",
+	"idInjection": true,
+	"options": {
+		"validateUpsert": true
+	},
+  	"mixins": {
+    	"Counts": true
+  	},
+	"properties": {
+		"grupoAcaoId": {
+			"type": "number"
+		},
+		"regraProjecaoSaidaId": {
+			"type": "number"
+		},
+		"tipoExemploCurtaId": {
+			"type": "number"
+		},
+		"tipoExemploLongaId": {
+			"type": "number"
+		},
+		"periodoTreinoRedeId": {
+			"type": "number"
+		},
+		"diaNumPrevisao": {
+			"type": "number"
+		},
+		"ticker": {
+			"type": "string"
+		},
+		"campoXCurta": {
+			"type": "string"
+		},
+		"campoXCurtaIndice": {
+			"type": "string"
+		},
+		"campoY": {
+			"type": "number"
+		},
+		"campoXLonga": {
+			"type": "string"
+		},
+		"campoXLongaIndice": {
+			"type": "string"
+		},
+		"idExperimentoRedeNeural": {
+			"type": "number"
+		}
+	},
+	"validations": [],
+	"relations": {
+	},
+	"acls": [],
+	"methods": {
+	}
+}

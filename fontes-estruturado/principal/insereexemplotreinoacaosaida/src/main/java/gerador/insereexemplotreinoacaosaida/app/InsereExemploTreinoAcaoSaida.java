@@ -17,7 +17,7 @@ public class InsereExemploTreinoAcaoSaida {
 
 	public static void main(String[] args) {
 		System.out.print("InsereExemploTreinoAcaoSaida");
-		System.out.println("(07/11/2023 18:35:16)");
+		System.out.println("(14/11/2023 14:27:39)");
 		try {
 			carregaProp();
 			InsereExemploTreinoAcaoSaidaObj obj = new InsereExemploTreinoAcaoSaidaObj();

@@ -107,7 +107,7 @@
 		},
 		"posicaoCtrl": {
 			"type": "number"
-		},
+		}
 	},
 	"validations": [],
 	"relations": {

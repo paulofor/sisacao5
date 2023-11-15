@@ -44,7 +44,7 @@
 		},
 		"qtdeDiaColetado": {
 			"type": "number"
-		},
+		}
 	},
 	"validations": [],
 	"relations": {

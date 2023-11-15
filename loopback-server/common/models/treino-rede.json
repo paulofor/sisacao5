@@ -29,7 +29,7 @@
 		},
 		"treinoGrupoRedeId": {
 			"type": "number"
-		},
+		}
 	},
 	"validations": [],
 	"relations": {

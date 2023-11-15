@@ -32,7 +32,7 @@
 		"tipoExemploTreinoId": {
 			"type": "number"
 			,"id": true
-		},
+		}
 	},
 	"validations": [],
 	"relations": {

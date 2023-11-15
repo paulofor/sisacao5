@@ -108,5 +108,6 @@ export * from './CotacaoDiarioAcaoUsa';
 export * from './CotacaoIntradayAcaoUsa';
 export * from './CotacaoIntradayIndiceResultado';
 export * from './ExemploTreinoIndiceAcaoEntrada';
+export * from './ExperimentoRedeNeural';
 export * from './SDKModels';
 export * from './logger.service';

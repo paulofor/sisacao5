@@ -52,6 +52,11 @@
 			"type": "hasMany",
 			"model": "GrupoRegraRel",
 			"foreignKey": ""
+		},
+		"experimentoRedeNeurals": {
+			"type": "hasMany",
+			"model": "ExperimentoRedeNeural",
+			"foreignKey": ""
 		}
 	},
 	"acls": [],
