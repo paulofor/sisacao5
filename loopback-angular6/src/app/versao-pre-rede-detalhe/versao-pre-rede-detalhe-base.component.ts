@@ -8,6 +8,8 @@ export class VersaoPreRedeDetalheBaseComponent implements OnInit {
 	idPrincipal: number;
 	constructor(protected srv: VersaoPreRedeApi, protected router: ActivatedRoute, protected dialog: MatDialog) { }
 
+	posCarregaTela() {}
+
 	ngOnInit() {
 		this.carregaTela()
 	}
@@ -18,6 +20,7 @@ export class VersaoPreRedeDetalheBaseComponent implements OnInit {
 	 		.subscribe((result: VersaoPreRede) => {
 				this.principal = result;
 				console.log('principal:', this.principal);
+            	this.posCarregaTela();
 			})
 		})
 	}

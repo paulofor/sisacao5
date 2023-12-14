@@ -8,6 +8,8 @@ export class FechamentoPontoSaidaDetalheBaseComponent implements OnInit {
 	idPrincipal: number;
 	constructor(protected srv: FechamentoPontoSaidaApi, protected router: ActivatedRoute, protected dialog: MatDialog) { }
 
+	posCarregaTela() {}
+
 	ngOnInit() {
 		this.carregaTela()
 	}
@@ -18,6 +20,7 @@ export class FechamentoPontoSaidaDetalheBaseComponent implements OnInit {
 	 		.subscribe((result: FechamentoPontoSaida) => {
 				this.principal = result;
 				console.log('principal:', this.principal);
+            	this.posCarregaTela();
 			})
 		})
 	}

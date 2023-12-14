@@ -8,6 +8,8 @@ export class FechamentoRegraDiaDetalheBaseComponent implements OnInit {
 	idPrincipal: number;
 	constructor(protected srv: FechamentoRegraDiaApi, protected router: ActivatedRoute, protected dialog: MatDialog) { }
 
+	posCarregaTela() {}
+
 	ngOnInit() {
 		this.carregaTela()
 	}
@@ -18,6 +20,7 @@ export class FechamentoRegraDiaDetalheBaseComponent implements OnInit {
 	 		.subscribe((result: FechamentoRegraDia) => {
 				this.principal = result;
 				console.log('principal:', this.principal);
+            	this.posCarregaTela();
 			})
 		})
 	}
