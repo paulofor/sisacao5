@@ -24,6 +24,9 @@ public abstract class DiaPregao_ObtemIntradayResultadoTickerAteFinalInicioAnteri
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom(ds.getRegraSaida(), ds.getAtivoCorrente(), ds.getExemploCorrente())) {
+			if (ticker==null) {
+				throw new RuntimeException("ticker precisa ser atribuido em DiaPregao_ObtemIntradayResultadoTickerAteFinalInicioAnteriorImpl ");
+			}
 			repDiaPregao.obtemIntradayResultadoTickerAteFinalInicioAnterior( ticker,dataNumInicio,tamanhoAmostra, new ListCallback<DiaPregao>() { 
 				public void onSuccess(List<DiaPregao> lista) {
 						ds.setListaDia(lista);

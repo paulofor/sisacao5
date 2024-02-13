@@ -23,6 +23,20 @@ public class GrupoRede extends Model {
 	private List<GrupoRedeRel> GrupoRedeRels;
 	private List<ExperimentoRedeNeural> ExperimentoRedeNeurals;
 
+	public void setId(Long id) {
+		this.setIdObjeto(id);
+	}
+	public void setId(Integer id) {
+		this.setIdObjeto(id);
+	}
+
+	public int getIdInteger() {
+		return new Integer(getId().toString());
+	}
+	public long getIdLong() {
+		return new Long(getId().toString());
+	}
+
 	public JSONObject getJSON() {
 		JSONObject obj = new JSONObject();
 		try {

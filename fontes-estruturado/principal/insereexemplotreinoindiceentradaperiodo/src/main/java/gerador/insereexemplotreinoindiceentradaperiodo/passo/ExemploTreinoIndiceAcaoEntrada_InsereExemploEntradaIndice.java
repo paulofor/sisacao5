@@ -22,6 +22,9 @@ public abstract class ExemploTreinoIndiceAcaoEntrada_InsereExemploEntradaIndice 
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom(ds.getExemploEntradaIndice())) {
+			if (exemplo==null) {
+				throw new RuntimeException("exemplo precisa ser atribuido em ExemploTreinoIndiceAcaoEntrada_InsereExemploEntradaIndiceImpl ");
+			}
 			repExemploTreinoIndiceAcaoEntrada.insereExemploEntradaIndice( exemplo, new VoidCallback() { 
 				public void onSuccess() {
 					executaProximo();

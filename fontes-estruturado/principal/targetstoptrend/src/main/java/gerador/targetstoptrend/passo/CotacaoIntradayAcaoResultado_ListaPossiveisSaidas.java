@@ -22,6 +22,9 @@ public abstract class CotacaoIntradayAcaoResultado_ListaPossiveisSaidas extends 
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom(ds.getEntrada())) {
+			if (entrada==null) {
+				throw new RuntimeException("entrada precisa ser atribuido em CotacaoIntradayAcaoResultado_ListaPossiveisSaidasImpl ");
+			}
 			repCotacaoIntradayAcaoResultado.listaPossiveisSaidas( entrada, new ListCallback<CotacaoIntradayAcaoResultado>() { 
 				public void onSuccess(List<CotacaoIntradayAcaoResultado> lista) {
 						ds.setPossivelSaida(lista);

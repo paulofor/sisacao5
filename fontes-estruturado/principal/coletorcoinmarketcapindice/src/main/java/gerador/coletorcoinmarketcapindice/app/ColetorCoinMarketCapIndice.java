@@ -17,7 +17,7 @@ public class ColetorCoinMarketCapIndice {
 
 	public static void main(String[] args) {
 		System.out.print("ColetorCoinMarketCapIndice");
-		System.out.println("(14/11/2023 14:27:38)");
+		System.out.println("(12/02/2024 22:08:12)");
 		try {
 			carregaProp();
 			ColetorCoinMarketCapIndiceObj obj = new ColetorCoinMarketCapIndiceObj();

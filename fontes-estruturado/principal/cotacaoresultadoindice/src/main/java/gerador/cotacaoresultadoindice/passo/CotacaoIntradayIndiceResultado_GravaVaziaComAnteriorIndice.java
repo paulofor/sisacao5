@@ -22,6 +22,9 @@ public abstract class CotacaoIntradayIndiceResultado_GravaVaziaComAnteriorIndice
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom(ds.getIndiceCorrente())) {
+			if (ticker==null) {
+				throw new RuntimeException("ticker precisa ser atribuido em CotacaoIntradayIndiceResultado_GravaVaziaComAnteriorIndiceImpl ");
+			}
 			repCotacaoIntradayIndiceResultado.gravaVaziaComAnteriorIndice( ticker , new ObjectCallback<CotacaoIntradayIndiceResultado>() { 
 				public void onSuccess(CotacaoIntradayIndiceResultado object) {
 					ds.setResultado(object);

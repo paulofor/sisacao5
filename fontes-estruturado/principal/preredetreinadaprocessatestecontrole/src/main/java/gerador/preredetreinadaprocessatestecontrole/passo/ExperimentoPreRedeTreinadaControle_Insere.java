@@ -22,6 +22,9 @@ public abstract class ExperimentoPreRedeTreinadaControle_Insere extends DaoAplic
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom(ds.getEscolhidoDia())) {
+			if (controle==null) {
+				throw new RuntimeException("controle precisa ser atribuido em ExperimentoPreRedeTreinadaControle_InsereImpl ");
+			}
 			repExperimentoPreRedeTreinadaControle.insere( controle, new VoidCallback() { 
 				public void onSuccess() {
 					executaProximo();

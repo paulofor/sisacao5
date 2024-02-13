@@ -30,6 +30,20 @@ public class DiaPregao extends Model {
 	private List<CotacaoDiarioAcaoUsa> CotacaoDiarioAcaoUsas;
 	private List<CotacaoIntradayIndiceResultado> CotacaoIntradayIndiceResultados;
 
+	public void setId(Long id) {
+		this.setIdObjeto(id);
+	}
+	public void setId(Integer id) {
+		this.setIdObjeto(id);
+	}
+
+	public int getIdInteger() {
+		return new Integer(getId().toString());
+	}
+	public long getIdLong() {
+		return new Long(getId().toString());
+	}
+
 	public JSONObject getJSON() {
 		JSONObject obj = new JSONObject();
 		try {

@@ -22,6 +22,9 @@ public abstract class FechamentoPontoSaida_RegistraSaida extends DaoAplicacao {
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom(ds.getFechamentoRegraDiaCorrente(), ds.getEntrada(), ds.getPontoSaida(), ds.getResultado(), ds.getPasso())) {
+			if (saida==null) {
+				throw new RuntimeException("saida precisa ser atribuido em FechamentoPontoSaida_RegistraSaidaImpl ");
+			}
 			repFechamentoPontoSaida.registraSaida( saida, new VoidCallback() { 
 				public void onSuccess() {
 					executaProximo();

@@ -22,6 +22,9 @@ public abstract class ExemploTreinoAcaoEntrada_InsereExemploEntrada extends DaoA
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom(ds.getExemploEntrada())) {
+			if (exemplo==null) {
+				throw new RuntimeException("exemplo precisa ser atribuido em ExemploTreinoAcaoEntrada_InsereExemploEntradaImpl ");
+			}
 			repExemploTreinoAcaoEntrada.insereExemploEntrada( exemplo, new VoidCallback() { 
 				public void onSuccess() {
 					executaProximo();

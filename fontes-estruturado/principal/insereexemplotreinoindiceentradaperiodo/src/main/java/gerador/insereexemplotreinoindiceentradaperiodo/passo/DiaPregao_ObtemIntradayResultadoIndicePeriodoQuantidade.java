@@ -24,6 +24,9 @@ public abstract class DiaPregao_ObtemIntradayResultadoIndicePeriodoQuantidade ex
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom(ds.getTipoCorrente(), ds.getDiaCorrente(), ds.getIndiceCorrente())) {
+			if (ticker==null) {
+				throw new RuntimeException("ticker precisa ser atribuido em DiaPregao_ObtemIntradayResultadoIndicePeriodoQuantidadeImpl ");
+			}
 			repDiaPregao.obtemIntradayResultadoIndicePeriodoQuantidade( ticker,qtdeDia,diaNumPrevisao, new ListCallback<DiaPregao>() { 
 				public void onSuccess(List<DiaPregao> lista) {
 						ds.setListaDiaCotacao(lista);

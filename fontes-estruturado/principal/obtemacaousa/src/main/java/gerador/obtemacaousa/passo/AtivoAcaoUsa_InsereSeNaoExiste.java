@@ -22,6 +22,9 @@ public abstract class AtivoAcaoUsa_InsereSeNaoExiste extends DaoAplicacao {
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom()) {
+			if (ativo==null) {
+				throw new RuntimeException("ativo precisa ser atribuido em AtivoAcaoUsa_InsereSeNaoExisteImpl ");
+			}
 			repAtivoAcaoUsa.insereSeNaoExiste( ativo, new VoidCallback() { 
 				public void onSuccess() {
 					executaProximo();

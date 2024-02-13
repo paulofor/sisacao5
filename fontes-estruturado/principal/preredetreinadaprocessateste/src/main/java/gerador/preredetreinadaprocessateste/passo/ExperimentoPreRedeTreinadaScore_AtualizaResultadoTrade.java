@@ -22,6 +22,9 @@ public abstract class ExperimentoPreRedeTreinadaScore_AtualizaResultadoTrade ext
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom(ds.getAtivoMelhorDia())) {
+			if (resultado==null) {
+				throw new RuntimeException("resultado precisa ser atribuido em ExperimentoPreRedeTreinadaScore_AtualizaResultadoTradeImpl ");
+			}
 			repExperimentoPreRedeTreinadaScore.atualizaResultadoTrade( resultado, new VoidCallback() { 
 				public void onSuccess() {
 					executaProximo();

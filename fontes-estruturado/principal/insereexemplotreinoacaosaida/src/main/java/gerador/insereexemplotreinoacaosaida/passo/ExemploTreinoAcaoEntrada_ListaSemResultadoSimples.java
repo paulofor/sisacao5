@@ -23,6 +23,9 @@ public abstract class ExemploTreinoAcaoEntrada_ListaSemResultadoSimples extends 
 	protected final void executaImpl() {
 		final DatasetAplicacao ds = (DatasetAplicacao) this.getComum();
 		if (executaCustom(ds.getRegraSaida(), ds.getAtivoCorrente())) {
+			if (ticker==null) {
+				throw new RuntimeException("ticker precisa ser atribuido em ExemploTreinoAcaoEntrada_ListaSemResultadoSimplesImpl ");
+			}
 			repExemploTreinoAcaoEntrada.listaSemResultadoSimples( ticker,regraId, new ListCallback<ExemploTreinoAcaoEntrada>() { 
 				public void onSuccess(List<ExemploTreinoAcaoEntrada> lista) {
 					for (ExemploTreinoAcaoEntrada item : lista) {
