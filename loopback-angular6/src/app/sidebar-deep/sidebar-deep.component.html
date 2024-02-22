@@ -1,0 +1,29 @@
+<div class="sidebar-wrapper">
+  <div class="logo">
+    <a routerLink="/home" class="simple-text">
+      <div class="logo-img">
+        <img src="assets/img/angular2-logo-white.png" />
+      </div>
+      <span routerLink="/home">Sisação 6</span>
+    </a>
+  </div>
+
+  <ul class="nav responsive-nav">
+     <li>
+      <a (click)="toggleSubmenu('indices')">
+        <i class="fa fa-search"></i>
+        <p>Índices</p>
+      </a>
+      <ul *ngIf="isSubmenuOpen('indices')" class="submenu">
+        <li>
+          <a routerLink="/cotacaoIntraIndice/ibov">
+            <i class="fa fa-search"></i>
+            <p>IBOV</p>
+          </a>
+        </li>
+        <!-- Adicione outros subitens conforme necessário -->
+      </ul>
+    </li>
+    <!-- Adicione outros itens e subitens conforme necessário -->
+  </ul>
+</div>

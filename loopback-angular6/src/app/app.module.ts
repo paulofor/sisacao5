@@ -237,6 +237,7 @@ import { FechamentoPontoSaidaListSimplesComponent } from './fechamento-ponto-sai
 import { ProdutosTopVendasComponent } from './produtos-top-vendas/produtos-top-vendas.component';
 import { ExperimentoRedeNeuralListComponent } from './experimento-rede-neural-list/experimento-rede-neural-list.component';
 import { ExperimentoRedeNeuralEditComponent } from './experimento-rede-neural-edit/experimento-rede-neural-edit.component';
+import { SidebarDeepComponent } from './sidebar-deep/sidebar-deep.component';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -438,7 +439,8 @@ registerLocaleData(localePt, 'pt-BR');
     FechamentoPontoSaidaListSimplesComponent,
     ProdutosTopVendasComponent,
     ExperimentoRedeNeuralListComponent,
-    ExperimentoRedeNeuralEditComponent
+    ExperimentoRedeNeuralEditComponent,
+    SidebarDeepComponent
   ],
   imports: [
     BrowserModule,
