@@ -26,6 +26,12 @@ export class PeriodoTreinoRedeListaComponent extends BaseListComponent {
   }
 
   
+  getFiltro() {
+    return {
+      'order' : 'diaNumFinalTreino desc'
+    }
+  } 
+      
   
 
  

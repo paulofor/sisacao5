@@ -27,7 +27,7 @@ export class TreinoGrupoListaComponent extends BaseListComponent {
 
   getFiltro() {
     return {
-      'order' : 'grupoRedeId',
+      'order' : 'grupoRedeId desc',
       'include' : [
         'grupoRede',
         'grupoAcao',
