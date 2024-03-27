@@ -132,6 +132,31 @@ entrada.qtdeDias = 120 and
 entrada.posicaoReferencia = 0 and
 RelGrupoAcao.grupoAcaoId  = 12
 */
+Exemplotreinoacaosaida.ListaParaTreinoEntradaSaidaComIndiceTeste = function(diaNumInicio,diaNumFinal,idGrupoAcao,idRegraProjecao,idTipoExemplo,callback) {
+    let sql = "select * from ExemploTreinoAcaoSaidaTeste";
+    let ds = Exemplotreinoacaosaida.dataSource;
+    ds.connector.query(sql,callback);
+}
+
+
+Exemplotreinoacaosaida.ListaParaTreinoEntradaSaidaComIndice = function(diaNumInicio,diaNumFinal,idGrupoAcao,idRegraProjecao,idTipoExemplo,callback) {
+    app.models.TipoExemploTreino.findById(idTipoExemplo, (err,tipo) => {
+        let sql = "select acao.diaNumPrevisao, acao.ticker , acao.campoX , indice.campoX as campoXIndice , saida.campoY from ExemploTreinoAcaoEntrada acao " +
+            " inner join ExemploTreinoAcaoSaida saida on saida.diaNumPrevisao = acao.diaNumPrevisao and acao.ticker = saida.ticker " +
+            " inner join ExemploTreinoIndiceAcaoEntrada indice on indice.diaNumPrevisao = acao.diaNumPrevisao " +
+            " where acao.diaNumPrevisao >= " + diaNumInicio + " and  acao.diaNumPrevisao <=" + diaNumFinal +
+            " and acao.ticker in (select ticker from RelGrupoAcao where grupoAcaoId = " + idGrupoAcao + " ) " +
+            " and acao.qtdeDias = " + tipo.qtdeDias + " and acao.posicaoReferencia = " + tipo.posicaoReferencia +
+            " and indice.ticker = 'ibov' and indice.tipoExemploTreinoId = " + idTipoExemplo + 
+            " and saida.regraProjecaoId = " + idRegraProjecao + 
+            " order by acao.diaNumPrevisao, acao.ticker";
+            console.log('sql:' , sql);
+            let ds = Exemplotreinoacaosaida.dataSource;
+            ds.connector.query(sql, (err,result) => {
+                callback(err,result);
+            })
+    })
+}
 
     Exemplotreinoacaosaida.ListaParaTreinoEntradaSaidaDuplaComIndice = function(diaNumInicio,diaNumFinal,idGrupoAcao,idRegraProjecaoSaida,idTipoExemploCurta,idTipoExemploLonga,callback) {
         app.models.TipoExemploTreino.findById(idTipoExemploCurta, (err,tipoCurta) => {

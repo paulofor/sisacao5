@@ -440,7 +440,8 @@ registerLocaleData(localePt, 'pt-BR');
     ProdutosTopVendasComponent,
     ExperimentoRedeNeuralListComponent,
     ExperimentoRedeNeuralEditComponent,
-    SidebarDeepComponent
+    SidebarDeepComponent,
+    TipoExemploTreinoListComponent
   ],
   imports: [
     BrowserModule,

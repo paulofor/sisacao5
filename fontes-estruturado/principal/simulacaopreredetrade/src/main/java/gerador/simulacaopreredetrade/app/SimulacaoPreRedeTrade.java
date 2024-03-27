@@ -17,7 +17,7 @@ public class SimulacaoPreRedeTrade {
 
 	public static void main(String[] args) {
 		System.out.print("SimulacaoPreRedeTrade");
-		System.out.println("(12/02/2024 22:08:09)");
+		System.out.println("(14/03/2024 06:03:54)");
 		try {
 			carregaProp();
 			SimulacaoPreRedeTradeObj obj = new SimulacaoPreRedeTradeObj();

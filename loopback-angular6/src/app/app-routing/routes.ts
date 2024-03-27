@@ -254,6 +254,8 @@ export const routes : Routes = [
     { path: 'fechamentoPontoSaidaDetalhe/:id' , component: FechamentoPontoSaidaDetalheComponent },
     { path: 'fechamentoRegraDiaDetalhe/:id' , component: FechamentoRegraDiaDetalheComponent },
 
+    { path: 'tipoExemploTreinoList' , component: TipoExemploTreinoListComponent },
+
     { path: '',  component: HomeComponent  }
     //{ path: '',          redirectTo: 'home', pathMatch: 'full' }
 ]

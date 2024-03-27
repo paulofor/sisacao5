@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-sidebar-deep',
   templateUrl: './sidebar-deep.component.html',
-  styleUrls: ['./sidebar-deep.component.css']
+  styleUrls: ['./sidebar-deep.component.scss']
 })
 export class SidebarDeepComponent implements OnInit {
 

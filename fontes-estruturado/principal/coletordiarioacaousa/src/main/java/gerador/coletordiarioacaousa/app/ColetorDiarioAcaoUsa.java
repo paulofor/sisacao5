@@ -17,7 +17,7 @@ public class ColetorDiarioAcaoUsa {
 
 	public static void main(String[] args) {
 		System.out.print("ColetorDiarioAcaoUsa");
-		System.out.println("(12/02/2024 22:08:10)");
+		System.out.println("(14/03/2024 06:03:55)");
 		try {
 			carregaProp();
 			ColetorDiarioAcaoUsaObj obj = new ColetorDiarioAcaoUsaObj();

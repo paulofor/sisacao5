@@ -26,6 +26,7 @@ public class GrupoAcao extends Model {
 	private List<TreinoRede> TreinoRedes;
 	private List<RelGrupoAcao> RelGrupoAcaos;
 	private List<ExperimentoRedeNeural> ExperimentoRedeNeurals;
+	private List<TreinoGrupoRede> TreinoGrupoRedes;
 
 	public void setId(Long id) {
 		this.setIdObjeto(id);
@@ -151,6 +152,18 @@ public class GrupoAcao extends Model {
 			System.out.println(" --> ObjetoMap ");
 			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
 			this.ExperimentoRedeNeurals.add((ExperimentoRedeNeural) objeto);
+		}
+	}
+	public List<TreinoGrupoRede> getTreinoGrupoRedes() {
+		return  TreinoGrupoRedes;
+	}
+	public void setTreinoGrupoRedes(List<TreinoGrupoRede> valores) {
+		this.TreinoGrupoRedes = new ArrayList<TreinoGrupoRede>();
+		for (int i = 0; i < valores.size(); i++) {
+			Object objeto = new TreinoGrupoRede();
+			System.out.println(" --> ObjetoMap ");
+			BeanUtil.setProperties(objeto, (Map<String, ? extends Object>) valores.get(i), true);
+			this.TreinoGrupoRedes.add((TreinoGrupoRede) objeto);
 		}
 	}
 }

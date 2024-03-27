@@ -17,7 +17,7 @@ public class CotacaoResultadoIndice {
 
 	public static void main(String[] args) {
 		System.out.print("CotacaoResultadoIndice");
-		System.out.println("(12/02/2024 22:08:12)");
+		System.out.println("(14/03/2024 06:03:58)");
 		try {
 			carregaProp();
 			CotacaoResultadoIndiceObj obj = new CotacaoResultadoIndiceObj();

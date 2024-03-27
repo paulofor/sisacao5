@@ -17,7 +17,7 @@ public class GerarCacheTreino {
 
 	public static void main(String[] args) {
 		System.out.print("GerarCacheTreino");
-		System.out.println("(12/02/2024 22:08:15)");
+		System.out.println("(14/03/2024 06:04:02)");
 		try {
 			carregaProp();
 			GerarCacheTreinoObj obj = new GerarCacheTreinoObj();

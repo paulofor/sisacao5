@@ -33,6 +33,11 @@
 			"type": "hasMany",
 			"model": "ExperimentoRedeNeural",
 			"foreignKey": ""
+		},
+		"treinoGrupoRedes": {
+			"type": "hasMany",
+			"model": "TreinoGrupoRede",
+			"foreignKey": ""
 		}
 	},
 	"acls": [],

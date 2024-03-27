@@ -17,7 +17,7 @@ public class CriaPythonPreRedeDadoSintetico {
 
 	public static void main(String[] args) {
 		System.out.print("CriaPythonPreRedeDadoSintetico");
-		System.out.println("(12/02/2024 22:08:07)");
+		System.out.println("(14/03/2024 06:03:51)");
 		try {
 			carregaProp();
 			CriaPythonPreRedeDadoSinteticoObj obj = new CriaPythonPreRedeDadoSinteticoObj();

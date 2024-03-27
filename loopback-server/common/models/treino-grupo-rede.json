@@ -9,7 +9,16 @@
     	"Counts": true
   	},
 	"properties": {
+		"objetivo": {
+			"type": "string"
+		},
 		"periodoTreinoRedeId": {
+			"type": "number"
+		},
+		"grupoRedeId": {
+			"type": "number"
+		},
+		"grupoAcaoId": {
 			"type": "number"
 		}
 	},
@@ -18,6 +27,16 @@
 		"periodoTreinoRede": {
 			"type": "belongsTo",
 			"model": "PeriodoTreinoRede",
+			"foreignKey": ""
+		},
+		"grupoRede": {
+			"type": "belongsTo",
+			"model": "GrupoRede",
+			"foreignKey": ""
+		},
+		"grupoAcao": {
+			"type": "belongsTo",
+			"model": "GrupoAcao",
 			"foreignKey": ""
 		},
 		"treinoRedes": {

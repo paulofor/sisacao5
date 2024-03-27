@@ -7,14 +7,14 @@
 
     <div class="dgc-card" *ngFor="let periodo of listaBase">
       <div class="dgc-card-header">
-        <span>{{periodo.nome}}</span>
+        <span>Nome do experimento de treino: {{periodo.nome}}</span>
       </div>
       <div class="dgc-card-detalhe">
-        <span>Treino: {{converteData(periodo.diaNumInicioTreino)}} a {{converteData(periodo.diaNumFinalTreino)}} </span>
+        <span>Período de Treino: {{converteData(periodo.diaNumInicioTreino)}} a {{converteData(periodo.diaNumFinalTreino)}} </span>
         <span>{{periodo.quantidadeDiaTreino}} dias</span>
       </div>
       <div class="dgc-card-detalhe">
-        <span>Teste: {{converteData(periodo.diaNumInicioTeste)}} a {{converteData(periodo.diaNumFinalTeste)}}</span>
+        <span>Período de Teste: {{converteData(periodo.diaNumInicioTeste)}} a {{converteData(periodo.diaNumFinalTeste)}}</span>
         <span>{{periodo.quantidadeDiaTeste}} dias</span>
       </div>
 
@@ -24,13 +24,13 @@
           <span>Objetivo: {{item.objetivo}}</span>
         </div>
         <div class="dgc-card-detalhe">
-          <span>Grupo Regra Saída: {{item.grupoRegra.nome}}</span>
+          <span>Nome Grupo Regra Saída: {{item.grupoRegra.nome}}</span>
         </div>
         <div class="dgc-card-detalhe">
-          <span>Grupo Ação: {{item.grupoAcao.nome}}</span>
+          <span>Nome Grupo Ação: {{item.grupoAcao.nome}}</span>
         </div>
         <div class="dgc-card-detalhe">
-          <span>Redes: {{listaRedes(item)}}</span><span>(Grupo: {{item.grupoRede.nome}})</span>
+          <span>Redes: {{listaRedes(item)}}</span><span>(Nome Grupo de Rede: {{item.grupoRede.nome}})</span>
         </div>
 
        

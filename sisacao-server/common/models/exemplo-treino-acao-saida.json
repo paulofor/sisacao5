@@ -47,6 +47,104 @@
   "relations": {},
   "acls": [],
   "methods": {
+    "ListaParaTreinoEntradaSaidaComIndice": {
+			"accepts": [
+				{
+					"arg": "diaNumInicio",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "diaNumFinal",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "idGrupoAcao",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "idRegraProjecao",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "idTipoExemplo",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          	"path": "/listaParaTreinoEntradaSaidaComIndice",
+   					"verb": "get"
+ 				}
+ 			]
+		},
+    "ListaParaTreinoEntradaSaidaComIndiceTeste": {
+			"accepts": [
+				{
+					"arg": "diaNumInicio",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "diaNumFinal",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "idGrupoAcao",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "idRegraProjecao",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				},
+				{
+					"arg": "idTipoExemplo",
+					"type": "number",
+   					"required": false,
+    				"description": ""
+				}
+			],
+			"returns": [
+ 				{
+     				"arg": "resultado",
+     				"type": "array",
+   					"root": true,
+    				"description": ""
+   				}
+			],
+			"description": "",
+			"http": [
+         		{
+          	"path": "/listaParaTreinoEntradaSaidaComIndiceTeste",
+   					"verb": "get"
+ 				}
+ 			]
+		},
     "ListaParaTreinoEntradaSaidaDuplaComIndice": {
       "accepts": [
         {
