@@ -2,6 +2,39 @@
 
 module.exports = function(Previsaoteste) {
 
+    Previsaoteste.InsereListaItemPrevisao = function(treinoRedeId, valorScore, ticker, diaNum,callback) {
+        //console.log(treinoRedeId);
+        //console.log(ticker);
+        //console.log(valorScore);
+        for (let i=0; i<diaNum.length; i++) {
+            //console.log('dia-> ' , diaNum[i]);
+            Previsaoteste.InsereItemPrevisao(treinoRedeId,valorScore[i],ticker,diaNum[i], (err,result) => {
+                //console.log('erro:' , err)
+            })
+        }
+        callback(null, {'result' : 'ok'})
+    }
+
+
+    Previsaoteste.InsereItemPrevisao = function(treinoRedeId,valorScore,ticker,diaNum, callback) {
+        const sql = "select * from PrevisaoTeste where ticker = '" + ticker + "' and diaNumPrevisao = " + diaNum + 
+            " and treinoRedeId = " + treinoRedeId;
+        const ds = Previsaoteste.dataSource;
+        ds.connector.query(sql, (err,result) => {
+            if (result.length==0) {
+                const sql2 = "insert into PrevisaoTeste (ticker, diaNumPrevisao, treinoRedeId, valorPrevisao ) values " +
+                    "('" + ticker + "' , " + diaNum + " , " + treinoRedeId + " , " + valorScore + ")";
+                console.log(sql2);
+                ds.connector.query(sql2,callback)
+            } else {
+                const sql2 = "update PrevisaoTeste set valorPrevisao = " + valorScore + " where ticker = '" + ticker + "' and diaNumPrevisao = " + diaNum + 
+                " and treinoRedeId = " + treinoRedeId;
+                console.log(sql2);
+                ds.connector.query(sql2,callback);
+            }
+        })
+    }
+
 
     Previsaoteste.AtualizaPosicaoDiaPorTreino = function(idTreino, callback) {
         let sql1 = " SET @rank=1"; 

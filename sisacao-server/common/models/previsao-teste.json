@@ -228,6 +228,92 @@
           "verb": "get"
         }
       ]
+    },
+    "InsereItemPrevisao": {
+      "accepts": [
+        {
+          "arg": "treinoRedeId",
+          "type": "number",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "valorScore",
+          "type": "number",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "ticker",
+          "type": "string",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "diaNum",
+          "type": "number",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/insereItemPrevisao",
+          "verb": "post"
+        }
+      ]
+    },
+    "InsereListaItemPrevisao": {
+      "accepts": [
+        {
+          "arg": "treinoRedeId",
+          "type": "number",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "valorScore",
+          "type": "array",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "ticker",
+          "type": "string",
+          "root": true,
+          "description": ""
+        },
+        {
+          "arg": "diaNum",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/insereListaItemPrevisao",
+          "verb": "post"
+        }
+      ]
     }
   }
 }

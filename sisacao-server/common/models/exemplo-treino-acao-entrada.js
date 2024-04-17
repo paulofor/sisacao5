@@ -68,6 +68,41 @@ module.exports = function(Exemplotreinoacaoentrada) {
             callback(err,result);
         })
     }
+    Exemplotreinoacaoentrada.ObtemPorPeriodoIdTreinoTipoComIndice = function(idPeriodo,idGrupoAcao,idTipoExemplo, callback){
+        app.models.PeriodoTreinoRede.findById(idPeriodo, (err,periodo) => {
+            app.models.TipoExemploTreino.findById(idTipoExemplo, (err,tipo) => {
+                let sql = "select acao.diaNumPrevisao, acao.ticker , acao.campoX , indice.campoX as campoXIndice from ExemploTreinoAcaoEntrada acao " +
+                    " inner join ExemploTreinoIndiceAcaoEntrada indice on indice.diaNumPrevisao = acao.diaNumPrevisao " +
+                    " where acao.diaNumPrevisao >= " + periodo.diaNumInicioTeste + " and  acao.diaNumPrevisao <=" + periodo.diaNumFinalTeste +
+                    " and acao.ticker in (select ticker from RelGrupoAcao where grupoAcaoId = " + idGrupoAcao + " ) " +
+                    " and acao.qtdeDias = " + tipo.qtdeDias + " and acao.posicaoReferencia = " + tipo.posicaoReferencia +
+                    " and indice.ticker = 'ibov' and indice.tipoExemploTreinoId = " + idTipoExemplo + 
+                    " order by acao.diaNumPrevisao, acao.ticker";
+                let ds = Exemplotreinoacaoentrada.dataSource;
+                ds.connector.query(sql, (err,result) => {
+                    callback(err,result);
+                })
+            })
+        })
+    }
+
+    Exemplotreinoacaoentrada.ObtemPorDiaNumIdTreinoTipoComIndice = function(diaNum,idGrupoAcao,idTipoExemplo, callback){
+        app.models.TipoExemploTreino.findById(idTipoExemplo, (err,tipo) => {
+            let sql = "select acao.diaNumPrevisao, acao.ticker , acao.campoX , indice.campoX as campoXIndice from ExemploTreinoAcaoEntrada acao " +
+                " inner join ExemploTreinoIndiceAcaoEntrada indice on indice.diaNumPrevisao = acao.diaNumPrevisao " +
+                " where acao.diaNumPrevisao = " + diaNum +
+                " and acao.ticker in (select ticker from RelGrupoAcao where grupoAcaoId = " + idGrupoAcao + " ) " +
+                " and acao.qtdeDias = " + tipo.qtdeDias + " and acao.posicaoReferencia = " + tipo.posicaoReferencia +
+                " and indice.ticker = 'ibov' and indice.tipoExemploTreinoId = " + idTipoExemplo + 
+                " order by acao.diaNumPrevisao, acao.ticker";
+            let ds = Exemplotreinoacaoentrada.dataSource;
+            ds.connector.query(sql, (err,result) => {
+                callback(err,result);
+            })
+        })
+    }
+
+
     Exemplotreinoacaoentrada.ObtemPorDiaNumTipoExemplo = function(diaNum, idTipo, callback) {
         app.models.TipoExemploTreino.findById(idTipo, (err,tipo) => {
             Exemplotreinoacaoentrada.ObtemPorDiaNum(diaNum,tipo.qtdeDias, callback);

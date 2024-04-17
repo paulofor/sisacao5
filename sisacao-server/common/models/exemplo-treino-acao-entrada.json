@@ -99,6 +99,80 @@
         }
       ]
     },
+    "ObtemPorDiaNumIdTreinoTipoComIndice": {
+      "accepts": [
+        {
+          "arg": "diaNum",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "idGrupoAcao",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "idTipoExemplo",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemPorDiaNumIdTreinoTipoComIndice",
+          "verb": "get"
+        }
+      ]
+    },
+    "ObtemPorPeriodoIdTreinoTipoComIndice": {
+      "accepts": [
+        {
+          "arg": "idPeriodo",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "idGrupoAcao",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "arg": "idTipoExemplo",
+          "type": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemPorPeriodoIdTreinoTipoComIndice",
+          "verb": "get"
+        }
+      ]
+    },
     "ObtemPorDiaNumTipoExemplo": {
       "accepts": [
         {
