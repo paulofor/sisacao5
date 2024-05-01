@@ -38,12 +38,65 @@
     },
     "pontuacao": {
       "type": "number"
+    },
+    "campoY" : {
+      "type" : "number"
     }
   },
   "validations": [],
   "relations": {},
   "acls": [],
   "methods": {
+    "AtualizaResultadoCampoY": {
+      "accepts": [
+        {
+          "arg": "idTreino",
+          "type": "number",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "resultado",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/atualizaResultadoCampoY",
+          "verb": "post"
+        }
+      ]
+    },
+    "ObtemPorIdTreino": {
+      "accepts": [
+        {
+          "arg": "idTreino",
+          "type": "number",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "returns": [
+        {
+          "arg": "previsao",
+          "type": "array",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/obtemPorIdTreino",
+          "verb": "get"
+        }
+      ]
+    },
     "RecebePrevisaoTreinoTeste": {
       "accepts": [
         {

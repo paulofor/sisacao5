@@ -1,6 +1,29 @@
 'use strict';
 
+var app = require('../../server/server');
+
 module.exports = function(Previsaoteste) {
+
+    Previsaoteste.ObtemPorIdTreino = function(idTreino,callback) {
+        const sql = "select ticker, diaNumPrevisao, campoY, valorPrevisao from PrevisaoTeste where treinoRedeId = " + idTreino;
+        const ds = Previsaoteste.dataSource;
+        ds.connector.query(sql,callback);
+    }
+
+    Previsaoteste.AtualizaResultadoCampoY = function(idTreino, callback) {
+        console.log('id: ' , idTreino);
+        const ds = Previsaoteste.dataSource;
+        app.models.TreinoRede.findById(idTreino, (err,treino) => {
+            console.log('err: ' , err);
+            console.log('treino: ' , treino);
+            const sql = "update PrevisaoTeste set campoY = (select campoY from ExemploTreinoAcaoSaida " +
+                " where regraProjecaoId = " + treino.regraProjecaoId + " and ExemploTreinoAcaoSaida.diaNumPrevisao = PrevisaoTeste.diaNumPrevisao " +
+                " and ExemploTreinoAcaoSaida.ticker = PrevisaoTeste.ticker) " +
+                " where treinoRedeId = " + idTreino;
+            ds.connector.query(sql,callback);
+        })
+    }
+
 
     Previsaoteste.InsereListaItemPrevisao = function(treinoRedeId, valorScore, ticker, diaNum,callback) {
         //console.log(treinoRedeId);
